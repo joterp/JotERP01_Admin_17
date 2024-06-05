@@ -1,0 +1,440 @@
+
+<fury-page-layout mode="card" class="seemp-reports-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+
+        <form [formGroup]="SEEMPReportsFilterForm">
+            <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+            <h3>
+
+                <span class="first-letter">S</span>EEMP
+                <span class="first-letter">R</span>EPORTS
+
+            </h3>
+            <div class="filter-area">
+
+                <div fxLayout="row" fxLayoutAlign="start" >
+
+                    <div fxFlex >
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fleet</mat-label>
+                            <mat-select formControlName="drpFleet">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel</mat-label>
+                            <mat-select formControlName="drpVessel">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex >
+                        <mat-form-field appearance="fill">
+                            <mat-label>Voyage</mat-label>
+                            <mat-select formControlName="drpVoyage">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Cargo State</mat-label>
+                            <mat-select formControlName="drpCargo_State">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Report From</mat-label>
+                            <input
+                              matInput
+                              formControlName="Report_From"
+                              [matDatepicker]="pickerReport_From"
+                            />
+                            <mat-datepicker-toggle
+                              matSuffix
+                              [for]="pickerReport_From"
+                            ></mat-datepicker-toggle>
+                            <mat-datepicker #pickerReport_From></mat-datepicker>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="fill">
+                            <mat-label>To Date</mat-label>
+                            <input
+                              matInput
+                              formControlName="Report_To"
+                              [matDatepicker]="pickerReport_To"
+                            />
+                            <mat-datepicker-toggle
+                              matSuffix
+                              [for]="pickerReport_To"
+                            ></mat-datepicker-toggle>
+                            <mat-datepicker #pickerReport_To></mat-datepicker>
+                          </mat-form-field>
+
+                    </div>
+                    
+                    <div fxFlex >
+                        <mat-form-field appearance="fill">
+                            <mat-label>Location</mat-label>
+                            <mat-select formControlName="drpLocation">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                        <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                            <div fxFlex="90">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Export To Format</mat-label>
+                                    <mat-select formControlName="drpExport_To_Format">
+                                        <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                </div>
+                                <div fxFlex="10">
+                                    <span><img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" /></span>
+                                </div>
+                        </div>
+                        
+                    </div>
+
+                          
+                     
+                        
+                               
+
+
+                    <div class="filter-btn-area" fxFlex>
+                        <div>
+                            <button class="create" mat-raised-button color="primary" class="filter-btn">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                                Clear Filter
+                            </button>
+                        </div>                     
+                    </div>
+
+                                     
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+
+
+    <fury-page-layout-content [@fadeInUp]>
+        <div class="actions-area-asm">
+            <table style="display: flex;">
+                <tr>
+                    <td>
+                        
+                    </td>             
+            </table>
+
+            <div style="width: 18%;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td><img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                            <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                            <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                        </td>                
+                    </tr>
+                </table>
+            </div>
+
+           
+            <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+        </div>
+
+        <div #TABLE>
+            <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+    
+                <ng-container matColumnDef="Main_Propulsion_Power">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;" >
+                        Main Propulsion Power
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Auxiliary_Engine">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                        Auxiliary Engine(S)
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+                <ng-container matColumnDef="HO">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                        HO
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+                <ng-container matColumnDef="DO">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                        DO
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+
+                <ng-container matColumnDef="MGO">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                        MGO
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+
+                <ng-container matColumnDef="THO">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                        THO
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+
+                <ng-container matColumnDef="HVO">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                        HVO
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+
+                <ng-container matColumnDef="header-row-first-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                     Vessel
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-second-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                     Date
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-third-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                     NAD Type
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-fourth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                     Location
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-fifth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                     Voyage
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-sixth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                     Cargo State 
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-seventh-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                     IMO Number
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-eighth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                     Ship Type
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-nineth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                    Gross Tonnage (GT)
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-tenth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                    Net Tonnage (NT)
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-eleventh-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                    Deadweight Tonnage
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-eleventh-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                    Energy Efficiency Design Index (EEDI)
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-twelth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                    Ice Class	
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-thirteenth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                    Power Output (Rated Power) (KW)	
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-fourteenth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                    Distance Travelled (Nm)
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-fifteenth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                    Hours Underway (H)
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-sixteenth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="5" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                    Fuel Oil Consumption (T)
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-eighteenth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                    Method Used To Measure Fuel Oil Consumption	
+                    </th>
+                </ng-container>
+                <ng-container matColumnDef="header-row-nineteenth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+                    
+                    </th>
+                </ng-container>
+           
+
+
+                <tr mat-header-row *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group','header-row-fifth-group','header-row-sixth-group',
+                'header-row-seventh-group','header-row-eighth-group','header-row-nineth-group','header-row-tenth-group','header-row-eleventh-group',
+                'header-row-twelth-group', 'header-row-thirteenth-group', 'header-row-fourteenth-group', 'header-row-fifteenth-group', 'header-row-sixteenth-group',
+                'header-row-eighteenth-group','header-row-nineteenth-group']" style="height:32px">
+                </tr>
+
+
+                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                </tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                </tr>
+            </table>
+        </div>
+
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+    </fury-page-layout-content>
+
+
+</fury-page-layout>
+
+
+

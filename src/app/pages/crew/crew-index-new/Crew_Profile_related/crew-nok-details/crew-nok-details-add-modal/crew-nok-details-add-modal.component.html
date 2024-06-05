@@ -1,0 +1,189 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+  {{modeltitle}}
+</div>
+
+
+<mat-dialog-content style="height: 100% !important" class="edit-nok-details">
+    <form [formGroup]="NOKDetailsFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>NOK Name</mat-label>
+                <input type="text" formControlName="txtNOK_Name" matInput />
+                <mat-error *ngIf="NOKDetailsFormGroup.get('txtNOK_Name').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Relationship</mat-label>
+                <mat-select formControlName="drpRelationship">
+                    <mat-option>
+
+                    </mat-option>
+
+                    <!-- <mat-option
+                  *ngFor="let b of filtered_port | async"
+                  [value]="b.PORT_GUID"
+                >
+                  {{ b.Port_Name }}
+                </mat-option> -->
+                </mat-select>
+                <mat-error *ngIf="NOKDetailsFormGroup.get('drpRelationship').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>NOK DOB</mat-label>
+                <input matInput formControlName="nok_dob" [matDatepicker]="pickernok_dob" />
+                <mat-datepicker-toggle matSuffix [for]="pickernok_dob"></mat-datepicker-toggle>
+                <mat-datepicker #pickernok_dob></mat-datepicker>
+
+
+            </mat-form-field>
+
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>NOK Phone</mat-label>
+                <input type="text" formControlName="txtNOK_Phone" matInput />
+                <mat-error *ngIf="NOKDetailsFormGroup.get('txtNOK_Phone').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Passport No. </mat-label>
+                <input type="text" formControlName="txtPassport_No" matInput />
+
+            </mat-form-field>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Issued Place</mat-label>
+                <input type="text" formControlName="txtIssued_Place" matInput />
+
+            </mat-form-field>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Expiry Date</mat-label>
+                <input matInput formControlName="expiry_date" [matDatepicker]="pickerexpiry_date" />
+                <mat-datepicker-toggle matSuffix [for]="pickerexpiry_date"></mat-datepicker-toggle>
+                <mat-datepicker #pickerexpiry_date></mat-datepicker>
+
+
+            </mat-form-field>
+
+
+        </div>
+
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Address</mat-label>
+                <textarea matInput formControlName="txtAddress" placeholder="Remarks"></textarea>
+                <mat-error *ngIf="NOKDetailsFormGroup.get('txtAddress').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+   
+        
+  
+            <table style="width: 100%;">
+            <tr>
+                <td style="width: 50%;">
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="display: flex;margin: 10px;">
+                    <mat-label>Is NOK?</mat-label>
+                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioIs_NOK" style="margin-top: 0px;
+                                margin-left: 20px;">
+                      <mat-radio-button value="0"
+                        [checked]="NOKDetailsFormGroup.get('radioIs_NOK').value == 0">
+                        <label [class.active-label]="NOKDetailsFormGroup.get('radioIs_NOK').value == 0">Yes</label>
+                        </mat-radio-button>
+                      <mat-radio-button value="1"
+                        [checked]="NOKDetailsFormGroup.get('radioIs_NOK').value == 1">
+                        <label [class.active-label]="NOKDetailsFormGroup.get('radioIs_NOK').value == 1">No</label>
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                </td>
+                <td>
+                    <span style="color: red;">Only one relation can be marked as NOK. If you mark this as NOK, then the previously selected will automatically be marked as NO.</span>
+                </td>
+            </tr>
+            </table>
+
+            <table style="width: 100%;">
+
+                <tr>
+                    <td>
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                            <mat-label>Upload</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         
+                          </div>
+                   
+                    </td>
+                    <td>    
+                         <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+                        accept=".pdf,.doc,.docx,.jpg,.png" />
+                   
+                      <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                        <label for="imageupload">
+                          Upload </label>
+                      </button>
+                      <div *ngIf="selectedFileName" fxFlex>
+                        <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                        <button (click)="removeUploadedFileadditem()"  mat-button style="color: #5BB318;">Remove</button>
+                      </div>
+                    </td>
+                </tr>
+            </table>
+
+                 
+
+        <!-- <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" *ngIf="ErrorMessage">
+            <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+        </div> -->
+    </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!NOKDetailsFormGroup.valid ? '' : 'save-btn']" [disabled]="!NOKDetailsFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!NOKDetailsFormGroup.valid">
+        SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

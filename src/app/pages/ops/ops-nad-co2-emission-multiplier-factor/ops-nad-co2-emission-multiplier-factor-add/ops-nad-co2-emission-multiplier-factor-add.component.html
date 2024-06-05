@@ -1,0 +1,69 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="width: 20px;
+        height:20px; margin-right: 10px;margin-bottom: -4px;" />
+    </span>
+      {{modeltitle}}
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="edit-new-opening-balance">
+
+    <div>
+        <form [formGroup]="AddNewEmissionFactorFormGroup"> 
+            
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Fuel Type</mat-label>
+                    <mat-select formControlName="drpFuel_Type">
+                      <!-- <mat-option
+                      *ngFor="let b of filteredBoatType | async"
+                      [value]="b.PARAMETER_GUID"
+                    >
+                      {{ b.PARAMETER_NAME }}
+                    </mat-option> -->
+                    </mat-select>
+                    <mat-error *ngIf="AddNewEmissionFactorFormGroup.get('drpFuel_Type').hasError('required')">
+                      Required</mat-error>
+                  </mat-form-field>
+
+            </div>             
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label class="left-label">CO2 Factor</mat-label>
+                   
+                      <input
+                        type="text"
+                        class="right-text"
+                        formControlName="txtCO2_Factor"
+                        matInput
+                      />
+                      <mat-error *ngIf="AddNewEmissionFactorFormGroup.get('txtCO2_Factor').hasError('required')">
+                        Required
+                    </mat-error>
+                  </mat-form-field>
+                 
+            </div>
+
+        </form>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+
+    <button mat-raised-button color="primary" class="save-btn" 
+    [ngClass]="[!AddNewEmissionFactorFormGroup.valid ? '' : 'save-btn']" [disabled]="!AddNewEmissionFactorFormGroup.valid">
+    SAVE
+  </button>
+
+  <button mat-raised-button color="primary" class="save-btn" [disabled]="!AddNewEmissionFactorFormGroup.valid">
+    SAVE & ADD NEW
+  </button>
+ 
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+
+

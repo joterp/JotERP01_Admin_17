@@ -1,0 +1,1442 @@
+<div style="text-align: center;font-weight: bold;    height: 24px;
+vertical-align: middle;margin-top: 30px;">
+    <h3 class="routerTitle">{{routeTitle}}</h3>
+</div>
+
+<fury-page-layout mode="card" class="add-pmsjobdetails">
+    <div style="padding:10px 100px 31px 100px;">
+
+        <table style="width: 100%;">
+
+            <tr>
+                <td>
+                    <table class="head-table">
+                        <tr>
+                            <td class="job-code-td1">Job Code</td>
+                            <td class="job-code-td2">&nbsp;</td>
+                            <td class="job-code-td3">0003</td>
+                            <td class="job-code-td4">Job Status</td>
+                            <td class="job-code-td5">UnVerified</td>
+                            <td class="job-code-td6"> <img src="../../../../assets/img/pdf.png" class="logo"
+                                    alt="excel" /></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <div fxFlex="40">
+                        <table class="head-table2">
+                            <tr>
+                            <td class="job-code-1">Vessel Name</td>
+                            <td class="job-code-2">:</td>
+                            <td class="job-code-3">Alexandre</td> 
+                        </tr>
+                        <tr>
+                            <td class="job-code-1">Machinery</td>
+                            <td class="job-code-2">:</td>
+                            <td class="job-code-abc" style="color: blue;text-decoration: underline;">ABC</td> 
+                        </tr>
+                        <tr>
+                            <td class="job-code-1">Location</td>
+                            <td class="job-code-2">:</td>
+                            <td class="job-code-3">A/E Alternator #1</td> 
+                        </tr>
+                        <tr>
+                            <td class="job-code-1">SubComponent</td>
+                            <td class="job-code-2">:</td>
+                            <td class="job-code-3">GENERAL</td> 
+                        </tr>
+                        <tr>
+                            <td class="job-code-1">Job Title</td>
+                            <td class="job-code-2">:</td>
+                            <td class="job-code-ae"  style="color: blue;">A/E Alternator - Complete overhaul</td> 
+                        </tr>
+                        <tr>
+                            <td class="job-code-1">Department</td>
+                            <td class="job-code-2">:</td>
+                            <td class="job-code-3">Deck</td> 
+                        </tr>
+                        <tr>
+                            <td class="job-code-1">Rank</td>
+                            <td class="job-code-2">:</td>
+                            <td class="job-code-3">Electro Tech Officer</td> 
+                        </tr>
+                        <tr>
+                            <td class="job-code-1">Frequency</td>
+                            <td class="job-code-2">:</td>
+                            <td class="job-code-3">6 Months</td> 
+                        </tr>
+                        <tr>
+                            <td class="job-code-1">Job Type</td>
+                            <td class="job-code-2">:</td>
+                            <td class="job-code-3">Normal</td> 
+                        </tr>
+                        <tr>
+                            <td class="job-code-1">CMS JOB</td>
+                            <td class="job-code-2">:</td>
+                            <td class="job-code-3" style="color: red;">Yes</td> 
+                        </tr>
+                        <tr>
+                            <td class="job-code-1">Critical JOB</td>
+                            <td class="job-code-2">:</td>
+                            <td class="job-code-3" style="color: green;">No</td> 
+                        </tr>
+                        </table> 
+                        </div> 
+                        <div fxFlex="60">
+                            <table>
+                                <tr>
+                                    <td class="Job-Desc">Job Description</td>
+                                </tr>
+                                <tr>
+                                    <quill-editor
+                                    [styles]="{ height: '300px' }"
+                                    id="textEditor"
+                                    (onEditorCreated)="created($event)"
+                                    (onContentChanged)="contentChanged($event)"
+                                  >
+                                  </quill-editor>
+                                </tr>
+                                <tr>
+                                    <td class="attach">Attachments</td>
+                                </tr>
+                            </table>
+                      </div>
+                      </div> 
+
+            </tr>
+        </table>
+
+    </div>
+
+
+
+
+
+
+        <div style="padding:10px 100px 31px 100px;" >
+
+            <mat-tab-group (animationDone)="check()" animationDuration="0ms" mat-stretch-tabs
+                class="remove-border-bottom">
+
+                <form action="">
+
+                    <mat-tab label="Job Done Details" style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                        <div style="padding:25px 77px 25px 77px;">
+
+                            <div fxLayout="row" fxLayoutAlign="space-between">
+                                <div fxFlex="48">
+                                 
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Job Done On</mat-label>
+                                        <input
+                                          matInput
+                                         
+                                          [matDatepicker]="pickerjobdoneon"
+                                        />
+                                        <mat-datepicker-toggle
+                                          matSuffix
+                                          [for]="pickerjobdoneon"
+                                        ></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerjobdoneon></mat-datepicker>
+                                        <!-- <mat-error
+                                        *ngIf="ShipManagerFormGroup.get('Implementation_Date').hasError('required')"
+                                        >Required</mat-error
+                                      > -->
+                                      </mat-form-field>
+
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>Next Due On</mat-label>
+                                        <input
+                                          matInput
+                                         
+                                          [matDatepicker]="pickernextdueon"
+                                        />
+                                        <mat-datepicker-toggle
+                                          matSuffix
+                                          [for]="pickernextdueon"
+                                        ></mat-datepicker-toggle>
+                                        <mat-datepicker #pickernextdueon></mat-datepicker>
+                                        <!-- <mat-error
+                                        *ngIf="ShipManagerFormGroup.get('Implementation_Date').hasError('required')"
+                                        >Required</mat-error
+                                      > -->
+                                      </mat-form-field>
+
+                                      <mat-form-field appearance="fill" >
+                                        <mat-label>Maintenance Type</mat-label>
+                                        <mat-select >
+                              
+                                        </mat-select>
+                                      </mat-form-field>
+
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>Job Done Remark</mat-label>
+                                        <textarea
+                                          matInput
+                                         
+                                        ></textarea>
+                                       
+                                      </mat-form-field>
+
+                                    </div>
+
+                                    <div fxFlex="48">
+                                        <div class="pre-rec">PREVIOUS RECORD</div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>last Done On</mat-label>
+                                            <input
+                                              matInput
+                                             
+                                              [matDatepicker]="pickerlastdoneon"
+                                            />
+                                            <mat-datepicker-toggle
+                                              matSuffix
+                                              [for]="pickerlastdoneon"
+                                            ></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerlastdoneon></mat-datepicker>
+                                            <!-- <mat-error
+                                            *ngIf="ShipManagerFormGroup.get('Implementation_Date').hasError('required')"
+                                            >Required</mat-error
+                                          > -->
+                                          </mat-form-field>
+                                          <mat-form-field appearance="fill">
+                                            <mat-label>last Due On</mat-label>
+                                            <input
+                                              matInput
+                                             
+                                              [matDatepicker]="pickerlastdueon"
+                                            />
+                                            <mat-datepicker-toggle
+                                              matSuffix
+                                              [for]="pickerlastdueon"
+                                            ></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerlastdueon></mat-datepicker>
+                                            <!-- <mat-error
+                                            *ngIf="ShipManagerFormGroup.get('Implementation_Date').hasError('required')"
+                                            >Required</mat-error
+                                          > -->
+                                          </mat-form-field>
+
+                                          
+
+                                    </div>
+                                    
+                            </div>
+                            <table style="width: 100%;
+                            height: 50px;
+                            padding-left: 1%;
+                            padding-right: 10px;
+                            background-color: #C0D3E1;">
+                                <tr>
+                                    <td>
+                                    <table>
+                                        <tr>
+                                            <td class="bottom-text">Created By</td>
+                                            <td class="bottom-text">:</td>
+                                            <td class="bottom-text">dsfddd</td>
+                                            <td class="bottom-text">&nbsp;</td>
+                                            <td class="bottom-text">On</td>
+                                            <td class="bottom-text">:</td>
+                                            <td class="bottom-text">29/Aug/2023 12:40 PM</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td class="bottom-text">Verified By</td>
+                                            <td class="bottom-text">:</td>
+                                            <td class="bottom-text">dfgdfghfh</td>
+                                            <td class="bottom-text">&nbsp;</td>
+                                            <td class="bottom-text">On</td>
+                                            <td class="bottom-text">:</td>
+                                            <td class="bottom-text">29/Aug/2023 12:40 PM</td>
+                                        </tr>
+                                    </table>
+                                    </td>
+                                    <td>
+                                        <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap.gt-sm="10px">
+                                            <button mat-raised-button color="primary" class="save-btn">
+                                                Save
+                                              </button>
+                                            <button mat-raised-button color="primary" class="save-btn" 
+                                              >
+                                              Save & Close
+                                            </button>
+                                          
+                                            <button mat-raised-button color="warn">Cancel</button>
+                                            <button mat-raised-button color="primary" class="save-btn">
+                                                Verify & Close
+                                              </button>
+                                          </mat-dialog-actions>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+
+
+                    </mat-tab>
+
+                    <mat-tab label="Spare Parts to be used">
+                        <!-- <cdk-virtual-scroll-viewport tvsItemSize headerHeight="56" rowHeight="48" style="height: 400px;"> -->
+
+                        <div style="padding:25px 77px 25px 77px;">
+
+                            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap.gt-sm="10px">
+                                <button mat-raised-button color="primary" class="save-btn save-btn1" style="margin-bottom: 10px;" (click)="CreateNewRequisition(null)">Crete New Requisition</button>
+                                <button mat-raised-button color="primary" class="save-btn save-btn1" style="margin-bottom: 10px;" (click)="EditSparePartItem(null)">Edit Item</button>
+                              </div>
+
+
+                              <div #TABLE style="margin-top: 20px;">
+                                <table
+                                  [dataSource]="SparePartsdataSource"
+                                  mat-table
+                                  matSort
+                                  #table
+                                  class="details-table"
+                                >
+                                  <ng-container matColumnDef="SubComponent">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    SubComponent
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                    </td> -->
+                                  </ng-container>
+                          
+                                  <ng-container matColumnDef="Drawing_No">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Drawing No
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                    </td> -->
+                                  </ng-container>
+                                  <ng-container matColumnDef="Part_No">
+                                      <th
+                                        *matHeaderCellDef
+                                        class="actions-cell"
+                                        mat-header-cell
+                                        mat-sort-header
+                                      >
+                                      Part No
+                                      </th>
+                                      <!-- <td
+                                        *matCellDef="let row; let i = index"
+                                        class="actions-cell"
+                                        mat-cell
+                                      >
+                                        <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                      </td> -->
+                                    </ng-container>
+                                  <ng-container matColumnDef="Item_Description">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Item Description
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                    </td> -->
+                                  </ng-container>
+                                  <ng-container matColumnDef="Unit">
+                                      <th
+                                        *matHeaderCellDef
+                                        class="actions-cell"
+                                        mat-header-cell
+                                        mat-sort-header
+                                      >
+                                      Unit
+                                      </th>
+                                      <!-- <td
+                                        *matCellDef="let row; let i = index"
+                                        class="actions-cell"
+                                        mat-cell
+                                      >
+                                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                      </td> -->
+                                    </ng-container>  
+                                    <ng-container matColumnDef="Current_ROBs">
+                                      <th
+                                        *matHeaderCellDef
+                                        class="actions-cell"
+                                        mat-header-cell
+                                        mat-sort-header
+                                      >
+                                      Current ROBs
+                                     </th>
+                                      <!-- <td
+                                        *matCellDef="let row; let i = index"
+                                        class="actions-cell"
+                                        mat-cell
+                                      >
+                                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                      </td> -->
+                                    </ng-container>    
+                                    <ng-container matColumnDef="Qty_Required">
+                                      <th
+                                        *matHeaderCellDef
+                                        class="actions-cell"
+                                        mat-header-cell
+                                        mat-sort-header
+                                      >
+                                      Qty Required
+                                      </th>
+                                      <!-- <td
+                                        *matCellDef="let row; let i = index"
+                                        class="actions-cell"
+                                        mat-cell
+                                      >
+                                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                      </td> -->
+                                    </ng-container>    
+                                    <ng-container matColumnDef="Check">
+                                      <th
+                                        *matHeaderCellDef
+                                        
+                                      >
+                                      <mat-checkbox ></mat-checkbox>
+                                      </th>
+                                      <!-- <td
+                                        *matCellDef="let row; let i = index"
+                                        class="actions-cell"
+                                        mat-cell
+                                      >
+                                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                      </td> -->
+                                    </ng-container>    
+                          
+                                  <tr *matHeaderRowDef="visibleColumnsSpareParts" mat-header-row></tr>
+                                  <tr
+                                    *matRowDef="let row; columns: visibleColumnsSpareParts"
+                                    class="clickable route-animations-elements"
+                                    mat-row
+                                  ></tr>
+                                  <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                  </tr>
+                                </table>
+                              </div>
+                           
+                        </div>
+
+                        <!-- </cdk-virtual-scroll-viewport> -->
+                    </mat-tab>
+                    <mat-tab label="Attachments">
+
+                        <div style="padding:25px 77px 25px 77px;">
+
+                            <div fxLayout="row" fxLayoutAlign="space-between">
+                                <div fxFlex="48">
+                                      <div></div>
+                                    </div>
+                                    <div fxFlex="48">
+                                 
+                                        <div class="actions-area" style="border: 1px solid #918f8f;background: #ededed; margin-top: 20px;">
+                                            <div fxLayout="row">
+                                                <button
+                                                mat-mini-fab
+                                                color="primary"
+                                                [matTooltip]="'Add item'"
+                                                class="add-approve-btn save-btn" 
+                                                (click)="AddAttachments(null)"
+                                                
+                                              >
+                                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                              </button>
+                                                <span style="margin-top: 3px;
+                                                margin-left: 6px;font-size: 15px;">Add Attachments</span>
+                                              </div>     
+                                
+                                            
+                                          
+                                          <!-- <div class="content-loader">
+                                            <mat-progress-spinner
+                                              mode="indeterminate"
+                                              color="accent"
+                                            ></mat-progress-spinner>
+                                          </div> -->
+                                        </div>
+                        
+                                        <div #TABLE>
+                                            <table
+                                              [dataSource]="AttachmentsdataSource"
+                                              mat-table
+                                              matSort
+                                              #table
+                                              class="details-table"
+                                            >
+                                              <ng-container matColumnDef="Attachment">
+                                                <th
+                                                  *matHeaderCellDef
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-header-cell
+                                                  mat-sort-header
+                                                >
+                                                Attachment
+                                                </th>
+                                                <!-- <td
+                                                  *matCellDef="let row; let i = index"
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-cell
+                                                >
+                                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                </td> -->
+                                              </ng-container>
+                                      
+                                              <ng-container matColumnDef="Action">
+                                                <th
+                                                  *matHeaderCellDef
+                                                  class="actions-cell"
+                                                  mat-header-cell
+                                                  mat-sort-header
+                                                >
+                                                
+                                                </th>
+                                                <!-- <td
+                                                  *matCellDef="let row; let i = index"
+                                                  class="actions-cell"
+                                                  mat-cell
+                                                >
+                                                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                                </td> -->
+                                              </ng-container>
+                                            
+                                              <tr *matHeaderRowDef="visibleColumnsAttachments" mat-header-row></tr>
+                                              <tr
+                                                *matRowDef="let row; columns: visibleColumnsAttachments"
+                                                class="clickable route-animations-elements"
+                                                mat-row
+                                              ></tr>
+                                              <tr class="mat-row" *matNoDataRow>
+                                                <td class="mat-cell" colspan="9999">No data found</td>
+                                              </tr>
+                                            </table>
+                                          </div>
+                      
+                                          
+                                    </div>
+                                    </div>
+
+                        </div>
+
+                    </mat-tab>
+                    <mat-tab label="Spare Parts Consumed">
+
+                        <div style="padding:25px 77px 25px 77px;">
+                        
+                                     <div class="actions-area" style="border: 1px solid #918f8f;background: #ededed; margin-top: 20px;">
+                                            <div fxLayout="row">
+                                                <button
+                                                mat-mini-fab
+                                                color="primary"
+                                                [matTooltip]="'Add item'"
+                                                class="add-approve-btn save-btn" 
+                                                (click)="AddSpareParts(null)"
+                                                
+                                              >
+                                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                              </button>
+                                                <span style="margin-top: 3px;
+                                                margin-left: 6px;font-size: 15px;">Add Items</span>
+                                              </div>     
+                                
+                                        </div>
+                        
+                                        <div #TABLE>
+                                            <table
+                                              [dataSource]="SpareConsumeddataSource"
+                                              mat-table
+                                              matSort
+                                              #table
+                                              class="details-table"
+                                            >
+                                              <ng-container matColumnDef="SubComponent">
+                                                <th
+                                                  *matHeaderCellDef
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-header-cell
+                                                  mat-sort-header
+                                                >
+                                                SubComponent
+                                                </th>
+                                                <!-- <td
+                                                  *matCellDef="let row; let i = index"
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-cell
+                                                >
+                                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                </td> -->
+                                              </ng-container>
+
+                                              <ng-container matColumnDef="Drawing_No">
+                                                <th
+                                                  *matHeaderCellDef
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-header-cell
+                                                  mat-sort-header
+                                                >
+                                                Drawing No.
+                                                </th>
+                                                <!-- <td
+                                                  *matCellDef="let row; let i = index"
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-cell
+                                                >
+                                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                </td> -->
+                                              </ng-container>
+                                              <ng-container matColumnDef="Part_No">
+                                                <th
+                                                  *matHeaderCellDef
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-header-cell
+                                                  mat-sort-header
+                                                >
+                                                Part No
+                                                </th>
+                                                <!-- <td
+                                                  *matCellDef="let row; let i = index"
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-cell
+                                                >
+                                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                </td> -->
+                                              </ng-container>
+                                              <ng-container matColumnDef="Description">
+                                                <th
+                                                  *matHeaderCellDef
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-header-cell
+                                                  mat-sort-header
+                                                >
+                                                 Description
+                                                </th>
+                                                <!-- <td
+                                                  *matCellDef="let row; let i = index"
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-cell
+                                                >
+                                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                </td> -->
+                                              </ng-container>
+                                              <ng-container matColumnDef="Opening_ROB">
+                                                <th
+                                                  *matHeaderCellDef
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-header-cell
+                                                  mat-sort-header
+                                                >
+                                                Opening ROB
+                                                </th>
+                                                <!-- <td
+                                                  *matCellDef="let row; let i = index"
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-cell
+                                                >
+                                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                </td> -->
+                                              </ng-container>
+                                              <ng-container matColumnDef="Consumed">
+                                                <th
+                                                  *matHeaderCellDef
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-header-cell
+                                                  mat-sort-header
+                                                >
+                                                Consumed
+                                                </th>
+                                                <!-- <td
+                                                  *matCellDef="let row; let i = index"
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-cell
+                                                >
+                                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                </td> -->
+                                              </ng-container>
+                                              <ng-container matColumnDef="Closing_ROB">
+                                                <th
+                                                  *matHeaderCellDef
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-header-cell
+                                                  mat-sort-header
+                                                >
+                                                Closing ROB
+                                                </th>
+                                                <!-- <td
+                                                  *matCellDef="let row; let i = index"
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-cell
+                                                >
+                                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                </td> -->
+                                              </ng-container>
+
+                                              <ng-container matColumnDef="Remarks">
+                                                <th
+                                                  *matHeaderCellDef
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-header-cell
+                                                  mat-sort-header
+                                                >
+                                                Remarks
+                                                </th>
+                                                <!-- <td
+                                                  *matCellDef="let row; let i = index"
+                                                  class="actions-cell"
+                                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                                  mat-cell
+                                                >
+                                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                </td> -->
+                                              </ng-container>
+                                      
+                                              <ng-container matColumnDef="Action">
+                                                <th
+                                                  *matHeaderCellDef
+                                                  class="actions-cell"
+                                                  mat-header-cell
+                                                  mat-sort-header
+                                                >
+                                                
+                                                </th>
+                                                <!-- <td
+                                                  *matCellDef="let row; let i = index"
+                                                  class="actions-cell"
+                                                  mat-cell
+                                                >
+                                                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                                </td> -->
+                                              </ng-container>
+                                            
+                                              <tr *matHeaderRowDef="visibleColumnsSpareConsumed" mat-header-row></tr>
+                                              <tr
+                                                *matRowDef="let row; columns: visibleColumnsSpareConsumed"
+                                                class="clickable route-animations-elements"
+                                                mat-row
+                                              ></tr>
+                                              <tr class="mat-row" *matNoDataRow>
+                                                <td class="mat-cell" colspan="9999">No data found</td>
+                                              </tr>
+                                            </table>
+                                          </div>
+                        </div>
+
+                    </mat-tab>
+                    <mat-tab label="Linked Forms">
+
+                        <div style="padding:25px 77px 25px 77px;">
+
+                            <div #TABLE style="margin-top: 20px;">
+                                <table
+                                  [dataSource]="LinkedFormsdataSource"
+                                  mat-table
+                                  matSort
+                                  #table
+                                  class="details-table"
+                                >
+                                  <ng-container matColumnDef="Linked_Forms">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Linked Forms
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                    </td> -->
+                                  </ng-container>
+                          
+                                  <ng-container matColumnDef="Is_Mandatory">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Is Mandatory
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                    </td> -->
+                                  </ng-container>
+                                  <ng-container matColumnDef="Upload_Forms">
+                                      <th
+                                        *matHeaderCellDef
+                                        class="actions-cell"
+                                        mat-header-cell
+                                        mat-sort-header
+                                      >
+                                      Upload Forms
+                                      </th>
+                                      <!-- <td
+                                        *matCellDef="let row; let i = index"
+                                        class="actions-cell"
+                                        mat-cell
+                                      >
+                                        <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                      </td> -->
+                                    </ng-container>
+                            
+                          
+                                  <tr *matHeaderRowDef="visibleColumnsLinkedForms" mat-header-row></tr>
+                                  <tr
+                                    *matRowDef="let row; columns: visibleColumnsSpareParts"
+                                    class="clickable route-animations-elements"
+                                    mat-row
+                                  ></tr>
+                                  <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                  </tr>
+                                </table>
+                              </div>
+                        
+                              <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" fxLayoutGap.gt-sm="10px">
+                                <button mat-raised-button color="primary" class="save-btn">
+                                    Save
+                                  </button>
+                                 
+                              </mat-dialog-actions>
+                        </div>
+
+                    </mat-tab>
+                    <mat-tab label="Resources">
+
+                        <div style="padding:25px 77px 25px 77px;">
+
+                            <div #TABLE style="margin-top: 20px;">
+                                <table
+                                  [dataSource]="ResourcesdataSource"
+                                  mat-table
+                                  matSort
+                                  #table
+                                  class="details-table"
+                                >
+                                  <ng-container matColumnDef="Staff_Code">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Staff Code
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                    </td> -->
+                                  </ng-container>
+                          
+                                  <ng-container matColumnDef="Staff_Name">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Staff Name
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                    </td> -->
+                                  </ng-container>
+                                  <ng-container matColumnDef="Staff_Rank">
+                                      <th
+                                        *matHeaderCellDef
+                                        class="actions-cell"
+                                        mat-header-cell
+                                        mat-sort-header
+                                      >
+                                      Staff Rank
+                                      </th>
+                                      <!-- <td
+                                        *matCellDef="let row; let i = index"
+                                        class="actions-cell"
+                                        mat-cell
+                                      >
+                                        <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                      </td> -->
+                                    </ng-container>
+                                    <ng-container matColumnDef="Staff_Rank">
+                                        <th
+                                          *matHeaderCellDef
+                                          class="actions-cell"
+                                          mat-header-cell
+                                          mat-sort-header
+                                        >
+                                        Staff Rank
+                                        </th>
+                                        <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                        </td> -->
+                                      </ng-container>
+                                      <ng-container matColumnDef="Stipilated_Man-Hours">
+                                        <th
+                                          *matHeaderCellDef
+                                          class="actions-cell"
+                                          mat-header-cell
+                                          mat-sort-header
+                                        >
+                                        Stipilated Man-Hours
+                                        </th>
+                                        <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                        </td> -->
+                                      </ng-container>
+                                      <ng-container matColumnDef="Man-Hours">
+                                        <th
+                                          *matHeaderCellDef
+                                          class="actions-cell"
+                                          mat-header-cell
+                                          mat-sort-header
+                                        >
+                                        Man-Hours
+                                        </th>
+                                        <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                        </td> -->
+                                      </ng-container>
+                                      <ng-container matColumnDef="Remarks">
+                                        <th
+                                          *matHeaderCellDef
+                                          class="actions-cell"
+                                          mat-header-cell
+                                          mat-sort-header
+                                        >
+                                        Remarks
+                                        </th>
+                                        <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                        </td> -->
+                                      </ng-container>
+                          
+                                  <tr *matHeaderRowDef="visibleColumnsResources" mat-header-row></tr>
+                                  <tr
+                                    *matRowDef="let row; columns: visibleColumnsResources"
+                                    class="clickable route-animations-elements"
+                                    mat-row
+                                  ></tr>
+                                  <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                  </tr>
+                                </table>
+                              </div>
+                        
+                              <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" fxLayoutGap.gt-sm="10px">
+                                <button mat-raised-button color="primary" class="save-btn">
+                                    Save
+                                  </button>
+                                  <button mat-raised-button color="warn">Reset Selection</button>
+                              </mat-dialog-actions>
+
+                        </div>
+
+                    </mat-tab>
+                    <mat-tab label="Deferment History">
+
+                        <div style="padding:25px 77px 25px 77px;">
+
+                            <div #TABLE style="margin-top: 20px;">
+                                <table
+                                  [dataSource]="DeferHistorydataSource"
+                                  mat-table
+                                  matSort
+                                  #table
+                                  class="details-table"
+                                >
+                                  <ng-container matColumnDef="Modify_Next_Due_Date_To">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Modify Next Due Date To
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                    </td> -->
+                                  </ng-container>
+                          
+                                  <ng-container matColumnDef="Requested_Remarks">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Requested Remarks
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                    </td> -->
+                                  </ng-container>
+                                  <ng-container matColumnDef="Is_Verified">
+                                      <th
+                                        *matHeaderCellDef
+                                        class="actions-cell"
+                                        mat-header-cell
+                                        mat-sort-header
+                                      >
+                                      Is Verified
+                                      </th>
+                                      <!-- <td
+                                        *matCellDef="let row; let i = index"
+                                        class="actions-cell"
+                                        mat-cell
+                                      >
+                                        <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                      </td> -->
+                                    </ng-container>
+                                    <ng-container matColumnDef="Is_Actioned">
+                                        <th
+                                          *matHeaderCellDef
+                                          class="actions-cell"
+                                          mat-header-cell
+                                          mat-sort-header
+                                        >
+                                        Is Actioned
+                                        </th>
+                                        <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                        </td> -->
+                                      </ng-container>
+                                      <ng-container matColumnDef="Actioned_By">
+                                        <th
+                                          *matHeaderCellDef
+                                          class="actions-cell"
+                                          mat-header-cell
+                                          mat-sort-header
+                                        >
+                                        Actioned By
+                                        </th>
+                                        <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                        </td> -->
+                                      </ng-container>
+                                      <ng-container matColumnDef="Actioned_On">
+                                        <th
+                                          *matHeaderCellDef
+                                          class="actions-cell"
+                                          mat-header-cell
+                                          mat-sort-header
+                                        >
+                                        Actioned On
+                                        </th>
+                                        <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                        </td> -->
+                                      </ng-container>
+                                      <ng-container matColumnDef="Deferment_Approve_Date">
+                                        <th
+                                          *matHeaderCellDef
+                                          class="actions-cell"
+                                          mat-header-cell
+                                          mat-sort-header
+                                        >
+                                        Deferment Approve Date
+                                        </th>
+                                        <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                        </td> -->
+                                      </ng-container>
+
+                                      <ng-container matColumnDef="Actioned_Remarks">
+                                        <th
+                                          *matHeaderCellDef
+                                          class="actions-cell"
+                                          mat-header-cell
+                                          mat-sort-header
+                                        >
+                                        Actioned Remarks
+                                        </th>
+                                        <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                        </td> -->
+                                      </ng-container>
+                          
+                                  <tr *matHeaderRowDef="visibleColumnsDeferHistory" mat-header-row></tr>
+                                  <tr
+                                    *matRowDef="let row; columns: visibleColumnsDeferHistory"
+                                    class="clickable route-animations-elements"
+                                    mat-row
+                                  ></tr>
+                                  <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                  </tr>
+                                </table>
+                              </div>
+                        
+
+                        </div>
+
+                    
+
+
+                    </mat-tab>
+                    <mat-tab label="Job History">
+
+                        <div style="padding:25px 77px 25px 77px;">
+
+                            <div #TABLE class="example-container mat-elevation-z8">
+                                <table mat-table [dataSource]="JobHistorydataSource" class="mat-elevation-z8">
+                        
+                                  
+                                  <ng-container matColumnDef="Date">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                        border-bottom: 1px solid #ddd;
+                                        text-align: center;"> Date</th>
+                        
+                                  </ng-container>
+                        
+                                  <ng-container matColumnDef="RHRS">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                        border-bottom: 1px solid #ddd;
+                                        text-align: center;"> RHRS </th>
+                        
+                                  </ng-container>
+                                  <ng-container matColumnDef="Value">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                        border-bottom: 1px solid #ddd;
+                                        text-align: center;"> Value </th>
+                        
+                                  </ng-container>
+                                  <ng-container matColumnDef="Type">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                        border-bottom: 1px solid #ddd;
+                                        text-align: center;"> Type </th>
+                        
+                                  </ng-container>
+                                
+                               
+                        
+                                  <ng-container matColumnDef="header-row-first-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                                        border-bottom: 1px solid #ddd;
+                                        text-align: center;">
+                                      Last Due Date
+                                    </th>
+                                  </ng-container>
+                                  <ng-container matColumnDef="header-row-second-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+                                        border-bottom: 1px solid #ddd;
+                                        text-align: center;">
+                                      Last Done
+                                    </th>
+                                  </ng-container>
+                        
+                                  <ng-container matColumnDef="header-row-third-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+                                        border-bottom: 1px solid #ddd;
+                                        text-align: center;">
+                                      Frequency
+                                    </th>
+                                  </ng-container>
+                                  <ng-container matColumnDef="header-row-fourth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                                        border-bottom: 1px solid #ddd;
+                                        text-align: center;">
+                                      Rank
+                                    </th>
+                                  </ng-container>
+                                  <ng-container matColumnDef="header-row-fifth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                                      border-bottom: 1px solid #ddd;
+                                      text-align: center;">
+                                      Requisition Title
+                                    </th>
+                                  </ng-container>
+                                  <ng-container matColumnDef="header-row-sixth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="4" style="border-left: 1px solid #ddd;
+                                    border-bottom: 1px solid #ddd;
+                                    text-align: center;">
+                                      Maintenance Type
+                                    </th>
+                                  </ng-container>
+                                  <ng-container matColumnDef="header-row-seventh-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                                  border-bottom: 1px solid #ddd;
+                                  text-align: center;">
+                                      Next Due Date
+                                    </th>
+                                  </ng-container>
+                    
+                                  <ng-container matColumnDef="header-row-eighth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                                  border-bottom: 1px solid #ddd;
+                                  text-align: center;">
+                                      
+                                    </th>
+                                  </ng-container>
+                                  <ng-container matColumnDef="header-row-nineth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                                  border-bottom: 1px solid #ddd;
+                                  text-align: center;">
+                                      
+                                    </th>
+                                  </ng-container>
+                        
+                                  <ng-container matColumnDef="header-row-tenth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                                  border-bottom: 1px solid #ddd;
+                                  text-align: center;">
+                                      
+                                    </th>
+                                  </ng-container>
+                        
+                                  <ng-container matColumnDef="header-row-eleventh-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                                  border-bottom: 1px solid #ddd;
+                                  text-align: center;">
+                                      
+                                    </th>
+                                  </ng-container>
+                                  <tr mat-header-row
+                                    *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group',
+                                    'header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group',
+                                    'header-row-nineth-group', 'header-row-tenth-group', 'header-row-eleventh-group']"
+                                    style="height:32px">
+                                  </tr>
+                                  <tr mat-header-row *matHeaderRowDef="visibleColumnsjobhistory;sticky:true" style="height:32px">
+                                  </tr>
+                                  <tr mat-row *matRowDef="let row; columns: visibleColumnsjobhistory;"></tr>
+                                </table>
+                        
+                              </div>
+                        
+
+                        </div>
+
+                    
+
+
+                    </mat-tab>
+                    <mat-tab label="Followup">
+
+                        <div style="padding:25px 77px 25px 77px;">
+
+                            <div class="actions-area" style="border: 1px solid #918f8f;background: #ededed; margin-top: 20px;">
+                                <div fxLayout="row">
+                                    <button
+                                    mat-mini-fab
+                                    color="primary"
+                                    [matTooltip]="'Add item'"
+                                    class="add-approve-btn save-btn" 
+                                    (click)="AddFollowup(null)"
+                                    
+                                  >
+                                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                  </button>
+                                    <span style="margin-top: 3px;
+                                    margin-left: 6px;font-size: 15px;">Add Followup</span>
+                                  </div>     
+                    
+                            </div>
+            
+                            <div #TABLE>
+                                <table
+                                  [dataSource]="FollowupdataSource"
+                                  mat-table
+                                  matSort
+                                  #table
+                                  class="details-table"
+                                >
+                                  <ng-container matColumnDef="Followup_On">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Followup On
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                    </td> -->
+                                  </ng-container>
+
+                                  <ng-container matColumnDef="By">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    By
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                    </td> -->
+                                  </ng-container>
+                                  <ng-container matColumnDef="Follow_Up">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Follow Up
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                    </td> -->
+                                  </ng-container>
+                                
+                                  <tr *matHeaderRowDef="visibleColumnsFolloup" mat-header-row></tr>
+                                  <tr
+                                    *matRowDef="let row; columns: visibleColumnsFolloup"
+                                    class="clickable route-animations-elements"
+                                    mat-row
+                                  ></tr>
+                                  <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                  </tr>
+                                </table>
+                              </div>
+                              <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+                        </div>
+
+                    </mat-tab>
+
+                </form>
+
+            </mat-tab-group>
+
+        </div>
+
+
+
+</fury-page-layout>
+

@@ -1,0 +1,410 @@
+<div style="text-align: center;font-weight: bold;    height: 24px;
+vertical-align: middle;margin-bottom:23px;">
+    <h3>
+
+        <span class="first-letter">V</span>ESSEL
+        <span class="first-letter">P</span>ORT
+        <span class="first-letter">C</span>ALLS
+
+    </h3>
+</div>
+
+<fury-page-layout mode="card" class="vesselportcallindex-view">
+    <div style="padding:10px 140px 31px 140px;">
+       
+        <div style="padding: 8px 8px;
+        ">
+
+          <table style="width: 100%;" class="main-table-1">
+            <tr>
+                <td style="width: 20%;    vertical-align: top;
+                " class="table-td">
+                 <div style="padding: 5px;">
+                    <form [formGroup]="VesselPortCallFormGroup">
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+ 
+                        <mat-form-field fxFlex appearance="fill">
+
+                            <mat-label>Company</mat-label>
+
+                            <mat-select formControlName="drpCompany">
+                                <mat-option>
+            
+                                </mat-option>
+            
+                                <!-- <mat-option
+                                *ngFor="let b of filtered_port | async"
+                                [value]="b.PORT_GUID"
+                              >
+                                {{ b.Port_Name }}
+                              </mat-option> -->
+                            </mat-select>
+                          
+                        </mat-form-field>
+           
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                  <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioShow_Vessels">
+
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <mat-radio-button value="0"
+                                                [checked]="VesselPortCallFormGroup.get('radioShow_Vessels').value == 0">
+                                                <label
+                                                    [class.active-label]="VesselPortCallFormGroup.get('radioShow_Vessels').value == 0"
+                                                    style="font-family: tahoma;">Show vessels with crew onboard</label>
+                                            </mat-radio-button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <mat-radio-button value="1"
+                                                [checked]="VesselPortCallFormGroup.get('radioShow_Vessels').value == 1">
+                                                <label
+                                                    [class.active-label]="VesselPortCallFormGroup.get('radioShow_Vessels').value == 1"
+                                                    style="font-family: tahoma;">Show Selected Vessel</label>
+                                            </mat-radio-button>
+                                        </td>
+                                    </tr>
+                                 
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </mat-radio-group>
+                  </div>
+                
+                 
+
+                  <div style="margin-top: 20px;">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td class="table-td-vessel table-td">
+                            Vessel
+                            </td>
+                        </tr>
+                        <tr style="    background: #e9e9e9;
+                        ">
+                            <td class="table-td" style="width: 90%;">
+                                <table style="width: 100%;">
+                                    <tr>
+                                      
+                                      <td><input type="text" id="from" name="from" class="vessel-input"></td>
+                                      <td>   <span>
+                                        <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                        border: 1px solid grey;
+                                        background: linear-gradient(#ffffff, #dfdfdf);
+                                        border-radius: 3px;margin-top: 5px;
+                                  
+                                       "/>
+                                    </span></td>
+                                
+                                    </tr>
+                                  </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;color: DimGray;
+                            ">
+                            Alexa
+                            </td>
+                        </tr>
+                    </table>
+                  </div>
+
+            </form>
+            </div>
+                </td>
+                <td class="table-td" style="    vertical-align: top;
+                ">
+                    
+                    <div style="padding: 5px;">
+                       <table style="width: 100%;">
+                        <tr>
+                            <td colspan="5" class="vessel-heading" style="width: 75%;">
+                                 Alexa
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                           <td style="width: 13%;
+                           "></td>
+                            <td class="vessel-head-td" style="width: 14%;
+                            text-align: start;">Company Name</td>
+                            <td class="vessel-head-td">:</td>
+                            <td class="vessel-head-td">YMLJot Ship Management</td>
+                            <td></td>
+                            <td>  <button mat-raised-button class="crewlist-btn" (click)="CrewList(null)">
+                                Crew List
+                            </button></td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 13%;
+                            "></td>
+                             <td class="vessel-head-td" style="width: 14%;
+                             text-align: start;">Short Name</td>
+                             <td class="vessel-head-td">:</td>
+                             <td class="vessel-head-td">ALEX</td>
+                             <td></td>
+                             <td> </td>
+                         </tr>
+                         <tr>
+                            <td style="width: 13%;
+                            "></td>
+                             <td class="vessel-head-td" style="width: 14%;
+                             text-align: start;">Flag</td>
+                             <td class="vessel-head-td">:</td>
+                             <td class="vessel-head-td">F-India</td>
+                             <td></td>
+                             <td> </td>
+                         </tr>
+
+                         <tr>
+                            <td style="width: 13%;
+                            "></td>
+                             <td class="vessel-head-td" style="width: 14%;
+                             text-align: start;">Email Address</td>
+                             <td class="vessel-head-td">:</td>
+                             <td class="vessel-head-td">support&#64;joterp.com	</td>
+                             <td></td>
+                             <td> </td>
+                         </tr>
+                         <tr>
+                            <td style="width: 13%;
+                            "></td>
+                             <td class="vessel-head-td" style="width: 14%;
+                             text-align: start;">Master/TL	</td>
+                             <td class="vessel-head-td">:</td>
+                             <td class="vessel-head-td"></td>
+                             <td></td>
+                             <td> </td>
+                         </tr>
+                         <tr>
+                            <td style="width: 13%;
+                            "></td>
+                             <td class="vessel-head-td" style="width: 14%;
+                             text-align: start;">Current Position</td>
+                             <td class="vessel-head-td">:</td>
+                             <td class="vessel-head-td"></td>
+                             <td></td>
+                             <td> </td>
+                         </tr>
+                         <tr>
+                            <td style="width: 13%;
+                            "></td>
+                             <td class="vessel-head-td" style="width: 14%;
+                             text-align: start;">IMO Number	</td>
+                             <td class="vessel-head-td">:</td>
+                             <td class="vessel-head-td">123456789</td>
+                             <td></td>
+                             <td> </td>
+                         </tr>
+
+                         <tr>
+                            <td colspan="5"></td>
+                            <td><button mat-raised-button class="que-btn">
+                              Pre-Transit Questionnaire
+                            </button></td>
+                            <td><button mat-raised-button class="upload-btn" (click)="VesselPortQue(null)">
+                                Upload
+                            </button></td>
+                            <td>
+                                <button mat-raised-button class="vesselmap-btn">
+                                   Vessel On Map
+                                </button>
+                          
+                            </td>
+                            <td> <button mat-raised-button class="vesselmap-btn" (click)="ViewAgency(null)">
+                                View Agency
+                             </button></td>
+                             <td> <button mat-raised-button class="vesselmap-btn" (click)="ViewPortCallChecklists(null)">
+                              OPS
+                           </button></td>
+                         </tr>
+
+                       </table>
+
+                       <div style="
+                       border: 1px solid lightgrey;
+                       border-radius: 10px;margin: 5px;
+
+                   ">
+                        <div class="actions-area">
+                            <table style="display: flex;">
+                                <tr>
+                                    <td>
+                                        <div fxLayout="row">
+                                            <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                                class="add-approve-btn save-btn"
+                                                (click)="AddVesselPortCall(null)"
+                                           >
+                                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                            </button>
+                                            <span style="margin-top: 3px;
+                                            margin-left: 6px;font-size: 15px;">Add New Portcall</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                
+                
+                            </table>
+                
+                
+                            <div>
+                                <span style="cursor: pointer">
+                                    <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                                    <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                                    <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                                </span>
+                            </div>
+                            <!-- <div class="content-loader">
+                            <mat-progress-spinner
+                              mode="indeterminate"
+                              color="accent"
+                            ></mat-progress-spinner>
+                          </div> -->
+                        </div>
+                
+                        <div #TABLE>
+                            <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                                <ng-container matColumnDef="Port">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                                        mat-sort-header>
+                                        Port
+                                    </th>
+                                    <!-- <td
+                                  *matCellDef="let row; let i = index"
+                                  class="actions-cell"
+                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                  mat-cell
+                                >
+                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                </td> -->
+                                </ng-container>
+                
+                                <ng-container matColumnDef="Voyage_Number">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Voyage Number
+                                    </th>
+                                    <!-- <td
+                                  *matCellDef="let row; let i = index"
+                                  class="actions-cell"
+                                  mat-cell
+                                >
+                                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="ETA">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        ETA
+                                    </th>
+                                    <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                  </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="ETB">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        ETB
+                                    </th>
+                                    <!-- <td
+                                  *matCellDef="let row; let i = index"
+                                  class="actions-cell"
+                                  mat-cell
+                                >
+                                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="ETD">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        ETD
+                                    </th>
+                                    <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Status">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Status
+                                    </th>
+                                    <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Checklist">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Checklist
+                                    </th>
+                                    <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Action">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                    </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Info">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                    </td> -->
+                                </ng-container>
+                
+                                <tr *matHeaderRowDef="visibleColumns" mat-header-row style="background-color: #1F497D;height:35px"></tr>
+                                <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                                </tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+                
+                        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+                
+                    </div>
+                </div>
+
+                </td>
+            </tr>
+          </table>
+       
+      
+
+    </div>
+    </div>
+</fury-page-layout>

@@ -1,0 +1,909 @@
+
+<fury-page-layout mode="card" class="edit-defectlistindex">
+    <div style="padding:10px 100px 31px 100px;">
+
+<div fxLayout="row" fxLayoutAlign="end center">
+    <div>
+      <span
+     
+        style="cursor: pointer"
+       
+      >
+      <img
+      src="../../../../assets/img/send.png"
+      class="logo"
+      alt="excel" (click)="SendMail(null)"
+    /> 
+        <img
+          src="../../../../assets/img/pdf.png"
+          class="logo" 
+          alt="excel"
+          style="margin-left: 20px;"
+        />
+        
+      </span>
+    </div>
+    <!-- <div class="content-loader">
+      <mat-progress-spinner
+        mode="indeterminate"
+        color="accent"
+      ></mat-progress-spinner>
+    </div> -->
+  </div>
+
+<div style="text-align: center;font-weight: bold;
+vertical-align: middle;">
+    <h2 class="routerTitle">Defect List Details</h2>
+</div>
+
+
+        <form [formGroup]="DefectListEditFormGroup">
+          
+            
+            <table width="100%">
+                <tr>
+                    <td>
+                        <table class="head-table">
+                            <td class="td-vessel">Vessel &nbsp; &nbsp;</td>
+                            <td style="width:2%">:</td>
+                            <td class="td-name">Alexandre</td>
+                            <td class="td-defect">Defect ID &nbsp; &nbsp;</td>
+                            <td style="width:2%">:</td>
+                            <td class="td-id">54</td>
+                            <td style="width: 27%;">
+
+                                <button mat-raised-button class="continue-btn" style="margin-left: 10px;">
+                                    Unmark defer to DD
+                                </button>
+
+                                <button mat-raised-button color="primary" class="save-btn" style="margin-left: 10px;">
+                                    Update
+                                </button>
+                                <button mat-raised-button color="warn" class="save-btn1" style="margin-left: 10px">
+                                    Cancel
+                                </button>
+
+                            </td>
+                            <td style="width: 19%;">
+                                <button mat-raised-button style="margin-left: 10px;">
+                                    Previous
+                                </button>
+                                <button mat-raised-button style="margin-left: 10px;">
+                                    Next
+                                </button>
+                            </td>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <table style="width: 100%;">
+                <tr>
+                    <table class="table-details-1">
+                        <tr>
+                            <td>Applicable Dates &nbsp;&nbsp;:</td>
+                            <td>Other Details &nbsp;&nbsp;:</td>
+                            <td>Categories &nbsp;&nbsp;:</td>
+                        </tr>
+                    </table>
+                </tr>
+            </table>
+
+
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+                <div fxFlex="67">
+
+                    <table width="100%">
+                        <tr>
+
+                            <td>
+
+                                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                                    <mat-form-field fxFlex appearance="fill">
+                                        <mat-label>Date Raised</mat-label>
+                                        <input matInput formControlName="date_raised"
+                                            [matDatepicker]="pickerdateraised" />
+                                        <mat-datepicker-toggle matSuffix
+                                            [for]="pickerdateraised"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerdateraised></mat-datepicker>
+                                        <mat-error
+                                            *ngIf="DefectListEditFormGroup.get('date_raised').hasError('required')">Required</mat-error>
+
+                                    </mat-form-field>
+
+                                    <mat-form-field fxFlex appearance="fill">
+                                        <mat-label>Priority</mat-label>
+                                        <mat-select formControlName="drpPriority">
+                                            <mat-option>
+                                            </mat-option>
+
+                                            <!-- <mat-option
+                            *ngFor="let b of filtered_appointment | async"
+                            [value]="b.PARAMETER_GUID"
+                          >
+                            {{ b.PARAMETER_NAME }}
+                          </mat-option> -->
+                                        </mat-select>
+                                        <mat-error
+                                            *ngIf="DefectListEditFormGroup.get('drpPriority').hasError('required')">Required</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+
+                            </td>
+
+
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                                    <mat-form-field fxFlex appearance="fill">
+                                        <mat-label>Exptd Completion Date</mat-label>
+                                        <input matInput formControlName="exptd_completion_date"
+                                            [matDatepicker]="pickerexptdcompletiondate" />
+                                        <mat-datepicker-toggle matSuffix
+                                            [for]="pickerexptdcompletiondate"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerexptdcompletiondate></mat-datepicker>
+                                        <mat-error
+                                            *ngIf="DefectListEditFormGroup.get('exptd_completion_date').hasError('required')">Required</mat-error>
+
+                                    </mat-form-field>
+
+                                    <mat-form-field fxFlex appearance="fill">
+                                        <mat-label>Assigned By</mat-label>
+                                        <mat-select formControlName="drpAssigned_By">
+                                            <mat-option>
+                                            </mat-option>
+
+                                            <!-- <mat-option
+                                *ngFor="let b of filtered_appointment | async"
+                                [value]="b.PARAMETER_GUID"
+                              >
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                                        </mat-select>
+                                        <mat-error
+                                            *ngIf="DefectListEditFormGroup.get('drpAssigned_By').hasError('required')">Required</mat-error>
+                                    </mat-form-field>
+
+
+                                </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+
+                            <td>
+
+                                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                                    <mat-form-field fxFlex appearance="fill">
+                                        <mat-label>Date Completed</mat-label>
+                                        <input matInput formControlName="date_completed"
+                                            [matDatepicker]="pickerdatecompleted" />
+                                        <mat-datepicker-toggle matSuffix
+                                            [for]="pickerdatecompleted"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerdatecompleted></mat-datepicker>
+
+                                    </mat-form-field>
+
+                                    <mat-form-field fxFlex appearance="fill">
+                                        <mat-label>Requisition Code</mat-label>
+                                        <mat-select formControlName="drpRequisition_Code">
+                                            <mat-option>
+                                            </mat-option>
+
+                                            <!-- <mat-option
+                            *ngFor="let b of filtered_appointment | async"
+                            [value]="b.PARAMETER_GUID"
+                          >
+                            {{ b.PARAMETER_NAME }}
+                          </mat-option> -->
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+                                </div>
+
+                            </td>
+
+
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                                    <div fxFlex>
+                                        <label>Awaiting Office Action &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                                            &nbsp;: &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</label>
+                                        <mat-checkbox [color]="'primary'" formControlName="chkAwaiting_Office_Action"
+                                            style="margin-top: 10px;">
+                                        </mat-checkbox>
+                                    </div>
+
+                                    <mat-form-field fxFlex appearance="fill">
+                                        <mat-label>QMS Elements Ref</mat-label>
+                                        <mat-select formControlName="drpQMS_Elements_Ref">
+                                            <mat-option>
+                                            </mat-option>
+
+                                            <!-- <mat-option
+                    *ngFor="let b of filtered_appointment | async"
+                    [value]="b.PARAMETER_GUID"
+                  >
+                    {{ b.PARAMETER_NAME }}
+                  </mat-option> -->
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+                                </div>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td width="14%">Defect Details</td>
+                                        <td width="28%">:</td>
+                                        <td style="color: red;
+                        font-family: tahoma;
+                        font-weight: bold;">Is NCR?</td>
+                                    </tr>
+                                </table>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                                    <mat-form-field fxFlex appearance="fill">
+                                        <mat-label> </mat-label>
+                                        <textarea matInput formControlName="txtDescription" rows="30"
+                                            cols="40"></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+
+                <div fxFlex="35">
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-top: 3px;">
+                        <div fxFlex>
+                            <mat-form-field style="width: -webkit-fill-available;">
+                                <mat-label>Primary</mat-label>
+                                <mat-select formControlName="drpPrimary">
+                                    <mat-option>
+                                    </mat-option>
+
+                                    <!-- <mat-option
+                *ngFor="let b of filtered_appointment | async"
+                [value]="b.PARAMETER_GUID"
+              >
+                {{ b.PARAMETER_NAME }}
+              </mat-option> -->
+                                </mat-select>
+                                <mat-error
+                                    *ngIf="DefectListEditFormGroup.get('drpPrimary').hasError('required')">Required</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+
+
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                        <div fxFlex>
+                            <mat-form-field style="width: -webkit-fill-available;">
+                                <mat-label>Secondary</mat-label>
+                                <mat-select formControlName="drpSecondary">
+                                    <mat-option>
+                                    </mat-option>
+
+                                    <!-- <mat-option
+                    *ngFor="let b of filtered_appointment | async"
+                    [value]="b.PARAMETER_GUID"
+                  >
+                    {{ b.PARAMETER_NAME }}
+                  </mat-option> -->
+                                </mat-select>
+                                <mat-error *ngIf="DefectListEditFormGroup.get('drpSecondary').hasError('required')">
+                                    Required</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                        <div fxFlex>
+                            <mat-form-field style="width: -webkit-fill-available;">
+                                <mat-label>Vessel Dept</mat-label>
+                                <mat-select formControlName="drpVessel_Dept">
+                                    <mat-option>
+                                    </mat-option>
+
+                                    <!-- <mat-option
+                *ngFor="let b of filtered_appointment | async"
+                [value]="b.PARAMETER_GUID"
+              >
+                {{ b.PARAMETER_NAME }}
+              </mat-option> -->
+                                </mat-select>
+
+                                <mat-error *ngIf="DefectListEditFormGroup.get('drpVessel_Dept').hasError('required')">
+                                    Required</mat-error>
+                            </mat-form-field>
+
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                        <div fxFlex>
+                            <mat-form-field style="width: -webkit-fill-available;">
+                                <mat-label>Office Dept</mat-label>
+                                <mat-select formControlName="drpOffice_Dept">
+                                    <mat-option>
+                                    </mat-option>
+
+                                    <!-- <mat-option
+        *ngFor="let b of filtered_appointment | async"
+        [value]="b.PARAMETER_GUID"
+      >
+        {{ b.PARAMETER_NAME }}
+      </mat-option> -->
+                                </mat-select>
+
+                                <mat-error *ngIf="DefectListEditFormGroup.get('drpOffice_Dept').hasError('required')">
+                                    Required</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                        <div fxFlex>
+                            <label style="color: blue;font-family: tahoma;">Select SFI</label>
+                        </div>
+                    </div>
+
+                    <div class="select-sfi">
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                            <div fxFlex>
+                                <mat-form-field style="width: -webkit-fill-available;">
+                                    <mat-label>Potential Offhire</mat-label>
+                                    <mat-select formControlName="drpPotential_Offhire">
+                                        <mat-option>
+                                        </mat-option>
+
+                                        <!-- <mat-option
+                *ngFor="let b of filtered_appointment | async"
+                [value]="b.PARAMETER_GUID"
+              >
+                {{ b.PARAMETER_NAME }}
+              </mat-option> -->
+                                    </mat-select>
+
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                            <div fxFlex>
+                                <mat-form-field style="width: -webkit-fill-available;">
+                                    <mat-label>Location</mat-label>
+                                    <mat-select formControlName="drpLocation">
+                                        <mat-option>
+                                        </mat-option>
+
+                                        <!-- <mat-option
+                *ngFor="let b of filtered_appointment | async"
+                [value]="b.PARAMETER_GUID"
+              >
+                {{ b.PARAMETER_NAME }}
+              </mat-option> -->
+                                    </mat-select>
+
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                            <div fxFlex>
+                                <mat-form-field style="width: -webkit-fill-available;">
+                                    <mat-label>Estimated Cost</mat-label>
+                                    <mat-select formControlName="drpEstimated_Cost">
+                                        <mat-option>
+                                        </mat-option>
+
+                                        <!-- <mat-option
+                *ngFor="let b of filtered_appointment | async"
+                [value]="b.PARAMETER_GUID"
+              >
+                {{ b.PARAMETER_NAME }}
+              </mat-option> -->
+                                    </mat-select>
+
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex>
+                                <mat-form-field style="width: -webkit-fill-available;">
+                                    <mat-label></mat-label>
+                                    <input type="number" formControlName="txtdrpEstimated_Cost_No" matInput />
+
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-top: 5px;
+                    margin-bottom: 9px;">
+                        <div fxFlex>
+                            <label style="color:red;font-family: tahoma;">Show to Third Parties&nbsp; &nbsp; &nbsp;
+                                &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;: &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                                &nbsp;</label>
+                            <mat-checkbox [color]="'primary'" formControlName="chkshow_third_parties"
+                                style="margin-top: 10px;">
+                            </mat-checkbox>
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="    background: grey;
+                    color: white;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    margin-top: 5px;
+                ">
+                        <div fxFlex>
+                            <label>For Office Use Only</label>
+
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                        <div fxFlex>
+                            <mat-form-field style="width: -webkit-fill-available;">
+                                <mat-label>PIC</mat-label>
+                                <mat-select formControlName="drpPIC">
+                                    <mat-option>
+                                    </mat-option>
+
+                                    <!-- <mat-option
+                        *ngFor="let b of filtered_appointment | async"
+                        [value]="b.PARAMETER_GUID"
+                      >
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                                </mat-select>
+
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                        <div fxFlex>
+                            <label>PIC Private&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;: &nbsp; &nbsp;
+                                &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</label>
+                            <mat-checkbox [color]="'primary'" formControlName="chkPIC_Private"
+                                style="margin-top: 10px;">
+                            </mat-checkbox>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                        <div fxFlex>
+                            <label>Display in Daily Meetings&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;:
+                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</label>
+                            <mat-checkbox [color]="'primary'" formControlName="chkDisplay_In_Meetings"
+                                style="margin-top: 10px;">
+                            </mat-checkbox>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-top: 7px;">
+                        <div fxFlex>
+                            <label>Verified By&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;: &nbsp; &nbsp;
+                                &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</label>
+
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-top: 7px;">
+                        <div fxFlex>
+                            <label>Verified On&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;: &nbsp; &nbsp;
+                                &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</label>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+            <div>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;
+                ">
+                        <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;">
+                            <mat-panel-title class="panel-title">
+                                Applicable Tags
+                            </mat-panel-title>
+                            <mat-panel-description class="panel-desc">
+
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="border:1px solid grey;width: 50%;" >
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td colspan="2" class="table-header">Description</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+                                                <div class="col-md-12 align-items-center">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Allison
+
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Cargo Damage
+
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Collision
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Crew Sickness
+
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td>
+
+                                                <div class="col-md-12 align-items-center">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Capsize
+
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Cargo Shift
+
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Crew Missing
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Damage to Vessel
+
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                                <td style="border:1px solid grey;width: 50%;">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td colspan="2" class="table-header">Root Causes- Job Factor</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+                                                <div class="col-md-12 align-items-center">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Abuse or Misuse
+
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Inadequate Engineering
+
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Inadequate Maintenance
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Inadequate Tools and Equipment
+
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td>
+
+                                                <div class="col-md-12 align-items-center">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Excessive Wear and Tear
+
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Inadequate Leadership and / or Supervison
+
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            Inadequate Purchasing
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <input type="checkbox" value="" />
+                                                            
+                                                            Inadequate Tools and Equipement
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+            </div>
+
+            <div>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <table class="head-table3">
+                               <tr>
+                               <td>
+                                <table class="table-mini-header">
+                                    <tr>
+                                        <td class="td-vessel_edit">Created By</td>
+                                        <td style="width:2%">:</td>
+                                        <td class="td-name"></td>
+                                        <td class="td-defect_edit">On</td>
+                                        <td style="width:2%">:</td>
+                                        <td class="td-id">06/Sep/2023 08:16 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-vessel_edit">Modified By</td>
+                                        <td style="width:2%">:</td>
+                                        <td class="td-name"></td>
+                                        <td class="td-defect_edit">On</td>
+                                        <td style="width:2%">:</td>
+                                        <td class="td-id">06/Sep/2023 08:16 PM</td>
+                                    </tr>
+                                </table>
+                               </td>
+                            
+                                <td style="width: 27%;">
+    
+                                    <button mat-raised-button class="continue-btn" style="margin-left: 10px;">
+                                        Mark defer to DD
+                                    </button>
+    
+                                    <button mat-raised-button color="primary" class="save-btn" style="margin-left: 10px;">
+                                        Update
+                                    </button>
+                                  
+    
+                                </td>
+                                <td style="width: 19%;">
+                                    <button mat-raised-button color="warn" class="save-btn1" style="margin-left: 10px">
+                                        Cancel
+                                    </button>
+                                    <button mat-raised-button color="primary"  style="margin-left: 10px;">
+                                        Previous
+                                    </button>
+                                    <button mat-raised-button color="primary"  style="margin-left: 10px;">
+                                        Next
+                                    </button>
+                                </td>
+                            </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+                <table style="width: 100%;">
+                    <tr>
+                       <td>
+                        <table class="table-details-1">
+                            <tr>
+                               <td style="width: 50%;">
+                                <table>
+                                    <tr>
+                                        <td>Attachments</td>
+                                        <td>:</td>
+                                        <td>Photographs & Documents</td>
+                                    </tr>
+                                </table>
+                               </td>
+                               <td style="width: 50%;">
+                                <table>
+                                    <tr>
+                                        <td>Follow Ups</td>
+                                        <td>:</td>
+                                        <td>skjhkxjsh</td>
+                                    </tr>
+                                </table>
+                               </td>
+                            </tr>
+                        </table>
+                       </td>
+                    </tr>
+                </table>
+
+             <table style="width:100%">
+                <tr>
+                    <td style="width:50%;vertical-align: top;">
+                      <table style="width: 100%;
+                      font-family: tahoma;
+                      border: 1px solid grey;
+                      border-radius: 13px;margin-top: 19px;">
+                        <tr>
+                            <th class="attach-table">
+                                Attachment Files
+                            </th>
+                        </tr>
+                      </table>
+                    </td>
+                    <td style="width:50%">
+                        <div >
+
+                            <div class="actions-area" style="border: 1px solid #918f8f;background: #ededed; margin-top: 20px;">
+                                <div fxLayout="row">
+                                    <button
+                                    mat-mini-fab
+                                    color="primary"
+                                    [matTooltip]="'Add item'"
+                                    class="add-approve-btn save-btn" 
+                                    (click)="AddFollowup(null)"
+                                    
+                                  >
+                                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                  </button>
+                                    <span style="margin-top: 3px;
+                                    margin-left: 6px;font-size: 15px;">Add Followup</span>
+                                  </div>     
+                    
+                            </div>
+            
+                            <div #TABLE>
+                                <table
+                                  [dataSource]="FollowupdataSource"
+                                  mat-table
+                                  matSort
+                                  #table
+                                  class="details-table"
+                                >
+                                  <ng-container matColumnDef="Followup_On">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Followup On
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                    </td> -->
+                                  </ng-container>
+
+                                  <ng-container matColumnDef="By">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    By
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                    </td> -->
+                                  </ng-container>
+                                  <ng-container matColumnDef="Follow_Up">
+                                    <th
+                                      *matHeaderCellDef
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-header-cell
+                                      mat-sort-header
+                                    >
+                                    Follow Up
+                                    </th>
+                                    <!-- <td
+                                      *matCellDef="let row; let i = index"
+                                      class="actions-cell"
+                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                      mat-cell
+                                    >
+                                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                    </td> -->
+                                  </ng-container>
+                                
+                                  <tr *matHeaderRowDef="visibleColumnsFolloup" mat-header-row></tr>
+                                  <tr
+                                    *matRowDef="let row; columns: visibleColumnsFolloup"
+                                    class="clickable route-animations-elements"
+                                    mat-row
+                                  ></tr>
+                                  <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                  </tr>
+                                </table>
+                              </div>
+                              <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+                        </div>
+                    </td>
+                </tr>
+             </table>
+
+             <table style="width: 100%;">
+                <tr>
+                   <td>
+                    <table class="table-details-1">
+                        <tr>
+                           <td style="width: 50%;">
+                            <table>
+                                <tr>
+                                    <td>Before & After Pictures</td>
+                                </tr>
+                            </table>
+                           </td>
+                          
+                        </tr>
+                    </table>
+                   </td>
+                </tr>
+            </table>
+
+    
+            </div>
+        </form>
+
+    </div>
+
+</fury-page-layout>

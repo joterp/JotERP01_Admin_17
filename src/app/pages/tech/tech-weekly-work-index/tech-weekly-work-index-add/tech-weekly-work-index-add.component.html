@@ -1,0 +1,415 @@
+<fury-page-layout mode="card" class="add-weekly-report-details-index">
+
+    <h3 class="unit-packing" style="text-align: center; margin: 30px; font-size: x-large;">
+        <span class="first-letter">S</span>hipyard  
+        <span class="fifth-letter">W</span>eekly 
+        <span class="first-letter">R</span>eports 
+        <span class="first-letter">D</span>etails 
+      </h3>
+    <mat-tab-group (animationDone)="check()" animationDuration="0ms" mat-stretch-tabs
+    class="remove-border-bottom" style="margin: 27px 340px 27px 340px;">
+
+    <form action="">
+
+        <mat-tab label="Report Details" style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+            <div>
+               
+                <form [formGroup]="WorkIndexDetilsFilterFormGroup">
+                  
+                  <div class="filter-area">
+                    <div fxLayout="row" fxLayoutAlign="start">
+            
+                      <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel</mat-label>
+                            <mat-select formControlName="drpVessel" aria-placeholder="Select Vessel">
+                              <mat-option value="Kilogram">Alexa</mat-option>
+                              <mat-option value="Liters">Alexandre</mat-option>
+                              <mat-option value="Liters">Bryce</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="fill">
+                            <input matInput [matDatepicker]="pickerTo"  [formControl]="date">
+                            <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerTo></mat-datepicker>
+                          </mat-form-field>
+                      </div>
+          
+                        <div fxFlex>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Report</mat-label>
+                                <input matInput formControlName="txtYard_Report" placeholder="#"/>
+                            </mat-form-field> 
+                            <mat-form-field appearance="fill">
+                                <mat-label>Yard No./Name</mat-label>
+                                <input matInput formControlName="txtYard_Name" placeholder="Serach by Number"/>
+                            </mat-form-field> 
+                        </div>
+
+                    </div>
+                  </div>
+                </form>
+                <fury-page-layout-content [@fadeInUp] class="content-area">
+                    <div class="actions-area" >
+                       <div fxLayout="row">
+                      <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                          class="add-approve-btn save-btn" (click)="saveReportDetails(null,false)">
+                          <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                      </button>
+                      <span style="margin-top: 3px;
+                      margin-left: 6px;font-size: 15px;"> Add Details </span>
+                  </div>
+                    </div>
+
+                    
+                
+                    <div #TABLE>
+                      <table [dataSource]="WinchDetailsdataSource" mat-table matSort #table class="details-table">
+                        <!-- <ng-container matColumnDef="A">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                              mat-sort-header class="borderstyle">
+                          
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                              mat-cell>
+                              <p class="tbl-row-item">{{row.txtUnit_Name}}</p>
+                            </td>
+                          </ng-container>
+                           <ng-container matColumnDef="B">
+                          <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                            mat-sort-header class="borderstyle">
+                          
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                            mat-cell>
+                            <p class="tbl-row-item">{{row.txtUnit_Name}}</p>
+                          </td>
+                        </ng-container> -->
+                
+                  
+                        <ng-container matColumnDef="Points">
+                          <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                            mat-sort-header >
+                         Points 
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                            mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                          </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="Details">
+                          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header >
+                        Details
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                          </td>
+                        </ng-container>
+                       
+                        <!-- <ng-container matColumnDef="C">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header class="borderstyle">
+                          
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                             <p class="tbl-row-item">{{row.drpParent_Type}}</p> 
+                            </td>
+                          </ng-container> -->
+                
+                        <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                          <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+                      </table>
+                    </div>
+                   
+                
+                  </fury-page-layout-content>
+
+             
+            </div>
+            <div style="margin-top: 20px;">
+                <mat-form-field appearance="fill">
+                    <mat-label>Next week's plans</mat-label>
+                    <textarea
+                      matInput
+                  
+                      placeholder="Next week's plans"
+                    ></textarea>
+                  </mat-form-field>
+    
+                  <mat-form-field appearance="fill">
+                    <mat-label>Notes</mat-label>
+                    <textarea
+                      matInput
+                  
+                      placeholder="Notes"
+                    ></textarea>
+                  </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <div fxFlex="48">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Prepared By</mat-label>
+                        <mat-select formControlName="drpPrepared_By" aria-placeholder="Select User">
+                        <mat-option value="Kilogram">Nisha</mat-option>
+                        <mat-option value="Liters">Sherley</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="48">
+                    <div>
+                        <p>Approved By :</p>
+                    </div>
+                    <div>
+                        <p>Approved Date :</p>
+                    </div>
+                </div>
+            </div>
+
+           
+    <div fxLayout="row" fxLayoutAlign="center center"  style="margin-top: 20px;">
+       
+        <button
+          mat-raised-button
+          color="primary"
+          class="save-btn"
+         style="margin: 10px;"
+        >
+         Save
+        </button>
+        <button
+        
+          mat-raised-button
+          class="save-btn"
+          color="primary"
+          style="margin: 10px;"
+           
+        >
+          Save & Close
+        </button>
+      
+        <button mat-raised-button color="warn" style="margin: 10px;">Cancel</button>
+    </div>
+
+        </mat-tab>
+
+        <mat-tab label="NCR">
+            <!-- <cdk-virtual-scroll-viewport tvsItemSize headerHeight="56" rowHeight="48" style="height: 400px;"> -->
+
+            <div style="margin-top: 20px;">
+                <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="NCRdataSource"  class="example-container">
+              
+              
+              
+              
+                      <ng-container matColumnDef="raised">
+                        <th mat-header-cell *matHeaderCellDef  class="borderstyle"> Raised </th>
+              
+                      </ng-container>
+              
+                      <ng-container matColumnDef="action_token">
+                        <th mat-header-cell *matHeaderCellDef  class="borderstyle"> Action Token</th>
+              
+                      </ng-container>
+              
+                      <ng-container matColumnDef="current_week">
+                        <th mat-header-cell *matHeaderCellDef  class="borderstyle"> Current Week </th>
+              
+                      </ng-container>
+              
+                      <ng-container matColumnDef="last_week_balance">
+                        <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"> Last Week Balance </th>
+              
+                      </ng-container>
+              
+                     
+              
+              
+              
+              
+              
+              
+              
+                      <ng-container matColumnDef="header-row-first-group">
+                        <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+                         Description
+                        </th>
+                      </ng-container>
+                     
+                      <ng-container matColumnDef="header-row-second-group">
+                        <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="4"  class="borderstyle">
+                        Total Number of NCRs
+                        </th>
+                      </ng-container>
+              
+                      
+              
+              
+                      <tr mat-header-row
+                        *matHeaderRowDef="['header-row-first-group','header-row-second-group']">
+                      </tr>
+                      <tr mat-header-row *matHeaderRowDef="NCRvisibleColumns;sticky:true"></tr>
+                      <tr mat-row *matRowDef="let row; columns: NCRvisibleColumns;"></tr>
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                      </tr>
+                    </table>
+              
+                  </div>
+               
+                  <div fxLayout="row" fxLayoutAlign="center center"  style="margin-top: 20px;">
+       
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      class="save-btn"
+                     style="margin: 10px;"
+                    >
+                     Save
+                    </button>
+                   
+                  
+                    <button mat-raised-button color="warn" style="margin: 10px;">Cancel</button>
+                </div>
+            </div>
+
+            <!-- </cdk-virtual-scroll-viewport> -->
+        </mat-tab>
+        <mat-tab label="Defects">
+
+            <div style="margin-top: 20px;">
+                <div #TABLE>
+                    <table [dataSource]="DefectsdataSource" mat-table matSort #table class="details-table">
+                    <ng-container matColumnDef="Department">
+                          <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                            mat-sort-header >
+                           DEPARTEMENT
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                            mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                          </td>
+                        </ng-container>
+                         <ng-container matColumnDef="Closed">
+                        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                          mat-sort-header >
+                       CLOSED
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                          mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                        </td>
+                      </ng-container>
+               
+                
+                      <ng-container matColumnDef="Open">
+                        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                          mat-sort-header >
+                      OPEN
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                          mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                        </td>
+                      </ng-container>
+              
+                      <ng-container matColumnDef="Total">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header >
+                      Total
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                     
+                     
+              
+                      <tr *matHeaderRowDef="defectsvisibleColumns" mat-header-row></tr>
+                      <tr *matRowDef="let row; columns: defectsvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="center center"  style="margin-top: 20px;">
+       
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      class="save-btn"
+                     style="margin: 10px;"
+                    >
+                     Save
+                    </button>
+                   
+                  
+                    <button mat-raised-button color="warn" style="margin: 10px;">Cancel</button>
+                </div>
+            </div>
+
+        
+
+
+        </mat-tab>
+        <mat-tab label="Attachments">
+
+         <!-- Use a button to create a custom file upload button -->
+        <div style=" border: 1px solid gray;
+        width: 30%;
+        padding: 36px;
+        margin-top: 20px;">
+            <div>
+                <mat-label>Attachments:</mat-label> <br>
+            </div>
+            <div style="background-color: aliceblue;
+            padding-left: 20px;margin-top: 20px;
+           ">
+                <div>
+                    <input style="display: none;" type="file" id="imageupload" #fileInput
+                        (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+    
+                    <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                        <label for="imageupload">
+                            Upload</label>    
+                    </button>
+                    <div *ngIf="selectedFileName" fxFlex>
+                        <span  aria-placeholder="Select files"> {{ selectedFileName
+                        }}</span>
+                        <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+                    </div>
+                </div>
+                <div style="margin-top: 30px;padding-bottom: 10px;">
+                    <mat-label> Drop Files Here for Attachments</mat-label>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center"  style="margin-top: 20px;">
+            <button
+            mat-raised-button
+            color="primary"
+            class="save-btn"
+           
+          >
+           Save & Display
+          </button>
+        </div>   
+        </div>    
+       
+
+
+        </mat-tab>
+       
+        
+      
+
+    </form>
+
+
+</mat-tab-group>
+</fury-page-layout>
+
+
+

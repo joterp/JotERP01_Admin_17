@@ -1,0 +1,271 @@
+<div mat-dialog-title>
+  <span>
+    <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+  </span>
+  {{modeltitle}}
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="edit-voyage-cp-library">
+
+  <div>
+    <form [formGroup]="NewVoyageFormGroup">
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Vessel</mat-label>
+          <mat-select formControlName="drpVessel">
+            <mat-option>
+
+            </mat-option>
+
+            <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+          </mat-select>
+          <mat-error *ngIf="NewVoyageFormGroup.get('drpVessel').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+        <div fxFlex="2"></div>
+        <div fxFlex></div>
+
+      </div>
+
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Voyage No</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtVoyage_No" matInput />
+
+          <mat-error *ngIf="NewVoyageFormGroup.get('txtVoyage_No').hasError('required')"> Required</mat-error>
+        </mat-form-field>
+        <div fxFlex="2"></div>
+        <div fxFlex></div>
+
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Voyage Start Date</mat-label>
+          <input matInput formControlName="voyage_start_date" [matDatepicker]="pickervoyagestartdate" />
+          <mat-datepicker-toggle matSuffix [for]="pickervoyagestartdate"></mat-datepicker-toggle>
+          <mat-datepicker #pickervoyagestartdate></mat-datepicker>
+
+          <mat-error *ngIf="NewVoyageFormGroup.get('voyage_start_date').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+        <div fxFlex="2"></div>
+        <div fxFlex></div>
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Estimated End Date</mat-label>
+          <input matInput formControlName="estimated_end_date" [matDatepicker]="pickerestimated_end_date" />
+          <mat-datepicker-toggle matSuffix [for]="pickerestimated_end_date"></mat-datepicker-toggle>
+          <mat-datepicker #pickerestimated_end_date></mat-datepicker>
+
+        </mat-form-field>
+        <div fxFlex="2"></div>
+        <div fxFlex></div>
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Actual End Date</mat-label>
+          <input matInput formControlName="actual_end_date" [matDatepicker]="pickeractual_end_date" />
+          <mat-datepicker-toggle matSuffix [for]="pickeractual_end_date"></mat-datepicker-toggle>
+          <mat-datepicker #pickeractual_end_date></mat-datepicker>
+
+        </mat-form-field>
+        <div fxFlex="2"></div>
+        <div fxFlex></div>
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Charterer Type</mat-label>
+          <mat-select formControlName="drpCharterer_Type">
+            <mat-option>
+
+            </mat-option>
+
+            <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+          </mat-select>
+          <mat-error *ngIf="NewVoyageFormGroup.get('drpCharterer_Type').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+        <div fxFlex="2"></div>
+        <div fxFlex></div>
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Chaterer Code</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtChaterer_Code" matInput />
+
+        </mat-form-field>
+        <div fxFlex="2"></div>
+        <div fxFlex></div>
+
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Charterer</mat-label>
+          <mat-select formControlName="drpCharterer">
+            <mat-option>
+
+            </mat-option>
+
+            <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+          </mat-select>
+          <mat-error *ngIf="NewVoyageFormGroup.get('drpCharterer').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+        <div fxFlex="2">OR</div>
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label"></mat-label>
+
+          <input type="text" class="right-text" formControlName="txtChaterer" matInput />
+
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>SubCharterer</mat-label>
+          <mat-select formControlName="drpSubCharterer">
+            <mat-option>
+
+            </mat-option>
+
+            <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+          </mat-select>
+
+        </mat-form-field>
+
+        <div fxFlex="2">OR</div>
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label"></mat-label>
+
+          <input type="text" class="right-text" formControlName="txtSubChaterer" matInput />
+
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Broker</mat-label>
+          <mat-select formControlName="drpBroker">
+            <mat-option>
+
+            </mat-option>
+
+            <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+          </mat-select>
+
+        </mat-form-field>
+
+        <div fxFlex="2">OR</div>
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label"></mat-label>
+
+          <input type="text" class="right-text" formControlName="txtBroker" matInput />
+
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Charterer Terms </mat-label>
+          <textarea matInput formControlName="txtCharterer_Terms "></textarea>
+        </mat-form-field>
+        <div fxFlex="2"></div>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Remarks </mat-label>
+          <textarea matInput formControlName="txtRemarks"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <!-- Use a button to create a custom file upload button -->
+
+        <mat-label>Upload File</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+          accept=".pdf,.doc,.docx,.jpg,.png" />
+
+        <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+          <label for="imageupload">
+            Upload </label>
+        </button>
+        <div *ngIf="selectedFileName" fxFlex>
+          <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+          <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+        </div>
+
+        <!-- File input element, hidden from view -->
+      </div>
+
+
+    </form>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+  <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!NewVoyageFormGroup.valid ? '' : 'save-btn']"
+    [disabled]="!NewVoyageFormGroup.valid">
+    SAVE & CLOSE
+  </button>
+  <button mat-raised-button color="primary" class="save-btn" [disabled]="!NewVoyageFormGroup.valid">
+    SAVE & ADD NEW
+  </button>
+  <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

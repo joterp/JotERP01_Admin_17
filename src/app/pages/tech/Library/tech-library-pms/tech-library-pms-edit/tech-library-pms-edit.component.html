@@ -1,0 +1,497 @@
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Job
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <fury-page-layout mode="card" class="pmsLibedit-view" >
+    <fury-page-layout-content>
+      <mat-dialog-content>
+
+
+        <div style="margin-top: 20px;">
+          <form [formGroup]="pmsJobFormGroup" >
+
+
+              <div fxLayout="row" fxLayoutAlign="space-between">
+                  <div fxFlex="48">
+            
+                <mat-form-field appearance="fill">
+                  <mat-label>Vessel</mat-label>
+                  <mat-select formControlName="drpVessel" aria-placeholder="Select Vessel">
+                    <mat-option value="Kilogram">Documents</mat-option>
+                    <mat-option value="Liters">Health</mat-option>
+        
+                  </mat-select>
+                </mat-form-field>
+            
+            
+                  <mat-form-field appearance="fill">
+                      <mat-label>Machinery</mat-label>
+                      <mat-select formControlName="drpMachinery" aria-placeholder="Select Catalogue">
+                        <mat-option value="Kilogram">Documents</mat-option>
+                        <mat-option value="Liters">Health</mat-option>
+            
+                      </mat-select>
+                    </mat-form-field>
+            
+                <mat-form-field appearance="fill">
+                  <mat-label>Sub Component</mat-label>
+                  <mat-select formControlName="drpSub_Component">
+                    <mat-option value="Kilogram"></mat-option>
+                    <mat-option value="Liters"></mat-option>
+        
+                  </mat-select>
+                </mat-form-field>
+            
+            
+                <mat-form-field appearance="fill">
+                  <mat-label>Job Code</mat-label>
+                  <input formControlName="txtJob_Code" matInput  type="text" />
+                </mat-form-field>
+                  </div>
+            
+          
+
+            
+                  <div fxFlex="48">
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Maker</mat-label>
+                    <input formControlName="txtMaker" matInput placeholder="Search by Maker" type="text" />
+                  </mat-form-field>
+                
+          
+              <div style="    margin-bottom: 101px;
+              border-bottom: 1px solid gray;">
+                
+                  <mat-label>Particulars</mat-label>
+                
+              </div>
+                
+                
+              
+          
+                
+              <div fxLayout="row" fxLayoutAlign="space-between">
+                  <div fxFlex="48">
+                      <mat-form-field appearance="fill">
+                          <mat-label>Model</mat-label>
+                          <input formControlName="txtModel" matInput  type="text" />
+                      </mat-form-field>
+                  </div>
+                  <div fxFlex="48">
+                      <mat-form-field appearance="fill">
+                          <mat-label>Sets Installed</mat-label>
+                          <input formControlName="txtSets_Installed" matInput  type="text" />
+                      </mat-form-field>
+                  </div>
+              </div>
+              
+              
+                  </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between">
+                  <div fxFlex="100">
+                      <mat-form-field appearance="fill">
+                          <mat-label>Job Title</mat-label>
+                          <textarea
+                            matInput
+                        
+                            placeholder="Remarks"
+                          ></textarea>
+                        </mat-form-field>
+                  </div>
+              </div>   
+              
+              
+         
+      <!--  -->
+      <mat-tab-group (animationDone)="check()" animationDuration="0ms" mat-stretch-tabs
+                      class="remove-border-bottom" style="margin-top: 10px;">
+
+                    
+
+                          <mat-tab label="Details" style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                              <div style="padding:25px 77px 25px 77px;">
+
+                                  <div fxLayout="row" fxLayoutAlign="space-between">
+                                      <div fxFlex="48">
+
+                                          <mat-form-field appearance="fill">
+                                              <mat-label>Department</mat-label>
+                                              <mat-select formControlName="drpDepartment" aria-placeholder="Select Department">
+                                                <mat-option value="Kilogram">Deck</mat-option>
+                                                <mat-option value="Liters">Electrical</mat-option>
+                                    
+                                              </mat-select>
+                                          </mat-form-field>
+
+
+                                          <div fxLayout="row" fxLayoutAlign="space-between">
+                                              <div fxFlex="48">
+                                                  <mat-form-field appearance="fill">
+                                                      <mat-label>Frequency</mat-label>
+                                                      <mat-select formControlName="drpFrequency" aria-placeholder="Select Frequency" >
+                                                        <mat-option value="Hours">Hours</mat-option>
+                                                        <mat-option value="Days">Days</mat-option>
+                                                        <mat-option value="Month">Month</mat-option>
+                                                      </mat-select>
+                                                    </mat-form-field>
+                                              </div>
+                                              <div fxFlex="48">
+                                                  <mat-form-field appearance="fill">
+                                                      <mat-label></mat-label>
+                                                      <input formControlName="txtFreq" matInput  type="text" />
+                                                  </mat-form-field>
+                                              </div>
+                                          </div>
+
+
+                                        <p style="color: red;margin-bottom: 20px;">Frequency of a job cannot be more than 5 years, as per Class NK rules</p>
+                                          <div fxLayout="row" fxLayoutAlign="space-between">
+                                              <div fxFlex="48">
+                                                  <mat-form-field appearance="fill">
+                                                      <mat-label>Job Type</mat-label>
+                                                      <mat-select formControlName="drpJob_Type" aria-placeholder="Select Job Type ">
+                                                      <mat-option value="Normal">Normal</mat-option>
+                                                      <mat-option value="OverHaul">OverHaul</mat-option>
+                                          
+                                                      </mat-select>
+                                                  </mat-form-field>
+                                              </div>
+                                          
+                                          </div>
+
+
+                                        
+                                            
+                                      </div>
+
+                                      <div fxFlex="48">
+                                          <mat-form-field appearance="fill">
+                                              <mat-label>Rank</mat-label>
+                                              <mat-select formControlName="drpRank" aria-placeholder="Select Rank">
+                                                <mat-option value="Master">Master</mat-option>
+                                                <mat-option value="TraineeOfficer">Trainee Officer</mat-option>
+                                    
+                                              </mat-select>
+                                            </mat-form-field>
+
+
+                                            <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px"
+                                            style="margin-bottom: 24px; margin-top: 26px;">
+                                            <mat-label>CMS JOB ?</mat-label>
+                                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_Reqsn_Status">
+                                             
+                                              <mat-radio-button value="0" [checked]="pmsJobFormGroup.get('radioNew_Reqsn_Status').value == 0">
+                                                <label [class.active-label]="pmsJobFormGroup.get('radioNew_Reqsn_Status').value == 0">Yes</label>
+                                              </mat-radio-button>
+                                              <mat-radio-button value="1" [checked]="pmsJobFormGroup.get('radioNew_Reqsn_Status').value == 1">
+                                                 <label [class.active-label]="pmsJobFormGroup.get('radioNew_Reqsn_Status').value == 1">No</label>
+                                                </mat-radio-button>
+                                              </mat-radio-group>
+                                          </div>
+
+                                          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px"
+                                          style="margin-bottom: 24px; margin-top: 26px; ">
+                                          <mat-label>Critical JOB ?</mat-label>
+                                          <mat-radio-group aria-label="Select an option" fxLayoutGap="10px" formControlName="radioNew_Citical_job">
+                                            <mat-radio-button value="0" [checked]="pmsJobFormGroup.get('radioNew_Citical_job').value == 0">
+                                              <label [class.active-label]="pmsJobFormGroup.get('radioNew_Citical_job').value == 0">Yes</label>
+                                            </mat-radio-button>
+                                            <mat-radio-button value="1" [checked]="pmsJobFormGroup.get('radioNew_Citical_job').value == 1">
+                                               <label [class.active-label]="pmsJobFormGroup.get('radioNew_Citical_job').value == 1">No</label>
+                                              </mat-radio-button>
+                                          </mat-radio-group>
+                                        </div>
+      
+                                      </div>
+
+                                  </div>
+
+                              </div>
+
+
+
+                          </mat-tab>
+
+                          <mat-tab label="Description">
+                              <!-- <cdk-virtual-scroll-viewport tvsItemSize headerHeight="56" rowHeight="48" style="height: 400px;"> -->
+
+                              <div style="padding:25px 77px 25px 77px;">
+
+                                  <div fxLayout="row" fxLayoutAlign="space-between">
+                                      <div fxFlex="48">
+                                          <P>Description :</P>
+                                          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                                              <quill-editor
+                                              [styles]="{ height: '400px' }"
+                                              id="textEditor"
+                                              (onEditorCreated)="created($event)"
+                                              (onContentChanged)="contentChanged($event)"
+                                              >
+                                              </quill-editor>
+                                          </div>
+                                      </div>
+
+                                      <div fxFlex="48">
+                                          <P>Job Description Attachment :</P>
+                                          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" 
+                                          style="border: 1px solid #cccccc; 
+                                          padding: 19px; 
+                                          box-shadow: 0 0 2px #cccccc; 
+                                          margin: 10px;">
+                                            <!-- Use a button to create a custom file upload button -->
+                                    
+                                          <div class="upload-btn-effect">
+                                            <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+                                            accept=".pdf,.doc,.docx,.jpg,.png" />
+                                  
+                                          <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                                            <label for="imageupload">
+                                              Upload </label>
+                                          </button>
+                                          <div *ngIf="selectedFileName" fxFlex>
+                                            <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                                            <button (click)="removeUploadedFileadditem()"  mat-button style="color: #5BB318;">Remove</button>
+                                          </div>
+                                          </div> &nbsp;
+                                    
+                                            
+                                    
+                                            <!-- File input element, hidden from view -->
+                                          </div>
+                                          <div style="margin-top: 30px;">
+                                          <strong>Important:</strong>
+                                          <p style="color: red; font-family: Tahoma;">When using COPY /PASTE option from MS Excel: </p> 
+                                          
+                                          <p  style="color: red; font-family: Tahoma;">
+                                            We strongly suggest that you COPY from MS Excel, paste it first in NOTEPAD, and then copy from NOTEPAD and PASTE it in the JOB DESCRIPTION field here
+                                          </p>
+                                          </div>
+                                          
+                                      </div>
+                                  </div>
+                                
+                              </div>
+
+                              <!-- </cdk-virtual-scroll-viewport> -->
+                          </mat-tab>
+                          <mat-tab label="Man-Hours">
+
+                              <div style="padding:25px 77px 25px 77px;">
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                  <div fxFlex="48">   
+                                    <div #TABLE>
+                                      <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                                        <ng-container matColumnDef="Rank">
+                                          <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                                            mat-sort-header>
+                                          Rank
+                                          </th>
+                                          <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                            mat-cell>
+                                          <p>MST- Master</p> 
+                                          </td>
+                                        </ng-container>
+                                
+                                        <ng-container matColumnDef="Man_Hours">
+                                          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                          Man Hours Required
+                                          </th>
+                                          <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                                            <mat-form-field appearance="fill">
+                                              <mat-label>Job Code</mat-label>
+                                              <input formControlName="txtJob_Code" matInput
+                                                  placeholder="Search by Job Code" type="text" />
+                                          </mat-form-field>
+                                          </td>
+                                        </ng-container>
+                                
+                                
+                                
+                                
+                                      
+                                
+                                        <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                                        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                                        <tr class="mat-row" *matNoDataRow>
+                                          <td class="mat-cell" colspan="9999">No data found</td>
+                                        </tr>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                          
+
+
+                          </mat-tab>
+                          <mat-tab label="Linked Forms">
+
+                              <div style="padding:20px 26px 20px 26px;" >
+                           
+                                  <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <div fxFlex="48">   
+                                      <div #TABLE>
+                                        <table [dataSource]="notassigndataSource" mat-table matSort #table class="details-table">
+                                          <ng-container matColumnDef="Form_No">
+                                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial', 'text-align': 'center' }" mat-header-cell
+                                              mat-sort-header class="borderstyle">
+                                              Form No
+                                            </th>
+                                            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                              mat-cell>
+                                              <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                            </td>
+                                          </ng-container>
+                                    
+                                          <ng-container matColumnDef="UnAssigned_Forms">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header class="borderstyle">
+                                              UnAssigned Forms
+                                            </th>
+                                            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                                              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                                            </td>
+                                          </ng-container>
+                                    
+                                          <ng-container matColumnDef="Is_Mandatory">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header  class="borderstyle">
+                                              Is Mandatory
+                                            </th>
+                                            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                                              <!-- <p class="tbl-row-item">{{row.txtUnit_Short_Name}}</p> -->
+                                            </td>
+                                          </ng-container>
+                                    
+                                          <ng-container matColumnDef="AssignAll">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell [ngStyle]="{ 'text-align': 'center' }" class="borderstyle">
+                                              <button mat-raised-button color="primary"
+                                                  style="background-color: #5cb85c; margin: 10px;">
+                                                  Assign All
+                                              </button>
+                                            </th>
+                                          </ng-container>
+                                    
+                                          <tr *matHeaderRowDef="visibleColumnsNotAssignCert" mat-header-row></tr>
+                                          <tr *matRowDef="let row; columns: visibleColumnsNotAssignCert" class="clickable route-animations-elements" mat-row></tr>
+                                          <tr class="mat-row" *matNoDataRow>
+                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                          </tr>
+                                        </table>
+                                      </div>
+                                    </div>
+                                    
+                                
+        
+        
+                                
+                                    <div fxFlex="48"> 
+                                      <div #TABLE>
+                                        <table [dataSource]="assigndataSource" mat-table matSort #table class="details-table">
+
+                                          <ng-container matColumnDef="UnAssignAll">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell [ngStyle]="{ 'text-align': 'center' }" class="borderstyle">
+                                              <button mat-raised-button color="primary"
+                                                  style="background-color: #5cb85c; margin: 10px;">
+                                                  UnAssign All
+                                              </button>
+                                            </th>
+                                          </ng-container>
+                                          <ng-container matColumnDef="FormNo">
+                                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial', 'text-align': 'center' }" mat-header-cell
+                                              mat-sort-header class="borderstyle">
+                                              Form No
+                                            </th>
+                                            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                              mat-cell>
+                                              <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                            </td>
+                                          </ng-container>
+                                    
+                                          <ng-container matColumnDef="AssignedForms">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header class="borderstyle">
+                                              Assigned Forms
+                                            </th>
+                                            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                                              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                                            </td>
+                                          </ng-container>
+                                    
+                                          <ng-container matColumnDef="IsMandatory">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header  class="borderstyle">
+                                              Is Mandatory
+                                            </th>
+                                            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                                              <!-- <p class="tbl-row-item">{{row.txtUnit_Short_Name}}</p> -->
+                                            </td>
+                                          </ng-container>
+                                    
+                                         
+                                    
+                                          <tr *matHeaderRowDef="visibleColumnsAssignCert" mat-header-row></tr>
+                                          <tr *matRowDef="let row; columns: visibleColumnsAssignCert" class="clickable route-animations-elements" mat-row></tr>
+                                          <tr class="mat-row" *matNoDataRow>
+                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                          </tr>
+                                        </table>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                               
+                            
+
+
+                              </div>
+
+                          
+
+
+                          </mat-tab>
+                          <mat-tab label="Spare Parts required for this Job">
+
+                              <div style="padding:25px 77px 25px 77px;">
+
+                                
+
+                              </div>
+
+                          
+
+
+                          </mat-tab>
+                          
+                        
+
+                      
+
+
+      </mat-tab-group>
+
+
+
+        <!--  -->
+          <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" >
+        
+            <button mat-raised-button color="primary" class="save-btn" >
+            Save & Close
+            </button>
+            <button mat-raised-button class="save-btn" color="primary">
+            Save & Add New
+            </button>
+        
+            <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+          </mat-dialog-actions>
+        </form>
+        </div>
+      </mat-dialog-content>
+    </fury-page-layout-content>
+  </fury-page-layout>

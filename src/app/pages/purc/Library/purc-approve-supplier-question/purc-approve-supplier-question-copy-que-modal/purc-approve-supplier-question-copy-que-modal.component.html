@@ -1,0 +1,37 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle >
+  <span style="font-size: 20px;">Copy Question</span> 
+  </div>
+
+  <mat-dialog-content style="height: 100% !important" class="copy-questions-modal">
+    <form [formGroup]="copyQueFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Copy From Scope</mat-label>
+          <mat-select formControlName="drp_Copy_From_Vessel">
+            <mat-option value="All Stages">All Stages</mat-option>
+            <mat-option value="Airlines">Airlines</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Copy To Scope</mat-label>
+            <mat-select formControlName="drp_Copy_To_Scope">
+              <mat-option value="All Stages"></mat-option>
+              <mat-option value="Airlines"></mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+    </form>
+    </mat-dialog-content>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+       Save & Close
+      </button>
+      
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>

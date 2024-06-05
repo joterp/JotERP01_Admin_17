@@ -1,0 +1,517 @@
+<fury-page-layout mode="card" class="QuickRequisition-edit-view">
+
+    <fury-page-layout-content [@fadeInUp]>
+
+
+        <mat-card
+            style="box-shadow: 0px 2px 15px 2px rgb(0 0 0 / 32%), 0px 1px 1px 0px rgb(0 0 0 / 30%), 0px 1px 3px 0px rgb(0 0 0 / 4%) !important;margin-top: 25px;">
+
+            <mat-tab-group (animationDone)="check()" animationDuration="0ms" mat-stretch-tabs
+                class="remove-border-bottom">
+
+                <form action="" [formGroup]="QuickRequisitionForm">
+
+                    <mat-tab label="General" style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                        <div style="padding:25px 77px 25px 77px;">
+
+                            <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                                <div fxFlex="48">
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <input matInput placeholder="Search Vessel" name="search">
+                                            <button mat-icon-button matPrefix><mat-icon
+                                                    style="padding-top: 7px;">search</mat-icon></button>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                                        class="div-border">
+
+                                        <!-- <mat-icon>search</mat-icon>
+            
+                                <input
+                                  type="text"
+                                  [(ngModel)]="searchString"
+                                  placeholder="Search by name or country"
+                                /> -->
+
+                                        
+                                          <table style="width: 100%;">
+                                            <tr >
+                                                <td class="general-td1">Alexandre</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="general-td1">Blue Pearl</td>
+                                            </tr>
+                                                <tr>
+                                                <td class="general-td1">Bryce</td>
+                                            </tr>
+                                                <tr>
+                                                <td class="general-td1">Catalan Sea</td>
+                                            </tr>
+                                                 <tr>
+                                                <td class="general-td1">Alexandre</td>
+                                            </tr>
+                                                <tr>
+                                                <td class="general-td1">Blue Pearl</td>
+                                            </tr>
+                                                <tr>
+                                                <td class="general-td1">Bryce</td>
+                                            </tr>
+                                                <tr>
+                                                <td class="general-td1">Alexandre</td>
+                                            </tr>
+                                                <tr>
+                                                <td class="general-td1">Blue Pearl</td>
+                                            </tr>
+                                                <tr>
+                                                <td class="general-td1">Bryce</td>
+                                            </tr>
+                                                <tr>
+                                                <td class="general-td1">Alexandre</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="general-td1">Blue Pearl</td>
+                                            </tr>
+                                                <tr>
+                                                <td class="general-td1">Bryce</td>
+                                           </tr>
+                                           <tr>
+                                                <td class="general-td1">Alexandre</td>
+                                                </tr>
+                                                <tr>
+                                                <td class="general-td1">Blue Pearl</td>
+                                            </tr>
+                                                <tr>
+                                                <td class="general-td1">Bryce</td>
+                                            </tr>
+                                          </table>
+                                        
+
+                                    </div>
+                                </div>
+
+                                <div fxFlex="48">
+
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <input matInput placeholder="Search Catalogue" name="search">
+                                            <button mat-icon-button matPrefix><mat-icon
+                                                    style="padding-top: 7px;">search</mat-icon></button>
+                                        </mat-form-field>
+
+                                    </div>
+                                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                                        class="div-border">
+
+                                        <!-- <mat-icon>search</mat-icon>
+            
+                                <input
+                                  type="text"
+                                  [(ngModel)]="searchString"
+                                  placeholder="Search by name or country"
+                                /> -->
+
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td class="general-td1">Store - Stationery</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="general-td1">Chemical Stores - A/E Turbocharger</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="general-td1">store_01 - abe store</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="general-td1">Deck Stores - Accomodation Ladder</td>
+                                    </tr>
+                                </table>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" style="margin-top: 12px;">
+                                <button mat-raised-button class="continue-btn">
+                                    Continue
+                                </button>
+
+                                <button mat-raised-button color="warn" class="save-btn1" style="margin-left: 10px"
+                                    (click)="CancelForm()">
+                                    Cancel
+                                </button>
+                            </mat-dialog-actions>
+
+
+                        </div>
+
+
+
+                    </mat-tab>
+
+                    <mat-tab label="Requisition">
+                        <!-- <cdk-virtual-scroll-viewport tvsItemSize headerHeight="56" rowHeight="48" style="height: 400px;"> -->
+
+                        <div style="padding:25px 77px 25px 77px;">
+
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                                [ngStyle]="{ 'margin-bottom': '10px' }">
+
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label class="left-label">Requisition Title</mat-label>
+
+                                    <input type="text" class="right-text" matInput
+                                        formControlName="txtRequisition_Title" />
+
+
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label> Dept Type</mat-label>
+                                    <mat-select formControlName="drpDept_Type">
+
+                                    </mat-select>
+                                    <mat-error
+                                        *ngIf="QuickRequisitionForm.get('drpDept_Type').hasError('required')">Dept Type
+                                        is
+                                        required</mat-error>
+                                </mat-form-field>
+
+                            </div>
+
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                                [ngStyle]="{ 'margin-bottom': '10px' }">
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label> Department</mat-label>
+                                    <mat-select formControlName="drpDepartment">
+
+                                    </mat-select>
+                                    <mat-error
+                                        *ngIf="QuickRequisitionForm.get('drpDepartment').hasError('required')">Department
+                                        is
+                                        required</mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label> Requisition Type</mat-label>
+                                    <mat-select formControlName="drpRequisition_Type">
+
+                                    </mat-select>
+                                    <mat-error
+                                        *ngIf="QuickRequisitionForm.get('drpRequisition_Type').hasError('required')">Requisition
+                                        Type is
+                                        required</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                                [ngStyle]="{ 'margin-bottom': '10px' }">
+
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label> Urgency</mat-label>
+                                    <mat-select formControlName="drpUrgency">
+
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label> Voyage/Job Number</mat-label>
+                                    <mat-select formControlName="drpVoyage_Number">
+
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                                [ngStyle]="{ 'margin-bottom': '10px' }">
+
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label> Delivery Port</mat-label>
+                                    <mat-select formControlName="drpDelivery_Port">
+
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>Delivery Date</mat-label>
+                                    <input matInput formControlName="delivery_date"
+                                        [matDatepicker]="pickerdeliverydate" />
+                                    <mat-datepicker-toggle matSuffix [for]="pickerdeliverydate"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerdeliverydate></mat-datepicker>
+                                </mat-form-field>
+
+                            </div>
+
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                                [ngStyle]="{ 'margin-bottom': '10px' }">
+                                <mat-form-field appearance="fill">
+                                    <mat-label class="left-label">Remarks</mat-label>
+
+                                    <textarea matInput formControlName="txtRemarks"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                                [ngStyle]="{ 'margin-bottom': '10px' }">
+
+                                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                                    <!-- Use a button to create a custom file upload button -->
+
+                                    <mat-label>Attachment</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <!-- <button
+                    mat-button
+                    class="custom-file-upload-btn"
+                    (click)="fileInput.click()"
+                    >
+            
+                    <input
+                    style="display: none;"
+                    type="file" id="imageupload"
+                    #fileInput
+                    (change)="onFileSelected($event)"
+                    accept=".pdf,.doc,.docx,.jpg,.png"
+                    />
+                    </button> -->
+
+                                    <input style="display: none;" type="file" id="imageupload" #fileInput
+                                        (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+
+                                    <button type="button" class="upload-btn" style="margin-top: 6px;"
+                                        *ngIf="!selectedFileName">
+                                        <label for="imageupload">
+                                            Upload </label>
+                                    </button>
+                                    <div *ngIf="selectedFileName" fxFlex>
+                                        <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                                        <button (click)="removeUploadedFileadditem()" mat-button
+                                            style="color: #5BB318;">Remove</button>
+                                    </div>
+
+                                    <!-- File input element, hidden from view -->
+                                </div>
+                            </div>
+
+                            <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" style="margin-top: 12px;">
+                                <button mat-raised-button class="continue-btn">
+                                    Back
+                                </button>
+                                <button mat-raised-button class="continue-btn" style="margin-left: 10px">
+                                    Continue
+                                </button>
+                                <button mat-raised-button color="warn" class="save-btn1" style="margin-left: 10px"
+                                    (click)="CancelForm()">
+                                    Cancel
+                                </button>
+                            </mat-dialog-actions>
+
+
+                        </div>
+
+                        <!-- </cdk-virtual-scroll-viewport> -->
+                    </mat-tab>
+                    <mat-tab label="Items">
+
+                        <div style="padding:25px 77px 25px 77px;">
+
+                            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+
+                                <div fxFlex="20">
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <input matInput placeholder="" name="search">
+                                            <button mat-icon-button matPrefix><mat-icon
+                                                    style="padding-top: 7px;">search</mat-icon></button>
+                                        </mat-form-field>
+                                    </div>
+                                    <table style="border: 1px solid grey;width: 100%;height: 100%;">
+                                        <tr>
+                                            <td style="border: 1px solid #777777;
+                                            background: linear-gradient(#9b9a9a, #4f4f4f);">
+                                                <div><span style="padding: 15px;color: #fff;">Sub Catalogue</span></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td >
+                                              <table style="width: 100%;">
+                                                <tr>
+                                                    <td>SELECT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>GENERAL</td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td>OFFICE</td>
+                                                </tr>
+                                              </table>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+                                <div fxFlex="80">
+                                    <div #TABLE>
+                                        <table [dataSource]="QuickRequisitionItemsdataSource" mat-table matSort #table
+                                            class="details-table" style="border: 1px solid grey;
+                                            border-radius: 5px !important;">
+                                            <ng-container matColumnDef="Drawing_Number">
+                                                <th *matHeaderCellDef class="actions-cell"
+                                                    [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                                                    mat-sort-header>
+                                                    Drawing Number
+                                                </th>
+                                                <!-- <td
+                                  *matCellDef="let row; let i = index"
+                                  class="actions-cell"
+                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                  mat-cell
+                                >
+                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                </td> -->
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Part_Number">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    Part Number
+                                                </th>
+                                                <!-- <td
+                                  *matCellDef="let row; let i = index"
+                                  class="actions-cell"
+                                  mat-cell
+                                >
+                                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                </td> -->
+                                            </ng-container>
+                                            <ng-container matColumnDef="Item_Description">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    Item Description
+                                                </th>
+                                                <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                  </td> -->
+                                            </ng-container>
+                                            <ng-container matColumnDef="Unit">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    Unit
+                                                </th>
+                                                <!-- <td
+                                  *matCellDef="let row; let i = index"
+                                  class="actions-cell"
+                                  mat-cell
+                                >
+                                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                </td> -->
+                                            </ng-container>
+                                            <ng-container matColumnDef="ROB">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    ROB
+                                                </th>
+                                                <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                            </ng-container>
+                                            <ng-container matColumnDef="Is_Mandatory">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    Is_Mandatory?
+                                                </th>
+                                                <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                            </ng-container>
+                                            <ng-container matColumnDef="Req_Qty">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    Req Qty
+                                                </th>
+                                                <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                            </ng-container>
+                                            <ng-container matColumnDef="Comments">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    Comments
+                                                </th>
+                                                <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                            </ng-container>
+
+                                            <tr *matHeaderRowDef="visibleColumnsquickrequisitionitems" mat-header-row>
+                                            </tr>
+                                            <tr *matRowDef="let row; columns: visibleColumnsquickrequisitionitems"
+                                                class="clickable route-animations-elements" mat-row></tr>
+                                            <tr class="mat-row" *matNoDataRow>
+                                                <td class="mat-cell" colspan="9999">No data found</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"
+                                        [pageSize]="pageSize"></mat-paginator>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center"
+                            style="margin-top: 10px;margin-bottom:30px">
+                            <button mat-raised-button class="warning-btn">
+                                Show Summary
+                            </button>
+
+                            <button mat-raised-button class="continue-btn" style="margin-left: 10px;">
+                                Back
+                            </button>
+
+                            <button mat-raised-button color="primary" class="save-btn" style="margin-left: 10px;">
+                                Raise And Send for Approval
+                            </button>
+
+
+                        </mat-dialog-actions>
+
+
+
+                    </mat-tab>
+
+                </form>
+
+
+            </mat-tab-group>
+
+        </mat-card>
+
+    </fury-page-layout-content>
+
+</fury-page-layout>

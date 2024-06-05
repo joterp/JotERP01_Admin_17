@@ -1,0 +1,127 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+    <fury-page-layout mode="card" class="crew-interviews">
+
+        <div>
+            <form [formGroup]="NewCrewFormGroup">
+
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Vessel</mat-label>
+                        <mat-select formControlName="drpVessel">
+                        </mat-select>
+                        <mat-error *ngIf="NewCrewFormGroup.get('drpVessel').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Rank</mat-label>
+                        <mat-select formControlName="drpRank">
+                        </mat-select>
+                        <mat-error *ngIf="NewCrewFormGroup.get('drpRank').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Staff Full Name</mat-label>
+                        <input type="text" formControlName="txtStaff_Full_Name" matInput />
+                        <mat-error *ngIf="NewCrewFormGroup.get('txtStaff_Full_Name').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Date Of Birth</mat-label>
+                        <input matInput formControlName="date_of_birth" [matDatepicker]="pickerdate_of_birth" />
+                        <mat-datepicker-toggle matSuffix [for]="pickerdate_of_birth"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerdate_of_birth></mat-datepicker>
+                        <mat-error *ngIf="NewCrewFormGroup.get('date_of_birth').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Nationality</mat-label>
+                        <mat-select formControlName="drpNationality">
+                        </mat-select>
+
+                    </mat-form-field>
+                </div>
+
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Manning Agent</mat-label>
+                        <input type="text" formControlName="txtManning_Agent" matInput />
+
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Sign-On Date</mat-label>
+                        <input matInput formControlName="Sign_On_Date" [matDatepicker]="pickerSign_On_Date" />
+                        <mat-datepicker-toggle matSuffix [for]="pickerSign_On_Date"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerSign_On_Date></mat-datepicker>
+                        <mat-error *ngIf="NewCrewFormGroup.get('Sign_On_Date').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>EOC Date</mat-label>
+                        <input matInput formControlName="EOC_Date" [matDatepicker]="pickerEOC_Date" />
+                        <mat-datepicker-toggle matSuffix [for]="pickerEOC_Date"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerEOC_Date></mat-datepicker>
+                        <mat-error *ngIf="NewCrewFormGroup.get('EOC_Date').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Sign-Off Date </mat-label>
+                        <input matInput formControlName="Sign_Off_Date" [matDatepicker]="pickerSign_Off_Date" />
+                        <mat-datepicker-toggle matSuffix [for]="pickerSign_Off_Date"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerSign_Off_Date></mat-datepicker>
+                        <mat-error *ngIf="NewCrewFormGroup.get('Sign_Off_Date').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </form>
+
+        </div>
+
+    </fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!NewCrewFormGroup.valid ? '' : 'save-btn']"
+        [disabled]="!NewCrewFormGroup.valid">
+        SAVE
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

@@ -1,0 +1,82 @@
+
+
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+  <span>
+      <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;"/>Add New Category
+  </span>
+ 
+  <span fxLayoutAlign="end"  >
+      <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div> -->
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="display: flex;  align-items: center;">
+  <span style="font-size: 18px;margin-top: 7px;">Add New Category</span>
+  <!-- <mat-icon (click)="CloseModal()">close</mat-icon> -->
+</div>
+
+
+<div>
+  <mat-dialog-content>
+    <form [formGroup]="categoryFormGroup"  >
+        <div mat-dialog-container style="padding-top: 10px;">
+            <div fxLayout="column" fxLayout.gt-sm="row" >
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Department Name</mat-label>
+                    <mat-select formControlName="drpDepartment_Name" >
+                      <mat-option value="Kilogram">Admin</mat-option>
+                      <mat-option value="Liters">Account</mat-option>
+                      
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" >
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Category Name</mat-label>
+                    <textarea
+                    matInput
+                    formControlName="txtCategory_Name"
+                   
+                    ></textarea>
+                </mat-form-field>
+                
+            </div>
+        </div>
+    </form>
+  </mat-dialog-content>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" >
+        <!-- <button
+          *ngIf="!IsEdit"
+          mat-raised-button
+          color="primary"
+          [ngClass]="[!firstFormGroup.valid ? '' : 'save-btn']"
+          [disabled]="!firstFormGroup.valid"
+          (click)="saveServiceData(true)"
+        >
+          SAVE & ADD NEW
+        </button> -->
+        <button
+          mat-raised-button
+          color="primary"
+          class="save-btn"
+         
+        >
+         Copy to Clipboard
+        </button>
+        <button
+        
+          mat-raised-button
+          class="save-btn"
+          color="primary"
+            
+           
+        >
+          SAVE
+        </button>
+      
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+      </mat-dialog-actions>
+</div>
+
+     
+

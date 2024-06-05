@@ -1,0 +1,276 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Mail Defect
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+
+    <mat-dialog-content style="height: 100% !important" class="email-vendor">
+
+        <div fxFlex="30" class="usermenu">
+        <mat-tab-group (animationDone)="check()" animationDuration="0ms" mat-stretch-tabs
+        class="remove-border-bottom">
+
+        <form action="">
+
+            <mat-tab label="User" style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+               
+
+                    <form [formGroup]="userFormGroup">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <mat-form-field fxFlex="90">
+                                <input matInput placeholder="Search here" formControlName="search"
+                                    (keyup)="applyFilterClient($event.target.value)">
+                                <button mat-icon-button matSuffix><mat-icon style="padding-top: 7px;">search</mat-icon></button>
+                            </mat-form-field>
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                        </div>
+        
+        
+                     
+        
+                            <div class="col-md-12 align-items-center">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Allison
+        
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Cargo Damage
+        
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Collision
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Crew Sickness
+        
+                                    </li>
+        
+                                </ul>
+                            </div>
+        
+                       
+                    </form>
+
+             
+
+
+
+            </mat-tab>
+
+            <mat-tab label="Departments">
+                <!-- <cdk-virtual-scroll-viewport tvsItemSize headerHeight="56" rowHeight="48" style="height: 400px;"> -->
+
+               
+
+                    <form [formGroup]="userFormGroup">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <mat-form-field fxFlex="90">
+                                <input matInput placeholder="Search here" formControlName="search"
+                                    (keyup)="applyFilterClient($event.target.value)">
+                                <button mat-icon-button matSuffix><mat-icon style="padding-top: 7px;">search</mat-icon></button>
+                            </mat-form-field>
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                        </div>
+        
+        
+                     
+        
+                            <div class="col-md-12 align-items-center">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Allison
+        
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Cargo Damage
+        
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Collision
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Crew Sickness
+        
+                                    </li>
+        
+                                </ul>
+                            </div>
+        
+                       
+                    </form>
+                   
+               
+
+                <!-- </cdk-virtual-scroll-viewport> -->
+            </mat-tab>
+        
+            <mat-tab label="Vessels">
+                <!-- <cdk-virtual-scroll-viewport tvsItemSize headerHeight="56" rowHeight="48" style="height: 400px;"> -->
+
+               
+
+                    <form [formGroup]="userFormGroup">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <mat-form-field fxFlex="90">
+                                <input matInput placeholder="Search here" formControlName="search"
+                                    (keyup)="applyFilterClient($event.target.value)">
+                                <button mat-icon-button matSuffix><mat-icon style="padding-top: 7px;">search</mat-icon></button>
+                            </mat-form-field>
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                        </div>
+        
+        
+                     
+        
+                            <div class="col-md-12 align-items-center">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Allison
+        
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Cargo Damage
+        
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Collision
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="checkbox" value="" />
+                                        Crew Sickness
+        
+                                    </li>
+        
+                                </ul>
+                            </div>
+        
+                       
+                    </form>
+                   
+               
+
+                <!-- </cdk-virtual-scroll-viewport> -->
+            </mat-tab>
+        
+        </form>
+
+    </mat-tab-group>
+
+</div>
+        
+          
+
+   
+
+        <div fxFlex="70" class="emailcss">
+
+            <form [formGroup]="emailFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+                <div class="emailsendbtn">
+                    <div fxFlex="20">
+                        <button class="sendbutton">Send</button>
+                    </div>
+                    <div fxFlex="80">
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                            <mat-form-field fxFlex style="background-color: white;">
+                                <mat-label class="left-label">Email To</mat-label>
+                                <input type="text" formControlName="mail_to" matInput />
+                                <mat-error *ngIf="emailFormGroup.get('mail_to').hasError('required')">Email To is
+                                    required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                            <mat-form-field fxFlex style="background-color: white;">
+                                <mat-label class="left-label">CC</mat-label>
+                                <input type="text" formControlName="cc" matInput />
+                                <mat-error *ngIf="emailFormGroup.get('cc').hasError('required')">CC is
+                                    required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                            <mat-form-field fxFlex style="background-color: white;">
+                                <mat-label class="left-label">BCC</mat-label>
+                                <input type="text" formControlName="cc" matInput />
+                                <mat-error *ngIf="emailFormGroup.get('bcc').hasError('required')">BCC is
+                                    required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                            <mat-form-field fxFlex style="background-color: white;">
+                                <mat-label class="left-label">Fm</mat-label>
+                                <input type="text" formControlName="cc" matInput />
+                                <mat-error *ngIf="emailFormGroup.get('bcc').hasError('required')">BCC is
+                                    required</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+                <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <!-- Use a button to create a custom file upload button -->
+
+                    <mat-label>Attachments</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <input style="display: none;" type="file" id="imageupload" #fileInput
+                        (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+
+                    <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                        <label for="imageupload">
+                            Select</label>
+                    </button>
+                    <div *ngIf="selectedFileName" fxFlex>
+                        <span style="margin-top: 2px !important;" aria-placeholder="Select files"> {{ selectedFileName
+                            }}</span>
+                        <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+                    </div>
+
+                    <!-- File input element, hidden from view -->
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <quill-editor [styles]="{ height: '400px' }" id="textEditor" (onEditorCreated)="created($event)"
+                        (onContentChanged)="contentChanged($event)">
+                    </quill-editor>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" *ngIf="ErrorMessage">
+                    <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+                </div>
+            </form>
+        </div>
+    </mat-dialog-content>
+
+
+
+
+
+

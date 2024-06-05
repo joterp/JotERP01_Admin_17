@@ -1,0 +1,81 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Add New Inspection Reference
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<mat-dialog-content>
+    <form [formGroup]="newInspectionReferenceFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Activity</mat-label>
+                    <mat-select formControlName="drpActivity">
+                        <mat-option value="select">SELECT</mat-option>
+                        <mat-option value="Preparing_The_Ballast_Plan"> Preparing The Ballast Plan .</mat-option>
+                        <mat-option value="A_Child_Aged 2_Years_On_Board">A Child Aged 2 Years On Board</mat-option>
+                        <mat-option value="Activity_15/03/22">Activity 15/03/22</mat-option>
+                        <mat-option value="Ae_1_Decarbonisation_&_Liner_Renewal">Ae 1 Decarbonisation & Liner
+                            Renewal</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>SQL Procedure</mat-label>
+                    <mat-select formControlName="drpSQL_Procedure">
+                        <mat-option value="select">SELECT</mat-option>
+                        <mat-option value="Read_Report">001 - Read Report</mat-option>
+                        <mat-option value="Un_Read_Report">002 - Un Read Report</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-bottom: 10px;">
+                <h5>Activity/Operation</h5>
+                <quill-editor [styles]="{ height: '400px' }" id="textEditor" (onEditorCreated)="created($event)"
+                    (onContentChanged)="contentChanged($event)">
+                </quill-editor>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="44px" style="margin-bottom: 10px;">
+                <h5> Hazard/Impact</h5>
+                <quill-editor [styles]="{ height: '400px' }" id="textEditor" (onEditorCreated)="created($event)"
+                    (onContentChanged)="contentChanged($event)">
+                </quill-editor>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <h5>Control/Safeguard</h5>
+                <quill-editor [styles]="{ height: '400px' }" id="textEditor" (onEditorCreated)="created($event)"
+                    (onContentChanged)="contentChanged($event)">
+                </quill-editor>
+            </div>
+
+
+
+
+
+
+        </div>
+    </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+    <button mat-raised-button color="primary" class="save-btn">
+        Save
+    </button>
+    <button mat-raised-button color="primary" class="save-btn">
+        Save & Add new
+    </button>
+
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,52 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>
+    </span>
+    Add PMS FollowUp</div>
+
+
+    <mat-dialog-content style="height: 100% !important" class="add-followup">
+        <form [formGroup]="PMSFollowUpFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+            <div fxLayout="column" fxLayoutGap.gt-sm="24px" fxFlex >
+            <mat-form-field appearance="fill">
+              <mat-label>Date</mat-label>
+              <input type="text" formControlName="txtPMSFollowUp_Date" matInput />
+              
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Followup Details</mat-label>
+                <textarea
+                  matInput
+                  formControlName="txtFollowup_Details"
+               
+                ></textarea>
+              </mat-form-field>
+
+            </div>
+      
+          <div
+            fxLayout="column"
+            fxLayout.gt-sm="row"
+            fxLayoutGap.gt-sm="24px"
+            *ngIf="ErrorMessage"
+          >
+            <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+          </div>
+        </form>
+      </mat-dialog-content>
+
+      
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button
+          mat-raised-button
+          color="primary"
+          class="save-btn"
+        >
+          SAVE 
+        </button>
+        <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+      </mat-dialog-actions>
+      
+

@@ -1,0 +1,236 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+    <fury-page-layout mode="card" class="crew-salary-structure-add">
+
+        <div>
+            <form [formGroup]="SalaryStrucureAddFormGroup">
+
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Salary Component</mat-label>
+                        <input type="text" formControlName="txtSalary_Component" matInput />
+                        <mat-error *ngIf="SalaryStrucureAddFormGroup.get('txtSalary_Component').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Parent</mat-label>
+                        <mat-select formControlName="drpParent">
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <div fxFlex>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioMode_Of_Payment">
+
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="padding-bottom: 6px;vertical-align: top;">
+                                        <span style="font-family: tahoma;">Mode Of Payment <span
+                                                style="color:red;">*</span></span>
+                                    </td>
+
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <mat-radio-button value="0"
+                                                        [checked]="SalaryStrucureAddFormGroup.get('radioMode_Of_Payment').value == 0">
+                                                        <label
+                                                            [class.active-label]="SalaryStrucureAddFormGroup.get('radioMode_Of_Payment').value == 0"
+                                                            style="font-family: tahoma;">End of contract (EOC)</label>
+                                                    </mat-radio-button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <mat-radio-button value="1"
+                                                        [checked]="SalaryStrucureAddFormGroup.get('radioMode_Of_Payment').value == 1">
+                                                        <label
+                                                            [class.active-label]="SalaryStrucureAddFormGroup.get('radioMode_Of_Payment').value == 1"
+                                                            style="font-family: tahoma;">Begining of contract
+                                                            (BOC)</label>
+                                                    </mat-radio-button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <mat-radio-button value="2"
+                                                        [checked]="SalaryStrucureAddFormGroup.get('radioMode_Of_Payment').value == 2">
+                                                        <label
+                                                            [class.active-label]="SalaryStrucureAddFormGroup.get('radioMode_Of_Payment').value == 2"
+                                                            style="font-family: tahoma;">End of month (EOM)</label>
+                                                    </mat-radio-button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <mat-radio-button value="3"
+                                                        [checked]="SalaryStrucureAddFormGroup.get('radioMode_Of_Payment').value == 3">
+                                                        <label
+                                                            [class.active-label]="SalaryStrucureAddFormGroup.get('radioMode_Of_Payment').value == 3"
+                                                            style="font-family: tahoma;">Begining of next contract
+                                                            (BONC)</label>
+                                                    </mat-radio-button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <mat-radio-button value="4"
+                                                        [checked]="SalaryStrucureAddFormGroup.get('radioMode_Of_Payment').value == 4">
+                                                        <label
+                                                            [class.active-label]="SalaryStrucureAddFormGroup.get('radioMode_Of_Payment').value == 4"
+                                                            style="font-family: tahoma;">End of year (EOY)</label>
+                                                    </mat-radio-button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </mat-radio-group>
+                    </div>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-top: 10px;">
+                    <div fxFlex>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioType_Of_Payment">
+
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="padding-bottom: 6px;vertical-align: top;width: 33.8%;">
+                                        <span style="font-family: tahoma;">Type Of Payment <span
+                                                style="color:red;">*</span></span>
+                                    </td>
+
+                                    <td>
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 30%;"> <mat-radio-button value="0"
+                                                        [checked]="SalaryStrucureAddFormGroup.get('radioType_Of_Payment').value == 0">
+                                                        <label
+                                                            [class.active-label]="SalaryStrucureAddFormGroup.get('radioType_Of_Payment').value == 0"
+                                                            style="font-family: tahoma;">Manually</label>
+                                                    </mat-radio-button></td>
+                                                <td> <mat-radio-button value="1"
+                                                        [checked]="SalaryStrucureAddFormGroup.get('radioType_Of_Payment').value == 1">
+                                                        <label
+                                                            [class.active-label]="SalaryStrucureAddFormGroup.get('radioType_Of_Payment').value == 1"
+                                                            style="font-family: tahoma;">Calculated</label>
+                                                    </mat-radio-button></td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </mat-radio-group>
+                    </div>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-top: 10px;">
+                    <div fxFlex>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioHide_From_Master">
+
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="padding-bottom: 6px;vertical-align: top;width: 33.8%;">
+                                        <span style="font-family: tahoma;">Hide From Master <span
+                                                style="color:red;">*</span></span>
+                                    </td>
+
+                                    <td>
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 30%;"> <mat-radio-button value="0"
+                                                        [checked]="SalaryStrucureAddFormGroup.get('radioHide_From_Master').value == 0">
+                                                        <label
+                                                            [class.active-label]="SalaryStrucureAddFormGroup.get('radioHide_From_Master').value == 0"
+                                                            style="font-family: tahoma;">Yes</label>
+                                                    </mat-radio-button></td>
+                                                <td> <mat-radio-button value="1"
+                                                        [checked]="SalaryStrucureAddFormGroup.get('radioHide_From_Master').value == 1">
+                                                        <label
+                                                            [class.active-label]="SalaryStrucureAddFormGroup.get('radioHide_From_Master').value == 1"
+                                                            style="font-family: tahoma;">No</label>
+                                                    </mat-radio-button></td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </mat-radio-group>
+                    </div>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-top: 10px;">
+                    <div fxFlex>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioRate">
+
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="padding-bottom: 6px;vertical-align: top;width: 33.8%;">
+                                        <span style="font-family: tahoma;">Rate <span style="color:red;">*</span></span>
+                                    </td>
+
+                                    <td>
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 30%;"> <mat-radio-button value="0"
+                                                        [checked]="SalaryStrucureAddFormGroup.get('radioRate').value == 0">
+                                                        <label
+                                                            [class.active-label]="SalaryStrucureAddFormGroup.get('radioRate').value == 0"
+                                                            style="font-family: tahoma;">Monthly</label>
+                                                    </mat-radio-button></td>
+                                                <td> <mat-radio-button value="1"
+                                                        [checked]="SalaryStrucureAddFormGroup.get('radioRate').value == 1">
+                                                        <label
+                                                            [class.active-label]="SalaryStrucureAddFormGroup.get('radioRate').value == 1"
+                                                            style="font-family: tahoma;">Daily</label>
+                                                    </mat-radio-button></td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </mat-radio-group>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!SalaryStrucureAddFormGroup.valid ? '' : 'save-btn']"
+        [disabled]="!SalaryStrucureAddFormGroup.valid">
+        SAVE
+    </button>
+
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!SalaryStrucureAddFormGroup.valid">
+        SAVE & ADD NEW
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

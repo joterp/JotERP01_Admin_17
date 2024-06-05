@@ -1,0 +1,415 @@
+<div div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center" class="dialog-title">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+        Agency / Disbursement PO 
+    </span>
+    <button type="button" mat-icon-button (click)="CloseModal();">
+        <mat-icon>close</mat-icon>
+      </button>
+</div>
+
+<mat-dialog-content>
+
+    <div mode="card" class="agency-po">
+
+    
+        <mat-tab-group (animationDone)="check()" animationDuration="0ms" mat-stretch-tabs class="remove-border-bottom" style="margin-top: 10px;">
+
+        <form [formGroup]="AgencyPOForm">
+
+            <mat-tab label="Details" style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                <div style="padding:25px 77px 25px 77px;">
+
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+
+                        <mat-form-field appearance="fill" fxFlex>
+                            <mat-label>Vessel</mat-label>
+                            <mat-select formControlName="drpVessel">
+
+                            </mat-select>
+                            <mat-error
+                                *ngIf="AgencyPOForm.get('drpVessel').hasError('required')">
+                                Required</mat-error>
+                        </mat-form-field>
+
+                    </div>
+                    
+                        <div fxLayout="column" fxLayout.gt-sm="row">
+
+                        <mat-form-field appearance="fill" fxFlex>
+                            <mat-label>Template Type</mat-label>
+                            <mat-select formControlName="drpTemplate_Type">
+
+                            </mat-select>
+                            <mat-error
+                                *ngIf="AgencyPOForm.get('drpTemplate_Type').hasError('required')">
+                                Required</mat-error>
+                        </mat-form-field>
+
+                    </div>
+                                  
+                        <div fxLayout="column" fxLayout.gt-sm="row">
+
+                        <mat-form-field appearance="fill" fxFlex>
+                            <mat-label>Department</mat-label>
+                            <mat-select formControlName="drpDepartment">
+
+                            </mat-select>
+                            <mat-error
+                                *ngIf="AgencyPOForm.get('drpDepartment').hasError('required')">
+                                Required</mat-error>
+                        </mat-form-field>
+
+                    </div>
+                                  
+                        <div fxLayout="column" fxLayout.gt-sm="row">
+
+                        <mat-form-field appearance="fill" fxFlex>
+                            <mat-label>Catalogue</mat-label>
+                            <mat-select formControlName="drpCatalogue">
+
+                            </mat-select>
+                            <mat-error
+                                *ngIf="AgencyPOForm.get('drpCatalogue').hasError('required')">
+                                Required</mat-error>
+                        </mat-form-field>
+
+                    </div>
+                 
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+
+                        <mat-form-field appearance="fill" fxFlex>
+                            <mat-label>Supplier</mat-label>
+                            <mat-select formControlName="drpSupplier">
+
+                            </mat-select>
+                            <mat-error
+                                *ngIf="AgencyPOForm.get('drpSupplier').hasError('required')">
+                                Required</mat-error>
+                        </mat-form-field>
+
+                    </div>
+                 
+                  
+
+                    <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" style="margin-top: 12px;">
+                        <button mat-raised-button class="continue-btn-angency">
+                            Continue
+                        </button>
+
+                    </mat-dialog-actions>
+
+                </div>
+
+            </mat-tab>
+            
+            <mat-tab label="Details" style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                <div style="padding:25px 77px 25px 77px;">
+
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Account Code</mat-label>
+                          <mat-select formControlName="drpAccount_Code">
+                            
+                            
+                          </mat-select>
+                          <mat-error
+                          *ngIf="AgencyPOForm.get('drpAccount_Code').hasError('required')">
+                          Required</mat-error>
+                        </mat-form-field>
+                      </div>
+            
+            
+              
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+                          <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Currency</mat-label>
+                            <mat-select formControlName="drpCurrency">
+                              <mat-option value="Arrival">Alongside</mat-option>
+                                    <mat-option value="Departure">Anchorage</mat-option>
+                                    <mat-option value="Departure">At Sea</mat-option>
+                                    <mat-option value="Departure">Drifting</mat-option>
+                                    <mat-option value="Departure">SBM</mat-option>
+                                    <mat-option  value="Departure">STS</mat-option>
+                            </mat-select>
+
+                            <mat-error
+                          *ngIf="AgencyPOForm.get('drpCurrency').hasError('required')">
+                          Required</mat-error>
+                          </mat-form-field>
+            
+                          <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Discount</mat-label>
+                        <input formControlName="txtDiscount" matInput placeholder="Search by Discount" type="text" />
+                          </mat-form-field>
+                        </div>
+            
+            
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label>Packing/Handling</mat-label>
+                                <input formControlName="txtPacking" matInput placeholder="Search by Packing" type="text" />
+                                  </mat-form-field>
+              
+                            <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Truck</mat-label>
+                          <input formControlName="txtTruck" matInput placeholder="Search by Truck" type="text" />
+                            </mat-form-field>
+                          </div>
+            
+            
+                          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+                          
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label>Reason(Packing)</mat-label>
+                                <textarea
+                                matInput
+                                formControlName="txtReason_Packing"
+                                ></textarea>
+                            </mat-form-field>
+                   
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Barge</mat-label>
+                            <input formControlName="txtBarge" matInput placeholder="Search by Barge" type="text" />
+                        </mat-form-field>
+                        </div>
+            
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+                          
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label>Other Charges</mat-label>
+                                <input formControlName="txtOther_Charges" matInput placeholder="Search by Charges" type="text" />
+                            </mat-form-field>
+                   
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Other Freight</mat-label>
+                            <input formControlName="txtFreight" matInput placeholder="Search by Freight" type="text" />
+                        </mat-form-field>
+                        </div>
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+                          
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label>VAT/GST</mat-label>
+                                <input formControlName="txtVAT" matInput placeholder="Search by Charges" type="text" />
+                            </mat-form-field>
+                   
+                        
+                        </div>
+            
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+                          
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label>Other Charges reason</mat-label>
+                                <textarea
+                                matInput
+                                formControlName="txtCharges_Reason"
+                                ></textarea>
+                            </mat-form-field>
+                   
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label>Comments</mat-label>
+                                <textarea
+                                matInput
+                                formControlName="txtComments"
+                                ></textarea>
+                            </mat-form-field>
+                        </div>
+
+
+                  
+                        <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" style="margin-top: 12px;">
+                            <button mat-raised-button class="continue-btn-angency">
+                                Back
+                            </button>
+                            <button mat-raised-button class="continue-btn-angency" style="margin-left: 10px">
+                                Continue
+                            </button>
+                           
+                        </mat-dialog-actions>
+
+                </div>
+
+            </mat-tab>  
+            
+            <mat-tab label="Details" style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                <div style="padding-top:25px">
+
+               
+    
+                        <div>
+                            <div #TABLE>
+                                <table [dataSource]="AgencyPOdataSource" mat-table matSort #table
+                                    class="details-table">
+                                    <ng-container matColumnDef="Dept">
+                                        <th *matHeaderCellDef class="actions-cell"
+                                            [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                                            mat-sort-header>
+                                            Dept
+                                        </th>
+                                        <!-- <td
+                          *matCellDef="let row; let i = index"
+                          class="actions-cell"
+                          [ngStyle]="{ 'white-space': 'initial' }"
+                          mat-cell
+                        >
+                          <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                        </td> -->
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="Staff_Code">
+                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                            mat-sort-header>
+                                            Staff Code
+                                        </th>
+                                        <!-- <td
+                          *matCellDef="let row; let i = index"
+                          class="actions-cell"
+                          mat-cell
+                        >
+                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                        </td> -->
+                                    </ng-container>
+                                    <ng-container matColumnDef="Service_Details">
+                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                            mat-sort-header>
+                                            Service Details
+                                        </th>
+                                        <!-- <td
+                            *matCellDef="let row; let i = index"
+                            class="actions-cell"
+                            mat-cell
+                          >
+                            <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                          </td> -->
+                                    </ng-container>
+                                    <ng-container matColumnDef="Qty">
+                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                            mat-sort-header>
+                                            Qty
+                                        </th>
+                                        <!-- <td
+                          *matCellDef="let row; let i = index"
+                          class="actions-cell"
+                          mat-cell
+                        >
+                          <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                        </td> -->
+                                    </ng-container>
+                                    <ng-container matColumnDef="Unit_Price">
+                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                            mat-sort-header>
+                                            Unit Price
+                                        </th>
+                                        <!-- <td
+                            *matCellDef="let row; let i = index"
+                            class="actions-cell"
+                            mat-cell
+                          >
+                            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                          </td> -->
+                                    </ng-container>
+                                    <ng-container matColumnDef="Total_Price">
+                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                            mat-sort-header>
+                                            Total Price
+                                        </th>
+                                        <!-- <td
+                            *matCellDef="let row; let i = index"
+                            class="actions-cell"
+                            mat-cell
+                          >
+                            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                          </td> -->
+                                    </ng-container>
+                                    <ng-container matColumnDef="Approved">
+                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                            mat-sort-header>
+                                            Approved
+                                        </th>
+                                        <!-- <td
+                            *matCellDef="let row; let i = index"
+                            class="actions-cell"
+                            mat-cell
+                          >
+                            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                          </td> -->
+                                    </ng-container>
+                                    <ng-container matColumnDef="Delivered">
+                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                            mat-sort-header>
+                                            Delivered
+                                        </th>
+                                        <!-- <td
+                            *matCellDef="let row; let i = index"
+                            class="actions-cell"
+                            mat-cell
+                          >
+                            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                          </td> -->
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="Comments">
+                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                            mat-sort-header>
+                                            Comments
+                                        </th>
+                                        <!-- <td
+                            *matCellDef="let row; let i = index"
+                            class="actions-cell"
+                            mat-cell
+                          >
+                            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                          </td> -->
+                                    </ng-container>
+
+                                    <tr *matHeaderRowDef="visibleColumnsAgencyPO" mat-header-row>
+                                    </tr>
+                                    <tr *matRowDef="let row; columns: visibleColumnsAgencyPO"
+                                        class="clickable route-animations-elements" mat-row></tr>
+                                    <tr class="mat-row" *matNoDataRow>
+                                        <td class="mat-cell" colspan="9999">No data found</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"
+                                [pageSize]="pageSize"></mat-paginator>
+                        </div>
+
+              
+
+                
+                  
+                        <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" style="margin-top: 12px;">
+                            <button mat-raised-button class="continue-btn-agency">
+                                Back
+                            </button>
+                            <button mat-raised-button class="send-btn-agency" style="margin-left: 10px">
+                            Raise and Send for Approval
+                            </button>
+                           
+                        </mat-dialog-actions>
+
+                </div>
+
+            </mat-tab>    
+
+        </form>
+     
+
+
+</mat-tab-group>
+            
+    
+     
+    
+        </div>
+
+</mat-dialog-content>
+
+
+
+
+
+

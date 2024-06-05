@@ -1,0 +1,313 @@
+<fury-page-layout mode="card" class="alarm-index">
+
+    <fury-page-layout-header>
+
+        <form [formGroup]="rankSalaryAssignmentFilterFormGroup">
+
+            <h3 class="unit-packing" style="text-align: center; margin: 30px;">
+
+                <span class="first-letter">S</span>TAFF
+                <span class="fifth-letter">R</span>ANK
+                <span class="first-letter">S</span>ALARY
+                <span class="first-letter">A</span>SSIGNMENT
+            </h3>
+
+
+            <div class="filter-area">
+                <div fxLayout="row" fxLayoutAlign="start">
+
+                    <div fxFlex>
+
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Salay Name</mat-label>
+                            <mat-select formControlName="drpSalary_Name">
+                                <mat-option value="Select">- Select -</mat-option>
+                                <mat-option value="Bangladesh_salary">Bangladesh - salary</mat-option>
+                                <mat-option value="Indian_Salary">Indian - Salary</mat-option>
+                                <mat-option value="Other_Crew_salary">Other Crew- salary</mat-option>
+                                <mat-option value="Salary_Taiwan">Salary_Taiwan</mat-option>
+                                <mat-option value="Standard_Salary">Standard Salary</mat-option>
+                                <mat-option value="USD_UnitedStatesDollar">USD - United States
+                                    Dollar</mat-option>
+
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Nationality</mat-label>
+                            <mat-select formControlName="drpNationality">
+                                <mat-option value="Select">Select</mat-option>
+                                <mat-option value="Afghanistan">Afghanistan</mat-option>
+                                <mat-option value="Australia">Australia</mat-option>
+                                <mat-option value="Germany">Germany</mat-option>
+                                <mat-option value="Japan">Japan</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel Flag</mat-label>
+                            <mat-select formControlName="drpVessel_Flag">
+                                <mat-option value="select">Select</mat-option>
+                                <mat-option value="ASIA">ASIA</mat-option>
+                                <mat-option value="Hong_Kong">Hong Kong (PIL)</mat-option>
+                                <mat-option value="Indonesia">Indonesia</mat-option>
+                                <mat-option value="Tri_Colour">Tri Colour</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel Type</mat-label>
+                            <mat-select formControlName="drpVessel_Type">
+                                <mat-option value="select">Select</mat-option>
+                                <mat-option value="Aframax_Tanker">Aframax Tanker</mat-option>
+                                <mat-option value="Anchor_Handling_Vessel">Anchor Handling Vessel</mat-option>
+                                <mat-option value="Landing_Craft">Landing Craft</mat-option>
+                                <mat-option value="Reefer_Vessel">Reefer Vessel</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+
+                    <div fxFlex>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Rank</mat-label>
+                            <mat-select formControlName="drpRank">
+                                <mat-option value="MST-Master">MST- Master</mat-option>
+                                <mat-option value="Officer">3/OFF - 3rd Officer</mat-option>
+                                <mat-option value="Junior_Officer">J/OFF - Junior Officer</mat-option>
+                                <mat-option value="Deck_Cadet">DCT - Deck Cadet</mat-option>
+                                <mat-option value="Chief_Engineer">C/E - Chief Engineer</mat-option>
+                                <mat-option value="Trainee_Chief_Engineer">C/E-T - Trainee Chief Engineer</mat-option>
+                                <mat-option value="Trainee_Engineer">2/E-T - Trainee 2nd Engineer</mat-option>
+                                <mat-option value="Engineer">3/E - 3rd Engineer</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Effective Date Form</mat-label>
+                            <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerFrom></mat-datepicker>
+                        </mat-form-field>
+
+                    </div>
+
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Status</mat-label>
+                            <mat-select formControlName="drpStatus">
+                                <mat-option value="2">Show Active</mat-option>
+                                <mat-option value="1">Show Deleted</mat-option>
+                                <mat-option value="0">Show All</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Effective Date To</mat-label>
+                            <input matInput formControlName="Date_To" [matDatepicker]="pickerTo" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerTo></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="filter-btn-area" fxFlex>
+                        <div>
+                            <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                            <button mat-raised-button color="primary" style="background-color: #5cb85c;"
+                                class="filter-btn">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button"
+                                (click)="clearFilter()">
+                                Clear Filter
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+        <div class="actions-area">
+
+            <div fxLayout="row">
+                <button mat-mini-fab color="primary" [matTooltip]="'Add Salary Assignment'"
+                    class="add-approve-btn save-btn" (click)="saveSalaryStatement(null,false)">
+                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                </button>
+                <span style="margin-top: 3px;
+          margin-left: 6px;font-size: 15px;">Add New Salary Assignment</span>
+            </div>
+
+
+            <div fxLayout="row">
+                <form [formGroup]="ImportFilterFormGroup">
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px"
+                   >
+                   
+                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_Reqsn_Status">
+                        <mat-radio-button value="1"
+                            [checked]="ImportFilterFormGroup.get('radioNew_Reqsn_Status').value == 1">
+                            <label
+                                [class.active-label]="ImportFilterFormGroup.get('radioNew_Reqsn_Status').value == 1">Show current Records</label>
+                        </mat-radio-button>
+                        <mat-radio-button value="0"
+                            [checked]="ImportFilterFormGroup.get('radioNew_Reqsn_Status').value == 0">
+                            <label
+                                [class.active-label]="ImportFilterFormGroup.get('radioNew_Reqsn_Status').value == 0">Show All Records</label>
+                        </mat-radio-button>
+                        
+                    </mat-radio-group>
+                </div>
+                </form>
+
+            </div>
+
+            <div fxLayout="row">
+
+                <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                    <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                </button>
+                <mat-card-title
+                    style="margin-left: 5px;margin-top: 3px;margin-right: 12px;font-size: medium;font-weight: bold;">Clear
+                    Filter</mat-card-title>
+                <span>
+                    <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                </span>
+
+
+            </div>
+
+
+
+        </div>
+
+        <div #TABLE>
+            <table [dataSource]="dtlAlarmIndexdataSource" mat-table matSort #table class="details-table">
+
+                <ng-container matColumnDef="Salary_Name">
+                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                        mat-sort-header>
+                        Salary Name
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Nationality">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Nationality
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Vessel_Flag">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Vessel Flag
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Vessel_Type">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Vessel Type
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Rank">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Rank
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Effective_Date_From">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Effective Date From
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Effective_Date_To">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Effective Date To
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Earning">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Earning
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Deduction">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Deduction
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Action">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Action
+                    </th>
+                    <td *matCellDef="let row" class="actions-cell" mat-cell>
+                        <!-- -->
+                        <button mat-icon-button color="primary">
+                            <mat-icon class="icon-display">edit</mat-icon>
+                        </button>
+
+                        <button mat-icon-button color="warn">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon-display">info</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                </tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                </tr>
+            </table>
+        </div>
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+    </fury-page-layout-content>
+
+</fury-page-layout>

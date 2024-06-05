@@ -1,0 +1,182 @@
+<div div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center" class="dialog-title">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+       Running Hours History
+    </span>
+    <button type="button" mat-icon-button (click)="CloseModal();">
+        <mat-icon>close</mat-icon>
+      </button>
+</div>
+
+
+<mat-dialog-content>
+
+    <div >
+        <div class="pmsupdaterunning-view" style="text-align: center;">
+          
+           <div>
+             <table style="text-align: center;width: 100%;margin-bottom: 20px;
+             margin-top: 20px;">
+               <tr>
+                 <td>Vessel Name</td>
+                 <td>&nbsp;</td>
+                 <td style="text-align: start;">Stena A</td>
+               </tr>
+               <tr>
+                 <td>Catalogue</td>
+                 <td>&nbsp;</td>
+                 <td style="text-align: start;">A.E Fuel Oil Bypass Filter</td>
+               </tr>
+               <tr>
+                 <td>Model</td>
+                 <td>&nbsp;</td>
+                 <td style="text-align: start;"></td>
+               </tr>
+               <tr>
+                 <td>Maker Name</td>
+                 <td>&nbsp;</td>
+                 <td style="text-align: start;"></td>
+               </tr>
+               <tr>
+                 <td>Particulars</td>
+                 <td>&nbsp;</td>
+                 <td style="text-align: start;"></td>
+               </tr>
+               <tr>
+                 <td>Sets Installed</td>
+                 <td>&nbsp;</td>
+                 <td style="text-align: start;">0</td>
+               </tr>
+     
+             </table>
+           </div>
+     
+           <div #TABLE>
+             <table
+               [dataSource]="RunningHoursdataSource"
+               mat-table
+               matSort
+               #table
+               class="details-table"
+             >
+               <ng-container matColumnDef="Record_Date">
+                 <th
+                   *matHeaderCellDef
+                   class="actions-cell"
+                   [ngStyle]="{ 'white-space': 'initial' }"
+                   mat-header-cell
+                   mat-sort-header
+                 >
+                 Record Date
+                 </th>
+                 <!-- <td
+                   *matCellDef="let row; let i = index"
+                   class="actions-cell"
+                   [ngStyle]="{ 'white-space': 'initial' }"
+                   mat-cell
+                 >
+                   <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                 </td> -->
+               </ng-container>
+     
+               <ng-container matColumnDef="Running_Hours">
+                 <th
+                   *matHeaderCellDef
+                   class="actions-cell"
+                   [ngStyle]="{ 'white-space': 'initial' }"
+                   mat-header-cell
+                   mat-sort-header
+                 >
+                 Running Hours
+                 </th>
+                 
+                 <!-- <td
+                   *matCellDef="let row; let i = index"
+                   class="actions-cell"
+                   [ngStyle]="{ 'white-space': 'initial' }"
+                   mat-cell
+                 >
+                   <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                 </td> -->
+               </ng-container>
+     
+                 <!-- Header row first group -->
+       <ng-container matColumnDef="header-row-first-group" >
+         <th mat-header-cell *matHeaderCellDef 
+             [style.text-align]="center"
+            style="color: #000;"
+            > 
+     <table>
+       <tr>
+         <td>From</td>
+         <td>:</td>
+         <td><input type="date" id="from" name="from"></td>
+         <td>   <span>
+           <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+           border: 1px solid grey;
+           background: linear-gradient(#ffffff, #dfdfdf);
+           border-radius: 3px;    margin-top: 5px;
+     
+          "/>
+       </span></td>
+     
+       <td>To</td>
+       <td>:</td>
+       <td><input type="date" id="from" name="from"></td>
+       <td>   <span>
+         <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+         border: 1px solid grey;
+         background: linear-gradient(#ffffff, #dfdfdf);
+         border-radius: 3px;    margin-top: 5px;
+     
+        "/>
+     </span></td>
+       </tr>
+     </table>
+     
+           
+         </th>
+       </ng-container>
+       
+       <!-- Header row second group -->
+       <ng-container matColumnDef="header-row-second-group">
+         <th mat-header-cell *matHeaderCellDef style="color: #000;">
+           <table>
+             <tr>
+               
+               <td><input type="text" id="from" name="from"></td>
+               <td>   <span>
+                 <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                 border: 1px solid grey;
+                 background: linear-gradient(#ffffff, #dfdfdf);
+                 border-radius: 3px;margin-top: 5px;
+           
+                "/>
+             </span></td>
+         
+             </tr>
+           </table>
+         </th>
+       </ng-container>
+             
+               <tr *matHeaderRowDef="visibleColumnsRunningHours" mat-header-row></tr>
+               <tr mat-header-row *matHeaderRowDef="['header-row-first-group', 'header-row-second-group']" style="background: #dfdede;"></tr>
+     
+               <tr
+                 *matRowDef="let row; columns: visibleColumnsRunningHours"
+                 class="clickable route-animations-elements"
+                 mat-row
+               ></tr>
+               <tr class="mat-row" *matNoDataRow>
+                 <td class="mat-cell" colspan="9999">No data found</td>
+               </tr>
+             </table>
+           </div>
+           <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+     
+     
+         </div>
+         </div>
+      
+</mat-dialog-content>

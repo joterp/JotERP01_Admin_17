@@ -1,0 +1,264 @@
+
+<fury-page-layout mode="card" class="crew-matrixLog">
+ 
+    <mat-accordion >
+        <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;border-radius: 10px;margin: 20px;
+    ">
+            <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;height: 36px;    border-radius: 1px;
+            ">
+                <mat-panel-title class="panel-title" style="color: Blue;
+                font-weight: bold;">
+                    Search Criteria
+                </mat-panel-title>
+                <mat-panel-description class="panel-desc">
+    
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+          
+            <form [formGroup]="matrixExceptionLogFormGroup" >
+        
+                <h3 class="unit-packing" style="text-align: center;">
+                  <span class="first-letter">C</span>REW  
+                  <span class="first-letter">M</span>ATRIX
+                  <span class="first-letter">E</span>XCEPTION 
+                  <span class="first-letter">L</span>OG 
+                </h3>
+            
+              
+              <div class="filter-area">
+                <div fxLayout="row" fxLayoutAlign="start">
+        
+                  <div fxFlex>
+                   
+                      <mat-form-field appearance="fill">
+                          <mat-label>Rule</mat-label>
+                          <mat-select formControlName="drpRule" >
+                            <mat-option value="Select">SELECT</mat-option>
+                            <mat-option value="Joining_Document_Checklist">1. Pre -Joining Document Checklist</mat-option>
+                            <mat-option value="Document_for_sign_on_of_the_crew">2. Document for sign on of the crew</mat-option>
+                            <mat-option value="Experience_in_selected_rank(in months)">3. Experience in selected rank(in months)</mat-option>
+                            <mat-option value="Indeminity_Contract_Document_Check">4. Indeminity Contract Document Check</mat-option>
+                            <mat-option value="VMT_Nationality_Control">5. VMT Nationality Control</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Seafarer</mat-label>
+                      <input formControlName="txtSeafarer" matInput placeholder="Search by Seafarer" type="text" />
+                    </mat-form-field>
+      
+                  </div>
+      
+                  <div fxFlex>
+                      
+      
+                      <mat-form-field appearance="fill">
+                          <mat-label>Vessel Name</mat-label>
+                          <mat-select  #select multiple formControlName="drpVessel_Name">
+                            <div class="select-all">
+                                <mat-checkbox [(ngModel)]="allSelected"
+                                                [ngModelOptions]="{standalone: true}"
+                                                (change)="toggleAllSelection()">Check All</mat-checkbox>
+                            </div>
+                            <mat-option (click)="optionClick()" *ngFor="let vsl of Vessel" [value]="vsl.value">
+                              {{vsl.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Rank</mat-label>
+                          <mat-select formControlName="drpRank" >
+                            <mat-option value="Master">MST-Master</mat-option>
+                            <mat-option value="Trainee_Officer">MST-T - Trainee Master</mat-option>
+                            <mat-option value="Chief_Officer">C/OFF - Chief Officer</mat-option>
+                            <mat-option value="Officer">3/OFF - 3rd Officer</mat-option>
+                            <mat-option value="Junior_Officer">J/OFF - Junior Officer</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      
+                  </div>
+                  <div fxFlex>
+                   
+                    <mat-form-field appearance="fill">
+                      <mat-label>Raised By</mat-label>
+                      <input formControlName="txtRaised_By" matInput placeholder="Search by Raised By " type="text" />
+                    </mat-form-field>
+      
+                    <mat-form-field appearance="fill">
+                      <mat-label>Approved By</mat-label>
+                      <input formControlName="txtApproved_By" matInput placeholder="Search by Approved By " type="text" />
+                    </mat-form-field>
+      
+      
+                    
+                </div>
+      
+      
+      
+        
+      
+                 
+        
+                  <div class="filter-btn-area" fxFlex>
+                    <div>
+                      <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                        Search
+                      </button> -->
+                      <button
+                      mat-raised-button
+                      color="primary"
+                     style="background-color: #5cb85c;"
+                      class="filter-btn"
+                    
+                    >
+                      Search
+                    </button>
+                    </div>
+        
+                    <div>
+                      <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                        type="button" (click)="clearFilter()">
+                        Clear
+                      </button>
+                    </div>
+                  </div>
+        
+        
+                </div>
+              </div>
+            </form>
+      
+        </mat-expansion-panel>
+      </mat-accordion>
+      
+     
+   
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+     
+  
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="crewDocumentdataSource"  class="example-container">
+  
+  
+  
+  
+          <ng-container matColumnDef="By">
+            <th mat-header-cell *matHeaderCellDef  class="borderstyle" style="    color: White;
+            background-color: #999355;">By</th>
+  
+          </ng-container>
+  
+          <ng-container matColumnDef="Date">
+            <th mat-header-cell *matHeaderCellDef  class="borderstyle" style="    color: White;
+            background-color: #999355;"> Date </th>
+  
+          </ng-container>
+          <ng-container matColumnDef="Remarks">
+            <th mat-header-cell *matHeaderCellDef  class="borderstyle" style="    color: White;
+            background-color: #999355;"> Date </th>
+  
+          </ng-container>
+          <ng-container matColumnDef="By_Two">
+            <th mat-header-cell *matHeaderCellDef  class="borderstyle" style="    color: White;
+            background-color: #496335;">By</th>
+  
+          </ng-container>
+  
+          <ng-container matColumnDef="Date_Two">
+            <th mat-header-cell *matHeaderCellDef  class="borderstyle" style="    color: White;
+            background-color: #496335;"> Date </th>
+  
+          </ng-container>
+          <ng-container matColumnDef="Remarks_Two">
+            <th mat-header-cell *matHeaderCellDef  class="borderstyle" style="    color: White;
+            background-color: #496335;">  Date </th>
+  
+          </ng-container>
+          
+  
+          
+  
+        
+        
+  
+  
+  
+  
+  
+  
+  
+  
+          <ng-container matColumnDef="header-row-first-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle" style="    color: White;
+            background-color: #1F497D;">
+          Rule
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-second-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle" style="color: White;
+            background-color: #1F497D;">
+          Exception Applied Seafarer
+            </th>
+          </ng-container>
+  
+          <ng-container matColumnDef="header-row-third-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle" style="color: White;
+            background-color: #1F497D;">
+          Vessel
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-fourth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle" style="color: White;
+            background-color: #1F497D;">
+          Rank
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-fifth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="3"  class="borderstyle" style="    color: White;
+            background-color: #999355;">
+          Raised
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-sixth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="3"  class="borderstyle" style="    color: White;
+            background-color: #496335;">
+           Approved
+            </th>
+          </ng-container>
+  
+         
+         
+          <!-- <ng-container matColumnDef="header-row-eighth-group">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+              Action
+            </th>
+            <td *matCellDef="let row" class="actions-cell" mat-cell>
+             
+              <button mat-icon-button color="primary">
+                <mat-icon class="icon-display">edit</mat-icon>
+              </button>
+  
+              <button mat-icon-button color="warn" >
+                <mat-icon>close</mat-icon>
+              </button>
+              <button mat-icon-button  >
+                <mat-icon class="icon-display">info</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+   -->
+         
+          <tr mat-header-row
+            *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group','header-row-fifth-group','header-row-sixth-group']">
+          </tr>
+          <tr mat-header-row *matHeaderRowDef="crewDocumentvisibleColumns;sticky:true"></tr>
+          <tr mat-row *matRowDef="let row; columns: crewDocumentvisibleColumns;"></tr>
+        </table>
+  
+      </div>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

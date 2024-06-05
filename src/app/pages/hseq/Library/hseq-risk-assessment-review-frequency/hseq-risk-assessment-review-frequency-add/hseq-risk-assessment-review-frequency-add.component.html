@@ -1,0 +1,50 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Risk Activity Rating
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <form [formGroup]="newInspectionReferenceFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+       
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Ratings</mat-label>
+            <mat-select formControlName="drpRatings">
+                <mat-option value="select">SELECT</mat-option>
+                <mat-option value="Green">Green</mat-option>
+                <mat-option value="Red">Red</mat-option>
+                <mat-option value="Yellow">Yellow</mat-option>
+            </mat-select>
+        </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Activity Frequency</mat-label>
+              <input formControlName="txtActivity_Frequency" matInput placeholder="Search by Months"
+                  type="text" />
+          </mat-form-field>
+          </div>
+       
+        
+       
+        
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Add new
+      </button>
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

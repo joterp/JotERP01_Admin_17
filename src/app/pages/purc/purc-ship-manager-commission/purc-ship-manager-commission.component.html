@@ -1,0 +1,386 @@
+<fury-page-layout mode="card" class="shipmanager-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+  
+
+      <form >
+        <!-- <div>  
+              <h2>{{routeTitle}}</h2>
+          </div> -->
+        <h3>
+  
+          <span class="first-letter">S</span>HIP
+          <span class="first-letter">M</span>ANAGER
+          <span class="first-letter">C</span>OMMISSION
+          <span class="first-letter">R</span>EPORT
+        </h3>
+       
+      </form>
+    </fury-page-layout-header>
+  
+  
+    <fury-page-layout-content [@fadeInUp]>
+  
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;
+        ">
+          <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;">
+            <mat-panel-title class="panel-title">
+              Search Criteria
+            </mat-panel-title>
+            <mat-panel-description class="panel-desc">
+            
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+  
+          <form [formGroup]="AdditionalFilterForm">
+            <div class="filter-area">
+  
+              <div fxLayout="row" fxLayoutAlign="start">
+  
+                <div fxFlex>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Vessel</mat-label>
+                    <mat-select formControlName="drpVessel">
+                      <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Supplier</mat-label>
+                    <mat-select formControlName="drpSupplier">
+                      <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+  
+                </div>
+  
+                <div fxFlex>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Stages</mat-label>
+                    <mat-select formControlName="drpStages">
+                      <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Case Status</mat-label>
+                    <mat-select formControlName="drpCase_Status">
+                      <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+  
+                </div>
+  
+                <div fxFlex>
+                    <mat-form-field appearance="fill">
+                        <mat-label>PO From</mat-label>
+                        <input
+                          matInput
+                          formControlName="PO_From"
+                          [matDatepicker]="pickerpofrom"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="pickerpofrom"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #pickerpofrom></mat-datepicker>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="fill">
+                        <mat-label>PO To</mat-label>
+                        <input
+                          matInput
+                          formControlName="PO_From_To"
+                          [matDatepicker]="pickerpofromto"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="pickerpofromto"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #pickerpofromto></mat-datepicker>
+                      </mat-form-field>              
+                </div>
+    
+                <div fxFlex>
+                   
+                      <mat-form-field appearance="fill">
+                        <mat-label>Invoice From</mat-label>
+                        <input
+                          matInput
+                          formControlName="Invoice_From"
+                          [matDatepicker]="pickerinvoicefrom"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="pickerinvoicefrom"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #pickerinvoicefrom></mat-datepicker>
+                      </mat-form-field>
+    
+                      <mat-form-field appearance="fill">
+                        <mat-label>Invoice To</mat-label>
+                        <input
+                          matInput
+                          formControlName="Invoice_To"
+                          [matDatepicker]="pickerinvoiceto"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="pickerinvoiceto"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #pickerinvoiceto></mat-datepicker>
+                      </mat-form-field>
+                 
+                </div>
+      
+              
+                <div fxFlex>
+  
+                  <mat-form-field appearance="fill">
+                    <mat-label>Reqsn / PO / INV</mat-label>
+                    <input type="text" formControlName="txtReqsn_PO_INV" matInput />
+  
+                  </mat-form-field>
+ 
+                </div>
+                <div class="filter-btn-area" fxFlex>
+                    <div>
+                      <button class="create" mat-raised-button color="primary" class="filter-btn">
+                        Search
+                      </button>
+                    </div>
+        
+                    <div>
+                      <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                        Clear
+                      </button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </form>
+  
+  
+  
+        </mat-expansion-panel>
+      </mat-accordion>
+  
+  
+    </fury-page-layout-content>
+
+    <fury-page-layout-content [@fadeInUp] style="margin-top:9px;">
+        <div class="actions-area">
+            <span style="cursor: pointer">
+              <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+              <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+              <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+            </span>
+        </div>
+        <div #TABLE>
+          <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+           
+        
+            <ng-container matColumnDef="Requisition#">
+              <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;"> Requisition # </th>
+    
+            </ng-container>
+    
+            <ng-container matColumnDef="PO#">
+              <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;"> PO # </th>
+    
+            </ng-container>
+            <ng-container matColumnDef="Purchase_Date">
+              <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">Date</th>
+    
+            </ng-container>
+            <ng-container matColumnDef="Purchase_CUR">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">CUR</th>
+      
+              </ng-container>
+              <ng-container matColumnDef="Purchase_Value">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">Value</th>
+      
+              </ng-container>
+            
+              <ng-container matColumnDef="Acct_Code">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">Acct Code</th>
+      
+              </ng-container>
+              <ng-container matColumnDef="Invoice#">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">Invoice #</th>
+                    <td><button (click)="ShowInvoiceData()">invoice</button></td>
+      
+              </ng-container>
+              <ng-container matColumnDef="Invoice_CUR">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">CUR</th>
+      
+              </ng-container>
+              <ng-container matColumnDef="Invoice_Value">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;"> Value</th>
+      
+              </ng-container>
+
+              <ng-container matColumnDef="Invoice_Date">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">Date</th>
+      
+              </ng-container>
+              <ng-container matColumnDef="%">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">%</th>
+      
+              </ng-container>
+              <ng-container matColumnDef="Amount">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">Amount</th>
+      
+              </ng-container>
+              <ng-container matColumnDef="Commission_CUR">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">Commission CUR</th>
+      
+              </ng-container>
+    
+            <ng-container matColumnDef="header-row-first-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                Vessel
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-second-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="1" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                Requisition
+              </th>
+            </ng-container>
+            
+    
+            <ng-container matColumnDef="header-row-third-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="5" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                  Purchase Order
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-fourth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;" >   
+                Supplier
+              </th>
+              <td (click)="SaveData()"></td>
+            </ng-container>
+            <ng-container matColumnDef="header-row-fifth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="4" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+             Invoice
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-sixth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                 Stage
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-seventh-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="3" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+               Commission
+              </th>
+            </ng-container>
+    
+            <ng-container matColumnDef="header-row-eighth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+               Recieved Amount
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-eighth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+                Balance
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-ninth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                 Case Status
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-tenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+               
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-eleventh-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                
+                </th>
+              </ng-container>
+             
+            <tr mat-header-row
+              *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group',
+              'header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group','header-row-ninth-group', 
+              'header-row-tenth-group','header-row-eleventh-group']"
+              style="height:32px">
+            </tr>
+    
+    
+    
+            <tr *matHeaderRowDef="visibleColumns" mat-header-row style="height:32px"></tr>
+            <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="9999">No data found</td>
+            </tr>
+          </table>
+        </div>
+    
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+    
+    
+      </fury-page-layout-content>
+  
+  
+  </fury-page-layout>

@@ -1,0 +1,70 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add Hold/Tank
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <form [formGroup]="TankFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Vessel</mat-label>
+              <mat-select formControlName="drpVessel">
+                <mat-option value="Alexa">Alexa</mat-option>
+                <mat-option value="Alexandre">Alexandre</mat-option>
+                <mat-option value="Charley">Charley</mat-option>
+                <mat-option value="Yami">Yami</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Hold/Tank Name</mat-label>
+            <input formControlName="txtTank_Name" matInput placeholder="Search by Tank Name" type="text" />
+          </mat-form-field>
+        </div>
+
+         <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Type</mat-label>
+              <mat-select formControlName="drpType">
+                <mat-option value="CargoTanks">Cargo Tanks</mat-option>
+                <mat-option value="LubeOilTank">Lube Oil Tank</mat-option>
+                <mat-option value="HOLD">HOLD</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Capacity (M3)</mat-label>
+              <input formControlName="txtCapacity" matInput placeholder="Search by Capacity" type="text" />
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Capacity (%)</mat-label>
+              <input formControlName="txtCapcity_Per" matInput placeholder="Search by Capacity Percentage" type="text" />
+            </mat-form-field>
+          </div>
+       
+  
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

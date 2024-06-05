@@ -1,0 +1,228 @@
+<fury-page-layout mode="card" class="ops-vesselWiseReortAssignemnt">
+    <h3>
+        <span class="first-letter">V</span>ESSEL
+        <span class="first-letter"> KPI</span>
+        <span class="first-letter">L</span>IBRARY
+    </h3>
+
+    <fury-page-layout-content [@fadeInUp] style="margin: 30px;">
+
+
+        <div class="vesselbtn">
+
+
+        </div>
+        <mat-card-content fxLayout="row">
+
+            <mat-card fxFlex="50" class="sp-card-view">
+
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add Category '"
+                                class="add-approve-btn save-btn"   >
+                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                            </button>
+                            <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;"> Add New Category</span>
+                        </div>
+
+                        <div fxLayout="row">
+
+
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                            <mat-card-title style="margin-left: 5px;margin-top: 3px;">Clear Filter</mat-card-title>
+                            <span>
+                                <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                              </span>
+
+
+                        </div>
+                    </div>
+
+                 
+
+                </mat-card-header>
+
+                <mat-card-content>
+                    <div>
+                        <form [formGroup]="documentFilterFormGroup">
+                            <div class="search" fxLayout="row" fxLayoutAlign="space-between">
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>search...</mat-label><button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
+                                    <input
+                                      type="text"
+                                     
+                                      matInput
+                                    />
+                                  </mat-form-field>
+                                <div fxFlex style="padding: 12px;">
+                                    <button  mat-icon-button (click)="showTableDocumentAssign('row','CustomFields')">Click to show Table</button>
+                                </div>
+                              </div>
+                        </form>
+                    
+                
+                        <div #TABLE1>
+                            <table [dataSource]="categorydataSource" mat-table matSort #table
+                                class="details-table">
+                                <ng-container matColumnDef="Category_Name">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                     Category Name
+                                    </th>
+                                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Adjust_Sort_Order">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                        Adjust Sort Order
+                                    </th>
+                                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                    </td>
+                                </ng-container>
+                               
+                                <ng-container matColumnDef="Action">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                      Action
+                                    </th>
+                                    <td *matCellDef="let row" class="actions-cell" mat-cell>
+                                      <!-- -->
+                                      <button mat-icon-button color="primary">
+                                        <mat-icon class="icon-display">edit</mat-icon>
+                                      </button>
+                          
+                                      <button mat-icon-button color="warn" >
+                                        <mat-icon>close</mat-icon>
+                                      </button>
+                                      <button mat-icon-button  >
+                                        <mat-icon class="icon-display">info</mat-icon>
+                                      </button>
+                                    </td>
+                                  </ng-container>
+
+
+
+
+                                <tr *matHeaderRowDef="documentvisibleColumns" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: documentvisibleColumns" (click)="showTableDocumentAssign('row','CustomFields')"
+                                    class="clickable route-animations-elements" mat-row></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <mat-paginator class="firstpaginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+
+
+            <mat-card fxFlex="50" class="sp-card-view1" *ngIf="showNotAssignVesselTable">
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add Objectives '"
+                                class="add-approve-btn save-btn"   >
+                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                            </button>
+                            <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;"> Add New Objectives</span>
+                        </div>
+
+                        <div fxLayout="row">
+
+
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                            <mat-card-title style="margin-left: 5px;margin-top: 3px;">Clear Filter</mat-card-title>
+                            <span>
+                                <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                              </span>
+
+
+                        </div>
+                    </div>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <div>
+                        <form [formGroup]="NotAssignFilterFormGroup">
+                            <div class="search" fxLayout="row" fxLayoutAlign="space-between">
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>search...</mat-label><button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
+                                    <input
+                                      type="text"
+                                     
+                                      matInput
+                                    />
+                                  </mat-form-field>
+        
+                                
+                            </div>
+                        </form>
+                        <div #TABLE2>
+                            <table [dataSource]="objectivesdataSource" mat-table matSort #table class="details-table">
+                                <ng-container matColumnDef="Measurable_Objectives">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                        Measurable Objectives
+                                    </th>
+                                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Adjust_sort_order">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                        <button mat-raised-button color="primary"
+                                            style="background-color: #5cb85c; margin: 6px;">
+                                            Adjust_sort_order
+                                        </button>
+                                    </th>
+                                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                    </td>
+                                </ng-container>
+
+
+
+
+                                <tr *matHeaderRowDef="NotAssignedvisibleColumns" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: NotAssignedvisibleColumns"
+                                    class="clickable route-animations-elements" mat-row></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <mat-paginator class="secondpaginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+                    </div>
+
+
+                </mat-card-content>
+            </mat-card>
+
+
+          
+        </mat-card-content>
+        </fury-page-layout-content>
+        </fury-page-layout>
+        

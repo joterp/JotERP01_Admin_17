@@ -1,0 +1,237 @@
+<fury-page-layout mode="card" class="Captain_Cash-view">
+
+    <div>
+        <div style="padding: 5px 150px 0px 150px;">
+
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <div style="text-align: center;font-weight: bold;height: 24px;
+vertical-align: middle;margin-top: 30px;margin-bottom: 30px;">
+                            <h3>
+
+                                <span class="earnings-text">Captain Cash - Alexa (USD)</span>
+
+                            </h3>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <form [formGroup]="CaptainCashFilterForm">
+
+                            <div class="filter-area">
+
+                                <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap.gt-sm="24px">
+
+                                    <div fxFlex>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>From Date</mat-label>
+                                            <input matInput formControlName="From_Date"
+                                                [matDatepicker]="pickerFrom_Date" />
+                                            <mat-datepicker-toggle matSuffix
+                                                [for]="pickerFrom_Date"></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerFrom_Date></mat-datepicker>
+                                        </mat-form-field>
+
+                                    </div>
+                                    <div fxFlex>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>To Date</mat-label>
+                                            <input matInput formControlName="To_Date" [matDatepicker]="pickerTo_Date" />
+                                            <mat-datepicker-toggle matSuffix
+                                                [for]="pickerTo_Date"></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerTo_Date></mat-datepicker>
+                                        </mat-form-field>
+
+                                    </div>
+
+                                    <div fxFlex>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Sent to office?</mat-label>
+                                            <mat-select formControlName="drpSent_to_office">
+                                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                       {{ b.PARAMETER_NAME }}
+                                     </mat-option> -->
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div fxFlex>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Sent Date</mat-label>
+                                            <input matInput formControlName="Sent_Date"
+                                                [matDatepicker]="pickerSent_Date" />
+                                            <mat-datepicker-toggle matSuffix
+                                                [for]="pickerSent_Date"></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerSent_Date></mat-datepicker>
+                                        </mat-form-field>
+
+                                    </div>
+
+                                    <div>
+
+                                        <div>
+                                            <button class="create" mat-raised-button color="primary" class="filter-btn">
+                                                Search
+                                            </button>
+                                            <button class="create" mat-raised-button color="warn" class="filter-btn"
+                                                type="button">
+                                                Clear
+                                            </button>
+                                            <button class="create" mat-raised-button color="warn" class="filter-btn"
+                                            type="button" (click)="gotoCREW_Captain_Cash_Detail('Captain_Cash_Detail')">
+                                            Edit
+                                        </button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </td>
+                </tr>
+
+                <br>
+                <tr>
+                    <td colspan="2">
+                        <div #TABLE>
+                            <table [dataSource]="CaptainCashdataSource" mat-table matSort #table class="details-table"
+                                style="border-radius: 10px;overflow: hidden !important;">
+                                <ng-container matColumnDef="From_Date">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                        From Date
+                                    </th>
+                                    <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+            </td> -->
+                                </ng-container>
+
+                                <ng-container matColumnDef="To_Date">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        To Date
+                                    </th>
+                                    <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+            </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Opening_Balance">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Opening Balance
+                                    </th>
+                                    <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+            </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Total_Received">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Total Received
+                                    </th>
+                                    <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+              </td> -->
+                                </ng-container>
+
+                                <ng-container matColumnDef="Total_Paid">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Total Paid
+                                    </th>
+                                    <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Closing_Balance">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Closing Balance
+                                    </th>
+                                    <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Sent_To_Office">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Sent To Office
+                                    </th>
+                                    <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Sent_Date">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Sent Date
+                                    </th>
+                                    <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Action">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                                    </th>
+                                    <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+                                </ng-container>
+
+                                <tr *matHeaderRowDef="visibleColumnsCaptainCash" mat-header-row style="height: 56px;">
+                                </tr>
+                                <tr *matRowDef="let row; columns: visibleColumnsCaptainCash"
+                                    class="clickable route-animations-elements" mat-row>
+                                </tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+
+</fury-page-layout>

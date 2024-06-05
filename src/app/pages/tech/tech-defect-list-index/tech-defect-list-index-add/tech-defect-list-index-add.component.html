@@ -1,0 +1,330 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="edit-new-requisition">
+
+    <div>
+        <form [formGroup]="DefectListFormGroup"> 
+            <table style="width: 100%;">
+                <tr>
+                    <table class="table-1">
+                        <tr>
+                            <td>New Defect List & NCR</td>
+                        </tr>
+                    </table>
+                </tr>
+            </table>
+
+            <div fxLayout="row" fxLayoutAlign="space-between" style="margin-top: 11px;">
+                <div fxFlex="35">
+                 
+                    <mat-form-field appearance="fill">
+                        <mat-label>Vessel Name</mat-label>
+                        <mat-select formControlName="drpVessel_Name">
+                          <mat-option>
+                          </mat-option>
+                
+                          <!-- <mat-option
+                            *ngFor="let b of filtered_appointment | async"
+                            [value]="b.PARAMETER_GUID"
+                          >
+                            {{ b.PARAMETER_NAME }}
+                          </mat-option> -->
+                        </mat-select>
+                        <mat-error
+                          *ngIf="DefectListFormGroup.get('drpVessel_Name').hasError('required')"
+                          > Vessel Name is required</mat-error
+                        >
+                      </mat-form-field>
+                
+                      <mat-form-field appearance="fill">
+                        <mat-label>Description </mat-label>
+                        <textarea matInput formControlName="txtDescription" rows="30" cols="40"></textarea>
+                      </mat-form-field>
+
+                </div>
+                <div fxFlex="25">
+                 <div>
+                    <mat-checkbox [color]="'primary'" formControlName="chkIs_NCR"
+                    style="margin-top: 10px;">
+                    Is NCR?
+                </mat-checkbox>
+            </div>
+            <div>
+                <mat-checkbox [color]="'primary'" formControlName="chkDisplay"
+                style="margin-top: 10px;">
+                Display in Daily Meeting?
+            </mat-checkbox>
+        </div>
+        <div>
+            <mat-checkbox [color]="'primary'" formControlName="chkShow_To_Third_Parties"
+                style="margin-top: 10px;">
+                Show to Third Parties?
+            </mat-checkbox>
+        </div>
+                </div>
+                <div fxFlex="35">
+                    <mat-form-field appearance="fill">
+                        <mat-label>NCR Number</mat-label>
+                        <input type="text" formControlName="txtNCR_Number" matInput />
+                        
+                      </mat-form-field>
+                      <div>
+                        <table CLASS="table-2">
+                            <tr>
+                                <td>Categories</td>
+                                <td>:</td>
+                                <td>SELECT</td>
+                            </tr>
+                        </table> 
+                      </div>
+ 
+                      <mat-form-field appearance="fill">
+                        <mat-label>Primary</mat-label>
+                        <mat-select formControlName="drpPrimary">
+                          <mat-option>
+                          </mat-option>
+                
+                          <!-- <mat-option
+                            *ngFor="let b of filtered_appointment | async"
+                            [value]="b.PARAMETER_GUID"
+                          >
+                            {{ b.PARAMETER_NAME }}
+                          </mat-option> -->
+                        </mat-select>
+                        <mat-error
+                          *ngIf="DefectListFormGroup.get('drpPrimary').hasError('required')"
+                          > Required</mat-error
+                        >
+                      </mat-form-field>
+                       
+                    <mat-form-field appearance="fill">
+                        <mat-label>Secondary</mat-label>
+                        <mat-select formControlName="drpSecondary">
+                          <mat-option>
+                          </mat-option>
+                
+                          <!-- <mat-option
+                            *ngFor="let b of filtered_appointment | async"
+                            [value]="b.PARAMETER_GUID"
+                          >
+                            {{ b.PARAMETER_NAME }}
+                          </mat-option> -->
+                        </mat-select>
+                        <mat-error
+                          *ngIf="DefectListFormGroup.get('drpSecondary').hasError('required')"
+                          > Required</mat-error
+                        >
+                      </mat-form-field>
+                       
+                    <mat-form-field appearance="fill">
+                        <mat-label>Vessel Dept</mat-label>
+                        <mat-select formControlName="drpVessel_Dept">
+                          <mat-option>
+                          </mat-option>
+                
+                          <!-- <mat-option
+                            *ngFor="let b of filtered_appointment | async"
+                            [value]="b.PARAMETER_GUID"
+                          >
+                            {{ b.PARAMETER_NAME }}
+                          </mat-option> -->
+                        </mat-select>
+                        <mat-error
+                          *ngIf="DefectListFormGroup.get('drpVessel_Dept').hasError('required')"
+                          > Required</mat-error
+                        >
+                      </mat-form-field>
+                       
+                    <mat-form-field appearance="fill">
+                        <mat-label>Office Dept</mat-label>
+                        <mat-select formControlName="drpOffice_Dept">
+                          <mat-option>
+                          </mat-option>
+                
+                          <!-- <mat-option
+                            *ngFor="let b of filtered_appointment | async"
+                            [value]="b.PARAMETER_GUID"
+                          >
+                            {{ b.PARAMETER_NAME }}
+                          </mat-option> -->
+                        </mat-select>
+                        <mat-error
+                          *ngIf="DefectListFormGroup.get('drpOffice_Dept').hasError('required')"
+                          >Required</mat-error
+                        >
+                      </mat-form-field>
+                       
+                    <mat-form-field appearance="fill">
+                        <mat-label>Inspector</mat-label>
+                        <mat-select formControlName="drpInspector">
+                          <mat-option>
+                          </mat-option>
+                
+                          <!-- <mat-option
+                            *ngFor="let b of filtered_appointment | async"
+                            [value]="b.PARAMETER_GUID"
+                          >
+                            {{ b.PARAMETER_NAME }}
+                          </mat-option> -->
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="fill">
+                        <mat-label>Inspection Date</mat-label>
+                        <input type="text" formControlName="txtInspection_Date" matInput />
+                        
+                      </mat-form-field>
+                       
+                    <mat-form-field appearance="fill">
+                        <mat-label>QMS Elements Ref</mat-label>
+                        <mat-select formControlName="drpQMS_Elements_Ref">
+                          <mat-option>
+                          </mat-option>
+                
+                          <!-- <mat-option
+                            *ngFor="let b of filtered_appointment | async"
+                            [value]="b.PARAMETER_GUID"
+                          >
+                            {{ b.PARAMETER_NAME }}
+                          </mat-option> -->
+                        </mat-select>
+            
+                      </mat-form-field>
+
+                </div>
+                </div>
+
+
+                <table style="width: 100%;">
+                    <tr>
+                        <table class="table-3">
+                            <tr>
+                                <td>Applicable Dates &nbsp;&nbsp;:</td>
+                                <td>Other Details &nbsp;&nbsp;:</td>
+                                <td>For Office Use Only</td>
+                            </tr>
+                        </table>
+                    </tr>
+                </table>
+
+                <div fxLayout="row" fxLayoutAlign="space-between" style="margin-top: 11px;">
+                    <div fxFlex="35">
+                     
+                        <mat-form-field appearance="fill">
+                            <mat-label>Date Raised</mat-label>
+                            <input matInput formControlName="date_raised" [matDatepicker]="pickerdateraised" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerdateraised"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerdateraised></mat-datepicker>
+                            <mat-error
+                              *ngIf="DefectListFormGroup.get('date_raised').hasError('required')">Required</mat-error>
+              
+                          </mat-form-field>
+
+                          <mat-form-field appearance="fill">
+                            <mat-label>ETC</mat-label>
+                            <input matInput formControlName="ETC" [matDatepicker]="pickeretc" />
+                            <mat-datepicker-toggle matSuffix [for]="pickeretc"></mat-datepicker-toggle>
+                            <mat-datepicker #pickeretc></mat-datepicker>
+                            <mat-error
+                              *ngIf="DefectListFormGroup.get('ETC').hasError('required')">Required</mat-error>
+              
+                          </mat-form-field>              
+                        
+                    </div>
+                    <div fxFlex="25">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Priority</mat-label>
+                            <mat-select formControlName="drpPriority">
+                              <mat-option>
+                              </mat-option>
+                    
+                              <!-- <mat-option
+                                *ngFor="let b of filtered_appointment | async"
+                                [value]="b.PARAMETER_GUID"
+                              >
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                            <mat-error
+                            *ngIf="DefectListFormGroup.get('drpPriority').hasError('required')">Required</mat-error>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Assigned By</mat-label>
+                            <mat-select formControlName="drpAssigned_By">
+                              <mat-option>
+                              </mat-option>
+                    
+                              <!-- <mat-option
+                                *ngFor="let b of filtered_appointment | async"
+                                [value]="b.PARAMETER_GUID"
+                              >
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                            <mat-error
+                            *ngIf="DefectListFormGroup.get('drpAssigned_By').hasError('required')">Required</mat-error>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Requisition Code</mat-label>
+                            <mat-select formControlName="drpRequisition_Code">
+                              <mat-option>
+                              </mat-option>
+                    
+                              <!-- <mat-option
+                                *ngFor="let b of filtered_appointment | async"
+                                [value]="b.PARAMETER_GUID"
+                              >
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                          </mat-form-field>
+
+           
+                    </div>
+                    <div fxFlex="35">
+                        <mat-form-field appearance="fill">
+                            <mat-label>PIC</mat-label>
+                            <mat-select formControlName="drpPIC">
+                              <mat-option>
+                              </mat-option>
+                    
+                              <!-- <mat-option
+                                *ngFor="let b of filtered_appointment | async"
+                                [value]="b.PARAMETER_GUID"
+                              >
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                            
+                          </mat-form-field>
+                          <div>
+                            <label>PIC Private &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp; &nbsp; &nbsp; &nbsp;</label>
+                          <mat-checkbox [color]="'primary'" formControlName="chkPIC_Private"
+                          style="margin-top: 10px;">      
+                      </mat-checkbox>
+                    </div>
+                    </div>
+                    </div>
+
+        </form>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" 
+    [ngClass]="[!DefectListFormGroup.valid ? '' : 'save-btn']" [disabled]="!DefectListFormGroup.valid">
+    SAVE & CLOSE
+  </button>
+  <button mat-raised-button color="primary" class="save-btn" [disabled]="!DefectListFormGroup.valid"
+   >
+    SAVE & ADD NEW
+  </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>

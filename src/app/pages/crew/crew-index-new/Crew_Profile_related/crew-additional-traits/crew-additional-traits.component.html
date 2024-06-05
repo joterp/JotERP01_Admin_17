@@ -1,0 +1,78 @@
+<div class="crew-addtional-traits-view">
+
+    <form [formGroup]="TraitsFormGroup">
+    <table style="width: 100%;
+    border-collapse: collapse;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden !important;">
+
+        <tr class="table-th">
+            <th>Custom Traits</th>
+            <th>Traits Type</th>
+            <th>Traits Unit</th>
+            <th></th>
+            <th>Description</th>
+            <th>Remark</th>
+        </tr>
+        <tr class="table-td">
+            <td>Anchor Handling Experience</td>
+            <td>Yes/No</td>
+            <td></td>
+            <td></td>
+            <td>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-top: 10px;">
+                    <div fxFlex>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioDesc">
+
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 30%;"> <mat-radio-button value="0"
+                                                        [checked]="TraitsFormGroup.get('radioDesc').value == 0">
+                                                        <label
+                                                            [class.active-label]="TraitsFormGroup.get('radioDesc').value == 0"
+                                                            style="font-family: tahoma;">Yes</label>
+                                                    </mat-radio-button></td>
+                                                <td> <mat-radio-button value="1"
+                                                        [checked]="TraitsFormGroup.get('radioDesc').value == 1">
+                                                        <label
+                                                            [class.active-label]="TraitsFormGroup.get('radioDesc').value == 1"
+                                                            style="font-family: tahoma;">No</label>
+                                                    </mat-radio-button></td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </mat-radio-group>
+                    </div>
+                </div>
+
+            </td>
+
+            <!-- <mat-radio-button value="0" [checked]="CrewIndexFilterForm.get('radioVaccination_Status').value == 0">
+                    <label [class.active-label]="CrewIndexFilterForm.get('radioVaccination_Status').value == 0"
+                        style="font-family: tahoma;">All</label>
+                </mat-radio-button> -->
+            <td>
+                <textarea class="additional-traits-textarea"></textarea>
+            </td>
+
+        </tr>
+
+    </table>
+
+
+    <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 3px;margin-bottom: 3px;">
+        <button mat-raised-button color="primary" class="save-btn save-btn1" style="margin-left: 15px;">Save</button>
+        <button mat-raised-button color="warn" >CLOSE</button>
+      </div>
+
+    </form>
+</div>

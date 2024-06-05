@@ -1,0 +1,136 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+<fury-page-layout mode="card" class="crew-feedback">
+
+    <div>
+            <form [formGroup]="FeedbackFormGroup">
+
+                            <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                                  <div fxFlex="30">
+
+                                  <div id="table-wrapper">
+                                    <div id="table-scroll">
+                                      <table style="width: 100%;border-collapse: collapse;">
+                                        <thead style="border-bottom: 1px solid #ababab;">
+                                            <tr>
+                                                <td style="padding: 4px;">Inform Users</td>
+                                            </tr>
+                                        </thead>
+                                          <tbody>
+                                            <tr>   <td style="padding: 4px;"> <mat-checkbox [color]="'primary'" formControlName="">
+                                                Aarti Kamble
+                                            </mat-checkbox></td>
+                                             </tr>
+                                            <tr> <td style="padding: 4px;"> <mat-checkbox [color]="'primary'" formControlName="">
+                                                Ajinkya A Sawant
+                                             </mat-checkbox></td>
+                                             </tr>
+                                            <tr>    <td style="padding: 4px;"> <mat-checkbox [color]="'primary'" formControlName="">
+                                                Akshay Kadam
+                                             </mat-checkbox></td>
+                                            </tr>
+                                            <tr> <td style="padding: 4px;"> <mat-checkbox [color]="'primary'" formControlName="">
+                                                Ashish Babar
+                                             </mat-checkbox></td>
+                                          </tr>                                         
+                                          </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+
+                                    
+                                </div> 
+
+                                <div fxFlex="68">
+
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel Name	</mat-label>
+                                            <mat-select formControlName="drpVessel_Name">
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Category</mat-label>
+                                            <mat-select formControlName="drpCategory">
+                                            </mat-select>
+                                            <mat-error
+                                                *ngIf="FeedbackFormGroup.get('drpCategory').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Feedback/Remark</mat-label>
+                                            <input type="text" formControlName="txtFeedback_Remark" matInput />
+                                            <mat-error
+                                                *ngIf="FeedbackFormGroup.get('txtFeedback_Remark').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+                                        <table style="width: 100%;">
+
+                                            <tr>
+                                                <td>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                                                        <mat-label>Upload Copy</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                     
+                                                      </div>
+                                               
+                                                </td>
+                                                <td>    
+                                                     <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+                                                    accept=".pdf,.doc,.docx,.jpg,.png" />
+                                               
+                                                  <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                                                    <label for="imageupload">
+                                                      Upload </label>
+                                                  </button>
+                                                  <div *ngIf="selectedFileName" fxFlex>
+                                                    <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                                                    <button (click)="removeUploadedFileadditem()"  mat-button style="color: #5BB318;">Remove</button>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+            </form>
+
+    </div>
+
+</fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!FeedbackFormGroup.valid ? '' : 'save-btn']" [disabled]="!FeedbackFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!FeedbackFormGroup.valid">
+        SAVE & ADD NEW
+    </button>
+  
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>
+
+

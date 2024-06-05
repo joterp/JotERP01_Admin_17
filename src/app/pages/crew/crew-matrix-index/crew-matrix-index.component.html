@@ -1,0 +1,668 @@
+<fury-page-layout mode="card" class="crew-feeAnnualReport">
+
+    <h3 class="unit-packing" style="margin: 70px;">
+
+        <span class="first-letter">M</span>ATRIX
+        <span class="first-letter">I</span>NDEX
+
+
+    </h3>
+
+    <fury-page-layout-content>
+
+        <mat-accordion>
+            <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+                style="border: 1px solid #dbdbdb;border-radius: 10px;margin: 20px;
+        ">
+                <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;height: 36px;    border-radius: 1px;
+                ">
+                    <mat-panel-title class="panel-title" style="color: #1F608D;
+                    font-weight: bold;">
+                        Filter Traits for currently assigned ranks / Custom Search
+                    </mat-panel-title>
+                    <mat-panel-description class="panel-desc">
+
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div fxLayout="row" fxLayoutGap="5px" style="margin-top: 20px;">
+                    <div fxFlex>
+
+                        <strong style="margin:12px">Fleet</strong>
+                        <table style="width: 100%;
+                       margin: 10px;
+                       line-height: 27px;border: 1px solid rgb(209, 209, 209);   ;
+        padding: 10px;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Admin_Fleet</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Fleet Rhodes</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Fleet Singapore</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Fleet-A</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>India Fleet</mat-checkbox>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                    <div fxFlex>
+
+                        <strong style="margin:12px">Vessel Types</strong>
+                        <table style="width: 100%;
+                        margin: 10px;
+                        line-height: 27px;border: 1px solid rgb(209, 209, 209);   ;
+         padding: 10px;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Aframax Tanker </mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Anchor Handling Vessel</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>BARGE</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Bulk Carrier</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Car Carrier</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Chemical Tanker</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Combination carrier</mat-checkbox>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                    <div fxFlex>
+
+                        <strong style="margin:12px">Vessel Flags</strong>
+                        <table style="width: 100%;
+                        margin: 10px;
+                        line-height: 27px;border: 1px solid rgb(209, 209, 209);   ;
+                        padding: 10px;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Tri Colour</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>ASIA</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>F-India</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Taiwan</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox> Hong Kong (Zener)</mat-checkbox>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                    <div fxFlex>
+
+                        <strong style="margin:12px">Vessels</strong>
+                        <table style="width: 100%;
+                        margin: 10px;
+                        line-height: 27px;border: 1px solid rgb(209, 209, 209);   ;
+         padding: 10px;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Alexa</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Alexandre</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Bryce</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Catalan Sea</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Cedrick</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Napolean</mat-checkbox>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+
+                    <div fxFlex>
+
+                        <strong style="margin:12px">Departments</strong>
+                        <table style="width: 100%;
+                        margin: 10px;
+                        line-height: 27px;border: 1px solid rgb(209, 209, 209);   ;
+         padding: 10px;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Deck</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Electrical</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Engine</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Laundry</mat-checkbox>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                    <div fxFlex>
+
+                        <strong style="margin:12px">Rank Categories</strong>
+                        <table style="width: 100%;
+                        margin: 10px;
+                        line-height: 27px;border: 1px solid rgb(209, 209, 209);   ;
+         padding: 10px;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>VMT</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Junior Officer</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Rating</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Supernumerary</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Security</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Riding Gang</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Report Officer</mat-checkbox>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                    <div fxFlex>
+
+                        <strong style="margin:12px">Ranks</strong>
+
+                        <table style="width: 100%;
+                        margin: 10px;
+                        line-height: 27px;border: 1px solid rgb(209, 209, 209);   ;
+                        padding: 10px;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Master</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Trainee Officer</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Chief Officer</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Trainee Cheif Officer</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Manager</mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-checkbox>Electrician</mat-checkbox>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div fxFlex>
+
+                        <strong style="margin:12px">Matrix Rules</strong>
+
+                        <mat-list dense style="width: 100%;
+                    margin: 10px;
+                    line-height: 27px;border: 1px solid rgb(209, 209, 209);   ;
+                    ">
+                            <mat-list-item>
+                                <mat-checkbox [(ngModel)]="select_matrix_Rules"
+                                    (ngModelChange)="onSelectMatrixRules($event)"></mat-checkbox>
+                                <span fxFlex="5"></span>
+                                <span>Select all</span>
+                            </mat-list-item>
+
+                            <ng-container *ngFor="let d of dataMatrix;">
+                                <mat-list-item>
+                                    <mat-checkbox [(ngModel)]="d.is_selected">
+                                        <span fxFlex="5"></span>
+                                        <span>{{ d.name }}</span>
+                                    </mat-checkbox>
+
+                                </mat-list-item>
+                            </ng-container>
+                        </mat-list>
+
+                    </div>
+                    <div fxFlex>
+
+
+                        <div fxFlex>
+                            <strong style="margin: 0px 10px;">Ranks</strong>
+                            <div class="search" fxLayout="row" style="margin: 10px;">
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>search...</mat-label>
+                                    <button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
+                                    <input type="text" matInput />
+                                </mat-form-field>
+                            </div>
+                            <table style="width: 100%;
+                        margin: 10px;
+                        line-height: 27px;border: 1px solid rgb(209, 209, 209);   ;
+                        padding: 10px;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <mat-checkbox>Master</mat-checkbox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <mat-checkbox>Trainee Officer</mat-checkbox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <mat-checkbox>Chief Officer</mat-checkbox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <mat-checkbox>Trainee Cheif Officer</mat-checkbox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <mat-checkbox>Manager</mat-checkbox>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="5px"
+                    style="margin-bottom: 5px;padding: 20px;">
+
+                    <button mat-raised-button color="primary" class="save-btn">
+                        Save & Close
+                    </button>
+                    <button mat-raised-button class="save-btn" color="primary">
+                        Save & Add New
+                    </button>
+
+                    <button mat-raised-button color="warn">Cancel</button>
+                </mat-dialog-actions>
+
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+         <mat-accordion [togglePosition]="'before'">
+            <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+                style="border: 1px solid #dbdbdb;border-radius: 10px;margin: 20px;
+            ">
+                <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;height: 36px;    border-radius: 1px;
+                    ">
+                    <mat-panel-title class="panel-title" style="color: Blue;
+                        font-weight: bold;">
+                           Select Trainees - Search Criteria
+                    </mat-panel-title>
+                    <mat-panel-description class="panel-desc">
+
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-accordion [togglePosition]="'before'">
+                    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                        (closed)="panelOpenState = false" style="border-radius: 10px;margin: 20px; box-shadow: none;
+                ">
+                        <mat-expansion-panel-header style="height: 36px;    border-radius: 1px;
+                        ">
+                            
+                            <mat-panel-description class="panel-desc">
+                                <table style="width: 100%;
+                                
+                                margin: 10px;    color: blue;
+">
+                                <tbody>
+                                    <tr>
+                                        <td>10016 - MST - Lie YANG</td>
+                                        <td>Advanced Fire Fighting - Date Issued : 08/Jan/2020</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                          
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                            <table class="matrixTable">
+                                <tbody>
+                                    <tr style="color: #211b1b;
+                                    background-color: #97A4AE;height: 50px;">
+                                        <td>Document Name</td>
+                                        <td>Document Number</td>
+                                        <td>Dat Issued</td>
+                                        <td>Date Expiry</td>
+                                        <td>Issuing Authority</td>
+                                        <td>Issued Place</td>
+                                        <td>Issued Country</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UAE</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                  
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                
+                  <mat-accordion [togglePosition]="'before'">
+                    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                        (closed)="panelOpenState = false" style="border-radius: 10px;margin: 20px; box-shadow: none;
+                ">
+                        <mat-expansion-panel-header style="height: 36px;    border-radius: 1px;
+                        ">
+                            
+                            <mat-panel-description class="panel-desc">
+                                <table style="width: 100%;
+                                
+                                margin: 10px;    color: blue;
+">
+                                <tbody>
+                                    <tr>
+                                        <td>10016 - MST - Lie YANG</td>
+                                        <td>Advanced Fire Fighting - Date Issued : 08/Jan/2020</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                          
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                            <table class="matrixTable">
+                                <tbody>
+                                    <tr style="color: #211b1b;
+                                    background-color: #97A4AE;
+                                    height: 50px">
+                                        <td>Document Name</td>
+                                        <td>Document Number</td>
+                                        <td>Dat Issued</td>
+                                        <td>Date Expiry</td>
+                                        <td>Issuing Authority</td>
+                                        <td>Issued Place</td>
+                                        <td>Issued Country</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UAE</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                  
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <mat-accordion [togglePosition]="'before'">
+                    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                        (closed)="panelOpenState = false" style="border-radius: 10px;margin: 20px; box-shadow: none;
+                ">
+                        <mat-expansion-panel-header style="height: 36px;    border-radius: 1px;
+                        ">
+                            
+                            <mat-panel-description class="panel-desc">
+                                <table style="width: 100%;
+                                
+                                margin: 10px;    color: blue;
+">
+                                <tbody>
+                                    <tr>
+                                        <td>10016 - MST - Lie YANG</td>
+                                        <td>Advanced Fire Fighting - Date Issued : 08/Jan/2020</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                          
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                            <table class="matrixTable">
+                                <tbody>
+                                    <tr style="color: #211b1b;
+                                    background-color: #97A4AE;height: 50px">
+                                        <td>Document Name</td>
+                                        <td>Document Number</td>
+                                        <td>Dat Issued</td>
+                                        <td>Date Expiry</td>
+                                        <td>Issuing Authority</td>
+                                        <td>Issued Place</td>
+                                        <td>Issued Country</td>
+                                    </tr>
+                                    <tr style="text-align: center;">
+                                        <td>UAE</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                  
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <mat-accordion [togglePosition]="'before'">
+                    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                        (closed)="panelOpenState = false" style="border-radius: 10px;margin: 20px; box-shadow: none;
+                ">
+                        <mat-expansion-panel-header style="height: 36px;    border-radius: 1px;
+                        ">
+                            
+                            <mat-panel-description class="panel-desc">
+                                <table style="width: 100%;
+                                
+                                margin: 10px;    color: blue;
+">
+                                <tbody>
+                                    <tr>
+                                        <td>10016 - MST - Lie YANG</td>
+                                        <td>Advanced Fire Fighting - Date Issued : 08/Jan/2020</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                          
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                            <table class="matrixTable" >
+                                <tbody>
+                                    <tr style="color: #211b1b;
+                                    background-color: #97A4AE;height: 50px">
+                                        <td>Document Name</td>
+                                        <td>Document Number</td>
+                                        <td>Dat Issued</td>
+                                        <td>Date Expiry</td>
+                                        <td>Issuing Authority</td>
+                                        <td>Issued Place</td>
+                                        <td>Issued Country</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Advanced Fire Fighting</td>
+                                        <td>4125500</td>
+                                        <td>28-Sep-2022</td>
+                                        <td></td>
+                                        <td>ABC</td>
+                                        <td></td>
+                                        <td>India</td>
+                                    </tr>
+                                    <tr style="background-color: lightgray;text-align: center;">
+                                        <td colspan="7">UAE Visa</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                  
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <mat-accordion [togglePosition]="'before'">
+                    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                        (closed)="panelOpenState = false" style="border-radius: 10px;margin: 20px; box-shadow: none;
+                ">
+                        <mat-expansion-panel-header style="height: 36px;    border-radius: 1px;
+                        ">
+                            
+                            <mat-panel-description class="panel-desc">
+                                <table style="width: 100%;
+                                
+                                margin: 10px;    color: blue;
+">
+                                <tbody>
+                                    <tr>
+                                        <td>10016 - MST - Lie YANG</td>
+                                        <td>Advanced Fire Fighting - Date Issued : 08/Jan/2020</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                          
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                            <table class="matrixTable">
+                                <tbody>
+                                    <tr style="color: #211b1b;
+                                    background-color: #97A4AE;height: 50px"> 
+                                        <td>Document Name</td>
+                                        <td>Document Number</td>
+                                        <td>Dat Issued</td>
+                                        <td>Date Expiry</td>
+                                        <td>Issuing Authority</td>
+                                        <td>Issued Place</td>
+                                        <td>Issued Country</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UAE</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                  
+                    </mat-expansion-panel>
+                  </mat-accordion>
+            </mat-expansion-panel>
+        </mat-accordion> 
+       
+          
+
+    </fury-page-layout-content>
+</fury-page-layout>

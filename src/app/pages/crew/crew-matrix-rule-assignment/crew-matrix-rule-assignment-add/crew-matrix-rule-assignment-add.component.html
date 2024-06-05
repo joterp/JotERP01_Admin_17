@@ -1,0 +1,351 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Add Crew Matrix Rule
+    </span>
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+
+
+<mat-dialog-content style="margin-top: 20px;">
+
+    <mat-progress-bar style="    height: 17px;
+    border-radius: 10px; margin-bottom: 20px;
+" mode="determinate" [value]="(tabgroup?.selectedIndex ||0)*20+20"></mat-progress-bar>
+    <mat-tab-group (animationDone)="check()" animationDuration="0ms" mat-stretch-tabs class="remove-border-bottom"
+        #tabgroup>
+
+        <form action="">
+
+            <mat-tab label="Template" style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                <div>
+                   
+                    <div class="tableFixHead">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="    background-color: #1f497d;
+                                color: white;
+                                padding: 10px;
+                                border-top-left-radius: 10px;
+                                border-top-right-radius: 10px;
+                            ">RULE TEMPLATE</th>
+                                </tr>
+                            </thead>
+                          <tbody>
+                            <tr>
+                                <td class="table-rows-effect">1. Pre-Joining Documnet Checkllist</td>
+                            </tr>
+                            <tr>
+                                <td class="table-rows-effect">2. Document for sign on of the crew</td>
+                            </tr>
+                            <tr>
+                                <td class="table-rows-effect">3. Experience in selected rank(in months)</td>
+                            </tr>
+                            <tr>
+                                <td class="table-rows-effect">4. Ideminity Contract Document Check</td>
+                            </tr>
+                            <tr>
+                                <td class="table-rows-effect">5. VMT Nationality Control </td>
+                            </tr>
+                      </tbody>
+                        </table>
+                      </div>
+
+
+
+
+                </div>
+                <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;margin-top: 20px;">
+
+                    <button mat-raised-button color="primary" class="save-btn" style="width: 100px;">Next</button>
+                </mat-dialog-actions>
+            </mat-tab>
+
+            <mat-tab label="Variables">
+                <!-- <cdk-virtual-scroll-viewport tvsItemSize headerHeight="56" rowHeight="48" style="height: 400px;"> -->
+
+                <div>
+                    
+
+                    <table class="roundedTable">
+                        <thead>
+                            
+                            
+                                <tr >
+                                    <th style="    background-color: #1f497d;
+                                    color: white;
+                                    padding: 10px;
+                                    border-top-left-radius: 10px;
+                                    border-top-right-radius: 10px;
+                                ">Questions</th>
+                                    <th style="    background-color: #1f497d;
+                                    color: white;
+                                    padding: 10px;
+                                    border-top-left-radius: 10px;
+                                    border-top-right-radius: 10px;
+                                "></th>
+                                    <th style="    background-color: #1f497d;
+                                    color: white;
+                                    padding: 10px;
+                                    border-top-left-radius: 10px;
+                                    border-top-right-radius: 10px;
+                                ">Answer</th>
+                                </tr>
+                           
+                        </thead>
+                        <tbody>
+                            <tr class="table-rows-effect">
+                                <td>Age</td>
+                                <td>Les Than</td>
+                                <td><input type="text" /></td>
+                            </tr>
+                            <tr class="table-rows-effect">
+                                <td>National Passport</td>
+                                <td>Equal To</td>
+                                <td></td>
+                            </tr>
+                            <tr class="table-rows-effect">
+                                <td>National Seman Book</td>
+                                <td>Equal To</td>
+                                <td></td>
+                            </tr>
+                        
+                        </tbody>
+                    </table>
+
+
+
+
+
+                </div>
+                <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;margin-top: 20px;">
+                    <button mat-raised-button color="primary" class="save-btn" style="width: 100px;">Previous</button>
+                    <button mat-raised-button color="primary" class="save-btn" style="width: 100px;">Next</button>
+                </mat-dialog-actions>
+                <!-- </cdk-virtual-scroll-viewport> -->
+            </mat-tab>
+            <mat-tab label="Vessel Details">
+
+                <mat-card style="background: #f6f6f6;margin-top: 20px;border: 1px solid #d0cfcf;">
+                    
+                  
+                    <div fxFlex="25" style="margin: 10px;">
+                        <div class="heading-text">Vessel Fleet</div>
+                        <mat-list dense
+                            style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                            <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                                <mat-checkbox [(ngModel)]="selectvesselFleetdata"
+                                    (ngModelChange)="onSelectVesselFleetData($event)"></mat-checkbox>
+                                <span fxFlex="5"></span>
+                                <span class="checkbox-text">Check all</span>
+                            </mat-list-item>
+
+                            <ng-container *ngFor="let vesselFleet of dataVesselFleet;">
+                                <mat-list-item style="height: 35px;">
+                                    <mat-checkbox [(ngModel)]="vesselFleet.is_selected"></mat-checkbox>
+                                    <span fxFlex="5"></span>
+                                    <span class="checkbox-text">{{ vesselFleet.name }}</span>
+                                </mat-list-item>
+                            </ng-container>
+                        </mat-list>
+                    </div>
+
+
+                    <div fxFlex="25" style="margin: 10px;">
+                        <div class="heading-text">Vessel</div>
+                        <mat-list dense
+                            style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                            <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                                <mat-checkbox [(ngModel)]="selectVesseldata"
+                                    (ngModelChange)="onSelectVesselData($event)"></mat-checkbox>
+                                <span fxFlex="5"></span>
+                                <span class="checkbox-text">Check all</span>
+                            </mat-list-item>
+
+                            <ng-container *ngFor="let vessel of dataVessel;">
+                                <mat-list-item style="height: 35px;">
+                                    <mat-checkbox [(ngModel)]="vessel.is_selected"></mat-checkbox>
+                                    <span fxFlex="5"></span>
+                                    <span class="checkbox-text">{{ vessel.name }}</span>
+                                </mat-list-item>
+                            </ng-container>
+                        </mat-list>
+                    </div>
+
+
+
+                    <div fxFlex="25" style="margin: 10px;">
+                        <div class="heading-text">Vessel Type</div>
+                        <mat-list dense
+                            style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                            <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                                <mat-checkbox [(ngModel)]="selectVesselTypedata"
+                                    (ngModelChange)="onSelectVesselType($event)"></mat-checkbox>
+                                <span fxFlex="5"></span>
+                                <span class="checkbox-text">Check all</span>
+                            </mat-list-item>
+
+                            <ng-container *ngFor="let VesselType of dataVesselType;">
+                                <mat-list-item style="height: 35px;">
+                                    <mat-checkbox [(ngModel)]="VesselType.is_selected"></mat-checkbox>
+                                    <span fxFlex="5"></span>
+                                    <span class="checkbox-text">{{ VesselType.name }}</span>
+                                </mat-list-item>
+                            </ng-container>
+                        </mat-list>
+                    </div>
+                    
+
+                    <div fxFlex="25" style="margin: 10px;">
+                        <div class="heading-text">Vessel Flag</div>
+                        <mat-list dense
+                            style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                            <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                                <mat-checkbox [(ngModel)]="selectVesselFlagdata"
+                                    (ngModelChange)="onSelectVesselFlag($event)"></mat-checkbox>
+                                <span fxFlex="5"></span>
+                                <span class="checkbox-text">Check all</span>
+                            </mat-list-item>
+
+                            <ng-container *ngFor="let VesselFlag of dataVesselFlag;">
+                                <mat-list-item style="height: 35px;">
+                                    <mat-checkbox [(ngModel)]="VesselFlag.is_selected"></mat-checkbox>
+                                    <span fxFlex="5"></span>
+                                    <span class="checkbox-text">{{ VesselFlag.name }}</span>
+                                </mat-list-item>
+                            </ng-container>
+                        </mat-list>
+                    </div>
+                </mat-card>
+
+                <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;margin-top: 20px;">
+                    <button mat-raised-button color="primary" class="save-btn" style="width: 100px;">Previous</button>
+                    <button mat-raised-button color="primary" class="save-btn" style="width: 100px;">Next</button>
+                </mat-dialog-actions>
+
+
+            </mat-tab>
+            <mat-tab label="Rank Details">
+
+                <mat-card style="background: #f6f6f6;
+               
+                margin-top: 20px;
+                border: 1px solid #d0cfcf;">
+                    <p style="text-align: center;">1. Pre-Joining Document Checklist</p>
+                    <div fxLayout="row" style="margin: 30px;    border: 1px solid #eeeeee;
+                        padding: 15px;">
+                        <div fxFlex="30" style="margin: 10px;">
+                            <div class="heading-text">Rank</div>
+                            <mat-list dense
+                                style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                                <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                                    <mat-checkbox [(ngModel)]="selectRankData"
+                                        (ngModelChange)="onSelectVesselData($event)"></mat-checkbox>
+                                    <span fxFlex="5"></span>
+                                    <span class="checkbox-text">Check all</span>
+                                </mat-list-item>
+
+                                <ng-container *ngFor="let Rank of dataRank;">
+                                    <mat-list-item style="height: 35px;">
+                                        <mat-checkbox [(ngModel)]="Rank.is_selected"></mat-checkbox>
+                                        <span fxFlex="5"></span>
+                                        <span class="checkbox-text">{{ Rank.name }}</span>
+                                    </mat-list-item>
+                                </ng-container>
+                            </mat-list>
+                        </div>
+
+
+                        <div fxFlex="30" style="margin: 10px;">
+                            <div class="heading-text">Rank Category</div>
+                            <mat-list dense
+                                style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                                <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                                    <mat-checkbox [(ngModel)]="selectRankCategorydata"
+                                        (ngModelChange)="onSelectRankCategoryData($event)"></mat-checkbox>
+                                    <span fxFlex="5"></span>
+                                    <span class="checkbox-text">Check all</span>
+                                </mat-list-item>
+
+                                <ng-container *ngFor="let rankCategory of dataRankCategory;">
+                                    <mat-list-item style="height: 35px;">
+                                        <mat-checkbox [(ngModel)]="rankCategory.is_selected"></mat-checkbox>
+                                        <span fxFlex="5"></span>
+                                        <span class="checkbox-text">{{ rankCategory.name }}</span>
+                                    </mat-list-item>
+                                </ng-container>
+                            </mat-list>
+                        </div>
+
+                        
+                        <div fxFlex="30" style="margin: 10px;">
+                            <div class="heading-text">Vessel Department</div>
+                            <mat-list dense
+                                style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                                <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                                    <mat-checkbox [(ngModel)]="selectVesselDepartmentdata"
+                                        (ngModelChange)="onSelectVesselDepartment($event)"></mat-checkbox>
+                                    <span fxFlex="5"></span>
+                                    <span class="checkbox-text">Check all</span>
+                                </mat-list-item>
+
+                                <ng-container *ngFor="let vesselDepartment of dataVesselDepartment;">
+                                    <mat-list-item style="height: 35px;">
+                                        <mat-checkbox [(ngModel)]="vesselDepartment.is_selected"></mat-checkbox>
+                                        <span fxFlex="5"></span>
+                                        <span class="checkbox-text">{{ vesselDepartment.name }}</span>
+                                    </mat-list-item>
+                                </ng-container>
+                            </mat-list>
+                        </div>
+
+
+                     
+
+
+                    </div>
+                </mat-card>
+
+
+                <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;margin-top: 20px;">
+                    <button mat-raised-button color="primary" class="save-btn" style="width: 100px;">Previous</button>
+
+                </mat-dialog-actions>
+            </mat-tab>
+
+            <mat-tab label="Stages and Users">
+                <div fxFlex="30" style="margin: 10px;">
+                    <div class="heading-text">Users</div>
+                    <mat-list dense
+                        style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                        <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                            <mat-checkbox [(ngModel)]="selectUsersdata"
+                                (ngModelChange)="onSelectUsers($event)"></mat-checkbox>
+                            <span fxFlex="5"></span>
+                            <span class="checkbox-text">Check all</span>
+                        </mat-list-item>
+
+                        <ng-container *ngFor="let users of dataUsers;">
+                            <mat-list-item style="height: 35px;">
+                                <mat-checkbox [(ngModel)]="users.is_selected"></mat-checkbox>
+                                <span fxFlex="5"></span>
+                                <span class="checkbox-text">{{ users.name }}</span>
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+                </div>
+
+
+            </mat-tab>
+        </form>
+
+
+    </mat-tab-group>
+
+
+
+</mat-dialog-content>

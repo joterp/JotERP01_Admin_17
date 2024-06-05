@@ -1,0 +1,89 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Edit Fee
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+    <mat-dialog-content>
+
+
+        <form [formGroup]="newManningOfficeFeeFormGroup">
+            <div mat-dialog-container style="padding-top: 20px;">
+                <table style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="    width: 27%;
+                            padding: 10px;">Manning Office</td>
+                            <td> :</td>
+                            <td>eNix Manning Pvt Ltd</td>
+                        </tr>
+                        <tr>
+                            <td style="    width: 27%;
+                            padding: 10px;">Vessel</td>
+                            <td> :</td>
+                            <td>Jot Raavi</td>
+                        </tr>
+                        <tr>
+                            <td style="    width: 27%;
+                            padding: 10px;">Rank</td>
+                            <td> :</td>
+                            <td>MST</td>
+                        </tr>
+                        <tr>
+                            <td style="    width: 27%;
+                            padding: 10px;">Nationality </td>
+                            <td> :</td>
+                            <td>China</td>
+                        </tr>
+                        <tr>
+                            <td style="    width: 27%;
+                            padding: 10px;">Fee</td>
+                            <td> :</td>
+                            <td>Processing Fee</td>
+                        </tr>
+                        <tr>
+                            <td style="    width: 27%;
+                            padding: 10px;">Currency</td>
+                            <td> :</td>
+                            <td>USD</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Amount</mat-label>
+                        <input formControlName="txtAmount" matInput placeholder="Search by Amount"
+                            type="text" />
+                    </mat-form-field>
+                </div>
+                <!-- <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Outline form field</mat-label>
+                    <input matInput placeholder="Placeholder">
+                   
+                    <mat-hint>Hint</mat-hint>
+                  </mat-form-field>
+                  </div>
+                 -->
+
+
+            </div>
+        </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+        <button mat-raised-button color="primary" class="save-btn">
+            Assign
+        </button>
+
+
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+</div>

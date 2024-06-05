@@ -1,0 +1,122 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+    <fury-page-layout mode="card" class="crew-redflag-view">
+
+        <div>
+            <form [formGroup]="RedFlagFormGroup">
+
+                <table style="width: 100%;font-family: tahoma;">
+                    <tr style="height: 30px;">
+                        <td style="font-weight: bold;"><span>Date</span></td>
+                        <td><span>31-Oct-2023 05:06 PM</span></td>
+                        <td></td>
+                    </tr>
+
+                    <tr style="height: 30px;">
+                        <td style="font-weight: bold;"><span>User Name</span></td>
+                        <td><span>test</span></td>
+                        <td><mat-checkbox [color]="'primary'" formControlName="" class="checkbox-text">
+                                Mark As Red Flag
+                            </mat-checkbox></td>
+                    </tr>
+
+                    <tr style="height: 30px;">
+                        <td style="font-weight: bold;" colspan="3"><span>Reason</span></td>
+                    </tr>
+
+                    <tr style="height: 30px;">
+                        <td colspan="3">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Reason</mat-label>
+                                <textarea matInput formControlName="txtReason"  col="4"></textarea>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+
+                    <tr style="height: 30px;">
+                        <td colspan="3">
+                            
+                                <table style="width: 100%;">
+                                 <tr>
+                                      <td>
+                                         <input style="display: none;" type="file" id="fileupload" #fileInputattach
+                                         (change)="onFileSelectedattach($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+                                     <button type="button" class="browse-btn1"
+                                         *ngIf="!selectedFileNameAttach">
+                                         <label for="fileupload">
+                                             Browse</label>
+                                     </button>
+             
+                                     <div *ngIf="selectedFileNameAttach">
+                                         <span style="margin-top: 2px !important;">
+                                             {{
+                                             selectedFileNameAttach
+                                             }}</span>
+                                         <button (click)="removeUploadedFileattach()" mat-button
+                                             style="color: #5BB318;">Remove</button>
+                                         &nbsp;
+                                     </div>
+             
+             
+                                     <div class="drop-container-attach">
+                        
+                                            <mat-icon>cloud_upload</mat-icon>&nbsp;&nbsp;
+                                                                            
+                                         <input type="file" id="uploadFile-input" style="opacity: 0" name="uploadFile" accept="all/*"
+                                             multiple />
+                                         <label>Drop
+                                             Files
+                                             Here
+                                         </label>
+                                        
+                                     </div>
+                                     </td>
+                                 </tr>
+                                </table>
+                                 
+                        </td>
+                    </tr>
+
+                    <tr style="height: 30px;">
+                        <td colspan="3">
+                            <table class="roundedTable">
+                                <thead>
+                                    <tr>
+                                        <th class="style-th">Date</th>
+                                        <th class="style-th">Reason </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>No records to display.
+                                        </td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+
+        </div>
+
+    </fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!RedFlagFormGroup.valid ? '' : 'save-btn']"
+        [disabled]="!RedFlagFormGroup.valid">
+        Save
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Close</button>
+</mat-dialog-actions>

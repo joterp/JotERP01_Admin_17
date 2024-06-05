@@ -1,0 +1,369 @@
+<div style="text-align: center;font-weight: bold;    height: 24px;
+vertical-align: middle;margin-top: 30px;">
+    <h3>
+
+        <span class="first-letter">C</span>REW
+        <span class="first-letter">E</span>VALUATION
+
+    </h3>
+</div>
+
+<fury-page-layout mode="card" class="vmppmsrequest">
+
+    <div style="padding:10px 50px 31px 50px;">
+
+            <form action="">
+     
+                    <div style="padding-top: 14px;">
+                        <div style="margin-bottom: 15px;">
+                            <mat-accordion>
+                                <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;">
+                                    <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;    height: 46px;">
+                                        <mat-panel-title class="panel-title">
+                                           
+                                        </mat-panel-title>
+                                        <mat-panel-description class="panel-desc">
+
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+
+                                    <form [formGroup]="CrewEvaluationFormGroup">
+
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 38%;vertical-align: top;">
+
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                         <td class="evaluation-td" style="color: Maroon;font-weight:bold;"><span>Staff Code</span></td>
+                                                          <td style="width: 2%;"></td>
+                                                         <td class="evaluation-td2" style="color: Maroon;font-weight:bold;"><span>10409</span></td>
+                                                        </tr>
+    
+                                                        <tr>
+                                                            <td class="evaluation-td" style="color: Maroon;font-weight:bold;"><span>Staff Name</span></td>
+                                                            <td style="width: 2%;"></td>
+                                                            <td class="evaluation-td2" style="color: Maroon;font-weight:bold;"><span>namdev NADAL</span></td>
+                                                           </tr>
+    
+                                                        <tr>
+                                                            <td class="evaluation-td"><span>Rank</span></td>
+                                                            <td style="width: 2%;"></td>
+                                                            <td class="evaluation-td2"><span>C/E - Chief Engineer</span></td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="evaluation-td"><span>Voyage</span></td>
+                                                            <td style="width: 2%;"></td>
+                                                            <td class="evaluation-td2"><span>MIXA - C/E - 31/Mar/2023 - Signoff not mentioned</span></td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="evaluation-td"></td>
+                                                            <td style="width: 2%;"></td>
+                                                            <td class="evaluation-td2"></td>
+                                                          </tr>
+    
+                                                          <tr>
+                                                            <td class="evaluation-td"><span>Evaluation Name</span></td>
+                                                            <td style="width: 2%;"></td>
+                                                            <td class="evaluation-td2"><span><b>3/E Evaluation</b></span></td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="evaluation-td"><span>Max Marks</span></td>
+                                                            <td style="width: 2%;"></td>
+                                                            <td class="evaluation-td2"><span>50</span></td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="evaluation-td"><span>Evaluation Type</span></td>
+                                                            <td style="width: 2%;"></td>
+                                                            <td class="evaluation-td2" style="color: Maroon;font-weight:bold;"><span>Ad Hoc</span></td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="evaluation-td"><span>Evaluator</span></td>
+                                                            <td style="width: 2%;"></td>
+                                                            <td class="evaluation-td2"><span>Saurabh_HRM</span></td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="evaluation-td"><span>Planned Evaluation Date	
+                                                            </span></td>
+                                                            <td style="width: 2%;"></td>
+                                                            <td class="evaluation-td2"> <input type="datetime-local" id="datetime" name="datetime" class="date_and_time"></td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="evaluation-td"><span>Evaluation Completed On	
+                                                            </span></td>
+                                                            <td style="width: 2%;"></td>
+                                                            <td class="evaluation-td2"><b>06/Oct/2023 17:10 </b></td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="evaluation-td"><span>Appraisee Acknoledge On	
+                                                            </span></td>
+                                                            <td style="width: 2%;"></td>
+                                                            <td class="evaluation-td2"></td>
+                                                          </tr>
+                                                                                                          
+                                                    </table>
+
+                                                </td>
+
+                                                <td style="width: 2%;">
+
+                                                </td>
+
+                                                <td style="width: 30%;vertical-align: top;">
+                                                 
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td class="evaluation-td3"><span>Please check the applicable box and state reasons in Evaluation Comments</span></td>
+                                                        </tr>
+        
+                                                        <tr>
+                                                           <td style="border: 1px solid grey;">
+                                                            <table style="width: 100%;">
+                                                                <tr>
+                                                                    <td> <mat-checkbox [color]="'primary'" formControlName="">
+                                                                        Annual Report
+                                                                    </mat-checkbox></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                    <td> <mat-checkbox [color]="'primary'" formControlName="">
+                                                                       End Of Contract Or Employment Period
+                                                                    </mat-checkbox></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td> <mat-checkbox [color]="'primary'" formControlName="">
+                                                                        To Demote
+                                                                     </mat-checkbox></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                     <td> <mat-checkbox [color]="'primary'" formControlName="">
+                                                                        To Promote
+                                                                     </mat-checkbox></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                     <td> <mat-checkbox [color]="'primary'" formControlName="">
+                                                                        To Re-Employ
+                                                                     </mat-checkbox></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                     <td> <mat-checkbox [color]="'primary'" formControlName="">
+                                                                        To Terminate Immediately
+                                                                     </mat-checkbox></td>
+                                                                </tr>
+                                                            </table>
+                                                           </td> 
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="evaluation-td3"><span>Master Remarks</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                          <td>
+                                                            <textarea rows="5" class="crew-textarea"></textarea>
+                                                          </td>
+                                                        </tr>
+                                                        </table>
+                                        </td>
+
+                                        <td style="width: 30%;vertical-align: top;">
+
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td class="evaluation-td3"><span>Evaluation Comments *</span></td>
+                                                </tr>
+
+                                                <tr>
+                                                   <td> <textarea rows="8" class="crew-textarea"></textarea> </td>
+                                                </tr>
+
+                                                <tr>
+                                                <td>
+                                                    <button class="create" mat-raised-button color="primary" class="filter-btn" >
+                                                        Master Verification
+                                                    </button>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="evaluation-td2"><span>Master Verification by </span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="evaluation-td2"><span>Master Verification On </span></td>
+                                                </tr>
+                                                                                        
+                                                </table>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                       
+                        </form>
+
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+
+                        </div>
+
+                     
+                    </div>
+
+                    <div style="padding-top: 14px;">
+                        <div style="margin-bottom: 15px;">
+                            <mat-accordion>
+                                <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;">
+                                    <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;    height: 46px;">
+                                        <mat-panel-title class="panel-title">
+                                         
+                                        </mat-panel-title>
+                                        <mat-panel-description class="panel-desc">
+
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+
+                                    <table style="width: 100%;">
+                                    
+                                        <tr>
+                                        <td>                                          
+                                                <div >
+                                                    <table style="display: flex;">
+                                                        <tr>
+                                                            <td>
+                                                                <div fxLayout="row">
+                                                                    <span style="margin-top: 3px;
+                                                                    margin-left: 6px;font-size: 14px;font-family: tahoma;color:green"><b>Evaluation Details</b></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                        
+                                        
+                                                    </table>
+                                    
+                                                    <!-- <div class="content-loader">
+                                                    <mat-progress-spinner
+                                                      mode="indeterminate"
+                                                      color="accent"
+                                                    ></mat-progress-spinner>
+                                                  </div> -->
+                                                </div>
+                                        
+                                                <div #TABLE>
+                                                    <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                                                        <ng-container matColumnDef="S_No">
+                                                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                                                                mat-sort-header>
+                                                                S No.
+                                                            </th>
+                                                            <!-- <td
+                                                          *matCellDef="let row; let i = index"
+                                                          class="actions-cell"
+                                                          [ngStyle]="{ 'white-space': 'initial' }"
+                                                          mat-cell
+                                                        >
+                                                          <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                        </td> -->
+                                                        </ng-container>
+                                        
+                                                        <ng-container matColumnDef="Criteria">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                Criteria
+                                                            </th>
+                                                            <!-- <td
+                                                          *matCellDef="let row; let i = index"
+                                                          class="actions-cell"
+                                                          mat-cell
+                                                        >
+                                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                                        </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Answer_Reference">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                Answer Reference
+                                                            </th>
+                                                            <!-- <td
+                                                            *matCellDef="let row; let i = index"
+                                                            class="actions-cell"
+                                                            mat-cell
+                                                          >
+                                                            <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                                          </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Select_Option">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                Select Option
+                                                            </th>
+                                                            <!-- <td
+                                                          *matCellDef="let row; let i = index"
+                                                          class="actions-cell"
+                                                          mat-cell
+                                                        >
+                                                          <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                                        </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Evaluator_Comments">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                Evaluator Comments
+                                                            </th>
+                                                            <!-- <td
+                                                            *matCellDef="let row; let i = index"
+                                                            class="actions-cell"
+                                                            mat-cell
+                                                          >
+                                                            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                                          </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="NA">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                NA?
+                                                            </th>
+                                                            <!-- <td
+                                                            *matCellDef="let row; let i = index"
+                                                            class="actions-cell"
+                                                            mat-cell
+                                                          >
+                                                            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                                          </td> -->
+                                                        </ng-container>
+                                                       
+                                                       
+                                                        
+                                                        <ng-container matColumnDef="Appraisee_Comment">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                Appraisee Comment
+                                                            </th>
+                                                            <!-- <td
+                                                              *matCellDef="let row; let i = index"
+                                                              class="actions-cell"
+                                                              mat-cell
+                                                            >
+                                                              <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                                            </td> -->
+                                                        </ng-container>
+                                                       
+                                        
+                                                        <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                                                        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                                                        </tr>
+                                                        <tr class="mat-row" *matNoDataRow>
+                                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                    
+                                        </td>
+                                        </tr>
+                                     </table>
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+
+                        </div>
+
+                     
+                    </div>
+
+
+            </form>
+
+    </div>
+
+</fury-page-layout>

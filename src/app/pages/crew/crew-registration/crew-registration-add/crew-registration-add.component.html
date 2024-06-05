@@ -1,0 +1,380 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+    <fury-page-layout mode="card" class="crew-registration-add">
+
+        <div>
+
+            <mat-tab-group (animationDone)="check()" animationDuration="0ms" class="remove-border-bottom">
+
+                <form [formGroup]="CrewRegistrationFormGroup">
+
+                    <mat-tab label="Information Detail" style="margin-left: #000;margin-right: #000;">
+
+                        <ng-template mat-tab-label>
+
+                            Information Detail
+
+                        </ng-template>
+
+                        <div style="padding-top: 14px;">
+                            <div style="margin-bottom: 15px;">
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                                    <div fxFlex="37">
+                                        <div>
+
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>First Name</mat-label>
+                                                <input type="text" formControlName="txtFirst_Name" matInput />
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('txtFirst_Name').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Last Name</mat-label>
+                                                <input type="text" formControlName="txtLast_Name" matInput />
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('txtLast_Name').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>DOB</mat-label>
+                                                <input matInput formControlName="DOB" [matDatepicker]="pickerdob" />
+                                                <mat-datepicker-toggle matSuffix
+                                                    [for]="pickerdob"></mat-datepicker-toggle>
+                                                <mat-datepicker #pickerdob></mat-datepicker>
+
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('DOB').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Age</mat-label>
+                                                <input type="text" formControlName="txtAge" matInput />
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Gender</mat-label>
+                                                <mat-select formControlName="drpGender">
+                                                </mat-select>
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('drpGender').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Country</mat-label>
+                                                <mat-select formControlName="drpCountry">
+                                                </mat-select>
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('drpCountry').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>City</mat-label>
+                                                <mat-select formControlName="drpCity">
+                                                </mat-select>
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('drpCity').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Reminder Date</mat-label>
+                                                <input matInput formControlName="Reminder_Date"
+                                                    [matDatepicker]="pickerReminder_Date" />
+                                                <mat-datepicker-toggle matSuffix
+                                                    [for]="pickerReminder_Date"></mat-datepicker-toggle>
+                                                <mat-datepicker #pickerReminder_Date></mat-datepicker>
+
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('Reminder_Date').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Manning Office</mat-label>
+                                                <mat-select formControlName="drpManning_Office">
+                                                </mat-select>
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('drpManning_Office').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                    </div>
+
+                                    <div fxFlex="2">
+                                    </div>
+
+                                    <div fxFlex="37">
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Rank</mat-label>
+                                                <mat-select formControlName="drpRank">
+                                                </mat-select>
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('drpRank').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Type Of Vessel</mat-label>
+                                                <mat-select formControlName="drpType_Of_Vessel">
+                                                </mat-select>
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('drpType_Of_Vessel').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Nationality</mat-label>
+                                                <mat-select formControlName="drpNationality">
+                                                </mat-select>
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('drpNationality').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Available Date</mat-label>
+                                                <input matInput formControlName="Available_Date"
+                                                    [matDatepicker]="pickerAvailable_Date" />
+                                                <mat-datepicker-toggle matSuffix
+                                                    [for]="pickerAvailable_Date"></mat-datepicker-toggle>
+                                                <mat-datepicker #pickerAvailable_Date></mat-datepicker>
+
+                                                <mat-error
+                                                    *ngIf="CrewRegistrationFormGroup.get('Available_Date').hasError('required')">
+                                                    Required
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Email</mat-label>
+                                                <input type="text" formControlName="txtEmail" matInput />
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Phone</mat-label>
+                                                <input type="text" formControlName="txtPhone" matInput />
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Remark</mat-label>
+                                                <textarea matInput formControlName="txtRemark" rows="6"></textarea>
+                                            </mat-form-field>
+                                        </div>
+
+                                    </div>
+
+                                    <div fxFlex="21">
+
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td style="text-align: center;"><span class="profile-pic">Profile
+                                                        Picture</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: center;">
+                                                    <img width="80%" *ngIf="imageUrl" [src]="imageUrl"
+                                                        class="browse-image">
+                                                    <input style="display: none;" type="file" #Image id="imageupload"
+                                                        #fileInput (change)="handleFileInput($event.target.files)"
+                                                        accept=".pdf,.doc,.docx,.jpg,.png" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: center;">
+                                                    <button type="button" class="upload-btn" class="browse-img-btn">
+                                                        <label for="imageupload" class="browse-img">
+                                                            Browse </label>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <!-- <tr>
+                                                <td>
+                                                    <div *ngIf="imageUrl" fxFlex>
+                                                        <span style="margin-top: 2px !important;"> {{ imageUrl }}</span>
+                                                        <button (click)="removeFileInput()" mat-button
+                                                            style="color: #5BB318;">Remove</button>
+                                                    </div>
+                                                </td>
+                                            </tr> -->
+
+                                            <tr>
+                                                <td style="text-align: center;">
+                                                    <button type="button" class="upload-btn" class="browse-img-btn">
+                                                        <label for="imageupload" class="browse-img">
+                                                            Upload CV </label>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="actions-area" style="border: 1px solid #c1c1c1;">
+                            <table style="display: flex;">
+                                <tr>
+                                    <td>
+                                        <div fxLayout="row">
+                                            <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                                class="add-approve-btn save-btn" (click)="AddFormData({}, 'Add Followup', 'Add_Followup')">
+                                                
+                                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                            </button>
+                                            <span style="margin-top: 3px;
+                                            margin-left: 6px;font-size: 15px;">Add Followup</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                
+                
+                            </table>
+                
+                            <!-- <div class="content-loader">
+                            <mat-progress-spinner
+                              mode="indeterminate"
+                              color="accent"
+                            ></mat-progress-spinner>
+                          </div> -->
+                        </div>
+                
+                        <div #TABLE style="border-left: 1px solid lightgrey; border-right: 1px solid lightgrey;">
+                            <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                                <ng-container matColumnDef="Followup_Remarks">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                                        mat-sort-header>
+                                        Followup Remarks
+                                    </th>
+                                    <!-- <td
+                                  *matCellDef="let row; let i = index"
+                                  class="actions-cell"
+                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                  mat-cell
+                                >
+                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                </td> -->
+                                </ng-container>
+                
+                                <ng-container matColumnDef="Date">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Date
+                                    </th>
+                                    <!-- <td
+                                  *matCellDef="let row; let i = index"
+                                  class="actions-cell"
+                                  mat-cell
+                                >
+                                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                </td> -->
+                                </ng-container>
+                                
+                    
+                                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                                </tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                    </mat-tab>
+
+                    <mat-tab label="Additional Traits" style="margin-left: #000;margin-right: #000;">
+
+                        <ng-template mat-tab-label>
+
+                            Additional Traits
+
+                        </ng-template>
+
+                        <div style="padding-top: 14px;">
+                            <div style="margin-bottom: 15px;">
+
+                                <fury-crew-additional-traits></fury-crew-additional-traits>
+                            </div>
+
+                        </div>
+
+                    </mat-tab>
+
+                </form>
+
+            </mat-tab-group>
+
+        </div>
+
+
+
+    </fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!CrewRegistrationFormGroup.valid ? '' : 'save-btn']" [disabled]="!CrewRegistrationFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!CrewRegistrationFormGroup.valid">
+        SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

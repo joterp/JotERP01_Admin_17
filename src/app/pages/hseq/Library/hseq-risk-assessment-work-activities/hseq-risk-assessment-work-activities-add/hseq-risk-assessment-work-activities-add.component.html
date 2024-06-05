@@ -1,0 +1,99 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Add New risk assessment work activity
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+    <form [formGroup]="newWorkAcitivityFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="drpCategory">
+                        <mat-option value="select">SELECT</mat-option>
+                        <mat-option value="Ballasting_Deballasting">Ballasting-Deballasting</mat-option>
+                        <mat-option value="Bunkering">Bunkering</mat-option>
+                        <mat-option value="Cargo_Operation">Cargo Operation</mat-option>
+                        <mat-option value="Crane_Operation">Crane Operation</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Activity Name</mat-label>
+                    <textarea matInput formControlName="txtActivity_Name" placeholder="Activity Name"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Frequency</mat-label>
+                    <mat-select formControlName="drpFrequency">
+                        <mat-option value="select">SELECT ALL</mat-option>
+                        <mat-option value="Green">3 - Green</mat-option>
+                        <mat-option value="Green">3 - Green</mat-option>
+                        <mat-option value="Red">3 - Red</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Last Reviewed On </mat-label>
+                    <input matInput formControlName="Last_Review" [matDatepicker]="pickerFrom"
+                        placeholder="Report Date From" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFrom></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Next Review On</mat-label>
+                    <input matInput formControlName="Next_Review" [matDatepicker]="pickerTo"
+                        placeholder="Report Date To">
+                    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerTo></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row"  fxLayoutGap="16px"
+                style="margin-bottom: 24px; margin-top: 26px;">
+                <mat-label>Office Verification </mat-label>
+                <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_OfficeVerification">
+                    <mat-radio-button value="1"
+                        [checked]="newWorkAcitivityFormGroup.get('radioNew_OfficeVerification').value == 1">
+                        <label
+                            [class.active-label]="newWorkAcitivityFormGroup.get('radioNew_OfficeVerification').value == 1">Yes</label>
+                    </mat-radio-button>
+                    <mat-radio-button value="0"
+                        [checked]="newWorkAcitivityFormGroup.get('radioNew_OfficeVerification').value == 0">
+                        <label
+                            [class.active-label]="newWorkAcitivityFormGroup.get('radioNew_OfficeVerification').value == 0">No</label>
+                    </mat-radio-button>
+
+                </mat-radio-group>
+            </div>
+        </div>
+    </form>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+        <button mat-raised-button color="primary" class="save-btn">
+            Save
+        </button>
+        <button mat-raised-button color="primary" class="save-btn">
+            Save & Add new
+        </button>
+
+
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,568 @@
+<fury-page-layout mode="card" class="ops-newVIDLibrary">
+    <h3 class="unit-packing" style="text-align: center; margin: 30px;">
+        <span class="first-letter">V</span>ESSEL
+        <span class="first-letter">I</span>NFORMATION
+        <span class="first-letter">D</span>ATABASE
+        <span class="first-letter">L</span>IBRARY
+      </h3>
+  
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <!-- Questionnaires Table -->
+            <div fxFlex="29" style="border: 1px solid lightgray;" >    
+                    <div class="actions-area">
+                        
+                        <div fxLayout="row">
+                        <button mat-mini-fab color="primary" [matTooltip]="'Add Questionnaires'"
+                            class="add-approve-btn save-btn" (click)="saveQuestionnaires(null,false,'Add Questionnaires')">
+                            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                        </button>
+                        <span style="margin-top: 3px;
+                        margin-left: 6px;font-size: 15px;" >Add Questionnaires</span>
+                        </div>
+
+
+                        <div fxLayout="row">
+
+
+                          <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                              <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                          </button>
+                          
+                          <span>
+                              <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                              <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                              <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                            </span>
+        
+                        </div>
+                        
+                    </div>
+                    <form [formGroup]="QuesFilterFormGroup">
+                    <div fxLayout="row" fxLayoutAlign="space-between" style="margin: 6px;">
+                      
+                      <div fxFlex="28" >
+                                                  <mat-form-field appearance="fill">
+                                                    <mat-label>Select</mat-label>
+                                                    <mat-select formControlName="drpSelect" >
+                                                      <mat-option value="IT">IT</mat-option>
+                                                      <mat-option value="Management">Management</mat-option>
+                                                      
+                                                    </mat-select>
+                                                  </mat-form-field>
+                                                  
+                      </div>
+                      <div fxFlex="28"> 
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label></mat-label>
+                          <input formControlName="txtDemo" matInput  type="text" />
+                        </mat-form-field>
+                      </div>
+                      <div fxFlex="10">
+                        <span>
+                            <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                            border: 1px solid grey;
+                            background: linear-gradient(#ffffff, #dfdfdf);
+                            border-radius: 3px;margin-top:12px;
+                      
+                          "/>
+                        </span>
+                      </div>
+                      <div fxFlex="28">
+                                                    
+                                      <select
+                          class="status-filter"
+                      
+                        
+                        >
+                          <option value="All">All</option>
+                          <option value="Activated">Active</option>
+                          <option value="Deleted">Deleted</option>
+                        </select>
+                      </div>
+                    </div>
+                    </form>  
+                    <div #TABLE1 >
+                        <table [dataSource]="QuestionnairesdataSource" mat-table matSort #table class="details-table">
+                        <ng-container matColumnDef="Department">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                            mat-sort-header>
+                           Department
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                            mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="VID_Questionnaires">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            VID Questionnaires
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                            </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="Is_Mother">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                           Is Mother
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                            </td>
+                        </ng-container>
+                
+                
+                        <ng-container matColumnDef="Action">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header (click)="VIDType('OPS_VID_LIB_Types')" >
+                           ....
+                            </th>
+                            <td *matCellDef="let row" class="actions-cell" mat-cell>
+                            <!-- -->
+                            <button mat-icon-button color="primary">
+                                <mat-icon class="icon-display">edit</mat-icon>
+                            </button>
+                
+                            <button mat-icon-button color="warn">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                            <button mat-icon-button>
+                                <mat-icon class="icon-display">info</mat-icon>
+                            </button>
+                            </td>
+                        </ng-container>
+                
+                        <tr *matHeaderRowDef="QuestionnairesvisibleColumns" mat-header-row></tr>
+                        <tr *matRowDef="let row; columns: QuestionnairesvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+                        </table>
+                        <mat-paginator class="Quespaginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+                    </div>
+                    
+            </div>
+                <!-- Cahpter Table -->
+            <div fxFlex="19"  style="border: 1px solid lightgray;">
+              
+                <div class="actions-area">
+                    <!-- <div>
+                      <span class="create">
+                        <button mat-mini-fab color="primary" >
+                          <mat-icon>add </mat-icon>
+                        </button>
+                       
+                      </span>
+                    </div> -->
+                    <div fxLayout="row">
+                      <button mat-mini-fab color="primary" [matTooltip]="'Add Chapter'"
+                          class="add-approve-btn save-btn" (click)="saveChapter(null,false,'Add Chapters')">
+                          <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                      </button>
+                      <span style="margin-top: 3px;
+                      margin-left: 6px;font-size: 15px;" >Add Chapter </span>
+                  </div>
+                  <div fxLayout="row">
+
+
+                    <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                        <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                    </button>
+                    
+                    <span>
+                        <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                        <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                        <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                      </span>
+  
+                </div>
+                    <!-- <div  class="content-loader">
+                              <mat-progress-spinner
+                                mode="indeterminate"
+                                color="accent"
+                              ></mat-progress-spinner>
+                            </div> -->
+                  </div>
+                  <form [formGroup]="ChapterFilterFormGroup">
+                    <div fxLayout="row" fxLayoutAlign="space-between" style="margin: 6px;">
+                      
+                          
+                          <div fxFlex="35"> 
+                            <mat-form-field fxFlex appearance="fill">
+                              <mat-label></mat-label>
+                              <input formControlName="txtDemo" matInput  type="text" />
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex="10">
+                            <span>
+                              <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                              border: 1px solid grey;
+                              background: linear-gradient(#ffffff, #dfdfdf);
+                              border-radius: 3px;margin-top:12px;
+                        
+                            "/>
+                            </span>
+                        </div>
+                          <div fxFlex="30">
+                                                        
+                                          <select
+                              class="status-filter"
+                          
+                            
+                            >
+                              <option value="All">All</option>
+                              <option value="Activated">Active</option>
+                              <option value="Deleted">Deleted</option>
+                            </select>
+                          </div>
+                         
+                    </div>                         
+                  </form>  
+                  
+                  <div #TABLE2>
+                    <table [dataSource]="ChapterdataSource" mat-table matSort #table class="details-table">
+                      <ng-container matColumnDef="Chapter_No">
+                        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                          mat-sort-header>
+                         Chapter No
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                          mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                        </td>
+                      </ng-container>
+              
+                      <ng-container matColumnDef="Chapter">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                          Chapter
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+              
+              
+              
+              
+                      <ng-container matColumnDef="Action">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header (click)="VIDChapters('OPS_VID_LIB_Chapters')">
+                          ....
+                        </th>
+                        <td *matCellDef="let row" class="actions-cell" mat-cell>
+                          <!-- -->
+                          <button mat-icon-button color="primary">
+                            <mat-icon class="icon-display">edit</mat-icon>
+                          </button>
+              
+                          <button mat-icon-button color="warn">
+                            <mat-icon>close</mat-icon>
+                          </button>
+                          <button mat-icon-button>
+                            <mat-icon class="icon-display">info</mat-icon>
+                          </button>
+                        </td>
+                      </ng-container>
+              
+                      <tr *matHeaderRowDef="chaptervisibleColumns" mat-header-row></tr>
+                      <tr *matRowDef="let row; columns: chaptervisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <mat-paginator class="chapterpaginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+            </div>
+            <!-- Category Table-->
+            <div fxFlex="19" style="border: 1px solid lightgray;">
+
+                <div class="actions-area">
+                    <!-- <div>
+                      <span class="create">
+                        <button mat-mini-fab color="primary" >
+                          <mat-icon>add </mat-icon>
+                        </button>
+                       
+                      </span>
+                    </div> -->
+                    <div fxLayout="row">
+                      <button mat-mini-fab color="primary" [matTooltip]="'Add Category'"
+                          class="add-approve-btn save-btn" (click)="saveCategory(null,false,'Add Category')">
+                          <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                      </button>
+                      <span style="margin-top: 3px;
+                      margin-left: 6px;font-size: 15px;">Add Category</span>
+                  </div>
+                  <div fxLayout="row">
+
+
+                    <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                        <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                    </button>
+            
+                    <span>
+                        <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                        <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                        <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                      </span>
+  
+                </div>
+                    
+                  </div>
+                  <form [formGroup]="CategoryFilterFormGroup">
+                  <div fxLayout="row" fxLayoutAlign="space-between" style="margin: 6px;">
+                      <div fxFlex="25"> 
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label></mat-label>
+                          <input formControlName="txtDemo" matInput  type="text" />
+                        </mat-form-field>
+                      </div>
+                      <div fxFlex="10">
+                        <span>
+                          <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                          border: 1px solid grey;
+                          background: linear-gradient(#ffffff, #dfdfdf);
+                          border-radius: 3px;margin-top:12px;
+                    
+                        "/>
+                        </span>
+                    </div>
+                      <div fxFlex="30">
+                                                    
+                                      <select
+                          class="status-filter"
+                      
+                        
+                        >
+                          <option value="All">All</option>
+                          <option value="Activated">Active</option>
+                          <option value="Deleted">Deleted</option>
+                        </select>
+                      </div>
+                      
+                  </div>  
+                </form>
+                
+                  <div #TABLE3>
+                    <table [dataSource]="CategorydataSource" mat-table matSort #table class="details-table">
+                      <ng-container matColumnDef="Category_No">
+                        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                          mat-sort-header>
+                        Category No
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                          mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                        </td>
+                      </ng-container>
+              
+                      <ng-container matColumnDef="Category">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                          Category
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+              
+              
+              
+              
+                      <ng-container matColumnDef="Action">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header (click)="VIDCatagaries('OPS_VID_LIB_Catagaries')">
+                          ....
+                        </th>
+                        <td *matCellDef="let row" class="actions-cell" mat-cell>
+                          <!-- -->
+                          <button mat-icon-button color="primary">
+                            <mat-icon class="icon-display">edit</mat-icon>
+                          </button>
+              
+                          <button mat-icon-button color="warn">
+                            <mat-icon>close</mat-icon>
+                          </button>
+                          <button mat-icon-button>
+                            <mat-icon class="icon-display">info</mat-icon>
+                          </button>
+                        </td>
+                      </ng-container>
+              
+                      <tr *matHeaderRowDef="categoryvisibleColumns" mat-header-row></tr>
+                      <tr *matRowDef="let row; columns: categoryvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <mat-paginator class="categorypaginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+            </div>
+
+                    
+            
+           
+           
+            <!-- Question Table -->
+            <div fxFlex="29" style="border: 1px solid lightgray;">
+                <div class="actions-area">
+                        
+                    <div fxLayout="row">
+                    <button mat-mini-fab color="primary" [matTooltip]="'Add Question'"
+                        class="add-approve-btn save-btn" (click)="saveQuestion(null,false,'Add Question')" >
+                        <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                    </button>
+                    <span style="margin-top: 3px;
+                    margin-left: 6px;font-size: 15px;"  >Add Question</span>
+                </div>
+
+
+                <div fxLayout="row">
+
+
+                  <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                      <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                  </button>
+                  <div style="margin-left: 5px;margin-top: 3px;margin-right: 12px;">Clear Filter</div>
+                  <span>
+                      <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                      <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                      <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                    </span>
+
+              </div>
+                    
+                </div>
+                <form [formGroup]="QuestionFilterFormGroup">
+                  <div fxLayout="row" style="margin: 6px;" >
+                    <div fxFlex="25" >
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label></mat-label>
+                        <input formControlName="txtDemo" matInput  type="text" />
+                        </mat-form-field>
+                      
+                    </div>
+                    <div fxFlex="10">
+                      <span>
+                        <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                        border: 1px solid grey;
+                        background: linear-gradient(#ffffff, #dfdfdf);
+                        border-radius: 3px;margin-top:12px;
+                  
+                      "/>
+                      </span>
+                    </div>
+                      
+                    <div fxFlex="22">
+                      
+                      <select
+                      class="status-filter"
+                  
+                    
+                    >
+                      <option value="All">All</option>
+                      <option value="Activated">Active</option>
+                      <option value="Deleted">Deleted</option>
+                    </select>
+                    </div>
+
+                    <div fxFlex="22">
+                      <select
+                      class="status-filter"
+                  
+                    
+                    >
+                      <option value="All">Select All</option>
+                      <option value="Activated">Date</option>
+                      <option value="Deleted">Expiry Date</option>
+                      <option value="Deleted">Image</option>
+                      <option value="Deleted">Number</option>
+                      <option value="Deleted">Text</option>
+                      <option value="Deleted">Yes/No</option>
+                    </select>
+                    </div>
+                    <div fxFlex="22">
+                      
+                                                          
+                        <select
+            class="status-filter"
+        
+          
+          >
+            <option value="All">Select All</option>
+            <option value="Activated">Fixed</option>
+            <option value="Deleted">Variable</option>
+          </select>
+                    </div>
+                  
+                    
+                  </div>
+                </form>
+                <div #TABLE4  >
+                    <table [dataSource]="QuestiondataSource" mat-table matSort #table class="details-table">
+                    <ng-container matColumnDef="Question">
+                        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                        mat-sort-header>
+                    Question
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                        mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                        </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="Question_No">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                      Question No.
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="Answer_Type">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                     Answer Type
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container><ng-container matColumnDef="Answer_Nature">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                      Answer Nature
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="Action">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header (click)="VIDQuestions('OPS_VID_LIB_Questions')">
+                        ....
+                        </th>
+                        <td *matCellDef="let row" class="actions-cell" mat-cell>
+                        <!-- -->
+                        <button mat-icon-button color="primary">
+                            <mat-icon class="icon-display">edit</mat-icon>
+                        </button>
+            
+                        <button mat-icon-button color="warn">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon-display">info</mat-icon>
+                        </button>
+                        </td>
+                    </ng-container>
+            
+                    <tr *matHeaderRowDef="QuestionvisibleColumns" mat-header-row></tr>
+                    <tr *matRowDef="let row; columns: QuestionvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                    </tr>
+                    </table>
+                    <mat-paginator class="Questionpaginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+                </div>
+                
+            </div>
+        </div>
+    </fury-page-layout-content>
+  </fury-page-layout>

@@ -1,0 +1,204 @@
+fury-crew-portage-bill-cash-to-master-index-add {
+
+    .logo {
+        width: 20px;
+        height: 20px;
+    }
+
+    // badge css
+    :host {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .demo-section+.demo-section {
+        margin-top: 16px;
+    }
+
+    //   
+
+    // mat accordion
+
+    .panel-title {
+        color: blue;
+        font-family: tahoma;
+        font-weight: bold;
+    }
+
+    .filter-area {
+        margin-top: 20px;
+
+    }
+
+    // 
+    .filter-btn-area {
+        padding: 8px 0px;
+        text-align: center;
+    }
+
+    .filter-btn {
+        margin-right: 5px !important;
+        width: 100px;
+        margin-bottom: 10px !important;
+    }
+
+    .add-approve-btn {
+        height: 24px;
+        width: 24px;
+        align-items: center;
+        display: flex;
+    }
+
+    .add-approve-btn-icon {
+        font-size: 24px;
+        align-self: center;
+        margin-top: -1px;
+    }
+
+    .CashToMasterIndexAdd-view {
+        padding: 10px;
+
+        .mat-form-field-label-wrapper {
+            top: -0.75em;
+            padding-top: 0.84375em;
+        }
+
+        .mat-form-field-wrapper {
+            margin-right: 5px !important;
+            padding-bottom: 0px;
+        }
+
+        .mat-form-field {
+            margin-bottom: 21px;
+            width: 100%;
+        }
+
+        .mat-form-field-subscript-wrapper {
+            top: 50px;
+        }
+
+        .mat-form-field-flex {
+            align-items: flex-start !important;
+        }
+
+        .mat-form-field-infix {
+            border-top: 0.84375em solid transparent;
+        }
+
+        .mat-form-field-underline {
+            bottom: 0 !important;
+        }
+
+        // 
+        .roundedTable {
+            border-radius: 6px 6px 6px 6px;
+            border: 1px solid #e3e3e3;
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        .roundedTable tr:first-child th:first-child {
+            border-top-left-radius: 5px;
+        }
+
+        .roundedTable tr:first-child th:last-child {
+            border-top-right-radius: 5px;
+        }
+
+        .roundedTable tr:last-child td:first-child {
+            border-bottom-left-radius: 5px;
+        }
+
+        .roundedTable tr:last-child td:last-child {
+            border-bottom-right-radius: 5px;
+        }
+
+        /* optional setting to set the background color of the last row - behave like a footer */
+        //     .roundedTable tr:last-child td:last-child 
+        //    {
+        // 	background-color: #CCC;
+        //     }
+
+        // /* optional setting to set the background color and font color of the first row - behave like a header */
+        // .roundedTable tr:first-child th:first-child {
+        //     background-color: #1f497d;
+        //     color: #FFF;
+        //     padding: 6px;
+        // }
+
+        .roundedTable tr td {
+            border-bottom: 1px solid #e3e3e3;
+            padding: 9px;
+        }
+
+        // 
+        .style1 {
+            color: #1a1a1a;
+            background-color: #aca8b7;
+            height: 22px;
+            font-family: tahoma;
+            font-weight: bold;
+            padding: 6px 0px 24px 5px;
+            margin-bottom: 15px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .style-th {
+            background-color: #1f497d;
+            color: #FFF;
+            padding: 6px;
+            text-align: start;
+            font-family: tahoma;
+            font-weight: 500;
+        }
+
+        .style2-th {
+            background-color: #1f497d;
+            color: #FFF;
+            padding: 6px;
+            text-align: center;
+            font-family: tahoma;
+            font-weight: 500;
+            border: 1px solid #fff;
+        }
+
+        .input-style {
+            width: 50%;
+            background-color: LightYellow;
+            height: 25px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .input-style2 {
+            width: 50%;
+            height: 25px;
+            border-radius: 5px;
+            text-align: center;
+            background-color: rgb(242, 247, 147);
+            border: 1px solid lightgray;
+        }
+
+        .input-style3 {
+            width: 50%;
+            height: 25px;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid lightgray;
+        }
+
+           // radiobtn
+
+    .active-label {
+        color: #009688;
+        /* Change this to your desired highlight color */
+        font-weight: 500;
+      }
+  
+      // 
+
+    }
+
+}

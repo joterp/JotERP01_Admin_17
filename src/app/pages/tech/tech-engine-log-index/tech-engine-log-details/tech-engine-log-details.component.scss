@@ -1,0 +1,157 @@
+fury-tech-engine-log-details{
+
+    .enix-logo{
+        height: 200px;
+        width: 200px;
+    }
+    .enginelog-heading{
+        width: 36%;
+        vertical-align: top;
+       
+    }
+    .enginelog-title{
+        color: #20435e;
+        text-align: left;
+        font-size: x-large;
+        padding: 20px;
+        margin-bottom: 25px;
+
+    }
+    .td-left{
+        width: 1%;
+        font-family: Tahoma;
+        font-size: 14px;
+        text-align: right;
+    }
+    .td-center{
+        width: 0.2%;
+        text-align: center;       
+    }
+    .td-right{
+        width: 12%;
+        font-family: Tahoma;
+    }
+
+    .mat-tab-header{
+        background: linear-gradient(#696969, #343435);
+    }
+    .mat-tab-label {
+        // min-width: 25px !important;
+        // padding: 5px;
+        // background-color: #7e8f99;
+        
+        color: #fff;
+        font-family: Tahoma !important;
+        // font-weight: 700;
+    }
+    
+    /* Styles for the active tab label */
+    .mat-tab-label.mat-tab-label-active {
+        // min-width: 25px !important;
+        // padding: 5px;
+        background: #f98e2e;
+        color: #fff;
+        font-family: Tahoma !important;
+        border-left: 4px solid #918f8f;
+    border-top: 3px solid #918f8f;
+    border-bottom: 3px solid #918f8f;
+    opacity: 1;
+        // font-weight: 700;
+    }
+ 
+    /* Styles for the ink bar */
+    .mat-ink-bar {
+        background-color: transparent !important;
+        ;
+    }
+    .mat-form-field-wrapper {
+        margin-right: 5px !important;
+        padding-bottom: 0px;
+      }
+    
+      .mat-form-field {
+        margin-bottom: 21px;
+        width: 100%;
+      }
+      .mat-form-field-subscript-wrapper {
+        top: 50px;
+      }
+    
+      .mat-form-field-flex {
+        align-items: flex-start !important;
+      }
+    
+      .mat-form-field-infix {
+        border-top: 0.84375em solid transparent;
+      }
+      .mat-form-field-underline {
+        bottom: 0 !important;
+      }
+
+      .threshold-btn {
+        color: #fff;
+        background-color: #5bc0de;
+        border-color: #46b8da;
+      }
+  
+      .threshold-btn:hover {
+        color: #fff;
+        background-color: #31b0d5;
+        border-color: #269abc;
+      }
+  
+      .watch-btn {
+        color: blue;
+        background-color: #f0ad4e;
+        border-color: #eea236;
+        
+      }
+  
+      .watch-btn:hover {
+        color: blue;
+        background-color: #ec971f;
+        border-color: #d58512;
+      }
+
+      table.mat-table {
+        width: 100%;
+      }
+      p.tbl-row-item {
+        font-size: 12px;
+        margin-top: 10px;
+        // margin-bottom: 10px;
+        padding: 0px 5px;
+      }
+    
+      tr.mat-header-row {
+       
+        background-color: #1F497D;
+      }
+    
+      th.mat-header-cell {
+        text-align: left;
+        color: white;
+    
+      }
+    
+      .content-loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    
+      th.mat-header-cell:last-of-type,
+      td.mat-cell:last-of-type,
+      td.mat-footer-cell:last-of-type {
+        padding-right: 10px;
+        // min-width: 100px;  commented this on 18-08-23
+      }
+    
+      th.mat-header-cell:first-of-type,
+      td.mat-cell:first-of-type,
+      td.mat-footer-cell:first-of-type {
+        padding-left: 10px;
+      }
+}
+

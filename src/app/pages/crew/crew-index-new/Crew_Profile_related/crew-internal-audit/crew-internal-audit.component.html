@@ -1,0 +1,98 @@
+<div class="crew-internal-audit-view">
+
+    <table style="width: 100%;">
+        <tr>
+            <td class="internal-audit-td">
+                <b>Internal Audit</b>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="actions-area" fxLayout="row" fxLayoutAlign="end center" style="padding: 0;">
+
+                
+                    <!-- <div class="content-loader">
+                   <mat-progress-spinner
+                     mode="indeterminate"
+                     color="accent"
+                   ></mat-progress-spinner>
+                 </div> -->
+                </div>
+
+                <div #TABLE>
+                    <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+
+
+                        <ng-container matColumnDef="Opening">
+                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Opening</th>
+
+                        </ng-container>
+
+                        <ng-container matColumnDef="Closing">
+                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Closing</th>
+
+                        </ng-container>
+                        <ng-container matColumnDef="Sign_Off_Date">
+                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Date</th>
+                        </ng-container>
+                       
+
+                        <ng-container matColumnDef="header-row-first-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                                Rank
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-second-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                                Interviewed ?
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-third-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+                          border-bottom: 1px solid #ddd;
+                          text-align: center;">
+                                Meeting Attended
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-fourth-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                                Remarks
+                            </th>
+                        </ng-container>
+                    
+
+                        <tr mat-header-row
+                            *matHeaderRowDef="['header-row-first-group', 'header-row-second-group', 'header-row-third-group', 'header-row-fourth-group']"
+                            style="height:32px">
+                        </tr>
+
+
+
+                        <tr *matHeaderRowDef="visibleColumns" mat-header-row style="height:32px"></tr>
+                        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements"
+                            mat-row></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+
+</div>

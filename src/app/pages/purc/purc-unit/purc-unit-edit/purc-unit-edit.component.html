@@ -1,0 +1,73 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>Add New unit</div>
+ -->
+
+ <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="display: flex; justify-content: space-between; align-items: center;">
+  <span style="font-size: 15px;">Add New Unit</span>
+  <!-- <mat-icon (click)="CloseModal()">close</mat-icon> -->
+</div>
+
+
+<mat-dialog-content style="height: 100% !important" class="purc-unit-edit">
+  <form [formGroup]="unitFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex appearance="fill">
+        <mat-label>Unit Name</mat-label>
+        <input formControlName="txtUnit_Name" matInput type="text" placeholder="Unit Name" />
+        <mat-error>Unit Name is required</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex appearance="fill">
+        <mat-label>Choose a parent</mat-label>
+        <mat-select formControlName="drpParent_Type">
+          <mat-option value="Kilogram">Kilogram</mat-option>
+          <mat-option value="Liters">Liters</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex appearance="fill">
+        <mat-label>Unit Short Name</mat-label>
+        <input formControlName="txtUnit_Short_Name" matInput type="text" placeholder="Unit Short Name" />
+        <mat-error>Unit Short Name is required</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex appearance="fill">
+        <mat-label class="left-label">Conversion Factor</mat-label>
+        <input formControlName="txtConversion_Factor" matInput type="text" placeholder="Conversion Factor" />
+        <mat-error>Conversion Factor is required</mat-error>
+      </mat-form-field>
+    </div>
+
+
+
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <h6 style="color: #ff0000"></h6>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+  <button mat-raised-button color="primary" class="save-btn" (click)="SaveUnitsForm()"
+    [ngClass]="[!unitFormGroup.valid ? '' : 'save-btn']" [disabled]="!unitFormGroup.valid && !IsEdit">
+    SAVE & CLOSE
+  </button>
+
+
+ 
+
+
+  <button mat-raised-button color="primary" class="save-btn" [disabled]="!unitFormGroup.valid && !IsEdit"
+    (click)="SaveUnitsForm(true)">
+    SAVE & ADD NEW
+  </button>
+  <button mat-raised-button color="warn" type="button" [mat-dialog-close]="false">CLOSE</button>
+</mat-dialog-actions>

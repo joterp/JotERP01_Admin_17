@@ -1,0 +1,228 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add Items From Library
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+<div>
+
+<mat-dialog-content>
+    <fury-page-layout-content [@fadeInUp] style="margin: 30px;" class="Fire_Arm-Kit">
+        <mat-card class="sp-card-view" style="margin-top: 20px;">
+            <mat-card-header fxLayout="column">
+                <div fxLayout="row"  class="sp-card-view-header">
+                    <div fxLayout="row">
+    
+                    </div>
+    
+                    <div fxLayout="row">
+    
+    
+                        <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                            <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                        </button>
+                        <mat-card-title style="margin-left: 5px;margin-top: 3px;margin-right: 12px;">Clear Filter</mat-card-title>
+                        
+    
+                    </div>
+    
+                </div>
+    
+            </mat-card-header>
+        
+             
+               <mat-card-content>
+                <form [formGroup]="ItemsLibFilterFormGroup">
+                    <table >
+    
+                
+                    <tr fxLayout fxLayoutGap="40px" style="margin: 5px;">
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select Items</mat-label>
+                                <mat-select formControlName="drpItemsCategory" >
+                                <mat-option value="SelectLocation">Select Item Category</mat-option>
+                                <mat-option value="Ammunition">Ammunition</mat-option>
+                                <mat-option value="Cleaner">Cleaner</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+    
+                        <td >
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select Vessel</mat-label>
+                                <mat-select formControlName="drpItemType" >
+                                <mat-option value="Boxes">Boxes</mat-option>
+                                <mat-option value="Test">Test</mat-option>
+                               
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label></mat-label>
+                                <input formControlName="txtItem_Name" matInput type="text"  placeholder="select Document Id"/>
+                            </mat-form-field>
+                            <span>
+                                <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                        border: 1px solid grey;
+                                        background: linear-gradient(#ffffff, #dfdfdf);
+                                        border-radius: 3px;margin-top:12px;
+                                  
+                                "/>
+                            </span>
+                            
+                        </td>
+                    </tr>
+                </table>
+                    </form>
+                <div #TABLE>
+                    <table [dataSource]="ItemsLibdataSource" mat-table matSort #table class="details-table">
+                      <ng-container matColumnDef="Category">
+                        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                          mat-sort-header>
+                            Category
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                          mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                        </td>
+                      </ng-container>
+              
+                      <ng-container matColumnDef="Item_Type">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                       Item Type
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Item_Name">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                      Item Name
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+    
+                      <ng-container matColumnDef="Model">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                       Model
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Serial_Number">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                      Serial Number
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Item_Maker">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                      Item Maker
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Bought_On">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                      Bought ON
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+    
+                      <ng-container matColumnDef="Loaned_From">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                      Loaned From
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+    
+                      <ng-container matColumnDef="Box_No">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                     Box No
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+    
+                      <ng-container matColumnDef="PO_Code">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                    PO Code
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+    
+                      <ng-container matColumnDef="PO_Date">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                    PO Date
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+    
+                      <ng-container matColumnDef="Quantity">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                    Quantity
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+    
+                      <ng-container matColumnDef="CheckBox">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                          <mat-checkbox >
+                          </mat-checkbox>
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-checkbox >
+                          </mat-checkbox>
+                        </td>
+                      </ng-container>
+                    
+                     
+                      <tr *matHeaderRowDef="ItemsLibvisibleColumns" mat-header-row></tr>
+                      <tr *matRowDef="let row; columns: ItemsLibvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+               </mat-card-content>
+           
+              
+        </mat-card>
+    
+        </fury-page-layout-content>
+</mat-dialog-content>
+ 
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" style="margin-bottom: 5px;">
+  
+    <button mat-raised-button color="primary" class="save-btn">
+      Save 
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,207 @@
+
+
+<fury-page-layout mode="card" class="HSEQ-InspectionReference">
+ 
+    <fury-page-layout-header>
+      
+      <form [formGroup]="riskAssessmentActivityFormGroup" >
+        
+          <h3 class="unit-packing">
+            <span class="first-letter">R</span>ISK
+            <span class="first-letter">A</span>SSESSMENT
+            <span class="first-letter">A</span>CTIVITY
+            <span class="first-letter">H</span>AZARD
+            <span class="first-letter">C</span>ONTROLS
+          </h3>
+          
+        
+        <div class="filter-area">
+          <div fxLayout="row" fxLayoutAlign="start">
+  
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Activity</mat-label>
+                    <mat-select formControlName="drpActivity" >
+                      <mat-option value="select">SELECT</mat-option>
+                      <mat-option value="Activity_For_Garbage_Disposal">Activity For Garbage Disposal</mat-option>
+                      <mat-option value="Bunkering">Activity 1 For Bunkering</mat-option>
+                      <mat-option value="Main_Engine_Unit_Decarb">Cargo Tank Inspections</mat-option>
+                      <mat-option value="Mooring_Operations">Mooring Operations</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Activity / Operation</mat-label>
+                <input formControlName="txtOperation" matInput placeholder="Search by Operation" type="text" />
+              </mat-form-field>
+
+
+            </div>
+            <div fxFlex>
+               
+                <mat-form-field appearance="fill">
+                    <mat-label>Hazard/Impact</mat-label>
+                    <input formControlName="txtHazard_Impact" matInput placeholder="Search by Impact" type="text" />
+                  </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Control/Safegardas</mat-label>
+                <input formControlName="txtControls" matInput placeholder="Search by Control" type="text" />
+              </mat-form-field>
+
+
+            </div>
+
+
+
+  
+
+            <div fxFlex>
+              <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="drpStatus">
+                  <mat-option value="">Show Active</mat-option>
+                  <mat-option value="1">Show Deleted</mat-option>
+                  <mat-option value="0">Show All</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>SQA Procedure</mat-label>
+                <input formControlName="txtSQA_Procedure" matInput placeholder="Search by SQA Procedure" type="text" />
+              </mat-form-field>
+
+            </div>
+  
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                <button
+                mat-raised-button
+                color="primary"
+               style="background-color: #5cb85c;"
+                class="filter-btn"
+              
+              >
+                Search
+              </button>
+              </div>
+  
+              <div>
+                <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                  type="button" (click)="clearFilter()">
+                  Clear
+                </button>
+              </div>
+            </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+      <div class="actions-area" >
+      
+        <div fxLayout="row">
+          <button mat-mini-fab color="primary" [matTooltip]="'Add Activity/Hazard/Controls'"
+              class="add-approve-btn save-btn"    (click)="saveRiskAssessmentActivity(null,false)">
+              <mat-icon class="add-approve-btn-icon">add</mat-icon>
+          </button>
+          <span style="margin-top: 3px;
+          margin-left: 6px;font-size: 15px;"> Add New Activity/Hazard/Controls</span>
+      </div>
+        <div>
+            <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+          <span>
+            <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+            <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+            <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+          </span>
+        </div>
+             
+      </div>
+  
+      <div #TABLE>
+        <table [dataSource]="riskAssessmentActivitydataSource" mat-table matSort #table class="details-table">
+          
+  
+          <ng-container matColumnDef="Activity">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         Activity
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Activity_Operation">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+        Activity/Operation
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Hazard_Impact">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+        Hazard/Impact
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Controls_sefegards">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+        Control/Sefeguards
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="SQA_Procedure">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+        SQA Procedure
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+         
+    
+    
+    
+    
+    
+        
+          <ng-container matColumnDef="Action">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+              Action
+            </th>
+            <td *matCellDef="let row" class="actions-cell" mat-cell>
+              <!-- -->
+              <button mat-icon-button color="primary">
+                <mat-icon class="icon-display">edit</mat-icon>
+              </button>
+  
+              <button mat-icon-button color="warn" >
+                <mat-icon>close</mat-icon>
+              </button>
+              <button mat-icon-button  >
+                <mat-icon class="icon-display">info</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+  
+          <tr *matHeaderRowDef="riskAssessmentActivityvisibleColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: riskAssessmentActivityvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

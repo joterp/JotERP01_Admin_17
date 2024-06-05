@@ -1,0 +1,177 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add Alert Areas
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <mat-dialog-content style="height: 100% !important">
+      <form [formGroup]="alertAreasFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Name</mat-label>
+                <textarea
+                  matInput
+                  formControlName="txtName"
+                  placeholder=""
+                ></textarea>
+              </mat-form-field>
+          </div>
+          
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea
+                  matInput
+                  formControlName="txtDescription"
+                  placeholder=""
+                ></textarea>
+              </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field appearance="fill">
+                <mat-label>Colour</mat-label>
+                <mat-select formControlName="drpColour" >
+                <mat-option value="Black">Black</mat-option>
+                <mat-option value="Blue">Blue</mat-option>
+                <mat-option value="Red">Red</mat-option>
+                <mat-option value="White">White</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        </div>
+      </form>
+      
+      <fury-page-layout-content [@fadeInUp]  class="alert-area-model">
+        <mat-card class="sp-card-view" style="margin-top: 20px;">
+            
+                <mat-card-header fxLayout="column" >
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header" style="padding: 20px;">
+                        <div fxLayout="row">
+                            <!-- <button mat-mini-fab color="primary" [matTooltip]="'Add New Alerts'"
+                            class="add-approve-btn save-btn"  >
+                            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                        </button>
+                        <span style="margin-top: 3px;
+                        margin-left: 6px;font-size: 15px;color: #5f5f5f;"> Add New Alerts</span> -->
+                            
+                        </div>
+
+
+                        <div fxLayout="row">
+
+
+                            <!-- <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                            <mat-card-title style="margin-left: 5px;margin-top: 3px;margin-right: 12px;">Clear Filter</mat-card-title>
+                            <span>
+                                <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                              </span> -->
+
+                        </div>
+
+                    </div>
+
+                </mat-card-header>
+            
+               <mat-card-content>
+                <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="alertareasdataSource"  class="example-container">
+            
+            
+                        <ng-container matColumnDef="deg">
+                            <th mat-header-cell *matHeaderCellDef  class="borderstyle"> Deg </th>
+                  
+                          </ng-container>
+                  
+                          <ng-container matColumnDef="min">
+                            <th mat-header-cell *matHeaderCellDef  class="borderstyle"> Min </th>
+                  
+                          </ng-container>
+                  
+                          <ng-container matColumnDef="sec">
+                            <th mat-header-cell *matHeaderCellDef  class="borderstyle"> Sec </th>
+                  
+                          </ng-container>
+                  
+                          <ng-container matColumnDef="ns">
+                            <th mat-header-cell *matHeaderCellDef  class="borderstyle"> N/S </th>
+                  
+                          </ng-container>
+                  
+                         
+                          <ng-container matColumnDef="degTwo">
+                            <th mat-header-cell *matHeaderCellDef  class="borderstyle"> Deg </th>
+                  
+                          </ng-container>
+                  
+                          <ng-container matColumnDef="minTwo">
+                            <th mat-header-cell *matHeaderCellDef  class="borderstyle"> Min </th>
+                  
+                          </ng-container>
+                  
+                          <ng-container matColumnDef="secTwo">
+                            <th mat-header-cell *matHeaderCellDef  class="borderstyle"> Sec </th>
+                  
+                          </ng-container>
+                  
+                          <ng-container matColumnDef="nsTwo">
+                            <th mat-header-cell *matHeaderCellDef  class="borderstyle"> N/S </th>
+                  
+                          </ng-container>
+            
+            
+                        <ng-container matColumnDef="header-row-first-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+                              Point
+                            </th>
+                          </ng-container>
+                          <ng-container matColumnDef="header-row-second-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center"[attr.colspan]="4"  class="borderstyle">
+                             Latitude
+                            </th>
+                          </ng-container>
+                  
+                          <ng-container matColumnDef="header-row-third-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="4"  class="borderstyle">
+                             Longitude
+                            </th>
+                          </ng-container>
+            
+                            <tr mat-header-row
+                            *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group']">
+                            </tr>
+                            <tr mat-header-row *matHeaderRowDef="alertAreasvisibleColumns;sticky:true"></tr>
+                            <tr mat-row *matRowDef="let row; columns: alertAreasvisibleColumns;"></tr>
+                    </table>
+                  </div>
+                  <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+               </mat-card-content>
+           
+              
+        </mat-card>
+
+    </fury-page-layout-content>
+    </mat-dialog-content>
+  
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" >
+     
+     
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Close
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

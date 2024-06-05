@@ -1,0 +1,105 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Copy Setup Value
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+    <form [formGroup]="newSetupFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+
+            <table style="width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;">
+                <tr>
+                    <td>Vessel</td>
+                    <td > <strong>Gregg</strong></td>
+                </tr>
+                <tr>
+                    <td>Nationality</td>
+                    <td > <strong>Brazil</strong></td>
+                </tr>
+                <tr>
+                    <td>Rank</td>
+                    <td > <strong>Able Seamen</strong></td>
+                </tr>
+                <tr>
+                    <td>Value(%)</td>
+                    <td > <strong>100.00</strong></td>
+                </tr>
+            </table>
+           
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Vessel Name</mat-label>
+                    <mat-select  #select multiple formControlName="drpVessel_Name">
+                      <div class="select-all">
+                          <mat-checkbox [(ngModel)]="allSelected"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="toggleAllSelection()">Check All</mat-checkbox>
+                      </div>
+                      <mat-option (click)="optionClick()" *ngFor="let vsl of Vessel" [value]="vsl.value">
+                        {{vsl.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Nationality</mat-label>
+                    <mat-select  #select2 multiple formControlName="drpNationality">
+                      <div class="select-all">
+                          <mat-checkbox [(ngModel)]="allNationalitySelected"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="toggleNationalitySelection()">Check All</mat-checkbox>
+                      </div>
+                      <mat-option (click)="natoptionClick()" *ngFor="let nat of Nationality" [value]="nat.value">
+                        {{nat.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Rank</mat-label>
+                    <mat-select  #selectRank multiple formControlName="drpRank">
+                      <div class="select-all">
+                          <mat-checkbox [(ngModel)]="allRankSelected"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="toggleRankSelection()">Check All</mat-checkbox>
+                      </div>
+                      <mat-option (click)="rankoptionClick()" *ngFor="let rank of Ranks" [value]="rank.value">
+                        {{rank.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+
+           
+           
+
+           
+            
+
+
+        </div>
+    </form>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+       
+       
+        <button mat-raised-button color="primary" class="save-btn">
+          Save 
+        </button>
+       
+    
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+      </mat-dialog-actions>
+</div>

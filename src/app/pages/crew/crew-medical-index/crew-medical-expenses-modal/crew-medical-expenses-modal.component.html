@@ -1,0 +1,138 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />10496 Medical Expense
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+
+<fury-page-layout mode="card" class="crew-medicalExpenses" style="margin-top: 30px;">
+
+   
+
+    <fury-page-layout-content>
+
+
+
+        <fury-page-layout-content [@fadeInUp] class="content-area">
+            <div class="actions-area">
+
+                <div fxLayout="row">
+                    <button mat-mini-fab color="primary" [matTooltip]="'Add Expenses'"
+                        class="add-approve-btn save-btn" (click)="saveNewFollowUp(null,false)">
+                        <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                    </button>
+                    <span style="margin-top: 3px;
+              margin-left: 6px;font-size: 15px;"> Add Expenses</span>
+                </div>
+                <div>
+                    <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+                    <!-- <span>
+                        <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                        <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                        <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                    </span> -->
+                </div>
+
+            </div>
+
+            <div #TABLE>
+                <table [dataSource]="medicalExpensesdataSource" mat-table matSort #table class="details-table">
+
+
+                    <ng-container matColumnDef="Date">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                           Date
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Cost_Type">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Cost Type
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Currency">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Currency
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Local_Amount">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                           Local Amount
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Exchange_Rate">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Exchange_Rate
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="USD_Amount">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            USD Amount
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Details">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Details
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="Action">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Action
+                        </th>
+                        <td *matCellDef="let row" class="actions-cell" mat-cell>
+                            <!-- -->
+                            <button mat-icon-button color="primary">
+                                <mat-icon class="icon-display">edit</mat-icon>
+                            </button>
+
+                            <button mat-icon-button color="warn">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                            <button mat-icon-button>
+                                <mat-icon class="icon-display">info</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <tr *matHeaderRowDef="medicalExpensesvisibleColumns" mat-header-row></tr>
+                    <tr *matRowDef="let row; columns: medicalExpensesvisibleColumns"
+                        class="clickable route-animations-elements" mat-row></tr>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                    </tr>
+                </table>
+            </div>
+            <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+        </fury-page-layout-content>
+
+    </fury-page-layout-content>
+</fury-page-layout>

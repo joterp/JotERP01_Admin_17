@@ -1,0 +1,332 @@
+<fury-page-layout mode="card" class="ops-addVoyageLog">
+        
+    <!-- <h3 style="text-align: center;">
+        <span class="first-letter">V</span>OYAGE
+        <span class="first-letter">A</span>BSTRACT
+        <span class="first-letter">L</span>OG
+    </h3>
+         -->
+        
+    <fury-page-layout-content [@fadeInUp] style="margin: 30px;">
+        <mat-card class="sp-card-view" style="margin-top: 20px;">
+            
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" >
+                        <span class="text-voyage-log"> Add New Voyage Log</span>
+                    </div>
+
+                </mat-card-header>
+
+               <mat-card-content>
+                <form [formGroup]="CompareReportFilterFormGroup" style="margin-bottom: 30px;">
+                  <div class="filter-area">
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayoutAlign="space-between">
+                      <div fxFlex>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Towing Vessel</mat-label>
+                                            <mat-select formControlName="drpTowing_vessel" >
+                                              <mat-option value="Bryce">Engle Trenton</mat-option>
+                                              <mat-option value="Napoleon">Stena A</mat-option>
+                                             
+                                            </mat-select>
+                                        </mat-form-field>
+                    
+                                          <mat-form-field appearance="fill">
+                                              <mat-label>Towed Vessel / Barge</mat-label>
+                                              <mat-select formControlName="drpTowed_Vessel" >
+                                                <mat-option value="Bryce">Bryce</mat-option>
+                                                <mat-option value="Napoleon">Napoleon</mat-option>
+                                                <mat-option value="Plump">Plump</mat-option>
+                                                <mat-option value="Yami">Yami</mat-option>
+                                              </mat-select>
+                                          </mat-form-field>
+                          
+                                          <mat-form-field appearance="fill">
+                                              <mat-label>Voyage Number</mat-label>
+                                              <input formControlName="txtVoyage_No" matInput placeholder="Enter Voyage Number" type="text" />
+                                            </mat-form-field>
+            
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Departure Date </mat-label>
+                                                <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                                                <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                                                <mat-datepicker #pickerFrom></mat-datepicker>
+                                              </mat-form-field>
+                                              
+                                              <mat-form-field appearance="fill">
+                                                <mat-label>Departure Port</mat-label>
+                                                <mat-select formControlName="drpDeparture_Port" >
+                                                  <mat-option value="Albania-Durres">Albania-Durres</mat-option>
+                                                  <mat-option value="Algeria-Arzew">Algeria-Arzew</mat-option>
+                                                
+                                                </mat-select>
+                                            </mat-form-field>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Arrival Port</mat-label>
+                                                <mat-select formControlName="drpArrival_Port" >
+                                                    <mat-option value="Albania-Durres">Albania-Durres</mat-option>
+                                                    <mat-option value="Algeria-Arzew">Algeria-Arzew</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                             
+                      </div>
+                          
+                      <div fxFlex="10">
+                      </div>
+                                      
+                      <div fxFlex>
+
+                                        <mat-form-field appearance="fill">
+                                          <mat-label>Draft Tug</mat-label>
+                                          <input formControlName="txtDraft_Tug" matInput placeholder="Enter by Departure Port" type="text" />
+                                      </mat-form-field>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Draft Tow</mat-label>
+                                            <input formControlName="txtDraft_Tow" matInput placeholder="Enter Wind Force" type="text" />
+                                        </mat-form-field>
+            
+            
+                                         <mat-form-field appearance="fill">
+                                            <mat-label>Total Crew</mat-label>
+                                            <input formControlName="txtTotal_Crew" matInput placeholder="Enter by Departure Port" type="text" />
+                                        </mat-form-field>
+            
+                                      
+                                   
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Agent at Dept Port</mat-label>
+                                            <input formControlName="txtDept_Port" matInput placeholder="Enter by Departure Port" type="text" />
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Agent at Arr Port</mat-label>
+                                            <input formControlName="txtArr_Port" matInput placeholder="Enter Arrival Port" type="text" />
+                                        </mat-form-field>
+                          
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Remarks</mat-label>
+                                            <textarea
+                                              matInput
+                                              formControlName="txtRemarks"
+                                              placeholder=""
+                                            ></textarea>
+                                          </mat-form-field>
+                                          
+                      </div>
+
+                      <div fxFlex="10">
+                      </div>
+                     
+                      <div fxFlex>
+                        <div fxLayout="row" fxLayoutAlign="space-between" >
+                            
+                          <span class="text-voyage-log"  style="margin-bottom:10px"> Departure ROB</span>
+                  
+  
+                      </div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>MGO</mat-label>
+                                            <input formControlName="txtMGO" matInput placeholder="Itrs" type="text" />
+                                        </mat-form-field>
+            
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>LO</mat-label>
+                                            <input formControlName="txtLO" matInput placeholder="Itrs" type="text" />
+                                        </mat-form-field>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>HYD OIL</mat-label>
+                                            <input formControlName="txtHYD_OIL" matInput placeholder="Itrs" type="text" />
+                                        </mat-form-field>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>FW</mat-label>
+                                            <input formControlN
+                                            ame="txtFW" matInput placeholder="MT" type="text" />
+                                        </mat-form-field>
+
+                                        <div fxLayout="row" fxLayoutAlign="space-between" >
+                            
+                                            <span class="text-voyage-log"  style="margin-bottom:10px"> Vessel Condition</span>
+                                    
+                    
+                                        </div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Loaded / Ballast</mat-label>
+                                            <mat-select formControlName="drpLoaded" >
+                                            <mat-option value="Ballast">Ballast</mat-option>
+                                            <mat-option value="Loaded">Loaded</mat-option>
+                                            
+                                            </mat-select>
+                                        </mat-form-field>
+                                        
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Qty / Loaded</mat-label>
+                                            <input formControlName="txtqty_Loaded" matInput placeholder="MT" type="text" />
+                                        </mat-form-field>
+                                    
+            
+                                        
+                        
+                                            
+                                        
+                      </div>
+                    </div>
+                  </div>
+                </form>   
+                    <mat-card-header fxLayout="column" >
+                        <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                            <div fxLayout="row">
+                                <button mat-mini-fab color="primary" [matTooltip]="'Add New CheckList'"
+                                class="add-approve-btn save-btn"  (click)="saveDailyVoyageLog(null,false)">
+                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                            </button>
+                            <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;color: #5f5f5f;margin-right: 11px;" > Add New Voyage Log</span>
+
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add New CheckList'"
+                            class="add-approve-btn save-btn" >
+                            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                            </button>
+                            <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;color: #5f5f5f;">Import Voyage Daily Log</span>
+
+                                
+                            </div>
+    
+                            
+                            
+    
+                        </div>
+    
+                    </mat-card-header>
+                    <div class="mat-elevation-z8">
+                        <table mat-table [dataSource]="alertareasdataSource"  class="example-container">
+                
+                
+                            <ng-container matColumnDef="pe">
+                                <th mat-header-cell *matHeaderCellDef  class="borderstyle"> P/E </th>
+                      
+                              </ng-container>
+                      
+                              <ng-container matColumnDef="se">
+                                <th mat-header-cell *matHeaderCellDef  class="borderstyle"> S/E </th>
+                      
+                              </ng-container>
+                      
+                              <ng-container matColumnDef="me">
+                                <th mat-header-cell *matHeaderCellDef  class="borderstyle"> ME </th>
+                      
+                              </ng-container>
+                      
+                              <ng-container matColumnDef="ae">
+                                <th mat-header-cell *matHeaderCellDef  class="borderstyle"> AE </th>
+                      
+                              </ng-container>
+                      
+                             
+                              
+                
+                            <ng-container matColumnDef="header-row-first-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+                                  Date
+                                </th>
+                              </ng-container>
+
+                              <ng-container matColumnDef="header-row-second-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+                                 Latitude
+                                </th>
+                              </ng-container>
+
+                              <ng-container matColumnDef="header-row-third-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+                                Longitude
+                                </th>
+                              </ng-container>
+
+                              <ng-container matColumnDef="header-row-fourth-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+                                STMG(Hrs)
+                                </th>
+                              </ng-container>
+
+                              <ng-container matColumnDef="header-row-fifth-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+                                DMG
+                                </th>
+                              </ng-container>
+
+                              <ng-container matColumnDef="header-row-sixth-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+                                ETA
+                              </ng-container>
+
+                              <ng-container matColumnDef="header-row-seventh-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+                                Wind
+                                </th>
+                              </ng-container>
+                              <ng-container matColumnDef="header-row-eighth-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+                                Sea/Swell
+                                </th>
+                              </ng-container>
+
+                              <ng-container matColumnDef="header-row-nineth-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+                                24 Hrs Speed (knts)
+                                </th>
+                              </ng-container>
+
+                         
+
+                              <ng-container matColumnDef="header-row-tenth-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center"[attr.colspan]="2"  class="borderstyle">
+                                PRM
+                                </th>
+                              </ng-container>
+                      
+                              <ng-container matColumnDef="header-row-eleventh-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2"  class="borderstyle">
+                                 MGO Consum(Ltr)
+                                </th>
+                              </ng-container>
+                
+                                <tr mat-header-row
+                                *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group','header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group','header-row-nineth-group','header-row-tenth-group','header-row-eleventh-group']">
+                                </tr>
+                                <tr mat-header-row *matHeaderRowDef="alertAreasvisibleColumns;sticky:true"></tr>
+                                <tr mat-row *matRowDef="let row; columns: alertAreasvisibleColumns;"></tr>
+                        </table>
+                      </div>
+                      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+               </mat-card-content>
+           
+              
+        </mat-card>
+        <div fxLayout="row" fxLayoutAlign="center center"  style="margin-top: 20px;">
+       
+            <button
+              mat-raised-button
+              color="primary"
+              class="save-btn"
+             style="margin: 10px;"
+            >
+             Save
+            </button>
+            <button
+            
+              mat-raised-button
+              class="save-btn"
+              color="primary"
+              style="margin: 10px;"
+               
+            >
+              Save & Close
+            </button>
+          
+            <button mat-raised-button color="warn" style="margin: 10px;">Cancel</button>
+        </div>
+    </fury-page-layout-content>
+</fury-page-layout>

@@ -1,0 +1,160 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="width: 20px;
+        height:20px; margin-right: 10px;margin-bottom: -4px;" />
+    </span>
+      {{modeltitle}}
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="add-new-threshold">
+
+    <div>
+        <form [formGroup]="ThresholdFormGroup"> 
+            
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Vessel Name</mat-label>
+                    <mat-select formControlName="drpVessel_Name">
+                        <mat-option>
+    
+                        </mat-option>
+    
+                        <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+                    </mat-select>
+                    <mat-error *ngIf="ThresholdFormGroup.get('drpVessel_Name').hasError('required')">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+                
+             
+            </div>
+
+             
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Threshold Type</mat-label>
+                    <mat-select formControlName="drpThreshold_Type">
+                        <mat-option>
+    
+                        </mat-option>
+    
+                        <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+                    </mat-select>
+                    <mat-error *ngIf="ThresholdFormGroup.get('drpThreshold_Type').hasError('required')">
+                        Required
+                    </mat-error>
+                </mat-form-field> 
+             
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+         
+                <div fxFlex="20">
+                    Vessel Cargo status	
+                    </div> 
+
+                <div fxFlex="80">
+
+            <div style="display: block;">
+                <div>
+                    <mat-checkbox aria-label="Select All" 
+                    [checked]="isChecked()" [indeterminate]="isIndeterminate()" (change)="$event ? toggleAll($event) : null">
+                     Check All
+                   </mat-checkbox>
+                 </div>
+                 <div class="demo-select-all-checkboxes" *ngFor="let item of itemsObject">
+                   <mat-checkbox (click)="$event.stopPropagation()"
+                                   (change)="$event ? toggle(item, $event) : null"
+                                   [checked]="exists(item)">
+                     {{ item.val }}
+                   </mat-checkbox>
+                   {{exists(item)}}
+           
+                 </div>
+           
+          </div>
+          </div>
+       </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label class="left-label">Speed Upper-Limit (Max)</mat-label>
+                   
+                      <input
+                        type="text"
+                        class="right-text"
+                        formControlName="txtSpeed_Upper_Limit_Max"
+                        matInput
+                      />
+                   
+                  </mat-form-field>
+           
+            </div>
+
+   
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label class="left-label">Min Value (In MT or Ltrs)	</mat-label>
+                   
+                      <input
+                        type="text"
+                        class="right-text"
+                        formControlName="txtMin_Value"
+                        matInput
+                      />
+                   
+                  </mat-form-field>
+           
+            </div>
+    
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label class="left-label">Max Value (In MT or Ltrs)	</mat-label>
+                   
+                      <input
+                        type="text"
+                        class="right-text"
+                        formControlName="txtMax_Value"
+                        matInput
+                      />
+                   
+                  </mat-form-field>
+           
+            </div>
+
+
+        </form>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" 
+    [ngClass]="[!ThresholdFormGroup.valid ? '' : 'save-btn']" [disabled]="!ThresholdFormGroup.valid">
+    SAVE & CLOSE
+  </button>
+
+  <button mat-raised-button color="primary" class="save-btn" [disabled]="!ThresholdFormGroup.valid">
+    SAVE & ADD NEW
+  </button>
+ 
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+
+

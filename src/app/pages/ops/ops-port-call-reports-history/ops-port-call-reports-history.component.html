@@ -1,0 +1,283 @@
+<fury-page-layout mode="card" class="portcallhistory-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+     
+        <!-- <div>  
+              <h2>{{routeTitle}}</h2>
+          </div> -->
+        <h3>
+  
+          <span class="first-letter">V</span>ESSEL
+          <span class="first-letter">P</span>ORT
+          <span class="first-letter">C</span>ALLS
+          <span class="first-letter">H</span>ISTORY
+  
+        </h3>
+
+        <!-- <button (click)="PortCallPurchaseOrderList(null)">PO</button> -->
+   
+    </fury-page-layout-header>
+  
+  
+
+    <fury-page-layout-content [@fadeInUp]>
+      <div class="actions-area" fxLayout="row" fxLayoutAlign="end center">
+        <div>
+          <span
+         
+            style="cursor: pointer"
+           
+          >
+            <img
+              src="../../../../assets/img/XLSX.jpg"
+              class="logo"
+              alt="excel"
+            />
+            <img
+              src="../../../../assets/img/pdf.png"
+              class="logo"
+              alt="excel"
+            />
+            <img
+              src="../../../../assets/img/XML1.png"
+              class="logo"
+              alt="excel"
+            />
+          </span>
+        </div>
+        <!-- <div class="content-loader">
+          <mat-progress-spinner
+            mode="indeterminate"
+            color="accent"
+          ></mat-progress-spinner>
+        </div> -->
+      </div>
+  
+       <div #TABLE>
+        <table
+          [dataSource]="PortCallsHistrydataSource"
+          mat-table
+          matSort
+          #table
+          class="details-table"
+        >
+          <ng-container matColumnDef="Vessel_Manager">
+            <th
+              *matHeaderCellDef
+              class="actions-cell"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              mat-header-cell
+              mat-sort-header
+            >
+            Vessel Manager
+            </th>
+            <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+            </td> -->
+          </ng-container>
+  
+          <ng-container matColumnDef="Fleet">
+            <th
+              *matHeaderCellDef
+              class="actions-cell"
+              mat-header-cell
+              mat-sort-header
+            >
+            Fleet
+            </th>
+            <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+            </td> -->
+          </ng-container>
+          <ng-container matColumnDef="Vessel_Name">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Vessel Name
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+              </td> -->
+            </ng-container>
+          <ng-container matColumnDef="Port">
+            <th
+              *matHeaderCellDef
+              class="actions-cell"
+              mat-header-cell
+              mat-sort-header
+            >
+            Port
+            </th>
+            <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+            </td> -->
+          </ng-container>
+          <ng-container matColumnDef="Voyage_Number">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Voyage Number
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+            </ng-container>
+            <ng-container matColumnDef="ETA">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              ETA
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+            </ng-container>
+            <ng-container matColumnDef="ETB">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              ETB
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+            </ng-container>
+            <ng-container matColumnDef="Status">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Status
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+            </ng-container>
+            <ng-container matColumnDef="Checklist">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Checklist
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+            </ng-container>
+          <ng-container matColumnDef="Action">
+            <th
+              *matHeaderCellDef
+              class="actions-cell"
+              mat-header-cell
+              mat-sort-header
+            >
+            
+            </th>
+            <!-- <td
+              *matCellDef="let row"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">
+                {{ row.Boat_Date | date : "d MMM yyyy HH:mm" }}
+              </p>
+            </td> -->
+          </ng-container>
+          <ng-container matColumnDef="Info">
+            <th
+              *matHeaderCellDef
+              class="actions-cell"
+              mat-header-cell
+              mat-sort-header
+            >
+            
+            </th>
+            <!-- <td
+              *matCellDef="let row"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.Boat_Type_Name }}</p>
+            </td> -->
+          </ng-container>
+  
+          <tr *matHeaderRowDef="visibleColumnsPortCallsHistry" mat-header-row></tr>
+          <tr
+            *matRowDef="let row; columns: visibleColumnsPortCallsHistry"
+            class="clickable route-animations-elements"
+            mat-row
+          ></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div>
+  
+       <mat-paginator
+        class="paginator"
+        [pageSizeOptions]="[10, 25, 50, 100]"
+        [pageSize]="pageSize"
+      ></mat-paginator>
+  
+   
+    </fury-page-layout-content>
+
+ 
+  
+  </fury-page-layout>

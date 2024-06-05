@@ -1,0 +1,145 @@
+<fury-page-layout mode="card" class="tenure-view">
+
+  <fury-page-layout-header>
+
+    <form [formGroup]="tenurefilterFormGroup">
+      <h3 class="unit-packing">
+        <span class="first-letter">T</span>ENURES
+
+      </h3>
+      <div class="filter-area">
+        <div fxLayout="row" fxLayoutAlign="start">
+
+          <div>
+
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Tenure Name</mat-label>
+              <input formControlName="txtTenure_Name" matInput placeholder="Search by Tenure Name" type="text" />
+            </mat-form-field>
+
+          </div>
+
+
+          <div>
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Status</mat-label>
+              <mat-select formControlName="drpStatus">
+                <mat-option value="">Show Active</mat-option>
+                <mat-option value="1">Show Deleted</mat-option>
+                <mat-option value="0">Show All</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="filter-btn-area" fxFlex>
+            <div>
+              <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+              <button mat-raised-button color="primary" style="background-color: #5cb85c;" class="filter-btn">
+                Search
+              </button>
+            </div>
+
+            <div>
+              <button class="create" mat-raised-button color="warn" class="filter-btn" type="button"
+                (click)="clearFilter()">
+                Clear
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+  </fury-page-layout-header>
+  <fury-page-layout-content [@fadeInUp] class="content-area">
+    <div class="actions-area">
+      <!-- <div>
+        <span class="create">
+          <button mat-mini-fab color="primary" >
+            <mat-icon>add </mat-icon>
+          </button>
+         
+        </span>
+      </div> -->
+      <div fxLayout="row">
+        <button mat-mini-fab color="primary" [matTooltip]="'Add New Tenure'"
+            class="add-approve-btn save-btn" (click)="saveNewTenure(null,false)">
+            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+        </button>
+        <span style="margin-top: 3px;
+        margin-left: 6px;font-size: 15px;">Add New Tenure </span>
+    </div>
+      <div>
+        <span style="cursor: pointer">
+          <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+          <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+          <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+        </span>
+      </div>
+      <!-- <div  class="content-loader">
+                <mat-progress-spinner
+                  mode="indeterminate"
+                  color="accent"
+                ></mat-progress-spinner>
+              </div> -->
+    </div>
+
+    <div #TABLE>
+      <table [dataSource]="tenuredataSource" mat-table matSort #table class="details-table">
+        <ng-container matColumnDef="Tenure_Name">
+          <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+            mat-sort-header>
+            Tenure Name
+          </th>
+          <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+            mat-cell>
+            <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Tenure_Duration">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Tenure Duration(Months)
+          </th>
+          <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+          </td>
+        </ng-container>
+
+
+
+
+        <ng-container matColumnDef="Action">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Action
+          </th>
+          <td *matCellDef="let row" class="actions-cell" mat-cell>
+            <!-- -->
+            <button mat-icon-button color="primary">
+              <mat-icon class="icon-display">edit</mat-icon>
+            </button>
+
+            <button mat-icon-button color="warn">
+              <mat-icon>close</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon class="icon-display">info</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9999">No data found</td>
+        </tr>
+      </table>
+    </div>
+    <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+  </fury-page-layout-content>
+
+</fury-page-layout>

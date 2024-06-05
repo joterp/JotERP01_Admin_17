@@ -1,0 +1,240 @@
+<fury-page-layout mode="card" class="catalogue-view" >
+    <h3>
+        <span class="first-letter">S</span>URVEY
+        <span class="first-letter">V</span>ESSEL
+        <span class="first-letter">A</span>SSIGNMENT
+    </h3>
+
+    <fury-page-layout-content [@fadeInUp]>
+        <mat-card>
+
+            <div class="vesselbtn" >
+
+                <div fxFlex="18" fxLayout="column" fxLayout.gt-sm="row">
+                    <form [formGroup]="fleetFilterFormGroup" >
+                        <mat-form-field appearance="fill">
+                            <mat-label>Select Fleet</mat-label>
+                            <mat-select formControlName="drpFleet" aria-placeholder="Select Fleet">
+                                <mat-option value="Kilogram">Admin Fleet</mat-option>
+                                <mat-option value="Liters">Fleet-A</mat-option>
+
+                            </mat-select>
+                        </mat-form-field>
+                    </form>
+                </div>
+
+
+                <div fxFlex="10">
+                    <button mat-raised-button (click)="copyCertificate(null,false)"  color="primary"
+                                            style="background-color: #5cb85c; margin: 10px;">
+                                            Copy From Vessel
+                    </button>
+                </div>
+            </div>
+            <mat-card-content fxLayout="row">
+
+                <mat-card fxFlex="18" class="sp-card-view">
+
+                    <mat-card-header fxLayout="column">
+                        <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                            <div fxLayout="row">
+
+                                <mat-card-title style="margin-top: 3px;
+                    margin-left: 6px; color: red;
+                "></mat-card-title>
+                            </div>
+
+
+                            <div fxLayout="row">
+
+
+                                <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                    <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                                </button>
+                                <mat-card-title style="margin-left: 5px;margin-top: 3px;">Clear Filter</mat-card-title>
+                            </div>
+                        </div>
+
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <table style="width: -webkit-fill-available;">
+                            <colgroup>
+                                <col>
+                            </colgroup>
+                            <thead style="background-color: #1976d2;
+                            color: #fff;
+                           text-align: center; height: 50px;">
+                                <tr>
+                                    <td style="padding:4px;">Vessel</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding:4px;">
+                                        <mat-form-field fxFlex appearance="fill">
+                                            <mat-label>Select Vessel</mat-label>
+                                            <mat-select formControlName="drpVessel" aria-placeholder="Select Vessel">
+                                                <mat-option value="Kilogram">Admin Fleet</mat-option>
+                                                <mat-option value="Liters">Fleet-A</mat-option>
+
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                <tr *matHeaderRowDef="visibleColumnsVessel" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: visibleColumnsVessel"
+                                    class="clickable route-animations-elements" mat-row></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <mat-paginator #secondPaginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"
+                            [pageSize]="pageSize"></mat-paginator>
+                    </mat-card-content>
+                </mat-card>
+
+
+                <mat-card fxFlex="40" class="sp-card-view1">
+                    <mat-card-header fxLayout="column">
+                        <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                            <div fxLayout="row">
+
+                                <mat-card-title style="margin-top: 3px;
+                    margin-left: 6px; color: red;margin-left: 200px;
+                ">Not Assigned Certificates</mat-card-title>
+                            </div>
+
+
+                            <div fxLayout="row">
+
+
+                                <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                    <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                                </button>
+                                <mat-card-title style="margin-left: 5px;margin-top: 3px;">Clear Filter</mat-card-title>
+                            </div>
+                        </div>
+
+                    </mat-card-header>
+                    <mat-card-content>
+
+                        <div>
+                            <table [dataSource]="notAssignCertificatedataSource" mat-table matSort #table2
+                                class="grid_table">
+
+                                <ng-container matColumnDef="Category">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Category
+                                    </th>
+                                </ng-container>
+
+                                <ng-container matColumnDef="SurveyCertificate">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Survey Certificate
+                                    </th>
+                                </ng-container>
+
+                                <ng-container matColumnDef="AssignAll">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell>
+                                        <button mat-raised-button color="primary"
+                                            style="background-color: #5cb85c; margin: 10px;">
+                                            Assign All
+                                        </button>
+                                    </th>
+                                </ng-container>
+
+
+
+
+                                <tr *matHeaderRowDef="visibleColumnsNotAssignCert" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: visibleColumnsNotAssignCert"
+                                    class="clickable route-animations-elements" mat-row></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+
+
+
+                            <mat-paginator #secondPaginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"
+                                [pageSize]="pageSize"></mat-paginator>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+
+                <mat-card fxFlex="40" class="sp-card-view2">
+                    <mat-card-header fxLayout="column">
+                        <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                            <div fxLayout="row">
+
+                                <mat-card-title style="margin-top: 3px;
+                    margin-left: 6px; color:#5cb85c; margin-left: 200px;
+                ">Assigned Certificates</mat-card-title>
+                            </div>
+
+
+                            <div fxLayout="row">
+
+
+                                <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                    <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                                </button>
+                                <mat-card-title style="margin-left: 5px;margin-top: 3px;">Clear Filter</mat-card-title>
+                            </div>
+                        </div>
+
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div>
+
+                            <table [dataSource]="assignCertificatedataSource" mat-table matSort #table2
+                                class="grid_table">
+
+                                <ng-container matColumnDef="UnAssignAll">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell>
+                                        <button mat-raised-button color="primary"
+                                            style="background-color: #5cb85c; margin: 10px;">
+                                            Unassign All
+                                        </button>
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="Category">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Category
+                                    </th>
+                                </ng-container>
+
+                                <ng-container matColumnDef="SurveyCertificate">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Survey Certificate
+                                    </th>
+                                </ng-container>
+
+
+
+
+
+
+
+                                <tr *matHeaderRowDef="visibleColumnsAssignCert" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: visibleColumnsAssignCert"
+                                    class="clickable route-animations-elements" mat-row></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+
+                        <mat-paginator #thirdPaginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"
+                            [pageSize]="pageSize"></mat-paginator>
+                    </mat-card-content>
+                </mat-card>
+            </mat-card-content>
+        </mat-card>
+    </fury-page-layout-content>
+</fury-page-layout>

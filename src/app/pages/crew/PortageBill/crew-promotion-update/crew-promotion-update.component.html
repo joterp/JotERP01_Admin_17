@@ -1,0 +1,182 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+    <fury-page-layout mode="card" class="crew-signoffedit-view">
+
+        <div>
+            <form [formGroup]="PromotionUpdateFormGroup">
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <div style="margin-bottom: 10px;" fxFlex>
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Select Staff to promote</mat-label>
+                            <mat-select formControlName="drpSign_Off_Reason">
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <table style="width: 100%;
+                font-family: tahoma;">
+                        <tr>
+                            <td style="width: 50%;"><span>Rank Promoted To</span></td>
+                            <td><span> </span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <br>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Sign Off Date</mat-label>
+                        <input matInput formControlName="sign_off_date" [matDatepicker]="pickersign_off_date" />
+                        <mat-datepicker-toggle matSuffix [for]="pickersign_off_date"></mat-datepicker-toggle>
+                        <mat-datepicker #pickersign_off_date></mat-datepicker>
+                    </mat-form-field>
+
+                    <div fxFlex>
+
+                    </div>
+
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Date of Promotion
+                        </mat-label><input matInput formControlName="date_of_promotion"
+                            [matDatepicker]="pickerdate_of_promotion" />
+                        <mat-datepicker-toggle matSuffix [for]="pickerdate_of_promotion"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerdate_of_promotion></mat-datepicker>
+                    </mat-form-field>
+
+                    <div fxFlex>
+
+                    </div>
+
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <table style="width: 100%;
+                    font-weight: bold;
+                    font-family: tahoma;">
+                        <tr>
+                            <td style="width: 50%;"><span>Rank Promoted To</span></td>
+                            <td><span> </span></td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <div fxFlex>
+                        <table class="roundedTable">
+                            <thead>
+                                <tr>
+                                    <th style=" background-color: #1f497d;
+                                   color: #FFF;
+                                   padding: 6px;font-family: tahoma;">Earning</th>
+                                    <th style=" background-color: #1f497d;
+                                   color: #FFF;
+                                   padding: 6px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Opening Balance</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Opening Balance</td>
+                                    <td>5,000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td>-533.33</td>
+                                </tr>
+                                <tr>
+                                    <td>Leave Wages</td>
+                                    <td>-266.67</td>
+                                </tr>
+                                <tr>
+                                    <td>Office Instruction</td>
+                                    <td>0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div fxFlex>
+                        <table class="roundedTable">
+                            <thead>
+                                <tr>
+                                    <th style=" background-color: tomato;
+                                       color: #FFF;
+                                       padding: 6px;font-family: tahoma;">Deduction</th>
+                                    <th style=" background-color: tomato;
+                                       color: #FFF;
+                                       padding: 6px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Opening Balance</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Opening Balance</td>
+                                    <td>5,000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td>-533.33</td>
+                                </tr>
+                                <tr>
+                                    <td>Leave Wages</td>
+                                    <td>-266.67</td>
+                                </tr>
+                                <tr>
+                                    <td>Office Instruction</td>
+                                    <td>0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Balance transfered to his new rank</mat-label>
+                        <mat-select formControlName="txtBalance_transfered">
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+            </form>
+
+        </div>
+
+    </fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!PromotionUpdateFormGroup.valid ? '' : 'save-btn']" [disabled]="!PromotionUpdateFormGroup.valid">
+        FINALIZE
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

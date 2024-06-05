@@ -1,0 +1,159 @@
+<fury-page-layout mode="card" class="crew-feeAnnualReport">
+
+    <h3 class="unit-packing" style="text-align: center;margin: 30px;font-size: tahoma;">
+
+        <span class="first-letter">M</span>ANNING
+        <span class="first-letter">F</span>EE
+        <span class="first-letter">A</span>NNUAL
+        <span class="first-letter">R</span>EPORT
+
+    </h3>
+
+    <fury-page-layout-content>
+
+        <mat-card>
+            <div fxLayout="row" style="margin: 30px;">
+                <div fxFlex="20" style="margin: 10px;">
+
+                    <div class="heading-text">Fleet</div>
+                    <mat-list dense
+                        style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                        <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                            <mat-checkbox [(ngModel)]="select_fleet_data"
+                                (ngModelChange)="onSelectFleetData($event)"></mat-checkbox>
+                            <span fxFlex="5"></span>
+                            <span class="checkbox-text">Select all</span>
+                        </mat-list-item>
+
+                        <ng-container *ngFor="let d of dataFleet;">
+                            <mat-list-item>
+                                <mat-checkbox [(ngModel)]="d.is_selected">
+                                    <span fxFlex="5"></span>
+                                    <span class="checkbox-text">{{ d.name }}</span>
+                                </mat-checkbox>
+
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+
+                </div>
+                <div fxFlex="20" style="margin: 10px;">
+                    <div class="heading-text">Vessel</div>
+                    <mat-list dense
+                        style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                        <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                            <mat-checkbox [(ngModel)]="select_vessel_data"
+                                (ngModelChange)="onSelectVesselData($event)"></mat-checkbox>
+                            <span fxFlex="5"></span>
+                            <span class="checkbox-text">Select all</span>
+                        </mat-list-item>
+
+                        <ng-container *ngFor="let d of dataVessel;" class="hover-effect-fleet">
+                            <mat-list-item>
+                                <mat-checkbox [(ngModel)]="d.is_selected">
+                                    <span fxFlex="5"></span>
+                                    <span class="checkbox-text">{{ d.name }}</span>
+                                </mat-checkbox>
+
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+
+
+                </div>
+                <div fxFlex="20" style="margin: 10px;">
+                    <div class="heading-text">Manning Office</div>
+                    <mat-list dense
+                        style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                        <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                            <mat-checkbox [(ngModel)]="select_ManningOffice_data"
+                                (ngModelChange)="onSelectManningOfficeData($event)"></mat-checkbox>
+                            <span fxFlex="5"></span>
+                            <span class="checkbox-text">Select all</span>
+                        </mat-list-item>
+
+                        <ng-container *ngFor="let d of dataManningOffice;">
+                            <mat-list-item>
+                                <mat-checkbox [(ngModel)]="d.is_selected">
+                                    <span fxFlex="5"></span>
+                                    <span class="checkbox-text">{{ d.name }}</span>
+                                </mat-checkbox>
+
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+
+                </div>
+                <div fxFlex="20" style="margin: 10px;">
+                    <div class="heading-text">Fee Type</div>
+                    <mat-list dense
+                        style="border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f8f8f8;">
+                        <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                            <mat-checkbox [(ngModel)]="select_FeeType_data"
+                                (ngModelChange)="onSelectFeeTypeData($event)"></mat-checkbox>
+                            <span fxFlex="5"></span>
+                            <span class="checkbox-text">Select all</span>
+                        </mat-list-item>
+
+                        <ng-container *ngFor="let d of dataFeeType;">
+                            <mat-list-item>
+                                <mat-checkbox [(ngModel)]="d.is_selected">
+                                    <span fxFlex="5"></span>
+                                    <span class="checkbox-text">{{ d.name }}</span>
+                                </mat-checkbox>
+
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+
+                </div>
+                <div fxFlex="20" style="margin: 10px;padding-top: 66px;border: 1px solid #f0f0f0;
+                padding: 30px;">
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nationality</mat-label>
+                        <mat-select formControlName="drpTraining_Type">
+                            <mat-option value="Afghanistan">Afghanistan</mat-option>
+                            <mat-option value="Åland Islands">Åland Islands</mat-option>
+                            <mat-option value="Canada">Canada</mat-option>
+                            <mat-option value="Germany">Germany</mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Year</mat-label>
+                        <mat-select formControlName="drpYear">
+                            <mat-option value="2023">2023</mat-option>
+                            <mat-option value="2022">2022</mat-option>
+                            <mat-option value="2021">2021</mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+
+
+
+                    <div class="filter-btn-area" style="margin: 10px;">
+                        <div>
+
+                            <button mat-raised-button color="primary" style="background-color: #5cb85c;width: 100%;"
+                                class="filter-btn">
+                                Show Report
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </mat-card>
+
+
+
+    </fury-page-layout-content>
+</fury-page-layout>

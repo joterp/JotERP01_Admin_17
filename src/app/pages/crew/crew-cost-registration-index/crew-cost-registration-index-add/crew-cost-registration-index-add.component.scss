@@ -1,0 +1,63 @@
+.mat-dialog-title {
+    background-color: black;
+
+}
+
+.logo {
+    width: 20px;
+    height: 20px;
+}
+.active-label {
+    color: #009688; // Change this to your desired highlight color 
+    font-weight: 500;
+  }
+   
+  .Attachment {
+    // border: 1px solid gray;                           /// new added for attachment button
+    height: 65px;
+    text-align: left;
+  
+    padding-top: 20px;
+    // padding-left: 15px;
+    margin-bottom: 10px;
+  }
+
+  .upload-btn{
+    width: 113px;
+    height: 29px;
+    background: gray;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+  }
+  .upload-btn:hover {
+    background: #3795BD;
+    color: #fff;
+  }
+  .upload-btn1{
+    width: 113px;
+    height: 29px;
+    background-color: #919191;
+    color: #fff;
+    // border: 1px solid #505050;
+    border-radius: 4px;
+  }
+  .drop-zone {                           // new added for drag files
+    background: #ddedd3;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer;
+    color: black;
+    margin-bottom: 20px;
+  }
+  
+  .drop-zone:hover {
+    border-color: #333;
+    background-color: #54B435;
+    color: white;
+    border: 1 px solid green;
+  }
+  
+
+
+  

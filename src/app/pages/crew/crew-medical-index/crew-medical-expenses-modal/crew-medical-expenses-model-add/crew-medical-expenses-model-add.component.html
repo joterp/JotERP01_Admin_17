@@ -1,0 +1,105 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Crew Medical Expenses
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <form [formGroup]="newMedicalExpensesFormGroup">
+      
+      <div mat-dialog-container style="padding-top: 20px;">
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill"> 
+            <mat-label>Case Date</mat-label>
+            <input matInput formControlName="Date_Case" [matDatepicker]="pickerCase" />
+            <mat-datepicker-toggle matSuffix [for]="pickerCase"></mat-datepicker-toggle>
+            <mat-datepicker #pickerCase></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill"> 
+                <mat-label>Cost Date</mat-label>
+                <input matInput formControlName="Date_Cost" [matDatepicker]="pickerCost" />
+                <mat-datepicker-toggle matSuffix [for]="pickerCost"></mat-datepicker-toggle>
+                <mat-datepicker #pickerCost></mat-datepicker>
+              </mat-form-field>
+            </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Cost Type</mat-label>
+                <mat-select formControlName="drpCost_Type">
+                    <mat-option value="SELECT">SELECT</mat-option>
+                    <mat-option value="Agent_Charges">Agent Charges</mat-option>
+                    <mat-option value="Hospital_Charges">Hospital Charges</mat-option>
+                    <mat-option value="Others">Others</mat-option>
+                    <mat-option value="Repatriation">Repatriation</mat-option>
+                    <mat-option value="Tranportation_Ambulance">Tranportation and Ambulance</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Local Currency</mat-label>
+                <mat-select formControlName="drpLocal_Currency">
+                    <mat-option value="AED_United_Arab_Emirates_Dirham">AED - United Arab Emirates Dirham</mat-option>
+                    <mat-option value="AFN_Afghanistan_Afghani">AFN - Afghanistan Afghani</mat-option>
+                    <mat-option value="ARS_Argentina_Peso">ARS - Argentina Peso</mat-option>
+                    <mat-option value="BND -_Brunei_Darussalam_Dollar">BND - Brunei Darussalam Dollar</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Local Amount</mat-label>
+                <input formControlName="txtLocal_Amount" matInput placeholder="Search by Local Amount" type="text" />
+              </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Exchange Rate</mat-label>
+                <input formControlName="txtExchange_Rate" matInput placeholder="Search by Exchange Rate" type="text" />
+              </mat-form-field>
+          </div>
+      
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>USD Amount</mat-label>
+                <input formControlName="txtUSD_Amount" matInput placeholder="Search by USD Amount" type="text" />
+              </mat-form-field>
+          </div>
+      
+      
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Cost Details</mat-label>
+                <textarea
+                  matInput
+                  formControlName="txtCost_Details"
+                  placeholder="Cost Details"
+                ></textarea>
+              </mat-form-field>
+        </div>
+      
+        
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+        <button mat-raised-button color="primary" class="save-btn">
+          Save & Close
+        </button>
+        <button mat-raised-button class="save-btn" color="primary">
+          Save & Add New
+        </button>
+    
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+      </mat-dialog-actions>
+  </div>

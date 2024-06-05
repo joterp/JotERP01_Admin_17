@@ -1,0 +1,26 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Information
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+  <mat-dialog-content>
+        <div class="alert-box-error">
+
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <div fxFlex="5" style="margin-top: 5px;">
+                    <img src="../../../../assets/img/error.png" class="logo" alt="excel"/>
+                </div>
+                <div fxFlex="93">
+                    <span> ERROR:
+                        Please select vessel from vessel dropdown in VESSEL column to synchronize
+                    </span>
+                </div>
+            </div>
+        </div>
+  </mat-dialog-content>

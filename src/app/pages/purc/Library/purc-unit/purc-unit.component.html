@@ -1,0 +1,164 @@
+<fury-page-layout mode="card" class="purc-unit">
+
+  <fury-page-layout-header>
+
+    <form [formGroup]="unitFilterFormGroup">
+      <h3 class="unit-packing">
+        <span class="first-letter">U</span>NIT
+        <span class="fifth-letter">P</span>ACKING
+      </h3>
+      <div class="filter-area">
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start">
+
+          <div fxFlex >
+            <mat-form-field ppearance="fill">
+              <mat-label>Unit Name</mat-label>
+              <input formControlName="txtUnit_Name" matInput placeholder="Search by Unit Name" type="text" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Parent</mat-label>
+              <input formControlName="txtParent_Type" matInput placeholder="Search by Parent" type="text" />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Unit Short Name</mat-label>
+              <input formControlName="txtUnit_Short_Name" matInput placeholder="Search by Unit Short  Name"
+                type="text" />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Status</mat-label>
+              <mat-select formControlName="drpStatus">
+                <mat-option value=""> All </mat-option>
+                <mat-option value="1"> Active </mat-option>
+                <mat-option value="0"> Deleted </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="filter-btn-area" fxFlex>
+            <div>
+             
+              <button mat-raised-button color="primary" style="background-color: #5cb85c;" class="filter-btn">
+                Search
+              </button>
+            </div>
+
+            <div>
+              <button class="create" mat-raised-button color="warn" class="filter-btn" type="button"
+                (click)="clearFilter()">
+                Clear
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+  </fury-page-layout-header>
+  <fury-page-layout-content [@fadeInUp] class="content-area">
+    <div class="actions-area">
+      <!-- <div>
+        <span class="create">
+          <button mat-mini-fab color="primary" >
+            <mat-icon>add </mat-icon>
+          </button>
+         
+        </span>
+      </div> -->
+      <div fxLayout="row">
+        <button mat-mini-fab color="primary" [matTooltip]="'Add Unit'"
+            class="add-approve-btn save-btn" (click)="saveData(null,false)">
+            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+        </button>
+        <span style="margin-top: 3px;
+        margin-left: 6px;font-size: 15px;"> Add New Unit </span>
+    </div>
+      <div>
+        <span style="cursor: pointer">
+          <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+          <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+          <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+        </span>
+      </div>
+     
+    </div>
+
+    <div #TABLE>
+      <table [dataSource]="unitdataSource" mat-table matSort #table class="details-table">
+        <ng-container matColumnDef="Unit_Name">
+          <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+            mat-sort-header>
+            Unit Name
+          </th>
+          <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+            mat-cell>
+            <p class="tbl-row-item">{{row.txtUnit_Name}}</p>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Parent_Type">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Parent
+          </th>
+          <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+            <p class="tbl-row-item">{{row.drpParent_Type}}</p>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="Unit_Short_Name">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Unit Short Name
+          </th>
+          <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+            <p class="tbl-row-item">{{row.txtUnit_Short_Name}}</p>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="Conversion_Factor">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Conversion Factor
+          </th>
+          <td *matCellDef="let row" [ngStyle]="{ 'white-space': 'initial' }" class="actions-cell" mat-cell>
+            <p class="tbl-row-item">
+              {{row.txtConversion_Factor}}
+            </p>
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Action
+          </th>
+          <td *matCellDef="let row" class="actions-cell" mat-cell>
+            <!-- -->
+            <button mat-icon-button color="primary" (click)="saveData(row,true)">
+              <mat-icon class="icon-display">edit</mat-icon>
+            </button>
+
+            <button mat-icon-button color="warn" (click)="deleteUnits(row.id)">
+              <mat-icon>close</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon class="icon-display">info</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9999">No data found</td>
+        </tr>
+      </table>
+    </div>
+    <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+  </fury-page-layout-content>
+
+</fury-page-layout>

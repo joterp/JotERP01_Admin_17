@@ -1,0 +1,21 @@
+.mat-dialog-title{
+    background-color: black;   //new added
+
+} 
+.logo {
+    width: 20px;     //new added
+    height: 20px;
+}
+
+
+.alert-box-error {                                               // new added for Error msg
+    color: #555;      
+    border-radius: 10px;
+    font-family: Tahoma,Geneva,Arial,sans-serif;
+    font-size: 11px;
+    padding: 16px 17px 16px 17px;
+    margin: 10px;
+    font-size: 14px;
+    border: 1px solid #f5aca6;
+    background: #ffecec;
+}

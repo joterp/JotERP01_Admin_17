@@ -1,0 +1,44 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+    <fury-page-layout mode="card" class="crew-salary-names-add">
+
+        <div>
+            <form [formGroup]="SalaryNameAddFormGroup">
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Salary Name</mat-label>
+                        <input type="text" formControlName="txtSalary_Name" matInput />
+                        <mat-error *ngIf="SalaryNameAddFormGroup.get('txtSalary_Name').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </form>
+
+        </div>
+
+    </fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!SalaryNameAddFormGroup.valid ? '' : 'save-btn']"
+        [disabled]="!SalaryNameAddFormGroup.valid">
+        SAVE
+    </button>
+
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!SalaryNameAddFormGroup.valid">
+        SAVE & ADD NEW
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

@@ -1,0 +1,122 @@
+
+<div class="crew-OnboardTraining-view">
+
+    <table style="width: 100%;">
+       <tr>
+           <td class="onboardtraining-td">
+              <b>Crew Participants</b> 
+           </td>
+       </tr>
+   
+       <tr>
+       <td>
+          
+               <div #TABLE>
+                   <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                       <ng-container matColumnDef="Vessel">
+                           <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                               mat-sort-header>
+                               Vessel
+                           </th>
+                           <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         [ngStyle]="{ 'white-space': 'initial' }"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                       </td> -->
+                       </ng-container>
+       
+                       <ng-container matColumnDef="Training_Date">
+                           <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Training Date
+                           </th>
+                           <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                       </td> -->
+                       </ng-container>
+                       <ng-container matColumnDef="Training_Instructor">
+                           <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Training Instructor
+                           </th>
+                           <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                         </td> -->
+                       </ng-container>
+                       <ng-container matColumnDef="Type">
+                           <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Type
+                           </th>
+                           <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                       </td> -->
+                       </ng-container>
+                       <ng-container matColumnDef="Assessment">
+                           <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Assessment
+                           </th>
+                           <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                         </td> -->
+                       </ng-container>
+                       <ng-container matColumnDef="Weak_Points_Strong_Points">
+                           <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Weak Points/Strong Points
+                          </th>
+                           <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                         </td> -->
+                       </ng-container>                   
+                       
+                       <ng-container matColumnDef="Action">
+                           <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+       
+                           </th>
+                           <!-- <td
+                             *matCellDef="let row; let i = index"
+                             class="actions-cell"
+                             mat-cell
+                           >
+                             <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                           </td> -->
+                       </ng-container>
+                      
+       
+                       <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                       <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                       </tr>
+                       <tr class="mat-row" *matNoDataRow>
+                           <td class="mat-cell" colspan="9999">No data found</td>
+                       </tr>
+                   </table>
+               </div>
+   
+       </td>
+       </tr>
+    </table>
+   
+   
+   </div>
+   
+   

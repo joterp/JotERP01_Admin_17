@@ -1,0 +1,306 @@
+<fury-page-layout mode="card" class="ops-compareReport">
+    <h3>
+        <span class="first-letter">C</span>USTOM
+        <span class="first-letter">F</span>IELDS
+        <span class="first-letter">V</span>ESSEL
+        <span class="first-letter">W</span>ISE
+        <span class="first-letter">A</span>SSIGNMENT
+    </h3>
+
+    <fury-page-layout-content [@fadeInUp] style="margin: 30px;">
+
+
+        
+        <mat-card-content fxLayout="row">
+
+            <mat-card fxFlex="50" class="sp-card-view">
+
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                        <div fxLayout="row">
+
+                            <mat-card-title>Select Report For the Comparsion</mat-card-title>
+                        </div>
+
+
+                        
+                    </div>
+
+                </mat-card-header>
+
+                <mat-card-content>
+                    <div>
+                        <form [formGroup]="CompareReportFilterFormGroup" >
+                            <div class="filter-area">
+                                <div fxLayout="row" fxLayoutAlign="start">
+                        
+                                  <div fxFlex>
+                
+                                      <mat-form-field appearance="fill">
+                                          <mat-label>Vessel Name</mat-label>
+                                          <mat-select formControlName="drpVessel_Name" >
+                                            <mat-option value="Bryce">Bryce</mat-option>
+                                            <mat-option value="Napoleon">Napoleon</mat-option>
+                                            <mat-option value="Plump">Plump</mat-option>
+                                            <mat-option value="Yami">Yami</mat-option>
+                                          </mat-select>
+                                      </mat-form-field>
+                      
+                                      <mat-form-field appearance="fill">
+                                          <mat-label>Department Name</mat-label>
+                                          <input formControlName="txtDepartment_Name" matInput placeholder="Search by Department Name" type="text" />
+                                        </mat-form-field>
+        
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Frequency (Months)</mat-label>
+                                            <mat-select formControlName="drpFrq_Months" >
+                                              <mat-option value="Demo">0-Months</mat-option>
+                                              <mat-option value="Test">1-Months</mat-option>
+                                              <mat-option value="Demo">2-Months</mat-option>
+                                              <mat-option value="Test">3-Months</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+        
+                                          <mat-form-field appearance="fill">
+                                            <mat-label>Ref Number</mat-label>
+                                            <input formControlName="txtRef_Num" matInput placeholder="Search by Ref Number/TL Name/other Details" type="text" />
+                                          </mat-form-field>
+        
+                                          <mat-form-field appearance="fill">
+                                            <mat-label>Supplier</mat-label>
+                                            <input formControlName="txtSupplier" matInput placeholder="Search by Supplier" type="text" />
+                                          </mat-form-field>
+                                  </div>
+                      
+                                  <div fxFlex>
+        
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Report Name </mat-label>
+                                        <mat-select formControlName="drpReport_Name" >
+                                          <mat-option value="InactiveReport">Inactive Report</mat-option>
+                                          <mat-option value="Training Report Log">Training Report Log</mat-option>
+                                          
+                                        </mat-select>
+                                    </mat-form-field>
+        
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Report Date </mat-label>
+                                        <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                                        <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerFrom></mat-datepicker>
+                                      </mat-form-field>
+        
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>SFIs</mat-label>
+                                        <input formControlName="txtSFIs" matInput placeholder="Search by SFIs" type="text" />
+                                      </mat-form-field>
+        
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>Vessel Portcall</mat-label>
+                                        <input formControlName="txtVessel_Portcall" matInput placeholder="Search by Vessel Portcall" type="text" />
+                                      </mat-form-field>
+                      
+                                       
+                      
+                                        
+                                      
+                                  </div>
+                      
+                      
+                                  
+                        
+                                 
+                      
+                                  
+                                  
+                        
+                                  <div class="filter-btn-area" fxFlex>
+                                    <div>
+                                      <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                                        Search
+                                      </button> -->
+                                      <button
+                                      mat-raised-button
+                                      color="primary"
+                                     style="background-color: #5cb85c;"
+                                      class="filter-btn"
+                                    
+                                    >
+                                      Search
+                                    </button>
+                                    </div>
+                        
+                                    <div>
+                                      <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                                        type="button" (click)="clearFilter()">
+                                        Clear
+                                      </button>
+                                    </div>
+                                  </div>
+                        
+                        
+                                </div>
+                              </div>
+                            </form>
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card fxFlex="50" class="sp-card-view">
+
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                        <div fxLayout="row">
+
+                            <mat-card-title>Select Report For the Comparsion</mat-card-title>
+                        </div>
+
+
+                        
+                    </div>
+
+                </mat-card-header>
+
+                <mat-card-content>
+                    <div>
+                        <form [formGroup]="CompareReportFilterFormGroup" >
+                            <div class="filter-area">
+                                <div fxLayout="row" fxLayoutAlign="start">
+                        
+                                  <div fxFlex>
+                
+                                      <mat-form-field appearance="fill">
+                                          <mat-label>Vessel Name</mat-label>
+                                          <mat-select formControlName="drpVessel_Name" >
+                                            <mat-option value="Bryce">Bryce</mat-option>
+                                            <mat-option value="Napoleon">Napoleon</mat-option>
+                                            <mat-option value="Plump">Plump</mat-option>
+                                            <mat-option value="Yami">Yami</mat-option>
+                                          </mat-select>
+                                      </mat-form-field>
+                      
+                                      <mat-form-field appearance="fill">
+                                          <mat-label>Department Name</mat-label>
+                                          <input formControlName="txtDepartment_Name" matInput placeholder="Search by Department Name" type="text" />
+                                        </mat-form-field>
+        
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Frequency (Months)</mat-label>
+                                            <mat-select formControlName="drpFrq_Months" >
+                                              <mat-option value="Demo">0-Months</mat-option>
+                                              <mat-option value="Test">1-Months</mat-option>
+                                              <mat-option value="Demo">2-Months</mat-option>
+                                              <mat-option value="Test">3-Months</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+        
+                                          <mat-form-field appearance="fill">
+                                            <mat-label>Ref Number</mat-label>
+                                            <input formControlName="txtRef_Num" matInput placeholder="Search by Ref Number/TL Name/other Details" type="text" />
+                                          </mat-form-field>
+        
+                                          <mat-form-field appearance="fill">
+                                            <mat-label>Supplier</mat-label>
+                                            <input formControlName="txtSupplier" matInput placeholder="Search by Supplier" type="text" />
+                                          </mat-form-field>
+                                  </div>
+                      
+                                  <div fxFlex>
+        
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Report Name </mat-label>
+                                        <mat-select formControlName="drpReport_Name" >
+                                          <mat-option value="InactiveReport">Inactive Report</mat-option>
+                                          <mat-option value="Training Report Log">Training Report Log</mat-option>
+                                          
+                                        </mat-select>
+                                    </mat-form-field>
+        
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Report Date </mat-label>
+                                        <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                                        <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerFrom></mat-datepicker>
+                                      </mat-form-field>
+        
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>SFIs</mat-label>
+                                        <input formControlName="txtSFIs" matInput placeholder="Search by SFIs" type="text" />
+                                      </mat-form-field>
+        
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>Vessel Portcall</mat-label>
+                                        <input formControlName="txtVessel_Portcall" matInput placeholder="Search by Vessel Portcall" type="text" />
+                                      </mat-form-field>
+                      
+                                       
+                      
+                                        
+                                      
+                                  </div>
+                      
+                      
+                                  
+                        
+                                 
+                      
+                                  
+                                  
+                        
+                                  <div class="filter-btn-area" fxFlex>
+                                    <div>
+                                      <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                                        Search
+                                      </button> -->
+                                      <button
+                                      mat-raised-button
+                                      color="primary"
+                                     style="background-color: #5cb85c;"
+                                      class="filter-btn"
+                                    
+                                    >
+                                      Search
+                                    </button>
+                                    </div>
+                        
+                                    <div>
+                                      <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                                        type="button" (click)="clearFilter()">
+                                        Clear
+                                      </button>
+                                    </div>
+                                  </div>
+                        
+                        
+                                </div>
+                              </div>
+                            </form>
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+
+
+           
+        </mat-card-content>
+
+
+
+
+
+
+
+
+
+
+
+       
+          
+    
+       
+       
+       
+
+    </fury-page-layout-content>
+</fury-page-layout>

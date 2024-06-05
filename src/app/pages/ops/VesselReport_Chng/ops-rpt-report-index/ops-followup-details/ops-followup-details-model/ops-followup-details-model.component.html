@@ -1,0 +1,97 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add Follow Up
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+  <mat-dialog-content>
+ 
+    <form [formGroup]="ReportsFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field appearance="fill">
+						 
+                <input matInput [matDatepicker]="pickerTo"  [formControl]="date">
+                <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                <mat-datepicker #pickerTo></mat-datepicker>
+              </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Followup Details</mat-label>
+                <textarea
+                matInput
+                formControlName="txtFollowup_Details"
+                placeholder="Enter Followup details"
+                ></textarea>
+             </mat-form-field>
+        </div>
+
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row" >
+              <!-- Use a button to create a custom file upload button -->
+
+              <mat-label style="margin: 8px;">Upload Copy</mat-label> &nbsp;
+
+              <input style="display: none;" type="file" id="imageupload" #fileInput
+                  (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+
+              <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                  <label for="imageupload">
+                      Select</label>
+              </button>
+              <div *ngIf="selectedFileName" fxFlex>
+                  <span  aria-placeholder="Select files"> {{ selectedFileName
+                      }}</span>
+                  <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+              </div>
+
+              <!-- File input element, hidden from view -->
+          </div>
+      </div>
+      
+
+       
+
+       
+       
+       
+
+        
+
+
+        
+       
+        
+         
+
+       
+        
+  
+     
+        
+
+       
+      </div>
+    </form>
+  </mat-dialog-content>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

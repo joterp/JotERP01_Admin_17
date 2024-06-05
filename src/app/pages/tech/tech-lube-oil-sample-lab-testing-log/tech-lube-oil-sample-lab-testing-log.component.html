@@ -1,0 +1,445 @@
+
+
+<fury-page-layout mode="card" class="enginelog-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+        
+      <form [formGroup]="LOSampleLabFilterForm">
+        <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+        <h3 >
+         
+            <span class="first-letter">V</span>ESSEL
+            <span class="first-letter">L.O.</span>&nbsp;
+            <span class="first-letter">S</span>AMPLES
+            <span >-</span>
+            <span class="first-letter">L</span>AB
+            <span class="first-letter">T</span>ESTING
+            <span class="first-letter">L</span>OG
+       
+      </h3>
+        <div class="filter-area">
+           
+          <div fxLayout="row" fxLayoutAlign="start">
+  
+            <div fxFlex>
+               
+                <mat-form-field appearance="fill">
+                    <mat-label>Vessel</mat-label>
+                    <mat-select formControlName="drpVessel">
+                      <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>  
+                  <mat-form-field appearance="fill">
+                    <mat-label>Sample Name</mat-label>
+                    <mat-select formControlName="drpSample_Name">
+                      <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>            
+            </div>
+       
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>From Date</mat-label>
+                    <input
+                      matInput
+                      formControlName="from_date"
+                      [matDatepicker]="pickerfromdate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerfromdate"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerfromdate></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>To Date</mat-label>
+                    <input
+                      matInput
+                      formControlName="to_date"
+                      [matDatepicker]="pickertodate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickertodate"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickertodate></mat-datepicker>
+                  </mat-form-field>
+
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Lab Name</mat-label>
+                    <mat-select formControlName="drpLab_Name">
+                      <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Supplier Name</mat-label>
+                    <mat-select formControlName="drpSupplier_Name">
+                      <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Stage</mat-label>
+                    <mat-select formControlName="drpStage">
+                      <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Grade/Finding</mat-label>
+                    <mat-select formControlName="drpGrade">
+                      <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                
+            </div>
+      
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <button class="create" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button>
+              </div>
+  
+              <div>
+                <button class="create"  mat-raised-button color="warn" class="filter-btn"
+                  type="button" >
+                  Clear Filter
+                </button>
+              </div>
+              
+           
+
+            </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+  
+    <fury-page-layout-content [@fadeInUp]>
+        <div class="actions-area" fxLayout="row" fxLayoutAlign="end center">
+          <div>
+            <span
+           
+              style="cursor: pointer"
+             
+            >
+              <img
+                src="../../../../assets/img/XLSX.jpg"
+                class="logo"
+                alt="excel"
+              />
+              <img
+                src="../../../../assets/img/pdf.png"
+                class="logo"
+                alt="excel"
+              />
+              <img
+                src="../../../../assets/img/XML1.png"
+                class="logo"
+                alt="excel"
+              />
+            </span>
+          </div>
+          <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+        </div>
+    
+         <div #TABLE>
+          <table
+            [dataSource]="LOSampleLabdataSource"
+            mat-table
+            matSort
+            #table
+            class="details-table"
+          >
+            <ng-container matColumnDef="Vessel">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                [ngStyle]="{ 'white-space': 'initial' }"
+                mat-header-cell
+                mat-sort-header
+              >
+              Vessel
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                [ngStyle]="{ 'white-space': 'initial' }"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+              </td> -->
+            </ng-container>
+    
+            <ng-container matColumnDef="Sample_Name">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Sample Name
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+              </td> -->
+            </ng-container>
+            <ng-container matColumnDef="Sample_Remarks">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Sample Remarks
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+              </ng-container>
+            <ng-container matColumnDef="Date_Offlanded">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Date Offlanded
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+            </ng-container>
+     
+              <ng-container matColumnDef="Airway_Bill">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Airway Bill
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container> 
+              <ng-container matColumnDef="Lab_Name">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Lab Name
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container> 
+              <ng-container matColumnDef="Supplier_Name">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Supplier Name
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container> 
+              <ng-container matColumnDef="Stage">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Stage
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container> 
+              <ng-container matColumnDef="Grade">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Grade
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container> 
+              <ng-container matColumnDef="Lab_Remarks">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Lab Remarks
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container> 
+              <ng-container matColumnDef="Email_Alert_Raised">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Email Alert Raised
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container> 
+              <ng-container matColumnDef="Is_Closed">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Is Closed
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container> 
+    
+              <ng-container matColumnDef="Action">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+               
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container> 
+    
+    
+            <tr *matHeaderRowDef="visibleColumnsLOSampleLab" mat-header-row></tr>
+            <tr
+              *matRowDef="let row; columns: visibleColumnsLOSampleLab"
+              class="clickable route-animations-elements"
+              mat-row
+            ></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="9999">No data found</td>
+            </tr>
+          </table>
+        </div>
+    
+         <mat-paginator
+          class="paginator"
+          [pageSizeOptions]="[10, 25, 50, 100]"
+          [pageSize]="pageSize"
+        ></mat-paginator>
+    
+     
+      </fury-page-layout-content>
+  
+  
+
+</fury-page-layout>
+
+
+
+
+
+
+
+
+
+
+

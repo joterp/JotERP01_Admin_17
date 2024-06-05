@@ -1,0 +1,58 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon  (click)="CloseModal()">close</mat-icon>
+      </span>
+</div> -->
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle >
+  <span style="font-size: 20px;"> Add New Template</span>
+</div>
+
+
+
+<mat-dialog-content style="height: 100% !important" class="new-template-modal">
+        <form [formGroup]="templateFormGroup"  [ngStyle]="{ 'margin-top': '7px' }" >
+          <div mat-dialog-container style="padding-top: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Template Name</mat-label>
+                  <input formControlName="txtTemplate_Name" matInput placeholder="Search by Template Name" type="text" />
+                </mat-form-field>
+            </div>
+            
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Department</mat-label>
+                <mat-select formControlName="drpDepartment">
+                  <mat-option value="11188-TEST">Check</mat-option>
+                  <mat-option value="01001-Food">Chemical Store</mat-option>
+      
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Catalogue</mat-label>
+                <mat-select formControlName="drpCatalogue">
+                  
+                </mat-select>
+              </mat-form-field>
+            </div>
+            
+          </div>
+        </form>
+        </mat-dialog-content>
+      
+        <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+      
+          <button mat-raised-button color="primary" class="save-btn">
+           Save & Close
+          </button>
+          
+          <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+        </mat-dialog-actions>

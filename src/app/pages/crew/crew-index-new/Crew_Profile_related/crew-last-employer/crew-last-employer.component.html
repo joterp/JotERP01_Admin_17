@@ -1,0 +1,121 @@
+<div class="crew-LastEmployer-view">
+
+    <table style="width: 100%;">
+       <tr>
+           <td class="lastemployer-td">
+              <b>Last Employer Details</b> 
+           </td>
+       </tr>
+   
+       <tr>
+       <td>
+        <table style="width: 100%;">
+        <tr>
+            <td style="width: 30%;"></td>
+            <td>
+
+                <div>
+                    <div >
+                <form [formGroup]="LastEmployerFormGroup" [ngStyle]="{ 'margin-top': '20px' }">
+            
+            
+                  <div fxLayout="row" fxLayoutAlign="space-between">
+                    <div fxFlex>
+                    
+                      <mat-form-field appearance="fill">
+                        <mat-label class="left-label">Name of last Employer	</mat-label>
+                       
+                          <input
+                            type="text"
+                            class="right-text"
+                            formControlName="txtName_of_last_Employer"
+                            matInput
+                          />
+                       
+                        <mat-error
+                          *ngIf="LastEmployerFormGroup.get('txtName_of_last_Employer').hasError('required')"
+                          >Required</mat-error
+                        >
+                      </mat-form-field>
+                
+                      <mat-form-field appearance="fill">
+                        <mat-label class="left-label">Contact ref name of last employer</mat-label>
+                       
+                          <input
+                            type="text"
+                            class="right-text"
+                            formControlName="txtContact_ref_name_of_last_employer"
+                            matInput
+                          />
+                       
+                      </mat-form-field>
+    
+                      <mat-form-field appearance="fill">
+                        <mat-label class="left-label">Contact phone of last employer</mat-label>
+                       
+                          <input
+                            type="text"
+                            class="right-text"
+                            formControlName="txtContact_phone_of_last_employer"
+                            matInput
+                          />
+                       
+                      </mat-form-field>
+    
+                      <mat-form-field appearance="fill">
+                        <mat-label class="left-label">Employer Email</mat-label>
+                       
+                          <input
+                            type="text"
+                            class="right-text"
+                            formControlName="txtEmployer_Email"
+                            matInput
+                          />
+                       
+                      </mat-form-field>
+                    
+               <mat-form-field appearance="fill">
+                  <mat-label>Worked with nationals of</mat-label>
+                  <textarea
+                    matInput
+                    formControlName="txtWorked_with_nationals_of"
+                    
+                  ></textarea>
+                  <mat-error *ngIf="LastEmployerFormGroup.get('txtWorked_with_nationals_of').hasError('required')"
+                  >Required</mat-error
+                >
+                </mat-form-field>
+                     
+                </div>
+                
+                </div>
+            
+                 
+                </form>
+            </div>
+            
+                <div style="text-align: center;">
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    [ngClass]="[!LastEmployerFormGroup.valid ? '' : 'save-btn']"
+                    [disabled]="!LastEmployerFormGroup.valid"
+                  >
+                    SAVE
+                  </button>
+                </div>
+            
+            </div>
+    
+            </td>
+            <td style="width: 30%;"></td>
+        </tr>
+        </table>
+       </td>
+       </tr>
+   
+    </table>
+   
+   
+   </div>
+   

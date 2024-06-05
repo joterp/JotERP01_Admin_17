@@ -1,0 +1,212 @@
+
+<div class="crew-Documents-view">
+
+    <table style="width: 100%;">
+        <tr>
+            <td class="documents-td">
+               <table style="width: 100%;">
+                <tr>
+                    <td style="width: 86%;"><b>Documents</b></td>
+                    <td>
+                        <img src="../../../../assets/img/send.png" class="logo" alt="excel" />
+                    </td>
+                    <td><span>Send Document Attachment</span></td>
+
+                </tr>
+               </table>
+            </td>
+        </tr>    
+    </table>
+   
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr>
+                    <td style="width: 30%;vertical-align: top;background: #fffaf4;">
+                    
+                        <table style="width: 100%;">
+                            <tr>
+                                <td>
+                                    <form [formGroup]="DocumentsFormGroup">
+        
+                                        <div fxLayout="row" fxLayoutAlign="space-between">
+                                            <div fxFlex>
+                                            
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Doc Name</mat-label>
+                                                    <mat-select formControlName="drpDoc_Name">
+                                                    </mat-select>
+                                                   
+                                                </mat-form-field>
+                                        
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Doc Type</mat-label>
+                                                    <mat-select formControlName="drpDoc_Type">
+                                                    </mat-select>
+                                                 
+                                                </mat-form-field>   
+                            
+                                          </div>
+                                        
+                                        </div>
+                                       
+                                      </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <mat-tree [dataSource]="dataSource2" [treeControl]="treeControl" style="background: #fffaf4;">
+                                        <mat-tree-node *matTreeNodeDef="let node; let i=index;" matTreeNodeToggle matTreeNodePadding>
+                                          <button mat-icon-button disabled></button>
+                                          <mat-checkbox class="checklist-leaf-node"
+                                                        [checked]="checklistSelection.isSelected(node)"
+                                                        (change)="todoLeafItemSelectionToggle(node)">{{i}} - {{node.item}}</mat-checkbox>
+                                        </mat-tree-node>
+                                      
+                                      
+                                        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+                                          <button mat-icon-button matTreeNodeToggle
+                                                  [attr.aria-label]="'Toggle ' + node.item">
+                                            <mat-icon class="mat-icon-rtl-mirror">
+                                              {{treeControl.isExpanded(node) ? 'indeterminate_check_box' : 'add_box'}}
+                                            </mat-icon>
+                                          </button>
+                                          <mat-checkbox [checked]="descendantsAllSelected(node)"
+                                                        [indeterminate]="descendantsPartiallySelected(node)"
+                                                        (change)="todoItemSelectionToggle(node)">{{node.item}}</mat-checkbox>
+                                     
+                                        </mat-tree-node>
+                                      </mat-tree>
+                                      </div>
+                                </td>
+                            </tr>
+                        </table>
+                       
+
+                    </td>
+                    <td style="width: 0.2%;" class="doc-td2"></td>
+                    <td style="width: 69.8%;vertical-align: top;">
+                      <table style="width: 100%;">
+                        <tr>
+                        <td class="perpetual-doc-td"><b>Perpetual Documents</b></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div #TABLE>
+                                    <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                                        <ng-container matColumnDef="Document_Name">
+                                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                                                mat-sort-header>
+                                                Document Name
+                                            </th>
+                                            <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          [ngStyle]="{ 'white-space': 'initial' }"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                        </td> -->
+                                        </ng-container>
+                        
+                                        <ng-container matColumnDef="Document_Number">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                Document Number
+                                            </th>
+                                            <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                        </td> -->
+                                        </ng-container>
+                                        <ng-container matColumnDef="Place_Of_Issue">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                Place Of Issue
+                                            </th>
+                                            <!-- <td
+                                            *matCellDef="let row; let i = index"
+                                            class="actions-cell"
+                                            mat-cell
+                                          >
+                                            <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                          </td> -->
+                                        </ng-container>
+                                        <ng-container matColumnDef="Country_Of_Issue">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                Country Of Issue
+                                            </th>
+                                            <!-- <td
+                                          *matCellDef="let row; let i = index"
+                                          class="actions-cell"
+                                          mat-cell
+                                        >
+                                          <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                        </td> -->
+                                        </ng-container>
+                                        <ng-container matColumnDef="Date_Of_Issue">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                Date Of Issue
+                                            </th>
+                                            <!-- <td
+                                            *matCellDef="let row; let i = index"
+                                            class="actions-cell"
+                                            mat-cell
+                                          >
+                                            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                          </td> -->
+                                        </ng-container>
+                                        <ng-container matColumnDef="Date_Of_Expiry">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                Date Of Expiry
+                                            </th>
+                                            <!-- <td
+                                            *matCellDef="let row; let i = index"
+                                            class="actions-cell"
+                                            mat-cell
+                                          >
+                                            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                          </td> -->
+                                        </ng-container>
+                                       
+                                       
+                                        
+                                        <ng-container matColumnDef="Action">
+                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        
+                                            </th>
+                                            <!-- <td
+                                              *matCellDef="let row; let i = index"
+                                              class="actions-cell"
+                                              mat-cell
+                                            >
+                                              <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                            </td> -->
+                                        </ng-container>
+                                       
+                        
+                                        <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                                        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                                        </tr>
+                                        <tr class="mat-row" *matNoDataRow>
+                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                      </table>
+                                            
+                    </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+   
+   </div>
+   
+   

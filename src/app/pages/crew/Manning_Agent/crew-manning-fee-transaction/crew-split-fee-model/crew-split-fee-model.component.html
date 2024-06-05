@@ -1,0 +1,73 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Split the Mapping Fee
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+    <mat-dialog-content>
+
+        <form [formGroup]="splitFeeFormGroup">
+            <div style="margin: 10px;">
+                Vessel
+            </div>
+            <div style="margin: 10px;">
+                Month
+            </div>
+            <div style="margin: 10px;">
+                Year
+            </div>
+            <div mat-dialog-container style="padding-top: 20px;">
+                
+                <div fxLayout="column" fxLayout.gt-sm="row">
+           
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Split Date</mat-label>
+                        <input matInput formControlName="txtSplit_Date" [matDatepicker]="pickerContract" placeholder="Contract Date" />
+                        <mat-datepicker-toggle matSuffix [for]="pickerContract"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerContract></mat-datepicker>
+                      </mat-form-field>
+                    
+                  </div>
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Old Owner</mat-label>
+                      <mat-select formControlName="drpOld_Owner">
+                        <mat-option value="Apex_Marine">Apex Marine</mat-option>
+                        <mat-option value="Apple_Pvt_Lmtd">Apple Pvt Ltd</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>New Owner</mat-label>
+                      <mat-select formControlName="drpNew_Owner">
+                        <mat-option value="Apex_Marine">Apex Marine</mat-option>
+                        <mat-option value="Apple_Pvt_Lmtd">Apple Pvt Ltd</mat-option>
+                    
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+
+
+            </div>
+        </form>
+    </mat-dialog-content>
+
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+        <button mat-raised-button color="primary" class="save-btn">
+            Split
+        </button>
+
+
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+</div>

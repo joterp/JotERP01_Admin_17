@@ -1,0 +1,78 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>
+    </span>
+  </div>
+
+
+  <mat-dialog-content style="height: 100% !important">
+    <form [formGroup]="GenerateLinkFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+      <div
+        fxLayout="column"
+        fxLayout.gt-sm="row"
+        fxLayoutGap.gt-sm="24px"
+        class="top"
+      >
+      <mat-form-field fxFlex appearance="fill">
+        <mat-label>Link</mat-label>
+        <textarea matInput formControlName="txtLink"></textarea>
+        
+      </mat-form-field>
+      
+      </div>
+      <div
+        fxLayout="column"
+        fxLayout.gt-sm="row"
+        fxLayoutGap.gt-sm="24px"
+        class="top"
+      >
+      <mat-form-field appearance="fill">
+        <mat-label>Expiry Date</mat-label>
+        <input
+          matInput
+          formControlName="expiry_date"
+          [matDatepicker]="pickerexpiry"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerexpiry"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerexpiry></mat-datepicker>
+      </mat-form-field>
+      </div>
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button
+      mat-raised-button
+      color="primary"
+    
+      class="save-btn"
+      
+    >
+      Go To Link
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+    
+      class="save-btn"
+      
+    >
+      Copy To Clipboard
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+     
+      class="save-btn"
+     
+    >
+      SAVE
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+
+

@@ -1,0 +1,147 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>View vessel
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+
+  <div>
+    
+       
+    <div fxLayout="row">
+        <div fxFlex="50">
+            <table style="margin-top: 20px;">
+                <thead>
+                    <th>
+                        Napolean
+                    </th>
+                </thead>
+                        
+                   
+                      
+             
+               
+            </table>
+        </div>
+
+        <div fxFlex="50">
+
+            <table style="margin-top: 40px;">
+                <tbody>
+                    <tr>
+                        <td style="    width: 50%;
+                        left: 10px;
+                        font-weight: bold;">Fleet</td>
+                        <td>:</td>
+                        <td>Fleet Rhodes</td>
+                    </tr>
+
+                    <tr>
+                        <td style="    width: 50%;
+                        left: 10px;
+                        font-weight: bold;">Location</td>
+                        <td>:</td>
+                        <td style="border: 1px soild lightgray;">At sea</td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td style="    width: 50%;
+                        left: 10px;
+                        font-weight: bold;">Location Updated</td>
+                        <td>:</td>
+                        <td style="border: 1px soild lightgray;">13 sep 2023</td>
+                    </tr>
+
+                    
+                    
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <fury-page-layout-content [@fadeInUp] style="margin: 30px;" class="vessel-list-model">
+        <mat-card class="sp-card-view" style="margin-top: 20px;">
+            
+             
+               <mat-card-content>
+             
+                  
+                <div #TABLE>
+                    <table [dataSource]="ViewVesseldataSource" mat-table matSort #table class="details-table">
+                        <ng-container matColumnDef="Date">
+                          <th *matHeaderCellDef class="actions-cell"  mat-header-cell
+                            mat-sort-header>
+                            Date
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" 
+                            mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                          </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="Lat">
+                          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                         Lat
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Lon">
+                          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                      Lon
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                          </td>
+                        </ng-container>
+      
+                        <ng-container matColumnDef="Cource">
+                          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Course
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Speed">
+                          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                       Speed
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                          </td>
+                        </ng-container>
+                       
+
+                        
+                      
+                      
+                       
+                        <tr *matHeaderRowDef="AlertListvisibleColumns" mat-header-row></tr>
+                        <tr *matRowDef="let row; columns: AlertListvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                          <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+                      </table>
+                  </div>
+                  <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+               </mat-card-content>
+           
+              
+        </mat-card>
+
+    </fury-page-layout-content>
+
+
+
+</div>

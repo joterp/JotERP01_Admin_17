@@ -1,0 +1,220 @@
+
+<fury-page-layout mode="card" class="ops-VIDQuestion">
+   
+    <fury-page-layout-header>
+        
+          <!-- <mat-accordion>
+            <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;border-radius: 10px;
+        ">
+                <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;height: 46px;    border-radius: 1px;
+                ">
+                    <mat-panel-title class="panel-title">
+                        Search Criteria
+                    </mat-panel-title>
+                    <mat-panel-description class="panel-desc">
+        
+                    </mat-panel-description>
+                </mat-expansion-panel-header> -->
+      <form [formGroup]="VIDQuestionsFilterFormGroup" >
+        
+        <h3 class="unit-packing">
+            <span class="first-letter">VID</span>  
+            <span class="first-letter"> I</span>NFORMATION
+            <span class="first-letter">D</span>ATABASE 
+            <span class="first-letter">Q</span>UESTIONS 
+          </h3>
+      
+        
+        <div class="filter-area">
+          <div fxLayout="row" fxLayoutAlign="start">
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Question</mat-label>
+                    <input formControlName="txtQuestion" matInput placeholder="Search by Question" type="text" />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Question No.</mat-label>
+                    <input formControlName="txtQuestion_No" matInput placeholder="Search by Question No" type="text" />
+                </mat-form-field>
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Answer Type</mat-label>
+                    <mat-select formControlName="drpAnswer_Type" >
+                      <mat-option value="Date">Date</mat-option>
+                      <mat-option value="Expiry_Date">Expiry Date</mat-option>
+                      <mat-option value="Image">Image</mat-option>
+                      <mat-option value="Number">Number</mat-option>
+                      <mat-option value="Text">Text</mat-option>
+                      <mat-option value="Yes_No">Yes/No</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Answer Nature</mat-label>
+                    <mat-select formControlName="drpAnswer_Nature" >
+                      <mat-option value="Fixed">Fixed</mat-option>
+                      <mat-option value="Variable">Variable</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+            </div>
+
+            <div fxFlex>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="drpStatus">
+                    <mat-option value="1">Show Active</mat-option>
+                    <mat-option value="">Show Deleted</mat-option>
+                    <mat-option value="0">Show All</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>VID Category</mat-label>
+                    <mat-select formControlName="drpVID_Category" >
+                      <mat-option value="Category_A">Category A</mat-option>
+                      <mat-option value="Category_B">Category B</mat-option>
+                      
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+  
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                <button
+                mat-raised-button
+                color="primary"
+               style="background-color: #5cb85c;"
+                class="filter-btn"
+              
+              >
+                Search
+              </button>
+              </div>
+  
+              <div>
+                <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                  type="button" (click)="clearFilter()">
+                  Clear Filter
+                </button>
+              </div>
+            </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    <!-- </mat-expansion-panel>
+</mat-accordion> -->
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+      <div class="actions-area" >
+      
+        <div fxLayout="row">
+          <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+              class="add-approve-btn save-btn"  (click)="saveVIDQuestion(null,false,'Add New Question')">
+              <mat-icon class="add-approve-btn-icon">add</mat-icon>
+          </button>
+          <span style="margin-top: 3px;
+          margin-left: 6px;font-size: 15px;"> Add New Questions</span>
+      </div>
+        <div>
+            <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+          <span>
+            <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+            <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+            <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+          </span>
+        </div>
+             
+      </div>
+  
+      <div #TABLE>
+        <table [dataSource]="VIDQueCategorydataSource" mat-table matSort #table class="details-table">
+          <ng-container matColumnDef="VID_Category">
+            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+              mat-sort-header>
+                VID Category
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+              mat-cell>
+              <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Question">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+               Question
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+         
+          
+          <ng-container matColumnDef="Question_No">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+               Question No.
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+         
+          <ng-container matColumnDef="Answer_Type">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Answer Type
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Answer_Nature">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Answer Nature
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="Action">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+              Action
+            </th>
+            <td *matCellDef="let row" class="actions-cell" mat-cell>
+              <!-- -->
+              <button mat-icon-button color="primary">
+                <mat-icon class="icon-display">edit</mat-icon>
+              </button>
+  
+              <button mat-icon-button color="warn" >
+                <mat-icon>close</mat-icon>
+              </button>
+              <button mat-icon-button  >
+                <mat-icon class="icon-display">info</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+  
+          <tr *matHeaderRowDef="VIDQueCategoryvisibleColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: VIDQueCategoryvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

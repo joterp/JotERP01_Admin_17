@@ -1,0 +1,730 @@
+
+    
+ <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+  <span>
+      <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;"/>Add Daily Voyage Log
+  </span>
+ 
+  <span fxLayoutAlign="end"  >
+      <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div> 
+
+<fury-page-layout mode="card" class="ops-add-voyage-log">
+<fury-page-layout-content [@fadeInUp] style="margin: 30px;">
+  <mat-dialog-content> 
+
+  <mat-card class="sp-card-view" >
+     
+      <mat-card-header fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="space-between" >                    
+              <span class="text-voyage-log"> Add Daily Voyage Log</span>
+              <div>
+             
+            </div>
+
+
+           
+
+          </div>
+
+      </mat-card-header>
+  
+     <mat-card-content style="margin: 10px;">
+      <table >
+        <tbody>
+          <tr>
+            <div fxLayout="row" fxLayoutAlign="space-between" >
+              <td fxFlex="34" style="vertical-align: top;padding: 10px;" >
+                <table >
+                  <tbody>
+                    <tr>
+                     <td style="width: 28%;">Towing Vessel/ Tug</td>
+                      <td ><select class="classic" style="width: 100%;margin: 10px;"> 
+                      <option >Stena A</option>
+  
+                    </select></td>
+                    </tr>
+  
+                    <tr>
+                      <td style="width: 28%;"> Towed Vessel / Barge</td>
+                       <td ><select class="classic" style="width: 100%;margin: 10px;"> 
+                       <option >Cedrick</option>
+                      
+                     </select></td>
+                     </tr>
+                     <tr>
+                      <td style="width: 28%;"> Deaprture Date</td>
+                      <td><input type="datetime-local" id="datetime" name="datetime" class="date_and_time"></td>
+                     </tr>
+  
+                     <tr>
+                      <td style="width: 28%;">Log Date</td>
+                      <td><input type="datetime-local" id="datetime" name="datetime" class="date_and_time"></td>
+                     </tr>
+  
+                    <tr>
+                      <td style="width: 28%;">Latitude</td>
+                      <td><input type="text" style="    width: 15%;
+                        height: 25px;
+                        border-radius: 5px;
+                        border: 1px solid grey;
+                        margin-left: 10px;">
+                        <input type="text" style="    width: 15%;
+                          height: 25px;
+                          border-radius: 5px;
+                          border: 1px solid grey;
+                          margin-left: 10px;">
+                          <input type="text" style="    width: 15%;
+                          height: 25px;
+                          border-radius: 5px;
+                          border: 1px solid grey;
+                          margin-left: 10px;">
+                          <input type="text" style="    width: 15%;
+                          height: 25px;
+                          border-radius: 5px;
+                          border: 1px solid grey;
+                          margin-left: 10px;">
+                          </td>
+                    </tr>
+  
+                    <tr>
+                      <td style="width: 28%;">Longitude</td>
+                      <td><input type="text" style="    width: 15%;
+                        height: 25px;
+                        border-radius: 5px;
+                        border: 1px solid grey;
+                        margin-left: 10px;">
+                        <input type="text" style="    width: 15%;
+                          height: 25px;
+                          border-radius: 5px;
+                          border: 1px solid grey;
+                          margin-left: 10px;">
+                          <input type="text" style="    width: 15%;
+                          height: 25px;
+                          border-radius: 5px;
+                          border: 1px solid grey;
+                          margin-left: 10px;">
+                          <input type="text" style="    width: 15%;
+                          height: 25px;
+                          border-radius: 5px;
+                          border: 1px solid grey;
+                          margin-left: 10px;">
+                          </td>
+                    </tr>
+  
+                   
+                     <tr>
+                      <td style="width: 28%;">Location</td>
+                       <td ><select class="classic" style="width: 100%;margin: 10px;"> 
+                       <option >Select -All</option>
+                       <option>Alongside</option>
+                       <option>Anchorage</option>
+                       <option>At sea</option>
+                       <option>Drifiting</option>
+                       <option>SBM</option>
+                       <option>STS</option>
+                     </select></td>
+                     </tr>
+  
+                     <tr>
+                      <td style="width: 28%;">Steaming Hours</td>
+                      <td> <input
+                        type="ETA"
+                      
+                        required
+                        class="input-section"
+                       ></td>
+                    </tr>
+                    <tr>
+                      <td style="width: 28%;">Course</td>
+                      <td> <input
+                        type="ETA"
+                      
+                        required
+                        class="input-section"
+                       ></td>
+                       <td style="padding: 13px;">o</td>
+                       
+                    </tr>
+                    <tr>
+                      <td style="width: 28%;">DMG(NM)</td>
+                      <td> <input
+                        type="ETA"
+                      
+                        required
+                        class="input-section"
+                       ></td>
+                      
+                    </tr>
+                    <tr>
+                      <td style="width: 28%;">DTG By Master (NM)</td>
+                      <td> <input
+                        type="ETA"
+                      
+                        required
+                        class="input-section"
+                       ></td>
+                      
+                    </tr>
+  
+                    <tr>
+                      <td style="width: 28%;">Speed</td>
+                      <td> <input
+                        type="ETA"
+                      
+                        required
+                        class="input-section"
+                       ></td>
+                       <td style="padding: 13px;">kts</td>
+                      
+                    </tr>
+  
+                     <tr>
+                      <td style="width: 28%;">ETA Speed</td>
+                       <td ><select class="classic" style="width: 100%;margin: 10px;"> 
+                       <option >Select -All</option>
+                       <option>2.500</option>
+                       <option>3.000</option>
+                       <option>3.500</option>
+                       <option>4.000</option>
+                   
+                     </select></td>
+                     </tr>
+  
+  
+  
+                     <tr>
+                      <td style="width: 28%;">ETA</td>
+                      <td><input type="datetime-local" id="datetime" name="datetime" class="date_and_time"></td>
+                     </tr>
+  
+  
+  
+  
+                  </tbody>
+                </table>
+              </td>
+              <td fxFlex="34"  style="vertical-align: top;padding: 10px;">
+                <table >
+                  <tbody>
+  
+                    <tr>
+                        <td>Swell Direction</td>
+                       <td ><select class="classic" style="width: 100%;margin: 10px;"> 
+                       <option >Select</option>
+                       <option>E</option>
+                       <option>ENE</option>
+                       <option>ESE</option>
+                       <option>N</option>
+                     </select></td>
+                    </tr>
+  
+                    <tr>
+                      <td>Swell Height</td>
+                      <td> <input
+                        type="ETA"
+                      
+                        required
+                        class="input-section"
+                       ></td>
+                       <td style="padding: 13px;">mtrs</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>Wind Direction</td>
+                     <td ><select class="classic" style="width: 100%;margin: 10px;"> 
+                      <option >Select</option>
+                      <option>E</option>
+                      <option>ENE</option>
+                      <option>ESE</option>
+                      <option>N</option>
+                   </select></td>
+                  </tr>
+  
+                    <tr>
+                      <td>Wind Force</td>
+                      <td> <input
+                        type="ETA"
+                      
+                        required
+                        class="input-section"
+                       ></td>
+                      
+                    </tr>
+  
+                    <tr>
+                      <td>Sea Direction</td>
+                     <td ><select class="classic" style="width: 100%;margin: 10px;"> 
+                      <option >Select</option>
+                      <option>E</option>
+                      <option>ENE</option>
+                      <option>ESE</option>
+                      <option>N</option>
+                   </select></td>
+                  </tr>
+  
+                  <tr>
+                    <td>Sea State</td>
+                   <td ><select class="classic" style="width: 100%;margin: 10px;"> 
+                   <option >Selectl</option>
+                   <option>Moderate</option>
+                   <option>Rought Sea</option>
+                   <option>Slight</option>
+                   <option>Smooth</option>
+                 </select></td>
+                </tr>
+                <tr>
+                  <td>Towline Lenght</td>
+                  <td> <input
+                    type="ETA"
+                  
+                    required
+                    class="input-section"
+                   ></td>
+                   <td style="padding: 13px;">mtrs</td>
+                  
+                </tr>
+                <tr>
+                  <td>RPM P/E</td>
+                  <td> <input
+                    type="ETA"
+                  
+                    required
+                    class="input-section"
+                   ></td>
+                  
+                </tr>
+                <tr>
+                  <td>RPM S/E</td>
+                  <td> <input
+                    type="ETA"
+                  
+                    required
+                    class="input-section"
+                   ></td>
+                  
+                </tr>
+                <tr>
+                  <td>Slip</td>
+                  <td> <input
+                    type="ETA"
+                  
+                    required
+                    class="input-section"
+                   ></td>
+                  
+                </tr>
+                <tr>
+                  <td>AE-1 Run</td>
+                  <td> <input
+                    type="ETA"
+                  
+                    required
+                    class="input-section"
+                   ></td>
+                   <td style="padding: 13px;">hrs</td>
+                  
+                </tr>
+                <tr>
+                  <td>AE-2 Run</td>
+                  <td> <input
+                    type="ETA"
+                  
+                    required
+                    class="input-section"
+                   ></td>
+                   <td style="padding: 13px;">hrs</td>
+                  
+                </tr>
+                <tr>
+                  <td >Main Engine(Port)Run</td>
+                  <td> <input
+                    type="ETA"
+                  
+                    required
+                    class="input-section"
+                   ></td>
+                   <td style="padding: 13px;">hrs</td>
+                  
+                </tr>
+                <tr>
+                  <td>Main Engine (stdb)Run</td>
+                  <td> <input
+                    type="ETA"
+                  
+                    required
+                    class="input-section"
+                   ></td>
+                   <td style="padding: 13px;">hrs</td>
+                  
+                </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td  fxFlex="34" style="vertical-align: top;padding: 10px;">
+                <div style="background-color: #DEDEDE; padding: 13px;margin-bottom: 10px;">
+                  <div fxLayout="row" fxLayoutAlign="space-between" >
+  
+                      <span class="text-voyage-log">Engine</span>
+              
+  
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="space-between" >
+      
+                      <span class="text-voyage-log" >ME</span>
+              
+                      <span class="text-voyage-log">AE</span>
+                  </div>
+  
+                  <table style="margin-bottom: 10px; width: 100%;">
+                      <tbody>
+                          <tr>
+                              <td>
+                                  <input
+                    type="ETA"
+                   
+                  
+                    required
+                    style="    height: 30px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 96%;    margin-bottom: 5px;
+    margin-top: 5px;"
+                  >
+                              </td>
+                              <td>
+                                  <input
+                    type="ETA"
+                   
+                   
+                    required
+                    style="    height: 30px;
+                    border-radius: 5px;
+                    border: 1px solid gray;
+                    width: 96%;    margin-bottom: 5px;
+    margin-top: 5px; "
+                   >
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <input
+                    type="ETA"
+                   
+                    
+                    required
+                    style="    height: 30px;
+                    border-radius: 5px;
+                    border: 1px solid gray;
+                    width: 96%;    margin-bottom: 5px;
+    margin-top: 5px;"
+                  >
+                              </td>
+                              <td>
+                                  <input
+                    type="ETA"
+                   
+                   
+                    required
+                    style="    height: 30px;
+                    border-radius: 5px;
+                    border: 1px solid gray;
+                    width: 96%  ;  margin-bottom: 5px;
+    margin-top: 5px;"
+                   >
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <input
+                    type="ETA"
+                   
+                  
+                    required
+                    style="    height: 30px;
+                    border-radius: 5px;
+                    border: 1px solid gray;
+                    width: 96%;    margin-bottom: 5px;
+    margin-top: 5px;"
+                  >
+                              </td>
+                              <td>
+                                  <input
+                    type="ETA"
+                   
+                   
+                    required
+                    style="    height: 30px;
+                    border-radius: 5px;
+                    border: 1px solid gray;
+                    width: 96%;     margin-bottom: 5px;
+    margin-top: 5px;"
+                   >
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                </div>
+  
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Turbocharger RPM - PORT</td>
+                        <td> <input
+                          type="ETA"
+                        
+                          required
+                          class="input-section"
+                         ></td>
+                         <td style="padding: 13px;">kts</td>
+                        
+                      </tr>
+  
+                      <tr>
+                        <td>Turbocharger RPM - STMB</td>
+                        <td> <input
+                          type="ETA"
+                        
+                          required
+                          class="input-section"
+                         ></td>
+                         <td style="padding: 13px;">kts</td>
+                        
+                      </tr>
+  
+                      <tr>
+                        <td>Engine Distance</td>
+                        <td> <input
+                          type="ETA"
+                        
+                          required
+                          class="input-section"
+                         ></td>
+                         <td style="padding: 13px;">kts</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>ROB MGO By Master</td>
+                        <td> <input
+                          type="ETA"
+                        
+                          required
+                          class="input-section"
+                         ></td>
+                         <td style="padding: 13px;">kts</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>CONSP MGO</td>
+                        <td> <input
+                          type="ETA"
+                        
+                          required
+                          class="input-section"
+                         ></td>
+                         <td style="padding: 13px;">kts</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>ROB LO</td>
+                        <td> <input
+                          type="ETA"
+                        
+                          required
+                          class="input-section"
+                         ></td>
+                         <td style="padding: 13px;">kts</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>ROB HYD OIL</td>
+                        <td> <input
+                          type="ETA"
+                        
+                          required
+                          class="input-section"
+                         ></td>
+                         <td style="padding: 13px;">kts</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>FW CONSP</td>
+                        <td> <input
+                          type="ETA"
+                        
+                          required
+                          class="input-section"
+                         ></td>
+                         <td style="padding: 13px;">kts</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>FW MADE</td>
+                        <td> <input
+                          type="ETA"
+                        
+                          required
+                          class="input-section"
+                         ></td>
+                         <td style="padding: 13px;">kts</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>ROB FW By Master</td>
+                        <td> <input
+                          type="ETA"
+                        
+                          required
+                          class="input-section"
+                         ></td>
+                         <td style="padding: 13px;">kts</td>
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+                
+              </td>
+            </div>
+            
+          </tr>
+        </tbody>
+      </table>
+
+  <div fxLayout="row" fxLayoutAlign="space-between" >
+              <div fxFlex="29" style="margin: 14px;">
+                         <div fxLayout="row" fxLayoutAlign="space-between" style="margin-top: 10px;">
+                          
+                                      <span class="text-voyage-log">Remarks</span>
+                              
+              
+                                  </div>
+
+                                 <textarea style="margin-top: 10px;width: 98%;"></textarea>
+              </div>
+              <div fxFlex="70" style="margin: 20px;">
+                  <table style=" width:100%;background-color:#eeeeee;padding: 5px;">
+                      <tbody>
+                          <tr>
+                             <td>MAX EXHAUST TEMP AT MANIFOLD OR CYLINDER OUTLET (BEFORE TC) PORT</td> 
+                             <td>
+                              <span>
+                                  <input
+                                  type="ETA"
+                                 
+                                 
+                                  required
+                                  style="height: 30px;border-radius: 5px;    border: 1px solid gray; "
+                                 >
+                              </span>
+                          °C
+                             </td>
+                          </tr>
+
+                          <tr>
+                              <td>MAX EXHAUST TEMP AT MANIFOLD OR CYLINDER OUTLET (BEFORE TC) STARBOARD</td> 
+                              <td>
+                               <span>
+                                   <input
+                                   type="ETA"
+                                  
+                                  
+                                   required
+                                   style="height: 30px;border-radius: 5px;    border: 1px solid gray; "
+                                  >
+                               </span>
+                           °C
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>ME SCAVANGE AIR TEMP AFTER COOLER STARBOARD</td> 
+                              <td>
+                               <span>
+                                   <input
+                                   type="ETA"
+                                  
+                                  
+                                   required
+                                   style="height: 30px;border-radius: 5px;    border: 1px solid gray; "
+                                  >
+                               </span>
+                           °C
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>ME SCAVANGE AIR TEMP AFTER COOLER STARBOARD</td> 
+                              <td>
+                               <span>
+                                   <input
+                                   type="ETA"
+                                  
+                                  
+                                   required
+                                   style="height: 30px;border-radius: 5px;    border: 1px solid gray; "
+                                  >
+                               </span>
+                           °C
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>ME SCAVANGE PRESSURE AT SCAVANGE MANIFOLD PORT</td> 
+                              <td>
+                               <span>
+                                   <input
+                                   type="ETA"
+                                  
+                                  
+                                   required
+                                   style="height: 30px;border-radius: 5px;    border: 1px solid gray; "
+                                  >
+                               </span>
+                           °C
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>ME SCAVANGE PRESSURE AT SCAVANGE MANIFOLD STARBOARD</td> 
+                              <td>
+                               <span>
+                                   <input
+                                   type="ETA"
+                                  
+                                  
+                                   required
+                                   style="height: 30px;border-radius: 5px;    border: 1px solid gray; "
+                                  >
+                               </span>
+                           °C
+                              </td>
+                           </tr>
+                      </tbody>
+
+                  </table>   
+              </div>
+              </div>
+
+      </mat-card-content>
+  </mat-card>
+  </mat-dialog-content> 
+   
+</fury-page-layout-content>
+</fury-page-layout>
+  
+ 
+
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" >
+   
+  <button mat-raised-button class="save-btn" color="primary">
+     Add Tank Soundings
+    </button>
+  <button mat-raised-button class="save-btn" color="primary">
+    Save & Close
+  </button>
+
+  <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+</mat-dialog-actions>     
+ 
+     
+             
+ 

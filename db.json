@@ -1,0 +1,481 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "catalogue": [
+    {
+      "txtCode": "198",
+      "txtSets_Installed": "",
+      "txtName": "New Stationery",
+      "txtModel": "",
+      "txtParticulars": "New Stationery Particulars",
+      "txtBearing_Coupling_End": "",
+      "drpMakers": "",
+      "txtBearing_free_End": "",
+      "drpDepartment": "Sales and Purchase",
+      "txtMotor_Rating": "",
+      "txtShipboard_PIC": "",
+      "txtAccount_Code": "",
+      "chkGeneral_Subcatalogue": true,
+      "chkCritical_Machinery": false,
+      "chkMachinery_InfreqUsed": false,
+      "id": 4
+    },
+    {
+      "txtCode": "202",
+      "txtSets_Installed": "",
+      "txtName": "Stationery",
+      "txtModel": "",
+      "txtParticulars": "",
+      "txtBearing_Coupling_End": "",
+      "drpMakers": "",
+      "txtBearing_free_End": "",
+      "drpDepartment": "Servicing",
+      "txtMotor_Rating": "",
+      "txtShipboard_PIC": "",
+      "txtAccount_Code": "",
+      "chkGeneral_Subcatalogue": true,
+      "chkCritical_Machinery": false,
+      "chkMachinery_InfreqUsed": false,
+      "id": 5
+    },
+    {
+      "txtCode": "141",
+      "txtSets_Installed": "",
+      "txtName": "Test",
+      "txtModel": "",
+      "txtParticulars": "",
+      "txtBearing_Coupling_End": "",
+      "drpMakers": "",
+      "txtBearing_free_End": "",
+      "drpDepartment": 12,
+      "txtMotor_Rating": "",
+      "txtShipboard_PIC": "",
+      "txtAccount_Code": "",
+      "chkGeneral_Subcatalogue": true,
+      "chkCritical_Machinery": false,
+      "chkMachinery_InfreqUsed": false,
+      "id": 6
+    },
+    {
+      "txtCode": "142",
+      "txtSets_Installed": "",
+      "txtName": "test",
+      "txtModel": "",
+      "txtParticulars": "",
+      "txtBearing_Coupling_End": "",
+      "drpMakers": "",
+      "txtBearing_free_End": "",
+      "drpDepartment": 12,
+      "txtMotor_Rating": "",
+      "txtShipboard_PIC": "",
+      "txtAccount_Code": "",
+      "chkGeneral_Subcatalogue": true,
+      "chkCritical_Machinery": false,
+      "chkMachinery_InfreqUsed": false,
+      "id": 7
+    },
+    {
+      "txtCode": "12",
+      "txtSets_Installed": "",
+      "txtName": "test",
+      "txtModel": "",
+      "txtParticulars": "",
+      "txtBearing_Coupling_End": "",
+      "drpMakers": "",
+      "txtBearing_free_End": "",
+      "drpDepartment": 12,
+      "txtMotor_Rating": "",
+      "txtShipboard_PIC": "",
+      "txtAccount_Code": "",
+      "chkGeneral_Subcatalogue": true,
+      "chkCritical_Machinery": false,
+      "chkMachinery_InfreqUsed": false,
+      "id": 8
+    },
+    {
+      "txtCode": "412",
+      "txtSets_Installed": null,
+      "txtName": "test",
+      "txtModel": null,
+      "txtParticulars": null,
+      "txtBearing_Coupling_End": null,
+      "drpMakers": null,
+      "txtBearing_free_End": null,
+      "drpDepartment": 13,
+      "txtMotor_Rating": null,
+      "txtShipboard_PIC": null,
+      "txtAccount_Code": null,
+      "chkGeneral_Subcatalogue": null,
+      "chkCritical_Machinery": null,
+      "chkMachinery_InfreqUsed": null,
+      "id": 9
+    },
+    {
+      "txtCode": "12",
+      "txtSets_Installed": null,
+      "txtName": "test",
+      "txtModel": null,
+      "txtParticulars": null,
+      "txtBearing_Coupling_End": null,
+      "drpMakers": null,
+      "txtBearing_free_End": null,
+      "drpDepartment": 12,
+      "txtMotor_Rating": null,
+      "txtShipboard_PIC": null,
+      "txtAccount_Code": null,
+      "chkGeneral_Subcatalogue": null,
+      "chkCritical_Machinery": null,
+      "chkMachinery_InfreqUsed": null,
+      "id": 10
+    },
+    {
+      "txtCode": "14",
+      "txtSets_Installed": null,
+      "txtName": "test",
+      "txtModel": null,
+      "txtParticulars": null,
+      "txtBearing_Coupling_End": null,
+      "drpMakers": null,
+      "txtBearing_free_End": null,
+      "drpDepartment": 13,
+      "txtMotor_Rating": null,
+      "txtShipboard_PIC": null,
+      "txtAccount_Code": null,
+      "chkGeneral_Subcatalogue": null,
+      "chkCritical_Machinery": null,
+      "chkMachinery_InfreqUsed": null,
+      "id": 11
+    },
+    {
+      "txtCode": "78",
+      "txtSets_Installed": "",
+      "txtName": "test",
+      "txtModel": "",
+      "txtParticulars": "",
+      "txtBearing_Coupling_End": "",
+      "drpMakers": "",
+      "txtBearing_free_End": "",
+      "drpDepartment": 13,
+      "txtMotor_Rating": "",
+      "txtShipboard_PIC": "",
+      "txtAccount_Code": "",
+      "chkGeneral_Subcatalogue": true,
+      "chkCritical_Machinery": false,
+      "chkMachinery_InfreqUsed": false,
+      "id": 12
+    },
+    {
+      "txtCode": "41",
+      "txtSets_Installed": null,
+      "txtName": "test",
+      "txtModel": null,
+      "txtParticulars": null,
+      "txtBearing_Coupling_End": null,
+      "drpMakers": null,
+      "txtBearing_free_End": null,
+      "drpDepartment": 14,
+      "txtMotor_Rating": null,
+      "txtShipboard_PIC": null,
+      "txtAccount_Code": null,
+      "chkGeneral_Subcatalogue": null,
+      "chkCritical_Machinery": null,
+      "chkMachinery_InfreqUsed": null,
+      "id": 13
+    },
+    {
+      "txtCode": "45",
+      "txtSets_Installed": null,
+      "txtName": "test",
+      "txtModel": null,
+      "txtParticulars": null,
+      "txtBearing_Coupling_End": null,
+      "drpMakers": null,
+      "txtBearing_free_End": null,
+      "drpDepartment": 15,
+      "txtMotor_Rating": null,
+      "txtShipboard_PIC": null,
+      "txtAccount_Code": null,
+      "chkGeneral_Subcatalogue": null,
+      "chkCritical_Machinery": null,
+      "chkMachinery_InfreqUsed": null,
+      "id": 14
+    }
+  ],
+  "subcatalogue": [
+    {
+      "txtCode": "003",
+      "txtName": "Bottle",
+      "txtParticulars": "test",
+      "id": 4
+    },
+    {
+      "txtCode": "123",
+      "txtName": "test",
+      "txtParticulars": "",
+      "id": 5
+    },
+    {
+      "txtCode": "14",
+      "txtName": "test",
+      "txtParticulars": "",
+      "id": 6
+    },
+    {
+      "txtCode": "12",
+      "txtName": "test",
+      "txtParticulars": "",
+      "id": 7
+    },
+    {
+      "txtCode": "12",
+      "txtName": "test",
+      "txtParticulars": null,
+      "id": 8
+    },
+    {
+      "txtCode": "74",
+      "txtName": "test",
+      "txtParticulars": null,
+      "id": 9
+    },
+    {
+      "txtCode": "63",
+      "txtName": "test",
+      "txtParticulars": null,
+      "id": 10
+    },
+    {
+      "txtCode": "12",
+      "txtName": "test",
+      "txtParticulars": null,
+      "id": 11
+    },
+    {
+      "txtCode": "74",
+      "txtName": "test",
+      "txtParticulars": null,
+      "id": 12
+    },
+    {
+      "txtCode": "47",
+      "txtName": "test",
+      "txtParticulars": null,
+      "id": 13
+    },
+    {
+      "txtCode": "52",
+      "txtName": "test",
+      "txtParticulars": null,
+      "id": 14
+    },
+    {
+      "txtCode": "74",
+      "txtName": "test",
+      "txtParticulars": null,
+      "id": 15
+    }
+  ],
+  "addnewitem": [
+    {
+      "txtPart_Number": "117",
+      "txtItem_Name": "Sugar",
+      "txtDescription": "Sugar",
+      "drpUnit": "Kilogram",
+      "drpItem_Category": "StorageContainers",
+      "chkcritical": true,
+      "id": 4
+    },
+    {
+      "txtPart_Number": "14",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": "1",
+      "id": 5
+    },
+    {
+      "txtPart_Number": "12",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": false,
+      "id": 6
+    },
+    {
+      "txtPart_Number": "12",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": "1",
+      "id": 7
+    },
+    {
+      "txtPart_Number": "test",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "StorageContainers",
+      "chkcritical": false,
+      "id": 8
+    },
+    {
+      "txtPart_Number": "12",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Tin",
+      "drpItem_Category": "",
+      "chkcritical": "0",
+      "id": 9
+    },
+    {
+      "txtPart_Number": "123",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": "0",
+      "id": 10
+    },
+    {
+      "txtPart_Number": "14",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": false,
+      "id": 11
+    },
+    {
+      "txtPart_Number": "123",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": true,
+      "id": 12
+    },
+    {
+      "txtPart_Number": "141",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": false,
+      "id": 13
+    },
+    {
+      "txtPart_Number": "141",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": true,
+      "id": 14
+    },
+    {
+      "txtPart_Number": "12",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": true,
+      "id": 15
+    },
+    {
+      "txtPart_Number": "14",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": true,
+      "id": 16
+    },
+    {
+      "txtPart_Number": "14",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": false,
+      "id": 17
+    },
+    {
+      "txtPart_Number": "11",
+      "txtItem_Name": "test",
+      "txtDescription": "",
+      "drpUnit": "Liters",
+      "drpItem_Category": "",
+      "chkcritical": false,
+      "id": 18
+    }
+  ],
+  "department": [
+    {
+      "txtDepartment_Name": "Sales and Purchase",
+      "txtDepartment_Short_Code": "112",
+      "drpTemplate_Type": "temp-2",
+      "id": 1
+    },
+    {
+      "txtDepartment_Name": "Servicing",
+      "txtDepartment_Short_Code": "131",
+      "drpTemplate_Type": "temp-1",
+      "id": 2
+    },
+    {
+      "txtDepartment_Name": "Life Saving",
+      "txtDepartment_Short_Code": "136",
+      "drpTemplate_Type": "temp-2",
+      "id": 3
+    },
+    {
+      "txtDepartment_Name": "Test",
+      "txtDepartment_Short_Code": "163",
+      "drpTemplate_Type": "temp-2",
+      "id": 4
+    },
+    {
+      "txtDepartment_Name": "test",
+      "txtDepartment_Short_Code": "12",
+      "drpTemplate_Type": "temp-1",
+      "id": 5
+    },
+    {
+      "txtDepartment_Name": "testing",
+      "txtDepartment_Short_Code": "142",
+      "drpTemplate_Type": "temp-1",
+      "id": 6
+    }
+  ],
+  "requistiontable": [
+    {
+      "id":1,
+      "Part_Number":1234,
+      "Item_Description":"Bottle",
+      "Subcatalogue":"GENERAL",
+      "Unit":"Btl",
+      "ROB":1.000,
+      "Req_Qty":10.000,
+      "Comments":""
+    }
+  ],
+
+  "profile": {
+    "name": "typicode"
+  }
+}

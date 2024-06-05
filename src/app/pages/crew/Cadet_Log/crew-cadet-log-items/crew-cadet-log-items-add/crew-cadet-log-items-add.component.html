@@ -1,0 +1,121 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Add New Cadet Log Item
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+    <mat-dialog-content>
+        <form [formGroup]="newCadetLogItemFormGroup">
+            <div mat-dialog-container style="padding-top: 20px;">
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Category</mat-label>
+                        <mat-select formControlName="drpCategory">
+                            <mat-option value="category_first">On Completion of WEEK 1, the cadet will be able to
+                                -</mat-option>
+                            <mat-option value="category_second">On Completion of WEEK 2, the cadet will be able to
+                                -</mat-option>
+                            <mat-option value="category_third">On Completion of WEEK 4, the cadet will be able to
+                                -</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Grade</mat-label>
+                        <mat-select formControlName="drpGrade">
+                            <mat-option value="grade_first">1</mat-option>
+                            <mat-option value="grade_second">3</mat-option>
+                            <mat-option value="grade_third">2</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Question No.</mat-label>
+                        <input formControlName="txtQuestion_No" matInput placeholder="Search by Question No"
+                            type="text" />
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Question Name</mat-label>
+                        <textarea matInput formControlName="txtQuestion_Name" placeholder="Question Name"></textarea>
+                    </mat-form-field>
+                </div>
+
+            
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-bottom: 10px;background-color:#fefefe;">
+                    <quill-editor [styles]="{ height: '400px' }" id="textEditor" (onEditorCreated)="created($event)"
+                        (onContentChanged)="contentChanged($event)">
+                    </quill-editor>
+                </div>
+
+
+
+
+                <div fxLayout="column" fxLayout.gt-sm="row" >
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>QMS Elements Ref</mat-label>
+                        <mat-select formControlName="drpQMS_Element">
+                            <mat-option value="read_report">001 - Read Report</mat-option>
+                            <mat-option value="unread_report">002 - Un Read Report</mat-option>
+                            <mat-option value="departure_report">01 - Departure Report</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row">
+                    <!-- Use a button to create a custom file upload button -->
+
+                    <mat-label style="margin: 8px;">Upload File :</mat-label> &nbsp;
+
+                    <input style="display: none;" type="file" id="imageupload" #fileInput
+                        (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+
+                    <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                        <label for="imageupload">
+                            Select</label>
+                    </button>
+                    <div *ngIf="selectedFileName" fxFlex>
+                        <span aria-placeholder="Select files"> {{ selectedFileName
+                            }}</span>
+                        <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+                    </div>
+
+                    <!-- File input element, hidden from view -->
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <div style="border: 8px solid lightgray;
+                                height: 60px;
+                                width: 100%;
+                                padding: 9px;
+                                text-align: center;
+                                box-shadow: 0 0 2px #cccccc; 
+                                margin: 10px;">
+                        Drop Files here for Attachment
+                    </div>
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+        <button mat-raised-button color="primary" class="save-btn">
+            Save & Close
+        </button>
+        <button mat-raised-button class="save-btn" color="primary">
+            Save & Add New
+        </button>
+
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+</div>

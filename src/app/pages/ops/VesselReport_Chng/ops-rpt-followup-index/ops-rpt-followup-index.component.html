@@ -1,0 +1,174 @@
+
+<fury-page-layout mode="card" class="ops-formsFollowupIndex">
+ 
+    <fury-page-layout-header>
+      
+      <form [formGroup]="FollowupIndexFilterFormGroup" >
+        
+          <h3 class="unit-packing">
+            <span class="first-letter">V</span>ESSEL  
+            <span class="fifth-letter">R</span>EPORT /
+            <span class="fifth-letter">F</span>ORMS  
+            <span class="fifth-letter">F</span>OLLOWUP   
+            <span class="fifth-letter">I</span>NDEX     
+          </h3>
+      
+        
+        <div class="filter-area">
+          <div fxLayout="row" fxLayoutAlign="start">
+  
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Vessel Name</mat-label>
+                    <mat-select  #select multiple formControlName="drpVessel_Name">
+                      <div class="select-all">
+                          <mat-checkbox [(ngModel)]="allSelected"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="toggleAllSelection()">Check All</mat-checkbox>
+                      </div>
+                      <mat-option (click)="optionClick()" *ngFor="let vsl of Vessel" [value]="vsl.value">
+                        {{vsl.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Report Name</mat-label>
+                    <mat-select formControlName="drpReport_Name" >
+                      <mat-option value="Demo">Demo</mat-option>
+                      <mat-option value="Test">Test</mat-option>
+                      
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Date Form</mat-label>
+                    <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFrom></mat-datepicker>
+                  </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Report Name</mat-label>
+                    <input formControlName="txtReport_Name" matInput placeholder="Search by Report Name" type="text" />
+                  </mat-form-field>
+                
+            </div>
+
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                  <input matInput [matDatepicker]="pickerTo"  [formControl]="date">
+                  <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerTo></mat-datepicker>
+                </mat-form-field>
+            </div>
+  
+
+            
+  
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                <button
+                mat-raised-button
+                color="primary"
+               style="background-color: #5cb85c;"
+                class="filter-btn"
+              
+              >
+                Search
+              </button>
+              </div>
+  
+              <div>
+                <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                  type="button" (click)="clearFilter()">
+                  Clear
+                </button>
+              </div>
+            </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+      <div class="actions-area" >
+      
+        <div fxLayout="row">
+            <img src="../../../../assets/img/Actions-arrow-down-icon.png" class="logo" alt="excel" /><span style="padding-top: 3px;margin-right: 40px;">Expand All
+            </span>
+
+            <img src="../../../../assets/img/Actions-arrow-down-icon.png" class="logo" alt="excel" /><span style="padding-top: 3px;">Collapse All
+            </span>
+        </div>
+        
+             
+      </div>
+  
+      <div #TABLE>
+        <table [dataSource]="VesselReportdataSource" mat-table matSort #table class="details-table">
+          <ng-container matColumnDef="Vessel">
+            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+              mat-sort-header>
+           Vessel
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+              mat-cell>
+              <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Report_Name">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Report Name
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Report_Date">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Report Date
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+         
+          <ng-container matColumnDef="No_of_Followup">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         No of Followup
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+         
+  
+  
+  
+        
+         
+  
+          <tr *matHeaderRowDef="VesselReportvisibleColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: VesselReportvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

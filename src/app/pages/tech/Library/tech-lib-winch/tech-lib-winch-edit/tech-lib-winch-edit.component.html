@@ -1,0 +1,163 @@
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add_Open
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+
+<mat-dialog-content>
+    <div fxLayout="row" fxLayoutAlign="space-between">
+        <div fxFlex="43">
+            <form [formGroup]="libWinchFormGroup">
+                <div mat-dialog-container style="padding-top: 20px;">
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Vessel Name</mat-label>
+                            <mat-select formControlName="drpVessel_Name">
+                            <mat-option value="11188-TEST">Alexa</mat-option>
+                            <mat-option value="01001-Food">Alexandre</mat-option>
+                
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Winch Name</mat-label>
+                            <input matInput formControlName="txtWinch_Name" />
+                          </mat-form-field>  
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px"
+                    style="margin-bottom: 24px; margin-top: 26px;">
+                    <mat-label>Type :</mat-label>
+                    <mat-radio-group fxLayout="row" fxLayoutGap="5px"
+                        formControlName="radioType">
+                        <mat-radio-button value="1" [checked]="libWinchFormGroup.get('radioType').value == 1">
+                            <label [class.active-label]="libWinchFormGroup.get('radioType').value == 1">Winch</label>
+                          </mat-radio-button>
+                          <mat-radio-button value="0" [checked]="libWinchFormGroup.get('radioType').value == 0">
+                            <label [class.active-label]="libWinchFormGroup.get('radioType').value == 0">Windlass</label>
+                          </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                  
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Physical Location</mat-label>
+                            <mat-select formControlName="drpPhysical_Location">
+                            <mat-option value="01">01</mat-option>
+                            <mat-option value="02">02</mat-option>
+                            <mat-option value="03">03</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Location Details</mat-label>
+                        <textarea
+                            matInput
+                            formControlName="txtLocation_Details"
+                            placeholder="Testing Procedure"
+                        ></textarea>
+                        </mat-form-field>
+                    </div>
+                
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Catalogue</mat-label>
+                            <mat-select formControlName="drpCatalogue">
+                            <mat-option value="Propeller">Propeller</mat-option>
+                            <mat-option value="Stationery">Stationery</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Design BHC</mat-label>
+                            <input formControlName="txtDesign_BHC" matInput placeholder="Search by Brake holding capacity (Tons) As per Manufacturer" type="text" />
+                          
+                        </mat-form-field>
+                    </div>
+                  
+
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Rope MBL</mat-label>
+                            <input formControlName="txtRope_MBL" matInput placeholder="Search by  Maximum Braking Load of Rope" type="text" />
+                           
+                        </mat-form-field>
+                    </div>
+                  
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Mooring Drum</mat-label>
+                            <input formControlName="txtMooring_Drum" matInput placeholder="Search by mm" type="text" />
+                          
+                        </mat-form-field>
+                    </div>
+                   
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Permissible Variance</mat-label>
+                            <input formControlName="txtPermissible_Variance" matInput placeholder="Search by Months" type="text" />
+                          
+                        </mat-form-field>
+                        
+                    </div>
+        
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>SFI</mat-label>
+                            <mat-select formControlName="drpSFI">
+                            <mat-option value="1- Ship General">1- Ship General</mat-option>
+                            <mat-option value="Model Testing">Model Testing</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Testing Procedure</mat-label>
+                        <textarea
+                            matInput
+                            formControlName="txtTesting_Procedure"
+                            placeholder="Testing Procedure"
+                        ></textarea>
+                        </mat-form-field>
+                    </div>
+                    
+                </div>
+                </form>
+        </div>
+        
+        <div fxFlex="55">
+            <span>
+                <img src="../../../../assets/img/index.png" alt="excel" style="margin-top: 72px;"/>
+            </span>
+        </div>
+    </div>
+        
+    
+      
+        <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+      
+          <button mat-raised-button color="primary" class="save-btn">
+            Save & Close
+          </button>
+          <button mat-raised-button class="save-btn" color="primary">
+            Save & Add New
+          </button>
+      
+          <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+        </mat-dialog-actions>
+      
+</mat-dialog-content>
+ 

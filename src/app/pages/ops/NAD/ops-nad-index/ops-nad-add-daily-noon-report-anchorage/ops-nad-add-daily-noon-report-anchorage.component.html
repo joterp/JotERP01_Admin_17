@@ -1,0 +1,1735 @@
+<fury-page-layout mode="card" class="nad-add-DailyNoonReport-view">
+
+    <fury-page-layout-content [@fadeInUp]>
+
+        <div style="    border: 3px solid;
+        ">
+            <form [formGroup]="DailyNoonReport_AnchorageFormGroup">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width:30%"></td>
+                        <td>
+                            <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 35px;margin-bottom: 5px;">
+                                <button mat-raised-button color="primary" class="save-btn save-btn1"
+                                    style="margin-bottom: 10px;">Save</button>
+                                <button mat-raised-button color="primary" class="save-btn save-btn1"
+                                    style="margin-bottom: 10px;">Save & Close</button>
+                                <button mat-raised-button color="warn" class="save-btn1" style="margin-bottom: 10px;"
+                                    (click)="CancelForm()">Cancel</button>
+
+                            </div>
+                        </td>
+                        <td style="width:24%"></td>
+                    </tr>
+                </table>
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="report-title">Daily Noon Detail (Anchorage)</td>
+                    </tr>
+
+
+                    <tr>
+                        <table style="width: 100%;margin-top: 10px;" class="main-table-1">
+
+                            <tr>
+
+                                <td style="width: 24%;    vertical-align: top;">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td>
+
+                                                <div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Vessel</mat-label>
+
+                                                            <mat-select formControlName="drpVessel">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                            *ngFor="let b of filtered_port | async"
+                                            [value]="b.PORT_GUID"
+                                          >
+                                            {{ b.Port_Name }}
+                                          </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('drpVessel').hasError('required')">
+                                                                Required</mat-error>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Date</mat-label>
+                                                            <input matInput formControlName="date_Daily_Noon"
+                                                                [matDatepicker]="pickerarrivalreportdate" />
+                                                            <mat-datepicker-toggle matSuffix
+                                                                [for]="pickerarrivalreportdate"></mat-datepicker-toggle>
+                                                            <mat-datepicker #pickerarrivalreportdate></mat-datepicker>
+
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('date_Daily_Noon').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Type</mat-label>
+                                                            <input formControlName="txtType" matInput type="text"
+                                                                readonly />
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Voyage Number</mat-label>
+
+                                                            <mat-select formControlName="drpVoyage_Number">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                        *ngFor="let b of filtered_port | async"
+                                        [value]="b.PORT_GUID"
+                                      >
+                                        {{ b.Port_Name }}
+                                      </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('drpVoyage_Number').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Vessel Cargo Status</mat-label>
+
+                                                            <mat-select formControlName="drpVessel_Cargo_Status">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                    *ngFor="let b of filtered_port | async"
+                                    [value]="b.PORT_GUID"
+                                  >
+                                    {{ b.Port_Name }}
+                                  </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('drpVessel_Cargo_Status').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Location</mat-label>
+
+                                                            <mat-select formControlName="drpLocation">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                *ngFor="let b of filtered_port | async"
+                                [value]="b.PORT_GUID"
+                              >
+                                {{ b.Port_Name }}
+                              </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('drpLocation').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>UTC</mat-label>
+
+                                                            <mat-select formControlName="drpUTC">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                            *ngFor="let b of filtered_port | async"
+                            [value]="b.PORT_GUID"
+                          >
+                            {{ b.Port_Name }}
+                          </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('drpUTC').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Ship's Clock Changes</mat-label>
+
+                                                            <mat-select formControlName="drpShips_Clock_Changes">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+                                                            </mat-select>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Latitude</mat-label>
+                                                            <input formControlName="txtLatitude" matInput type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('txtLatitude').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Longitude</mat-label>
+                                                            <input formControlName="txtLongitude" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('txtLongitude').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>True Course</mat-label>
+                                                            <input formControlName="txtTrue_Course" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('txtTrue_Course').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Swell Direction</mat-label>
+
+                                                            <mat-select formControlName="drpSwell_Direction">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                *ngFor="let b of filtered_port | async"
+                [value]="b.PORT_GUID"
+              >
+                {{ b.Port_Name }}
+              </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('drpSwell_Direction').hasError('required')">
+                                                                Required</mat-error>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Swell Height</mat-label>
+                                                            <input formControlName="txtSwell_Height" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('txtSwell_Height').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Wind Direction</mat-label>
+
+                                                            <mat-select formControlName="drpWind_Direction">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+            *ngFor="let b of filtered_port | async"
+            [value]="b.PORT_GUID"
+          >
+            {{ b.Port_Name }}
+          </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('drpWind_Direction').hasError('required')">
+                                                                Required</mat-error>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>True Wind Direction</mat-label>
+
+                                                            <mat-select formControlName="drpTrue_Wind_Direction">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+        *ngFor="let b of filtered_port | async"
+        [value]="b.PORT_GUID"
+      >
+        {{ b.Port_Name }}
+      </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('drpTrue_Wind_Direction').hasError('required')">
+                                                                Required</mat-error>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Wind Force</mat-label>
+                                                            <input formControlName="txtWind_Force" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('txtWind_Force').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>True Wind Speed</mat-label>
+                                                            <input formControlName="txtWind_Force" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('txtTrue_Wind_Speed').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Sea Direction</mat-label>
+
+                                                            <mat-select formControlName="drpSea_Direction">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+*ngFor="let b of filtered_port | async"
+[value]="b.PORT_GUID"
+>
+{{ b.Port_Name }}
+</mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('drpTrue_Wind_Direction').hasError('required')">
+                                                                Required</mat-error>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Sea Direction</mat-label>
+
+                                                            <mat-select formControlName="drpTrue_Sea_Direction">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+*ngFor="let b of filtered_port | async"
+[value]="b.PORT_GUID"
+>
+{{ b.Port_Name }}
+</mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('drpTrue_Sea_Direction').hasError('required')">
+                                                                Required</mat-error>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Longitude direction</mat-label>
+                                                            <input formControlName="txtLongitude_direction" matInput
+                                                                type="text" />
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Sea State</mat-label>
+                                                            <input formControlName="txtSea_State" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('txtSea_State').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Current Direction</mat-label>
+
+                                                            <mat-select formControlName="drpCurrent_Direction">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+*ngFor="let b of filtered_port | async"
+[value]="b.PORT_GUID"
+>
+{{ b.Port_Name }}
+</mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('drpCurrent_Direction').hasError('required')">
+                                                                Required</mat-error>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Speed Of Current</mat-label>
+                                                            <input formControlName="txtSpeed_Of_Current	" matInput
+                                                                type="text" />
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Air Temperature</mat-label>
+                                                            <input formControlName="txtAir_Temperature" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('txtAir_Temperature').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Air Pressure</mat-label>
+                                                            <input formControlName="txtAir_Pressure" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('txtAir_Pressure').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Sea Temp</mat-label>
+                                                            <input formControlName="txtSea_Temp" matInput type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('txtSea_Temp').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Trim</mat-label>
+                                                            <input formControlName="txtAir_Temperature" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AnchorageFormGroup.get('txtTrim').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                </div>
+                                            </td>
+                                        </tr> 
+                                        
+                                        <tr>
+                                            <td>
+                                               <div fxLayout="row" fxLayoutAlign="space-between">
+                                               <div fxFlex="48">
+                                                <table style="width: 100%;">
+                                                <tr>
+                                                    <td class="draft-td">Draft</td>
+                                                </tr>      
+                                                </table>
+                                               <table>
+                                                <tr>
+                                                    <td>Fwd(mtrs)</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                   
+                                                </tr>
+                                                <tr>
+                                                    <td>Mid(mtrs)</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                   
+                                                </tr>
+                                                <tr>
+                                                    <td>Aft(mtrs)</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                   
+                                                </tr>
+                                               </table>
+
+                                                                       
+                                                </div>
+
+                
+
+                                                <div fxFlex="48">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td class="draft-td">Ballast (MT)</td>
+                                                        </tr>
+                                                        </table>
+                                                        <table>
+                                                            <tr>
+                                                                <td>Permanent</td>
+                                                                <td><input type="text" class="rob-input"/></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Additional</td>
+                                                                <td><input type="text" class="rob-input"/></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Total</td>
+                                                                <td><input type="text" class="rob-input"/></td>
+                                                               
+                                                            </tr>
+                                                           </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                               <div fxLayout="row" fxLayoutAlign="space-between">
+                                               <div fxFlex="48">
+                                                <table style="width: 100%;">
+                                                <tr>
+                                                    <td class="draft-td">Cargo Operations</td>
+                                                </tr>      
+                                                </table>
+                                               <table>
+                                                <tr>
+                                                    <td>Loaded</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                    <td>MT/TEU</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Discharged</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                    <td>MT/TEU</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total Onboard</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                    <td>MT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Reefers Onboard</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                    <td>MT</td>
+                                                </tr>
+                                               
+                                               </table>
+
+                                                                       
+                                                </div>
+
+                
+                                                <div fxFlex="48">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td class="draft-td">Ballast Operations</td>
+                                                        </tr>
+                                                        </table>
+                                                        <table>
+                                                            <tr>
+                                                                <td>Loaded</td>
+                                                                <td><input type="text" class="rob-input"/></td>
+                                                                <td>MT</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Discharged</td>
+                                                                <td><input type="text" class="rob-input"/></td>
+                                                                <td>MT</td>
+                                                            </tr>
+                                                            
+                                                           </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                               <div fxLayout="row" fxLayoutAlign="space-between">
+                                               <div fxFlex="48">
+                                               
+                                                <table style="width: 100%;">
+                                                    <tr>
+                                                        <td>
+                                                        <textarea ></textarea>
+                                                    </td>
+                                                    </tr>
+                                                    
+                                                    </table>
+                                         
+                                                </div>
+
+                                                <div fxFlex="48">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td>
+                                                            <textarea ></textarea>
+                                                        </td>
+                                                        </tr>
+                                                        
+                                                        </table>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                    </table>
+
+                                  
+                                </td>
+
+                                <td style=" vertical-align: top;">
+
+                                    <div mode="card" class="agency-po">
+
+
+                                        <mat-tab-group (animationDone)="check()" animationDuration="0ms"
+                                            class="remove-border-bottom" style="margin-top: 10px;">
+
+                                            <form>
+
+                                                <mat-tab label="Details" style="margin-left: #000;margin-right: #000;"
+                                                    class="mat-tab-req">
+                                                    <div>
+
+                                                        <table
+                                                            style="width: 100%;border:1px solid;border-collapse: collapse;">
+                                                            <tr>
+                                                                <td
+                                                                    style="vertical-align: top;width:46%;padding: 9px;">
+
+                                                                    <table>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div
+                                                                                   >
+                                                                                
+                                                                                    
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Dist since last report	
+    
+                                                                                        </mat-label>
+                                                                                        <input matInput type="text" formControlName="txtDist_Since_Last_Report"
+                                                                                             />
+                                                                                    </mat-form-field>
+    
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Log Distance since last report	
+    
+                                                                                        </mat-label>
+                                                                                        <input matInput type="text" formControlName="txtLog_Distance"
+                                                                                             />
+                                                                                  
+                                                                                    </mat-form-field>
+                                                                               
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Closest distance from strom center</mat-label>
+                                                                                        <input matInput formControlName="txtClosest_distance" type="text" />
+                                                                                        
+                                                                                    </mat-form-field>
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>BWTS Agent</mat-label>
+                                                                                        <input matInput formControlName="BWTS_Agent	" type="text" />
+                                                                                     
+                                                                                    </mat-form-field>
+                
+                                                                                    <mat-form-field appearance="fill">
+                
+                                                                                        <mat-label>BWTS Agent Form</mat-label>
+                            
+                                                                                        <mat-select formControlName="drpBWTS_Agent_Form	">
+                                                                                            <mat-option>
+                            
+                                                                                            </mat-option>
+                            
+                                                                                            <!-- <mat-option
+                                                                        *ngFor="let b of filtered_port | async"
+                                                                        [value]="b.PORT_GUID"
+                                                                      >
+                                                                        {{ b.Port_Name }}
+                                                                      </mat-option> -->
+                                                                                        </mat-select>
+                                                                                       
+                                                                                    </mat-form-field>
+                
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Time Of CPA</mat-label>
+                                                                                        <input matInput formControlName="date_Time_Of_CPA"
+                                                                                            [matDatepicker]="pickertieofcpa" />
+                                                                                        <mat-datepicker-toggle matSuffix
+                                                                                            [for]="pickertieofcpa"></mat-datepicker-toggle>
+                                                                                        <mat-datepicker
+                                                                                            #pickertieofcpa></mat-datepicker>
+                
+                                                                                          
+                                                                                    </mat-form-field>
+                                                                          
+                                                                                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                                                                                    style="margin-bottom: 12px;">
+                                                                                    <mat-label>Report Applicable to EU-MRV?</mat-label>
+                                                                                    <mat-radio-group fxLayout="row" fxLayoutGap="24px"
+                                                                                        formControlName="radioEU_MRV" style="margin-left: 40px;">
+                                                                                        <mat-radio-button value="1"
+                                                                                            [checked]="DailyNoonReport_AnchorageFormGroup.get('radioEU_MRV').value == 1">
+                                                                                            <label
+                                                                                                [class.active-label]="DailyNoonReport_AnchorageFormGroup.get('radioEU_MRV').value == 1"
+                                                                                                style="font-family: tahoma;">Yes</label>
+                                                                                        </mat-radio-button>
+                                                                                        <mat-radio-button value="0"
+                                                                                            [checked]="DailyNoonReport_AnchorageFormGroup.get('radioEU_MRV').value == 0">
+                                                                                            <label
+                                                                                                [class.active-label]="DailyNoonReport_AnchorageFormGroup.get('radioEU_MRV').value == 0"
+                                                                                                style="font-family: tahoma;">No</label></mat-radio-button>
+                                                                                    </mat-radio-group>
+                                                                                </div>
+
+                                                                                </div>
+                                                                            </td>
+
+                                                                        </tr>
+
+                                                                     
+                                                                      
+                                                                
+
+                                                                      
+
+                                                                    </table>
+
+
+                                                                </td>
+
+                                                                <td style="width: 50%;vertical-align: top;">
+
+                                                              
+                                                                    <table style="width: 100%;">
+                                                                        <tr>
+                                                                          
+                                                                         <td class="arrival-report-td">Sludge/Bilge Water details
+                                                                                    
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="border: 1px solid #B6B8B3;
+                                                                            border-radius: 10px;">
+                                                                                <div >
+                                                                                    <table style="display: flex;">
+            
+            
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <div fxLayout="row">
+                                                                                                    <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                                                                                        class="add-approve-btn save-btn" (click)="AddSludgeDetail(null, 'Add/Edit Sludge detail')"
+                                                                                                       >
+                                                                                                        <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                                                                                    </button>
+                                                                                                    <span style="margin-top: 3px;
+                                                                                                    margin-left: 6px;font-size: 15px;">Add Sludge Details</span>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                        
+                                                                        
+                                                                                    </table>
+                                                                        
+                                                                        
+                                                                               
+                                                                                    <!-- <div class="content-loader">
+                                                                                    <mat-progress-spinner
+                                                                                      mode="indeterminate"
+                                                                                      color="accent"
+                                                                                    ></mat-progress-spinner>
+                                                                                  </div> -->
+                                                                                </div>
+                                                                        
+                                                                                <div #TABLE>
+                                                                                    <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                                                                                        <ng-container matColumnDef="Sludge_Or_Bilge">
+                                                                                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                                                                                                mat-sort-header>
+                                                                                                Sludge Or Bilge
+                                                                                            </th>
+                                                                                            <!-- <td
+                                                                                          *matCellDef="let row; let i = index"
+                                                                                          class="actions-cell"
+                                                                                          [ngStyle]="{ 'white-space': 'initial' }"
+                                                                                          mat-cell
+                                                                                        >
+                                                                                          <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                                                        </td> -->
+                                                                                        </ng-container>
+                                                                        
+                                                                                        <ng-container matColumnDef="Daily_Production">
+                                                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                                                Daily Production(In MT)
+                                                                                            </th>
+                                                                                            <!-- <td
+                                                                                          *matCellDef="let row; let i = index"
+                                                                                          class="actions-cell"
+                                                                                          mat-cell
+                                                                                        >
+                                                                                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                                                                        </td> -->
+                                                                                        </ng-container>
+                                                                                        <ng-container matColumnDef="Total_Qty">
+                                                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                                                Total Qty(In MT)
+                                                                                            </th>
+                                                                                            <!-- <td
+                                                                                            *matCellDef="let row; let i = index"
+                                                                                            class="actions-cell"
+                                                                                            mat-cell
+                                                                                          >
+                                                                                            <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                                                                          </td> -->
+                                                                                        </ng-container>
+                                                                                        <ng-container matColumnDef="Tank_Number">
+                                                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                                                Tank Number/Name
+                                                                                            <!-- <td
+                                                                                          *matCellDef="let row; let i = index"
+                                                                                          class="actions-cell"
+                                                                                          mat-cell
+                                                                                        >
+                                                                                          <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                                                                        </td> -->
+                                                                                        </ng-container>
+                                                                                        <ng-container matColumnDef="Current_Filling_Ratio">
+                                                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                                                Current Filling Ratio(%)
+                                                                                            </th>
+                                                                                            <!-- <td
+                                                                                            *matCellDef="let row; let i = index"
+                                                                                            class="actions-cell"
+                                                                                            mat-cell
+                                                                                          >
+                                                                                            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                                                                          </td> -->
+                                                                                        </ng-container>
+                                                                                        <ng-container matColumnDef="Remark">
+                                                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                                                Remark
+                                                                                            </th>
+                                                                                            <!-- <td
+                                                                                            *matCellDef="let row; let i = index"
+                                                                                            class="actions-cell"
+                                                                                            mat-cell
+                                                                                          >
+                                                                                            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                                                                          </td> -->
+                                                                                        </ng-container>
+                                                                                  
+                                                                        
+                                                                                        <tr *matHeaderRowDef="visibleColumns" mat-header-row style="background-color:#194775"></tr>
+                                                                                        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                                                                                        </tr>
+                                                                                        <tr class="mat-row" *matNoDataRow>
+                                                                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td style="width: 50%;">
+                                                                    <table style="width: 100%;">
+                                                                        <tr>
+                                                                            <td >
+                                                                                <table style="width: 100%;">
+                                                                                    
+                                                                            <tr>
+                                                                                <td class="arrival-report-td">Remarks (Details of work done by crew,any special work carried out,any damages to cargo,any delays,any breakdowns etc)
+                                                                                </td>
+                                    
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <mat-form-field fxFlex style="margin-top: 10px;">
+                                                                                        <mat-label></mat-label>
+                                                                                        <textarea matInput rows="5" cols="40"></textarea>
+                                                                                    </mat-form-field>
+                                                                                </td>
+                                                                            </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                           </tr>
+                                                                    </table>
+                                                                </td>
+
+                                                                <td style="width:50%; border:1px solid #B6B8B3" >
+                                                                    <table style="width: 100%;">
+                                                                        <tr>
+                                                                            <td
+                                                                                class="arrival-report-td">
+                                                                                Attachments :</td>
+                                            
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="action-label"
+                                                                                    fxFlex>
+                                            
+                                                                                    <input
+                                                                                        style="display: none;"
+                                                                                        type="file"
+                                                                                        id="fileupload"
+                                                                                        #fileInputattach
+                                                                                        (change)="onFileSelectedattach($event)"
+                                                                                        accept=".pdf,.doc,.docx,.jpg,.png" />
+                                                                                    <button
+                                                                                        type="button"
+                                                                                        class="upload-btn1"
+                                                                                        style="margin-top: 6px;"
+                                                                                        *ngIf="!selectedFileNameAttach">
+                                                                                        <label
+                                                                                            for="fileupload">
+                                                                                            Browse</label>
+                                                                                    </button>
+                                            
+                                                                                    <div
+                                                                                        *ngIf="selectedFileNameAttach">
+                                                                                        <span
+                                                                                            style="margin-top: 2px !important;">
+                                                                                            {{
+                                                                                            selectedFileNameAttach
+                                                                                            }}</span>
+                                                                                        <button
+                                                                                            (click)="removeUploadedFileattach()"
+                                                                                            mat-button
+                                                                                            style="color: #5BB318;">Remove</button>
+                                                                                        &nbsp;
+                                                                                    </div>
+                                            
+                                            
+                                                                                    <div
+                                                                                        class="drop-container-attach">
+                                            
+                                                                                        <input
+                                                                                            type="file"
+                                                                                            id="uploadFile-input"
+                                                                                            style="opacity: 0"
+                                                                                            name="uploadFile"
+                                                                                            accept="all/*"
+                                                                                            multiple />
+                                                                                        <label>Drop
+                                                                                            Files
+                                                                                            Here for
+                                                                                            attachment
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+
+
+                                                                
+                                                            </tr>
+                                                            
+                                                            
+
+                                                           
+
+                                                        </table>
+
+                                                    </div>
+
+                                                </mat-tab>
+
+                                                <mat-tab label="Machinery Running Hours"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                                                    <div>
+
+                                                        <table style="width: 100%;border:1px solid;border-collapse: collapse;">
+                                                            <tr>
+                                                               
+                                                              
+                                                                <td style="width: 24%;vertical-align: top;">
+                                                                    <table style="width: 100%;">
+                                                                        
+                                                                        <tr>
+                                                                        <td class="dailynoon-report-td">
+                                                                            Running Hours since last noon
+                                                                      </td>                                                              
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="ME-1-Parameter" style="padding-top: 10px;">
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    M/E #1	
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    M/E #2
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    Aux Engine #1	
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    Aux Engine #2	
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    Aux Engine #3
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    Aux Engine #4	
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    Shaft Genr		
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    Aux.Boiler #1		
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    Aux.Boiler #2		
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    Thermal Boiler #1		
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    Thermal Boiler #2		
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    HFO Purifier #1		
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    HFO Purifier #2	
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter">
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    MDO Purifier		
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    M/E LO Purifier #1		
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    M/E LO Purifier #2		
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    A/E LO Purifier #1	
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+    
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter" >
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                                 <div fxFlex="44" class="ME-1">
+                                                                                    A/E LO Purifier #2
+                                                                                     </div>
+                                                                                     <div fxFlex="4" class="ME-1">
+                                                                                       
+                                                                                         </div>
+                                                                                         
+                                                                                     <div fxFlex="46">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="4">
+                                                                                         hrs
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+                                                                        
+                                                                        </table>
+                                                                </td>
+                                                                <td style="vertical-align: top;">
+                                                                    <table style="width: 100%;">
+                                                                        
+                                                                        <tr>
+                                                                        <td class="dailynoon2-report-td">Alternator Load
+                                                                      </td>                                                              
+                                                                        </tr>
+                                                                        <tr style="height: 40px;">
+                                                                            <td style="padding-top: 10px;"></td>
+                                                                        </tr>
+                                                                        <tr style="height: 40px;">
+                                                                            <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="ME-1-Parameter">
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                              
+                                                                                     <div fxFlex="75">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="20">
+                                                                                        KW
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter">
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                              
+                                                                                     <div fxFlex="75">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="20">
+                                                                                        KW
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter">
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                              
+                                                                                     <div fxFlex="75">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="20">
+                                                                                        KW
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter">
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                              
+                                                                                     <div fxFlex="75">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="20">
+                                                                                        KW
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                            <td class="ME-1-Parameter">
+                                                                             <div fxLayout="row" fxLayoutAlign="space-between center">
+                            
+                                                                              
+                                                                                     <div fxFlex="75">
+                                                                                         <input type="number" class="ME-input"/>
+                                                                                     </div>
+                                                                                     <div fxFlex="20">
+                                                                                        KW
+                                                                                     </div>
+                                                                                     </div>
+             
+                                                                            </td>
+                                                                           </tr>
+            
+                                                                        </table>
+                                                                </td>
+                                                                <td style="vertical-align: top;width: 50%;">
+                                                                    <table style="width: 100%;">
+
+                                                                        <tr>
+                                                                            <td >
+                                                                            <table style="width: 100%;">
+                                                                              <tr>
+                                                                              <td class="thermal2-report-td">Thermal Oil Heaters
+                                                                              </td>
+                                                                              <td >
+                                                                            </td>
+                                                                              </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                        </tr>
+                
+                                                                        
+                
+                                                                        <tr>
+                                                                            <td 
+                                                                            >
+                                                                            <table style="width: 100%;">
+                                                                              <tr>
+                                                                                <td>
+                                                                                    <table style="width: 100%;">
+                                                                                        <tr>
+                                                                                            <td class="th-report-td">TH #1
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                            <div fxLayout="row" fxLayoutAlign="space-between center">
+                                
+                                                                                                <div fxFlex="44" class="ME-1">
+                                                                                                    Outlet Temp	
+                                                                                                    </div>
+                                                                                                    <div fxFlex="4" class="ME-1">
+                                                                                                      
+                                                                                                    </div>
+                                                                                                    <div fxFlex="46">
+                                                                                                        <input type="number" class="ME-input"/>
+                                                                                                    </div>
+                                                                                                   
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                             
+                                                                              <td>
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td class="th2-report-td">TH #2
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                              <td >
+                                                                            </td>
+                                                                              </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                        </tr>
+
+                                                                    </table>
+                                                                    
+                                                                </td>
+                                                            
+                                                              
+    
+                                                            </tr>
+                                                        
+                                                           </table>
+                                                    </div>
+
+                                                </mat-tab>
+
+                                                <mat-tab label="Fuel Consumption & ROBs"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+
+
+                                                </mat-tab>
+                                                <mat-tab label="Custom Fields"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+
+
+                                                </mat-tab>
+                                                <mat-tab label="Documents" style="margin-left: #000;margin-right: #000;"
+                                                    class="mat-tab-req">
+                                                    <div style="padding-top:25px">
+
+                                                    </div>
+
+                                                </mat-tab>
+
+                                                <mat-tab label="Manoeuvering Consumption" style="margin-left: #000;margin-right: #000;"
+                                                class="mat-tab-req">
+                                                <div style="padding-top:25px">
+
+                                                </div>
+
+                                            </mat-tab>
+
+                                            <mat-tab label="Consumption In Port" style="margin-left: #000;margin-right: #000;"
+                                            class="mat-tab-req">
+                                            <div style="padding-top:25px">
+
+                                            </div>
+
+                                        </mat-tab>
+
+                                            </form>
+
+                                        </mat-tab-group>
+
+                                    </div>
+
+                                </td>
+
+                               
+                            </tr>
+
+
+                        </table>
+                    </tr>
+
+
+                </table>
+
+
+            </form>
+
+        </div>
+
+    </fury-page-layout-content>
+
+</fury-page-layout>

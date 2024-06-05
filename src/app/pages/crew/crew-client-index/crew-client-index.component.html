@@ -1,0 +1,305 @@
+<fury-page-layout mode="card" class="crewclientindex-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+
+        <form [formGroup]="CrewClientIndexFilterForm">
+            <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+            <h3>
+
+                <span class="first-letter">CREW</span>&nbsp;
+                <span class="first-letter">INDEX</span>&nbsp;
+                <span class="first-letter">-</span>&nbsp;
+                <span class="first-letter"></span>INCLUDING&nbsp;
+                <span class="first-letter">3</span>RD
+                <span class="first-letter">P</span>ARTY
+
+            </h3>
+            <div class="filter-area">
+
+                <div fxLayout="row" fxLayoutAlign="start">
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel</mat-label>
+                            <mat-select formControlName="drpVessel">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Rank</mat-label>
+                            <mat-select formControlName="drpRank">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Staff Name</mat-label>
+                            <input type="text" formControlName="txtStaff_Name" matInput />
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Manning Agent</mat-label>
+                            <input type="text" formControlName="txtManning_Agent" matInput />
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex style="margin-bottom: 12px;">
+                        <mat-label>Show</mat-label>
+                        <mat-radio-group fxLayout="column" fxLayoutGap="7px" formControlName="radioShow"
+                            style="margin-top: 7px; margin-left: 26px;" class="radio-btn-group">
+                            <mat-radio-button value="0"
+                                [checked]="CrewClientIndexFilterForm.get('radioShow').value == 0">
+                                <label
+                                    [class.active-label]="CrewClientIndexFilterForm.get('radioShow').value == 0">All</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="1"
+                                [checked]="CrewClientIndexFilterForm.get('radioShow').value == 1">
+                                <label
+                                    [class.active-label]="CrewClientIndexFilterForm.get('radioShow').value == 1">Company
+                                    Crew</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="2"
+                                [checked]="CrewClientIndexFilterForm.get('radioShow').value == 2">
+                                <label [class.active-label]="CrewClientIndexFilterForm.get('radioShow').value == 2">Non
+                                    Company Crew</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                    <div fxFlex style="margin-bottom: 12px;">
+                        <mat-label>Sea Staff</mat-label>
+                        <mat-radio-group fxLayout="column" fxLayoutGap="7px" formControlName="radioSea_Staff"
+                            style="margin-top: 7px; margin-left: 26px;" class="radio-btn-group">
+                            <mat-radio-button value="0"
+                                [checked]="CrewClientIndexFilterForm.get('radioSea_Staff').value == 0">
+                                <label
+                                    [class.active-label]="CrewClientIndexFilterForm.get('radioSea_Staff').value == 0">All</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="1"
+                                [checked]="CrewClientIndexFilterForm.get('radioSea_Staff').value == 1">
+                                <label
+                                    [class.active-label]="CrewClientIndexFilterForm.get('radioSea_Staff').value == 1">Current</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="2"
+                                [checked]="CrewClientIndexFilterForm.get('radioSea_Staff').value == 2">
+                                <label
+                                    [class.active-label]="CrewClientIndexFilterForm.get('radioSea_Staff').value == 2">Signed-off</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                    <div fxFlex>
+                        <div >Sign off in next &nbsp;
+                            <mat-form-field style="width: 35%;">
+                                <input type="text" formControlName="" matInput />
+                            </mat-form-field>
+                            days</div>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Nationality</mat-label>
+                            <mat-select formControlName="drpNationality">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="filter-btn-area" fxFlex>
+                        <div>
+                            <button class="create" mat-raised-button color="primary" class="filter-btn">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                                Clear Filter
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+
+    <fury-page-layout-content [@fadeInUp]>
+        <div class="actions-area">
+            <table style="display: flex;">
+                <tr>
+                    <td>
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                class="add-approve-btn save-btn" (click)="AddFormData({}, 'Add New Crew', 'Add_New_Crew')">
+                              
+                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                            </button>
+                            <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;">Add new Crew Details</span>
+                        </div>
+                    </td>
+                </tr>
+
+
+            </table>
+
+            <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+        </div>
+
+        <div #TABLE>
+            <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                <ng-container matColumnDef="Vessel">
+                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                        mat-sort-header>
+                        Vessel 
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                </td> -->
+                </ng-container>
+
+                <ng-container matColumnDef="Rank">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Rank
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Staff_Name">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Staff Name
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="DOB">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        DOB
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Manning_Agent">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Manning Agent
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="SignOn_Date">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        SignOn Date
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="EOC">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        EOC
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="SignOff_Date">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        SignOff Date
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Action">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Info">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+
+                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                </tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                </tr>
+            </table>
+        </div>
+
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+    </fury-page-layout-content>
+
+
+</fury-page-layout>

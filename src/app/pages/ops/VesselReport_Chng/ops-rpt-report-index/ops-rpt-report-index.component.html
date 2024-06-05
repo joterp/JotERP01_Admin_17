@@ -1,0 +1,338 @@
+
+<fury-page-layout mode="card" class="ops-reportIndex">
+ 
+    <fury-page-layout-header>
+      
+      <form [formGroup]="ReportIndexFilterFormGroup" >
+        
+          <h3 class="unit-packing">
+            <span class="first-letter">V</span>ESSEL  
+            <span class="fifth-letter">R</span>EPORT 
+            <span class="fifth-letter">I</span>NDEX     
+          </h3>
+      
+        
+        <div class="filter-area">
+          <div fxLayout="row" fxLayoutAlign="start">
+  
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Vessel Name</mat-label>
+                    <mat-select  #select multiple formControlName="drpVessel_Name">
+                      <div class="select-all">
+                          <mat-checkbox [(ngModel)]="allSelected"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="toggleAllSelection()">Check All</mat-checkbox>
+                      </div>
+                      <mat-option (click)="optionClick()" *ngFor="let vsl of Vessel" [value]="vsl.value">
+                        {{vsl.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Report Name</mat-label>
+                    <mat-select formControlName="drpReport_Name" >
+                      <mat-option value="Demo">Demo</mat-option>
+                      <mat-option value="Test">Test</mat-option>
+                      
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Report Name</mat-label>
+                    <input formControlName="txtReport_Name" matInput placeholder="Search by Report Name" type="text" />
+                  </mat-form-field>
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Date Form</mat-label>
+                    <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFrom></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <input matInput [matDatepicker]="pickerTo"  [formControl]="date">
+                    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerTo></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Frequency (Months)</mat-label>
+                    <mat-select formControlName="drpFrq_Months" >
+                      <mat-option value="Demo">0-Months</mat-option>
+                      <mat-option value="Test">1-Months</mat-option>
+                      <mat-option value="Demo">2-Months</mat-option>
+                      <mat-option value="Test">3-Months</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Supplier/Vendor used</mat-label>
+                    <mat-select formControlName="drpSupplier" >
+                      <mat-option value="Supplier">ABC Supplier</mat-option>
+                      <mat-option value="ABC">ABC</mat-option>
+                  
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Department</mat-label>
+                    <mat-select formControlName="drpDepartment" >
+                      <mat-option value="Accounts">Accounts</mat-option>
+                      <mat-option value="Admin">Admin</mat-option>
+                      <mat-option value="IT">IT</mat-option>
+                      <mat-option value="Management">Management</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Vessel Portcall</mat-label>
+                    <mat-select formControlName="drpVessel_Portcall" >
+                      <mat-option value="Open">Open- 26-sep-2023-Albania-Durres</mat-option>
+                      
+                    </mat-select>
+                </mat-form-field>
+            </div>
+  
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Has Followup</mat-label>
+                    <mat-select formControlName="drpHas_Followup" >
+                      <mat-option value="Yes">Yes</mat-option>
+                      <mat-option value="No">No</mat-option>
+                  
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Verified</mat-label>
+                    <mat-select formControlName="drpVerified" >
+                        <mat-option value="Yes">Yes</mat-option>
+                        <mat-option value="No">No</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="drpStatus">
+                      <mat-option value="2">Show Active</mat-option>
+                      <mat-option value="1">Show Deleted</mat-option>
+                      <mat-option value="0">Show All</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+  
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Overdue Status</mat-label>
+                    <mat-select formControlName="drpOverdue_Status" >
+                        <mat-option value="All">All</mat-option>
+                        <mat-option value="Overdue">Overdue</mat-option>
+                        <mat-option value="NotOverdue">Not Overdue</mat-option>
+                       
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="sfis-filter" style="padding-top: 15px;
+                padding-left: 35px;" (click)="OpenSFIsList(null)">
+                    SFIs Filter : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    <span >
+                        <img src="../../../../assets/img/HRM_Zoom.png" class="search-logo" alt="excel" style="margin-right: 10px;
+                        margin-bottom: -4px;cursor: pointer;"/>
+                    </span>
+                  </div>
+            </div>
+            
+  
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                <button
+                mat-raised-button
+                color="primary"
+               style="background-color: #5cb85c;"
+                class="filter-btn"
+              
+              >
+                Search
+              </button>
+              </div>
+  
+              <div>
+                <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                  type="button" (click)="clearFilter()">
+                  Clear
+                </button>
+              </div>
+            </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+        <div class="actions-area" >
+      
+            <div fxLayout="row">
+              <button mat-mini-fab color="primary" [matTooltip]="'Add Report'"
+                  class="add-approve-btn save-btn" (click)="saveReports(null,false)">
+                  <mat-icon class="add-approve-btn-icon">add</mat-icon>
+              </button>
+              <span style="margin-top: 3px;
+              margin-left: 6px;font-size: 15px;">   Add Report </span>
+          </div>
+    
+            <div>
+                <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+              <!-- <span>
+                <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+              </span> -->
+            </div>
+                 
+          </div>
+  
+      <div #TABLE>
+        <table [dataSource]="ReportIndexdataSource" mat-table matSort #table class="details-table">
+          <ng-container matColumnDef="Vessel_Name">
+            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+              mat-sort-header>
+           Vessel Name
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+              mat-cell>
+              <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Department_Name">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         Department Name
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Report_Name">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Report Name
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+         
+          <ng-container matColumnDef="Report_Date">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         Report Date
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Frequency">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+        Frequency (Months)
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+         
+          <ng-container matColumnDef="SFIs">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+      SFIs
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Ref_No">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+      Ref Number/Position/TL Name/Other Details
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          
+          <ng-container matColumnDef="Vessel_Portcall">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header (click)="saveVesselPortcall(null,false)">
+                Vessel Portcall
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          
+          <ng-container matColumnDef="Supplier_Used">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+               Supplier/Vendor Used
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+           
+          <ng-container matColumnDef="Ack_Reqd">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+               Ack Reqd Frm Office
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Compare">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header (click)="CompareReport('OPS_RPT_Compare_Report')">
+              Compare
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Followup">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header (click)="saveFollowupDetails(null,false)">
+              Followup
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+  
+  
+        
+         
+  
+          <tr *matHeaderRowDef="ReportIndexvisibleColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: ReportIndexvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

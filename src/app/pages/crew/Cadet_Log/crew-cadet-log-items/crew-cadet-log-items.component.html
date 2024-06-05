@@ -1,0 +1,198 @@
+<fury-page-layout mode="card" class="crew-cadetLogGrade">
+
+    <fury-page-layout-header>
+
+        <form [formGroup]="logItemFormGroup">
+
+            <h3 class="unit-packing">
+
+                <span class="first-letter">C</span>ADET
+                <span class="first-letter">L</span>OG
+                <span class="first-letter">I</span>TEMS
+
+            </h3>
+
+
+            <div class="filter-area">
+                <div fxLayout="row" fxLayoutAlign="start">
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Category</mat-label>
+                            <input formControlName="txtCategory" matInput placeholder="Search by Category"
+                                type="text" />
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Question No</mat-label>
+                            <input formControlName="txtQuestion_No" matInput placeholder="Search by Question Number"
+                                type="text" />
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Question Name</mat-label>
+                            <input formControlName="txtQuestion_Name" matInput placeholder="Search by Question Name"
+                                type="text" />
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Grade</mat-label>
+                            <input formControlName="txtGrade" matInput placeholder="Search by Grade"
+                                type="text" />
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Status</mat-label>
+                            <mat-select formControlName="drpStatus">
+                                <mat-option value="">Show Active</mat-option>
+                                <mat-option value="1">Show Deleted</mat-option>
+                                <mat-option value="0">Show All</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="filter-btn-area" fxFlex>
+                        <div>
+                            <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                            <button mat-raised-button color="primary" style="background-color: #5cb85c;"
+                                class="filter-btn">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button"
+                                (click)="clearFilter()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+        <div class="actions-area">
+
+            <div fxLayout="row">
+                <button mat-mini-fab color="primary" [matTooltip]="'Add Log Item'" 
+                class="add-approve-btn save-btn" (click)="saveCadetLogItem(null,false)">
+                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                </button>
+                <span style="margin-top: 3px;
+          margin-left: 6px;font-size: 15px;"> Add New Cadet Log Item</span>
+            </div>
+            <div fxLayout="row">
+
+
+                <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                    <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                </button>
+                <mat-card-title
+                    style="margin-left: 5px;margin-top: 3px;margin-right: 12px;font-size: medium;font-weight: bold; color: #686464;">Clear
+                    Filter</mat-card-title>
+                <span>
+                    <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                </span>
+
+            </div>
+
+
+
+        </div>
+
+        <div #TABLE>
+            <table [dataSource]="cadetLogItemdataSource" mat-table matSort #table class="details-table">
+                
+                <ng-container matColumnDef="Category">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                       Category
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+               
+                <ng-container matColumnDef="Question_No">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Question No.
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+               
+                
+                
+                <ng-container matColumnDef="Question">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Question Name
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+               
+                <ng-container matColumnDef="Grade">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Grade 
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Grade_Type">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Grade Type
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                
+                
+                
+
+
+
+
+                <ng-container matColumnDef="Action">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Action
+                    </th>
+                    <td *matCellDef="let row" class="actions-cell" mat-cell>
+                        <!-- -->
+                        <button mat-icon-button color="primary">
+                            <mat-icon class="icon-display">edit</mat-icon>
+                        </button>
+
+                        <button mat-icon-button color="warn">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon-display">info</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr *matHeaderRowDef="logItemvisibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: logItemvisibleColumns" class="clickable route-animations-elements"
+                    mat-row></tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                </tr>
+            </table>
+        </div>
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+    </fury-page-layout-content>
+
+</fury-page-layout>

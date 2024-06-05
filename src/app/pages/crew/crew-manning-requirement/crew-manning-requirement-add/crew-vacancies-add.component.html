@@ -1,0 +1,105 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+  {{modeltitle}}
+</div>
+
+
+<mat-dialog-content style="height: 100% !important" class="edit-requirement">
+    <form [formGroup]="RequirementFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+       
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel</mat-label>
+                <mat-select formControlName="drpVessel">
+                    <mat-option>
+
+                    </mat-option>
+
+                    <!-- <mat-option
+                  *ngFor="let b of filtered_port | async"
+                  [value]="b.PORT_GUID"
+                >
+                  {{ b.Port_Name }}
+                </mat-option> -->
+                </mat-select>
+                <mat-error *ngIf="RequirementFormGroup.get('drpVessel').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Rank</mat-label>
+                <mat-select formControlName="drpRank">
+                    <mat-option>
+
+                    </mat-option>
+
+                    <!-- <mat-option
+                  *ngFor="let b of filtered_port | async"
+                  [value]="b.PORT_GUID"
+                >
+                  {{ b.Port_Name }}
+                </mat-option> -->
+                </mat-select>
+                <mat-error *ngIf="RequirementFormGroup.get('drpRank').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Joinning Date</mat-label>
+                <input matInput formControlName="Joinning_Date" [matDatepicker]="pickerJoinning_Date" />
+                <mat-datepicker-toggle matSuffix [for]="pickerJoinning_Date"></mat-datepicker-toggle>
+                <mat-datepicker #pickerJoinning_Date></mat-datepicker>
+
+
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>#'s Requirement</mat-label>
+                <input type="text" formControlName="txtRequirement" matInput />
+                <mat-error *ngIf="RequirementFormGroup.get('txtRequirement').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Additional Requirement</mat-label>
+                <textarea matInput formControlName="txtAdditional_Requirement" placeholder="Remarks"></textarea>
+            </mat-form-field>
+        </div>       
+
+        <!-- <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" *ngIf="ErrorMessage">
+            <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+        </div> -->
+    </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!RequirementFormGroup.valid ? '' : 'save-btn']" [disabled]="!RequirementFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!RequirementFormGroup.valid">
+        SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>
+

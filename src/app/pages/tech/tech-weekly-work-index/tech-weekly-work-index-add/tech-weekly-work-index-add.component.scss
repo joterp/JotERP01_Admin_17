@@ -1,0 +1,298 @@
+.add-weekly-report-details-index {
+
+.mat-tab-header {
+    border-left: 1px solid #918f8f;
+    border-top: 1px solid #918f8f;
+    border-right: 1px solid #918f8f;
+    color: #fff!important;
+    text-align: center!important;
+    opacity: 1;
+   background-image:  linear-gradient(to top, #5a6971  ,#3c474e );
+  }
+
+  .mat-tab-label {
+    // min-width: 25px !important;
+    // padding: 5px;
+    // background-color: #7e8f99;
+
+    color: #fff;
+    font-family: Tahoma !important;
+    // font-weight: 700;
+  }
+
+
+ 
+  .mat-tab-label.mat-tab-label-active {
+    background-image:  linear-gradient(to top, #71828b   ,#7e8f99  );
+    color: #fff;
+    font-family: Tahoma !important;
+    // border-left: 1px solid #918f8f;
+    // border-top: 1px solid #918f8f;
+
+    opacity: 1;
+  }
+  .mat-tab-label.mat-tab-label {
+    opacity: 1;
+  }
+  .mat-tab-label.mat-tab-label:hover {
+    background-image: linear-gradient(to top, #303131   ,#3b3f41  );
+  }
+  
+  .remove-border-bottom .mat-tab-header {
+    border-bottom: none;
+  }
+
+  .mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label {
+    border-left: 1px solid #8b8b8b;
+    border-bottom: 1px solid #8b8b8b;
+  }
+
+
+  
+    
+      .datetime-class {
+        min-width: 100px !important;
+        white-space: break-spaces;
+      }
+    
+      .datetime-class p {
+        white-space: break-spaces;
+      }
+    
+      //Start custom styling for filter
+      .icon-display {
+        transform: scale(0.7);
+      }
+    
+      .mat-icon-button {
+        width: 25px !important;
+      }
+    
+      // p.tbl-row-item {
+      //   font-size: 12px;
+      //   margin-top: 10px;
+      //   // margin-bottom: 10px;
+      //   padding: 0px 5px;
+      // }
+    
+      .filter-area {
+        background: #ffffff;
+        margin-top: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        color: #252525;
+      }
+      .green-circle {
+        background: green;
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+        width: 60px;
+        border-radius: 18px;
+        height: 50px;
+        padding: 6px 8px;
+        font-size: 10px;
+      }
+      .grey-circle {
+        background: grey;
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+        width: 60px;
+        border-radius: 18px;
+        height: 50px;
+        padding: 6px 8px;
+        font-size: 10px;
+      }
+      table.mat-table {
+        width: 100%;
+      }
+    
+      .fury-page-layout-header {
+        min-height: 136px;
+        height: auto;
+      }
+   
+    
+      .actions-area {
+        background: #fff;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        padding: 10px;
+        border-bottom: 2px solid #b2b2b2;
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .logo {
+        height: 30px;
+        width: 30px;
+        margin-top: 5px;
+        margin-right: 5px;
+      }
+    
+      .img-icon {
+        border-radius: 50px;
+        height: 40px;
+        width: 40px;
+        overflow: hidden;
+        padding: 3px;
+        border: 0;
+      }
+    
+      // .mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+      //   transform: translateY(0%);
+      // }
+      .mat-form-field-underline {
+        bottom: 0 !important;
+      }
+    
+      .mat-form-field-label-wrapper {
+        top: -0.75em;
+        padding-top: 0.84375em;
+      }
+    
+      .mat-form-field-wrapper {
+        margin-right: 5px !important;
+        padding-bottom: 0px;
+      }
+    
+      .mat-form-field {
+        margin-bottom: 10px;
+        width: 100%;
+      }
+    
+      .mat-form-field-flex {
+        align-items: flex-start !important;
+      }
+    
+      .mat-form-field-infix {
+        border-top: 0.84375em solid transparent;
+      }
+    
+      .filter-btn-area {
+        padding: 8px 0px;
+        text-align: center;
+      }
+    
+      .filter-btn {
+        margin-right: 5px !important;
+        width: 100px;
+        margin-bottom: 10px !important;
+      }
+    
+      h1.filter-title {
+        color: #000;
+        margin: 0px;
+        padding: 0px;
+        margin-bottom: 10px;
+      }
+    
+      .content-loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    
+      th.mat-header-cell:last-of-type,
+      td.mat-cell:last-of-type,
+      td.mat-footer-cell:last-of-type {
+        padding-right: 10px;
+        min-width: 175px !important;
+      }
+    
+      tr.mat-header-row {
+        height: 56px;
+        background-color: #1976d2;
+      }
+    
+      th.mat-header-cell {
+        text-align: center;
+        color: white;
+      }
+    
+      th.mat-header-cell:first-of-type,
+      td.mat-cell:first-of-type,
+      td.mat-footer-cell:first-of-type {
+        padding-left: 20px;
+      }
+    
+      td.mat-calendar-body-cell.ng-star-inserted {
+        position: relative;
+      }
+      .green {
+        color: green;
+      }
+      .add-approve-btn {
+        height: 24px;
+        width: 24px;
+        align-items: center;
+        display: flex;
+    }
+
+    .add-approve-btn-icon {
+        font-size: 24px;
+        align-self: center;
+        margin-top: -1px;
+        cursor: pointer;
+    }
+    }
+    .unit-packing .first-letter,
+    .unit-packing .fifth-letter {
+      font-size: 1.5em;
+      
+    }
+    .textarea {
+      margin: 10px;
+    }
+  a:hover {
+    color: #23527c;
+    text-decoration: underline;
+  }
+  a:visited{
+    background-color: red;
+  }
+  .borderstyle {
+   
+   
+    border-left: 1px solid #ddd;                       // new added for left border
+    border-top: 1px solid #ddd;                     // new added for bottom border
+   
+    
+  }
+
+   
+  .Attachment {
+    // border: 1px solid gray;                           /// new added for attachment button
+    height: 65px;
+    text-align: left;
+  
+    padding-top: 20px;
+    // padding-left: 15px;
+    margin-bottom: 10px;
+  }
+
+  .upload-btn{
+    width: 113px;
+    height: 29px;
+    background: gray;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+  }
+  .upload-btn:hover {
+    background: orange;
+    color: black;
+  }
+  .upload-btn1{
+    width: 113px;
+    height: 29px;
+    background-color: #919191;
+    color: #fff;
+    // border: 1px solid #505050;
+    border-radius: 4px;
+  }
+
+

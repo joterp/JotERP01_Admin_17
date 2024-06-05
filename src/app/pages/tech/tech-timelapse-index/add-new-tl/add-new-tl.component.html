@@ -1,0 +1,69 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Timelapse
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+</div>
+
+<mat-dialog-content>
+
+    <form [formGroup]="newTimeplapseFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row" >
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel</mat-label>
+                <mat-select formControlName="drpVessel" >
+                <mat-option value="Alexa">Alexa</mat-option>
+                <mat-option value="Alexandre">Alexandre</mat-option>
+                
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>TL Date</mat-label>
+              <input matInput [matDatepicker]="pickerTo" formControlName="Date_To"  placeholder="Report Date To">
+              <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+              <mat-datepicker #pickerTo></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" >
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>User</mat-label>
+                <mat-select formControlName="drpUser" >
+                <mat-option value="Nisha">Nisha</mat-option>
+                <mat-option value="Sherley">Sherley</mat-option>
+                
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Description</mat-label>
+              <textarea matInput placeholder="Description" formControlName="txtDescription"></textarea>
+            </mat-form-field>
+        </div>
+      </div>
+    </form>
+  
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+       Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </mat-dialog-content>
+  

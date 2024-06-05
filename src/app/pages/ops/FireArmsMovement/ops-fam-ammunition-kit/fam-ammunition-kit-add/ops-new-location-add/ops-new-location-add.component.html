@@ -1,0 +1,162 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+  <span>
+      <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;"/>Add New Location
+  </span>
+ 
+  <span fxLayoutAlign="end"  >
+      <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+<mat-dialog-content>
+
+  <form [formGroup]="LocationFormGroup">
+    <div mat-dialog-container style="padding-top: 20px;">
+    
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Location Name</mat-label>
+            <mat-select formControlName="drpLocation_Name">
+              <mat-option value="OnBoard">OnBoard</mat-option>
+              <mat-option value="Storage">Storage</mat-option>
+             
+            </mat-select>
+          </mat-form-field>
+          <div fxFlex>
+            
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Vessel</mat-label>
+            <mat-select formControlName="drpVessel">
+              <mat-option value="Alexa">Alexa</mat-option>
+              <mat-option value="Alexandre">Alexandre</mat-option>
+             
+            </mat-select>
+          </mat-form-field>
+          <div fxFlex>
+            
+          </div>
+        </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row"  fxLayoutGap="10px">
+          <mat-form-field fxFlex appearance="fill">
+              <mat-label>Embarkation Date</mat-label>
+              <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+              <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+              <mat-datepicker #pickerFrom></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Disembarkation Date</mat-label>
+            <input matInput formControlName="Date_To" [matDatepicker]="pickerTo" />
+            <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+            <mat-datepicker #pickerTo></mat-datepicker>
+        </mat-form-field>
+      </div>  
+
+    
+      <div fxLayout="column" fxLayout.gt-sm="row"  fxLayoutGap="10px">
+          <mat-form-field fxFlex appearance="fill">
+              <mat-label>Embarkation Remarks</mat-label>
+              <textarea
+              matInput
+              formControlName="txtEmbarkation_Remark"
+              placeholder=""
+              ></textarea>
+           </mat-form-field>
+
+           <mat-form-field fxFlex appearance="fill">
+            <mat-label>Disembarkation Remarks</mat-label>
+            <textarea
+            matInput
+            formControlName="txtDisembarkation_Remark"
+            placeholder=""
+            ></textarea>
+         </mat-form-field>
+      </div>
+
+   
+      <div fxLayout="column" fxLayout.gt-sm="row" >
+          <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row" fxFlex>
+            <!-- Use a button to create a custom file upload button -->
+
+            <mat-label style="margin: 8px;">Upload Embarkation</mat-label> &nbsp;
+
+            <input style="display: none;" type="file" id="imageupload" #fileInput
+                (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+
+            <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                <label for="imageupload">
+                    Select</label>
+            </button>
+            <div *ngIf="selectedFileName" fxFlex>
+                <span  aria-placeholder="Select files"> {{ selectedFileName
+                    }}</span>
+                <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+            </div>
+
+            
+
+            
+          </div> 
+
+         
+        <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row" fxFlex>
+          <!-- Use a button to create a custom file upload button -->
+
+          <mat-label style="margin: 8px;">Upload Disembarkation</mat-label> &nbsp;
+
+          <input style="display: none;" type="file" id="imageupload" #fileInput
+              (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+
+          <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+              <label for="imageupload">
+                  Select</label>
+          </button>
+          <div *ngIf="selectedFileName" fxFlex>
+              <span  aria-placeholder="Select files"> {{ selectedFileName
+                  }}</span>
+              <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+          </div>
+
+          
+        </div>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" >
+        <div style="    border: 8px solid lightgray;
+        height: 50px;
+        width: 49%;
+        padding: 7px;
+        text-align: center;
+        box-shadow: 0 0 2px #cccccc; margin: 10px;" *ngIf="!selectedFileName">
+          Drop Files here for Attachment
+        </div>
+        <div style="    border: 8px solid lightgray;
+        height: 50px;
+        width: 49%;
+        padding: 7px;
+        text-align: center;
+        box-shadow: 0 0 2px #cccccc; margin: 10px;" *ngIf="!selectedFileName">
+          Drop Files here for Attachment
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+    <button mat-raised-button color="primary" class="save-btn">
+      Save & Close
+    </button>
+    <button mat-raised-button class="save-btn" color="primary">
+      Save & Add New
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+</div>

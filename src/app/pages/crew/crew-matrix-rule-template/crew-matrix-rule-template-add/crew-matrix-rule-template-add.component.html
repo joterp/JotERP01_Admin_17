@@ -1,0 +1,51 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add Crew Matrix Rule Template
+     </span>
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <form [formGroup]="ruleTemplateFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Template</mat-label>
+              <textarea
+                matInput
+                formControlName="txtTemplate"
+                placeholder="Template"
+              ></textarea>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Query</mat-label>
+              <textarea
+                matInput
+                formControlName="txtQuery"
+                placeholder="Query"
+              ></textarea>
+            </mat-form-field>
+        </div>
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" >
+        Add Variables
+      </button>
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Add New
+      </button>
+     
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

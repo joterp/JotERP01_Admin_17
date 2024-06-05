@@ -1,0 +1,223 @@
+<fury-page-layout mode="card" class="Portage-Bill-view">
+
+    <div>
+        <div style="padding: 83px 180px 0px 180px;">
+
+            <div style="border: 2px solid;">
+                <table style="width:100%">
+                    <tr>
+                        <td colspan="3">
+                            <h1 class="PortageBill-heading">Portage Bill Module</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 22%;vertical-align: top;">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td class="vessel-title"><span>Vessels : </span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div id="table-wrapper-portagebill">
+                                            <div id="table-scroll">
+                                                <table style="width: 100%;border-collapse: collapse;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Alexa (USD)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Alexandre (USD)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Bryce (USD)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Catalan Sea (USD)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Alexa (USD)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Alexandre (USD)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Bryce (USD)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Catalan Sea (USD)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Alexa (USD)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Alexandre (USD)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Bryce (USD)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 4px;">
+                                                                Catalan Sea (USD)
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+
+                        <td style="width: 1%;"></td>
+
+                        <td style="vertical-align: middle;">
+
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td colspan="3">
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 50%;">
+                                                    <div>
+                                                        <mat-form-field appearance="fill">
+                                                            <mat-label>Month</mat-label>
+                                                            <mat-select>
+                                                                <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                  {{ b.DEPT_NAME }}
+                                </mat-option> -->
+                                                            </mat-select>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align: center;">
+                                                    <span>
+                                                        <img src="../../../../assets/img/Refresh.png" class="refresh"
+                                                            alt="excel" style="margin-right: 10px;
+                                                margin-bottom: -4px;" />
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">
+                                        <table style="width: 100%;" class="PortageBill-options">
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="gotoCREW_Earnings('Earnings')">Earnings</td>
+                                            </tr>
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="gotoCREW_Deductions('Deductions')">Deductions</td>
+                                            </tr>
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="gotoCREW_Cash_Advance('Cash_Advance')">Cash Advance</td>
+                                            </tr>
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="gotoCREW_Allotments('Allotments')">Allotments</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+
+                                    <td>
+                                        <table style="width: 100%;" class="PortageBill-options">
+                                            <tr class="portage-tr">
+                                                <td class="portage-td">Insert New Crew List Data</td>
+                                            </tr>
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="gotoCREW_View_PortageVill('View_PortageVill')">View Portage Bill</td>
+                                            </tr>
+                                            <tr class="portage-tr">
+                                                <td class="portage-td">Finalize Portage Bill</td>
+                                            </tr>
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="gotoCREW_View_Attachment('View_Attachment')">Add/View Attachments</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width: 50%;">
+                                        <table style="width: 100%;" class="PortageBill-options">
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="gotoCREW_Crew_SignOFF('Crew_SignOFF')">Sign Off Staff</td>
+                                            </tr>
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="AddFormData({}, 'Update Promotion', 'Update_Promotion')">Promote Staff</td>
+                                            </tr>
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="gotoCREW_OnboardList('OnboardList')">Crew List</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+
+                                    <td style="width: 50%;">
+                                        <table style="width: 100%;" class="PortageBill-options">
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="gotoCREW_CashToMasterIndex('CashToMasterIndex')">CTM Requests</td>
+                                            </tr>
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="gotoCREW_Generate_SalarySlip('Generate_SalarySlip')">Generate Salary Slip</td>
+                                            </tr>
+                                            <tr class="portage-tr">
+                                                <td class="portage-td" (click)="gotoCREW_Captain_Cash('Captain_Cash')">Captain Cash Report</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+
+                        <td style="width: 1%;"></td>
+
+                        <td style="width: 22%;vertical-align: top;">
+                            <table style="width: 100%;">
+                                <tr style="height: 30px;">
+                                    <td class="portage-bill-td3" (click)="gotoCREW_Allotment_Index('Allotment_Index')">Allotment Index</td>
+                                </tr>
+                                <tr style="height: 30px;">
+                                    <td class="portage-bill-td3">CTM Index</td>
+                                </tr>
+                                <tr style="height: 30px;">
+                                    <td class="portage-bill-td3" (click)="gotoCREW_Earn_Deduction_Index('Earn_Deduction_Index')" >Earn/Deduction Index</td>
+                                </tr>
+                                <tr style="height: 30px;">
+                                    <td class="portage-bill-td3" (click)="gotoCREW_Bank_Acc_Salary_Exception('Bank_Acc_Salary_Exception')">Salary/Bank Account Exceptions</td>
+                                </tr>
+                                <tr style="height: 30px;">
+                                    <td class="portage-bill-td3">Add Opening Balance</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</fury-page-layout>

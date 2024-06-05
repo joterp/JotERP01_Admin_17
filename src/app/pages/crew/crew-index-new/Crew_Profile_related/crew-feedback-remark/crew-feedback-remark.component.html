@@ -1,0 +1,137 @@
+
+<div class="crew-Feedback-view">
+
+    <table style="width: 100%;">
+       <tr>
+           <td class="feedback-td">
+              <b>Feedback/Remark</b> 
+           </td>
+       </tr>
+   
+       <tr>
+       <td>
+          
+               <div class="actions-area">
+                   <table style="display: flex;">
+                       <tr>
+                           <td>
+                               <div fxLayout="row">
+                                   <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                       class="add-approve-btn save-btn" (click)="AddFormData({}, 'Add Feedback/Remark', 'Add_Feedback_Remark')"
+                                        >
+                                      
+                                       <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                   </button>
+                                   <span style="margin-top: 3px;
+                                   margin-left: 6px;font-size: 15px;">Add Feedback/Remarks</span>
+                               </div>
+                           </td>
+                       </tr>
+       
+       
+                   </table>
+   
+                   <!-- <div class="content-loader">
+                   <mat-progress-spinner
+                     mode="indeterminate"
+                     color="accent"
+                   ></mat-progress-spinner>
+                 </div> -->
+               </div>
+       
+               <div #TABLE>
+                   <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                       <ng-container matColumnDef="Vessel">
+                           <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                               mat-sort-header>
+                               Vessel
+                           </th>
+                           <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         [ngStyle]="{ 'white-space': 'initial' }"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                       </td> -->
+                       </ng-container>
+       
+                       <ng-container matColumnDef="Date_Time">
+                           <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Date Time
+                           </th>
+                           <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                       </td> -->
+                       </ng-container>
+                       <ng-container matColumnDef="Reported_By">
+                           <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Reported By
+                           </th>
+                           <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                         </td> -->
+                       </ng-container>
+                       <ng-container matColumnDef="Category">
+                           <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Category
+                           </th>
+                           <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                       </td> -->
+                       </ng-container>
+                       <ng-container matColumnDef="Feedback_Remarks">
+                           <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Feedback/Remarks
+                           </th>
+                           <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                         </td> -->
+                       </ng-container>
+                       <ng-container matColumnDef="Action">
+                           <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+       
+                           </th>
+                           <!-- <td
+                             *matCellDef="let row; let i = index"
+                             class="actions-cell"
+                             mat-cell
+                           >
+                             <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                           </td> -->
+                       </ng-container>
+                      
+       
+                       <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                       <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                       </tr>
+                       <tr class="mat-row" *matNoDataRow>
+                           <td class="mat-cell" colspan="9999">No data found</td>
+                       </tr>
+                   </table>
+               </div>
+   
+       </td>
+       </tr>
+    </table>
+   
+   
+   </div>
+   
+   

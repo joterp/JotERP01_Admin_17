@@ -1,0 +1,191 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+    <fury-page-layout mode="card" class="crew-interviews">
+
+        <div>
+            <form [formGroup]="BankDetailsFormGroup">
+
+                <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                    <div fxFlex="48">
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Account Number</mat-label>
+                                <input type="text" formControlName="txtAccount_Number" matInput />
+                                <mat-error *ngIf="BankDetailsFormGroup.get('txtAccount_Number').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Account Currency </mat-label>
+                                <mat-select formControlName="drpAccount_Currency">
+                                </mat-select>
+                                <mat-error *ngIf="BankDetailsFormGroup.get('drpAccount_Currency').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Benificiary Name</mat-label>
+                                <input type="text" formControlName="txtBenificiary_Name" matInput />
+                                <mat-error *ngIf="BankDetailsFormGroup.get('txtBenificiary_Name').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Bank Name</mat-label>
+                                <input type="text" formControlName="txtBank_Name" matInput />
+                                <mat-error *ngIf="BankDetailsFormGroup.get('txtBank_Name').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Bank Address</mat-label>
+                                <textarea matInput formControlName="txtBank_Address" rows="4" cols="50"></textarea>
+                                <mat-error *ngIf="BankDetailsFormGroup.get('txtBank_Address').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Additional Info / Intermediary Bank Details</mat-label>
+                                <textarea matInput formControlName="txtIntermediary_Bank_Details" rows="4"
+                                    cols="50"></textarea>
+
+                            </mat-form-field>
+
+
+                        </div>
+
+
+                        <div style="display: flex;margin: 10px;">
+                            <mat-label>Is Default?</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioIs_Default" style="margin-top: 0px;
+                            margin-left: 20px;">
+                                <mat-radio-button value="1"
+                                    [checked]="BankDetailsFormGroup.get('radioIs_Default').value == 1">
+                                    <label
+                                        [class.active-label]="BankDetailsFormGroup.get('radioIs_Default').value == 1">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="0"
+                                    [checked]="BankDetailsFormGroup.get('radioIs_Default').value == 0">
+                                    <label
+                                        [class.active-label]="BankDetailsFormGroup.get('radioIs_Default').value == 0">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+
+                    <div fxFlex="48">
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Bank Code</mat-label>
+                                <input type="text" formControlName="txtBank_Code" matInput />
+                                <mat-error *ngIf="BankDetailsFormGroup.get('txtBank_Code').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Branch Code</mat-label>
+                                <input type="text" formControlName="txtBranch_Code" matInput />
+                                <mat-error *ngIf="BankDetailsFormGroup.get('txtBranch_Code').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Swift Code</mat-label>
+                                <input type="text" formControlName="txtSwift_Code" matInput />
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>IBAN Code</mat-label>
+                                <input type="text" formControlName="txtIBAN_Code" matInput />
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>IFSC Code</mat-label>
+                                <input type="text" formControlName="txtIFSC_Code" matInput />
+                            </mat-form-field>
+                        </div>
+
+
+                        <div>
+                            <table style="width: 100%;">
+
+                                <tr>
+                                    <td>
+                                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                                            <mat-label>Upload Copy</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <input style="display: none;" type="file" id="imageupload" #fileInput
+                                            (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+
+                                        <button type="button" class="upload-btn" style="margin-top: 6px;"
+                                            *ngIf="!selectedFileName">
+                                            <label for="imageupload">
+                                                Upload </label>
+                                        </button>
+                                        <div *ngIf="selectedFileName" fxFlex>
+                                            <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                                            <button (click)="removeUploadedFileadditem()" mat-button
+                                                style="color: #5BB318;">Remove</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+
+    </fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!BankDetailsFormGroup.valid ? '' : 'save-btn']" [disabled]="!BankDetailsFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!BankDetailsFormGroup.valid">
+        SAVE & ADD NEW
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

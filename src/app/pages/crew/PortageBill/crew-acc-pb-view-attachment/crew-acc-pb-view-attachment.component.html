@@ -1,0 +1,184 @@
+<fury-page-layout mode="card" class="Attachment-view">
+
+    <div>
+        <div style="padding: 10px 5px 0px 5px;">
+
+            <table style="width: 100%;">
+
+                <tr>
+                    <td style="width: 15%;">
+
+                        <table class="roundedTable" style="margin-top: 69px;">
+                            <tbody>
+                                <tr>
+                                    <td>Vessel Name</td>
+                                </tr>
+                                <tr>
+                                    <td>Alexandre</td>
+                                </tr>
+                                <tr>
+                                    <td>Bryce</td>
+                                </tr>
+                                <tr>
+                                    <td>Catalan Sea</td>
+                                </tr>
+                                <tr>
+                                    <td>Cedrick</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </td>
+
+                    <td style="vertical-align: top;">
+
+                        <table style="width: 100%;">
+                            <tr>
+                                <td class="document-type-title"><span>Document Type</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+
+                                    <table
+                                        style="width: 100%;border: 1px solid lightgrey;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+                                        <tr>
+                                            <td>
+                                                <div fxLayout="row">
+                                                    <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                                        class="add-approve-btn save-btn">
+                                                        <!-- (click)="AddFormData({}, 'Add Requirement', 'Add_Requirement')" -->
+
+                                                        <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                                    </button>
+                                                    <span style="margin-top: 3px;margin-left: 6px;font-size: 15px;">Add
+                                                        New Attachment</span>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+
+                                    <div #TABLE>
+                                        <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                                            <ng-container matColumnDef="PBill_Date">
+                                                <th *matHeaderCellDef class="actions-cell"
+                                                    [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                                                    mat-sort-header>
+                                                    PBill Date
+                                                </th>
+                                                <!-- <td
+         *matCellDef="let row; let i = index"
+         class="actions-cell"
+         [ngStyle]="{ 'white-space': 'initial' }"
+         mat-cell
+       >
+         <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+       </td> -->
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Allotment">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    Allotment
+                                                </th>
+                                                <!-- <td
+         *matCellDef="let row; let i = index"
+         class="actions-cell"
+         mat-cell
+       >
+         <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+       </td> -->
+                                            </ng-container>
+                                            <ng-container matColumnDef="BOW">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    BOW
+                                                </th>
+                                                <!-- <td
+           *matCellDef="let row; let i = index"
+           class="actions-cell"
+           mat-cell
+         >
+           <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+         </td> -->
+                                            </ng-container>
+                                            <ng-container matColumnDef="Crew_Welfare">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    Crew_Welfare
+                                                </th>
+                                                <!-- <td
+         *matCellDef="let row; let i = index"
+         class="actions-cell"
+         mat-cell
+       >
+         <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+       </td> -->
+                                            </ng-container>
+                                            <ng-container matColumnDef="Masters_Cash">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    Masters Cash
+                                                </th>
+                                                <!-- <td
+           *matCellDef="let row; let i = index"
+           class="actions-cell"
+           mat-cell
+         >
+           <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+         </td> -->
+                                            </ng-container>
+                                            <ng-container matColumnDef="Portage_Bill">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    Portage Bill
+                                                </th>
+                                                <!-- <td
+           *matCellDef="let row; let i = index"
+           class="actions-cell"
+           mat-cell
+         >
+           <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+         </td> -->
+                                            </ng-container>
+                                            <ng-container matColumnDef="CTM_Confirmation">
+                                                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                    mat-sort-header>
+                                                    CTM Confirmation
+                                                </th>
+                                                <!-- <td
+        *matCellDef="let row; let i = index"
+        class="actions-cell"
+        mat-cell
+      >
+        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+      </td> -->
+                                            </ng-container>
+
+                                            <tr *matHeaderRowDef="visibleColumns" mat-header-row style="height: 38px;">
+                                            </tr>
+                                            <tr *matRowDef="let row; columns: visibleColumns"
+                                                class="clickable route-animations-elements" mat-row>
+                                            </tr>
+                                            <tr class="mat-row" *matNoDataRow>
+                                                <td class="mat-cell" colspan="9999">No data found</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+
+
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+
+</fury-page-layout>

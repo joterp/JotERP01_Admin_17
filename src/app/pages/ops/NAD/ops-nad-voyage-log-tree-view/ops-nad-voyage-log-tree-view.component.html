@@ -1,0 +1,60 @@
+<fury-page-layout mode="card" class="ops-voyageTreeview" style="padding-bottom: 0px;">
+        
+    <h3>
+        <span class="first-letter">V</span>OYAGE
+        <span class="first-letter">L</span>OG
+        <span class="first-letter">T</span>REE -
+        <span class="first-letter">V</span>IEW
+    </h3>
+        
+</fury-page-layout>
+
+
+<fury-page-layout-content>
+    <div mat-raised-button color="primary" style="margin: 10px;
+    
+    margin: 36px;
+    color: Blue;
+    font-size: 15px;
+    cursor: pointer;" 
+    (click)="GridView('OPS_NAD_Voyage_Log_Abstract')"
+     >
+       Grid View
+</div>
+
+<div fxLayout="row"  fxLayoutAlign="space-between">
+    <div fxFlex="20">
+<!-- Tree View start-->
+<h5 style="    font-size: 16px;
+font-weight: bold;font-family:Tahoma !important;;">Vessel List</h5>
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" >
+    <!-- This is the tree node template for leaf nodes -->
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="mat-icon-btn-effect" (click)="openVoyageLog()">
+      <!-- use a disabled button to provide padding for tree leaf -->
+      <button mat-icon-button></button>
+      {{node.name}}
+    </mat-tree-node>
+    <!-- This is the tree node template for expandable nodes -->
+    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding (click)="openVoyageLog()" class="mat-icon-btn-effect">
+      <button mat-icon-button matTreeNodeToggle
+              [attr.aria-label]="'Toggle ' + node.name">
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{treeControl.isExpanded(node) ? 'arrow_drop_down' : 'arrow_right'}}
+        </mat-icon>
+      </button>
+      {{node.name}}
+    </mat-tree-node>
+  </mat-tree>
+  
+    <!-- Tree view end -->
+    </div> 
+
+    <div fxFlex="80" *ngIf="addNewVoyageLog">
+        <fury-ops-nad-add-voyage-log>
+        </fury-ops-nad-add-voyage-log>
+    </div> 
+</div>
+
+</fury-page-layout-content>
+
+ 

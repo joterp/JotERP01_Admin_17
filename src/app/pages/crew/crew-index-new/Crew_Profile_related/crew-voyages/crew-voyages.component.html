@@ -1,0 +1,174 @@
+<div class="crew-voyages-view">
+
+    <table style="width: 100%;">
+        <tr>
+            <td class="voyages-td">
+                <b>Voyages</b>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="actions-area" fxLayout="row" fxLayoutAlign="end center" style="padding: 0;">
+
+                    <div style="width: 7%;">
+                        <span style="cursor: pointer">
+                            <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                            <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                            <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                      </span>
+                    </div>
+
+                    <!-- <div class="content-loader">
+                   <mat-progress-spinner
+                     mode="indeterminate"
+                     color="accent"
+                   ></mat-progress-spinner>
+                 </div> -->
+                </div>
+
+                <div #TABLE>
+                    <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+
+
+                        <ng-container matColumnDef="Sign_On_Date">
+                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Date</th>
+
+                        </ng-container>
+
+                        <ng-container matColumnDef="Sign_On_Port">
+                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Port</th>
+
+                        </ng-container>
+                        <ng-container matColumnDef="Sign_Off_Date">
+                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Date</th>
+
+                        </ng-container>
+                        <ng-container matColumnDef="Sign_Off_Port">
+                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Port</th>
+
+                        </ng-container>
+                        <ng-container matColumnDef="Sign_Off_Reason">
+                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Reason</th>
+
+                        </ng-container>
+                        <ng-container matColumnDef="Sign_Off_DOAH">
+                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">DOAH</th>
+
+                        </ng-container>
+
+                        <ng-container matColumnDef="header-row-first-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                                
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-second-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                                Vessel
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-third-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                          border-bottom: 1px solid #ddd;
+                          text-align: center;">
+                                Rank
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-fourth-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                                Sign On
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-fifth-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="4" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                                 Sign Off
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-sixth-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                      border-bottom: 1px solid #ddd;
+                      text-align: center;">
+                                
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-seventh-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                                Sailing Days
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-eighth-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+
+                            </th>
+                        </ng-container>
+
+                        <ng-container matColumnDef="header-row-nineth-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-tenth-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-eleventh-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+
+                            </th>
+                        </ng-container>
+
+
+                        <tr mat-header-row
+                            *matHeaderRowDef="['header-row-first-group', 'header-row-second-group', 'header-row-third-group', 'header-row-fourth-group', 'header-row-fifth-group',
+                    'header-row-sixth-group', 'header-row-seventh-group', 'header-row-eighth-group', 'header-row-nineth-group', 'header-row-tenth-group', 'header-row-eleventh-group']"
+                            style="height:32px">
+                        </tr>
+
+
+
+                        <tr *matHeaderRowDef="visibleColumns" mat-header-row style="height:32px"></tr>
+                        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements"
+                            mat-row></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+
+</div>

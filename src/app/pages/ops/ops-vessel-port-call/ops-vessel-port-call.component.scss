@@ -1,0 +1,206 @@
+fury-ops-vessel-port-call {
+    .first-letter {
+        font-size: 1.5em;
+    }
+
+    .routerTitle {
+        font-weight: bold;
+        font-family: Tahoma !important;
+        color: #333;
+    }
+
+    .vesselportcallindex-view {
+        padding: 10px;
+
+        .mat-form-field-label-wrapper {
+            top: -0.75em;
+            padding-top: 0.84375em;
+        }
+
+        .mat-form-field-wrapper {
+            margin-right: 5px !important;
+            padding-bottom: 0px;
+        }
+
+        .mat-form-field {
+            margin-bottom: 21px;
+            width: 100%;
+        }
+
+        .mat-form-field-subscript-wrapper {
+            top: 50px;
+        }
+
+        .mat-form-field-flex {
+            align-items: flex-start !important;
+        }
+
+        .mat-form-field-infix {
+            border-top: 0.84375em solid transparent;
+        }
+
+        .mat-form-field-underline {
+            bottom: 0 !important;
+        }
+
+        .contact-detail-title {
+            background-color: lightgray;
+            font-weight: bold;
+            font-size: 15px;
+            height: fit-content;
+            color: #333;
+            font-family: Tahoma !important;
+            padding: 16px;
+            margin-bottom: 21px;
+
+        }
+
+        .main-table-1,
+        .table-td {
+            border: 1px solid lightgray;
+            border-collapse: collapse;
+        }
+
+        .table-td-vessel {
+            color: White;
+            background-color: #1F497D;
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border: 1px solid lightgray;
+            border-collapse: collapse;
+        }
+        .logo-filter {
+            width: 23px;
+            height: 23px;
+          }
+          .vessel-input{
+            width: 230px !important;
+
+          }
+        .que-btn{
+            color: White;
+            background-color: #CCCCCC;
+            width: 270px;
+        }
+        .que-btn:hover{
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+        }
+         .crewlist-btn{
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
+         }
+          .upload-btn{
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
+          }
+          .vesselmap-btn{
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+          }
+          .vesselmap-btn:hover{
+            color: #fff;
+            background-color: #286090;
+            border-color: #204d74;
+          }
+
+        //   
+         .vessel-heading{
+            font-size: 18px;
+            font-weight: bold;
+            color: #9C9C9C;
+            text-align: center;
+            font-family: tahoma;
+          }
+
+          .vessel-head-td{
+            color: #9c9c9c;
+            font-family: tahoma;
+          }
+        // 
+        
+        // 
+        .actions-area {
+            background: #fff;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          }
+      
+          .add-approve-btn {
+            height: 24px;
+            width: 24px;
+            align-items: center;
+            display: flex;
+          }
+      
+          .add-approve-btn-icon {
+            font-size: 24px;
+            align-self: center;
+            margin-top: -1px;
+          }
+      
+          table.mat-table {
+            width: 100%;
+          }
+      
+          p.tbl-row-item {
+            font-size: 12px;
+            margin-top: 10px;
+            // margin-bottom: 10px;
+            padding: 0px 5px;
+          }
+      
+          tr.mat-header-row {
+            height: 56px;
+            background-color: #1976d2;
+          }
+      
+          th.mat-header-cell {
+            text-align: left;
+            color: white;
+      
+          }
+      
+          .content-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+      
+          th.mat-header-cell:last-of-type,
+          td.mat-cell:last-of-type,
+          td.mat-footer-cell:last-of-type {
+            padding-right: 10px;
+            // min-width: 100px;  commented this on 18-08-23
+          }
+      
+          th.mat-header-cell:first-of-type,
+          td.mat-cell:first-of-type,
+          td.mat-footer-cell:first-of-type {
+            padding-left: 10px;
+          }
+        // 
+
+          // radiobtn
+
+          .active-label {
+            color: #009688;
+            /* Change this to your desired highlight color */
+            font-weight: 500;
+        }
+
+        // 
+    }
+}

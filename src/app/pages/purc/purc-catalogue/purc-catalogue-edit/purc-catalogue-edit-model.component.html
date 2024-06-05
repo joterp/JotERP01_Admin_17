@@ -1,0 +1,119 @@
+<div mat-dialog-title >{{modeltitle}}</div>
+
+<div *ngIf="showdepartment && !showvessellocation">
+
+    <mat-dialog-content style="height: 100% !important" class="catalogue-edit-screen">
+       
+        <form [formGroup]="DepartmentFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+    
+    
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Department Name</mat-label>
+                <input formControlName="txtDept_Name" matInput type="text" placeholder="Deparment Name" />
+                <mat-error
+                *ngIf="DepartmentFormGroup.get('txtDept_Name').hasError('required')"
+                >Department Name is required</mat-error
+              >
+            </mat-form-field>
+            </div>
+    
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex appearance="fill">
+                <mat-label>Department Short Code</mat-label>
+                <input matInput formControlName="txtDept_Short_Code" type="text" placeholder="Department Short Code" />
+                <mat-error
+                *ngIf="DepartmentFormGroup.get('txtDept_Short_Code').hasError('required')"
+                >Department Short Code is required</mat-error
+              >
+                </mat-form-field>
+            </div>
+    
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Template Type</mat-label>
+                    <mat-select formControlName="drpTemplate_Type">
+                      <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option>
+                      </mat-select>
+                      <mat-error
+                *ngIf="DepartmentFormGroup.get('drpTemplate_Type').hasError('required')"
+                >Template Type is required</mat-error
+              >
+                  </mat-form-field>
+            </div>
+           
+        
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    
+        <button
+         
+          mat-raised-button
+          color="primary"
+          class="save-btn"
+          [ngClass]="[!DepartmentFormGroup.valid ? '' : 'save-btn']"
+          [disabled]="!DepartmentFormGroup.valid"
+          (click)="SaveDepartmentForm()"
+        >
+          SAVE
+        </button>
+        <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+      </mat-dialog-actions>
+    </div>
+
+
+     <div *ngIf="showvessellocation && !showdepartment">
+
+        <mat-dialog-content style="height: 100% !important" class="catalogue-edit-screen">
+           
+            <form [formGroup]="DepartmentFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+        
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <!-- <mat-icon>search</mat-icon>
+
+                    <input
+                      type="text"
+                      [(ngModel)]="searchString"
+                      placeholder="Search by name or country"
+                    /> -->
+
+                    <div class="col-md-12 align-items-center">
+                      <ul class="list-group">
+                          <li class="list-group-item" *ngFor="let b of filtered_Vessel_Location | async" style="line-height: 35px;">
+                              <input type="checkbox" value="{{ b.LOCATION_NAME }}" [checked]="b.isSelected"
+                   />
+
+
+                  {{ b.LOCATION_NAME }}</li>
+                      </ul>
+                  </div>
+
+                </div>         
+            
+            </form>
+          </mat-dialog-content>
+          <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+            <button
+      mat-raised-button
+      color="primary"
+      class="save-btn"
+      
+    >
+      ADD NEW LOCATION
+    </button>
+            <button
+             
+              mat-raised-button
+              color="primary"
+              class="save-btn"
+             
+            >
+              ASSIGN
+            </button>
+            <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+          </mat-dialog-actions>
+        </div> 

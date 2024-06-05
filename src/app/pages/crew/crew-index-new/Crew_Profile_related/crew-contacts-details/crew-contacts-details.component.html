@@ -1,0 +1,389 @@
+<div class="crew-contactsdetails-view">
+
+<table style="width: 100%;">
+
+<tr>
+    <td style="width: 30%;vertical-align: top;">
+     <table style="width: 100%;">
+        <tr>
+         <td>
+            <table>
+                <tr>
+                <td><span class="contacts-title">Profile</span></td>
+                </tr>
+            </table>
+            
+         </td>
+        </tr>
+        <tr>
+            <td>
+                <table style="width: 100%;padding-top: 25px;padding-bottom: 5px;" class="crew-profile-table">
+                    <tr>
+                        <td style="width: 50%;text-align: center;
+                        padding-bottom: 5px;
+                        padding-left: 5px;
+                        padding-top: 5px;">     
+                                       
+                             <img class="crew-profile-image" src="../../../../assets/img/Crew/HRM_profile_icon.png">      
+                                                        
+                        </td>
+                        <td style="width: 50%;">
+                            
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td><span class="crew-info">BAGIYAL , Roshni</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="crew-info">Age - 20 Year</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="crew-info">India</span></td>
+                                    </tr>
+                                 </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" class="crew-td2">
+                         <table table style="width: 100%;">
+                             <tr>
+                                 <td style="text-align: center;width: 50%;">
+                                     <input style="display: none;" type="file" id="fileupload" #fileInputcatalogue (change)="onFileSelectedCrewProfile($event)"
+                                     accept=".pdf,.doc,.docx,.jpg,.png" />
+                                     <button type="button" class="upload-btn-crew" style="margin-top: 6px;" *ngIf="!selectedFileCrewProfile">
+                                       <label for="fileupload">
+                                         Upload picture</label>
+                                     </button>
+                                     
+                                     <div *ngIf="selectedFileCrewProfile">
+                                       <span style="margin-top: 2px !important;" > {{ selectedFileCrewProfile }}</span>
+                                       <button (click)="removeUploadedFileCrewProfile()"  mat-button style="color: #5BB318;">Remove</button> &nbsp;
+                                     </div> 
+                                 </td>
+
+                                 <td style="text-align: center;width: 50%;">
+                                     <input style="display: none;" type="file" id="fileupload" #fileInputcatalogue (change)="onFileSelectedCrewProfile($event)"
+                                     accept=".pdf,.doc,.docx,.jpg,.png" />
+                                     <button type="button" class="upload-btn-crew" style="margin-top: 6px;" *ngIf="!selectedFileCrewProfile">
+                                       <label for="fileupload">
+                                         Upload CV</label>
+                                     </button>
+                                     
+                                     <div *ngIf="selectedFileCrewProfile">
+                                       <span style="margin-top: 2px !important;" > {{ selectedFileCrewProfile }}</span>
+                                       <button (click)="removeUploadedFileCrewProfile()"  mat-button style="color: #5BB318;">Remove</button> &nbsp;
+                                     </div> 
+                                 </td>
+
+                                </tr>
+                         </table>
+                        </td>
+                     
+                     </tr>
+
+                </table>
+            </td>
+        </tr>
+     </table>
+    </td>
+
+
+    <td style="width: 35%;vertical-align: top;">
+        <table style="width: 100%;">
+            <tr>
+             <td>
+                <table >
+                    <tr>
+                        <td><span class="contacts-title">Personal Information</span></td>
+                        <td><span (click)="AddFormData({}, 'Edit Personal Detail', 'Edit_Personal_Detail')"><img class="crew-edit-info-icon" src="../../../../assets/img/Crew/Edit.png"></span></td>
+                    </tr>
+                </table>
+               
+             </td>
+            
+            </tr>
+            <tr>
+                <td>
+                    <table style="width: 100%;padding: 5px;" class="crew-profile-table">
+                        <tr style="height: 25px;">
+                           <td style="width: 50%;"><span class="crew-info">First Name</span></td>
+                           <td><span class="crew-info-td2">Roshni</span></td>
+                        </tr>
+                        <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Last Name</span></td>
+                            <td><span class="crew-info-td2">BAGIYAL</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Regional Name</span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Date Of Birth</span></td>
+                            <td><span class="crew-info-td2">2003-02-28</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Place Of Birth</span></td>
+                            <td><span class="crew-info-td2">India</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Gender</span></td>
+                            <td><span class="crew-info-td2">Male</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                        <td style="width: 50%;"><span class="crew-info">Marital Status</span></td>
+                        <td><span class="crew-info-td2">Single</span></td>
+                        </tr>
+                        <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Nationality</span></td>
+                            <td><span class="crew-info-td2">India</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Blood Type</span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Intnl Airport</span></td>
+                            <td><span class="crew-info-td2">CST</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                        <td style="width: 50%;"><span class="crew-info">Govt. ID NO</span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+       
+                    </table>
+                </td>
+            </tr>
+         </table>
+    </td>
+
+      <td style="width: 35%;vertical-align: top;">
+        <table style="width: 100%;">
+            <tr>
+             <td>
+                <table>
+                    <tr>
+                        <td><span class="contacts-title">Account Information</span></td>
+                        <td><span (click)="AddFormData({}, 'Edit Account Information', 'Edit_Account_Information')"><img class="crew-edit-info-icon" src="../../../../assets/img/Crew/Edit.png"></span></td>
+                    </tr>
+                </table>
+                
+             </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="width: 100%;padding: 5px;height: 310px;" class="crew-profile-table">
+                        <tr style="height: 25px;">
+                           <td style="width: 50%;"><span class="crew-info">Manning Office</span></td>
+                           <td><span class="crew-info-td2">Roshni</span></td>
+                        </tr>
+                        <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Last Name</span></td>
+                            <td><span class="crew-info-td2">Master</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Date Applied</span></td>
+                            <td><span class="crew-info-td2">2023-03-21</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Date Approved</span></td>
+                            <td><span class="crew-info-td2">2023-03-21</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Date Available</span></td>
+                            <td><span class="crew-info-td2">2023-03-21</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Medically Fit</span></td>
+                            <td><span class="crew-info-td2">Yes</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                        <td style="width: 50%;"><span class="crew-info">Is Medic Certified?</span></td>
+                        <td><span class="crew-info-td2">Yes</span></td>
+                        </tr>
+                        <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Nationality</span></td>
+                            <td><span class="crew-info-td2">India</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Prefered Meal</span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Frequent Flyer No.</span></td>
+                            <td><span class="crew-info-td2">CST</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info"></span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+       
+                    </table>
+                </td>
+            </tr>
+         </table>
+    </td>
+</tr>
+
+<tr>
+    <td style="width: 30%;vertical-align: top;">
+     <table style="width: 100%;">
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td><span class="contacts-alert-title">Alerts</span></td>
+           
+                    </tr>
+                </table>
+            </td>
+        
+        </tr>
+        <tr>
+            <td>
+                <table style="width: 100%;padding: 5px;height: 250px;" class="crew-profile-table">
+                    <tr style="height: 25px;">
+                       <td style="width: 50%;"><span class="crew-info-alerts-td1">Pending interviews</span></td>
+                       <td><span ></span></td>
+                    </tr>
+                    <tr style="height: 25px;">
+                        <td style="width: 50%;"><span class="crew-info-alerts-td1">Pending Evaluation</span></td>
+                        <td><span class="crew-info-alerts">2</span></td>
+                     </tr>
+                     <tr style="height: 25px;">
+                        <td style="width: 50%;"><span class="crew-info-alerts-td1">Open medical history</span></td>
+                        <td><span class="crew-info-alerts">1</span></td>
+                     </tr>
+                     <tr style="height: 25px;">
+                        <td style="width: 50%;"><span class="crew-info-alerts-td1">Pending Travel</span></td>
+                        <td><span class="crew-info-alerts">1</span></td>
+                     </tr>
+                     <tr style="height: 25px;">
+                        <td style="width: 50%;"><span class="crew-info-alerts-td1">NoK is not assigned</span></td>
+                        <td><span ></span></td>
+                     </tr>
+                     <tr style="height: 25px;">
+                        <td style="width: 50%;"><span class="crew-info-alerts-td1">Sign On date is not updated</span></td>
+                        <td><span ></span></td>
+                     </tr>
+                   
+                </table>
+            </td>
+        </tr>
+     </table>
+    </td>
+
+
+    <td style="width: 35%;vertical-align: top;">
+        <table style="width: 100%;">
+            <tr>
+             <td>
+                <table>
+                    <tr>
+                        <td><span class="contacts-title">Address</span></td>
+                        <td><span (click)="AddFormData({}, 'Edit Address Detail', 'Edit_Address_Detail')"><img class="crew-edit-info-icon" src="../../../../assets/img/Crew/Edit.png"></span></td>
+                    </tr>
+                </table>
+               
+             </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="width: 100%;padding: 5px;height: 250px;" class="crew-profile-table">
+                        <tr style="height: 25px;">
+                           <td style="width: 50%;"><span class="crew-info">Address</span></td>
+                           <td><span class="crew-info-td2">123456</span></td>
+                        </tr>
+                        <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">City</span></td>
+                            <td><span class="crew-info-td2">Mumbai (BOMBAY)</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Regional Name</span></td>
+                            <td><span class="crew-info-td2">India</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info"></span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info"></span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info"></span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info"></span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info"></span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                              
+                    </table>
+                </td>
+            </tr>
+         </table>
+    </td>
+
+    <td style="width: 35%;vertical-align: top;">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td><span class="contacts-title">Contacts</span></td>
+                            <td><span (click)="AddFormData({}, 'Edit Contact Details', 'Edit_Contact_Details')"><img class="crew-edit-info-icon" src="../../../../assets/img/Crew/Edit.png"></span></td>
+                        </tr>
+                    </table>
+                </td>
+             
+            </tr>
+            <tr>
+                <td>
+                    <table style="width: 100%;padding: 5px;height: 250px;" class="crew-profile-table">
+                        <tr style="height: 25px;">
+                           <td style="width: 50%;"><span class="crew-info">Phone 1</span></td>
+                           <td><span class="crew-info-td2">+91 - 1234567897</span></td>
+                        </tr>
+                        <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Phone 2</span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Email 1</span></td>
+                            <td><span class="crew-info-td2">Testing&#64;joterp.com</span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Email 2</span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">Scocial Communication</span></td>
+                            <td><span class="crew-info-td2"></span>Skype</td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info">IM</span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info"></span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                         <tr style="height: 25px;">
+                            <td style="width: 50%;"><span class="crew-info"></span></td>
+                            <td><span class="crew-info-td2"></span></td>
+                         </tr>
+                              
+                    </table>
+                </td>
+            </tr>
+         </table>
+    </td>
+</tr>
+
+</table>
+
+</div>

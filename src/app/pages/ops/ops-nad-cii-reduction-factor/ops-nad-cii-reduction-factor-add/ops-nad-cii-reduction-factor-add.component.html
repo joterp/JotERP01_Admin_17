@@ -1,0 +1,58 @@
+<div mat-dialog-title>
+  <span>
+    <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="width: 20px;
+        height:20px; margin-right: 10px;margin-bottom: -4px;" />
+  </span>
+  {{modeltitle}}
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="edit-new-opening-balance">
+
+  <div>
+    <form [formGroup]="AddNewReductionFactorFormGroup">
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Factor Year</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtFactor_Year" matInput />
+          <mat-error *ngIf="AddNewReductionFactorFormGroup.get('txtFactor_Year').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Reduction Factor</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtReduction_Factor" matInput />
+          <mat-error *ngIf="AddNewReductionFactorFormGroup.get('txtReduction_Factor').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+
+    </form>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+
+  <button mat-raised-button color="primary" class="save-btn"
+    [ngClass]="[!AddNewReductionFactorFormGroup.valid ? '' : 'save-btn']"
+    [disabled]="!AddNewReductionFactorFormGroup.valid">
+    SAVE
+  </button>
+
+  <button mat-raised-button color="primary" class="save-btn" [disabled]="!AddNewReductionFactorFormGroup.valid">
+    SAVE & ADD NEW
+  </button>
+
+  <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

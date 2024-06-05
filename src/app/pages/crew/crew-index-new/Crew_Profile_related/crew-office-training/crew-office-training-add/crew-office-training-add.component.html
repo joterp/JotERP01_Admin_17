@@ -1,0 +1,198 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;width: 20px;
+        height: 20px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+<fury-page-layout mode="card" class="crew-office-training-add">
+
+    <form [formGroup]="OfficeTrainingAddFormGroup"> 
+             
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">Trainning Planned Date</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtTrainning_Planned_Date"
+                    matInput
+                  />
+                  
+              </mat-form-field>
+
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Expiry Date</mat-label>
+                <input
+                  matInput
+                  formControlName="expiry_date"
+                  [matDatepicker]="pickerexpiry_date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerexpiry_date"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerexpiry_date></mat-datepicker>
+       
+              </mat-form-field>
+         
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Training Date</mat-label>
+                <input
+                  matInput
+                  formControlName="training_date"
+                  [matDatepicker]="pickertraining_date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickertraining_date"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickertraining_date></mat-datepicker>
+       
+              </mat-form-field>
+
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Training Country</mat-label>
+                <mat-select formControlName="drpTraining_Country">
+                </mat-select>
+               
+            </mat-form-field>
+         
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Training Name</mat-label>
+                <mat-select formControlName="drpTraining_Name">
+                </mat-select>
+               
+            </mat-form-field>
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Training City</mat-label>
+                <mat-select formControlName="drpTraining_City">
+                </mat-select>
+               
+            </mat-form-field>
+         
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Training Type</mat-label>
+                <mat-select formControlName="drpTraining_Type">
+                </mat-select>
+               
+            </mat-form-field>
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">Training Assessment</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtTraining_Assessment"
+                    matInput
+                  />
+                 
+              </mat-form-field>
+         
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">Training Institute</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtTraining_Institute"
+                    matInput
+                  />
+                 
+              </mat-form-field>
+
+              <div fxFlex>
+
+                <mat-label>Upload Certificate</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <div>
+                <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+                  accept=".pdf,.doc,.docx,.jpg,.png" />
+             
+                <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                  <label for="imageupload">
+                    Upload </label>
+                </button>
+                </div>
+
+                <div *ngIf="selectedFileName" fxFlex>
+                  <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                  <button (click)="removeUploadedFileadditem()"  mat-button style="color: #5BB318;">Remove</button>
+                </div>
+
+              </div>         
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">Trainer</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtTrainer"
+                    matInput
+                  />
+                 
+              </mat-form-field>
+
+              <div fxFlex>
+
+                
+
+              </div>         
+        </div>
+
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+          
+            <mat-form-field fxFlex style="background-color: #fff;">
+                <mat-label>Training Remarks</mat-label>
+                <textarea matInput formControlName="txtTraining_Remarks"></textarea>
+
+              </mat-form-field>
+
+        </div>
+       
+
+    </form>
+
+
+</fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!OfficeTrainingAddFormGroup.valid ? '' : 'save-btn']" [disabled]="!OfficeTrainingAddFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!OfficeTrainingAddFormGroup.valid">
+        SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>
+

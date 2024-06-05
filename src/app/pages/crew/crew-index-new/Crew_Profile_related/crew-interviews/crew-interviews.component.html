@@ -1,0 +1,216 @@
+<div class="crew-Interviews-view">
+
+    <table style="width: 100%;">
+        <tr>
+            <td class="interviews-td">
+                <b>Interviews</b>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="actions-area">
+                    <table style="display: flex;">
+                        <tr>
+                            <td>
+                                <div fxLayout="row">
+                                    <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                        class="add-approve-btn save-btn" (click)="AddFormData({}, 'Add Interview', 'Add_Interview')">
+                                      
+                                        <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                    </button>
+                                    <span style="margin-top: 3px;
+                                   margin-left: 6px;font-size: 15px;">Add Interview</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- <div class="content-loader">
+                   <mat-progress-spinner
+                     mode="indeterminate"
+                     color="accent"
+                   ></mat-progress-spinner>
+                 </div> -->
+                </div>
+
+                <div #TABLE>
+                    <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                        <ng-container matColumnDef="Interview_Type">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Interview Type
+                            </th>
+                            <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         [ngStyle]="{ 'white-space': 'initial' }"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                       </td> -->
+                        </ng-container>
+
+                        <ng-container matColumnDef="Interview_Name">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Interview Name
+                            </th>
+                            <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                       </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Date_Time">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Date Time
+                            </th>
+                            <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                         </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Time_Zone">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Time Zone
+                            </th>
+                            <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                       </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Interviewer">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Interviewer
+                            </th>
+                            <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                         </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Pending_With">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Pending With
+                            </th>
+                            <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                         </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Max_Marks">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Max Marks
+                            </th>
+                            <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                         </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Marks_Obtained">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Marks Obtained
+                            </th>
+                            <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Result">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Result
+                            </th>
+                            <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Status">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Status
+                            </th>
+                            <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Interview_Mode">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Interview_Mode
+                            </th>
+                            <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Seafarer_Acknowledge">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Seafarer Acknowledge
+                            </th>
+                            <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                        </ng-container>
+
+                        <ng-container matColumnDef="Action">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                            </th>
+                            <!-- <td
+                             *matCellDef="let row; let i = index"
+                             class="actions-cell"
+                             mat-cell
+                           >
+                             <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                           </td> -->
+                        </ng-container>
+
+
+                        <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements"
+                            mat-row>
+                        </tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+
+</div>

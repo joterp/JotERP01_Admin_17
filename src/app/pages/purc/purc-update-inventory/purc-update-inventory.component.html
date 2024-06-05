@@ -1,0 +1,379 @@
+<fury-page-layout mode="card" class="updateinventory-view">
+
+  <!-- search header for PURC_Catalogue -->
+  <fury-page-layout-header>
+
+    <form [formGroup]="UpdateInventoryFilterForm">
+      <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+      <h3>
+
+        <span class="first-letter">U</span>PDATE
+        <span class="first-letter">I</span>NVENTORY
+
+      </h3>
+      <div class="filter-area">
+
+        <div fxLayout="row" fxLayoutAlign="center">
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Vessel</mat-label>
+              <mat-select formControlName="drpVessel">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Template Type</mat-label>
+              <mat-select formControlName="drpTemplate_Type">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Department</mat-label>
+              <mat-select formControlName="drpDepartment">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <div fxFlex>
+            <div>
+              <table>
+                <tr>
+                  <td width="20%"><span style=" font-weight: bold;font-family: tahoma;">Item Search</span> </td>
+                  <td width="80%">
+                    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
+                      <button class="create" mat-raised-button color="primary" class="filter-btn">
+                        Search
+                      </button>
+                      <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                        Clear
+                      </button>
+
+                    </mat-dialog-actions>
+
+                  </td>
+                </tr>
+              </table>
+
+            </div>
+            <mat-form-field appearance="fill">
+              <mat-label>Description</mat-label>
+              <input matInput formControlName="txtDescription" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Part Number</mat-label>
+              <input matInput formControlName="txtPart_Number" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Drawing Number</mat-label>
+              <input matInput formControlName="txtDrawing_Number" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Expiring In</mat-label>
+              <input matInput placeholder="Days" formControlName="txtExpiring_In" />
+            </mat-form-field>
+
+          </div>
+
+          <!--      
+                <div fxFlex>
+                    <mat-label>Critical Item</mat-label>
+                    <mat-radio-group fxLayout="column" fxLayoutGap="5px" formControlName="radioNew_Critical_Item" class="radio-btn-group" style="margin-top: 12px; margin-left: 12px;">
+                      <mat-radio-button value="1">All</mat-radio-button>
+                      <mat-radio-button value="0">Active</mat-radio-button>
+                      <mat-radio-button value="2">Deleted</mat-radio-button>
+                    </mat-radio-group>
+                  </div> 
+        -->
+
+          <div fxFlex="10">
+            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioROB_Filter" style="border: 1px solid;height: 245px;">
+
+              <table style="width: 100%;">
+                <tr>
+
+                  <td>
+                    <table>
+                      <tr>
+                        <td style="padding-bottom: 6px;vertical-align: top;height: 40px;">
+                          <span style="font-family: tahoma;font-weight: bold;">ROB Filter</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="height: 40px;">
+                          <mat-radio-button value="0"
+                            [checked]="UpdateInventoryFilterForm.get('radioROB_Filter').value == 0">
+                            <label [class.active-label]="UpdateInventoryFilterForm.get('radioROB_Filter').value == 0"
+                              style="font-family: tahoma;">All</label>
+                          </mat-radio-button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="height: 40px;">
+                          <mat-radio-button value="1"
+                            [checked]="UpdateInventoryFilterForm.get('radioROB_Filter').value == 1">
+                            <label [class.active-label]="UpdateInventoryFilterForm.get('radioROB_Filter').value == 1"
+                              style="font-family: tahoma;">> Zero</label>
+                          </mat-radio-button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="height: 40px;">
+                          <mat-radio-button value="2"
+                            [checked]="UpdateInventoryFilterForm.get('radioROB_Filter').value == 2">
+                            <label [class.active-label]="UpdateInventoryFilterForm.get('radioROB_Filter').value == 2"
+                              style="font-family: tahoma;">= Zero</label>
+                          </mat-radio-button>
+                        </td>
+                      </tr>
+
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </mat-radio-group>
+
+          </div>
+
+          <div class="filter-btn-area" fxFlex>
+            <div>
+              <button class="create" mat-raised-button color="primary" class="filter-btn2">
+                Save Inventory & Clear
+              </button>
+            </div>
+
+            <div>
+              <button class="create" mat-raised-button color="warn" class="filter-btn1" type="button">
+                Reset
+              </button>
+            </div>
+            <div>
+              <span style="cursor: pointer">
+                <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+              </span>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+  </fury-page-layout-header>
+
+
+  <fury-page-layout-content [@fadeInUp]>
+
+
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+
+      <div fxFlex="19">
+        <div style="height: 100%;
+        width: 100%;
+        border: 1px solid grey;
+        overflow: scroll;
+        background: #fff;
+        overflow-x: hidden;
+        ">
+          <table style="margin-bottom: -10px;">
+            <tr>
+              <td><span class="catalogue-text">Catalogues:</span></td>
+              <td>
+                <span class="input-icons">
+                  <mat-icon style="padding: 10px;
+                min-width: 40px;">search</mat-icon>
+                  <input class="input-field" type="text">
+                </span>
+              </td>
+            </tr>
+          </table>
+
+          <ul class="catalogue-ul">
+
+            <li class="catalogue-li">Auxiliary Engines - Btl</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div fxFlex="25">
+        <div style="height: 100%;
+        width: 100%;
+        border: 1px solid grey;
+        overflow: scroll;
+        background: #fff;
+        overflow-x: hidden;
+        ">
+          <table style="margin-bottom: -10px;">
+            <tr>
+              <td><span class="catalogue-text">SubCatalogues:</span></td>
+              <td>
+                <span class="input-icons">
+                  <mat-icon style="padding: 10px;
+                min-width: 40px;">search</mat-icon>
+                  <input class="input-field" type="text">
+                </span>
+              </td>
+
+              <td>
+                <input type="button" class="select-input" value="Select all" />
+              </td>
+            </tr>
+          </table>
+
+          <ul class="catalogue-ul">
+
+            <li class="catalogue-li">Auxiliary Engines - Btl</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+            <li class="catalogue-li">Auxiliary Engines - Test</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div fxFlex="55">
+
+        <div #TABLE>
+          <table [dataSource]="UpdateInventorydataSource" mat-table matSort #table class="details-table" width="100%"
+            style="border: 1px solid #fff;">
+            <ng-container matColumnDef="Drawing_No">
+              <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                mat-sort-header>
+                Drawing No
+              </th>
+              <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                </td> -->
+            </ng-container>
+
+            <ng-container matColumnDef="Part_No">
+              <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Part No
+              </th>
+              <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+            </ng-container>
+            <ng-container matColumnDef="Short_Desciption">
+              <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Short Desciption
+              </th>
+              <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                  </td> -->
+            </ng-container>
+            <ng-container matColumnDef="Current">
+              <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Current
+              </th>
+              <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+            </ng-container>
+
+            <ng-container matColumnDef="Unit">
+              <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Unit
+              </th>
+              <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+            </ng-container>
+            <ng-container matColumnDef="ROB">
+              <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                ROB
+              </th>
+              <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+            </ng-container>
+
+            <ng-container matColumnDef="Inventory_Remarks">
+              <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Inventory_Remarks
+              </th>
+              <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+            </ng-container>
+
+            <tr *matHeaderRowDef="visibleColumnsUpdateLibrary" mat-header-row></tr>
+            <tr *matRowDef="let row; columns: visibleColumnsUpdateLibrary" class="clickable route-animations-elements"
+              mat-row></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="9999">No data found</td>
+            </tr>
+          </table>
+
+        </div>
+
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+      </div>
+    </div>
+
+
+  </fury-page-layout-content>
+
+</fury-page-layout>

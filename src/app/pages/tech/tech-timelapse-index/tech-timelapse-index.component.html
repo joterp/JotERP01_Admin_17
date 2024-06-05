@@ -1,0 +1,415 @@
+
+<fury-page-layout mode="card" class="TL-index">
+  <h3 class="unit-packing" style="text-align: center; margin: 13px;">
+    <span class="first-letter">T</span>IME   
+    <span class="first-letter">L</span>APSE
+   
+  </h3>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;border-radius: 10px;
+">
+        <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;height: 46px;    border-radius: 1px;
+        ">
+            <mat-panel-title class="panel-title">
+                Search Criteria
+            </mat-panel-title>
+            <mat-panel-description class="panel-desc">
+
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+      
+      <form [formGroup]="TimeLapseIndexFilterFormGroup" >
+        
+        
+      
+        
+        <div class="filter-area">
+          <div fxLayout="row" fxLayoutAlign="start">
+  
+            <div fxFlex>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Fleet</mat-label>
+                    <mat-select formControlName="drpFleet" aria-placeholder="Select Fleet">
+                        <mat-option value="Admin_Fleet">Admin_Fleet</mat-option>
+                        <mat-option value="Fleet-A">Fleet-A</mat-option>
+                        <mat-option value="India Fleet">India Fleet</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Vessel Name</mat-label>
+                    <mat-select  #select multiple formControlName="drpVessel_Name">
+                      <div class="select-all">
+                          <mat-checkbox [(ngModel)]="allSelected"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="toggleAllSelection()">Check All</mat-checkbox>
+                      </div>
+                      <mat-option (click)="optionClick()" *ngFor="let vsl of Vessel" [value]="vsl.value">
+                        {{vsl.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>SFI Code</mat-label>
+                    <mat-select formControlName="drpSFI_Code" aria-placeholder="Select SFI Code">
+                        <!-- <mat-option value="Admin_Fleet">Admin_Fleet</mat-option>
+                        <mat-option value="Fleet-A">Fleet-A</mat-option>
+                        <mat-option value="India Fleet">India Fleet</mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>SFI Name</mat-label>
+                    <input matInput formControlName="txtSFI_Name" />
+                </mat-form-field> 
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Custom Tags</mat-label>
+                    <mat-select formControlName="drpCustom_Tags" aria-placeholder="Select Tag Key">
+                        <!-- <mat-option value="Admin_Fleet">Admin_Fleet</mat-option>
+                        <mat-option value="Fleet-A">Fleet-A</mat-option>
+                        <mat-option value="India Fleet">India Fleet</mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>File Type</mat-label>
+                    <mat-select formControlName="drpFile_Type" aria-placeholder="Select File Type">
+                        <mat-option value="Image">Image</mat-option>
+                        <mat-option value="Audio">Audio</mat-option>
+                        <mat-option value="Video">Video</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <table >
+                    <tr>
+                      <td>
+                        <img src="../../../../assets/img/wrong.jpg" class="logo" alt="excel" style="margin: 9px 8px;" /> 
+                      </td>
+                      
+                    
+                        <td>
+                            Show To Owner
+                        </td>
+                        
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="../../../../assets/img/wrong.jpg" class="logo" alt="excel" style="margin: -10px 8px;"/>
+                        </td>
+                        <td>
+                            Show Critical
+                        </td>
+                        
+                    </tr>
+                </table>
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                  <mat-label>Date Form</mat-label>
+                  <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" placeholder="Report Date From" />
+                  <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerFrom></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Date To</mat-label>
+                  <input matInput [matDatepicker]="pickerTo" formControlName="Date_To"  placeholder="Report Date To">
+                  <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerTo></mat-datepicker>
+                </mat-form-field>
+              </div>
+  
+
+            <div fxFlex>
+                <div class="filter-chklist">
+                  <table >
+                    <tr>
+                        <td>
+                            <mat-checkbox
+                            [color]="'accent'"
+                          >TimeLapse
+                          </mat-checkbox>
+                        </td>
+                        <td>
+                            <mat-checkbox
+                            [color]="'accent'"
+                          >Report/From Index
+                          </mat-checkbox>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-checkbox
+                            [color]="'accent'"  
+                            [disabled]="true"
+                          >Planned Maintenance
+                          </mat-checkbox>
+                        </td>
+                        <td>
+                            <mat-checkbox
+                            [color]="'accent'"  
+                            [disabled]="true"
+                          >Procurement
+                          </mat-checkbox>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-checkbox
+                            [color]="'accent'"
+                          >Defect List
+                          </mat-checkbox>
+                        </td>
+                        <td>
+                            <mat-checkbox
+                            [color]="'accent'"
+                            [disabled]="true"
+                          >Vessel Inspection
+                          </mat-checkbox>
+                        </td>
+                    </tr>
+                  </table>
+                </div>
+            </div>
+  
+            <div class="filter-btn-area" fxFlex style="    text-align: right;
+            margin: 5px;">
+        
+                <div>
+                    <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                      Search
+                    </button> -->
+                    <button
+                    mat-raised-button
+                    color="primary"
+                   style="background-color: #5cb85c;"
+                    class="filter-btn"
+                  
+                  >
+                    Search
+                  </button>
+                  </div>
+      
+                  <div>
+                    <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                      type="button" (click)="clearFilter()">
+                      Clear
+                    </button>
+                  </div>
+    
+                  <div>
+                    <button class="create"   mat-raised-button color="warn" class="filter-btn" disabled
+                      type="button" style="    background-color: #f0ad4e;
+                      border-color: #eea236;">
+                      Show PO
+                    </button>
+                  </div>
+           </div>
+           
+           <div class="filter-btn-area" fxFlex style="    text-align: left;
+           margin: 5px;">
+            
+            
+               
+                <div>
+                <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                <button
+                mat-raised-button
+                color="primary"
+                style="background-color: #5bc0de; border-color: #46b8da;"
+                class="filter-btn"
+                (click)="saveImportDetails(null,false)" 
+              >
+                Import
+              </button>
+              </div>
+  
+              <div>
+                <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                  type="button" style="    color: #fff;
+                  background-color: #337ab7;
+                  border-color: #2e6da4;" (click)="saveExportDetails(null,false)" >
+                  Export
+                </button>
+              </div>
+
+              <div>
+                <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                  type="button"  style="background-color: #5bc0de; border-color: #46b8da;" (click)="CompareDetails('TL_Compare_List')">
+                 Compare
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+  
+    </mat-expansion-panel>
+  </mat-accordion>
+   
+    <fury-page-layout-content [@fadeInUp] class="content-area" style="margin-top: 20px;">
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="25">  
+              <div fxLayout="row">
+                <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                    class="add-approve-btn save-btn" (click)="saveNewTL(null)">
+                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                </button>
+                <span style="margin-top: 3px;
+                margin-left: 6px;font-size: 15px;">Add Meeting Issue</span>
+            </div>
+                <div style=    "border:1px solid gray;
+                height: 476px;
+                border-radius: 10px;
+                margin-top: 13px;background-color: #f0f0f0;">
+
+                </div>
+            </div>
+
+            <div fxFlex="50"> 
+                <img src="../../../../assets/img/openclose.png"  alt="excel" style="margin: 4px 8px;
+                height: 120px;
+                padding: 72px;
+            "/>
+
+                <div fxLayout="row" fxLayoutAlign="space-between" style="background: lightgrey;    margin: 178px 20px;
+                padding: 10px;">
+                        <h4>Item 1 of 0</h4>
+                        <mat-icon  style="padding-top: 16px;">play_arrow</mat-icon>
+                </div>
+           
+            </div>
+            <div fxFlex="25" style="    margin-top: 106px;
+            text-align: center;" 
+            > 
+            <button mat-stroked-button  [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="    background: linear-gradient(#f1f1f1, #f1f1f1);
+            color: #676565;
+            font-family: tahoma;">
+              Actions <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+
+            <mat-menu #menu="matMenu"  
+            yPosition="below"
+            xPosition="before">
+            <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+            color: #000 !important;">
+              <span>
+                <mat-icon>search</mat-icon>
+            </span>
+              <span>Open in new Tab</span>
+            </button>
+
+            <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+            color: #000 !important;">
+              <span>
+                <mat-icon>watch_later</mat-icon>
+            </span>
+              <span>Show History</span>
+            </button>
+            <mat-divider style="margin: 10px;">--------------------------------------</mat-divider>
+
+            <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+            color: #000 !important;">
+              <span>
+                <mat-icon>mail</mat-icon>
+            </span>
+              <span>Mail Links</span>
+            </button>
+
+            <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+            color: #000 !important;">
+              <span>
+                <mat-icon>mail</mat-icon>
+            </span>
+              <span>All Links for this SFI</span>
+            </button>
+            <mat-divider style="margin: 10px;">--------------------------------------</mat-divider>
+            
+            <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+            color: #000 !important;">
+              <span>
+                <mat-icon>crop</mat-icon>
+            </span>
+              <span>Edit Image</span>
+            </button>
+            <mat-divider style="margin: 10px;">--------------------------------------</mat-divider>
+           
+           <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+            color: #000 !important;">
+              <span>
+                <mat-icon>mail</mat-icon>
+            </span>
+              <span>Add Custom Tags</span>
+            </button>
+
+            <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+            color: #000 !important;">
+              <span>
+                <mat-icon>mail</mat-icon>
+            </span>
+              <span>Edit Custom Tags</span>
+            </button>
+
+            <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+            color: #000 !important;">
+              <span>
+                <mat-icon>mail</mat-icon>
+            </span>
+              <span>Item Comparison</span>
+            </button>
+            </mat-menu>
+                <!-- <mat-menu #animals="matMenu">
+                  <button mat-menu-item  class="menuItemSpace"><mat-icon>search</mat-icon>Open in new Tab</button>
+                  <button mat-menu-item  class="menuItemSpace"><mat-icon>watch_later</mat-icon>Show History</button>
+                  <mat-divider style="margin-top: 10px;">--------------------------------------</mat-divider>
+                  <button mat-menu-item  class="menuItemSpace"><mat-icon>mail</mat-icon>Mail Links</button>
+                  <button mat-menu-item  class="menuItemSpace"><mat-icon>mail</mat-icon>
+                    All Links for this SFI</button>
+                  <mat-divider style="margin-top: 10px;">--------------------------------------</mat-divider>
+                  <button mat-menu-item  class="menuItemSpace"><mat-icon>crop</mat-icon>
+                    Edit Image</button>
+                  <mat-divider  style="margin-top: 10px;">--------------------------------------</mat-divider>
+                  <button mat-menu-item  class="menuItemSpace"><mat-icon>search</mat-icon>Add Custom Tags</button>
+                  <button mat-menu-item  class="menuItemSpace"><mat-icon>search</mat-icon>Edit Custom Tags</button>
+                  <button mat-menu-item  class="menuItemSpace"><mat-icon>search</mat-icon>Item Comparison</button>
+                </mat-menu> -->
+                  
+            </div>
+                
+        </div>
+
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

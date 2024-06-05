@@ -1,0 +1,136 @@
+
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>{{ modeltitle}}
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <mat-dialog-content>
+      <form [formGroup]="questionFormGroup"  >
+          <div mat-dialog-container style="padding-top: 20px;">
+              <div fxLayout="column" fxLayout.gt-sm="row" >
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>VID Questionnaires</mat-label>
+                    <mat-select formControlName="drpVID_Ques" >
+                      <mat-option value="HP55">HP55</mat-option>
+                      <mat-option value="Q88">Q88</mat-option>
+                      
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" >
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>VID Chapters</mat-label>
+                    <mat-select formControlName="drpVID_Chapters" >
+                      <mat-option value="Test">Test</mat-option>
+                      <mat-option value="Manual">Manual</mat-option>
+                      
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" >
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>VID Category</mat-label>
+                    <mat-select formControlName="drpVID_Category" >
+                      <mat-option value="Test">Test</mat-option>
+                    
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+              <div fxLayout="column" fxLayout.gt-sm="row" >
+                  <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Question</mat-label>
+                      <textarea
+                      matInput
+                      formControlName="txtQuestion"
+                     
+                      ></textarea>
+                  </mat-form-field>
+              </div>
+
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>OCIMF</mat-label>
+                  <input formControlName="txtOCIMF" matInput placeholder="Search by OCIMF" type="text" />
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxLayout.gt-sm="row" >
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Answer Type</mat-label>
+                    <mat-select formControlName="drpAnswer_Type" >
+                      <mat-option value="Test">Test</mat-option>
+                    
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" >
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Answer Nature</mat-label>
+                    <mat-select formControlName="drpAnswer_Nature" >
+                      <mat-option value="Test">Test</mat-option>
+                    
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Answer Unit</mat-label>
+                  <input formControlName="txtAnswer_Unit" matInput placeholder="Search by Answer Unit" type="text" />
+                </mat-form-field>
+              </div>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row" >
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Build Query</mat-label>
+                <textarea
+                matInput
+                formControlName="txtBuild_Query"
+               
+                ></textarea>
+            </mat-form-field>
+        </div>
+      </form>
+    </mat-dialog-content>
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" >
+          <!-- <button
+            *ngIf="!IsEdit"
+            mat-raised-button
+            color="primary"
+            [ngClass]="[!firstFormGroup.valid ? '' : 'save-btn']"
+            [disabled]="!firstFormGroup.valid"
+            (click)="saveServiceData(true)"
+          >
+            SAVE & ADD NEW
+          </button> -->
+          <button
+            mat-raised-button
+            color="primary"
+            class="save-btn"
+           
+          >
+          Save & Close
+          </button>
+          <button
+          
+            mat-raised-button
+            class="save-btn"
+            color="primary"
+              
+             
+          >
+          Save & Add New
+          </button>
+        
+          <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+        </mat-dialog-actions>
+      </div>
+  
+       
+  
+  

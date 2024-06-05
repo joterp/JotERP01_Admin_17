@@ -1,0 +1,425 @@
+<div mat-dialog-title>{{modeltitle}}</div>
+
+<div *ngIf="showAddNewItem && !showAddItemCatalogue && !showImportExcelItems">
+
+
+    <mat-dialog-content style="height: 100% !important" class="edit-planner">
+        <form [formGroup]="AddItemFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+          <div fxLayout="column" fxLayoutGap.gt-sm="24px" fxFlex >
+            <mat-form-field appearance="fill">
+              <mat-label>Drawing Number</mat-label>
+              <input type="text" formControlName="txtDrawing_Number" matInput />
+             
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Part Number</mat-label>
+              <input type="text" formControlName="txtPart_Number" matInput />
+              
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill">
+              <mat-label>Item Name</mat-label>
+              <input type="text" formControlName="txtItem_Name" matInput />
+              <mat-error *ngIf="AddItemFormGroup.get('txtItem_Name').hasError('required')">
+                  Item name is required
+                </mat-error>
+            </mat-form-field>
+           
+        <mat-form-field appearance="fill">
+          <mat-label>Item Description</mat-label>
+          <textarea matInput formControlName="txtItem_Description"></textarea>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Unit</mat-label>
+          <mat-select formControlName="drpUnit">
+            <!-- <mat-option>
+            <ngx-mat-select-search
+              formControlName="port_Filter"
+              [placeholderLabel]="'search...'"
+              [noEntriesFoundLabel]="'no matching found!'"
+            >
+            </ngx-mat-select-search>
+          </mat-option> -->
+  
+            <!-- <mat-option
+            *ngFor="let b of filtered_port | async"
+            [value]="b.PORT_GUID"
+          >
+            {{ b.Port_Name }}
+          </mat-option> -->
+          </mat-select>
+          <mat-error *ngIf="AddItemFormGroup.get('drpUnit').hasError('required')">
+            Unit is required
+          </mat-error>
+        </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Req. Quantity</mat-label>
+      <input matInput formControlName="txtReq_Quantity"/>
+      <mat-error *ngIf="AddItemFormGroup.get('txtReq_Quantity').hasError('required')">
+          Req. Quantity name is required
+        </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Unit Price</mat-label>
+      <input type="text" formControlName="txtUnit_Price" matInput />
+      <mat-error *ngIf="AddItemFormGroup.get('txtUnit_Price').hasError('required')">
+        Unit Price is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>VAT / GST %</mat-label>
+      <input type="text" formControlName="txtVAT_GST" matInput />
+     
+    </mat-form-field>
+  
+    <mat-form-field fxFlex appearance="fill">
+      <mat-label>Account Code</mat-label>
+      <mat-select formControlName="drpAccount_Code">
+        <!-- <mat-option>
+        <ngx-mat-select-search
+          formControlName="port_Filter"
+          [placeholderLabel]="'search...'"
+          [noEntriesFoundLabel]="'no matching found!'"
+        >
+        </ngx-mat-select-search>
+      </mat-option> -->
+  
+        <!-- <mat-option
+        *ngFor="let b of filtered_port | async"
+        [value]="b.PORT_GUID"
+      >
+        {{ b.Port_Name }}
+      </mat-option> -->
+      </mat-select>
+    
+    </mat-form-field>
+  <mat-form-field fxFlex appearance="fill">
+  <mat-label>Comments</mat-label>
+  <textarea matInput formControlName="txtComments" ></textarea>
+  </mat-form-field>
+    
+    
+          </div>
+       
+          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+            <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+          </div>
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!AddItemFormGroup.valid ? '' : 'save-btn']"
+          [disabled]="!AddItemFormGroup.valid">
+          SAVE & CLOSE
+        </button>
+        <button mat-raised-button color="primary" class="save-btn" [disabled]="!AddItemFormGroup.valid">
+          SAVE & ADD NEW
+        </button>
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+      </mat-dialog-actions>
+
+
+</div>
+   
+ 
+
+ 
+
+
+<div *ngIf="showAddItemCatalogue && !showAddNewItem && !showImportExcelItems">
+    <form
+    [formGroup]="filterFormGroup"
+    (ngSubmit)="onClickSubmit(filterFormGroup.value)"
+  >
+    <div class="filter-area">
+      <div fxLayout="row" fxLayoutAlign="start">
+        <div fxFlex>
+            <mat-form-field appearance="fill">
+                <mat-label>SubCatalogue</mat-label>
+                <mat-select formControlName="drpSubCatalogue">
+                    <!-- <mat-option *ngFor="let b of filtered_db_object_type | async" [value]="b.PARAMETER_GUID">
+                      {{ b.PARAMETER_NAME }}
+                    </mat-option> -->
+                  </mat-select>
+              </mat-form-field>
+  
+              <mat-form-field appearance="fill">
+                  <mat-label>Item Details</mat-label>
+                  <input
+                    type="text" 
+                    formControlName="txtItem_Details"                
+                    matInput
+                  />
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Expired</mat-label>
+                  <mat-select formControlName="drpExpired">
+                    <mat-option value=""> All </mat-option>
+                    <mat-option value="1"> Yes</mat-option>
+                    <mat-option value="0"> No </mat-option>
+                  </mat-select>
+                </mat-form-field>
+      
+        </div>
+
+        <div fxFlex>
+            <mat-form-field appearance="fill">
+                <mat-label>Drawing #</mat-label>
+                <input
+                  type="text" 
+                  formControlName="txtDrawing"                
+                  matInput
+                />
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Part #</mat-label>
+                <input
+                  type="text" 
+                  formControlName="txtPart"                
+                  matInput
+                />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Expired By Date</mat-label>
+                <input
+                  matInput
+                  formControlName="expired_by_date"
+                  [matDatepicker]="pickerexpirydate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerexpirydate"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerexpirydate></mat-datepicker>
+              </mat-form-field>
+        </div>
+       
+
+        <div class="filter-btn-area" fxFlex>
+          <button
+            class="create"
+            mat-raised-button
+            color="primary"
+            class="filter-btn"
+          >
+            Search
+          </button>
+          <button
+            class="create"
+            (click)="clearFilter()"
+            mat-raised-button
+            color="warn"
+            class="filter-btn"
+            type="button"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+   
+  <div #TABLE>
+    <table
+      [dataSource]="dataSource"
+      mat-table
+      matSort
+      #table
+      class="details-table"
+    >
+      <ng-container matColumnDef="Drawing_Number">
+        <th
+          *matHeaderCellDef
+          class="actions-cell"
+          [ngStyle]="{ 'white-space': 'initial' }"
+          mat-header-cell
+          mat-sort-header
+        >
+         Drawing Number
+        </th>
+        <!-- <td
+          *matCellDef="let row; let i = index"
+          class="actions-cell"
+          [ngStyle]="{ 'white-space': 'initial' }"
+          mat-cell
+        >
+          <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+        </td> -->
+      </ng-container>
+
+      <ng-container matColumnDef="Part_Number">
+        <th
+          *matHeaderCellDef
+          class="actions-cell"
+          mat-header-cell
+          mat-sort-header
+        >
+        Part Number
+        </th>
+        <!-- <td
+          *matCellDef="let row; let i = index"
+          class="actions-cell"
+          mat-cell
+        >
+          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+        </td> -->
+      </ng-container>
+      <ng-container matColumnDef="Sub_Catalogue">
+          <th
+            *matHeaderCellDef
+            class="actions-cell"
+            mat-header-cell
+            mat-sort-header
+          >
+          Sub Catalogue
+          </th>
+          <!-- <td
+            *matCellDef="let row; let i = index"
+            class="actions-cell"
+            mat-cell
+          >
+            <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+          </td> -->
+        </ng-container>
+      <ng-container matColumnDef="Item_Description">
+        <th
+          *matHeaderCellDef
+          class="actions-cell"
+          mat-header-cell
+          mat-sort-header
+        >
+        Item Description
+        </th>
+        <!-- <td
+          *matCellDef="let row; let i = index"
+          class="actions-cell"
+          mat-cell
+        >
+          <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+        </td> -->
+      </ng-container>
+      <ng-container matColumnDef="Unit">
+          <th
+            *matHeaderCellDef
+            class="actions-cell"
+            mat-header-cell
+            mat-sort-header
+          >
+          Unit
+          </th>
+          <!-- <td
+            *matCellDef="let row; let i = index"
+            class="actions-cell"
+            mat-cell
+          >
+            <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+          </td> -->
+        </ng-container>   
+        <ng-container matColumnDef="Order_Qty">
+            <th
+              *matHeaderCellDef
+              class="actions-cell"
+              mat-header-cell
+              mat-sort-header
+            >
+            Order Qty
+            </th>
+            <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+            </td> -->
+          </ng-container>  
+          
+          <ng-container matColumnDef="Unit_Price">
+            <th
+              *matHeaderCellDef
+              class="actions-cell"
+              mat-header-cell
+              mat-sort-header
+            >
+            Unit Price
+            </th>
+            <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+            </td> -->
+          </ng-container> 
+
+      <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+      <tr
+        *matRowDef="let row; columns: visibleColumns"
+        class="clickable route-animations-elements"
+        mat-row
+      ></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="9999">No data found</td>
+      </tr>
+    </table>
+  </div>
+
+   <mat-paginator
+    class="paginator"
+    [pageSizeOptions]="[10, 25, 50, 100]"
+    [pageSize]="pageSize"
+  ></mat-paginator>
+
+       
+
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!AddItemCatalogueFilterForm.valid ? '' : 'save-btn']"
+          [disabled]="!AddItemCatalogueFilterForm.valid">
+          SAVE & CLOSE
+        </button>
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+      </mat-dialog-actions>
+
+      
+</div>
+
+
+
+<div *ngIf="showImportExcelItems && !showAddNewItem && !showAddItemCatalogue">
+<div class="action-label" fxFlex style="margin-top: 20px;">
+    <label class="items-label">Select Excel based Items List to Import</label><br>
+    <input style="display: none;" type="file" id="fileupload" #fileInputcatalogue (change)="onFileSelectedcatalogue($event)"
+    accept=".pdf,.doc,.docx,.jpg,.png" />
+    <button type="button" class="upload-btn1" style="margin-top: 6px;" *ngIf="!selectedFileNameCatalogue">
+      <label for="fileupload">
+        Select</label>
+    </button>
+    
+    <div *ngIf="selectedFileNameCatalogue">
+      <span style="margin-top: 2px !important;" > {{ selectedFileNameCatalogue }}</span>
+      <button (click)="removeUploadedFilecatalogue()"  mat-button style="color: #5BB318;">Remove</button> &nbsp;
+    </div> 
+
+    
+
+    <div style="margin-top: 7px;">
+        <span class="items-label">Select file to upload (.xls, .xlsx)</span>
+    </div>
+
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" class="save-btn" 
+         >
+    Import    </button>
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+      </mat-dialog-actions>
+   
+  </div>
+
+ 
+
+ 
+</div>

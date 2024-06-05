@@ -1,0 +1,190 @@
+<fury-page-layout mode="card" class="ops-manageHighRiskAreas">
+        
+    <h3>
+        <span class="first-letter">M</span>ANAGE
+        <span class="first-letter">H</span>IGH
+        <span class="first-letter">R</span>ISK
+        <span class="first-letter">A</span>REAS
+    </h3>
+        
+        
+    <fury-page-layout-content [@fadeInUp] style="margin: 30px;">
+        <mat-card class="sp-card-view" style="margin-top: 20px;">
+            
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add New Alerts'"
+                            class="add-approve-btn save-btn"  (click)="saveAlertAreas(null,false)">
+                            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                        </button>
+                        <span style="margin-top: 3px;
+                        margin-left: 6px;font-size: 15px;color: #5f5f5f;"> Add New Alerts Area</span>
+                            
+                        </div>
+
+
+                        <div fxLayout="row">
+
+
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                            <mat-card-title style="margin-left: 5px;margin-top: 3px;margin-right: 12px;">Clear Filter</mat-card-title>
+                            <span>
+                                <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                              </span>
+
+                        </div>
+
+                    </div>
+
+                </mat-card-header>
+            
+               <mat-card-content>
+                <!-- <form [formGroup]="AlertListFilterFormGroup">
+                    <table >
+
+                
+                    <tr fxLayout fxLayoutGap="40px" style="margin: 5px;">
+                        <td>
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label></mat-label>
+                                <input formControlName="txtRef_No" matInput type="text"  placeholder="Ref No"/>
+                            </mat-form-field>
+                            <span>
+                                <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                        border: 1px solid grey;
+                                        background: linear-gradient(#ffffff, #dfdfdf);
+                                        border-radius: 3px;margin-top:12px;
+                                  
+                                "/>
+                            </span>
+                            
+                        </td>
+                        <td>
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label>PO Date</mat-label>
+                                <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                                <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerFrom></mat-datepicker>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Category</mat-label>
+                                <mat-select formControlName="drpCategory" >
+                                <mat-option value="Cauation">Cauation</mat-option>
+                                <mat-option value="GeneralAlerts">Generla Alerts</mat-option>
+                                <mat-option value="CompanyAssets">Company Assets</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+    
+                        
+                        <td>
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label></mat-label>
+                                <input formControlName="txtLocation" matInput type="text"  placeholder="Location"/>
+                            </mat-form-field>
+                            <span>
+                                <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                        border: 1px solid grey;
+                                        background: linear-gradient(#ffffff, #dfdfdf);
+                                        border-radius: 3px;margin-top:12px;
+                                  
+                                "/>
+                            </span>
+                            
+                        </td>
+                        <td>
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label></mat-label>
+                                <input formControlName="txtHead_Line" matInput type="text"  placeholder="Head Line"/>
+                            </mat-form-field>
+                            <span>
+                                <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                        border: 1px solid grey;
+                                        background: linear-gradient(#ffffff, #dfdfdf);
+                                        border-radius: 3px;margin-top:12px;
+                                  
+                                "/>
+                            </span>
+                            
+                        </td>
+                        <td>
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label></mat-label>
+                                <input formControlName="txtSource" matInput type="text"  placeholder="Source"/>
+                            </mat-form-field>
+                            <span>
+                                <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                        border: 1px solid grey;
+                                        background: linear-gradient(#ffffff, #dfdfdf);
+                                        border-radius: 3px;margin-top:12px;
+                                  
+                                "/>
+                            </span>
+                            
+                        </td>
+                        
+                           
+                        
+
+                        
+                    </tr>
+                </table>
+                    </form> -->
+                <div #TABLE>
+                    <table [dataSource]="AlertAreadataSource" mat-table matSort #table class="details-table">
+                        <ng-container matColumnDef="Area_Name">
+                          <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                            mat-sort-header>
+                            Area Name
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                            mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                          </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="Description">
+                          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Description
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Colour">
+                          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Colour
+                          </th>
+                          <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                          </td>
+                        </ng-container>
+      
+                        
+                       
+                        
+                      
+                      
+                       
+                        <tr *matHeaderRowDef="AlertListvisibleColumns" mat-header-row></tr>
+                        <tr *matRowDef="let row; columns: AlertListvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                          <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+                      </table>
+                  </div>
+                  <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+               </mat-card-content>
+           
+              
+        </mat-card>
+
+    </fury-page-layout-content>
+</fury-page-layout>

@@ -1,0 +1,222 @@
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Item
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+ 
+    <div>
+      <mat-dialog-content>
+        <form [formGroup]="ItemFormGroup">
+          <div mat-dialog-container style="padding-top: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Category</mat-label>
+                  <mat-select formControlName="drpCategory">
+                    <mat-option value="Ammunition">Ammunition</mat-option>
+                    <mat-option value="Laptop">Laptop</mat-option>
+                    <mat-option value="TV_VCD">TV_VCD</mat-option>
+                    <mat-option value="Safe_Box">Safe_Box</mat-option>
+                  </mat-select>
+                </mat-form-field>
+    
+                <div style="padding-top: 13px;">
+                  <button mat-mini-fab color="primary" [matTooltip]="'Add New Permit'"
+                  class="add-approve-btn save-btn" (click)="AddFormData({}, 'Add Item Category', 'add_item_category')">
+                  
+                  <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                  </button>
+                </div>
+              
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Bought On</mat-label>
+                    <input formControlName="txtBought_On" matInput placeholder="Search by Bought" type="text" />
+                  </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Item Type</mat-label>
+                  <mat-select formControlName="drpItem_Type">
+                    
+                  </mat-select>
+                </mat-form-field>
+    
+                <div style="padding-top: 13px;">
+                  <button mat-mini-fab color="primary" [matTooltip]="'Add New Permit'"
+                  class="add-approve-btn save-btn" (click)="AddFormData({}, 'Add Item Type', 'add_item_type')">
+                  <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                  </button>
+                </div>
+    
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Loan From</mat-label>
+                    <input formControlName="txtLoan_From" matInput placeholder="Search by Loan From" type="text" />
+                  </mat-form-field>
+            </div>
+    
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Item Name</mat-label>
+                  <mat-select formControlName="drpItem_Name">
+                    <mat-option value="Alexa">Select Item</mat-option>
+                  
+                  </mat-select>
+                </mat-form-field>
+                
+                <div style="padding-top: 13px;">
+                  <button mat-mini-fab color="primary" [matTooltip]="'Add New Permit'"
+                  class="add-approve-btn save-btn" (click)="AddFormData({}, 'Add Item  ', 'add_item')">
+                  <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                  </button>
+                </div>
+    
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Loan Remark</mat-label>
+                      <textarea
+                        matInput
+                        formControlName="txtLoan_Remark"
+                        placeholder=""
+                      ></textarea>
+                    </mat-form-field>
+                
+            </div>
+    
+    
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Model</mat-label>
+                  <mat-select formControlName="drpModel">
+                    <mat-option value="Select_Model">Select Model</mat-option>
+                  
+                  </mat-select>
+                </mat-form-field>
+    
+                <div style="padding-top: 13px;">
+                  <button mat-mini-fab color="primary" [matTooltip]="'Add New Permit'"
+                  class="add-approve-btn save-btn"  (click)="AddFormData({}, 'Add Item Model  ', 'add_item_model')">
+                  <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                  </button>
+                </div>
+                <div fxFlex>
+    
+                </div>
+                
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Maker</mat-label>
+                  <mat-select formControlName="drpMaker">
+                    <mat-option value="India">India</mat-option>
+                    <mat-option value="Mumbai">Mumbai</mat-option>
+                    
+                  </mat-select>
+                </mat-form-field>
+    
+                <div style="padding-top: 13px;">
+                  <button mat-mini-fab color="primary" [matTooltip]="'Add New Permit'"
+                  class="add-approve-btn save-btn"  (click)="AddFormData({}, 'Add Item Maker  ', 'add_item_maker')">
+                  <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                  </button>
+                </div>
+    
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Po Code</mat-label>
+                    <mat-select formControlName="drpPo_Code">
+                      <mat-option value="India">India</mat-option>
+                      <mat-option value="Mumbai">Mumbai</mat-option>
+                      
+                    </mat-select>
+                  </mat-form-field>
+                
+            </div>
+    
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="35px"> 
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Serial Number</mat-label>
+                    <input formControlName="txtSerial_Number" matInput placeholder="Search by Serial Number" type="text" />
+                  </mat-form-field>
+              
+                 
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>PO Date</mat-label>
+                        <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                        <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerFrom></mat-datepicker>
+                    </mat-form-field>
+                 
+            </div>
+    
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="35px">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Quantity</mat-label>
+                    <input formControlName="txtQuantity" matInput placeholder="Enter Only Number" type="text" />
+                  </mat-form-field>
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Box Number</mat-label>
+                    <input formControlName="txtBox_Number" matInput placeholder="Search by Box Number" type="text" />
+                  </mat-form-field>
+            </div>
+    
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="35px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Item Condition</mat-label>
+                  <mat-select formControlName="drpItem_Condition">
+                    <mat-option value="Good">Good</mat-option>
+                    <mat-option value="Damaged">Damaged</mat-option>
+                    <mat-option value="Discard">Discard</mat-option>
+                    <mat-option value="Working">Working</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              
+              <div fxLayout="row" fxFlex>
+                <div fxFlex="40" style="padding: 15px 10px;">
+                  <mat-label>Add To Report</mat-label>
+                </div>
+                <div fxFlex="30" style="padding: 15px 10px;">
+                  <mat-radio-group fxLayout="row" fxLayoutGap="5px"
+                      formControlName="radioVerified">
+                  
+                      <mat-radio-button value="0">Yes</mat-radio-button>
+                      <mat-radio-button value="1">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+                
+              
+              
+            </div>
+          
+    
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Remarks</mat-label>
+                      <textarea
+                        matInput
+                        formControlName="txtRemarks"
+                        placeholder=""
+                      ></textarea>
+                    </mat-form-field>
+                  </div>
+      
+          </div>
+        </form>
+      </mat-dialog-content>
+    
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+    
+        <button mat-raised-button color="primary" class="save-btn">
+          Save & Close
+        </button>
+        <button mat-raised-button class="save-btn" color="primary">
+          Save & Add New
+        </button>
+    
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+      </mat-dialog-actions>
+    </div>
+  

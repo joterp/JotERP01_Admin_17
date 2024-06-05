@@ -1,0 +1,61 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+   Add PortCall Checklist
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="vessel-port-que">
+
+    <form [formGroup]="AddChecklistFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Vessel</mat-label>
+                  <mat-select formControlName="drpVessel">   
+                    </mat-select>          
+                </mat-form-field>
+    
+              </div>
+              <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Port</mat-label>
+                  <mat-select formControlName="drpPort">   
+                    </mat-select>          
+                </mat-form-field>
+    
+              </div>
+              <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Checklist</mat-label>
+                  <mat-select formControlName="drpChecklist">   
+                    </mat-select>          
+                </mat-form-field>
+    
+              </div>
+
+
+  
+            
+        </div>
+       
+      </form>
+
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!AddChecklistFormGroup.valid ? '' : 'save-btn']"
+      [disabled]="!AddChecklistFormGroup.valid">
+      SAVE
+    </button>
+    
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+
+
+
+

@@ -1,0 +1,235 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>
+    </span>
+    Invite Supplier</div>
+
+    <mat-dialog-content style="height: 100% !important" class="edit-invite-supplier">
+
+        
+
+     
+        <form [formGroup]="InviteSupplierFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+            <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex appearance="fill" >
+                    <mat-label>Search by scope</mat-label>
+                    <mat-select formControlName="drpSearch_by_scope">
+                    
+                    </mat-select>
+                   
+                  </mat-form-field>
+                  </div>
+                  <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                      <input matInput placeholder="Search here" name="search" (keyup)="applyFilterClient($event.target.value)">
+                      <button mat-icon-button matPrefix><mat-icon style="padding-top: 7px;">search</mat-icon></button>
+                    </mat-form-field>
+                </div>
+
+                <div #TABLE>
+                    <table
+                      [dataSource]="dataSource"
+                      mat-table
+                      matSort
+                      #table
+                      class="details-table"
+                    >
+                      <ng-container matColumnDef="Supplier_Name">
+                        <th
+                          *matHeaderCellDef
+                          class="actions-cell"
+                          [ngStyle]="{ 'white-space': 'initial' }"
+                          mat-header-cell
+                          mat-sort-header
+                        >
+                        Supplier Name
+                        </th>
+                        <!-- <td
+                          *matCellDef="let row; let i = index"
+                          class="actions-cell"
+                          [ngStyle]="{ 'white-space': 'initial' }"
+                          mat-cell
+                        >
+                          <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                        </td> -->
+                      </ng-container>
+              
+                      <ng-container matColumnDef="Country">
+                        <th
+                          *matHeaderCellDef
+                          class="actions-cell"
+                          mat-header-cell
+                          mat-sort-header
+                        >
+                        Country
+                        </th>
+                        <!-- <td
+                          *matCellDef="let row; let i = index"
+                          class="actions-cell"
+                          mat-cell
+                        >
+                          <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                        </td> -->
+                      </ng-container>
+                      <ng-container matColumnDef="City">
+                          <th
+                            *matHeaderCellDef
+                            class="actions-cell"
+                            mat-header-cell
+                            mat-sort-header
+                          >
+                          City
+                          </th>
+                          <!-- <td
+                            *matCellDef="let row; let i = index"
+                            class="actions-cell"
+                            mat-cell
+                          >
+                            <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                          </td> -->
+                        </ng-container>
+             
+                      <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                      <tr
+                        *matRowDef="let row; columns: visibleColumns"
+                        class="clickable route-animations-elements"
+                        mat-row
+                      ></tr>
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                      </tr>
+                    </table>
+                  </div>
+              
+                   <mat-paginator
+                    class="paginator"
+                    [pageSizeOptions]="[10, 25, 50, 100]"
+                    [pageSize]="pageSize"
+                  ></mat-paginator>
+
+                  
+     
+        </div>
+        <div fxFlex="48">
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label class="left-label">Email To</mat-label>
+                  <input type="text" formControlName="txtMail_to" matInput />
+                  <mat-error *ngIf="InviteSupplierFormGroup.get('txtMail_to').hasError('required')"
+                    >Email To is required</mat-error
+                  >
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label class="left-label">CC</mat-label>
+                  <input type="text" formControlName="txtcc" matInput />
+                 
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label class="left-label">Subject</mat-label>
+                  <input type="text" formControlName="txtSubject" matInput />
+                  <mat-error *ngIf="InviteSupplierFormGroup.get('txtSubject').hasError('required')"
+                    >Email Subject is required</mat-error
+                  >
+                </mat-form-field>
+              </div>
+
+              <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label class="left-label">Credit terms</mat-label>
+                  <input type="text" formControlName="txtCredit_terms" matInput placeholder="Days"/>
+                  <mat-error *ngIf="InviteSupplierFormGroup.get('txtCredit_terms').hasError('required')"
+                    >Credit terms is required</mat-error
+                  >
+                </mat-form-field>
+              </div>
+
+              <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <!-- Use a button to create a custom file upload button -->
+        
+                <mat-label>Attachment</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- <button
+                mat-button
+                class="custom-file-upload-btn"
+                (click)="fileInput.click()"
+                >
+        
+                <input
+                style="display: none;"
+                type="file" id="imageupload"
+                #fileInput
+                (change)="onFileSelected($event)"
+                accept=".pdf,.doc,.docx,.jpg,.png"
+                />
+                </button> -->
+        
+                <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+                  accept=".pdf,.doc,.docx,.jpg,.png" />
+        
+                <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                  <label for="imageupload">
+                    Upload </label>
+                </button>
+                <div *ngIf="selectedFileName" fxFlex>
+                  <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                  <button (click)="removeUploadedFileadditem()"  mat-button style="color: #5BB318;">Remove</button>
+                </div>
+        
+                <!-- File input element, hidden from view -->
+              </div>
+              
+              <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+              <div class="drop-container">
+
+                <input type="file" id="uploadFile1" style="opacity: 0" name="uploadFile" accept="all/*" multiple />
+                <label>Drop files here
+                </label>
+              </div>
+</div>
+
+              <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <quill-editor
+                  [styles]="{ height: '400px' }"
+                  id="textEditor"
+                  (onEditorCreated)="created($event)"
+                  (onContentChanged)="contentChanged($event)"
+                >
+                </quill-editor>
+              </div>
+
+            </div>
+        </div>
+            <div
+            fxLayout="column"
+            fxLayout.gt-sm="row"
+            fxLayoutGap.gt-sm="24px"
+           
+          >
+            <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+          </div>
+        </form>
+   
+      </mat-dialog-content>
+
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" class="save-btn" 
+        [ngClass]="[!InviteSupplierFormGroup.valid ? '' : 'save-btn']" [disabled]="!InviteSupplierFormGroup.valid">
+        Send
+      </button>
+      <button mat-raised-button [disabled]="!InviteSupplierFormGroup.valid" style=" color: #fff;
+      background-color: #337ab7;
+      border-color: #2e6da4;"
+      >
+       I didn't find my supplier in the list
+      </button>
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+
+
+

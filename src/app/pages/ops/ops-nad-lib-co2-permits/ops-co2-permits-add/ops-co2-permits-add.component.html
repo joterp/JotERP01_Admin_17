@@ -1,0 +1,87 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="width: 20px;
+        height:20px; margin-right: 10px;margin-bottom: -4px;" />
+    </span>
+      {{modeltitle}}
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="edit-new-opening-balance">
+
+    <div>
+        <form [formGroup]="AddNewPermitFormGroup"> 
+            
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label class="left-label">Area</mat-label>
+                   
+                      <input
+                        type="text"
+                        class="right-text"
+                        formControlName="txtArea"
+                        matInput
+                      />
+                      <mat-error *ngIf="AddNewPermitFormGroup.get('txtArea').hasError('required')">
+                        Required
+                    </mat-error>
+                  </mat-form-field>
+
+            </div>             
+           
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Permit Date</mat-label>
+                    <input
+                      matInput
+                      formControlName="permit_date"
+                      [matDatepicker]="pickerpermit_date"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerpermit_date"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerpermit_date></mat-datepicker>
+                    <mat-error *ngIf="AddNewPermitFormGroup.get('permit_date').hasError('required')">
+                        Required
+                    </mat-error>
+                  </mat-form-field>
+                
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label class="left-label">Price</mat-label>
+                   
+                      <input
+                        type="text"
+                        class="right-text"
+                        formControlName="txtPrice"
+                        matInput
+                      />
+                   
+                  </mat-form-field>
+
+            </div>
+
+        </form>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+
+    <button mat-raised-button color="primary" class="save-btn" 
+    [ngClass]="[!AddNewPermitFormGroup.valid ? '' : 'save-btn']" [disabled]="!AddNewPermitFormGroup.valid">
+    SAVE
+  </button>
+
+  <button mat-raised-button color="primary" class="save-btn" [disabled]="!AddNewPermitFormGroup.valid">
+    SAVE & ADD NEW
+  </button>
+ 
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+

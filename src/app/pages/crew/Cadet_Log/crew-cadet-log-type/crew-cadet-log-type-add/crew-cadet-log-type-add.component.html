@@ -1,0 +1,106 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Cadet Log Type
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <form [formGroup]="newCadetLogTYpeFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Company</mat-label>
+              <mat-select formControlName="drpCompany">
+                <mat-option value="Apex_Marine">Apex Marine</mat-option>
+                <mat-option value="Jot_Solutions">Jot Solutions</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="drpDepartment">
+              <mat-option value="Accounts">Accounts</mat-option>
+              <mat-option value="Admin">Admin</mat-option>
+              <mat-option value="Rating">Rating</mat-option>
+              <mat-option value="Crew">Crew</mat-option>
+              <mat-option value="HSEQ">HSEQ</mat-option>
+              <mat-option value="IT">IT</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Cadet Name</mat-label>
+              <input formControlName="txtCadet_Name" matInput placeholder="Search by Cadet Name"
+                type="text" />
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Defectlist Assigned By</mat-label>
+            <mat-select formControlName="drpDefectlist_Assigned">
+              <mat-option value="Flag_State_Control">Flag State Control</mat-option>
+              <mat-option value="Classification_Society">Classification_Society</mat-option>
+              <mat-option value="Port_State_Control">Port State Control</mat-option>
+              <mat-option value="External QA">External QA</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="16px" style="padding: 10px;">
+            <mat-label style="width: 150px;">Type of Report</mat-label>
+            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_Report">
+                <mat-radio-button value="1" [checked]="newCadetLogTYpeFormGroup.get('radioNew_Report').value == 1">
+                    <label [class.active-label]="newCadetLogTYpeFormGroup.get('radioNew_Report').value == 1">Detail Based</label>
+                </mat-radio-button>
+                <mat-radio-button value="0" [checked]="newCadetLogTYpeFormGroup.get('radioNew_Report').value == 0">
+                    <label [class.active-label]="newCadetLogTYpeFormGroup.get('radioNew_Report').value == 0">Attachment Based</label>
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        
+          <div fxLayout="row" fxLayoutGap="16px" style="padding: 10px;">
+            <mat-label style="width: 150px;">Sync to Office or Vessel</mat-label>
+            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioSync_Vessel">
+                <mat-radio-button value="1" [checked]="newCadetLogTYpeFormGroup.get('radioSync_Vessel').value == 1">
+                    <label [class.active-label]="newCadetLogTYpeFormGroup.get('radioSync_Vessel').value == 1">Yes</label>
+                </mat-radio-button>
+                <mat-radio-button value="0" [checked]="newCadetLogTYpeFormGroup.get('radioSync_Vessel').value == 0">
+                    <label [class.active-label]="newCadetLogTYpeFormGroup.get('radioSync_Vessel').value == 0">No</label>
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        
+        <div fxLayout="row" fxLayoutGap="16px" style="padding: 10px;">
+            <mat-label style="width: 150px;">Verifiable</mat-label>
+            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_Verifiable">
+                <mat-radio-button value="1" [checked]="newCadetLogTYpeFormGroup.get('radioNew_Verifiable').value == 1">
+                    <label [class.active-label]="newCadetLogTYpeFormGroup.get('radioNew_Verifiable').value == 1">Yes</label>
+                </mat-radio-button>
+                <mat-radio-button value="0" [checked]="newCadetLogTYpeFormGroup.get('radioNew_Verifiable').value == 0">
+                    <label [class.active-label]="newCadetLogTYpeFormGroup.get('radioNew_Verifiable').value == 0">No</label>
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

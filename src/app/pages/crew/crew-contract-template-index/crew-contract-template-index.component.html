@@ -1,0 +1,179 @@
+<fury-page-layout mode="card" class="crew-contractTemplate">
+
+    <fury-page-layout-header>
+
+        <form [formGroup]="contractTemplateFormGroup">
+
+            <h3 class="unit-packing">
+                <span class="first-letter">C</span>ONTRACT
+                <span class="first-letter">T</span>EMPLATES
+            </h3>
+
+
+            <div class="filter-area">
+                <div fxLayout="row" fxLayoutAlign="start">
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Template Type</mat-label>
+                            <input formControlName="txtTemplate_Type" matInput placeholder="Search by Template Type"
+                                type="text" />
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Template Name</mat-label>
+                            <input formControlName="txtTemplate_Name" matInput placeholder="Search by Template Name"
+                                type="text" />
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Status</mat-label>
+                            <mat-select formControlName="drpStatus">
+                                <mat-option value="">Show Active</mat-option>
+                                <mat-option value="1">Show Deleted</mat-option>
+                                <mat-option value="0">Show All</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="filter-btn-area" fxFlex>
+                        <div>
+                            <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                    Search
+                  </button> -->
+                            <button mat-raised-button color="primary" style="background-color: #5cb85c;"
+                                class="filter-btn">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button"
+                                (click)="clearFilter()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] >
+        <div class="actions-area">
+
+            <div fxLayout="row">
+                <button mat-mini-fab color="primary" [matTooltip]="'Add Template'" class="add-approve-btn save-btn"
+                    (click)="saveTemplate(null,false)">
+                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                </button>
+                <span style="margin-top: 3px;
+            margin-left: 6px;font-size: 15px;"> Add Template</span>
+
+                <span  style="color: blue;margin-top: 3px;
+                margin-left: 30px;font-size: 15px;" (click)="copyTemplate(null,false)">
+                    Copy Template
+
+                </span>
+                <span  style="color: blue;margin-top: 3px;
+                margin-left: 10px;font-size: 15px;"
+                    (click)="AssignVessel('CREW_Contract_Template_Vessel_Assignment')">
+                    Assign Vessel
+
+            </span>
+            </div>
+            <div fxLayout="row">
+
+                <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                    <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                </button>
+                <mat-card-title style="margin-left: 5px;margin-top: 3px;margin-right: 12px;font-size: medium;font-weight: bold;">Clear Filter</mat-card-title>
+                <span>
+                    <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                  </span>
+
+            </div>
+        </div>
+        <div #TABLE>
+            <table [dataSource]="contractTemplatedataSource" mat-table matSort #table class="details-table">
+                <ng-container matColumnDef="Template_Type">
+                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                        mat-header-cell mat-sort-header>
+                        Template Type
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Template_Name">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Template Name
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Company_Name">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Company Name
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Vessel_Manager">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Vessel Manager
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Vessel_Flag">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Vessel Flag
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Action">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Action
+                    </th>
+                    <td *matCellDef="let row" class="actions-cell" mat-cell>
+                        <!-- -->
+                        <button mat-icon-button color="primary">
+                            <mat-icon class="icon-display">edit</mat-icon>
+                        </button>
+
+                        <button mat-icon-button color="warn">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon-display">info</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr *matHeaderRowDef="contractTemplatesvisibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: contractTemplatesvisibleColumns"
+                    class="clickable route-animations-elements" mat-row></tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                </tr>
+            </table>
+        </div>
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+
+
+
+    </fury-page-layout-content>
+</fury-page-layout>

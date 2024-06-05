@@ -1,0 +1,66 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+  <span>
+      <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;"/>Add New Survey/Certificate
+  </span>
+ 
+  <span fxLayoutAlign="end"  >
+      <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+  <form [formGroup]="certificateFormGroup">
+    <div mat-dialog-container style="padding-top: 20px;">
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Category Name</mat-label>
+          <mat-select formControlName="drpCategory_Name" aria-placeholder="Select Category">
+            <mat-option value="Kilogram">Documents</mat-option>
+            <mat-option value="Liters">Health</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Certificate Name</mat-label>
+          <input formControlName="txtCertificate_Name" matInput placeholder="Search by Certificate" type="text" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Tenure Duration</mat-label>
+          <mat-select formControlName="drpTenure_Duration">
+            <mat-option value="Kilogram">10 Months</mat-option>
+            <mat-option value="Liters">12 Months</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Tenure Window less</mat-label>
+          <input formControlName="txtTenure_Window_Less" matInput placeholder="(-)Months" type="text" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Tenure Window more</mat-label>
+          <input formControlName="txtTenure_Window_More" matInput placeholder="(+)Months" type="text" />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" >
+
+    <button mat-raised-button color="primary" class="save-btn">
+      Copy to Clipboard
+    </button>
+    <button mat-raised-button class="save-btn" color="primary">
+      SAVE
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+</div>

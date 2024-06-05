@@ -1,0 +1,42 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Import Timelapse Details
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+  <mat-dialog-content>
+    <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="200px">
+        <!-- Use a button to create a custom file upload button -->
+        <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+    
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <button type="button" mat-stroked-button class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                <label for="imageupload">Select File</label>
+            </button>
+            <div *ngIf="selectedFileName" fxFlex>
+                <span aria-placeholder="Select files">{{ selectedFileName }}</span>
+                <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+            </div>
+        </div>
+    
+        <!-- <button class="create"   mat-raised-button color="warn" class="filter-btn"
+        type="button"  style="background-color: #5BB318; border-color: #5BB318;">
+       Process
+      </button> -->
+      <button
+                mat-raised-button
+                color="primary"
+                style="background-color: #5BB318"
+                class="filter-btn"
+              >
+                Import
+              </button>
+    </div>
+    
+  </mat-dialog-content>
+  

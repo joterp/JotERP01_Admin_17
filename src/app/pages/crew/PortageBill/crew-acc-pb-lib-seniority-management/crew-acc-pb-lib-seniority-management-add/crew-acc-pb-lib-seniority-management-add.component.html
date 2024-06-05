@@ -1,0 +1,110 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Add Seniority
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+    <form [formGroup]="newSeniorityFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Salary Name</mat-label>
+                    <mat-select formControlName="drpSalary_Name">
+                        <mat-option value="Select">- Select -</mat-option>
+                        <mat-option value="Bangladesh_salary">Bangladesh - salary</mat-option>
+                        <mat-option value="Indian_Salary">Indian - Salary</mat-option>
+                        <mat-option value="Other_Crew_salary">Other Crew- salary</mat-option>
+                        <mat-option value="Salary_Taiwan">Salary_Taiwan</mat-option>
+                        <mat-option value="Standard_Salary">Standard Salary</mat-option>
+                        <mat-option value="USD_UnitedStatesDollar">USD - United States Dollar</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Nationality</mat-label>
+                    <mat-select formControlName="drpNationality">
+                        <mat-option value="Select">Select</mat-option>
+                        <mat-option value="Afghanistan">Afghanistan</mat-option>
+                        <mat-option value="Australia">Australia</mat-option>
+                        <mat-option value="Germany">Germany</mat-option>
+                        <mat-option value="Japan">Japan</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Vessel Flag</mat-label>
+                    <mat-select formControlName="drpVesselFlag">
+                        <mat-option value="select">Select</mat-option>
+                        <mat-option value="ASIA">ASIA</mat-option>
+                        <mat-option value="Hong_Kong">Hong Kong (PIL)</mat-option>
+                        <mat-option value="Indonesia">Indonesia</mat-option>
+                        <mat-option value="Tri_Colour">Tri Colour</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Vessel Type</mat-label>
+                    <mat-select formControlName="drpVesselType">
+                        <mat-option value="select">Select</mat-option>
+                        <mat-option value="Aframax_Tanker">Aframax Tanker</mat-option>
+                        <mat-option value="Anchor_Handling_Vessel">Anchor Handling Vessel</mat-option>
+                        <mat-option value="Landing_Craft">Landing Craft</mat-option>
+                        <mat-option value="Reefer_Vessel">Reefer Vessel</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Rank</mat-label>
+                <mat-select formControlName="drpRank">
+                    <mat-option value="Master">MST-Master</mat-option>
+                    <mat-option value="Trainee_Officer">MST-T - Trainee Master</mat-option>
+                    <mat-option value="Chief_Officer">C/OFF - Chief Officer</mat-option>
+                    <mat-option value="Officer">3/OFF - 3rd Officer</mat-option>
+                    <mat-option value="Junior_Officer">J/OFF - Junior Officer</mat-option>
+                </mat-select>
+            </mat-form-field>
+            </div>
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Year</mat-label>
+                    <input formControlName="txtYear" matInput placeholder="Search by Year"
+                        type="text" />
+                </mat-form-field>
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Amount</mat-label>
+                    <input formControlName="txtAmount" matInput placeholder="Search by Amount"
+                        type="text" />
+                </mat-form-field>
+            </div>
+
+
+
+        </div>
+    </form>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+        <button mat-raised-button color="primary" class="save-btn">
+            Save & Close
+        </button>
+        <button mat-raised-button class="save-btn" color="primary">
+            Save & Add New
+        </button>
+
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,192 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Assign/Unassign Evaluation Sheet To Vessel
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+  <mat-dialog-content>
+    <fury-page-layout-content [@fadeInUp] style="margin: 30px;" class="crew-assignvessel">
+        <mat-card-content fxLayout="row">
+            <mat-card fxFlex="50" class="sp-card-view2">
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                        <div fxLayout="row">
+
+                            <mat-card-title style="margin-top: 3px;
+                    margin-left: 6px; color:red; margin-left: 60px;font-family: Tahoma !important;
+                ">Un-Assigned Questions</mat-card-title>
+                        </div>
+
+
+                        <div fxLayout="row">
+
+
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                            <mat-card-title style="margin-left: 5px;margin-top: 3px;">Clear Filter</mat-card-title>
+                        </div>
+                    </div>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <div>
+                    
+                        <div class="search" fxLayout="row" fxLayoutAlign="space-between">
+                            <mat-form-field fxFlex appearance="fill">
+                            <mat-label>search...</mat-label><button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
+                            <input
+                                type="text"
+                            
+                                matInput
+                            />
+                            </mat-form-field>
+                        </div>
+                        <table style="width: 100%;
+                        text-align: center;    border-collapse: collapse;" >
+                            <tbody>
+                                <tr style="color: White;
+                                background-color: #1F497D;
+                               
+                                ">
+                                <th>
+                                    Vessel
+                                 </th>
+                                    <th>
+                                        <button mat-raised-button color="primary"
+                                            style="background-color: #5cb85c; margin: 6px;">
+                                           Assign All
+                                        </button>
+                                    </th>
+                                    
+                                    
+                               
+                                </tr>
+                                <tr>
+                                     <td class="border">Hull 1011</td>
+                                     <td class="border"><img src="../../../../assets/img/go_next_blue.png"  alt="excel" /></td>
+                                </tr>
+                                <tr>
+                                     <td class="border">Hull 1011</td>
+                                     <td class="border"><img src="../../../../assets/img/go_next_blue.png"  alt="excel" /></td>
+                                </tr>
+                                <tr>
+                                     <td class="border">Plump</td>
+                                     <td class="border"><img src="../../../../assets/img/go_next_blue.png"  alt="excel" /></td>
+                                </tr>
+                                <tr>
+                                     <td class="border">Alexa</td>
+                                     <td class="border"><img src="../../../../assets/img/go_next_blue.png"  alt="excel" /></td>
+                                </tr>
+                                <tr>
+                                     <td class="border">Yuhu Maru</td>
+                                     <td class="border"><img src="../../../../assets/img/go_next_blue.png"  alt="excel" /></td>
+                                </tr>
+                                
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </mat-card-content>
+
+            </mat-card>
+
+            <mat-card fxFlex="50" class="sp-card-view2">
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                        <div fxLayout="row">
+
+                            <mat-card-title style="margin-top: 3px;
+                    margin-left: 6px; color:green; margin-left: 60px;font-family: Tahoma !important;
+                ">Assigned Questions</mat-card-title>
+                        </div>
+
+
+                        <div fxLayout="row">
+
+
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                            <mat-card-title style="margin-left: 5px;margin-top: 3px;">Clear Filter</mat-card-title>
+                        </div>
+                    </div>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <div>
+                    
+                        <div class="search" fxLayout="row" fxLayoutAlign="space-between">
+                            <mat-form-field fxFlex appearance="fill">
+                            <mat-label>search...</mat-label><button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
+                            <input
+                                type="text"
+                            
+                                matInput
+                            />
+                            </mat-form-field>
+                        </div>
+                        <table style="width: 100%;
+                        text-align: center;    border-collapse: collapse;">
+                            <tbody>
+                                <tr style="color: White;
+                                background-color: #1F497D;
+                               
+                                ">
+                                    <th>
+                                        <button mat-raised-button color="primary"
+                                            style="background-color: #5cb85c; margin: 6px;">
+                                            Unassign All
+                                        </button>
+                                    </th>
+                                    
+                                    <th>
+                                       Vessel
+                                    </th>
+                               
+                                </tr>
+                                <tr>
+                                     <td class="border"><img src="../../../../assets/img/go_next_blue.png"  alt="excel" /></td>
+                                     <td class="border">VML Cosmos</td>
+                                </tr>
+                                <tr>
+                                     <td class="border"><img src="../../../../assets/img/go_next_blue.png"  alt="excel" /></td>
+                                     <td class="border">Yuhu Maru</td>
+                                </tr>
+
+                                <tr>
+                                     <td class="border"><img src="../../../../assets/img/go_next_blue.png"  alt="excel" /></td>
+                                     <td class="border">Jot Raavi</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="border"><img src="../../../../assets/img/go_next_blue.png"  alt="excel" /></td>
+                                    <td class="border">Stena A</td>
+                                </tr>
+
+                               
+
+                               
+
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </mat-card-content>
+
+            </mat-card>
+
+        </mat-card-content>
+
+
+
+

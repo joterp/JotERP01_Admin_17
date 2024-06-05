@@ -1,0 +1,185 @@
+.logo{
+    width: 20px;
+    width: 20px;
+}
+
+@import url('https://cdn.quilljs.com/1.2.6/quill.snow.css');
+
+.email-vendor{
+
+    .left-label {
+        width: 20%;
+        margin-top: 15px;
+    }
+    .mat-form-field-flex {
+        align-items: flex-start !important;
+      }
+    
+      .mat-form-field-infix {
+        border-top: 0.84375em solid transparent;
+      }
+}
+.attach-file{
+  display: flex;
+}
+
+.list-group{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    // overflow: scroll;
+    white-space: normal;
+    float: left;
+    width: 99%; 
+    word-wrap: break-word;
+    border: 1px solid #ccc;
+    overflow: scroll;
+    height: 700px;
+    
+  }
+  .list-group-item{
+    cursor: default;
+    padding: 4px 5px;
+    white-space: normal;
+    float: left;
+    width: 99%;
+    height: auto;
+    word-wrap: break-word;
+  }
+  
+  .list-group-item:hover{
+  background-color: #bbeaf3;
+  
+  }
+    .add-sp-btn {
+      height: 24px;
+      width: 24px;
+      
+      align-items: center;
+      display: flex;
+    }
+   
+    .upload-btn{
+        width: 113px;
+        height: 29px;
+        background: #008000;
+        color: #fff;
+        border-radius: 4px;
+      }
+      .upload-btn1{
+        width: 113px;
+        height: 29px;
+        background-color: #919191;
+        color: #fff;
+        // border: 1px solid #505050;
+        border-radius: 4px;
+      }
+      .Attachment {
+        // border: 1px solid gray;                           /// new added for attachment button
+        height: 65px;
+        text-align: center;
+       background-color: #F7F7F7;
+        padding-top: 20px;
+        padding-left: 15px;
+        margin-bottom: 10px;
+      }
+      
+      .usermenu{
+       
+      
+        margin: 10px;
+      }
+ 
+      .dialog-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .close-model {
+        cursor: pointer;
+      }
+      .emailsendbtn{
+        border: 1px solid grey;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #D1E9D2;
+      }
+      .sendbutton {
+        height: 57px;
+        width: 63px;
+        padding: 40;
+       color: white;
+      
+       
+        margin-top: 80px;
+    
+        margin-left: 35px;
+        background-color: #008000;
+      }
+      .logo {
+        width: 20px;
+        height: 20px;
+    }
+
+    .mat-tab-header {
+        border-left: 1px solid #918f8f;
+        border-top: 1px solid #918f8f;
+        border-right: 1px solid #918f8f;
+        color: #fff!important;
+        text-align: center!important;
+        opacity: 1;
+        background-color: #1f497d;
+      }
+    
+    .mat-tab-label {
+        // min-width: 25px !important;
+        // padding: 5px;
+        // background-color: #7e8f99;
+  
+        color: #fff;
+        font-family: Tahoma !important;
+        // font-weight: 700;
+      }
+  
+      // .mat-tab-label .mat-tab-label-content {
+      //   margin-bottom: 12px;
+  
+      // }        
+      /* Styles for the active tab label */
+      .mat-tab-label.mat-tab-label-active {
+        background: orange;
+        color: #000;
+        font-family: Tahoma !important;
+        // border-left: 1px solid #918f8f;
+        // border-top: 1px solid #918f8f;
+  
+        opacity: 1;
+      }
+      .mat-tab-label.mat-tab-label {
+        opacity: 1;
+      }
+      
+      .remove-border-bottom .mat-tab-header {
+        border-bottom: none;
+      }
+  
+      .mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label {
+        border-left: 1px solid #8b8b8b;
+        border-bottom: 1px solid #8b8b8b;
+  
+  
+      }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

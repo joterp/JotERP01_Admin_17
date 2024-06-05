@@ -1,0 +1,179 @@
+<fury-page-layout mode="card" class="crewindexnewedit-view">
+
+    <table style="background-color: #F0F0F0;width: 100%;">
+        <tr>
+            <td style="width: 10%"><img class="crew-profile-icon" src="../../../../assets/img/Crew/HRM_profile_icon.png"></td>
+            <td style="width:1%"></td>
+            <td style="width: 89%;"></td>
+        </tr>
+    </table>
+
+          <table style="width: 100%;">
+            <tr>
+                <td style="width: 10%;vertical-align: top;">
+                    <mat-nav-list class="nav-list">
+                        <div class="nav-item">
+                          <a class="nav-link" mat-list-item [routerLink]="['Contacts_Details']" routerLinkActive="active-list-item" [routerLinkActiveOptions]="{ exact: true }">
+                            <img class="crew-icon" src="../../../../assets/img/Crew/HRM_Profile.png">
+                            Contacts Details
+                          </a>
+                        </div>
+                        <div class="nav-item">
+                          <a class="nav-link" mat-list-item [routerLink]="['NOK_Details']" routerLinkActive="active-list-item">
+                            <img class="crew-icon" src="../../../../assets/img/Crew/Nok.png">
+                            NOK Details
+                          </a>
+                        </div>
+                        <div class="nav-item">
+                          <div></div>
+                          <a class="nav-link" mat-list-item [routerLink]="['Last_Employer']" routerLinkActive="active-list-item">
+                            <img class="crew-icon" src="../../../../assets/img/Crew/HRM_Attandnc.png">
+                            Last Employer
+                          </a>
+                        </div>
+                        <div class="nav-item">
+                          <a class="nav-link" mat-list-item [routerLink]="['Career_History']" routerLinkActive="active-list-item">
+                            <img class="crew-icon" src="../../../../assets/img/Crew/HRM_Career.png">
+                            Career History
+                          </a>
+                        </div>
+                        <div class="nav-item">
+                          <a class="nav-link" mat-list-item [routerLink]="['Academic_Records']" routerLinkActive="active-list-item">
+                            <img class="crew-icon" src="../../../../assets/img/Crew/HRM_Acadmic.png">
+                            Acadamic Records
+                          </a>
+                        </div>
+                        <div class="nav-item">
+                          <a class="nav-link" mat-list-item [routerLink]="['Uniform_Details']" routerLinkActive="active-list-item">
+                            <img class="crew-icon" src="../../../../assets/img/Crew/HRM_Claim.png">
+                            Uniform Details
+                          </a>
+                        </div>
+                        <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Passport_And_Seaman_Book']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/Passport.png">
+                              Passport And Seaman Book
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Documents']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/HRM_Doc.png">
+                              Documents
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Interviews']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/HRM_Interview.png">
+                              Interviews
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Voyages']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/Project.png">
+                              Voyages
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Pay_Slips']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/details.png">
+                              Pay Slips
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Evaluations']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/Evaluation.png">
+                              Evaluations
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Feedback_Remark']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/HRM_Feedback.png">
+                              Feedback/Remarks
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Bank_Account_Details']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/Bank.png">
+                              Bank Account Details
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Vsl_Insp_findings']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/Trainings.png">
+                              Vsl Insp findings
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Internal_Audit']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/audit.png">
+                              Internal Audit
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Crew_Complaints']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/Complaint.png">
+                              Complaints
+                            </a>
+                          </div><div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Crew_Queries']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/queries.png">
+                              Queries
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Medical_History']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/Medical.png">
+                              Medical History
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Travel_History']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/HRM_Travel.png">
+                              Travel History
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Office_Training']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/Training.png">
+                              Office Training
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Onboard_Training']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/Training.png">
+                              Onboard Training
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Security_Flag_Permit']" routerLinkActive="active-list-item">
+                                <img class="crew-icon" src="../../../../assets/img/Crew/permit.png">
+                              Security - Falg Permit
+                            </a>
+                          </div>
+                          <div class="nav-item">
+                            <a class="nav-link" mat-list-item [routerLink]="['Additional_Traits']" routerLinkActive="active-list-item">
+                              <img class="crew-icon" src="../../../../assets/img/Crew/traits.png">
+                              Additional Traits
+                            </a>
+                          </div>
+                      </mat-nav-list>
+                </td>
+
+
+                <td style="width: 0.5%;vertical-align: top;"></td>
+
+                <td style="width: 89.5%;vertical-align: top;border: 0.5px solid #0099FF !important;
+                border-radius: 12px;">
+                   <router-outlet></router-outlet>
+                </td>
+            </tr>
+          </table>
+
+           
+          
+
+       
+ 
+       
+
+</fury-page-layout>

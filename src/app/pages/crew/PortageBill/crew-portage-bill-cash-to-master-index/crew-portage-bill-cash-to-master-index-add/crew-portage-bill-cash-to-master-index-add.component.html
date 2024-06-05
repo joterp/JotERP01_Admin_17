@@ -1,0 +1,283 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+    <fury-page-layout mode="card" class="CashToMasterIndexAdd-view">
+
+        <div>
+            <form [formGroup]="CashToMasterIndexAddFormGroup">
+
+                <div class="style1">Cash To Master Details</div>
+
+                <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                    <div fxFlex="48">
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Vessel Name</mat-label>
+                                <mat-select formControlName="drpVessel_Name">
+                                </mat-select>
+                                <mat-error
+                                    *ngIf="CashToMasterIndexAddFormGroup.get('drpVessel_Name').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Requested Port</mat-label>
+                                <mat-select formControlName="drpRequested_Port">
+                                </mat-select>
+                                <mat-error
+                                    *ngIf="CashToMasterIndexAddFormGroup.get('drpRequested_Port').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Request Date</mat-label>
+                                <input matInput formControlName="Request_Date" [matDatepicker]="pickerRequest_Date" />
+                                <mat-datepicker-toggle matSuffix [for]="pickerRequest_Date"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerRequest_Date></mat-datepicker>
+
+                                <mat-error
+                                    *ngIf="CashToMasterIndexAddFormGroup.get('Request_Date').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+                    <div fxFlex="48">
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Vessel Remarks</mat-label>
+                                <textarea matInput formControlName="txtVessel_Remarks" rows="7"></textarea>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="style1">BOW Details</div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-bottom: 15px;">
+
+                    <div fxFlex>
+                        <table class="roundedTable">
+                            <thead>
+                                <tr>
+                                    <th class="style-th">Staff Code</th>
+                                    <th class="style-th">Name </th>
+                                    <th class="style-th">Rank </th>
+                                    <th class="style-th">EOC </th>
+                                    <th class="style-th">Allotment </th>
+                                    <th class="style-th">BOW Amount </th>
+                                    <th class="style-th">BOW Due </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let d of BOW_Details">
+                                    <td>{{d.Staff_Code}}</td>
+                                    <td>{{d.Name}}</td>
+                                    <td>{{d.Rank}}</td>
+                                    <td>{{d.EOC}}</td>
+                                    <td><input class="input-style" type="number" value="{{d.Allotment}}"/></td>
+                                    <td>{{d.BOW_Amount}}</td>
+                                    <td>{{d.BOW_Due}}</td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="style1">Denominations</div>
+
+                <div fxLayout="row" fxLayoutAlign="start">
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Denomination Currency</mat-label>
+                            <mat-select formControlName="drpDenomination_Currency">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        </div>
+                        <div fxFlex></div>
+                        </div>
+
+
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-bottom: 15px;">
+
+                            <div fxFlex>
+                                <table class="roundedTable">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="4" class="style2-th">Requested</th>
+                                            <th rowspan="2" class="style2-th"></th>
+                                            <th colspan="2" class="style2-th">Approved</th>                                        
+                                        </tr>
+                                        <tr>
+                                            <th class="style2-th">Currency</th>
+                                            <th class="style2-th">Note Type</th>
+                                            <th class="style2-th">Notes</th>     
+                                            <th class="style2-th">Amount</th> 
+                                            <th class="style2-th">Notes</th>   
+                                            <th class="style2-th">Amounts</th>                                  
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let d of BOW_Denominations">
+                                            <td style="text-align: center;">{{d.Currency}}</td>
+                                            <td style="text-align: center;">{{d.Note_Type}}</td>
+                                            <td style="text-align: center;"><input class="input-style2" type="number" value="{{d.Requested_Notes}}"/></td>
+                                            <td style="text-align: center;">{{d.Amount}}</td>
+                                            <td style="text-align: center;">{{d.Blank}}</td>
+                                            <td style="text-align: center;"><input class="input-style3" type="number" value="{{d.Approved_Notes}}"/></td>
+                                            <td style="text-align: center;">{{d.Amounts}}</td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+        
+                        </div>
+
+                        <div class="style1">Request Details</div>
+
+                        <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                            <div fxFlex="48">
+        
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>BOW Required</mat-label>
+                                        <input type="text" formControlName="txtBOW_Required" matInput />
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Master Cash in Hand</mat-label>
+                                        <input type="text" formControlName="txtMaster_Cash" matInput />
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Requested Amount</mat-label>
+                                        <input type="text" formControlName="txtRequested_Amount" matInput />
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Requested Amount (Calculated)</mat-label>
+                                        <input type="text" formControlName="txtRequested_Amount_Calculated" matInput />
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Approved Amount</mat-label>
+                                        <input type="text" formControlName="txtApproved_Amount" matInput />
+                                    </mat-form-field>
+                                </div>
+        
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Date Approved</mat-label>
+                                        <input matInput formControlName="Date_Approved" [matDatepicker]="pickerDate_Approved" />
+                                        <mat-datepicker-toggle matSuffix [for]="pickerDate_Approved"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerDate_Approved></mat-datepicker>
+        
+                                        <mat-error
+                                            *ngIf="CashToMasterIndexAddFormGroup.get('Request_Date').hasError('required')">
+                                            Required
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+        
+                            </div>
+        
+                            <div fxFlex="48">
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Delivery Port</mat-label>
+                                        <mat-select formControlName="drpDelivery_Port">
+                                        </mat-select>                                   
+                                    </mat-form-field>
+                                </div>
+
+                                <div>
+                                    <div style="display: flex;margin: 10px;">
+                                        <mat-label>By Hand</mat-label>
+                                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioBy_Hand" style="margin-top: 0px;
+                                                    margin-left: 20px;">
+                                          <mat-radio-button value="1"
+                                            [checked]="CashToMasterIndexAddFormGroup.get('radioBy_Hand').value == 1">
+                                            <label [class.active-label]="CashToMasterIndexAddFormGroup.get('radioBy_Hand').value == 1">Yes</label>
+                                            </mat-radio-button>
+                                          <mat-radio-button value="0"
+                                            [checked]="CashToMasterIndexAddFormGroup.get('radioBy_Hand').value == 0">
+                                            <label [class.active-label]="CashToMasterIndexAddFormGroup.get('radioBy_Hand').value == 0">No</label>
+                                            </mat-radio-button>
+                                        </mat-radio-group>
+                                      </div>
+                                </div>
+
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Agent</mat-label>
+                                        <mat-select formControlName="drpAgent">
+                                        </mat-select>                                   
+                                    </mat-form-field>
+                                </div>
+
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Approved Amount</mat-label>
+                                        <input type="text" formControlName="txtApproved_Amount" matInput />
+                                    </mat-form-field>
+                                </div>
+
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Office Remarks</mat-label>
+                                        <textarea matInput formControlName="txtOffice_Remarks" rows="7"></textarea>
+                                    </mat-form-field>
+                                </div>
+        
+                            </div>
+        
+                        </div>
+
+            </form>
+
+        </div>
+
+    </fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!CashToMasterIndexAddFormGroup.valid ? '' : 'save-btn']"
+        [disabled]="!CashToMasterIndexAddFormGroup.valid">
+        Save & Close
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

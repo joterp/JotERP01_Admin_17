@@ -1,0 +1,176 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    New Requistion
+</div>
+
+
+<mat-dialog-content style="height: 100% !important" class="edit-new-requisition">
+    <form [formGroup]="MeetingIssueFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" [ngStyle]="{ 'margin-bottom': '10px' }">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel Name</mat-label>
+                <mat-select formControlName="drpVessel_Name">
+                    <mat-option>
+                    </mat-option>
+
+                    <!-- <mat-option
+                  *ngFor="let b of filtered_appointment | async"
+                  [value]="b.PARAMETER_GUID"
+                >
+                  {{ b.PARAMETER_NAME }}
+                </mat-option> -->
+                </mat-select>
+                <mat-error *ngIf="MeetingIssueFormGroup.get('drpVessel_Name').hasError('required')"> Vessel Name is
+                    equired</mat-error>
+            </mat-form-field>
+
+            <div fxFlex>
+
+            </div>
+        </div>
+
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" [ngStyle]="{ 'margin-bottom': '10px' }">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Meeting Date</mat-label>
+                <input matInput formControlName="meeting_date" [matDatepicker]="pickermeetingdate" />
+                <mat-datepicker-toggle matSuffix [for]="pickermeetingdate"></mat-datepicker-toggle>
+                <mat-datepicker #pickermeetingdate></mat-datepicker>
+
+                <mat-error *ngIf="MeetingIssueFormGroup.get('meeting_date').hasError('required')">
+                    Meeting Date is required
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Priority</mat-label>
+                <mat-select formControlName="drpPriority">
+                    <mat-option>
+
+                    </mat-option>
+
+                    <!-- <mat-option
+                    *ngFor="let b of filtered_port | async"
+                    [value]="b.PORT_GUID"
+                  >
+                    {{ b.Port_Name }}
+                  </mat-option> -->
+                </mat-select>
+                <mat-error *ngIf="MeetingIssueFormGroup.get('drpPriority').hasError('required')">
+                    Priority is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" [ngStyle]="{ 'margin-bottom': '10px' }">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Office Dept</mat-label>
+                <mat-select formControlName="drpOffice_Dept">
+                    <mat-option>
+
+                    </mat-option>
+
+                    <!-- <mat-option
+              *ngFor="let b of filtered_port | async"
+              [value]="b.PORT_GUID"
+            >
+              {{ b.Port_Name }}
+            </mat-option> -->
+                </mat-select>
+                <mat-error *ngIf="MeetingIssueFormGroup.get('drpOffice_Dept').hasError('required')">
+                    Office Dept is required
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>PIC-AR</mat-label>
+                <mat-select formControlName="drpPIC_AR">
+                    <mat-option>
+
+                    </mat-option>
+
+                    <!-- <mat-option
+              *ngFor="let b of filtered_port | async"
+              [value]="b.PORT_GUID"
+            >
+              {{ b.Port_Name }}
+            </mat-option> -->
+                </mat-select>
+                <mat-error *ngIf="MeetingIssueFormGroup.get('drpPIC_AR').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" [ngStyle]="{ 'margin-bottom': '10px' }">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Title</mat-label>
+                <input type="text" formControlName="txtTitle" matInput />
+                <mat-error *ngIf="MeetingIssueFormGroup.get('txtTitle').hasError('required')">
+                    Title is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" [ngStyle]="{ 'margin-bottom': '10px' }">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="txtDescription" placeholder=""></textarea>
+                <mat-error *ngIf="MeetingIssueFormGroup.get('txtDescription').hasError('required')">
+                    Title is required
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" [ngStyle]="{ 'margin-bottom': '10px' }">
+            <mat-label>I-CAR</mat-label>
+            <mat-radio-group
+              fxLayout="row"
+              fxLayoutGap="16px"
+              formControlName="radioI_CAR"
+              style="margin-top: 7px;"
+            >
+              <mat-radio-button
+                value="1"
+                [checked]="MeetingIssueFormGroup.get('radioI_CAR').value == 1"
+                >Park</mat-radio-button
+              >
+              <mat-radio-button
+                value="0"
+                [checked]="MeetingIssueFormGroup.get('radioI_CAR').value == 0"
+                >Inform</mat-radio-button
+              >
+              <mat-radio-button
+              value="2"
+              [checked]="MeetingIssueFormGroup.get('radioI_CAR').value == 2"
+              >Consult</mat-radio-button
+            >
+            </mat-radio-group>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" *ngIf="ErrorMessage">
+            <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+        </div>
+    </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" 
+    [ngClass]="[!MeetingIssueFormGroup.valid ? '' : 'save-btn']" [disabled]="!MeetingIssueFormGroup.valid">
+    SAVE & CLOSE
+  </button>
+  <button mat-raised-button color="primary" class="save-btn" [disabled]="!MeetingIssueFormGroup.valid"
+>
+    SAVE & ADD NEW
+  </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>

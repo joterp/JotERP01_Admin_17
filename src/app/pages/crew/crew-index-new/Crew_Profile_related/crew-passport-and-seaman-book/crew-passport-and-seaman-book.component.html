@@ -1,0 +1,176 @@
+
+<div class="crew-PassportAndSeaman_Book-view">
+
+    <table style="width: 100%;">
+       <tr>
+           <td class="passportandseamanbook-td">
+              <b>Passport & Seaman Book</b> 
+           </td>
+       </tr>
+   
+       <tr>
+       <td>
+          
+               <div class="actions-area">
+                   <table style="display: flex;">
+                       <tr>
+                           <td>
+                               <div fxLayout="row">
+                                   <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                       class="add-approve-btn save-btn" (click)="AddFormData({}, 'Add Passport/Seaman Book', 'Add_Passport_Seaman_Book')"
+                                        >
+                                        
+                                       <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                   </button>
+                                   <span style="margin-top: 3px;
+                                   margin-left: 6px;font-size: 15px;">Add Passport/Seaman Book</span>
+                               </div>
+                           </td>
+                       </tr>
+       
+       
+                   </table>
+   
+                   <!-- <div class="content-loader">
+                   <mat-progress-spinner
+                     mode="indeterminate"
+                     color="accent"
+                   ></mat-progress-spinner>
+                 </div> -->
+               </div>
+       
+               <div #TABLE>
+                <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                 
+              
+                  <ng-container matColumnDef="Type">
+                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Type</th>
+          
+                  </ng-container>
+          
+                  <ng-container matColumnDef="Number">
+                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Number#</th>
+          
+                  </ng-container>
+                  <ng-container matColumnDef="Country">
+                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Country</th>
+          
+                  </ng-container>
+                  <ng-container matColumnDef="Place">
+                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Place</th>
+          
+                  </ng-container>
+                  <ng-container matColumnDef="Date">
+                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Date</th>
+          
+                  </ng-container>
+               
+                  <ng-container matColumnDef="header-row-first-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                      Document
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-second-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="3" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                      Issued
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-third-group">
+                      <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                          border-bottom: 1px solid #ddd;
+                          text-align: center;">
+                        Expiry Date 
+                      </th>
+                    </ng-container>
+            
+          
+                  <ng-container matColumnDef="header-row-fourth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                        Show To Travel Agent?
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-fifth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                    
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-sixth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                      border-bottom: 1px solid #ddd;
+                      text-align: center;">
+                    Attachment
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-seventh-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                     Upload Date
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-eighth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                     
+                    </th>
+                  </ng-container>
+          
+                  <ng-container matColumnDef="header-row-nineth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                     
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-tenth-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                   
+                    </th>
+                  </ng-container>
+              
+          
+                  <tr mat-header-row
+                    *matHeaderRowDef="['header-row-first-group', 'header-row-second-group', 'header-row-third-group', 'header-row-fourth-group', 'header-row-fifth-group',
+                    'header-row-sixth-group', 'header-row-seventh-group', 'header-row-eighth-group', 'header-row-nineth-group', 'header-row-tenth-group']"
+                    style="height:32px">
+                  </tr>
+          
+          
+          
+                  <tr *matHeaderRowDef="visibleColumns" mat-header-row style="height:32px"></tr>
+                  <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                  </tr>
+                </table>
+              </div>
+
+       </td>
+       </tr>
+    </table>
+   
+   
+   </div>
+   
+   

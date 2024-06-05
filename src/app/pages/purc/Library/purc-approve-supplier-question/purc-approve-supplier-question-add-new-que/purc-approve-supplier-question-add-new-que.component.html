@@ -1,0 +1,85 @@
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle >
+  <span style="font-size: 20px;">Add New Question </span> 
+  </div>
+  
+<mat-dialog-content style="height: 100% !important" class="supplier-ques-modal">
+  <form [formGroup]="newQueFormGroup"   [ngStyle]="{ 'margin-top': '7px' }">
+   
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+            <mat-label>Question Title</mat-label>
+            <input formControlName="txtQuestion_Title" matInput placeholder="Search by Question Title" type="text" />
+          </mat-form-field>
+      </div>
+
+
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Question Details</mat-label>
+          <textarea
+            matInput
+            formControlName="txtQuestion_Details"
+            placeholder="Question Details"
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+            <mat-label>Question Weightage</mat-label>
+            <input formControlName="txtQuestion_Weightage" matInput placeholder="Search by Question Title" type="text" />
+            <mat-hint align="start" style="color: red;"> Enter question weightage ,Ex: 1 - Less Important,3 - Most Important </mat-hint>
+          </mat-form-field>
+      </div>
+     
+     
+   
+      <div fxLayout="column" fxLayout.gt-sm="row" style="margin-top: 10px;">
+        <mat-form-field fxFlex appearance="fill">
+            <mat-label>Min Pass marks</mat-label>
+            <input formControlName="txtMin_Pass_marks" matInput placeholder="Search by Question Title" type="text" />
+          </mat-form-field>
+         
+       
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+            <mat-label>Scope</mat-label>
+            <mat-select formControlName="drpScope">
+              <mat-option value="Kilogram">Airlines</mat-option>
+              <mat-option value="Liters">Bunkers</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="drpCategory">
+              <mat-option value="Kilogram">Areas</mat-option>
+              <mat-option value="Liters">Pre-Sales</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+      
+   
+  </form>
+</mat-dialog-content>
+
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+    <button mat-raised-button color="primary" class="save-btn">
+     Save & Close
+    </button>
+    <button mat-raised-button class="save-btn" color="primary">
+      Save & Add New
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+
+
+

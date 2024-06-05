@@ -1,0 +1,82 @@
+fury-crew-contacts-details {
+
+    .crew-contactsdetails-view {
+
+        .contacts-title {
+            padding: 8px 8px 3px 8px;
+            background-color: #0099FF;
+            color: White;
+            font-size: 13px;
+            border-radius: 5px 5px 0px 0px;
+        }
+
+        .contacts-alert-title {
+            padding: 8px 8px 3px 8px;
+            background-color: tomato;
+            color: White;
+            font-size: 13px;
+            border-radius: 5px 5px 0px 0px;
+        }
+
+        .crew-profile-table {
+            background-color: #F0F0F0;
+            border: 0.5px solid #0099FF;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            // padding-top: 10px;
+            // padding-bottom: 20px;
+        }
+
+        .crew-profile-image {
+            height: 180px;
+            width: 150px;
+        }
+
+        .crew-info {
+            font-family: tahoma;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .crew-td2 {
+            padding-top: 23px;
+            padding-bottom: 20px;
+        }
+
+        .crew-info-td2 {
+            font-family: tahoma;
+            font-size: 13px;
+        }
+
+        .crew-info-alerts {
+            font-family: tahoma;
+            font-size: 13px;
+            background: red;
+            color: #fff;
+            padding: 2px 5px 2px 5px;
+            border-radius: 10px;
+        }
+        .crew-edit-info-icon{
+            cursor: pointer;
+        }
+
+        .crew-info-alerts-td1 {
+            font-family: tahoma;
+
+            font-size: 15px;
+            color: gray;
+        }
+
+        .upload-btn-crew {
+            margin-top: 6px;
+            background: grey;
+            color: #fff;
+            border: 1px solid black;
+            border-bottom: 1px solid grey;
+            padding: 3px;
+        }
+    }
+
+}

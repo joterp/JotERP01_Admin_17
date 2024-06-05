@@ -1,0 +1,215 @@
+
+
+<fury-page-layout mode="card" class="HSEQ-InspectionReference">
+ 
+    <fury-page-layout-header>
+      
+      <form [formGroup]="inspectionReferenceFormGroup" >
+        
+          <h3 class="unit-packing">
+              
+            <span class="first-letter">I</span>NSPECTION
+            <span class="first-letter">R</span>EFERENCE
+          
+          </h3>
+      
+        
+        <div class="filter-area">
+          <div fxLayout="row" fxLayoutAlign="start">
+  
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Manual</mat-label>
+                    <mat-select formControlName="drpManual" >
+                      <mat-option value="select">SELECT</mat-option>
+                      <mat-option value="Company_Policies">Company Policies</mat-option>
+                      <mat-option value="CDI">CDI</mat-option>
+                      <mat-option value="TMSA">TMSA</mat-option>
+                      <mat-option value="SIRE">SIRE</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Chapter No</mat-label>
+                <input formControlName="txtChapter_No" matInput placeholder="Search by Chapter Number" type="text" />
+              </mat-form-field>
+
+
+            </div>
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Risk Categorization</mat-label>
+                    <mat-select formControlName="drpRisk_Category" >
+                      <mat-option value="select">SELECT</mat-option>
+                      <mat-option value="5">5</mat-option>
+                      <mat-option value="4">4</mat-option>
+                      <mat-option value="3">3</mat-option>
+                      <mat-option value="2">2</mat-option>
+                      <mat-option value="1">1</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Title</mat-label>
+                <input formControlName="txtTitle" matInput placeholder="Search by Title" type="text" />
+              </mat-form-field>
+
+
+            </div>
+
+
+
+  
+
+            <div fxFlex>
+              <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="drpStatus">
+                  <mat-option value="">Show Active</mat-option>
+                  <mat-option value="1">Show Deleted</mat-option>
+                  <mat-option value="0">Show All</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+  
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                <button
+                mat-raised-button
+                color="primary"
+               style="background-color: #5cb85c;"
+                class="filter-btn"
+              
+              >
+                Search
+              </button>
+              </div>
+  
+              <div>
+                <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                  type="button" (click)="clearFilter()">
+                  Clear
+                </button>
+              </div>
+            </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+      <div class="actions-area" >
+      
+        <div fxLayout="row">
+          <button mat-mini-fab color="primary" [matTooltip]="'Add Inspection Reference '"
+              class="add-approve-btn save-btn"   (click)="saveInspectionReference(null,false)">
+              <mat-icon class="add-approve-btn-icon">add</mat-icon>
+          </button>
+          <span style="margin-top: 3px;
+          margin-left: 6px;font-size: 15px;"> Add New Inspection Reference</span>
+      </div>
+        <div>
+            <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+          <span>
+            <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+            <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+            <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+          </span>
+        </div>
+             
+      </div>
+  
+      <div #TABLE>
+        <table [dataSource]="inspectionRefernecedataSource" mat-table matSort #table class="details-table">
+          
+  
+          <ng-container matColumnDef="ID">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          ID
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Manual">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         Manual
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Chapter_Name">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         Chapter Name
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Title">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         Title
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Best_Practice">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         Best Practice
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Risk_Categorization">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         Risk Categorization
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+    
+    
+    
+    
+    
+        
+          <ng-container matColumnDef="Action">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+              Action
+            </th>
+            <td *matCellDef="let row" class="actions-cell" mat-cell>
+              <!-- -->
+              <button mat-icon-button color="primary">
+                <mat-icon class="icon-display">edit</mat-icon>
+              </button>
+  
+              <button mat-icon-button color="warn" >
+                <mat-icon>close</mat-icon>
+              </button>
+              <button mat-icon-button  >
+                <mat-icon class="icon-display">info</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+  
+          <tr *matHeaderRowDef="inspectionReferencevisibleColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: inspectionReferencevisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

@@ -1,0 +1,283 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>
+    </span>
+    New Requistion</div>
+
+
+    <mat-dialog-content style="height: 100% !important" class="edit-new-requisition">
+        <form [formGroup]="NewRequisitionFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+          <div
+            fxLayout="column"
+            fxLayout.gt-sm="row"
+            fxLayoutGap.gt-sm="24px"
+            [ngStyle]="{ 'margin-bottom': '10px' }"
+          >
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Requisition Title</mat-label>
+              <input type="text" formControlName="txtRequistion_Title" matInput />
+              
+            </mat-form-field>
+      
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Vessel</mat-label>
+              <mat-select formControlName="drpVessel">
+                <mat-option>
+                </mat-option>
+      
+                <!-- <mat-option
+                  *ngFor="let b of filtered_appointment | async"
+                  [value]="b.PARAMETER_GUID"
+                >
+                  {{ b.PARAMETER_NAME }}
+                </mat-option> -->
+              </mat-select>
+              <mat-error
+                *ngIf="NewRequisitionFormGroup.get('drpVessel').hasError('required')"
+                > Vessel Name is required</mat-error
+              >
+            </mat-form-field>
+          </div>
+
+
+          <div
+            fxLayout="column"
+            fxLayout.gt-sm="row"
+            fxLayoutGap.gt-sm="24px"
+            [ngStyle]="{ 'margin-bottom': '10px' }"
+          >
+            
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Dept Type</mat-label>
+              <mat-select formControlName="drpDept_Type">
+                <mat-option>
+                
+                </mat-option>
+      
+                <!-- <mat-option
+                  *ngFor="let b of filtered_port | async"
+                  [value]="b.PORT_GUID"
+                >
+                  {{ b.Port_Name }}
+                </mat-option> -->
+              </mat-select>
+              <mat-error *ngIf="NewRequisitionFormGroup.get('drpDept_Type').hasError('required')">
+                Dept Type is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Department</mat-label>
+                <mat-select formControlName="drpDepartment">
+                  <mat-option>
+                  
+                  </mat-option>
+        
+                  <!-- <mat-option
+                    *ngFor="let b of filtered_port | async"
+                    [value]="b.PORT_GUID"
+                  >
+                    {{ b.Port_Name }}
+                  </mat-option> -->
+                </mat-select>
+                <mat-error *ngIf="NewRequisitionFormGroup.get('drpDepartment').hasError('required')">
+                  Department is required
+                </mat-error>
+              </mat-form-field>
+          </div>
+
+          <div
+          fxLayout="column"
+          fxLayout.gt-sm="row"
+          fxLayoutGap.gt-sm="24px"
+          [ngStyle]="{ 'margin-bottom': '10px' }"
+        >
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Requisition Type</mat-label>
+          <mat-select formControlName="drpRequisition_Type">
+            <mat-option>
+            
+            </mat-option>
+  
+            <!-- <mat-option
+              *ngFor="let b of filtered_port | async"
+              [value]="b.PORT_GUID"
+            >
+              {{ b.Port_Name }}
+            </mat-option> -->
+          </mat-select>
+          <mat-error *ngIf="NewRequisitionFormGroup.get('drpRequisition_Type').hasError('required')">
+              Requisition Type is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Urgency</mat-label>
+          <mat-select formControlName="drpUrgency">
+            <mat-option>
+            
+            </mat-option>
+  
+            <!-- <mat-option
+              *ngFor="let b of filtered_port | async"
+              [value]="b.PORT_GUID"
+            >
+              {{ b.Port_Name }}
+            </mat-option> -->
+          </mat-select>
+         
+        </mat-form-field>
+       </div>
+
+       <div
+          fxLayout="column"
+          fxLayout.gt-sm="row"
+          fxLayoutGap.gt-sm="24px"
+          [ngStyle]="{ 'margin-bottom': '10px' }"
+       
+     >
+
+     <mat-form-field fxFlex appearance="fill">
+         <mat-label>Delivery Port</mat-label>
+         <mat-select formControlName="drpDelivery_Port">
+           <mat-option>
+           
+           </mat-option>
+ 
+           <!-- <mat-option
+             *ngFor="let b of filtered_port | async"
+             [value]="b.PORT_GUID"
+           >
+             {{ b.Port_Name }}
+           </mat-option> -->
+         </mat-select>
+         <mat-error *ngIf="NewRequisitionFormGroup.get('drpDelivery_Port').hasError('required')">
+             Delivery Port is required
+         </mat-error>
+       </mat-form-field>
+
+       <mat-form-field fxFlex appearance="fill">
+         <mat-label>Delivery Date</mat-label>
+         <input
+           matInput
+           formControlName="delivery_date"
+           [matDatepicker]="pickerdeliverydate"
+         />
+         <mat-datepicker-toggle
+           matSuffix
+           [for]="pickerdeliverydate"
+         ></mat-datepicker-toggle>
+         <mat-datepicker #pickerdeliverydate></mat-datepicker>
+
+         <mat-error *ngIf="NewRequisitionFormGroup.get('delivery_date').hasError('required')">
+             Delivery Date is required
+         </mat-error>
+       </mat-form-field>
+        
+
+     </div>
+
+     
+     <div
+          fxLayout="column"
+          fxLayout.gt-sm="row"
+          fxLayoutGap.gt-sm="24px"
+          [ngStyle]="{ 'margin-bottom': '10px' }"
+   >
+   <mat-form-field fxFlex appearance="fill">
+     <mat-label>Voyage /Job Number</mat-label>
+     <mat-select formControlName="drpVoyage_Number">
+       <mat-option>
+       
+       </mat-option>
+
+       <!-- <mat-option
+         *ngFor="let b of filtered_port | async"
+         [value]="b.PORT_GUID"
+       >
+         {{ b.Port_Name }}
+       </mat-option> -->
+     </mat-select>
+     <mat-error *ngIf="NewRequisitionFormGroup.get('drpDelivery_Port').hasError('required')">
+         Voyage/Hob Number is required
+     </mat-error>
+   </mat-form-field>
+
+
+   <div fxFlex>
+   <mat-label>Attachment</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <!-- <button
+   mat-button
+   class="custom-file-upload-btn"
+   (click)="fileInput.click()"
+   >
+
+   <input
+   style="display: none;"
+   type="file" id="imageupload"
+   #fileInput
+   (change)="onFileSelected($event)"
+   accept=".pdf,.doc,.docx,.jpg,.png"
+   />
+   </button> -->
+
+   <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+     accept=".pdf,.doc,.docx,.jpg,.png" />
+
+   <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+     <label for="imageupload">
+       Upload </label>
+   </button>
+   <div *ngIf="selectedFileName" fxFlex>
+     <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+     <button (click)="removeUploadedFileadditem()"  mat-button style="color: #5BB318;">Remove</button>
+   </div>
+ </div>
+     </div>
+
+     <div
+     fxLayout="column"
+     fxLayout.gt-sm="row"
+     fxLayoutGap.gt-sm="24px"
+     [ngStyle]="{ 'margin-bottom': '10px' }"
+     
+     >
+       <mat-form-field fxFlex appearance="fill">
+         <mat-label>Remarks</mat-label>
+         <textarea
+           matInput
+           formControlName="txtRemarks"
+           placeholder="Remarks"
+         ></textarea>
+       </mat-form-field>
+     </div>
+      
+          <div
+            fxLayout="column"
+            fxLayout.gt-sm="row"
+            fxLayoutGap.gt-sm="24px"
+            *ngIf="ErrorMessage"
+          >
+            <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+          </div>
+        </form>
+      </mat-dialog-content>
+
+      
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button
+          mat-raised-button
+          color="primary"
+          class="save-btn"
+    
+         
+          [disabled]="!NewRequisitionFormGroup.valid"
+        >
+          SAVE REQUISITION
+        </button>
+        <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+      </mat-dialog-actions>
+      
+
+
+

@@ -1,0 +1,198 @@
+fury-crew-event-planning-index {
+    .first-letter {
+        font-size: 1.5em;
+    }
+
+    .Event-Planning-view {
+        padding: 10px;
+
+        .add-sp-btn {
+            height: 24px;
+            width: 24px;
+            align-items: center;
+            display: flex;
+        }
+
+        .add-sp-btn-icon {
+            font-size: 24px;
+            align-self: center;
+            margin-top: -1px;
+        }
+
+        .filter-btn-traits {
+            margin-right: 5px !important;
+            // width: 100px;
+            // margin-bottom: 10px !important;
+        }
+
+        .mat-form-field-label-wrapper {
+            top: -0.75em;
+            padding-top: 0.84375em;
+        }
+
+        .mat-form-field-wrapper {
+            margin-right: 5px !important;
+            padding-bottom: 0px;
+        }
+
+        .mat-form-field {
+            margin-bottom: 6px;
+            width: 100%;
+        }
+
+        .mat-form-field-subscript-wrapper {
+            top: 50px;
+        }
+
+        .mat-form-field-flex {
+            align-items: flex-start !important;
+        }
+
+        .mat-form-field-infix {
+            border-top: 0.84375em solid transparent;
+        }
+
+        .mat-form-field-underline {
+            bottom: 0 !important;
+        }
+
+        .contact-detail-title {
+            background-color: lightgray;
+            font-weight: bold;
+            font-size: 15px;
+            height: fit-content;
+            color: #333;
+            font-family: Tahoma !important;
+            padding: 16px;
+            margin-bottom: 21px;
+
+        }
+
+        table.mat-table {
+            width: 100%;
+        }
+
+        p.tbl-row-item {
+            font-size: 12px;
+            margin-top: 10px;
+            // margin-bottom: 10px;
+            padding: 0px 5px;
+        }
+
+        tr.mat-header-row {
+
+            background-color: #1F497D;
+        }
+
+        th.mat-header-cell {
+            text-align: left;
+            color: white;
+
+        }
+
+        .content-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        th.mat-header-cell:last-of-type,
+        td.mat-cell:last-of-type,
+        td.mat-footer-cell:last-of-type {
+            padding-right: 10px;
+            // min-width: 100px;  commented this on 18-08-23
+        }
+
+        th.mat-header-cell:first-of-type,
+        td.mat-cell:first-of-type,
+        td.mat-footer-cell:first-of-type {
+            padding-left: 10px;
+        }
+
+        //accordion
+
+        .panel-title {
+            color: blue;
+            font-family: tahoma;
+            font-weight: bold;
+        }
+
+        .filter-area {
+            margin-top: 20px;
+
+        }
+
+        .filter-btn-area {
+            padding: 8px 0px;
+            text-align: center;
+        }
+
+        .filter-btn {
+            margin-right: 5px !important;
+            width: 100px;
+            margin-bottom: 10px !important;
+        }
+
+        .add-approve-btn {
+            height: 24px;
+            width: 24px;
+            align-items: center;
+            display: flex;
+        }
+
+        .add-approve-btn-icon {
+            font-size: 24px;
+            align-self: center;
+            margin-top: -1px;
+        }
+
+        // radiobtn
+
+        .active-label {
+            color: #009688;
+            /* Change this to your desired highlight color */
+            font-weight: 500;
+        }
+
+        // 
+
+        .btn-warning {
+            color: #6d6d6d;
+            background-color: #efb460;
+            border-color: #c38a39;
+        }
+
+        //   .filter-btn-multiplesupplier:hover {
+        //     color: #fff;
+        //     background-color: #449d44;
+        //     border-color: #398439;
+        //   }
+        .btn-info {
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
+        }
+
+        .btn-info:hover {
+            color: #fff;
+            background-color: #31b0d5;
+            border-color: #269abc;
+        }
+
+        .event-title {
+            font-weight: bold;
+            font-family: tahoma;
+        }
+        .vessel-itinerary-text {
+            font-weight: bold;
+            text-align: left;
+            padding-left: 10px;
+            color: Maroon;
+            font-family: tahoma;
+        }
+
+    }
+
+
+}

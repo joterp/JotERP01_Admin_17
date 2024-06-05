@@ -1,0 +1,337 @@
+
+
+// .logo{
+//     width:20px;
+//     height:20px;
+// }
+
+fury-tech-pms-job-history {
+    .routerTitle {
+        font-weight: bold;
+        font-family: Tahoma !important;
+        color: #333;
+    }
+
+    .mat-tab-header {
+        border-left: 1px solid #918f8f;
+        border-top: 1px solid #918f8f;
+        border-right: 1px solid #918f8f;
+        color: #fff!important;
+        text-align: center!important;
+        opacity: 1;
+        background-color: #1f497d;
+      }
+  
+      .mat-tab-label {
+        // min-width: 25px !important;
+        // padding: 5px;
+        // background-color: #7e8f99;
+  
+        color: #fff;
+        font-family: Tahoma !important;
+        // font-weight: 700;
+      }
+  
+      // .mat-tab-label .mat-tab-label-content {
+      //   margin-bottom: 12px;
+  
+      // }        
+      /* Styles for the active tab label */
+      .mat-tab-label.mat-tab-label-active {
+        background: orange;
+        color: #000;
+        font-family: Tahoma !important;
+        // border-left: 1px solid #918f8f;
+        // border-top: 1px solid #918f8f;
+  
+        opacity: 1;
+      }
+      .mat-tab-label.mat-tab-label {
+        opacity: 1;
+      }
+      
+      .remove-border-bottom .mat-tab-header {
+        border-bottom: none;
+      }
+  
+      .mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label {
+        border-left: 1px solid #8b8b8b;
+        border-bottom: 1px solid #8b8b8b;
+  
+  
+      }
+
+      .add-approve-btn {
+        height: 24px;
+        width: 24px;
+        align-items: center;
+        display: flex;
+      }
+  
+      .add-approve-btn-icon {
+        font-size: 24px;
+        align-self: center;
+        margin-top: -1px;
+      }
+
+    .add-pmsjobdetails {
+        padding: 10px;
+
+        .mat-form-field-label-wrapper {
+            top: -0.75em;
+            padding-top: 0.84375em;
+        }
+
+        .mat-form-field-wrapper {
+            margin-right: 5px !important;
+            padding-bottom: 0px;
+        }
+
+        .mat-form-field {
+            margin-bottom: 21px;
+            width: 100%;
+        }
+
+        .mat-form-field-subscript-wrapper {
+            top: 50px;
+        }
+
+        .mat-form-field-flex {
+            align-items: flex-start !important;
+        }
+
+        .mat-form-field-infix {
+            border-top: 0.84375em solid transparent;
+        }
+
+        .mat-form-field-underline {
+            bottom: 0 !important;
+        }
+
+        .contact-detail-title {
+            background-color: lightgray;
+            font-weight: bold;
+            font-size: 15px;
+            height: fit-content;
+            color: #333;
+            font-family: Tahoma !important;
+            padding: 16px;
+            margin-bottom: 21px;
+
+        }
+    }
+
+    .head-table {
+        width: 100%;
+        background-color: #1F497D;
+        padding: 4px;
+    }
+
+    .head-table2 {
+        width: 100%;
+        padding: 4px;
+    }
+
+    .job-code-td1 {
+        color: #fff;
+        font-weight: bold;
+        font-family: tahoma;
+        width: 3%;
+        text-align: right;
+        font-size: 13px;
+
+    }
+
+    .job-code-td2 {
+        color: #fff;
+        font-weight: bold;
+        font-family: tahoma;
+        width: 1%;
+        text-align: center;
+        font-size: 13px;
+
+    }
+
+    .job-code-td3 {
+        color: #fff;
+        font-weight: bold;
+        font-family: tahoma;
+        width: 28%;
+        text-align: middle;
+        font-size: 13px;
+
+    }
+
+    .job-code-td4 {
+        color: #fff;
+        font-weight: bold;
+        font-family: tahoma;
+        width: 7%;
+        text-align: middle;
+        font-size: 13px;
+
+    }
+
+    .job-code-td5 {
+        text-align: middle;
+        color: yellow;
+        font-family: tahoma;
+        font-weight: bold;
+        font-size: 13px;
+
+    }
+
+    .job-code-td6 {
+        width: 2%;
+        text-align: right;
+        padding-right: 5px;
+        cursor: pointer;
+        font-size: 13px;
+
+    }
+
+    .job-code-1 {
+        font-family: tahoma;
+        width: 6%;
+        text-align: right;
+        height: 36px;
+        font-size: 13px;
+
+
+    }
+
+    .job-code-2 {
+        font-family: tahoma;
+        width: 2%;
+        text-align: center;
+        height: 36px;
+        font-size: 13px;
+
+
+    }
+
+    .job-code-3 {
+        font-family: tahoma;
+        width: 25%;
+        text-align: middle;
+        height: 36px;
+        font-size: 13px;
+
+    }
+
+    .job-code-3 {
+        font-family: tahoma;
+        width: 25%;
+        text-align: middle;
+        height: 36px;
+        font-size: 13px;
+
+    }
+
+    .job-code-4 {
+        font-weight: bold;
+        font-family: tahoma;
+        height: 36px;
+        font-size: 13.5px;
+        text-align: left;
+    }
+
+    .job-code-5 {
+        text-align: middle;
+        font-family: tahoma;
+        height: 36px;
+        font-size: 13px;
+
+    }
+
+    .job-code-6 {
+        width: 2%;
+        text-align: right;
+        padding-right: 5px;
+        height: 36px;
+        font-size: 13px;
+
+
+    }
+
+    .Job-Desc {
+        font-weight: bold;
+        font-family: tahoma;
+        height: 28px;
+        font-size: 13px;
+
+    }
+
+    .attach {
+        font-weight: bold;
+        font-family: tahoma;
+        font-size: 13px;
+
+        color: grey;
+    }
+    .pre-rec{
+        text-align: center;
+        font-weight: bold;
+        font-family: tahoma;
+        margin-bottom: 15px;
+    }
+   .bottom-text{
+    font-size: 11px;
+    font-family: tahoma;
+    color: #4d4d4d;
+    }
+
+    table.mat-table {
+        width: 100%;
+      }
+      p.tbl-row-item {
+        font-size: 12px;
+        margin-top: 10px;
+        // margin-bottom: 10px;
+        padding: 0px 5px;
+      }
+    
+      tr.mat-header-row {
+        height: 56px;
+       
+      }
+    
+      th.mat-header-cell {
+        text-align: left;
+        color: white;
+   
+      }
+    
+      .content-loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    
+      th.mat-header-cell:last-of-type,
+      td.mat-cell:last-of-type,
+      td.mat-footer-cell:last-of-type {
+        padding-right: 10px;
+        // min-width: 100px;  commented this on 18-08-23
+      }
+    
+      th.mat-header-cell:first-of-type,
+      td.mat-cell:first-of-type,
+      td.mat-footer-cell:first-of-type {
+        padding-left: 10px;
+      }
+    
+      .mat-form-field-appearance-fill .mat-form-field-flex {
+        border-radius: 4px 4px 0 0;
+        padding: 5px 8px 0;
+      }
+    
+      .mat-form-field-appearance-fill .mat-form-field-infix {
+        padding: 0.05em 0 0.75em;
+      }
+      td.mat-cell.cdk-cell.actions-cell.cdk-column-Remarks.mat-column-Remarks.ng-star-inserted {
+        max-width: 100px;
+        word-break: break-word;
+      }
+}

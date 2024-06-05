@@ -1,0 +1,394 @@
+<fury-page-layout mode="card" class="crewregistration-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+
+        <form [formGroup]="CrewRegistrationFilterForm">
+            <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+            <h3>
+
+                <span class="first-letter">C</span>REW
+                <span class="first-letter">R</span>EGISTRATION
+
+            </h3>
+            <div class="filter-area">
+
+                <div fxLayout="row" fxLayoutAlign="start">
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Manning Office</mat-label>
+                            <mat-select formControlName="drpManning_Office">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Rank</mat-label>
+                            <mat-select formControlName="drpRank">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Nationality</mat-label>
+                            <mat-select formControlName="drpNationality">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel Type</mat-label>
+                            <mat-select formControlName="drpVessel_Type">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                        <div>Reminder In &nbsp;
+
+                            <mat-form-field style="width: 60%;">
+                                <input type="text" formControlName="" matInput />
+                            </mat-form-field>
+                            <!-- <input type="text"
+                            formControlName="" class="Reminder-text"> -->
+
+                            days
+                        </div>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Status</mat-label>
+                            <mat-select formControlName="drpStatus">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+
+
+                    <div fxFlex>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Registered From</mat-label>
+                            <input matInput formControlName="Registered_From" [matDatepicker]="pickerRegistered_From" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerRegistered_From"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerRegistered_From></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Registered To</mat-label>
+                            <input matInput formControlName="Registered_To" [matDatepicker]="pickerRegistered_To" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerRegistered_To"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerRegistered_To></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Crew Name</mat-label>
+                            <input type="text" formControlName="txtCrew_Name" matInput />
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex style="display: flex;margin: 10px;">
+
+                        <table>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <table>
+                                        <tr>
+                                            <td> <mat-label>Added To Crew</mat-label></td>
+                                            <td>
+                                                <mat-radio-group fxLayout="row" fxLayoutGap="16px"
+                                                    formControlName="radioAdded_To_Crew" style="margin-top: 0px;
+                                                margin-left: 20px;">
+                                                    <mat-radio-button value="1"
+                                                        [checked]="CrewRegistrationFilterForm.get('radioAdded_To_Crew').value == 1">
+                                                        <label
+                                                            [class.active-label]="CrewRegistrationFilterForm.get('radioAdded_To_Crew').value == 1">Yes</label>
+                                                    </mat-radio-button>
+                                                    <mat-radio-button value="2"
+                                                        [checked]="CrewRegistrationFilterForm.get('radioAdded_To_Crew').value == 2">
+                                                        <label
+                                                            [class.active-label]="CrewRegistrationFilterForm.get('radioAdded_To_Crew').value == 2">No</label>
+                                                    </mat-radio-button>
+                                                    <mat-radio-button value="0"
+                                                        [checked]="CrewRegistrationFilterForm.get('radioAdded_To_Crew').value == 0">
+                                                        <label
+                                                            [class.active-label]="CrewRegistrationFilterForm.get('radioAdded_To_Crew').value == 0">All</label>
+                                                    </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="color: #1d60ff;">Show URL for corporate site integration</div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div class="filter-btn-area" fxFlex>
+                        <div>
+                            <button class="create" mat-raised-button color="primary" class="filter-btn-traits">
+                                Search by Traits
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="primary" class="filter-btn">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                                Clear Filter
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+
+
+    <!--Action Button-->
+    <!-- <button mat-stroked-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="    background: linear-gradient(#f1f1f1, #f1f1f1);
+    color: #676565;
+    font-family: tahoma;">
+        Actions <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu" yPosition="below" xPosition="before">
+        <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+    height: 26px !important;
+    font-size: 13px !important;
+    color: #000 !important;">
+            <span>
+                <img src="../../../../assets/img/Edit.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+            </span>
+            <span>Edit</span>
+        </button>
+
+        <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+        height: 26px !important;
+        font-size: 13px !important;
+        color: #000 !important;" (click)="AddToCrew({}, 'Add to Crew Details', 'Add_to_Crew_Details')">
+            <span>
+                <img src="../../../../assets/img/addItem.png" class="logo" alt="excel" style="margin-right: 10px;
+            margin-bottom: -4px;" />
+            </span>
+            <span>Add To Crew</span>
+        </button>
+        <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+            color: #000 !important;">
+            <span>
+                <img src="../../../../assets/img/DeleteRed.png" class="logo" alt="excel" style="margin-right: 10px;
+                margin-bottom: -4px;" />
+            </span>
+            <span>Delete</span>
+        </button>
+
+    </mat-menu> -->
+
+    <fury-page-layout-content [@fadeInUp]>
+        <div class="actions-area">
+            <table style="display: flex;">
+                <tr>
+                    <td>
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                class="add-approve-btn save-btn" (click)="AddFormData({}, 'Add Crew', 'Add_Crew')">
+
+                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                            </button>
+                            <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;">Add Crew</span>
+                        </div>
+                    </td>
+                </tr>
+
+
+            </table>
+
+            <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+        </div>
+
+        <div #TABLE>
+            <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                <ng-container matColumnDef="Crew_Name">
+                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                        mat-sort-header>
+                        Crew Name
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                </td> -->
+                </ng-container>
+
+                <ng-container matColumnDef="DOB">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        DOB
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Rank">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Rank
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Nationality">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Nationality
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Type_Of_Vessel">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Type Of Vessel
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Available_Date">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Available Date
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Reminder_Date">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Reminder Date
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Date_Registered">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Date Registered
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="CV">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        CV
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Action">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Info">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+
+                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                </tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                </tr>
+            </table>
+        </div>
+
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+    </fury-page-layout-content>
+
+
+</fury-page-layout>

@@ -1,0 +1,208 @@
+<fury-page-layout mode="card" class="ops-VoyageAbstractLog">
+        
+    <h3>
+        <span class="first-letter">V</span>OYAGE
+        <span class="first-letter">A</span>BSTRACT
+        <span class="first-letter">L</span>OG
+        
+    </h3>
+        
+   
+
+    <fury-page-layout-content [@fadeInUp] style="margin: 30px;">
+      <div mat-raised-button color="primary" style="margin: 10px;
+      padding: 5px;
+      text-align: end;
+      color: Blue;
+      font-size: 15px;
+      cursor: pointer;" 
+      (click)="TreeView('OPS_NAD_Voyage_Log_TreeView')" >
+          Tree View
+  </div>
+        <mat-card class="sp-card-view" style="margin-top: 20px;">
+            
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add New Voyage Log'"
+                            class="add-approve-btn save-btn" (click)="addVoyageLog('OPS_NAD_Add_Voyage_Log')">
+                            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                        </button>
+                        <span style="margin-top: 3px;
+                        margin-left: 6px;font-size: 15px;color: #5f5f5f;"> Add New Voyage Log</span>
+                            
+                        </div>
+
+
+                        <div fxLayout="row">
+
+
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                            <mat-card-title style="margin-left: 5px;margin-top: 3px;margin-right: 12px;">Clear Filter</mat-card-title>
+                            <span>
+                                <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                              </span>
+
+                        </div>
+
+                    </div>
+
+                </mat-card-header>
+            
+               <mat-card-content>
+                <form [formGroup]="AbstractLogFilterFormGroup">
+                    <table >
+
+                
+                    <tr fxLayout fxLayoutGap="40px" style="margin: 5px;">
+                        <td>
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label></mat-label>
+                                <input formControlName="txtKit" matInput type="text"  placeholder="select Document Id"/>
+                            </mat-form-field>
+                            <span>
+                                <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                        border: 1px solid grey;
+                                        background: linear-gradient(#ffffff, #dfdfdf);
+                                        border-radius: 3px;margin-top:12px;
+                                  
+                                "/>
+                            </span>
+                            
+                        </td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select Location</mat-label>
+                                <mat-select formControlName="drpLocation" >
+                                <mat-option value="SelectLocation">Select Location</mat-option>
+                                <mat-option value="OnBoard">OnBoard</mat-option>
+                                <mat-option value="Storage">Storage</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td >
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select Vessel</mat-label>
+                                <mat-select formControlName="drpVessel" >
+                                <mat-option value="Alexa">Alexa</mat-option>
+                                <mat-option value="Alexandre">Alexandre</mat-option>
+                                <mat-option value="Bryce">Bryce</mat-option>
+                                <mat-option value="Napoleon">Napoleon</mat-option>
+                                <mat-option value="Yami">Yami</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td >
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select Port</mat-label>
+                                <mat-select formControlName="drpPort" >
+                                <mat-option value="AlbaniaDurres">Albania-Durres</mat-option>
+                                <mat-option value="AlbaniaVlores">Albania-Vlores</mat-option>
+                                <mat-option value="AustraliaWeipa">Australia-Weipa</mat-option>
+                                <mat-option value="CanadaCanso">Canada-Canso</mat-option>
+                               
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                       
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Status</mat-label>
+                                <mat-select formControlName="drpStatus">
+                                  <mat-option value="">Select Status</mat-option>
+                                  <mat-option value="1">Active</mat-option>
+                                  <mat-option value="0">Inactive</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                        </td>
+                        
+                           
+                        
+
+                        
+                    </tr>
+                </table>
+                    </form>
+                <div #TABLE>
+                    <table [dataSource]="AbstractLogdataSource" mat-table matSort #table class="details-table">
+                      <ng-container matColumnDef="Towed_Barge">
+                        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                          mat-sort-header>
+                            Towed Vessel / Barge
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                          mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                        </td>
+                      </ng-container>
+              
+                      <ng-container matColumnDef="Towed_Tug">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                       Towed Vessel / Tug
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Voyage_No">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                       Voyage No
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Departure_Port">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                       Departure Port
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Arrived_Port">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                       Arrived Port
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Departure_Date">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                     Departure Date
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Finalized">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                       Finalized ?
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      
+                     
+                      <tr *matHeaderRowDef="AbstractLogvisibleColumns" mat-header-row></tr>
+                      <tr *matRowDef="let row; columns: AbstractLogvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+               </mat-card-content>
+           
+              
+        </mat-card>
+
+    </fury-page-layout-content>
+</fury-page-layout>

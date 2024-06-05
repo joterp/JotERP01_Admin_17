@@ -1,0 +1,471 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>{{title}}</div>
+
+<div *ngIf="showcataloguemodel && !showsubcataloguemodel && !showadditemmodel">
+  <mat-dialog-content style="height: 100% !important" class="catalogue-edit-screen">
+    <div>Vessel</div>
+    <form [formGroup]="CatalogueFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="64px">
+        <!-- <p><code>{{getAllErrors(firstFormGroup) | json}}</code></p> -->
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Code</mat-label>
+          <input formControlName="txtCode" type="text" matInput />
+          <mat-error *ngIf="CatalogueFormGroup.get('txtCode').hasError('required')">Catalogue Code is
+            required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Sets Installed</mat-label>
+          <input formControlName="txtSets_Installed" type="text" matInput />
+          <!-- <mat-error
+              *ngIf="firstFormGroup.get('Svc_Quantity').hasError('required')"
+              >Quantity is required</mat-error
+            > -->
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="64px">
+        <!-- <p><code>{{getAllErrors(firstFormGroup) | json}}</code></p> -->
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Name</mat-label>
+          <input formControlName="txtName" type="text" matInput />
+          <mat-error *ngIf="CatalogueFormGroup.get('txtName').hasError('required')">Catalogue Name is
+            required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Model</mat-label>
+          <input formControlName="txtModel" type="text" matInput />
+          <!-- <mat-error
+              *ngIf="firstFormGroup.get('Svc_Quantity').hasError('required')"
+              >Quantity is required</mat-error
+            > -->
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="64px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Particulars</mat-label>
+          <textarea matInput formControlName="txtParticulars" placeholder="Remarks"></textarea>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Bearing Coupling End</mat-label>
+          <input type="text" formControlName="txtBearing_Coupling_End" matInput />
+          <!-- <mat-error
+              *ngIf="firstFormGroup.get('Svc_Quantity').hasError('required')"
+              >Quantity is required</mat-error
+            > -->
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="64px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Maker</mat-label>
+          <mat-select formControlName="drpMakers">
+            <!-- <mat-option
+                *ngFor="let b of filtered_currency | async"
+                [value]="b.CURRENCY_GUID"
+              >
+                {{ b.SHORT_CODE }}
+              </mat-option> -->
+          </mat-select>
+          <!-- <mat-error
+              *ngIf="firstFormGroup.get('Svc_Currency_GUID').hasError('required')"
+              >Currency is required</mat-error
+            > -->
+        </mat-form-field>
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Bearing Free End</mat-label>
+          <input formControlName="txtBearing_free_End" type="text" matInput />
+          <!-- <mat-error
+            *ngIf="firstFormGroup.get('Svc_Quantity').hasError('required')"
+            >Quantity is required</mat-error
+          > -->
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="64px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Department</mat-label>
+          <mat-select formControlName="drpDepartment">
+        
+            <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+              {{ b.DEPT_NAME }}
+            </mat-option>
+            </mat-select>
+          <mat-error *ngIf="CatalogueFormGroup.get('drpDepartment').hasError('required')">Department is
+            required</mat-error>
+        </mat-form-field>
+        <div fxFlex class="add-btn-cat">
+          <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-sp-btn save-btn"
+            (click)="AddFormData({}, 'Add New Department', 'department')">
+            <mat-icon class="add-sp-btn-icon">add</mat-icon>
+          </button>
+        </div>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Motor Rating(KW)</mat-label>
+          <input type="text" formControlName="txtMotor_Rating" matInput />
+          <!-- <mat-error
+              *ngIf="firstFormGroup.get('Svc_Quantity').hasError('required')"
+              >Quantity is required</mat-error
+            > -->
+        </mat-form-field>
+      </div>
+
+
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="64px">
+
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Shipboard PIC</mat-label>
+          <mat-select formControlName="txtShipboard_PIC">
+            <!-- <mat-option
+                *ngFor="let b of filtered_currency | async"
+                [value]="b.CURRENCY_GUID"
+              >
+                {{ b.SHORT_CODE }}
+              </mat-option> -->
+          </mat-select>
+          <!-- <mat-error
+              *ngIf="firstFormGroup.get('Svc_Currency_GUID').hasError('required')"
+              >Currency is required</mat-error
+            > -->
+        </mat-form-field>
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Account Code</mat-label>
+          <mat-select formControlName="txtAccount_Code">
+            <!-- <mat-option
+                *ngFor="let b of filtered_currency | async"
+                [value]="b.CURRENCY_GUID"
+              >
+                {{ b.SHORT_CODE }}
+              </mat-option> -->
+          </mat-select>
+          <!-- <mat-error
+              *ngIf="firstFormGroup.get('Svc_Currency_GUID').hasError('required')"
+              >Currency is required</mat-error
+            > -->
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="64px" style="margin-bottom: 13px;">
+        <div class="action-label" fxFlex style="border: 1px solid #a7a5a5;min-height: 131px !important;
+       ">
+
+          <mat-checkbox style="padding: 7px;" [color]="'accent'">Vessel Location
+          </mat-checkbox>
+        </div>
+        <div fxFlex class="add-btn-cat">
+          <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-sp-btn save-btn"
+            (click)="AddFormData({}, 'Assign Vessel Location', 'vessellocation')">
+            <mat-icon class="add-sp-btn-icon">add</mat-icon>
+          </button>
+        </div>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Motor Running Current(Amps)</mat-label>
+          <input type="text" matInput />
+          <!-- <mat-error
+              *ngIf="firstFormGroup.get('Svc_Quantity').hasError('required')"
+              >Quantity is required</mat-error
+            > -->
+        </mat-form-field>
+
+
+      </div>
+
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="64px">
+        <div class="action-label" fxFlex>
+           <div >
+            <mat-checkbox [color]="'primary'" formControlName="chkGeneral_Subcatalogue" id="chkGeneral_Subcatalogue">
+            </mat-checkbox>
+            <label for="chkGeneral_Subcatalogue" class="form-check-label">&nbsp;&nbsp;Create GENERAL subcatalogue</label>
+            </div>
+
+          <div style="margin-top:3px">
+      
+          <mat-checkbox [color]="'primary'" formControlName="chkCritical_Machinery" id="chkCritical_Machinery" style="color: red;">
+          </mat-checkbox>
+          <label for="chkCritical_Machinery" class="form-check-label" style="color: red;">&nbsp;&nbsp;Mark Machinery as
+            Critical</label>
+          </div>
+        
+        <div style="margin-top:3px">
+          <mat-checkbox [color]="'primary'" formControlName="chkMachinery_InfreqUsed" id="chkMachinery_freqUsed">
+          </mat-checkbox>
+          <label for="chkMachinery_InfreqUsed" class="form-check-label" >&nbsp;&nbsp;Mark Machinery as Infrequently-Used</label>
+        </div>
+    
+      </div>
+
+        <div class="action-label" fxFlex>
+          <label>Upload Manufacturer's Manual</label><br>
+          <input style="display: none;" type="file" id="fileupload" #fileInputcatalogue (change)="onFileSelectedcatalogue($event)"
+          accept=".pdf,.doc,.docx,.jpg,.png" />
+          <button type="button" class="upload-btn1" style="margin-top: 6px;" *ngIf="!selectedFileNameCatalogue">
+            <label for="fileupload">
+              Browse</label>
+          </button>
+          
+          <div *ngIf="selectedFileNameCatalogue">
+            <span style="margin-top: 2px !important;" > {{ selectedFileNameCatalogue }}</span>
+            <button (click)="removeUploadedFilecatalogue()"  mat-button style="color: #5BB318;">Remove</button> &nbsp;
+          </div> 
+      
+
+          <div class="drop-container col-6">
+
+            <input type="file" id="uploadFile1" style="opacity: 0" name="uploadFile" accept="all/*" multiple />
+            <label>Drop OR Click here to
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" (click)="SaveCatalogueForm()"
+    [ngClass]="[!CatalogueFormGroup.valid ? '' : 'save-btn']" [disabled]="!CatalogueFormGroup.valid && !IsEdit">
+    SAVE & CLOSE
+  </button>
+  <button mat-raised-button color="primary" class="save-btn" [disabled]="!CatalogueFormGroup.valid && !IsEdit"
+    (click)="SaveCatalogueForm(true)">
+    SAVE & ADD NEW
+  </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+</div>
+
+
+<div *ngIf="!showcataloguemodel && showsubcataloguemodel && !showadditemmodel">
+
+  <mat-dialog-content style="height: 100% !important" class="catalogue-edit-screen">
+
+    <form [formGroup]="SubCatalogueFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Code</mat-label>
+          <input formControlName="txtCode" matInput type="text" placeholder="Code" />
+          <mat-error *ngIf="SubCatalogueFormGroup.get('txtCode').hasError('required')">SubCatalogue Code is
+            required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="txtName" type="text" placeholder="Name" />
+          <mat-error *ngIf="SubCatalogueFormGroup.get('txtName').hasError('required')">SubCatalogue Code is
+            required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Particulars</mat-label>
+          <textarea matInput formControlName="txtParticulars"></textarea>
+          <!-- <mat-error
+            *ngIf="SubCatalogueFormGroup.get('txtCode').hasError('required')"
+            >SubCatalogue Code is required</mat-error
+          > -->
+        </mat-form-field>
+      </div>
+
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+
+    <button mat-raised-button color="primary" class="save-btn" (click)="SaveSubCatalogueForm()"
+      [ngClass]="[!SubCatalogueFormGroup.valid ? '' : 'save-btn']" [disabled]="!SubCatalogueFormGroup.valid && !IsEdit">
+      SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!SubCatalogueFormGroup.valid && !IsEdit"
+      (click)="SaveSubCatalogueForm(true)">
+      SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+</div>
+
+
+<div *ngIf="!showcataloguemodel && !showsubcataloguemodel && showadditemmodel">
+  <mat-dialog-content style="height: 100% !important" class="catalogue-edit-screen">
+    <form [formGroup]="AddItemFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <div fxFlex>
+          <mat-label>Catalogue: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stationery</mat-label>
+        </div>
+
+      </div>
+      <br>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <div fxFlex>
+          <mat-label>SubCatalogue: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GENERAL</mat-label>
+        </div>
+
+      </div>
+      <br>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Part Number</mat-label>
+          <input formControlName="txtPart_Number" matInput type="text" />
+          <mat-error *ngIf="AddItemFormGroup.get('txtPart_Number').hasError('required')">Part Number is
+            required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Item Name</mat-label>
+          <input formControlName="txtItem_Name" matInput type="text" />
+          <mat-error *ngIf="AddItemFormGroup.get('txtItem_Name').hasError('required')">Item Name is required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="txtDescription" placeholder="Description"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Unit</mat-label>
+          <mat-select formControlName="drpUnit">
+            <mat-option value="Kilogram">Kilogram</mat-option>
+            <mat-option value="Liters">Liters</mat-option>
+            <mat-option value="Tin">Tin</mat-option>
+          </mat-select>
+          <mat-error *ngIf="AddItemFormGroup.get('drpUnit').hasError('required')">Unit is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Item Category</mat-label>
+          <mat-select formControlName="drpItem_Category">
+            <mat-option value="Notebooks">Notebooks</mat-option>
+            <mat-option value="StorageContainers">Storage Containers</mat-option>
+          </mat-select>
+          <!-- <mat-error
+                  *ngIf="firstFormGroup.get('Svc_Currency_GUID').hasError('required')"
+                  >Currency is required</mat-error
+                > -->
+        </mat-form-field>
+      </div>
+
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <!-- Use a button to create a custom file upload button -->
+
+        <mat-label>Item Image</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <!-- <button
+        mat-button
+        class="custom-file-upload-btn"
+        (click)="fileInput.click()"
+        >
+
+        <input
+        style="display: none;"
+        type="file" id="imageupload"
+        #fileInput
+        (change)="onFileSelected($event)"
+        accept=".pdf,.doc,.docx,.jpg,.png"
+        />
+        </button> -->
+
+        <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+          accept=".pdf,.doc,.docx,.jpg,.png" />
+
+        <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+          <label for="imageupload">
+            Upload </label>
+        </button>
+        <div *ngIf="selectedFileName" fxFlex>
+          <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+          <button (click)="removeUploadedFileadditem()"  mat-button style="color: #5BB318;">Remove</button>
+        </div>
+
+        <!-- File input element, hidden from view -->
+      </div>
+      <br>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <!-- Use a button to create a custom file upload button -->
+
+        <mat-label>Product Detail</mat-label>
+        <!-- <button
+    mat-button
+    class="custom-file-upload-btn"
+    (click)="fileInput.click()"
+    >
+    
+    <input
+    style="display: none;"
+    type="file" id="imageupload"
+    #fileInput
+    (change)="onFileSelected($event)"
+    accept=".pdf,.doc,.docx,.jpg,.png"
+    />
+    </button> -->
+
+        <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+          accept=".pdf,.doc,.docx,.jpg,.png" />
+
+        <button type="button" class="upload-btn" style="margin-top: 6px;
+    
+    ">
+          <label for="imageupload">
+            Upload </label>
+        </button>
+
+        <!-- File input element, hidden from view -->
+      </div>
+      <br>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <div class="action-label" fxFlex>
+
+          <mat-checkbox [color]="'primary'" formControlName="chkcritical" id="chkcritical" style="color: red;" [(ngModel)]="isChecked" (change)="doSomething();">
+          </mat-checkbox>
+          <label for="chkcritical" class="form-check-label" style="color: red;">&nbsp;&nbsp;Mark Item as
+            Critical</label>
+
+        </div>
+
+
+      </div>
+
+
+    </form>
+
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" (click)="SaveAddItemForm()"
+      [ngClass]="[!AddItemFormGroup.valid ? '' : 'save-btn']" [disabled]="!AddItemFormGroup.valid && !IsEdit">
+      SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!AddItemFormGroup.valid && !IsEdit"
+      (click)="SaveAddItemForm(true)">
+      SAVE & ADD NEW
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+
+</div>

@@ -1,0 +1,312 @@
+
+<fury-page-layout mode="card" class="alarm-index">
+ 
+    <fury-page-layout-header>
+      
+      <form [formGroup]="WinchIndexFilterFormGroup" >
+        
+          <h3 class="unit-packing" style="text-align: center; margin: 30px;">
+            <span class="first-letter">M</span>OORING   
+            <span class="fifth-letter">W</span>INCHES / 
+            <span class="first-letter">A</span>ND  
+            <span class="fifth-letter">W</span>INDLASS   
+            <span class="first-letter">B</span>RAKE  
+            <span class="first-letter">H</span>OLDING 
+            <span class="first-letter">T</span>EST  
+            <span class="first-letter">L</span>OG  
+          </h3>
+      
+        
+        <div class="filter-area">
+          <div fxLayout="row" fxLayoutAlign="start">
+  
+            <div fxFlex>
+
+
+              <mat-form-field appearance="fill">
+                <mat-label>Vessel Name</mat-label>
+                <mat-select formControlName="drpVessel_Name" >
+                  <mat-option value="Alexandre">Alexandre</mat-option>
+                  <mat-option value="Napoleon">Napoleon</mat-option>
+                  
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Winch Name</mat-label>
+                <mat-select formControlName="drpWinch_Name" >
+                    <mat-option value="Test">Test</mat-option>
+                 
+                  
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            
+
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                  <mat-label>Date Form</mat-label>
+                  <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                  <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerFrom></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <input matInput [matDatepicker]="pickerTo"  [formControl]="date">
+                  <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerTo></mat-datepicker>
+                </mat-form-field>
+              </div>
+  
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Mark as Verified</mat-label>
+                    <mat-select formControlName="drpMark_Verified">
+                      <mat-option value="2">Yes</mat-option>
+                      <mat-option value="1">No</mat-option>
+                      <mat-option value="0">Show All</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="drpStatus">
+                  <mat-option value="2">Show Active</mat-option>
+                  <mat-option value="1">Show Deleted</mat-option>
+                  <mat-option value="0">Show All</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            
+            <span style="margin-top: 81px; margin-left: 37px; color: blue;" (click)="LegProcedure(null, false)">Legend & Procedure</span>
+           
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                <button
+                mat-raised-button
+                color="primary"
+               style="background-color: #5cb85c;"
+                class="filter-btn"
+              
+              >
+                Search
+              </button>
+              </div>
+  
+              <div>
+                <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                  type="button" (click)="clearFilter()">
+                  Clear
+                </button>
+              </div>
+            </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+      <div class="actions-area"  style="margin-top: 10px;">
+        <div fxLayout="row">
+          <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+              class="add-approve-btn save-btn" (click)="saveBrakeHoldingTest(null,false)">
+              <mat-icon class="add-approve-btn-icon">add</mat-icon>
+          </button>
+          <span style="margin-top: 3px;
+          margin-left: 6px;font-size: 15px;">  Add Brake Holding Test Log</span>
+      </div>
+       
+        <div>
+            <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+          <span>
+            <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+            <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+            <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+          </span>
+        </div>
+             
+      </div>
+  
+      <div #TABLE>
+        <table [dataSource]="WinchIndexdataSource" mat-table matSort #table class="details-table">
+
+          <ng-container matColumnDef="Vessel">
+            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+              mat-sort-header>
+           Vessel 
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+              mat-cell>
+              <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Winch_Name">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Winch Name
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+         
+          <ng-container matColumnDef="Physical_Location">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Physical Location
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Date_Tested">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Date Tested
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Actual_BRL">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+        Actual BRL(Tons)
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Rope_Dia">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+        Rope Dia(mm)
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Rope_MBL">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Rope MBL(Tons)
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Design_BHC">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Design BHC(Tons)
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Mooring_Drum_Dia">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Mooring Drum Dia(mm)
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Rope_MBL_BRL">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Rope MBL vs Actual BRL
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Distance">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                L Distance (cm)
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Hyd_Piston">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                <div [innerHTML]="'A CS of Hyd Piston ( cm<sup>2</sup> )'"></div>
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="PD">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                <div [innerHTML]="'A Pd of Hyd Piston ( cm<sup>2</sup> )'"></div>
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="PA">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                <div [innerHTML]="'A Pa of Hyd Piston ( cm<sup>2</sup> )'"></div>
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Remarks">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Remarks
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Verified">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+               Verified
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+
+
+          <ng-container matColumnDef="Action">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+              Action
+            </th>
+            <td *matCellDef="let row" class="actions-cell" mat-cell>
+              <!-- -->
+              <button mat-icon-button color="primary">
+                <mat-icon class="icon-display">edit</mat-icon>
+              </button>
+  
+              <button mat-icon-button color="warn" >
+                <mat-icon>close</mat-icon>
+              </button>
+              <button mat-icon-button  >
+                <mat-icon class="icon-display">info</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+  
+          <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

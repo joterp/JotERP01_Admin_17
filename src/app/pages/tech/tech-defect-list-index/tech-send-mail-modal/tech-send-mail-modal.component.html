@@ -1,0 +1,176 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Send Mail
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+
+    <mat-dialog-content style="height: 100% !important" class="email-vendor">
+        <form [formGroup]="emailFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+       <table style="width: 100%;">
+        <tr>
+            <td style="width: 70%;vertical-align: top;">
+                <div class="emailsendbtn">
+                   <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <table style="width: 100%;border: 1px solid grey;background: #f5fff7;">
+                                <tr>
+                                    <td style="width: 20%;text-align: center;vertical-align: middle;">
+                                        <button class="sendbutton">Send</button>
+                                    </td>
+                                    <td style="width: 80%;">
+                                    <table style="width: 100%;background-color: white;">
+                                     <tr>
+                                        <td>
+                                            <mat-form-field fxFlex >
+                                            <mat-label class="left-label">Email To</mat-label>
+                                            <input type="text" formControlName="mail_to" matInput />
+                                            <mat-error *ngIf="emailFormGroup.get('mail_to').hasError('required')">Email To is
+                                                required</mat-error>
+                                        </mat-form-field>
+                                    </td>
+                                    <td style="width: 5%;"> <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-sp-btn save-btn" style="margin-top: -18px;">
+                                        <mat-icon class="add-sp-btn-icon">add</mat-icon>
+                                      </button></td>
+                                     </tr>
+                                     <tr>
+                                        <td>
+                                            <mat-form-field fxFlex >
+                                                <mat-label class="left-label">CC</mat-label>
+                                                <input type="text" formControlName="cc" matInput />
+                                                <mat-error *ngIf="emailFormGroup.get('cc').hasError('required')">CC is
+                                                    required</mat-error>
+                                            </mat-form-field>
+                                    </td>
+                                    <td style="width: 5%;"> <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-sp-btn save-btn" style="margin-top: -18px;">
+                                        <mat-icon class="add-sp-btn-icon">add</mat-icon>
+                                      </button>
+                                    </td>
+                                     </tr>
+                                     <tr>
+                                        <td>
+                                            <mat-form-field fxFlex >
+                                                <mat-label class="left-label">BCC</mat-label>
+                                                <input type="text" formControlName="cc" matInput />
+                                                <mat-error *ngIf="emailFormGroup.get('bcc').hasError('required')">BCC is
+                                                    required</mat-error>
+                                            </mat-form-field>
+                                    </td>
+                                    <td style="width: 5%;"> <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-sp-btn save-btn" style="margin-top: -18px;">
+                                        <mat-icon class="add-sp-btn-icon">add</mat-icon>
+                                      </button>
+                                    </td>
+                                     </tr>
+                                     <tr>
+                                        <td>
+                                            <mat-form-field fxFlex >
+                                                <mat-label class="left-label">Fm</mat-label>
+                                                <input type="text" formControlName="cc" matInput />
+                                                <mat-error *ngIf="emailFormGroup.get('bcc').hasError('required')">BCC is
+                                                    required</mat-error>
+                                            </mat-form-field>
+                                    </td>
+                                     </tr>
+                                    </table>
+                                    </td>
+                                </tr>
+                                
+                                </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                                <!-- Use a button to create a custom file upload button -->
+            
+                                <mat-label>Attachments</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+                                <input style="display: none;" type="file" id="imageupload" #fileInput
+                                    (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+            
+                                <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                                    <label for="imageupload">
+                                        Select</label>
+                                </button>
+                                <div *ngIf="selectedFileName" fxFlex>
+                                    <span style="margin-top: 2px !important;" aria-placeholder="Select files"> {{ selectedFileName
+                                        }}</span>
+                                    <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+                                </div>
+            
+                                <!-- File input element, hidden from view -->
+                            </div> 
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                                <quill-editor [styles]="{ height: '400px' }" id="textEditor" (onEditorCreated)="created($event)"
+                                    (onContentChanged)="contentChanged($event)">
+                                </quill-editor>
+                            </div>
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" *ngIf="ErrorMessage">
+                                <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+                            </div>
+                        </td>
+                    </tr>
+
+                   </table>
+
+
+                   
+    
+                    </div>
+            </td>
+
+            <td style="width: 30%;vertical-align: top;">
+                <form [formGroup]="userFormGroup">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <mat-form-field     style="width: -webkit-fill-available;"
+                        >
+                            <input matInput placeholder="Search here" formControlName="search"
+                                (keyup)="applyFilterClient($event.target.value)">
+                            <button mat-icon-button matSuffix><mat-icon style="padding-top: 7px;">search</mat-icon></button>
+                        </mat-form-field>
+                       
+                    </div>
+
+                    <div class="checkbox-table">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td> <mat-checkbox [color]="'primary'" formControlName="">
+                                      Gilbert
+                                </mat-checkbox></td>
+                                </tr>
+                                <tr>
+                                <td> <mat-checkbox [color]="'primary'" formControlName="">
+                                   Alexandre
+                                </mat-checkbox></td>
+                            </tr>
+                            <tr>
+                                <td> <mat-checkbox [color]="'primary'" formControlName="">
+                                    John
+                                 </mat-checkbox></td>
+                                </tr>
+                                
+                        </table>
+                    </div>
+    
+                </form>
+            </td>
+        </tr>
+       </table>
+       </form>
+
+    </mat-dialog-content>
+
+
+

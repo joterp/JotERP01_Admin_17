@@ -1,0 +1,235 @@
+<fury-page-layout mode="card" class="crewproposetoowner-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+
+        <form [formGroup]="ProposeToOwnerFilterForm">
+            <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+            <h3>
+
+                <span class="first-letter">P</span>REROPSE
+                <span class="first-letter">T</span>O
+                <span class="first-letter">O</span>WNER
+
+            </h3>
+            <div class="filter-area">
+
+                <div fxLayout="row" fxLayoutAlign="start" >
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel</mat-label>
+                            <mat-select formControlName="drpVessel">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Proposed By</mat-label>
+                            <mat-select formControlName="drpProposed_By">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                     
+                        <div>
+                            <button class="create" mat-raised-button color="primary" class="filter-btn">
+                                Search
+                            </button>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                                Clear
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+
+
+    <!--Action Button commented-->
+     <!-- <button mat-stroked-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="    background: linear-gradient(#f1f1f1, #f1f1f1);
+    color: #676565;
+    font-family: tahoma;">
+        Actions <mat-icon>arrow_drop_down</mat-icon>
+    </button> -->
+
+    <mat-menu #menu="matMenu" yPosition="below" xPosition="before">
+        <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+    height: 26px !important;
+    font-size: 13px !important;
+    color: #000 !important;">
+            <span>
+                <img src="../../../../assets/img/Edit.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+            </span>
+            <span>Edit Proposal</span>
+        </button>
+
+        <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+        height: 26px !important;
+        font-size: 13px !important;
+        color: #000 !important;" (click)="gotoCREW_ProposeToOwner_View('CRW_ProposeToOwner_View')">
+            <span>
+                <img src="../../../../assets/img/View.png" class="logo" alt="excel" style="margin-right: 10px;
+            margin-bottom: -4px;" />
+            </span>
+            <span>View Proposal</span>
+        </button>
+        <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+        height: 26px !important;
+        font-size: 13px !important;
+        color: #000 !important;" >
+            <span>
+                <img src="../../../../assets/img/Link.png" class="logo" alt="excel" style="margin-right: 10px;
+            margin-bottom: -4px;" />
+            </span>
+            <span>Generate Link</span>
+        </button>
+
+        <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+            color: #000 !important;">
+            <span>
+                <img src="../../../../assets/img/DeleteRed.png" class="logo" alt="excel" style="margin-right: 10px;
+                margin-bottom: -4px;" />
+            </span>
+            <span>Delete</span>
+        </button>
+
+    </mat-menu> 
+
+    <fury-page-layout-content [@fadeInUp]>
+        <div class="actions-area">
+            <table style="display: flex;">
+                <tr>
+                    <td>
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                class="add-approve-btn save-btn" (click)="gotoCREW_ProposeToOwner('ProposeToOwner')">
+
+                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                            </button>
+                            <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;">Create a Proposal</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+        </div>
+
+        <div #TABLE>
+            <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                <ng-container matColumnDef="Vessel">
+                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                        mat-sort-header>
+                        Vessel
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                </td> -->
+                </ng-container>
+
+                <ng-container matColumnDef="Vessel_Flag">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Vessel Flag
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Proposed_By">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Proposed By
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Proposed_On">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Proposed On
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="No_Of_Proposed_Crew">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        No Of Proposed Crew
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+       
+                <ng-container matColumnDef="Action">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+
+
+                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                </tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                </tr>
+            </table>
+        </div>
+
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+    </fury-page-layout-content>
+
+
+</fury-page-layout>

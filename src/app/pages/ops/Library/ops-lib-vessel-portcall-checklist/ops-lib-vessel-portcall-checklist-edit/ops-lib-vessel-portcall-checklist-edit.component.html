@@ -1,0 +1,119 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Checklist Add
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div class="Checklist-View">
+    <mat-dialog-content>
+        <mat-card class="sp-card-view" style="margin-top: 20px;">
+            
+            <mat-card-header fxLayout="column">
+                <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                    <div fxLayout="row">
+                        <button mat-mini-fab color="primary" [matTooltip]="'Add New Record'"
+                        class="add-approve-btn save-btn" (click)="saveNewRecord()">
+                        <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                    </button>
+                    <span style="margin-top: 3px;
+                    margin-left: 6px;font-size: 15px;color: #5f5f5f;"> Add New Record</span>
+                        
+                    </div>
+    
+    
+                    <div fxLayout="row">
+    
+    
+                        <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                            <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                        </button>
+                        <mat-card-title style="margin-left: 5px;margin-top: 3px;margin-right: 12px;">Clear Filter</mat-card-title>
+                        
+    
+                    </div>
+    
+                </div>
+    
+            </mat-card-header>
+        
+           <mat-card-content>
+            <table style="width: 100%;border-collapse: collapse;">
+                <thead>
+                    <tr style="background-color: #1976d2; color: #fff;  height: 50px;">
+                        <td style="padding-left: 13px;">Category</td>
+                        <td>Task Details</td>
+                        <td>Sort Order</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td style="padding: 19px;">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Choose a Category Name</mat-label>
+                                <mat-select formControlName="drpCategory_Name">
+                                    <mat-option value="Confirm">Confirm</mat-option>
+                                    <mat-option value="Header">Header</mat-option>
+                                    <mat-option value="Travel">Travel</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td style="padding: 19px;">
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label></mat-label>
+                                <input formControlName="txtDetail" matInput type="text" placeholder="Task detail" />
+                            </mat-form-field>
+                        </td>
+                        <td>   <span>
+                            <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                            border: 1px solid grey;
+                            background: linear-gradient(#ffffff, #dfdfdf);
+                            border-radius: 3px;margin-top: 5px;
+                      
+                           "/>
+                        </span></td>
+                    </tr>
+                    <!--  -->
+                    <tr style="    background: rgb(208 215 214 / 20%);;" *ngIf="showNewRecord">
+                        <td style="padding-left: 63px; padding: 100px;"> 
+                            <button type="button" class="upload-btn" style="margin-top: 6px;" >
+                                <label for="imageupload">
+                                Confirm</label>
+                            </button>
+                        </td>
+                        <td style="padding: 100px;">
+                            <mat-form-field appearance="fill">
+                                <mat-label></mat-label>
+                                <textarea matInput placeholder="Task Details"></textarea>
+                            </mat-form-field>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+                
+          
+             
+           </mat-card-content>
+       
+          
+        </mat-card>
+    </mat-dialog-content>
+    
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px; margin-top: 40px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

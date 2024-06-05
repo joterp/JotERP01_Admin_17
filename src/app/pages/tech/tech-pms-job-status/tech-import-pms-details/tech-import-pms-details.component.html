@@ -1,0 +1,43 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center" class="dialog-title">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+        Import PMS Details
+    </span>
+
+    <button class="fury-column-filter" type="button" mat-icon-button (click)="CloseModal()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<div>
+    <table style="
+    width: 100%;
+    margin-top: 20px;
+">
+        <tr>
+            <td>
+                <div class="action-label" fxFlex>
+
+                    <input style="display: none;" type="file" id="fileupload" #fileInputcatalogue
+                        (change)="onFileSelectedcatalogue($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+                    <button type="button" class="select-file-btn" mat-raised-button style="margin-top: 6px;"
+                        *ngIf="!selectedFileNameCatalogue">
+                        <label for="fileupload">
+                            Select File</label>
+                    </button>
+
+                    <div *ngIf="selectedFileNameCatalogue">
+                        <span style="margin-top: 2px !important;"> {{ selectedFileNameCatalogue }}</span>
+                        <button (click)="removeUploadedFilecatalogue()" mat-button
+                            style="color: #5BB318;">Remove</button> &nbsp;
+                    </div>
+
+                </div>
+
+            </td>
+            <td> <button mat-raised-button class="save-btn">Process</button></td>
+            <td> <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button></td>
+        </tr>
+    </table>
+</div>

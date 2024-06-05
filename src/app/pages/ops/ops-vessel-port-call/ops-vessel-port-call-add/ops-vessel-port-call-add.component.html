@@ -1,0 +1,213 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    Add New Port Call
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="vessel-portcall-add">
+
+    <div>
+        <form [formGroup]="AddVesselPortCallFormGroup">
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Port</mat-label>
+                    <mat-select formControlName="drpPort">
+                        <mat-option>
+
+                        </mat-option>
+
+                        <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+                    </mat-select>
+                    <mat-error *ngIf="AddVesselPortCallFormGroup.get('drpPort').hasError('required')">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+                <div fxFlex></div>
+            </div>
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label class="left-label">Voyage Number</mat-label>
+
+                    <input type="text" class="right-text" formControlName="txtVoyage_Number" matInput />
+
+                    <mat-error *ngIf="AddVesselPortCallFormGroup.get('txtVoyage_Number').hasError('required')">
+                        Required</mat-error>
+                </mat-form-field>
+                <div fxFlex> <div fxLayout="row">
+                    <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                        class="add-approve-btn save-btn"
+                       style="margin-top: 14px;"
+                       (click)="AddVesselPortCallModal(null, 'Add Vessel PortCall')"
+                   >
+                        <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                    </button>
+                </div></div>
+
+
+
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>ETA</mat-label>
+                    <input matInput formControlName="ETA" [matDatepicker]="pickereta" />
+                    <mat-datepicker-toggle matSuffix [for]="pickereta"></mat-datepicker-toggle>
+                    <mat-datepicker #pickereta></mat-datepicker>
+
+                    <mat-error *ngIf="AddVesselPortCallFormGroup.get('ETA').hasError('required')">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+                <div fxFlex>
+                    <mat-checkbox [color]="'primary'" formControlName="chkTBA_1" style="margin-top: 10px;">
+                        TBA
+                    </mat-checkbox>
+                </div>
+
+                <div fxFlex></div>
+
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>ETB</mat-label>
+                    <input matInput formControlName="ETB" [matDatepicker]="pickeretb" />
+                    <mat-datepicker-toggle matSuffix [for]="pickeretb"></mat-datepicker-toggle>
+                    <mat-datepicker #pickeretb></mat-datepicker>
+
+                </mat-form-field>
+
+                <div fxFlex>
+                    <mat-checkbox [color]="'primary'" formControlName="chkTBA_2" style="margin-top: 10px;">
+                        TBA
+                    </mat-checkbox>
+                </div>
+
+                <div fxFlex>
+
+                    <mat-checkbox [color]="'primary'" formControlName="chkTBA_3" style="margin-top: 10px;">
+                        TBA
+                    </mat-checkbox>
+                </div>
+
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>ETD</mat-label>
+                    <input matInput formControlName="ETD" [matDatepicker]="pickeretd" />
+                    <mat-datepicker-toggle matSuffix [for]="pickeretd"></mat-datepicker-toggle>
+                    <mat-datepicker #pickeretd></mat-datepicker>
+
+                </mat-form-field>
+
+                <div fxFlex>
+                    <mat-checkbox [color]="'primary'" formControlName="chkTBA_4" style="margin-top: 10px;">
+                        TBA
+                    </mat-checkbox>
+                </div>
+
+                <div fxFlex>
+
+                    <mat-checkbox [color]="'primary'" formControlName="chkTBA_5" style="margin-top: 10px;">
+                        TBA
+                    </mat-checkbox>
+                </div>
+
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Agent Type</mat-label>
+                    <mat-select formControlName="drpAgent_Type">
+                        <mat-option>
+
+                        </mat-option>
+
+                        <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+                    </mat-select>
+                    <mat-error *ngIf="AddVesselPortCallFormGroup.get('drpAgent_Type').hasError('required')">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+                <div fxFlex></div>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Agent</mat-label>
+                    <mat-select formControlName="drpAgent">
+                        <mat-option>
+
+                        </mat-option>
+
+                        <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+                    </mat-select>
+                    <mat-error *ngIf="AddVesselPortCallFormGroup.get('drpAgent').hasError('required')">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+                <div fxFlex>
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="../../../../assets/img/send.png" class="logoinvite" alt="excel" />
+                            </td>
+                            <td><span style="color: #23527c;">Invite Agent</span></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Remarks </mat-label>
+                    <textarea matInput formControlName="txtRemarks"></textarea>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!AddVesselPortCallFormGroup.valid ? '' : 'save-btn']"
+        [disabled]="!AddVesselPortCallFormGroup.valid">
+        SAVE
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

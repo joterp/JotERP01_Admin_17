@@ -1,0 +1,114 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add Crew Matrix Rule Template
+     </span>
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <form [formGroup]="ruleTemplateFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Questions</mat-label>
+              <textarea
+                matInput
+                formControlName="txtQuestions"
+                placeholder="Questions"
+              ></textarea>
+            </mat-form-field>
+        </div>
+
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Question Type</mat-label>
+                <mat-select formControlName="drpQuestion_Type">
+                    <mat-option value="Library">Library</mat-option>
+                    <mat-option value="Free_Text">Free Text</mat-option>
+                    
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Table</mat-label>
+                <mat-select formControlName="drpTable">
+                    <mat-option value="TBL_LIB_CRW_INTW_SHEET">TBL_LIB_CRW_INTW_SHEET</mat-option>
+                    <mat-option value="TBL_LIB_QMS_TEMPLATE">TBL_LIB_QMS_TEMPLATE</mat-option>
+                    <mat-option value="TBL_TECH_ENGINEROOM_LOG_LIB_LOGWATCH">TBL_TECH_ENGINEROOM_LOG_LIB_LOGWATCH</mat-option>
+                    <mat-option value="TBL_LIB_ISPS_SECURITY_DRILL">TBL_LIB_ISPS_SECURITY_DRILL</mat-option>
+                    <mat-option value="TBL_LIB_QMS_USER_ACCESS">TBL_LIB_QMS_USER_ACCESS</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Column Key</mat-label>
+                <mat-select formControlName="drpColumn_Key">
+                    
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Column To Display</mat-label>
+                <mat-select formControlName="drpColumn_To_Display">
+                   
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Free Text</mat-label>
+              <textarea
+                matInput
+                formControlName="txtFree_Text"
+                placeholder="Free Text"
+              ></textarea>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Variable Type</mat-label>
+                <mat-select formControlName="drpVariable_Type">
+                    <mat-option value="Equal_To">Equal TO</mat-option>
+                    <mat-option value="Not_Equal_To">Not Equal To</mat-option>
+                    <mat-option value="Less_Than">LessThan</mat-option>
+                    <mat-option value="Greater_Than">Greater_Than</mat-option>
+                    <mat-option value="Less_than_or_Equal_To">Less Than or Equal To</mat-option>
+                    <mat-option value="Greater_than_or_Equal_To">Greater Than or Equal To</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <section class="example-section">
+            Is Mandatory ?
+             <mat-checkbox  formControlName="txtIs_Mandatory"
+                 class="example-margin"
+                >
+           
+             </mat-checkbox>
+        </section>
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" >
+      Copy
+      </button>
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Add New
+      </button>
+     
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

@@ -1,0 +1,323 @@
+<fury-page-layout mode="card" class="crew-costRegistrationIndex">
+
+    <h3 class="unit-packing" style="text-align: center;margin: 30px;">
+        <span class="first-letter">C</span>OST
+        <span class="first-letter">R</span>EGISTRATION
+        <span class="first-letter">I</span>NDEX
+    </h3>
+
+    <fury-page-layout-content>
+
+       
+        <div fxLayout="row" style="margin: 30px;    border: 1px solid #eeeeee;
+        padding: 15px;">
+          
+
+                <!-- <div fxFlex="18" style="margin: 10px;">
+                <p>Vessel</p>
+                <mat-list dense style="border: 1px solid #e2e2e2;cursor: pointer;padding: 0;background-color: #f4f4f4;">
+                    <mat-list-item style="background-color: #d5d5d5;">
+                        <mat-checkbox [(ngModel)]="select_vessel_data"
+                            (ngModelChange)="onSelectVesselData($event)"></mat-checkbox>
+                        <span fxFlex="5"></span>
+                        <span >Select all</span>
+                    </mat-list-item>
+
+                    <ng-container *ngFor="let d of dataVessel;">
+                        <mat-list-item>
+                            <mat-checkbox [(ngModel)]="d.is_selected"></mat-checkbox>
+                            <span fxFlex="5"></span>
+                            <span>{{ d.name }}</span>
+                        </mat-list-item>
+                    </ng-container>
+                </mat-list>
+            </div> -->
+
+            
+                <div fxFlex="20" style="margin: 10px;">
+                    <div class="heading-text">Vessel</div>
+                    <mat-list dense
+                        style="    border: 1px solid #d7d3d3;cursor: pointer;padding: 0;background-color: #f4f4f4;">
+                        <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                            <mat-checkbox [(ngModel)]="select_vessel_data"
+                                (ngModelChange)="onSelectVesselData($event)"></mat-checkbox>
+                            <span fxFlex="5"></span>
+                            <span class="checkbox-text">Select all</span>
+                        </mat-list-item>
+
+                        <ng-container *ngFor="let d of dataVessel;">
+                            <mat-list-item style="height: 35px;">
+                                <mat-checkbox [(ngModel)]="d.is_selected"></mat-checkbox>
+                                <span fxFlex="5"></span>
+                                <span class="checkbox-text">{{ d.name }}</span>
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+
+
+                </div>
+                <div fxFlex="20" style="margin: 10px;">
+                    <div class="heading-text">Vessel</div>
+                    <mat-list dense
+                        style="    border: 1px solid #d7d3d3;;cursor: pointer;padding: 0;background-color: #f4f4f4;">
+                        <mat-list-item style="background-color: #d5d5d5;height: 35px;">
+                            <mat-checkbox [(ngModel)]=" select_Rank_data"
+                                (ngModelChange)="onSelectRank($event)"></mat-checkbox>
+                            <span fxFlex="5"></span>
+                            <span class="checkbox-text">Select all</span>
+                        </mat-list-item>
+
+                        <ng-container *ngFor="let d of dataRank;">
+                            <mat-list-item style="height: 35px;">
+                                <mat-checkbox [(ngModel)]="d.is_selected"></mat-checkbox>
+                                <span fxFlex="5"></span>
+                                <span class="checkbox-text">{{ d.name }}</span>
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+
+                </div>
+                <div fxFlex="20" style="margin: 10px;">
+                    <div class="heading-text">Cost Type</div>
+                    <mat-list dense
+                        style="    border: 1px solid #d7d3d3;;cursor: pointer;padding: 0;background-color: #f4f4f4;font-family: Thoma !important;">
+                        <mat-list-item style="background-color: #d5d5d5; height: 35px;">
+                            <mat-checkbox [(ngModel)]="select_CostType_data"
+                                (ngModelChange)="onSelectCostType($event)"></mat-checkbox>
+                            <span fxFlex="5"></span>
+                            <span class="checkbox-text">Select all</span>
+                        </mat-list-item>
+
+                        <ng-container *ngFor="let d of dataCostType;">
+                            <mat-list-item style="height: 35px;">
+                                <mat-checkbox [(ngModel)]="d.is_selected"></mat-checkbox>
+                                <span fxFlex="5"></span>
+                                <span class="checkbox-text">{{ d.name }}</span>
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+                </div>
+                <div fxFlex="40" style="margin: 77px 30px;">
+
+
+                    <form [formGroup]="manningFeeFormGroup">
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Staff Name</mat-label>
+                            <input formControlName="txtStaff_Name" matInput placeholder="Search by Staff Name"
+                                type="text" />
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Cost Date</mat-label>
+                            <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerFrom></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Status</mat-label>
+                            <mat-select formControlName="drpStatus">
+                                <mat-option value="">Select Status</mat-option>
+                                <mat-option value="1">Active</mat-option>
+                                <mat-option value="0">Inactive</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div style="margin-top: 10px;">
+                            <strong>Has Attachments</strong>
+                            <mat-checkbox style="margin-left: 5px;">
+
+                            </mat-checkbox>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px" style="margin-bottom: 24px; margin-top: 26px;">
+                            <mat-label><strong>Is Verified</strong></mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_Reqsn_Status">
+                                <mat-radio-button value="1"
+                                    [checked]="manningFeeFormGroup.get('radioNew_Reqsn_Status').value == 1">
+                                    <label
+                                        [class.active-label]="manningFeeFormGroup.get('radioNew_Reqsn_Status').value == 1">Verified</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="0"
+                                    [checked]="manningFeeFormGroup.get('radioNew_Reqsn_Status').value == 0">
+                                    <label
+                                        [class.active-label]="manningFeeFormGroup.get('radioNew_Reqsn_Status').value == 0">Un-Verified</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="2"
+                                    [checked]="manningFeeFormGroup.get('radioNew_Reqsn_Status').value == 2">
+                                    <label
+                                        [class.active-label]="manningFeeFormGroup.get('radioNew_Reqsn_Status').value == 2">All</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <!-- To add this in action button -->
+                        <button mat-raised-button color="primary" (click)="saveVerifyCostDetails(null,false)">
+                            Verify Cost details Modal
+                        </button>
+                    </div>
+
+                    <div class="filter-btn-area" fxFlex style="margin: 60px;">
+                        <div>
+                            <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                                Search
+                              </button> -->
+                            <button mat-raised-button color="primary" style="background-color: #5cb85c;"
+                                class="filter-btn">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button"
+                                (click)="clearFilter()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            
+            
+        </div>
+   
+
+        <fury-page-layout-content [@fadeInUp] class="content-area">
+            <div class="actions-area">
+
+                <div fxLayout="row">
+                    <button mat-mini-fab color="primary" [matTooltip]="'Add Cost Details'"
+                        class="add-approve-btn save-btn" (click)="saveNewCostDetails(null,false)">
+                        <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                    </button>
+                    <span style="margin-top: 3px;
+              margin-left: 6px;font-size: 15px;"> Add Cost Details</span>
+                </div>
+                <div>
+                    <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+                    <span>
+                        <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                        <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                        <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                    </span>
+                </div>
+
+            </div>
+
+            <div #TABLE>
+                <table [dataSource]="costRegistrationdataSource" mat-table matSort #table class="details-table">
+
+
+                    <ng-container matColumnDef="Vessel">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Vessel
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Seafarer">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Seafarer
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Rank">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Rank
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Cost_Type">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Cost Type
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Cost_Date">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Cost Date
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Cost_Details">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Cost Details
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Currency">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Currency
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Amount">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Amount
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="USD_Amount">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            USD Amount
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Verified">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Verified
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Action">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Action
+                        </th>
+                        <td *matCellDef="let row" class="actions-cell" mat-cell>
+                            <!-- -->
+                            <button mat-icon-button color="primary">
+                                <mat-icon class="icon-display">edit</mat-icon>
+                            </button>
+
+                            <button mat-icon-button color="warn">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                            <button mat-icon-button>
+                                <mat-icon class="icon-display">info</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <tr *matHeaderRowDef="costRegistrationvisibleColumns" mat-header-row></tr>
+                    <tr *matRowDef="let row; columns: costRegistrationvisibleColumns"
+                        class="clickable route-animations-elements" mat-row></tr>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                    </tr>
+                </table>
+            </div>
+            <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+        </fury-page-layout-content>
+
+    </fury-page-layout-content>
+</fury-page-layout>

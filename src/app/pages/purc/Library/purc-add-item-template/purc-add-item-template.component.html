@@ -1,0 +1,315 @@
+<fury-page-layout mode="card" class="purc-requisitionsTemplate">
+
+    <h3 class="unit-packing" style="margin: 30px 30px;">
+        <span class="first-letter">R</span>EQUISITIONS
+        <span class="fifth-letter">T</span>EMPLATES
+    </h3>
+
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+        <mat-card>
+            <div class="tbl-full" fxLayout="row" fxLayoutGap="10px" xLayoutAlign="space-around">
+
+                <div fxFlex="30" #TABLE1>
+
+                    <div class="tbl-sm" fxLayout="row"   fxLayoutGap="10px">
+
+                        
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add Template'"
+                                class="add-approve-btn save-btn" (click)="saveNewTemplate(null,false)">
+                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                            </button>
+                            <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;"> Add New Template</span>
+                        </div>
+                    </div>
+
+                    <form [formGroup]="templateFilterFormGroup">
+                        <div class="filter-area" fxFlex>
+                            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px">
+                                <div fxFlex>
+                                    <!-- <mat-form-field appearance="fill">
+                                        <mat-label>r</mat-label>
+                                        <input formControlName="" matInput
+                                            placeholder="Search by Template Name" type="text" />
+                                    </mat-form-field> -->
+
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Drawing Number</mat-label>
+                                        <input type="text" formControlName="txtDrawing_Number" matInput />
+                                    </mat-form-field>
+                                    
+                                </div>
+
+                                <div class="filter-btn-area" fxFlex>
+                                    <div>
+                                      <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                                        Search
+                                      </button> -->
+                                      <button
+                                      mat-raised-button
+                                      color="primary"
+                                     style="background-color: #5cb85c;"
+                                      class="filter-btn"
+                                    
+                                    >
+                                      Search
+                                    </button>
+                                    </div>
+                        
+                                    <div>
+                                      <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                                        type="button" (click)="clearFilter()">
+                                        Clear Filter
+                                      </button>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <table [dataSource]="templatedataSource" mat-table matSort #table1 class="details-table">
+
+                        <ng-container matColumnDef="Template_Name">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Template Name
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+
+
+
+                        <ng-container matColumnDef="Action">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Action
+                            </th>
+                            <td *matCellDef="let row" class="actions-cell" mat-cell>
+                                <!-- -->
+                                <button mat-icon-button color="primary">
+                                    <mat-icon class="icon-display">edit</mat-icon>
+                                </button>
+
+                                <button mat-icon-button color="warn">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                                <button mat-icon-button>
+                                    <mat-icon class="icon-display">info</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+
+                        <tr *matHeaderRowDef="visibleColumnsTemplate" mat-header-row></tr>
+                        <tr *matRowDef="let row; columns: visibleColumnsTemplate"
+                            class="clickable route-animations-elements" mat-row></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+                    </table>
+                </div>
+
+
+
+                <div fxFlex="68" #TABLE2>
+
+                    <div class="tbl-sm" fxLayout="row" fxLayoutAlign="space-between center">
+                        <div fxFlex="48">
+                            <!-- <span class="create">
+                                <button mat-mini-fab color="primary" >
+                                    <mat-icon>add </mat-icon>
+                                </button>
+                                
+                            </span> -->
+                            <div fxLayout="row">
+                                <button mat-mini-fab color="primary" [matTooltip]="'Add Item'"
+                                    class="add-approve-btn save-btn" (click)="saveNewItem(null,false)">
+                                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                </button>
+                                <span style="margin-top: 3px;
+                                margin-left: 6px;font-size: 15px;"> Add New Item</span>
+                            </div>
+                      
+                        </div>
+                        <div fxFlex="48">
+                            <!-- <span class="create">
+                                <button mat-mini-fab color="primary" class="btn-spacing"
+                                >
+                                    <mat-icon>add </mat-icon>
+                                </button>
+                               
+                            </span> -->
+                            <div fxLayout="row">
+                                <button mat-mini-fab color="primary" [matTooltip]="'Add Item From Catalogue'"
+                                    class="add-approve-btn save-btn"     (click)="saveItemFromCatalogue(null,false)">
+                                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                </button>
+                                <span style="margin-top: 3px;
+                                margin-left: 6px;font-size: 15px;"> Add Item From Catalogue</span>
+                            </div>
+                      
+                        </div>
+
+                    </div>
+
+
+                    <form [formGroup]="ItemFilterFormGroup">
+
+                        <div class="filter-area" fxFlex>
+                            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" 
+                            >
+                                <div fxFlex>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Drawing Number</mat-label>
+                                        <input formControlName="txtDrawing_Number" matInput
+                                            placeholder="Search by Template Name" type="text" />
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Part Number</mat-label>
+                                        <input formControlName="txtPart_Number" matInput
+                                            placeholder="Search by Template Name" type="text" />
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Item Description</mat-label>
+                                        <input formControlName="txtItem_Description" matInput
+                                            placeholder="Search by Template Name" type="text" />
+                                    </mat-form-field>
+                                </div>
+
+
+                                <div fxFlex>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Unit</mat-label>
+                                        <mat-select formControlName="drpUnit">
+                                            <mat-option value="11188-TEST">Bag</mat-option>
+                                            <mat-option value="01001-Food">Sugar</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+
+                                <div class="filter-btn-area" fxFlex>
+                                    <div>
+                                      <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                                        Search
+                                      </button> -->
+                                      <button
+                                      mat-raised-button
+                                      color="primary"
+                                     style="background-color: #5cb85c;"
+                                      class="filter-btn"
+                                    
+                                    >
+                                      Search
+                                    </button>
+                                    </div>
+                        
+                                    <div>
+                                      <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                                        type="button" (click)="clearFilter()">
+                                        Clear Filter
+                                      </button>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <table [dataSource]="itemdataSource" mat-table matSort #table1 class="details-table">
+
+                        <ng-container matColumnDef="Drawing_Number">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Drawing Number
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Part_Number">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Part Number
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Item_Description">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Item Description
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Unit">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Unit
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Required_Quantity">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Required_Quantity
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="Action">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Action
+                            </th>
+                            <td *matCellDef="let row" class="actions-cell" mat-cell>
+                                <!-- -->
+                                <button mat-icon-button color="primary">
+                                    <mat-icon class="icon-display">edit</mat-icon>
+                                </button>
+
+                                <button mat-icon-button color="warn">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                                <button mat-icon-button>
+                                    <mat-icon class="icon-display">info</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+
+                        <tr *matHeaderRowDef="visibleColumnsCatalogue" mat-header-row></tr>
+                        <tr *matRowDef="let row; columns: visibleColumnsCatalogue"
+                            class="clickable route-animations-elements" mat-row></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </mat-card>
+
+
+    </fury-page-layout-content>
+
+</fury-page-layout>

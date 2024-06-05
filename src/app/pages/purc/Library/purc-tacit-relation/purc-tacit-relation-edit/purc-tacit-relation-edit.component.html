@@ -1,0 +1,91 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Tacit Approval Relation 
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon  (click)="CloseModal()">close</mat-icon>
+      </span>
+</div> -->
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle >
+  <span style="font-size: 20px;">Add New Tacit Approval Relation </span>
+</div>
+
+
+<mat-dialog-content style="height: 100% !important" class="tacit-relation-modal">
+    <form [formGroup]="tacitApprovalFormGroup"   [ngStyle]="{ 'margin-top': '7px' }">
+      <div mat-dialog-container style="padding-top: 20px;">
+        
+        
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>PO Type</mat-label>
+            <mat-select formControlName="drpPO_Type">
+              <mat-option value="ContractPO">Contract PO</mat-option>
+              <mat-option value="HRPO">HR PO</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Override Authority</mat-label>
+              <mat-select formControlName="drpOverride_Authority">
+                <mat-option value="Nisha">Nisha</mat-option>
+                <mat-option value="Sherley">Sherley</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row" >
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Mail To</mat-label>
+                <input formControlName="txtMail_To" matInput placeholder="Search by Mail To" type="text" />
+              </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row" >
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Mail CC</mat-label>
+                <input formControlName="txtMail_CC" matInput placeholder="Search by Mail CC" type="text" />
+              </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row" >
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Stipulated Time</mat-label>
+                <input formControlName="txtStipulated_Time" matInput placeholder="Search by mins" type="text" />
+              </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row" style="margin-top: 7px;">
+            <section class="example-section">
+               Is Tacit Enabled?
+                <mat-checkbox  formControlName="txtTacit_Enabled"
+                    class="example-margin" style="margin-left: 10px;"
+                   >
+               
+                </mat-checkbox>
+              </section>
+          </div>
+      
+          
+        
+      </div>
+    </form>
+  </mat-dialog-content>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+       Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  

@@ -1,0 +1,198 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    Port Call Checklists
+</div>
+
+<mat-dialog-content>
+
+    <div>
+ 
+      <h3 class="checklist-title">Port Call Checklists</h3>
+
+      <form [formGroup]="ChecklistFormGroup">
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Vessel</mat-label>
+              <mat-select formControlName="drpVessel">   
+                </mat-select>          
+            </mat-form-field>
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Port</mat-label>
+                <mat-select formControlName="drpPort">  
+                    </mat-select> 
+              </mat-form-field>
+
+          </div>
+
+      </form>
+
+    </div>
+
+    <div class="actions-area" style="border: 1px solid #c1c1c1;
+    background: #ebebeb;height: 47px;">
+        <table style="display: flex;">
+            <tr>
+                <td>
+                    <div fxLayout="row">
+                        <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-approve-btn save-btn" 
+                        (click)="AddNewChecklist(null)"
+                        >
+                            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                        </button>
+                        <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;">Create New Requisition</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+        <div>
+            <span style="cursor: pointer">
+                <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+            </span>
+        </div>
+        <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+    </div>
+
+    <div #TABLE>
+        <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+
+
+            <ng-container matColumnDef="Closed_By">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;"> Closed By </th>
+
+            </ng-container>
+
+            <ng-container matColumnDef="Closed_Date">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;"> Date </th>
+
+            </ng-container>
+            <ng-container matColumnDef="Verified_By">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;"> Verified By </th>
+
+            </ng-container>
+
+            <ng-container matColumnDef="Verified_Date">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;"> Date </th>
+
+            </ng-container>
+
+
+
+            <ng-container matColumnDef="header-row-first-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+                    Status
+                </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-second-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+                    Department
+                </th>
+            </ng-container>
+
+            <ng-container matColumnDef="header-row-third-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+                    Checklist Name
+                </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-fourth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+                    Staff Name
+                </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-fifth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                    Closed
+                </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-sixth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+                    Verified
+                </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-seventh-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+
+                </th>
+            </ng-container>
+
+            <ng-container matColumnDef="header-row-eighth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+
+                </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-eighth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+
+                </th>
+            </ng-container>
+
+
+
+
+            <tr mat-header-row
+                *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group','header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group']"
+                style="height:32px">
+            </tr>
+
+
+
+            <tr *matHeaderRowDef="visibleColumns" mat-header-row style="height:32px"></tr>
+            <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="9999">No data found</td>
+            </tr>
+        </table>
+    </div>
+
+    <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="center end" style="margin-top: 12px;">
+
+        <button mat-raised-button color="warn" class="save-btn1" style="margin-left: 10px" (click)="CloseModal()">
+            Cancel
+        </button>
+    </mat-dialog-actions>
+
+
+</mat-dialog-content>

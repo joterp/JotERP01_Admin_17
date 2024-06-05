@@ -1,0 +1,205 @@
+fury-crew-evaluation-edit-new {
+    .first-letter {
+        font-size: 1.5em;
+      }
+      .first-letter {
+        font-size: 1.5em;
+      }
+      .first-letter {
+        font-size: 1.4em;
+      }
+    .routerTitle {
+        font-weight: bold;
+        font-family: Tahoma !important;
+        color: #333;
+    }
+
+    // badge css
+    :host {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+       
+      .demo-section + .demo-section {
+        margin-top: 16px;
+      }
+    //   
+
+    // mat accordion
+
+    .panel-title{
+        color: blue;
+        font-family: tahoma;
+        font-weight: bold;
+    }
+
+    // 
+    
+    .filter-area{
+        margin-top: 20px;
+
+    }
+    .filter-btn-area {
+        padding: 8px 0px;
+        text-align: center;
+      }
+    
+      .filter-btn {
+        margin-right: 5px !important;
+        // width: 100px;
+        margin-bottom: 10px !important;
+      }
+    
+      .add-approve-btn {
+        height: 24px;
+        width: 24px;
+        align-items: center;
+        display: flex;
+      }
+  
+      .add-approve-btn-icon {
+        font-size: 24px;
+        align-self: center;
+        margin-top: -1px;
+      }
+
+    .vmppmsrequest {
+        padding: 10px;
+
+        .mat-form-field-label-wrapper {
+            top: -0.75em;
+            padding-top: 0.84375em;
+        }
+
+        .mat-form-field-wrapper {
+            margin-right: 5px !important;
+            padding-bottom: 0px;
+        }
+
+        .mat-form-field {
+            margin-bottom: 21px;
+            width: 100%;
+        }
+
+        .mat-form-field-subscript-wrapper {
+            top: 50px;
+        }
+
+        .mat-form-field-flex {
+            align-items: flex-start !important;
+        }
+
+        .mat-form-field-infix {
+            border-top: 0.84375em solid transparent;
+        }
+
+        .mat-form-field-underline {
+            bottom: 0 !important;
+        }
+
+        .contact-detail-title {
+            background-color: lightgray;
+            font-weight: bold;
+            font-size: 15px;
+            height: fit-content;
+            color: #333;
+            font-family: Tahoma !important;
+            padding: 16px;
+            margin-bottom: 21px;
+
+        }
+        .evaluation-td{
+            text-align: end;
+            font-family: tahoma;
+            font-size: 13px;
+            width: 50%;
+
+        }
+        .evaluation-td2{
+            font-family: tahoma;
+            font-size: 13px;
+            width: 50%;
+
+        }
+        .evaluation-td3{
+            font-family: tahoma;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .mat-expansion-panel-body {
+         padding: 16px 0px 16px 0px;
+        }
+        .date_and_time{
+            width: 96%;
+            height: 32px;
+            border: 1px solid #999999;
+            border-radius: 5px;
+          }
+     .crew-textarea{
+        height: 100%;
+        width: 99%;
+     }
+
+    }
+
+
+    table.mat-table {
+        width: 100%;
+      }
+      p.tbl-row-item {
+        font-size: 12px;
+        margin-top: 10px;
+        // margin-bottom: 10px;
+        padding: 0px 5px;
+      }
+    
+      tr.mat-header-row {
+        height: 56px;
+        background-color: #1F497D;
+      }
+    
+      th.mat-header-cell {
+        text-align: left;
+        color: white;
+   
+      }
+    
+      .content-loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    
+      th.mat-header-cell:last-of-type,
+      td.mat-cell:last-of-type,
+      td.mat-footer-cell:last-of-type {
+        padding-right: 10px;
+        // min-width: 100px;  commented this on 18-08-23
+      }
+    
+      th.mat-header-cell:first-of-type,
+      td.mat-cell:first-of-type,
+      td.mat-footer-cell:first-of-type {
+        padding-left: 10px;
+      }
+    
+      .mat-form-field-appearance-fill .mat-form-field-flex {
+        border-radius: 4px 4px 0 0;
+        padding: 5px 8px 0;
+      }
+    
+      .mat-form-field-appearance-fill .mat-form-field-infix {
+        padding: 0.05em 0 0.75em;
+      }
+      td.mat-cell.cdk-cell.actions-cell.cdk-column-Remarks.mat-column-Remarks.ng-star-inserted {
+        max-width: 100px;
+        word-break: break-word;
+      }
+}
+
+
+
+
+

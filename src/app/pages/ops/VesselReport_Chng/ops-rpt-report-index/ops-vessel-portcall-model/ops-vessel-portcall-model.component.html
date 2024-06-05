@@ -1,0 +1,169 @@
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Vessel PortCall
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+  <mat-dialog-content>
+ 
+    <form [formGroup]="VesselPortcallFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field appearance="fill">
+              <mat-label>Port</mat-label>
+              <mat-select formControlName="drpPort" >
+                <mat-option value="Alexa">Alexa</mat-option>
+                <mat-option value="Alexandre">Alexandre</mat-option>
+                <mat-option value="Yami">Yami</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field appearance="fill">
+              <mat-label>Voyage Number</mat-label>
+              <mat-select formControlName="drpVoyage_Number">
+                <mat-option value="Australia">Spot-100-14JUl2023-Augunstin Pvt Ltd</mat-option>
+               
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5">
+            <table style="width: 100%;">
+                
+                <tbody>
+                    <tr>
+                        <td>Date</td>
+                        <td>Time</td>
+                    </tr>
+                    
+                    
+                       
+                  
+                    <tr>
+                        <td>ETA</td>
+                        <td>
+                            <input type="text">
+                        </td>
+                        <td>
+                            <!-- <mat-checkbox class="example-margin" >TBA</mat-checkbox> -->
+                        </td>
+
+                        <td>
+                            <input type="text">
+                        </td>
+                        <td>
+                            <mat-checkbox class="example-margin" >TBA</mat-checkbox>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>ETA</td>
+                        <td>
+                            <input type="text">
+                        </td>
+                        <td>
+                            <mat-checkbox class="example-margin" >TBA</mat-checkbox>
+                        </td>
+
+                        <td>
+                            <input type="text">	<span></span><mat-icon>watch_later</mat-icon>
+                        </td>
+                        <td>
+                            <mat-checkbox class="example-margin" >TBA</mat-checkbox>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>ETA</td>
+                        <td>
+                            <input type="text">
+                        </td>
+                        <td>
+                            <mat-checkbox class="example-margin" >TBA</mat-checkbox>
+                        </td>
+
+                        <td>
+                            <input type="text">
+                        </td>
+                        <td>
+                            <mat-checkbox class="example-margin" >TBA</mat-checkbox>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+       
+      
+
+        
+       
+        
+       
+
+       <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field appearance="fill">
+              <mat-label>Agent Type</mat-label>
+              <mat-select formControlName="drpAgent_Type">
+                <mat-option value="Charters">Charters</mat-option>
+                <mat-option value="Owners">Owners</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+
+        
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field appearance="fill">
+              <mat-label>Agent</mat-label>
+              <mat-select formControlName="drpAgent">
+                <mat-option value="abc">abc Pune</mat-option>
+               
+              </mat-select>
+            </mat-form-field>
+            <span class="add-sp-btn">
+                <img src="../../../../assets/img/send.png" class="logoinvite" alt="excel" />
+              </span>
+              <span style="margin-top: 5px; margin-left: 6px; font-size: 15px;" >Invite
+                Agent</span>
+        </div>
+         
+
+       
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field appearance="fill">
+                <mat-label>Remark</mat-label>
+                <textarea
+                matInput
+                formControlName="txtRemark"
+                placeholder="Remarks"
+                ></textarea>
+             </mat-form-field>
+        </div>
+   
+    
+        
+
+       
+      </div>
+    </form>
+  </mat-dialog-content>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

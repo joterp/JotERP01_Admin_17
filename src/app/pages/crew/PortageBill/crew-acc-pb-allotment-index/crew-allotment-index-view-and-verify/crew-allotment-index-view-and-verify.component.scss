@@ -1,0 +1,151 @@
+fury-crew-allotment-index-view-and-verify {
+
+    .logo {
+        width: 20px;
+        height: 20px;
+    }
+
+
+    .view_and_verify-view {
+
+        .payslips-td {
+            background-color: #1F497D;
+            color: White;
+            height: 28px;
+            border-radius: 5px;
+            overflow: hidden;
+            padding-left: 5px;
+            font-family: tahoma;
+        }
+
+        .payslip-detail {
+            border: 1px solid #d9d9d9;
+            background: #fff;
+            color: #333;
+            font-family: tahoma;
+            padding-left: 25px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+
+        }
+
+        .mat-mdc-form-field+.mat-mdc-form-field {
+            margin-left: 8px;
+        }
+
+        .panel-header {
+            border: 1px solid #d9d9d9;
+            background: linear-gradient(#ffffff, #c3c3c3);
+            color: #333;
+            font-family: tahoma;
+            height: 35px;
+            border-radius: 0;
+        }
+
+        .panel-title {
+            color: maroon;
+            font-weight: bold;
+            font-size: 13.5px;
+        }
+
+        .mat-expansion-panel-body {
+            padding: 0;
+        }
+
+        .pay-td {
+            font-family: tahoma;
+        }
+
+        .pay-td-bold {
+            font-family: tahoma;
+            color: Maroon;
+            font-weight: bold;
+        }
+
+        .earnings-td {
+            color: White;
+            background-color: #31527E;
+            font-size: 14px;
+            text-align: center;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            padding: 5px;
+        }
+
+        .earnings-td2 {
+            color: White;
+            background-color: #31527E;
+            font-size: 14px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .earnings-td3 {
+            border-bottom: 1px solid lightgrey;
+        }
+
+        .deductions-td {
+            color: White;
+            background-color: tomato;
+            font-size: 14px;
+            text-align: center;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            padding: 5px;
+        }
+
+        .deductions-td2 {
+            color: White;
+            background-color: tomato;
+            font-size: 14px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .bankdetail-title {
+            color: Maroon;
+            font-weight: bold;
+            font-family: tahoma;
+        }
+
+
+        // 
+        .roundedTable {
+            border-radius: 6px 6px 6px 6px;
+            border: 1px solid #e3e3e3;
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        .roundedTable tr:first-child th:first-child {
+            border-top-left-radius: 5px;
+        }
+
+        .roundedTable tr:first-child th:last-child {
+            border-top-right-radius: 5px;
+        }
+
+        .roundedTable tr:last-child td:first-child {
+            border-bottom-left-radius: 5px;
+        }
+
+        .roundedTable tr:last-child td:last-child {
+            border-bottom-right-radius: 5px;
+        }
+      
+        // /* optional setting to set the background color and font color of the first row - behave like a header */
+        // .roundedTable tr:first-child th:first-child {
+        //     background-color: #1f497d;
+        //     color: #FFF;
+        //     padding: 6px;
+        // }
+
+        .roundedTable tr td {
+            border: 1px solid #e3e3e3;
+            padding: 6px;
+        }
+
+    }
+
+
+}

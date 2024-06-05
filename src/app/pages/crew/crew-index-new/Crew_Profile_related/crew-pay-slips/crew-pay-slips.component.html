@@ -1,0 +1,128 @@
+<div class="crew-PaySlips-view">
+
+    <table style="width: 100%;">
+       <tr>
+           <td class="payslips-td">
+              <b>Pay Slips</b> 
+           </td>
+       </tr>
+
+       <tr>
+
+        <td>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 30%;vertical-align: top;">
+            
+                        <mat-accordion>
+                   
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                 (closed)="panelOpenState = false" [expanded]="true">
+                              <mat-expansion-panel-header class="panel-header">
+                                <mat-panel-title class="panel-title"> 
+                                    ALEXANDRE - MST
+                                </mat-panel-title>
+                               
+                              </mat-expansion-panel-header>
+                              <div *ngFor="let payment of PaymentDetails" class="payslip-detail">
+                                {{payment.month}} - {{payment.year}}
+                              </div>
+                            </mat-expansion-panel>
+                          </mat-accordion>
+                    
+                    </td>
+                    <td style="width: 3%;"></td>
+                    <td style="width: 67%;vertical-align: top;">
+                    <table style="width: 100%;border: 1px solid grey;">
+                      <tr>
+                        <td class="pay-td">Staff</td>
+                        <td class="pay-td">:</td>
+                        <td class="pay-td">10417 - MST - Santosh Rao</td>
+                        
+                        <td colspan="3"></td>
+                        <td style="text-align: end;"> <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" /></td>
+                       </tr>
+
+                       <tr>
+                        <td class="pay-td">Joining Date</td>
+                        <td class="pay-td">:</td>
+                        <td class="pay-td">2023-03-30</td>
+                        <td colspan="4"></td>
+                       </tr>
+                       <tr>
+                        <td class="pay-td" style="width:16%">Sign On Date</td>
+                        <td class="pay-td" style="width:1%">:</td>
+                        <td class="pay-td" style="width:35%">2023-03-30</td>
+                        <td style="width:1%"></td>
+                        <td style="width:13%">Sign Off Date</td>
+                        <td class="pay-td" style="width:1%">:</td>
+                        <td style="width:33%"></td>
+                       </tr>
+                       <tr>
+                        <td class="pay-td" style="width:16%">Sign On Port</td>
+                        <td class="pay-td" style="width:1%">:</td>
+                        <td class="pay-td" style="width:35%">Kochi (Cochin)</td>
+                        <td style="width:1%"></td>
+                        <td style="width:13%">Sign Off Port</td>
+                        <td class="pay-td" style="width:1%">:</td>
+                        <td style="width:33%"></td>
+                       </tr>
+                       <tr>
+                        <td colspan="4"></td>
+                        <td class="pay-td">Sign Off Reason</td>
+                        <td>:</td>
+                        <td></td>                
+                       </tr>
+                       <tr>
+                        <td colspan="4"></td>
+                        <td class="pay-td">DOAH Date</td>
+                        <td>:</td>
+                        <td></td>                
+                       </tr>
+                       <tr>
+                        <td colspan="4"></td>
+                        <td class="pay-td">Expected Rejoining</td>
+                        <td>:</td>
+                        <td>2023-03-30</td>                
+                       </tr>
+
+                       <tr>
+                        <td colspan="3">
+                            <table style="width: 100%;">
+                            <tr>
+                                <td colspan="2" class="earnings-td">Earnings</td>
+                            </tr>
+                            <tr>
+                                <td class="earnings-td2">Components</td>
+                                <td class="earnings-td2">Amounts</td>
+                            </tr>
+        
+                            </table>
+                        </td>
+                        <td></td>
+                        <td colspan="3">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td colspan="2" class="deductions-td">Deductions</td>
+                                </tr>
+                                <tr>
+                                    <td class="deductions-td2">Components</td>
+                                    <td class="deductions-td2">Amounts</td>
+                                </tr>
+            
+                                </table>
+                        </td>
+                       </tr>
+                       
+                    </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+       </tr>
+       
+    </table>
+   
+   
+   </div>
+   

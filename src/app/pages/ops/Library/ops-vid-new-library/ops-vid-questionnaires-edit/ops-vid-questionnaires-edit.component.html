@@ -1,0 +1,90 @@
+
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>{{ modeltitle}}
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <mat-dialog-content>
+      <form [formGroup]="questionnairesFormGroup"  >
+          <div mat-dialog-container style="padding-top: 20px;">
+              <div fxLayout="column" fxLayout.gt-sm="row" >
+                  <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Department Name</mat-label>
+                      <mat-select formControlName="drpDepartment_Name" >
+                        <mat-option value="Kilogram">Admin</mat-option>
+                        <mat-option value="Liters">Account</mat-option>
+                        
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+              <div fxLayout="column" fxLayout.gt-sm="row" >
+                  <mat-form-field fxFlex appearance="fill">
+                      <mat-label>VID Questionnaires</mat-label>
+                      <textarea
+                      matInput
+                      formControlName="txtVID_Ques"
+                     
+                      ></textarea>
+                  </mat-form-field>
+                  
+              </div>
+                <div fxLayout="row"  fxLayoutGap="10px"
+                          style="margin-bottom: 24px; margin-top: 26px;">
+                          <mat-label>Is Mother</mat-label>
+                          <mat-radio-group fxLayout="row" fxLayoutGap="5px"
+                              formControlName="radioVerified">
+                              <mat-radio-button value="1" [checked]="questionnairesFormGroup.get('radioVerified').value == 1">
+                                <label [class.active-label]="questionnairesFormGroup.get('radioVerified').value == 1">Yes</label>
+                              </mat-radio-button>
+                              <mat-radio-button value="0" [checked]="questionnairesFormGroup.get('radioVerified').value == 0">
+                                <label [class.active-label]="questionnairesFormGroup.get('radioVerified').value == 0">No</label>
+                              </mat-radio-button>
+                          </mat-radio-group>
+                </div>
+          </div>
+      </form>
+    </mat-dialog-content>
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" >
+          <!-- <button
+            *ngIf="!IsEdit"
+            mat-raised-button
+            color="primary"
+            [ngClass]="[!firstFormGroup.valid ? '' : 'save-btn']"
+            [disabled]="!firstFormGroup.valid"
+            (click)="saveServiceData(true)"
+          >
+            SAVE & ADD NEW
+          </button> -->
+          <button
+            mat-raised-button
+            color="primary"
+            class="save-btn"
+           
+          >
+          Save & Close
+          </button>
+          <button
+          
+            mat-raised-button
+            class="save-btn"
+            color="primary"
+              
+             
+          >
+          Save & Add
+          </button>
+        
+          <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+        </mat-dialog-actions>
+      </div>
+  
+       
+  
+  

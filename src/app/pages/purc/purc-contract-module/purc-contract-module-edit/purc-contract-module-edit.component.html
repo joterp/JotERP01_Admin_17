@@ -1,0 +1,442 @@
+<fury-page-layout mode="card" class="contract-module-details">
+  <div>
+<table>
+
+  <tr>
+    <td colspan="3">
+      <div class="contract-details-title">
+        Contract Details
+      </div>
+    </td>
+   
+  </tr>
+
+  <tr>
+<td width="42%">
+      <form [formGroup]="ContractModuleDetailsFormGroup" [ngStyle]="{ 'margin-top': '7px', 'margin-bottom':'7px' }">
+
+            <mat-form-field appearance="fill">
+              <mat-label>Supplier</mat-label>
+              <mat-select formControlName="drpSupplier">
+                <!-- <mat-option
+                *ngFor="let b of filteredBoatType | async"
+                [value]="b.PARAMETER_GUID"
+              >
+                {{ b.PARAMETER_NAME }}
+              </mat-option> -->
+              </mat-select>
+              <mat-error *ngIf="ContractModuleDetailsFormGroup.get('drpSupplier').hasError('required')">Supplier is
+                required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Port</mat-label>
+              <mat-select formControlName="drpPort">
+                <!-- <mat-option
+                *ngFor="let b of filteredBoatType | async"
+                [value]="b.PARAMETER_GUID"
+              >
+                {{ b.PARAMETER_NAME }}
+              </mat-option> -->
+              </mat-select>
+              <mat-error *ngIf="ContractModuleDetailsFormGroup.get('drpPort').hasError('required')">Port is
+                required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label class="left-label">Supplier Ref No</mat-label>
+
+              <input type="text" class="right-text" formControlName="txtSupplier_Ref_No" matInput />
+
+              <mat-error *ngIf="ContractModuleDetailsFormGroup.get('txtSupplier_Ref_No').hasError('required')">Supplier
+                Ref No is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Valid From</mat-label>
+              <input matInput formControlName="valid_from" [matDatepicker]="pickervalidfrom" />
+              <mat-datepicker-toggle matSuffix [for]="pickervalidfrom"></mat-datepicker-toggle>
+              <mat-datepicker #pickervalidfrom></mat-datepicker>
+              <mat-error
+                *ngIf="ContractModuleDetailsFormGroup.get('valid_from').hasError('required')">Required</mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Valid To</mat-label>
+              <input matInput formControlName="valid_to" [matDatepicker]="pickervalidto" />
+              <mat-datepicker-toggle matSuffix [for]="pickervalidto"></mat-datepicker-toggle>
+              <mat-datepicker #pickervalidto></mat-datepicker>
+              <mat-error
+                *ngIf="ContractModuleDetailsFormGroup.get('valid_to').hasError('required')">Required</mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Remark</mat-label>
+              <textarea matInput formControlName="txtRemark"></textarea>
+            </mat-form-field>
+      
+            <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between start">
+              <div>
+                <button mat-raised-button color="primary"
+                  [ngClass]="[!ContractModuleDetailsFormGroup.valid ? '' : 'save-btn']"
+                  [disabled]="!ContractModuleDetailsFormGroup.valid">
+                  SAVE
+                </button>
+
+              </div>
+
+              <div>
+                <button mat-raised-button color="primary" class="btn-primary">
+                  Assign Contact To Other Ports
+                </button>
+
+              </div>
+           
+            </mat-dialog-actions>
+          </form>
+        </td>
+
+        <td width="16%"></td>
+        <td width="42%" style="vertical-align: top;"> 
+          <table>
+          <tr>
+            <td width="20%"><span class="scopes">Selected Scopes</span>
+            </td>
+            <td width="80%"> <span>
+                <div fxLayout="row" style="margin-left: 35px;">
+
+                  <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-approve-btn save-btn"
+                    (click)="AddFormData({}, 'Assign Scope', 'assign_scope')">
+                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                  </button>
+                  <span class="add-scope">Add Scope</span>
+                </div>
+              </span></td>
+          </tr>
+        </table>
+      </td>
+        </tr>
+
+        <tr>
+          <td width="42%">
+       <div fxLayout="row" fxLayoutAlign="space-between start" class="item-table1">
+       <div >Item Library</div>
+       <div >Search Items : <input type="text"/></div>
+       </div>
+          </td>
+          <td width="16%"></td>
+          <td width="42%">
+            <div fxLayout="row" fxLayoutAlign="space-between start" class="item-table1">
+            <div >Included Items</div>
+     
+            </div>
+               </td>
+        </tr>
+      <tr>
+        <td width="16%"></td>
+      </tr>
+
+      <tr>
+        <td width="42%"></td>
+      </tr>
+
+        <tr>
+          <td>
+          <div #TABLE>
+            <table
+              [dataSource]="ItemLibrarydataSource"
+              mat-table
+              matSort
+              #table
+              class="details-table"
+              width="100%"
+            >
+              <ng-container matColumnDef="Department">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Department
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                </td> -->
+              </ng-container>
+      
+              <ng-container matColumnDef="Catalogue">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Catalogue
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+              </ng-container>
+              <ng-container matColumnDef="SubCatalogue">
+                  <th
+                    *matHeaderCellDef
+                    class="actions-cell"
+                    mat-header-cell
+                    mat-sort-header
+                  >
+                  SubCatalogue
+                  </th>
+                  <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                  </td> -->
+                </ng-container>
+              <ng-container matColumnDef="Drawing_No">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                Drawing No/Part No/Item Desc
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container>
+           
+              <ng-container matColumnDef="Check-5">
+                <th *matHeaderCellDef 
+                class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+            >
+                <mat-checkbox class="example-margin"></mat-checkbox>
+                </th>
+              </ng-container>
+      
+            
+      
+              <tr *matHeaderRowDef="visibleColumnsItemLibrary" mat-header-row></tr>
+              <tr
+                *matRowDef="let row; columns: visibleColumnsItemLibrary"
+                class="clickable route-animations-elements"
+                mat-row
+              ></tr>
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="9999">No data found</td>
+              </tr>
+            </table>
+
+          </div>
+
+          <mat-paginator
+          class="paginator"
+          [pageSizeOptions]="[10, 25, 50, 100]"
+          [pageSize]="pageSize"
+        ></mat-paginator>
+      </td>
+
+      <td>
+       
+        <form [formGroup]="SelectedItemsFormGroup" [ngStyle]="{ 'margin-top': '7px' }" style="text-align: center;">
+
+          <mat-form-field appearance="fill" style="width: 263px;">
+            <mat-label>Currency</mat-label>
+            <mat-select formControlName="drpCurrency">
+              <!-- <mat-option
+              *ngFor="let b of filteredBoatType | async"
+              [value]="b.PARAMETER_GUID"
+            >
+              {{ b.PARAMETER_NAME }}
+            </mat-option> -->
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field style="width: 263px;">
+            <mat-label class="left-label">Unit Price</mat-label>
+
+            <input type="text" class="right-text" formControlName="txtUnit_Price" matInput />
+
+          </mat-form-field>
+
+    
+          <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+            <div>
+              <button mat-raised-button
+                class="btn-save-success">
+                Add Selected Items To Contract
+              </button>
+
+            </div>
+         
+          </mat-dialog-actions>
+        </form>
+      </td>
+
+
+      <td>
+        <div #TABLE>
+          <table
+            [dataSource]="IncludedItemsdataSource"
+            mat-table
+            matSort
+            #table
+            class="details-table"
+            width="100%"
+          >
+            <ng-container matColumnDef="Department">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                [ngStyle]="{ 'white-space': 'initial' }"
+                mat-header-cell
+                mat-sort-header
+              >
+              Department
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                [ngStyle]="{ 'white-space': 'initial' }"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+              </td> -->
+            </ng-container>
+    
+            <ng-container matColumnDef="Catalogue">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Catalogue
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+              </td> -->
+            </ng-container>
+            <ng-container matColumnDef="SubCatalogue">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                SubCatalogue
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+              </ng-container>
+            <ng-container matColumnDef="Drawing_No">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Drawing No/Part No/Item Desc
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+            </ng-container>
+         
+            <ng-container matColumnDef="Currency">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Currency
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+            </ng-container>
+    
+            <ng-container matColumnDef="Unit_Price">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Unit Price
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+            </ng-container>
+          
+    
+            <tr *matHeaderRowDef="visibleColumnsIncludedItems" mat-header-row></tr>
+            <tr
+              *matRowDef="let row; columns: visibleColumnsIncludedItems"
+              class="clickable route-animations-elements"
+              mat-row
+            ></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="9999">No data found</td>
+            </tr>
+          </table>
+
+        </div>
+
+        <mat-paginator
+        class="paginator"
+        [pageSizeOptions]="[10, 25, 50, 100]"
+        [pageSize]="pageSize"
+      ></mat-paginator>
+    </td>
+        </tr>
+
+</table>
+</div>
+  
+
+</fury-page-layout>

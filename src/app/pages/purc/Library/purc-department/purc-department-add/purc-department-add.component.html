@@ -1,0 +1,61 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+  <span>
+      <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;"/>Add New Documnet
+  </span>
+ 
+  <span fxLayoutAlign="end"  >
+      <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+  <form [formGroup]="departmentFormGroup">
+    <div mat-dialog-container style="padding-top: 20px;">
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Department</mat-label>
+          <input formControlName="txtDepartment" matInput placeholder="Search by Department" type="text" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Department Short Code</mat-label>
+          <input formControlName="txtDept_Short_Code" matInput placeholder="Search by Department Short Code"
+            type="text" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Form Type</mat-label>
+          <mat-select formControlName="drpForm_Type">
+            <mat-option value="11188-TEST">Management</mat-option>
+            <mat-option value="01001-Food">Repairs</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>A/C Classification</mat-label>
+          <mat-select formControlName="drpAC_Classification">
+            <mat-option value="Kilogram">11188 - TEST</mat-option>
+            <mat-option value="Liters">01001 - Food</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+    <button mat-raised-button color="primary" class="save-btn">
+      Save & Close
+    </button>
+    <button mat-raised-button class="save-btn" color="primary">
+      Save & Add New
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+</div>

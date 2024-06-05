@@ -1,0 +1,183 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+<fury-page-layout mode="card" class="crew-educationdetails">
+
+    <form [formGroup]="EducationDetailsFormGroup"> 
+            
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">Course/Degree</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtCourse_Degree"
+                    matInput
+                  />
+                  <mat-error *ngIf="EducationDetailsFormGroup.get('txtCourse_Degree').hasError('required')">
+                    Required
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">Marks(%)</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtMarks"
+                    matInput
+                  />
+                
+              </mat-form-field>
+
+         
+        </div>
+
+         
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">Institute</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtInstitute"
+                    matInput
+                  />
+                  <mat-error *ngIf="EducationDetailsFormGroup.get('txtInstitute').hasError('required')">
+                    Required
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">Grade</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtGrade"
+                    matInput
+                  />
+                
+              </mat-form-field>
+         
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">City</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtCity"
+                    matInput
+                  />
+                
+              </mat-form-field>
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>From Date</mat-label>
+                <input
+                  matInput
+                  formControlName="from_date"
+                  [matDatepicker]="pickerfrom_date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerfrom_date"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerfrom_date></mat-datepicker>
+       
+              </mat-form-field>
+         
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Country</mat-label>
+                <mat-select formControlName="drpCountry">
+                </mat-select>
+               
+            </mat-form-field>
+
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>To Date</mat-label>
+                <input
+                  matInput
+                  formControlName="to_date"
+                  [matDatepicker]="pickerto_date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerto_date"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerto_date></mat-datepicker>
+       
+              </mat-form-field>
+         
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+            <div fxFlex></div>
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">Year Completed</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtYear_Completed"
+                    matInput
+                  />
+               
+              </mat-form-field>                
+         
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        
+                    <mat-label>Upload</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <div>
+                  <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+                    accept=".pdf,.doc,.docx,.jpg,.png" />
+               
+                  <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                    <label for="imageupload">
+                      Upload </label>
+                  </button>
+                  </div>
+
+                  <div *ngIf="selectedFileName" fxFlex>
+                    <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                    <button (click)="removeUploadedFileadditem()"  mat-button style="color: #5BB318;">Remove</button>
+                  </div>
+             
+        </div>
+
+    </form>
+
+
+</fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!EducationDetailsFormGroup.valid ? '' : 'save-btn']" [disabled]="!EducationDetailsFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!EducationDetailsFormGroup.valid">
+        SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

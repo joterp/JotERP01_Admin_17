@@ -1,0 +1,149 @@
+<div class="crew-UniformDetails-view">
+
+    <table style="width: 100%;">
+       <tr>
+           <td class="uniformdetails-td">
+              <b>Uniform Details</b> 
+           </td>
+       </tr>
+   
+       <tr>
+       <td>
+        <table style="width: 100%;">
+        <tr>
+            <td style="width: 15%;"></td>
+            <td>
+
+                <div>
+                    <div >
+                        <form [formGroup]="UniformDetailsFormGroup" [ngStyle]="{ 'margin-top': '20px' }"> 
+            
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label class="left-label">Shoe Size</mat-label>
+                                   
+                                      <input
+                                        type="text"
+                                        class="right-text"
+                                        formControlName="txtShoe_Size"
+                                        matInput
+                                      />
+                                    
+                                  </mat-form-field>
+                    
+                                  <mat-form-field fxFlex appearance="fill">
+                                    <mat-label class="left-label">T Shirt Size</mat-label>
+                                   
+                                      <input
+                                        type="text"
+                                        class="right-text"
+                                        formControlName="txtT_Shirt_Size"
+                                        matInput
+                                      />
+                                    
+                                  </mat-form-field>
+                    
+                             
+                            </div>
+                    
+                             
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label class="left-label">Cargo Pant Size</mat-label>
+                                   
+                                      <input
+                                        type="text"
+                                        class="right-text"
+                                        formControlName="txtCargo_Pant_Size"
+                                        matInput
+                                      />
+                                     
+                                  </mat-form-field>
+                                  <mat-form-field fxFlex appearance="fill">
+                                    <mat-label class="left-label">Overall Size</mat-label>
+                                   
+                                      <input
+                                        type="text"
+                                        class="right-text"
+                                        formControlName="txtOverall_Size"
+                                        matInput
+                                      />
+                                    
+                                  </mat-form-field>
+                             
+                            </div>
+                    
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label class="left-label">Height(cm)</mat-label>
+                                   
+                                      <input
+                                        type="text"
+                                        class="right-text"
+                                        formControlName="txtHeight"
+                                        matInput
+                                      />
+                                    
+                                  </mat-form-field>
+                               
+                                  <mat-form-field fxFlex appearance="fill">
+                                    <mat-label class="left-label">Waist(Inch)</mat-label>
+                                   
+                                      <input
+                                        type="text"
+                                        class="right-text"
+                                        formControlName="txtWaist"
+                                        matInput
+                                      />
+                                    
+                                  </mat-form-field>
+                            </div>
+                    
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                                
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label class="left-label">Weight(Kg)</mat-label>
+                                   
+                                      <input
+                                        type="text"
+                                        class="right-text"
+                                        formControlName="txtWeight"
+                                        matInput
+                                      />
+                                   
+                                  </mat-form-field>                
+                                  <div fxFlex></div>
+                            </div>
+                        
+                        </form>
+            </div>
+            
+                <div style="text-align: center;">
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    [ngClass]="[!UniformDetailsFormGroup.valid ? '' : 'save-btn']"
+                    [disabled]="!UniformDetailsFormGroup.valid"
+                  >
+                    SAVE
+                  </button>
+                </div>
+            
+            </div>
+    
+            </td>
+            <td style="width: 15%;"></td>
+        </tr>
+        </table>
+       </td>
+       </tr>
+   
+    </table>
+   
+   
+   </div>
+   
+

@@ -1,0 +1,311 @@
+<fury-page-layout mode="card" class="ciidetails-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+
+        <form [formGroup]="CIIDetailsFilterForm">
+            <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+            <h3>
+
+                <span class="first-letter">NAD</span>&nbsp;
+                <span class="first-letter">R</span>EF
+                <span class="first-letter">CII</span>&nbsp;
+                <span class="first-letter">D</span>EDAILS
+
+            </h3>
+            <div class="filter-area">
+
+                <div fxLayout="row" fxLayoutAlign="space-between">  
+                                    
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel Type</mat-label>
+                            <mat-select formControlName="drpVessel_Type">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div dxFlex>
+                        <div style="display: flex;margin: 10px;">
+                            <mat-label>Variable Calc</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioVariable_Calc" style="margin-top: 0px;
+                                        margin-left: 20px;">
+                              <mat-radio-button value="0"
+                                [checked]="CIIDetailsFilterForm.get('radioVariable_Calc').value == 0">
+                                <label [class.active-label]="CIIDetailsFilterForm.get('radioVariable_Calc').value == 0">All</label>
+                                </mat-radio-button>
+                              <mat-radio-button value="1"
+                                [checked]="CIIDetailsFilterForm.get('radioVariable_Calc').value == 1">
+                                <label [class.active-label]="CIIDetailsFilterForm.get('radioVariable_Calc').value == 1" style="font-size: 18px;">&lt;</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="2"
+                                [checked]="CIIDetailsFilterForm.get('radioVariable_Calc').value == 2">
+                                <label [class.active-label]="CIIDetailsFilterForm.get('radioVariable_Calc').value == 2" style="font-size: 18px;">&lt;&equals;</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="3"
+                                [checked]="CIIDetailsFilterForm.get('radioVariable_Calc').value == 3">
+                                <label [class.active-label]="CIIDetailsFilterForm.get('radioVariable_Calc').value == 3" style="font-size: 18px;">&gt;&equals;</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                          </div>
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Status</mat-label>
+                            <mat-select formControlName="drpStatus">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+
+
+                    <div fxFlex>
+                        <div>
+                            <button class="create" mat-raised-button color="primary" class="filter-btn">
+                                Search
+                            </button>
+                        </div>                    
+                  
+
+                    <div  fxFlex>
+                    <div>
+                        <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                            Clear Filter
+                        </button>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+
+
+
+    <fury-page-layout-content [@fadeInUp]>
+        <div class="actions-area">
+            <table style="display: flex;">
+                <tr>
+                    <td>
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                class="add-approve-btn save-btn" (click)="AddNewCIIDetails({},'Add New CII Details')">
+                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                            </button>
+                            <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;">Add New CII Details</span>
+                        </div>
+                    </td>
+                </tr>
+
+
+            </table>
+
+
+            <div>
+                <span style="cursor: pointer">
+                    <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                </span>
+            </div>
+            <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+        </div>
+
+        <div #TABLE>
+            <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                <ng-container matColumnDef="Vessel_Type">
+                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                        mat-sort-header>
+                        Vessel Type
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                </td> -->
+                </ng-container>
+
+                <ng-container matColumnDef="Variable_Type">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Variable Type
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Variable_Calc">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Variable Calc
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Variable_Value">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Variable Value
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Variable_A">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Variable A
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Variable_C">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Variable C
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Variable_CII_REF">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Variable CII REF
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Variable_D1">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Variable D1
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Variable_D2">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Variable D2
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Variable_D3">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Variable D3
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Variable_D4">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Variable D4
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+          
+                <ng-container matColumnDef="Action">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Info">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+
+                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                </tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                </tr>
+            </table>
+        </div>
+
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+    </fury-page-layout-content>
+
+</fury-page-layout>
+
+
+

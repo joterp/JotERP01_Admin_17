@@ -1,0 +1,87 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -7px;"/>SFI LIST
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon  (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  
+     <mat-dialog-content>
+      <div style="margin-top: 14px;">
+  
+          <div class="sfi-name">Search SFI Code/Name</div>
+  
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+  
+              <div fxFlex="70">
+          <mat-form-field appearance="fill">
+              <input matInput placeholder="" name="search">
+              <button mat-icon-button matPrefix><mat-icon>search</mat-icon></button>
+          </mat-form-field>
+      </div>
+     
+  
+     
+  
+          <div fxFlex="5" style="margin-top: -23px;">
+          <button
+          mat-mini-fab
+          color="warn"
+          class="add-sp-btn"
+         
+          [matTooltip]="'Remove Filter'"
+        >
+          <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="23" style="margin-top: -23px;">
+        <!-- <button mat-raised-button  color="primary">
+          Expand All
+        </button> -->
+      </div>
+      
+  
+      </div>
+      </div>
+  
+      <!-- SFI Tree List -->
+      <div>
+          <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+          <mat-tree-node *matTreeNodeDef="let node; let i=index;" matTreeNodeToggle matTreeNodePadding>
+            <button mat-icon-button disabled></button>
+            <span class="checklist-leaf-node"
+                          [checked]="checklistSelection.isSelected(node)"
+                          (change)="todoLeafItemSelectionToggle(node)">{{i}} - {{node.item}}</span>
+          </mat-tree-node>
+        
+        
+          <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+            <button mat-icon-button matTreeNodeToggle
+                    [attr.aria-label]="'Toggle ' + node.item">
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'indeterminate_check_box' : 'add'}}
+              </mat-icon>
+            </button>
+            <span 
+           [checked]="descendantsAllSelected(node)" 
+                          [indeterminate]="descendantsPartiallySelected(node)"
+                          (change)="todoItemSelectionToggle(node)">{{node.item}}</span>
+       
+          </mat-tree-node>
+        </mat-tree>
+        </div>
+  
+      </mat-dialog-content> 
+  
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">                 
+          <button mat-raised-button color="primary" class="save-btn" >
+            Retrive
+          </button>
+          <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+        </mat-dialog-actions>
+  
+  
+  

@@ -1,0 +1,593 @@
+<fury-page-layout mode="card" class="ciicalculationindex-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+
+        <form [formGroup]="CIICalculationIndexFilterForm">
+            <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+            <h3>
+
+                <span class="first-letter">CII</span>
+                <span class="first-letter">C</span>ALCULATION
+                <span class="first-letter">I</span>NDEX
+
+            </h3>
+            <div class="filter-area">
+
+                <div fxLayout="row" fxLayoutAlign="start">
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fleet</mat-label>
+                            <mat-select formControlName="drpFleet">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel</mat-label>
+                            <mat-select formControlName="drpVessel">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>From Date</mat-label>
+                            <input
+                              matInput
+                              formControlName="from_date"
+                              [matDatepicker]="pickerfrom_date"
+                            />
+                            <mat-datepicker-toggle
+                              matSuffix
+                              [for]="pickerfrom_date"
+                            ></mat-datepicker-toggle>
+                            <mat-datepicker #pickerfrom_date></mat-datepicker>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="fill">
+                            <mat-label>To Date</mat-label>
+                            <input
+                              matInput
+                              formControlName="to_date"
+                              [matDatepicker]="pickerto_date"
+                            />
+                            <mat-datepicker-toggle
+                              matSuffix
+                              [for]="pickerto_date"
+                            ></mat-datepicker-toggle>
+                            <mat-datepicker #pickerto_date></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+
+                        <div fxFlex>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Rating Year</mat-label>
+                                <mat-select formControlName="drpRating_Year">
+                                    <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                            {{ b.PARAMETER_NAME }}
+                          </mat-option> -->
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Cargo Status</mat-label>
+                                <mat-select formControlName="drpCargo_Status">
+                                    <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                            {{ b.PARAMETER_NAME }}
+                          </mat-option> -->
+                                </mat-select>
+                            </mat-form-field>
+    
+                        </div>
+
+                    
+                    <div class="filter-btn-area" fxFlex>
+                        <div>
+                            <button class="create" mat-raised-button color="primary" class="filter-btn">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                                Clear Filter
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+
+
+
+    <fury-page-layout-content [@fadeInUp]>
+       
+
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+  
+      <div fxFlex="22.5">
+  
+       
+           <div style="margin-bottom: 14px;">
+                 <table style="width: 100%;
+                 border: 1px solid #ccc;
+                 border-collapse: collapse;">
+                    <tr>
+                        <td rowspan="5" class="cii-calc-td1">Ship Particular<br>
+                            (Retrieved From VID)</td>
+                        <td class="cii-calc-td2">IMO Number</td>
+                        <td class="cii-calc-td3">9250907</td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-td2">Ship Name</td>
+                        <td class="cii-calc-td3">Eagle Trenton</td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-td2">Ship Type</td>
+                        <td class="cii-calc-td3">Product Tanker</td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-td2">Deadweight</td>
+                        <td class="cii-calc-td3">67,247</td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-td2">Gross Tonnage</td>
+                        <td class="cii-calc-td3">54,809.00</td>
+                    </tr>
+                 </table>
+                </div>
+
+                 <div style="margin-bottom: 14px;">
+                 <table style="width: 100%;
+                 border: 1px solid #ccc;
+                 border-collapse: collapse;">
+                 <tr>
+                    <td colspan="2" class="cii-calc-table2-td1">Fuel Consumption (MT)</td>
+                 </tr>
+                 <tr>
+                    <td class="cii-calc-td2">HO</td>
+                    <td class="cii-calc-td3">110</td>  
+                   
+                 </tr>
+
+                 </table>
+                </div>
+
+                <div style="margin-bottom: 14px;">
+                    <table style="width: 100%;
+                    border: 1px solid #ccc;
+                    border-collapse: collapse;">
+                    
+                    <tr>
+                       <td class="cii-calc-td1">Distance<br>
+                        Travelled (Nm)</td>
+                       <td class="cii-calc-td3">124.00</td>  
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-td1">CO2 Emission</td>
+                        <td class="cii-calc-td3">1,119.60</td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-td1">CO2 Offset<br>(USD)</td>
+                        <td class="cii-calc-td3">109,911.13</td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-td1">CO2 Offset<br>(USD)</td>
+                        <td class="cii-calc-td3">109,911.13</td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-td3" style="border-right: 0px solid grey;"></td>
+                        <td class="cii-calc-td3"></td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-td1">CII ref</td>
+                        <td class="cii-calc-td3">1</td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-td1">Rating Year</td>
+                        <td class="cii-calc-td3">2023 (5%)</td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-td1">Required CII</td>
+                        <td class="cii-calc-td3">0.95</td>
+                    </tr>
+   
+                    </table>
+                   </div>
+
+                   <div style="margin-bottom: 14px;">
+                    <table style="width: 100%;
+                    border: 1px solid #ccc;
+                    border-collapse: collapse;">
+                      <tr>
+                        <td colspan="2" class="cii-calc-table2-td1">Rated (based on fixed DWT)</td>
+                     </tr>
+                    <tr>
+                       <td class="cii-calc-table4-td2">Attained CII</td>
+                       <td class="cii-calc-td3">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="text-align: left;"><img src="../../../../assets/img/Attained_CII_DWT.png" class="Attained_CII_DWT" alt="excel" /></td>
+                                <td>9,029,032.26</td>
+                            </tr>
+                        </table>  
+                       </td>  
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-table4-td2">Attained /<br>Required CII	
+                        </td>
+                        <td class="cii-calc-td3">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="text-align: left;"><img src="../../../../assets/img/AttainedandRequired_CII_Formula.png" class="AttainedandRequired" alt="excel" /></td>
+                                    <td style="text-align: right;">9,504,244.48
+                                    </td>
+                                </tr>
+                            </table> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-table4-td2">CII Rating</td>
+                        <td class="cii-calc-td3"></td>
+                    </tr>
+                 
+   
+                    </table>
+                   </div>
+
+                   <div style="margin-bottom: 14px;">
+                    <table style="width: 100%;
+                    border: 1px solid #ccc;
+                    border-collapse: collapse;">
+                      <tr>
+                        <td colspan="2" class="cii-calc-table2-td1">Actuals (based on Calc DWT)</td>
+                     </tr>
+                    <tr>
+                       <td class="cii-calc-table4-td2">DWT Calculated</td>
+                       <td class="cii-calc-td3">274.25</td>  
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-table4-td2" >Attained CII	
+                        </td>
+                        <td class="cii-calc-td3" style="text-align: unset;">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="text-align: left;"><img src="../../../../assets/img/Attained_CII_DWT.png" class="Attained_CII_DWT" alt="excel" /></td>
+                                    <td>9,029,032.26</td>
+                                </tr>
+                            </table>         
+                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-table4-td2">Attained /<br> Required CII	
+                        </td>
+                        <td class="cii-calc-td3">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="text-align: left;"><img src="../../../../assets/img/AttainedandRequired_CII_Formula.png" class="AttainedandRequired" alt="excel" /></td>
+                                    <td style="text-align: right;">9,504,244.48
+                                    </td>
+                                </tr>
+                            </table>   
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cii-calc-table4-td2">CII Rating	
+                        </td>
+                        <td class="cii-calc-td3">E</td>
+                    </tr>
+   
+                    </table>
+                   </div>
+
+        
+      </div>
+
+      <div fxFlex="0.5">
+
+      </div>
+  
+      <div fxFlex="77">
+  
+        <div class="actions-area">
+            <table style="display: flex;">
+                <tr>
+                    <td>
+                        <div fxLayout="row">
+                          
+                            <span class="table-text">This data is only from the Vessel Noon Reports (At Sea); The consumptions below exclude Manoeuvering and In-Port consumptions</span>
+                        </div>
+                    </td>
+                </tr>
+
+
+            </table>
+
+
+            <div>
+                <span style="cursor: pointer">
+                    <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                </span>
+            </div>
+            <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+        </div>
+
+        <div #TABLE class="example-container mat-elevation-z8">
+            <table mat-table [dataSource]="AccountPayabledataSource" class="mat-elevation-z8">
+    
+              <ng-container matColumnDef="HO">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;"> HO </th>
+    
+              </ng-container>
+    
+              <ng-container matColumnDef="HO_LS">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;"> HO LS</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="HO_VLS">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">HO VLS</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="DO">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;"> DO</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="DO_LS">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">DO LS</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="DO_VLS">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">DO VLS</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="MGO">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">MGO</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="MGO_LS">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">MGO LS</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="MGO_VLS">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">MGO VLS</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="THO">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">THO</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="THO_LS">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">THO LS</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="THO_VLS">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">THO VLS</th>
+    
+              </ng-container>
+
+              <ng-container matColumnDef="LPG">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">LPG</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="LNG">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">LNG</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="Methanol">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">Methanol</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="Ethanol">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">Ethanol</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="HVO">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">HVO</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="Other_Fuel">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">Other Fuel</th>
+    
+              </ng-container>
+    
+              <ng-container matColumnDef="header-row-first-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                  Report Date
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-second-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                  Cargo Status
+                </th>
+              </ng-container>
+    
+              <ng-container matColumnDef="header-row-third-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="10" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                   Steam Hours
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-fourth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                  Dist Travelled (N.Mile)
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-fifth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-sixth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 Cargo Onboard
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-seventh-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 Cargo Onboard
+                </th>
+              </ng-container>
+              
+              <ng-container matColumnDef="header-row-eighth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 Ballast Onboard
+                </th>
+              </ng-container>
+              
+              <ng-container matColumnDef="header-row-nineth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 Bunker Onboard
+                </th>
+              </ng-container>
+              
+              <ng-container matColumnDef="header-row-tenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 Ancillary (MT)
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-eleventh-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 Cargo Onboard
+                </th>
+              </ng-container>
+              
+              <ng-container matColumnDef="header-row-twelth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 Calculated Deadweight
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-thirteenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-fourteenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 CO2 Emission (MT)
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-fifteenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-sixteenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="18" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                 NAD Consumption
+                </th>
+              </ng-container>
+              
+              <tr mat-header-row
+                *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group','header-row-fifth-group',
+                'header-row-sixth-group','header-row-seventh-group','header-row-eighth-group','header-row-nineth-group','header-row-nineth-group',
+                'header-row-tenth-group','header-row-eleventh-group','header-row-twelth-group','header-row-thirteenth-group','header-row-fourteenth-group',
+                'header-row-fifteenth-group','header-row-sixteenth-group']"
+                style="height:32px">
+              </tr>
+              <tr mat-header-row *matHeaderRowDef="visibleColumnsaccountpayable;sticky:true" style="height:32px">
+              </tr>
+              <tr mat-row *matRowDef="let row; columns: visibleColumnsaccountpayable;"></tr>
+            </table>
+    
+          </div>
+    
+         <mat-paginator
+          class="paginator"
+          [pageSizeOptions]="[10, 25, 50, 100]"
+          [pageSize]="pageSize"
+        ></mat-paginator>
+  </div>
+    </div>
+    
+     
+      </fury-page-layout-content>
+  
+
+</fury-page-layout>

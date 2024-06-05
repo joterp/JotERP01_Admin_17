@@ -1,0 +1,227 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add_open
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+  <mat-dialog-content>
+    
+        
+            <form [formGroup]="dtlAlarmIndexFormGroup">
+                <div mat-dialog-container style="padding-top: 20px;">
+          
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Vessel Name</mat-label>
+                        <mat-select formControlName="drpVessel_Name">
+                          <mat-option value="Alexandre">Alexandre</mat-option>
+                          <mat-option value="BluePearl">Blue Pearl</mat-option>
+              
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Winch Name</mat-label>
+                        <mat-select formControlName="drpWinch_Name">
+                          <mat-option value="ABC">ABC</mat-option>
+                          <mat-option value="Test">Test</mat-option>
+              
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Date Tested</mat-label>
+                            <input matInput formControlName="Date_Tested" [matDatepicker]="pickerTested" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerTested"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerTested></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                    
+                  <!-- <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Actual BRL</mat-label>
+                      <input formControlName="txtActual_BRL" matInput placeholder="Search by  Alarm Set Value" type="text" />
+                      <mat-hint>Set Brake Rendering Load(Tons)On the Winches
+                    </mat-hint>
+                    </mat-form-field>
+                  </div> -->
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Actual BRL</mat-label>
+                        <input formControlName="txtActual_BRL" matInput placeholder="Search by BRL" type="text" />
+                        <mat-hint align="start" style="color: black;"> Set Brake Rendering Load(Tons)On the Winches </mat-hint>
+                      </mat-form-field>
+                  </div>
+                  <div></div>
+                 
+                  
+                  <div fxLayout="column" fxLayout.gt-sm="row" style="margin-top: 10px;">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Rope Dia</mat-label>
+                        <input formControlName="txtRope_Dia" matInput placeholder="Search by mm" type="text" />
+                        <mat-hint align="start" style="color: black;"> mm </mat-hint>
+                      </mat-form-field>
+                    </div>
+          
+                    <div fxLayout="column" fxLayout.gt-sm="row" style="margin-top: 10px;">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>L Distance</mat-label>
+                        <input formControlName="txtDistance" matInput placeholder="Search by Distance" type="text" />
+                        <mat-hint align="start" style="color: black;"> Distance measured from the center of the winch drum to the center line of the Hydraulic Jack Piston(cm) </mat-hint>
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row" style="margin-top: 20px;">
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label>A CS OF Hyd Piston</mat-label>
+                          <input formControlName="txtPiston" matInput placeholder="Search by Piston" type="text" />
+                          <mat-hint align="start" style="color: black;"> 
+                            Cross sectional area of hydraulic picton(cm²)
+
+                        </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row" style="margin-top: 10px;">
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Pd</mat-label>
+                          <input formControlName="txtPd" matInput placeholder="Search by Pd" type="text" />
+                          <mat-hint align="start" style="color: black;"> Reference Pressure to Applied in the Hydraulic Jack to perform the Test </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row"  style="margin-top: 10px;">
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Pa</mat-label>
+                          <input formControlName="txtPa" matInput placeholder="Search by Pa" type="text" />
+                          <mat-hint align="start" style="color: black;"> Actual Pressure on gauge(Kg/cm²)When Brake SllpPage occurs
+                        </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                   
+                        
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px"  style="margin-top: 10px;">
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>Remark</mat-label>
+                                    <textarea
+                                      matInput
+                                      formControlName="txtremarks"
+                                      placeholder="Remarks"
+                                    ></textarea>
+                                </mat-form-field>
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>Action To Be Taken</mat-label>
+                                    <textarea
+                                      matInput
+                                      formControlName="txtAction_Taken"
+                                      placeholder="Remarks"
+                                    ></textarea>
+                                </mat-form-field>
+                            </div>
+                       
+                            
+                     
+                   
+                    
+                      <div fxLayout="row"  fxLayoutGap="10px"
+                          style="margin-bottom: 24px; margin-top: 26px;">
+                          <mat-label>Mark as Verified ?</mat-label>
+                          <mat-radio-group fxLayout="row" fxLayoutGap="5px"
+                              formControlName="radioVerified">
+                             
+                              <mat-radio-button value="0" style="color: green;">Yes</mat-radio-button>
+                              <mat-radio-button value="1" style="color: black;">No</mat-radio-button>
+                          </mat-radio-group>
+                      </div>
+          
+                     
+          
+          
+                      <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row" >
+                          <!-- Use a button to create a custom file upload button -->
+          
+                          <mat-label style="margin: 8px;">Upload File :</mat-label> &nbsp;
+          
+                          <input style="display: none;" type="file" id="imageupload" #fileInput
+                              (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+          
+                          <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                              <label for="imageupload">
+                                  Select</label>
+                          </button>
+                          <div *ngIf="selectedFileName" fxFlex>
+                              <span  aria-placeholder="Select files"> {{ selectedFileName
+                                  }}</span>
+                              <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+                          </div>
+          
+                          <!-- File input element, hidden from view -->
+                      </div>
+                    
+                </div>
+              </form>
+        
+            
+             
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+        <button mat-raised-button color="primary" class="save-btn">
+          Save & Close
+        </button>
+        <button mat-raised-button class="save-btn" color="primary">
+          Save & Add New
+        </button>
+    
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+      </mat-dialog-actions>
+
+      <!-- <div #TABLE>
+        <table [dataSource]="AttachmentdataSource" mat-table matSort #table class="details-table" class="Attachmnet-table">
+
+          <ng-container matColumnDef="Attachmnet_Name">
+            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+              mat-sort-header>
+           Attachment Name
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+              mat-cell>
+               <p class="tbl-row-item">{{row.txtUnit_Name}}</p> 
+            </td>
+          </ng-container>
+  
+         
+          <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div> -->
+
+      <table style="width: 100%;text-align: left; margin-top: 20px;">
+        
+          <tr>
+            <th style="        border: 2px solid grey;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;background-color: lightgray;
+        ">Attachment Name</th>
+          </tr>
+       
+        <tbody>
+          <tr>
+            <td  style="  border-bottom: 1px solid gray;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;    border-left: 2px solid grey;
+    border-right: 1px solid grey;">
+              <div>No records to display.</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+ </mat-dialog-content>

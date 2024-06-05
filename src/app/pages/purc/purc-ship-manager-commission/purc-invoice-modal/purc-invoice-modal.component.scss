@@ -1,0 +1,40 @@
+
+
+.table-data{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.td-data {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    color: White;
+    background-color: #411F1F;
+    font-size: Small;
+    text-align: center;
+  }
+  .td-data2{
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+  .dialog-content {
+    display: flex;
+}
+
+.close-button {
+    /* Adjust button styles as needed */
+    align-self: flex-end; /* Positions the button to the right side */
+    position: absolute;
+    bottom: 525px;
+}
+.close-icon{
+    background: #23527c;
+    color: white;
+    width: 23px;
+    height: 23px;
+    border: 1px solid;
+    border-radius: 50px;
+}
+

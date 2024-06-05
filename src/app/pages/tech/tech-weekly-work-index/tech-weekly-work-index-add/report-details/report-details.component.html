@@ -1,0 +1,50 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Report Details
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  
+  
+  
+  <mat-dialog-content>
+  
+    <form [formGroup]="reportDetailsFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+       
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field appearance="fill">
+                <mat-label>Report Category</mat-label>
+                <mat-select formControlName="drpReport_Category">
+                  <mat-option value="Design">Design</mat-option>
+                  <mat-option value="Purchase">Purchase</mat-option>
+                  <mat-option value="Machinery">Machinery</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Details</mat-label>
+              <textarea matInput placeholder="Details" formControlName="txtDetails"></textarea>
+            </mat-form-field>
+          </div>
+      </div>
+    </form>
+  
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+       Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+       Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </mat-dialog-content>

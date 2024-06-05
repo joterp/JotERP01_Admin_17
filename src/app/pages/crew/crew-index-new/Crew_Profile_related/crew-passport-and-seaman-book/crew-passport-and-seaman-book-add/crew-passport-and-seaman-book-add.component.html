@@ -1,0 +1,161 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+<fury-page-layout mode="card" class="crew-passportandseamanbook">
+
+    <form [formGroup]="PassportAndSeamanBookFormGroup"> 
+            
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Document Type</mat-label>
+                <mat-select formControlName="drpDocument_Type">
+                </mat-select>
+                <mat-error *ngIf="PassportAndSeamanBookFormGroup.get('drpDocument_Type').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">Doc Number</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtDoc_Number"
+                    matInput
+                  />
+                  <mat-error *ngIf="PassportAndSeamanBookFormGroup.get('txtDoc_Number').hasError('required')">
+                    Required
+                </mat-error>
+              </mat-form-field>
+
+         
+        </div>
+
+         
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Date of issue</mat-label>
+                <input
+                  matInput
+                  formControlName="date_of_issue"
+                  [matDatepicker]="pickerdate_of_issue"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerdate_of_issue"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerdate_of_issue></mat-datepicker>
+                <mat-error *ngIf="PassportAndSeamanBookFormGroup.get('date_of_issue').hasError('required')">
+                    Required
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Date of expiry</mat-label>
+                <input
+                  matInput
+                  formControlName="date_of_expiry"
+                  [matDatepicker]="pickerdate_of_expiry"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerdate_of_expiry"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerdate_of_expiry></mat-datepicker>
+                <mat-error *ngIf="PassportAndSeamanBookFormGroup.get('date_of_expiry').hasError('required')">
+                    Required
+                </mat-error>
+              </mat-form-field>
+
+         
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Country Of Issue</mat-label>
+                <mat-select formControlName="drpCountry_Of_Issue">
+                </mat-select>
+                <mat-error *ngIf="PassportAndSeamanBookFormGroup.get('drpCountry_Of_Issue').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">Place of issue</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtPlace_Of_Issue"
+                    matInput
+                  />
+                  <mat-error *ngIf="PassportAndSeamanBookFormGroup.get('txtPlace_Of_Issue').hasError('required')">
+                    Required
+                </mat-error>
+              </mat-form-field>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Is default ?</mat-label>
+                <mat-select formControlName="drpIs_Default">
+                </mat-select>
+                <mat-error *ngIf="PassportAndSeamanBookFormGroup.get('drpIs_Default').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+
+           <div fxFlex></div>
+         
+        </div>
+        
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        
+                    <mat-label>Upload</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <div>
+                  <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+                    accept=".pdf,.doc,.docx,.jpg,.png" />
+               
+                  <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                    <label for="imageupload">
+                      Upload </label>
+                  </button>
+                  </div>
+
+                  <div *ngIf="selectedFileName" fxFlex>
+                    <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                    <button (click)="removeUploadedFileadditem()"  mat-button style="color: #5BB318;">Remove</button>
+                  </div>
+             
+        </div>
+
+    </form>
+
+
+</fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!PassportAndSeamanBookFormGroup.valid ? '' : 'save-btn']" [disabled]="!PassportAndSeamanBookFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!PassportAndSeamanBookFormGroup.valid">
+        SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

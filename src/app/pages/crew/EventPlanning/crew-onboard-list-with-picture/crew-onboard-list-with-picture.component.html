@@ -1,0 +1,594 @@
+<div style="text-align: center;font-weight: bold;height: 24px;
+vertical-align: middle;margin-top: 30px;">
+    <h3>
+
+        <span class="first-letter">C</span>REW
+        <span class="first-letter">L</span>IST
+
+    </h3>
+</div>
+
+<fury-page-layout mode="card" class="Onboard_List-view">
+
+    <div>
+        <div style="padding: 5px 250px 0px 250px;">
+
+            <div style="margin-top: 25px;">
+
+                <div style="text-align: end;">
+                    <span>
+                        <img src="../../../../assets/img/Excel1.png" class="logo" alt="excel" style="margin-right: 10px;
+                    margin-bottom: -4px;" />
+                    </span>
+                </div>
+
+                <mat-tab-group (animationDone)="check()" animationDuration="0ms" mat-stretch-tabs
+                    class="remove-border-bottom">
+
+                    <form action="">
+
+                        <mat-tab label="Staff Onboard" style="margin-left: #000;margin-right: #000;"
+                            class="mat-tab-req">
+                            <div style="padding: 10px 14px;">
+
+                                <div>
+                                    <table style="width: 100%;">
+
+                                        <tr>
+                                            <td>
+                                                <div #TABLE>
+                                                    <table [dataSource]="EventPlanningdataSource" mat-table matSort
+                                                        #table class="details-table"
+                                                        style="border-radius: 10px;overflow: hidden !important;">
+                                                        <ng-container matColumnDef="Vessel">
+                                                            <th *matHeaderCellDef class="actions-cell"
+                                                                [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                                                                mat-sort-header>
+                                                                Vessel
+                                                            </th>
+                                                            <!-- <td
+                                  *matCellDef="let row; let i = index"
+                                  class="actions-cell"
+                                  [ngStyle]="{ 'white-space': 'initial' }"
+                                  mat-cell
+                                >
+                                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                </td> -->
+                                                        </ng-container>
+
+                                                        <ng-container matColumnDef="COVID_info">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                                mat-sort-header>
+
+                                                            </th>
+                                                            <!-- <td
+                                  *matCellDef="let row; let i = index"
+                                  class="actions-cell"
+                                  mat-cell
+                                >
+                                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Staff_Code">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                                mat-sort-header>
+                                                                Staff Code
+                                                            </th>
+                                                            <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                  </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Staff_Name">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                                mat-sort-header>
+                                                                Staff Name
+                                                            </th>
+                                                            <!-- <td
+                                  *matCellDef="let row; let i = index"
+                                  class="actions-cell"
+                                  mat-cell
+                                >
+                                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Rank">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                                mat-sort-header>
+                                                                Rank
+                                                            </th>
+                                                            <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Nationality">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                                mat-sort-header>
+                                                                Nationality
+                                                            </th>
+                                                            <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="DOB">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                                mat-sort-header>
+                                                                DOB
+                                                            </th>
+                                                            <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Passport_No">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                                mat-sort-header>
+                                                                Passport No
+                                                            </th>
+                                                            <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Seaman_No">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                                mat-sort-header>
+                                                                Seaman No
+                                                            </th>
+                                                            <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Nationality">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                                mat-sort-header>
+                                                                Nationality
+                                                            </th>
+                                                            <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Sign_On_Date">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                                mat-sort-header>
+                                                                Sign On Date
+                                                            </th>
+                                                            <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="EOC">
+                                                            <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                                                                mat-sort-header>
+                                                                EOC
+                                                            </th>
+                                                            <!-- <td
+                                    *matCellDef="let row; let i = index"
+                                    class="actions-cell"
+                                    mat-cell
+                                  >
+                                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                  </td> -->
+                                                        </ng-container>
+
+                                                        <tr *matHeaderRowDef="visibleColumnsEventPlanning"
+                                                            mat-header-row></tr>
+                                                        <tr *matRowDef="let row; columns: visibleColumnsEventPlanning"
+                                                            class="clickable route-animations-elements" mat-row>
+                                                        </tr>
+                                                        <tr class="mat-row" *matNoDataRow>
+                                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </mat-tab>
+
+                        <mat-tab label="Pictorial">
+                            <!-- <cdk-virtual-scroll-viewport tvsItemSize headerHeight="56" rowHeight="48" style="height: 400px;"> -->
+
+                            <div>
+
+                                <mat-accordion>
+                                    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                                        <mat-expansion-panel-header class="disable_ripple"
+                                            style="background-image: linear-gradient(rgb(255 255 255), rgb(239 239 239), rgb(225 225 225));border: 1px solid #7d7d7d;height: 35px;border-radius: 0px;">
+                                            <mat-panel-title class="panel-title-text">
+                                                VMT Details
+                                            </mat-panel-title>
+                                            <mat-panel-description class="panel-desc">
+
+                                            </mat-panel-description>
+
+                                        </mat-expansion-panel-header>
+
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+
+                                            </tr>
+                                        </table>
+
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+
+
+                                <mat-accordion>
+                                    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                                        <mat-expansion-panel-header class="disable_ripple"
+                                            style="background-image: linear-gradient(rgb(255 255 255), rgb(239 239 239), rgb(225 225 225));border: 1px solid #7d7d7d;height: 35px;border-radius: 0px;">
+                                            <mat-panel-title class="panel-title-text">
+                                                Junior Officer Details
+                                            </mat-panel-title>
+                                            <mat-panel-description class="panel-desc">
+
+                                            </mat-panel-description>
+
+                                        </mat-expansion-panel-header>
+
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="vmt-details-td">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center;">
+                                                                <span>
+                                                                    <img src="../../../../assets/img/profile_icon.png"
+                                                                        class="profile-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <span>
+                                                                    <img src="../../../../assets/img/COVID_Final.png"
+                                                                        class="COVID-logo" alt="excel" style="margin-right: 10px;
+                                                    margin-bottom: -4px;" />
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>C/E -more, prasad </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+
+                                            </tr>
+                                        </table>
+
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+
+                                <mat-accordion>
+                                    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                                        <mat-expansion-panel-header class="disable_ripple"
+                                            style="background-image: linear-gradient(rgb(255 255 255), rgb(239 239 239), rgb(225 225 225));border: 1px solid #7d7d7d;height: 35px;border-radius: 0px;">
+                                            <mat-panel-title class="panel-title-text">
+                                                Ratings
+                                            </mat-panel-title>
+                                            <mat-panel-description class="panel-desc">
+
+                                            </mat-panel-description>
+
+                                        </mat-expansion-panel-header>
+
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+
+                            </div>
+
+                            <!-- </cdk-virtual-scroll-viewport> -->
+                        </mat-tab>
+
+
+                    </form>
+
+
+                </mat-tab-group>
+
+            </div>
+
+        </div>
+    </div>
+
+</fury-page-layout>

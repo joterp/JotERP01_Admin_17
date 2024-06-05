@@ -1,0 +1,670 @@
+<fury-page-layout mode="card" class="catalogue-view">
+
+  <!-- search header for PURC_Catalogue -->
+  <fury-page-layout-header>
+      
+    <form [formGroup]="CatalogueFilterForm">
+      <!-- <div>  
+          <h2>{{routeTitle}}</h2>
+      </div> -->
+      <h3 >
+         
+        <span class="first-letter">C</span>ATALOGUE
+     
+    </h3>
+      <div class="filter-area">
+         
+        <div fxLayout="row" fxLayoutAlign="start">
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Fleet</mat-label>
+              <mat-select formControlName="drpFleet">
+                  <!-- <mat-option *ngFor="let b of filtered_db_object_type | async" [value]="b.PARAMETER_GUID">
+                    {{ b.PARAMETER_NAME }}
+                  </mat-option> -->
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Vessel</mat-label>
+              <mat-select formControlName="drpVessel">
+                  <!-- <mat-option *ngFor="let b of filtered_db_object_type | async" [value]="b.PARAMETER_GUID">
+                    {{ b.PARAMETER_NAME }}
+                  </mat-option> -->
+                </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Template Type</mat-label>
+              <mat-select formControlName="drpTemplate_Type" >
+                <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                  {{ b.PARAMETER_NAME }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Department</mat-label>
+              <mat-select formControlName="drpDepartment">
+                <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                  {{ b.DEPT_NAME }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex>
+              <mat-form-field appearance="fill">
+                  <mat-label>Vessel Location</mat-label>
+                  <mat-select formControlName="drpVessel_Location">
+                    <mat-option *ngFor="let b of filtered_Vessel_Location | async" [value]="b.ID">
+                      {{ b.LOCATION_NAME }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Show</mat-label>
+              <mat-select formControlName="drpShow">
+                <mat-option value=""> Show Disable </mat-option>
+                <mat-option value="1">Show Active </mat-option>
+                <mat-option value="0"> Show All </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="filter-btn-area" fxFlex>
+            <div>
+              <button class="create" mat-raised-button color="primary" class="filter-btn">
+                Search
+              </button>
+            </div>
+
+            <div>
+              <button class="create"  mat-raised-button color="warn" class="filter-btn"
+                type="button" (click)="clearFilter()">
+                Clear
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+  </fury-page-layout-header>
+
+
+  <!-- Table for PURC_Catalogue -->
+  <fury-page-layout-content [@fadeInUp]>
+    <mat-card>
+      <mat-card-content fxLayout="row">
+        
+        <mat-card class="sp-card-view" *ngIf="CatalogueTable">
+          <mat-card-header fxLayout="column">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between"
+              class="sp-card-view-header"
+            >
+            <div fxLayout="row">
+              <button
+              mat-mini-fab
+              color="primary"
+              [matTooltip]="'Add item'"
+              class="add-sp-btn save-btn" 
+              (click)="SaveData({}, false, 'Add new catalogue', 'catalogue')" 
+              
+            >
+              <mat-icon class="add-sp-btn-icon">add</mat-icon>
+            </button>
+              <mat-card-title style="margin-top: 3px;
+              margin-left: 6px;
+          ">Add New Catalogue</mat-card-title>
+            </div>
+         
+              
+              <div fxLayout="row" fxLayoutGap="10px">
+          
+               
+                <button
+                  mat-mini-fab
+                  color="warn"
+                  class="add-sp-btn"
+                 
+                  [matTooltip]="'Remove Filter'"
+                >
+                  <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                </button>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="fill">
+                <mat-label>search...</mat-label>
+                <input
+                  type="text"
+                 
+                  
+                  matInput
+                />
+              </mat-form-field>
+              <select
+                class="status-filter"
+             
+               
+              >
+                <option value="All">All</option>
+                <option value="Activated">Active</option>
+                <option value="Deleted">Deleted</option>
+              </select>
+            </div>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div>
+            <table
+              [dataSource]="dataSourcecatalogue"
+              mat-table
+              matSort
+            
+              style="width: 100%; margin-top: 5px"
+            >
+            <ng-container matColumnDef="Vessel">
+              <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                mat-sort-header>
+                Vessel
+              </th>
+              <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                mat-cell>
+                <!-- <p class="tbl-row-item">{{ row.TASK_ID }}</p> -->
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Code">
+              <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+               Code
+              </th>
+              <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                <p class="tbl-row-item">{{ row.txtCode }}</p>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Catalogue">
+              <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Catalogue
+              </th>
+              <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                <p class="tbl-row-item">{{ row.txtName }}</p>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Vessel_Loc">
+              <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Vessel Loc
+              </th>
+              <td *matCellDef="let row" [ngStyle]="{ 'white-space': 'initial' }" class="actions-cell" mat-cell>
+                <!-- <p class="tbl-row-item">
+                  {{ row.DB_OBJECT_TYPE_NAME }}
+                </p> -->
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Account_Code">
+              <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                Account Code
+              </th>
+              <td *matCellDef="let row" [ngStyle]="{ 'white-space': 'initial' }" class="actions-cell" mat-cell>
+                <p class="tbl-row-item">{{ row.txtAccount_Code }}</p>
+              </td>
+            </ng-container>
+             <ng-container matColumnDef="Critical">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                  Critical
+                </th>
+                <td *matCellDef="let row" [ngStyle]="{ 'white-space': 'initial' }" class="actions-cell" mat-cell>
+                  <p class="tbl-row-item" *ngIf="row.chkCritical_Machinery" style="color: red;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y</p>
+
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="Action">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell>
+                  Action
+                </th>
+                <td *matCellDef="let row" class="actions-cell" mat-cell>
+                  <button
+                    mat-icon-button
+                 
+                  >
+                    <mat-icon class="icon-display">info</mat-icon>
+                  </button>
+
+                  <button
+                    type="button"
+                   
+                    mat-icon-button
+                    class="action-btn"
+                    [matMenuTriggerFor]="actionsMenu"
+                    (click)="$event.stopPropagation()"
+                  >
+                    <mat-icon>more_horiz</mat-icon>
+                  </button>
+                  <mat-menu
+                    #actionsMenu="matMenu"
+                    yPosition="below"
+                    xPosition="after"
+                    class="user-action-menu"
+                  >
+                    <button
+                    (click)="SaveData(row, true, 'Edit New Catalogue', 'catalogue')"    
+                      mat-menu-item
+                     
+                    >
+                      <mat-icon class="add-sp-btn-icon">edit</mat-icon
+                      ><span>Edit</span>
+                    </button>
+                    <button
+                      mat-menu-item
+                      (click)="deleteCatalogue(row.id)"
+                    >
+                      <mat-icon class="add-sp-btn-icon">delete_forever</mat-icon
+                      ><span>Delete</span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="visiblecataloguecolumnsColumns"></tr>
+              <tr
+                mat-row
+                *matRowDef="let row; columns: visiblecataloguecolumnsColumns"
+                (click)="selectSP(row, 'catalogue')"
+              ></tr>
+            </table>
+        
+            <div *ngIf="dataSourcecatalogue.data.length == 0">
+              <p style="text-align: center">records not found</p>
+            </div>
+            <mat-paginator
+            #CataloguePaginator
+            class="paginator"
+            [pageSizeOptions]="[10, 25, 50, 100]"
+            [pageSize]="pageSize"
+            
+          ></mat-paginator>
+        </div>
+          </mat-card-content>
+        </mat-card>
+    
+    
+         <mat-card class="sp-card-view1" *ngIf="SubCatalogueTable">
+          <mat-card-header fxLayout="column">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between"
+              class="sp-card-view-header"
+            >
+            <div fxLayout="row">
+              <button
+              mat-mini-fab
+              color="primary"
+              [matTooltip]="'Add item'"
+              class="add-sp-btn save-btn"  
+              (click)="SaveData({}, false, 'Add new subcatalogue', 'subcatalogue')" 
+              
+            >
+              <mat-icon class="add-sp-btn-icon">add</mat-icon>
+            </button>
+              <mat-card-title style="margin-top: 3px;
+              margin-left: 6px;
+          ">Add New SubCatalogue</mat-card-title>
+            </div>
+         
+              
+              <div fxLayout="row" fxLayoutGap="10px">
+          
+               
+                <button
+                  mat-mini-fab
+                  color="warn"
+                  class="add-sp-btn"
+                 
+                  [matTooltip]="'Remove Filter'"
+                >
+                  <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                </button>
+              </div>
+            </div>
+            <div class="search" fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="fill">
+                <mat-label>search...</mat-label>
+                <input
+                  type="text"
+                 
+                  matInput
+                />
+              </mat-form-field>
+
+              <select
+                class="status-filter"
+               
+                
+              >
+                <option value="All">All</option>
+                <option value="Activated" selected>Active</option>
+                <option value="Deleted">Deleted</option>
+              </select>
+            </div>
+          </mat-card-header>
+          <mat-card-content>
+            
+            <div >
+              <table [dataSource]="dataSourcesubcatalogue" mat-table matSort class="details-table">
+                <ng-container matColumnDef="Code">
+                  <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                    mat-sort-header>
+                    Code
+                  </th>
+                  <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                    mat-cell>
+                    <p class="tbl-row-item">{{row.txtCode}}</p>
+                  </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="SubCatalogue">
+                  <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                   SubCatalogue
+                  </th>
+                  <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                    <p class="tbl-row-item">{{row.txtName}}</p>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Account_Code">
+                  <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                   Account Code
+                  </th>
+                  <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                    <!-- <p class="tbl-row-item">{{row.txtName}}</p> -->
+                  </td>
+                </ng-container>
+               
+              
+                <ng-container matColumnDef="Action">
+                  <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                    Action
+                  </th>
+                  <!-- <td *matCellDef="let row" class="actions-cell" mat-cell>
+               
+                    <button mat-icon-button color="primary" (click)="editUnits(row)">
+                      <mat-icon class="icon-display">edit</mat-icon>
+                    </button>
+        
+                    <button mat-icon-button color="warn" (click)="deleteUnits(row.id)">
+                      <mat-icon class="icon-display" >delete</mat-icon>
+                    </button>  
+                  </td> -->
+                  <td *matCellDef="let row" class="actions-cell" mat-cell>
+                    <button
+                      mat-icon-button
+                     
+                    >
+                      <mat-icon class="icon-display">info</mat-icon>
+                    </button>
+  
+                    <button
+                      type="button"
+                     
+                      mat-icon-button
+                      class="action-btn"
+                      [matMenuTriggerFor]="actionsMenu"
+                      (click)="$event.stopPropagation()"
+                    >
+                      <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu
+                      #actionsMenu="matMenu"
+                      yPosition="below"
+                      xPosition="after"
+                      class="user-action-menu"
+                    >
+                      <button
+                      (click)="SaveData(row, true, 'Edit new subcatalogue', 'subcatalogue')"     
+                        mat-menu-item
+                       
+                      >
+                        <mat-icon class="add-sp-btn-icon">edit</mat-icon
+                        ><span>Edit</span>
+                      </button>
+                      <button
+                      
+                        mat-menu-item
+                        (click)="deleteSubCatalogue(row.id)"
+                      >
+                        <mat-icon class="add-sp-btn-icon" >delete_forever</mat-icon
+                        ><span>Delete</span>
+                      </button>
+                    </mat-menu>
+                  </td>
+                </ng-container>
+        
+                <tr *matHeaderRowDef="visiblesubcataloguecolumnsColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visiblesubcataloguecolumnsColumns" class="clickable route-animations-elements" mat-row (click)="selectSP(row, 'subcatalogue')"></tr>
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="9999">No data found</td>
+                </tr>
+              </table>
+          
+
+            <div *ngIf="dataSourcesubcatalogue.data.length == 0">
+              <p style="text-align: center">records not found</p>
+            </div>
+         <mat-paginator
+          #SubCataloguePaginator
+          class="paginator"
+          [pageSizeOptions]="[10, 25, 50, 100]"
+          [pageSize]="pageSize"
+          [pageIndex]="0"
+          
+          [length]="dataSourcesubcatalogue.data.length"
+        ></mat-paginator>
+        </div>
+          </mat-card-content>
+        </mat-card>
+   
+     
+        <mat-card class="sp-card-view2" *ngIf="AddNewTemTable">
+          <mat-card-header fxLayout="column">
+            <div
+            fxLayout="row"
+            fxLayoutAlign="space-between"
+            class="sp-card-view-header"
+          >
+          <div fxLayout="row">
+            <button
+            mat-mini-fab
+            color="primary"
+            [matTooltip]="'Add item'"
+            class="add-sp-btn save-btn"  
+            (click)="SaveData({}, false, 'Add Item', 'additem')"     
+          >
+            <mat-icon class="add-sp-btn-icon">add</mat-icon>
+          </button>
+            <mat-card-title style="margin-top: 3px;
+            margin-left: 6px;
+        ">Add New Item</mat-card-title>
+          </div>
+       
+            
+            <div fxLayout="row" fxLayoutGap="10px">
+        
+             
+              <button
+                mat-mini-fab
+                color="warn"
+                class="add-sp-btn"
+               
+                [matTooltip]="'Remove Filter'"
+              >
+                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+              </button>
+            </div>
+          </div>
+            <div class="search" fxLayout="row" fxLayoutAlign="space-between">
+              <mat-form-field appearance="fill">
+                <mat-label>search...</mat-label>
+                <input
+                  type="text"
+              
+                 
+                  matInput
+                />
+              </mat-form-field>
+
+              <select
+                class="status-filter"
+               
+               
+              >
+                <option value="All">All</option>
+                <option value="Activated" selected>Active</option>
+                <option value="Deleted">Deleted</option>
+              </select>
+            </div>
+          </mat-card-header>
+          <mat-card-content>
+            <div >
+
+            <table [dataSource]="dataSourcenewitem" mat-table matSort class="details-table">
+              <ng-container matColumnDef="Drawing_No">
+                <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                  mat-sort-header>
+                  Drawing No
+                </th>
+                <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-cell>
+                  <!-- <p class="tbl-row-item">{{row.txtCode}}</p> -->
+                </td>
+              </ng-container>
+      
+              <ng-container matColumnDef="Part_No">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                  Part No
+                </th>
+                <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                  <p class="tbl-row-item">{{row.txtPart_Number}}</p>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Item_Description">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                  Item Description
+                </th>
+                <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                  <p class="tbl-row-item">{{row.txtDescription}}</p>
+                </td>
+              </ng-container>
+             
+              <ng-container matColumnDef="Unit">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                  Unit
+                </th>
+                <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                  <p class="tbl-row-item">{{row.drpUnit}}</p>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="Critical">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                  Critical
+                </th>
+                <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                  <p class="tbl-row-item" *ngIf="row.chkcritical" style="color: red;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y</p>
+                </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="Action">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                  Action
+                </th>
+                <!-- <td *matCellDef="let row" class="actions-cell" mat-cell>
+             
+                  <button mat-icon-button color="primary" (click)="editUnits(row)">
+                    <mat-icon class="icon-display">edit</mat-icon>
+                  </button>
+      
+                  <button mat-icon-button color="warn" (click)="deleteUnits(row.id)">
+                    <mat-icon class="icon-display" >delete</mat-icon>
+                  </button>  
+                </td> -->
+                <td *matCellDef="let row" class="actions-cell" mat-cell>
+                  <button
+                    mat-icon-button
+              
+                  >
+                    <mat-icon class="icon-display">info</mat-icon>
+                  </button>
+
+                  <button
+                    type="button"
+                   
+                    mat-icon-button
+                    class="action-btn"
+                    [matMenuTriggerFor]="actionsMenu"
+                    (click)="$event.stopPropagation()"
+                  >
+                    <mat-icon>more_horiz</mat-icon>
+                  </button>
+                  <mat-menu
+                    #actionsMenu="matMenu"
+                    yPosition="below"
+                    xPosition="after"
+                    class="user-action-menu"
+                  >
+                    <button
+                        
+                      mat-menu-item
+                     (click)="SaveData(row, true, 'Edit Item', 'additem')"   
+                     
+                    >
+                      <mat-icon class="add-sp-btn-icon">edit</mat-icon
+                      ><span>Edit</span>
+                    </button>
+                    <button
+                    
+                      mat-menu-item
+                      (click)="deleteAddItem(row.id)"
+                    >
+                      <mat-icon class="add-sp-btn-icon" >delete_forever</mat-icon
+                      ><span>Delete</span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+      
+              <tr *matHeaderRowDef="visiblenewitemcolumnsColumns" mat-header-row></tr>
+              <tr *matRowDef="let row; columns: visiblenewitemcolumnsColumns" class="clickable route-animations-elements" mat-row
+              (click)="selectSP(row, 'additem')"
+              ></tr>
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="9999">No data found</td>
+              </tr>
+            </table>
+
+          </div>
+            <div *ngIf="dataSourcenewitem.data.length == 0">
+              <p style="text-align: center">records not found</p>
+            </div>
+            <mat-paginator
+              #AddNewItemPaginator
+              class="paginator"
+              [pageSizeOptions]="[10, 25, 50, 100]"
+              [pageSize]="pageSize"
+              [pageIndex]="0"
+              [length]="dataSourcenewitem.data.length"
+            ></mat-paginator>
+          </mat-card-content>
+        </mat-card> 
+   
+        
+
+      </mat-card-content>
+    </mat-card>
+  </fury-page-layout-content>
+</fury-page-layout>

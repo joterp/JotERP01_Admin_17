@@ -1,0 +1,343 @@
+<fury-page-layout mode="card" class="nadbunkercosts-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+
+        <form [formGroup]="NADBunkerCostsFilterForm">
+            <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+            <h3>
+
+                <span class="first-letter">B</span>UNKER
+                <span class="first-letter">ROB</span>S,
+                <span class="first-letter">C</span>ONSUMPTOPNS,
+                <span class="first-letter">C</span>OSTS
+
+            </h3>
+            <div class="filter-area">
+
+                <div fxLayout="row" fxLayoutAlign="start">
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fleet</mat-label>
+                            <mat-select formControlName="drpFleet">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel</mat-label>
+                            <mat-select formControlName="drpVessel">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Month</mat-label>
+                            <mat-select formControlName="drpMonth">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Year</mat-label>
+                            <mat-select formControlName="drpYear">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fuel Type</mat-label>
+                            <mat-select formControlName="drpFuel_Type">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                        style="margin-bottom: 12px;">
+                        <mat-label>Is Opening Balance</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="24px"
+                            formControlName="radioOpening_Balance" style="margin-left: 40px;
+">
+                            <mat-radio-button value="1"
+                                [checked]="NADBunkerCostsFilterForm.get('radioOpening_Balance').value == 1">Yes</mat-radio-button>
+                            <mat-radio-button value="0"
+                                [checked]="NADBunkerCostsFilterForm.get('radioOpening_Balance').value == 0">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    </div>
+
+                    <div fxFlex>
+                        <div>
+                          
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioAll" style="margin-top: 0px;
+                                margin-left: 26px;" class="radio-btn-group">
+                                <mat-radio-button value="0" 
+                                [checked]="NADBunkerCostsFilterForm.get('radioAll').value == 0">All</mat-radio-button>
+                              <mat-radio-button value="1" 
+                                [checked]="NADBunkerCostsFilterForm.get('radioAll').value == 1">Month-end figures</mat-radio-button>           
+                              <mat-radio-button value="2" 
+                                [checked]="NADBunkerCostsFilterForm.get('radioAll').value == 2">Purchase figures</mat-radio-button>
+                              <mat-radio-button value="3"
+                                [checked]="NADBunkerCostsFilterForm.get('radioAll').value == 3">Purchase figures not updated</mat-radio-button>
+                            </mat-radio-group>
+                          </div>
+                         
+                    </div>
+
+                   
+
+
+
+                    <div class="filter-btn-area" fxFlex>
+                        <div>
+                            <button class="create" mat-raised-button color="primary" class="filter-btn btn-success">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                                Clear Filter
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+
+
+    <fury-page-layout-content [@fadeInUp]>
+        <div class="actions-area">
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                class="add-approve-btn save-btn" (click)="AddNewOpeningBalance(null, 'Add New Opening Balance')"
+                               >
+                                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                            </button>
+                            <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;">Add New Opening Balance</span>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div fxLayout="row">
+                            
+                            <span class="op-title-2">All figures in SGD - Singapore Dollar (Company Currency)</span>
+                        </div>
+                    </td>
+                </tr>
+
+
+            </table>
+
+            <div>
+                <span style="cursor: pointer">
+                    <table>
+                        <tr>
+                            <td> <button class="create" mat-raised-button color="info" class="filter-info-btn btn-info" type="button">
+                                Report
+                            </button></td>
+                            <td><img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" /></td>
+                            <td><img src="../../../../assets/img/pdf.png" class="logo" alt="excel" /></td>
+                            <td><img src="../../../../assets/img/XML1.png" class="logo" alt="excel" /></td>
+                        </tr>
+                    </table>
+                   
+                </span>
+            </div>
+            <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+        </div>
+
+        <div #TABLE>
+            <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                <ng-container matColumnDef="Vessel">
+                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                        mat-sort-header>
+                        Vessel 
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                </td> -->
+                </ng-container>
+
+                <ng-container matColumnDef="Fuel_Type">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Fuel Type
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Date_Purchased">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Date Purchased
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Qty_Purchased">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Qty Purchased
+                    </th>
+                    <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Bunker_Unit_Price">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Bunker Unit Price
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Qty_Price">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Qty Price
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="ROB_Unit">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        ROB Unit
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="ROB_Qty">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        ROB Qty
+                    </th>
+                    <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+                </ng-container>
+                <ng-container matColumnDef="ROB_Date">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        ROB Date
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+                <ng-container matColumnDef="ROB_Cost">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        ROB Cost
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Is_Opening_Balance">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Is Opening Balance
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+                <ng-container matColumnDef="Info">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                </ng-container>
+
+                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                </tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                </tr>
+            </table>
+        </div>
+
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+    </fury-page-layout-content>
+    
+
+</fury-page-layout>

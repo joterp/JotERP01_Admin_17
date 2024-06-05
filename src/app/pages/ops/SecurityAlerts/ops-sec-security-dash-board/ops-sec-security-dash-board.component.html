@@ -1,0 +1,153 @@
+
+<fury-page-layout mode="card" class="ops-SecurityAlertsDashboard">
+        
+    <h3 style="text-align: center;">
+        <span class="first-letter">D</span>ASHBOARD
+       
+    </h3>
+
+    <fury-page-layout-content [@fadeInUp] style="margin: 30px;">
+        <div fxLayout="row" >
+            <div fxFlex="40">
+                <h3>Recents Alerts</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td style="color: #034af3;">
+                                <span>
+                                    <img src="../../../../assets/img/caution.png" class="logo" alt="excel" style="margin-right: 10px;
+                                    margin-bottom: -4px;"/>  <span (click)="saveRecentAlerts(null,false)" >ref 16/jan/2023 </span>
+                                </span>
+                            </td>
+                            
+                           
+                        </tr>
+                        <tr>testing security alerts</tr>
+                        <tr>6798</tr>
+                        <tr>26/01/2023 00:00:00</tr>
+
+                        <tr>
+                            <td style="color: #034af3;">
+                                <span>
+                                    <img src="../../../../assets/img/pirate-purple.png" class="logo" alt="excel" style="margin-right: 10px;
+                                    margin-bottom: -4px;"/>   1453
+                                </span>
+                            </td>
+                           
+                        </tr>
+                        <tr>Test</tr>
+                        <tr>Arizona</tr>
+                        <tr>19/01/2023 00:00:00</tr>
+
+                        <tr>
+                            <td style="color: #034af3;">
+                                <span>
+                                    <img src="../../../../assets/img/warning.png" class="logo" alt="excel" style="margin-right: 10px;
+                                    margin-bottom: -4px;"/>   ref456
+                                </span>
+                            </td>
+                            
+                           
+                        </tr>
+                        <tr>Testing Alerts</tr>
+                        <tr>At Port</tr>
+                        <tr>12/12/2022 00:00:00</tr>
+                    </tbody>
+                </table>
+                <div style="text-align: end;" (click)="viewAlerts('OPS_SEC_AlertList')">View All alerts</div>
+
+            </div>
+            <div fxFlex="60">
+                <h3>Vessel List</h3>
+                <table style="width: 100%;">
+                    <tbody>
+                        
+                        <tr>
+                            <td>
+                                <table style="margin-right: 10px;"> <!-- Add margin to the right of the table -->
+                                    <tr>
+                                        <td style="width: 70%;
+                                        padding-left: 5px;    color: #034af3;" (click)="saveVessel(null,false)">MIXA</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 4px;
+                                        padding-top: 16px;">At Sea</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 4px;
+                                       ">13 Sep 2023</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <span>
+                                    <img src="../../../../assets/img/Mixa.jpg" class="dashboardlogo" alt="excel" style="margin-right: 10px;
+                                        margin-bottom: -4px;" />
+                                </span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <table style="margin-right: 10px;"> <!-- Add margin to the right of the table -->
+                                    <tr>
+                                        <td style="width: 70%;
+                                        padding-left: 5px;    color: #034af3;">GRVR</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 4px;
+                                        padding-top: 16px;">At Sea</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 4px;
+                                       ">11 Sep 2023</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <span>
+                                    <img src="../../../../assets/img/GRVR.jpg" class="dashboardlogo" alt="excel" style="margin-right: 10px;
+                                        margin-bottom: -4px;" />
+                                </span>
+                            </td>
+                        </tr>
+                        
+
+                        <tr>
+                            <td>
+                                <table style="margin-right: 10px;"> <!-- Add margin to the right of the table -->
+                                    <tr>
+                                        <td style="width: 70%;
+                                        padding-left: 5px;    color: #034af3;">OWSR</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 4px;
+                                        padding-top: 16px;">At Sea</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 4px;
+                                       ">06 Sep 2023</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <span>
+                                    <img src="../../../../assets/img/OWSR.jpg" class="dashboardlogo" alt="excel" style="margin-right: 10px;
+                                        margin-bottom: -4px;" />
+                                </span>
+                            </td>
+                        </tr>
+                        
+                       
+                    </tbody>
+                </table>
+
+
+            </div>
+           
+        </div>
+
+        
+    </fury-page-layout-content>
+
+</fury-page-layout>

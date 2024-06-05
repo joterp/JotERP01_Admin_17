@@ -1,0 +1,151 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+    <fury-page-layout mode="card" class="crew-interviews">
+
+        <div>
+            <form [formGroup]="EvaluationDetailsFormGroup">
+
+                <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                    <div fxFlex="48">
+                        <div>
+                            <table style="width: 100%;
+                                    font-weight: bold;
+                                    color: Maroon;
+                                    font-family: tahoma;">
+                                <tr>
+                                    <td style="width: 50%;"><span>Sea Staff</span></td>
+                                    <td><span>Chirag Solanki</span></td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                        <div>
+                            <table style="width: 100%;
+                                        font-weight: bold;
+                                        color: Maroon;
+                                        font-family: tahoma;">
+                                <tr>
+                                    <td style="width: 50%;"><span>Staff Code</span></td>
+                                    <td><span>10444</span></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Planned Evaluation Date</mat-label>
+                                <input matInput formControlName="planned_evaluation_date"
+                                    [matDatepicker]="pickerplanned_evaluation_date" />
+                                <mat-datepicker-toggle matSuffix
+                                    [for]="pickerplanned_evaluation_date"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerplanned_evaluation_date></mat-datepicker>
+
+                                <mat-error
+                                    *ngIf="EvaluationDetailsFormGroup.get('planned_evaluation_date').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Voyage</mat-label>
+                                <mat-select formControlName="drpVoyage">
+                                </mat-select>
+                                <mat-error *ngIf="EvaluationDetailsFormGroup.get('drpVoyage').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Rank</mat-label>
+                                <input type="text" formControlName="drpRank" matInput />
+                                <mat-error *ngIf="EvaluationDetailsFormGroup.get('drpRank').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Evaluation Type</mat-label>
+                                <mat-select formControlName="drpEvaluation_Type">
+                                </mat-select>
+                                <mat-error
+                                    *ngIf="EvaluationDetailsFormGroup.get('drpEvaluation_Type').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Evaluation Name</mat-label>
+                                <mat-select formControlName="drpEvaluation_Name">
+                                </mat-select>
+                                <mat-error
+                                    *ngIf="EvaluationDetailsFormGroup.get('drpEvaluation_Name').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Evaluator</mat-label>
+                                <mat-select formControlName="drpEvaluator">
+                                </mat-select>
+                                <mat-error *ngIf="EvaluationDetailsFormGroup.get('drpEvaluator').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+                    <div fxFlex="48">
+
+                        <div style="margin-top: 50px;">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Evaluation Comments</mat-label>
+                                <textarea matInput formControlName="txtEvaluation_Comments" rows="12"
+                                    cols="50"></textarea>
+                                <mat-error
+                                    *ngIf="EvaluationDetailsFormGroup.get('txtEvaluation_Comments').hasError('required')">
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+
+    </fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!EvaluationDetailsFormGroup.valid ? '' : 'save-btn']"
+        [disabled]="!EvaluationDetailsFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

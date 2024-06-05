@@ -1,0 +1,97 @@
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Alarm
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <form [formGroup]="newAlarmFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel</mat-label>
+                <mat-select formControlName="drpVessel">
+                  <mat-option value="11188-TEST">Alexa</mat-option>
+                  <mat-option value="01001-Food">Alexandre</mat-option>
+      
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Machinery</mat-label>
+                <mat-select formControlName="drpMachinery">
+                  <mat-option value="11188-TEST"></mat-option>
+                  <mat-option value="01001-Food"></mat-option>
+      
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Alarm Name</mat-label>
+                <input formControlName="txtAlarm_Name" matInput placeholder="Search by Alarm Name" type="text" />
+              </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Set value</mat-label>
+                <input formControlName="txtSet_value" matInput placeholder="Search by Set value" type="text" />
+              </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Alarm Unit</mat-label>
+                <mat-select formControlName="drpAlarm_Unit">
+                  <mat-option value="kgCmS">kgCmS</mat-option>
+                  <mat-option value="degC">degC</mat-option>
+                  <mat-option value="Units">Units</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Permissible Variance</mat-label>
+                <input formControlName="txtPermissible_Variance" matInput placeholder="Search by Permissible Variance" type="text" />
+              </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>SFI</mat-label>
+                <mat-select formControlName="drpSFI">
+                  <mat-option value="1- Ship General">1- Ship General</mat-option>
+                  <mat-option value="Model Testing">Model Testing</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Testing Procedure</mat-label>
+              <textarea
+                matInput
+                formControlName="txtTesting_Procedure"
+                placeholder=""
+              ></textarea>
+            </mat-form-field>
+          </div>
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

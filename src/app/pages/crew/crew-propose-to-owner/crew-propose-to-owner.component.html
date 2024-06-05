@@ -1,0 +1,701 @@
+<div style="text-align: center;font-weight: bold;    height: 24px;
+vertical-align: middle;margin-top: 30px;">
+    <h3>
+
+        <span class="first-letter">C</span>REW
+        <span class="first-letter">P</span>ROPOSAL
+        <span class="first-letter">D</span>ETAILS
+
+    </h3>
+</div>
+
+
+
+<fury-page-layout mode="card" class="ProposeToOwnerDetails">
+    <div>
+        <div style="padding: 0px 77px;">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 40%;">
+
+                        <form [formGroup]="CrewProposeToOwnerFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Proposal For</mat-label>
+                                            <mat-select formControlName="drpProposal_For">
+                                                <mat-option>
+
+                                                </mat-option>
+
+                                                <!-- <mat-option
+                                *ngFor="let b of filtered_port | async"
+                                [value]="b.PORT_GUID"
+                              >
+                                {{ b.Port_Name }}
+                              </mat-option> -->
+                                            </mat-select>
+
+                                        </mat-form-field>
+
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <button class="create" mat-raised-button color="primary" class="save-btn">
+                                                Change
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Flag Document 1</mat-label>
+                                            <mat-select formControlName="drpFlag_Document_1">
+                                                <mat-option>
+
+                                                </mat-option>
+
+                                                <!-- <mat-option
+                                *ngFor="let b of filtered_port | async"
+                                [value]="b.PORT_GUID"
+                              >
+                                {{ b.Port_Name }}
+                              </mat-option> -->
+                                            </mat-select>
+
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Document 2</mat-label>
+                                            <mat-select formControlName="drpDocument_2">
+                                                <mat-option>
+
+                                                </mat-option>
+
+                                                <!-- <mat-option
+                            *ngFor="let b of filtered_port | async"
+                            [value]="b.PORT_GUID"
+                          >
+                            {{ b.Port_Name }}
+                          </mat-option> -->
+                                            </mat-select>
+
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <button class="create" mat-raised-button color="primary" class="save-btn">
+                                                Link
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </form>
+
+                    </td>
+
+                    <td></td>
+                </tr>
+            </table>
+
+            <div style="padding-top: 14px;">
+                <div style="margin-bottom: 15px;">
+                    <mat-accordion>
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;
+                        ">
+                            <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #c5c5c5;    height: 46px;
+                          ">
+                                <mat-panel-title class="panel-title">
+                                    Proposed Crew List
+                                </mat-panel-title>
+                                <mat-panel-description class="panel-desc">
+
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <form [formGroup]="ProposedCrewListFilterForm">
+                                <div class="filter-area">
+
+                                    <div fxLayout="row" fxLayoutAlign="start">
+
+                                        <div fxFlex>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Staff code/name</mat-label>
+                                                <input type="text" formControlName="txtStaff_Code" matInput />
+                                            </mat-form-field>
+
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Rank</mat-label>
+                                                <mat-select formControlName="drpRank">
+                                                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                          {{ b.DEPT_NAME }}
+                                        </mat-option> -->
+                                                </mat-select>
+                                            </mat-form-field>
+
+                                        </div>
+
+                                        <div fxFlex>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Nationality</mat-label>
+                                                <mat-select formControlName="drpNationality">
+                                                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                          {{ b.DEPT_NAME }}
+                                        </mat-option> -->
+                                                </mat-select>
+                                            </mat-form-field>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Manning Office</mat-label>
+                                                <mat-select formControlName="drpManning_Office">
+                                                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                          {{ b.DEPT_NAME }}
+                                        </mat-option> -->
+                                                </mat-select>
+                                            </mat-form-field>
+
+                                        </div>
+
+                                        <div class="filter-btn-area" fxFlex>
+                                            <div>
+                                                <button class="create" mat-raised-button color="primary"
+                                                    class="filter-btn">
+                                                    Search
+                                                </button>
+                                            </div>
+
+                                            <div>
+                                                <button class="create" mat-raised-button color="warn" class="filter-btn"
+                                                    type="button">
+                                                    Clear
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+                        </mat-expansion-panel>
+                    </mat-accordion>
+
+                </div>
+
+            </div>
+
+            <div #TABLE style="border-left: 1px solid lightgrey; border-right: 1px solid lightgrey;">
+                <table [dataSource]="ProposedCrewList1dataSource" mat-table matSort #table class="details-table">
+                    <ng-container matColumnDef="Staff_Code">
+                        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                            mat-sort-header>
+                            Staff Code
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      [ngStyle]="{ 'white-space': 'initial' }"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                    </td> -->
+                    </ng-container>
+    
+                    <ng-container matColumnDef="Name">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Name
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Rank">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Rank
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="No_Of_Contract">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            No Of Contract
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Nationality">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Nationality
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="DOB">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            DOB
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Age">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Age
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Age">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Age
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Last">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Last
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Avg">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Avg
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Vessel">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Vessel
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Manning_Office">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Manning Office
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Contract_Salary">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Contract Salary
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Flag_Doc1">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Flag Doc1
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Flag_Doc2">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Flag Doc2
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+        
+                    <tr *matHeaderRowDef="visibleColumnsProposedCrewList1" mat-header-row></tr>
+                    <tr *matRowDef="let row; columns: visibleColumnsProposedCrewList1" class="clickable route-animations-elements" mat-row>
+                    </tr>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="padding-top: 14px;">
+                <div style="margin-bottom: 15px;">
+                    <mat-accordion>
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;
+                        ">
+                            <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #c5c5c5;    height: 46px;
+                          ">
+                                <mat-panel-title class="panel-title">
+                                    Not Included Above
+                                </mat-panel-title>
+                                <mat-panel-description class="panel-desc">
+
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <form [formGroup]="ProposedCrewListFilterForm2">
+                                <div class="filter-area">
+
+                                    <div fxLayout="row" fxLayoutAlign="start">
+
+                                        <div fxFlex>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Staff code/name</mat-label>
+                                                <input type="text" formControlName="txtStaff_Code" matInput />
+                                            </mat-form-field>
+
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Rank</mat-label>
+                                                <mat-select formControlName="drpRank">
+                                                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                          {{ b.DEPT_NAME }}
+                                        </mat-option> -->
+                                                </mat-select>
+                                            </mat-form-field>
+
+                                        </div>
+
+                                        <div fxFlex>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Nationality</mat-label>
+                                                <mat-select formControlName="drpNationality">
+                                                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                          {{ b.DEPT_NAME }}
+                                        </mat-option> -->
+                                                </mat-select>
+                                            </mat-form-field>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Manning Office</mat-label>
+                                                <mat-select formControlName="drpManning_Office">
+                                                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                          {{ b.DEPT_NAME }}
+                                        </mat-option> -->
+                                                </mat-select>
+                                            </mat-form-field>
+
+                                        </div>
+
+                                        <div fxFlex>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Nationality</mat-label>
+                                                <mat-select formControlName="drpNationality">
+                                                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                          {{ b.DEPT_NAME }}
+                                        </mat-option> -->
+                                                </mat-select>
+                                            </mat-form-field>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Manning Office</mat-label>
+                                                <mat-select formControlName="drpManning_Office">
+                                                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                          {{ b.DEPT_NAME }}
+                                        </mat-option> -->
+                                                </mat-select>
+                                            </mat-form-field>
+
+                                        </div>
+
+                                        <div fxFlex="10">
+                                            <mat-radio-group fxLayout="column" fxLayoutGap="7px" formControlName="radio_btn" style="margin-top: 28px; margin-left: 26px;" class="radio-btn-group">
+                                                <mat-radio-button value="0" [checked]="ProposedCrewListFilterForm2.get('radio_btn').value == 0">
+                                                  <label [class.active-label]="ProposedCrewListFilterForm2.get('radio_btn').value == 0" style="font-family:tahoma;"><b>Ashore</b></label>
+                                                </mat-radio-button>
+                                                <mat-radio-button value="1" [checked]="ProposedCrewListFilterForm2.get('radio_btn').value == 1">
+                                                  <label [class.active-label]="ProposedCrewListFilterForm2.get('radio_btn').value == 1" style="font-family:tahoma;"><b>Onboard</b></label>
+                                                </mat-radio-button>
+                                              </mat-radio-group>
+                                        </div>
+
+                                        <div class="filter-btn-area" fxFlex>
+                                            <div>
+                                                <button class="create" mat-raised-button color="primary"
+                                                    class="filter-btn">
+                                                    Search
+                                                </button>
+                                            </div>
+
+                                            <div>
+                                                <button class="create" mat-raised-button color="warn" class="filter-btn"
+                                                    type="button">
+                                                    Clear
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+                        </mat-expansion-panel>
+                    </mat-accordion>
+
+                </div>
+
+            </div>
+
+            <div #TABLE style="border-left: 1px solid lightgrey; border-right: 1px solid lightgrey;">
+                <table [dataSource]="ProposedCrewList2dataSource" mat-table matSort #table class="details-table">
+                    <ng-container matColumnDef="Staff_Code">
+                        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                            mat-sort-header>
+                            Staff Code
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      [ngStyle]="{ 'white-space': 'initial' }"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                    </td> -->
+                    </ng-container>
+    
+                    <ng-container matColumnDef="Name">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Name
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Rank">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Rank
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="No_Of_Contract">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            No Of Contract
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Nationality">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Nationality
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="DOB">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            DOB
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Age">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Age
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Age">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Age
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Last">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Last
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Avg">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Avg
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Vessel">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Vessel
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Manning_Office">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Manning Office
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Contract_Salary">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Contract Salary
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Flag_Doc1">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Flag Doc1
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+                    <ng-container matColumnDef="Flag_Doc2">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                            Flag Doc2
+                        </th>
+                        <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                    </ng-container>
+        
+                    <tr *matHeaderRowDef="visibleColumnsProposedCrewList2" mat-header-row></tr>
+                    <tr *matRowDef="let row; columns: visibleColumnsProposedCrewList2" class="clickable route-animations-elements" mat-row>
+                    </tr>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</fury-page-layout>

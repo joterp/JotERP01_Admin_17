@@ -1,0 +1,114 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>New Alerts
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <mat-dialog-content style="height: 100% !important">
+      <form [formGroup]="newAlertsFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                <mat-label>Ref Number</mat-label>
+                <input formControlName="txtRef_Num" matInput placeholder="Search by Ref Number" type="text" />
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Date</mat-label>
+                    <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" placeholder="Report Date From" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFrom></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Headline</mat-label>
+                    <textarea
+                    matInput
+                    formControlName="txtHeadline"
+                    placeholder=""
+                    ></textarea>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea
+                    matInput
+                    formControlName="txtDescription"
+                    placeholder=""
+                    ></textarea>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                <mat-label>Location</mat-label>
+                <input formControlName="txtLocation" matInput placeholder="Search by Location" type="text" />
+                </mat-form-field>
+            </div>
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Latitude</mat-label>
+                    <input formControlName="Latitude" matInput placeholder="Search by Latitude" type="text" />
+                </mat-form-field>
+
+                <mat-form-field fxFlex appearance="fill">
+                <mat-label>Longitude</mat-label>
+                <input formControlName="Longitude" matInput placeholder="Search by Longitude" type="text" />
+            </mat-form-field>
+            </div>	  
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+               <mat-form-field fxFlex >
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="drpCategory">
+                    <mat-option value="Catution">Caution</mat-option>
+                    <mat-option value="GeneralAlert">General Alert</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                <mat-label>Aggressor</mat-label>
+                <input formControlName="txtAggressor" matInput placeholder="Search by Aggressor" type="text" />
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                <mat-label>Source</mat-label>
+                <input formControlName="txtSource" matInput placeholder="Search by Source" type="text" />
+                </mat-form-field>
+            </div>
+
+            </div>
+      </form>
+    </mat-dialog-content>
+  
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" >
+     
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save and Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

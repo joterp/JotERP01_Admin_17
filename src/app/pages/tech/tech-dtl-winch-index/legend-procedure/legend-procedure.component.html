@@ -1,0 +1,90 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Legend & Procedure
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+  <mat-dialog-content>
+    <!-- <h4><b><u>Legend :</u></b></h4>
+   
+  
+    <p>A   </p>
+    <p>L   </p>
+    <p>D    </p>
+    <p>d  </p> -->
+
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="2" style="padding-bottom: 20px;"> 
+                    <u>Legend</u> :- 
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-right: 9px;">BHC:</td>
+                <td>Brake holding capacity (Tons) As per Manufacturer</td>
+            </tr>
+            <tr>
+                <td style="padding-right: 9px;">BRL:</td>
+                <td>Set Brake Rendering Load (Tons) On the Winches</td>
+            </tr>
+            <tr>
+                <td style="padding-right: 9px;">MBL:</td>
+                <td>Maximum Braking Load of Rope</td>
+            </tr>
+            <tr>
+                <td style="padding-right: 9px;">Pd:</td>
+                <td>Reference Pressure to Applied in the Hydraulic Jack to perform the Test</td>
+            </tr>
+            <tr>
+                <td style="padding-right: 9px;">Pa:</td>
+                <td>Actual Pressure on gauge(Kg/cm²)When Brake Slippage occurs</td>
+            </tr>
+            <tr>
+                <td style="padding-right: 9px;">A:</td>
+                <td>Cross sectional area of hydraulic piston(cm²)</td>
+            </tr>
+            <tr>
+                <td style="padding-right: 9px;">L:</td>
+                <td> Distance measured from the center of the winch drum to the center line of the Hydraulic Jack Piston (cm)</td>
+            </tr>
+            <tr>
+                <td style="padding-right: 9px;">D:</td>
+                <td> Diameter Mooring Drum (cm)</td>
+            </tr>
+            <tr>
+                <td style="padding-right: 9px;">d:</td>
+                <td> Diameter of the Rope (cm)</td>
+            </tr>
+
+
+            <tr>
+                <td colspan="3" style="padding-bottom: 20px;padding-top: 20px;"> 
+                    <u>Procedure</u> :- 
+                </td>
+            </tr>
+            <tr>
+               
+                <td colspan="3"> 1 - Fill Yellow Cells</td>
+            </tr>
+            <tr>
+               
+                <td colspan="3"> 2 - Start building the pressure progressively up to the design reference Pd</td>
+            </tr>
+            <tr>
+               
+                <td colspan="3">3 - Record Actual Pa at the Hydraulic Jack at the first sight of movement of the drum</td>
+            </tr>
+            <tr>
+               
+                <td colspan="3">4 - Mark the Brake Spindle of winch for rendering point with Cable Tie</td>
+            </tr>
+        </tbody>
+    </table>
+    
+  </mat-dialog-content>

@@ -1,0 +1,346 @@
+<div style="text-align: center;font-weight: bold;height: 24px;
+vertical-align: middle;margin-top: 30px;">
+    <h3>
+
+        <span class="first-letter">R</span>OTATION
+        <span class="first-letter">&</span>&nbsp;
+        <span class="first-letter">A</span>SSIGNMENT
+
+    </h3>
+</div>
+
+<fury-page-layout mode="card" class="Rotation-Assignment-view">
+
+    <div>
+        <div style="padding: 5px 20px 0px 20px;">
+            <table style="width: 100%;">
+                <tr>
+
+                    <td style="width: 25%;    border: 1px solid #c5c5c5;
+                    border-radius: 10px;
+                    padding-left: 5px;
+                    padding-bottom: 9px;">
+
+                        <form [formGroup]="RotationAndAssignment1FilterForm">
+                            <div class="filter-area">
+
+                                <div fxLayout="row" fxLayoutAlign="start">
+                                    <div fxFlex>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel</mat-label>
+                                            <mat-select formControlName="drpVessel">
+                                                <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                  {{ b.DEPT_NAME }}
+                </mat-option> -->
+                                            </mat-select>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Rank</mat-label>
+                                            <mat-select formControlName="drpRank">
+                                                <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                  {{ b.DEPT_NAME }}
+                </mat-option> -->
+                                            </mat-select>
+                                        </mat-form-field>
+
+                                        <div style="display: flex;">
+
+                                            <mat-radio-group fxLayout="row" fxLayoutGap="16px"
+                                                formControlName="radio_btn" style="margin-top: 10px;
+                                                            margin-left: 20px;">
+                                                <mat-radio-button value="0"
+                                                    [checked]="RotationAndAssignment1FilterForm.get('radio_btn').value == 0">
+                                                    <label
+                                                        [class.active-label]="RotationAndAssignment1FilterForm.get('radio_btn').value == 0">Staff
+                                                        Ashore</label>
+                                                </mat-radio-button>
+                                                <mat-radio-button value="1"
+                                                    [checked]="RotationAndAssignment1FilterForm.get('radio_btn').value == 1">
+                                                    <label
+                                                        [class.active-label]="RotationAndAssignment1FilterForm.get('radio_btn').value == 1">Staff
+                                                        Onboard</label>
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                    </div>
+
+                                    <div fxFlex>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Staff code</mat-label>
+                                            <input type="text" formControlName="txtStaff_Code" matInput />
+                                        </mat-form-field>
+
+                                        <div style="margin-top: 5px;">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <button class="create" mat-raised-button color="primary"
+                                                            class="filter-btn">
+                                                            Search
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <button class="create" mat-raised-button color="warn"
+                                                            class="filter-btn" type="button">
+                                                            Clear Filter
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+
+                    </td>
+
+                    <td style="width: 10%;">
+
+                    </td>
+
+                    <td style="width: 65%;border: 1px solid #c5c5c5;
+                    border-radius: 10px;
+                    padding-left: 5px;
+                    padding-bottom: 9px;">
+                        <form [formGroup]="RotationAndAssignment2FilterForm">
+                            <div class="filter-area">
+
+                                <div fxLayout="row" fxLayoutAlign="start">
+                                    <div fxFlex>
+                                        <mat-form-field appearance="fill" >
+                                            <mat-label>Vessel</mat-label>
+                                            <mat-select formControlName="drpVessel">
+                                                <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                  {{ b.DEPT_NAME }}
+                </mat-option> -->
+                                            </mat-select>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Rank</mat-label>
+                                            <mat-select formControlName="drpRank">
+                                                <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                  {{ b.DEPT_NAME }}
+                </mat-option> -->
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div fxFlex>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Staff Name</mat-label>
+                                            <input type="text" formControlName="txtStaff_Name" matInput />
+                                        </mat-form-field>
+
+                                        <div class="single-assign-text"><span>Go to Single Assignment</span></div>
+
+                                    </div>
+
+                                    <div fxFlex>
+                                        <div>EOC for next &nbsp;
+                                            <mat-form-field style="width: 35%;">
+                                                <input type="text" formControlName="" matInput />
+                                            </mat-form-field>
+                                            Days
+                                        </div>
+
+                                        <div style="margin-top: 5px;">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <button class="create" mat-raised-button color="primary"
+                                                            class="filter-btn">
+                                                            Search
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <button class="create" mat-raised-button color="warn"
+                                                            class="filter-btn" type="button">
+                                                            Clear Filter
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </td>
+
+                </tr>
+                <br>
+                <tr>
+
+                    <td>
+
+                        <table
+                            style="width: 100%;border: 1px solid lightgrey;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+                            <tr>
+                                <td>
+                                    <span class="vessel-itinerary-text">
+                                        Staff, presently ashore, awaiting employment</span>
+                                </td>
+
+                            </tr>
+                        </table>
+
+
+
+                        <div #TABLE>
+                            <table [dataSource]="RotationAssigndataSource" mat-table matSort #table
+                                class="details-table">
+                                <ng-container matColumnDef="Staff">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                        Staff
+                                    </th>
+                                    <!-- <td
+*matCellDef="let row; let i = index"
+class="actions-cell"
+[ngStyle]="{ 'white-space': 'initial' }"
+mat-cell
+>
+<p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+</td> -->
+                                </ng-container>
+
+                                <ng-container matColumnDef="Select">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Select
+                                    </th>
+                                    <!-- <td
+*matCellDef="let row; let i = index"
+class="actions-cell"
+mat-cell
+>
+<p class="tbl-row-item">{{ row.REF_NUM }}</p>
+</td> -->
+                                </ng-container>
+
+                                <tr *matHeaderRowDef="visibleColumnsRotationAssign" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: visibleColumnsRotationAssign"
+                                    class="clickable route-animations-elements" mat-row>
+                                </tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </td>
+
+                    <td style="vertical-align: middle;text-align: center;">
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Joining Rank</mat-label>
+                                <mat-select>
+                                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                  {{ b.DEPT_NAME }}
+                </mat-option> -->
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <button class="create" mat-raised-button color="primary" class="btn-info">
+                                Assign selected staff
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        <table
+                            style="width: 100%;border: 1px solid lightgrey;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+                            <tr>
+                                <td>
+                                    <span class="vessel-itinerary-text">
+                                        Staff, presently ashore, awaiting employment</span>
+                                </td>
+
+                            </tr>
+                        </table>
+
+
+
+                        <div #TABLE>
+                            <table [dataSource]="RotationAssign2dataSource" mat-table matSort #table
+                                class="details-table">
+                                <ng-container matColumnDef="Vessel">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                        Vessel
+                                    </th>
+                                    <!-- <td
+*matCellDef="let row; let i = index"
+class="actions-cell"
+[ngStyle]="{ 'white-space': 'initial' }"
+mat-cell
+>
+<p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+</td> -->
+                                </ng-container>
+
+                                <ng-container matColumnDef="Rank">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Rank
+                                    </th>
+                                    <!-- <td
+*matCellDef="let row; let i = index"
+class="actions-cell"
+mat-cell
+>
+<p class="tbl-row-item">{{ row.REF_NUM }}</p>
+</td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Presently_Onboard">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Presently Onboard
+                                    </th>
+                                    <!-- <td
+*matCellDef="let row; let i = index"
+class="actions-cell"
+mat-cell
+>
+<p class="tbl-row-item">{{ row.REF_NUM }}</p>
+</td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Assignment1">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Assignment1
+                                    </th>
+                                    <!-- <td
+*matCellDef="let row; let i = index"
+class="actions-cell"
+mat-cell
+>
+<p class="tbl-row-item">{{ row.REF_NUM }}</p>
+</td> -->
+                                </ng-container>
+
+                                <tr *matHeaderRowDef="visibleColumnsRotationAssign2" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: visibleColumnsRotationAssign2"
+                                    class="clickable route-animations-elements" mat-row>
+                                </tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</fury-page-layout>

@@ -1,0 +1,136 @@
+fury-crew-acc-portage-bill-record-summary {
+    .first-letter {
+        font-size: 1.5em;
+    }
+
+    .Portage-Bill-view {
+
+        .add-sp-btn {
+            height: 24px;
+            width: 24px;
+            align-items: center;
+            display: flex;
+        }
+
+        .add-sp-btn-icon {
+            font-size: 24px;
+            align-self: center;
+            margin-top: -1px;
+        }
+
+        .filter-btn-traits {
+            margin-right: 5px !important;
+            // width: 100px;
+            // margin-bottom: 10px !important;
+        }
+
+        .mat-form-field-label-wrapper {
+            top: -0.75em;
+            padding-top: 0.84375em;
+        }
+
+        .mat-form-field-wrapper {
+            margin-right: 5px !important;
+            padding-bottom: 0px;
+        }
+
+        .mat-form-field {
+            margin-bottom: 6px;
+            width: 100%;
+        }
+
+        .mat-form-field-subscript-wrapper {
+            top: 50px;
+        }
+
+        .mat-form-field-flex {
+            align-items: flex-start !important;
+        }
+
+        .mat-form-field-infix {
+            border-top: 0.84375em solid transparent;
+        }
+
+        .mat-form-field-underline {
+            bottom: 0 !important;
+        }
+
+        .PortageBill-heading {
+            text-align: center;
+            font-family: tahoma;
+        }
+
+        #table-wrapper-portagebill {
+            position: relative;
+            border: 1px solid #ababab;
+
+        }
+
+        #table-scroll {
+            height: 500px;
+            overflow: auto;
+
+        }
+
+        #table-wrapper-portagebill table {
+            width: 100%;
+
+        }
+
+        #table-wrapper-portagebill table thead th .text {
+            position: absolute;
+            top: -20px;
+            z-index: 2;
+            height: 20px;
+            width: 35%;
+            border: 1px solid red;
+        }
+
+        .vessel-title {
+            font-size: 16px;
+            font-weight: bold;
+            background-color: lightgray;
+            font-family: tahoma;
+            padding: 5px;
+        }
+
+        .portage-bill-td3 {
+            color: #034af3;
+            font-size: 17px;
+            font-family: tahoma;
+        }
+
+        .portage-bill-td3:hover {
+            color: #23527c;
+            cursor: pointer;
+        }
+
+        .refresh {
+            width: 25px;
+            height: 25px;
+        }
+
+        .PortageBill-options {
+            width: 95%;
+            background-color: lightgray;
+            height: 150px px;
+            border-radius: 10px;
+        }
+
+        .portage-tr {
+            height: 35px;
+        }
+
+        .portage-td {
+            padding: 5px;
+            font-size: 18px;
+            font-family: tahoma;
+            color: #000;
+            cursor: pointer;
+        }
+        .portage-td:hover{
+            color:#034af3;
+        }
+    }
+
+}

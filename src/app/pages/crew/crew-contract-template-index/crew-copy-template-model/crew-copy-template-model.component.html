@@ -1,0 +1,95 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Copy Template
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+ 
+
+    <div>
+        <mat-dialog-content>
+            <form [formGroup]="copyTemplateFormGroup">
+                <div mat-dialog-container style="padding-top: 20px;">
+                    
+                
+                    
+                    
+                    <div fxLayout="column" fxLayout.gt-sm="row" *ngIf="showUnitField" style="margin-top: 5px;">                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Template Name</mat-label>
+                          <input formControlName="txtTemplate_Name" matInput placeholder="Search by Template Name" type="text" />
+                        </mat-form-field>
+          
+          
+                      </div>
+        
+                 
+                    <div fxLayout="column" fxLayout.gt-sm="row" *ngIf="showUnitField" style="margin-top: 5px;">
+                        <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Company Name</mat-label>
+                        <mat-select formControlName="drpCompany_Name">
+                            <mat-option value="Apply_Pvt_Lmtd">Apply Pvt Lmtd</mat-option>
+                            <mat-option value="Jot_Solutions">Jot Solution</mat-option>
+                            <mat-option value="Royal_mark">Royal Mark</mat-option>
+                            
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row" *ngIf="showUnitField" style="margin-top: 5px;">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Template Type</mat-label>
+                            <mat-select name="drpVessel_Type">
+                                <mat-option value="SELECT">SELECT</mat-option>
+                                <mat-option value="Contract">Contract</mat-option>
+                                <mat-option value="Side_Leter">Side Leter</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row" *ngIf="showUnitField" style="margin-top: 5px;">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Vessel Flag</mat-label>
+                            <mat-select name="drpVessel_Flag" >
+                                <mat-option value="TEST">TEST</mat-option>
+                                <mat-option value="Tri_colour">Tri Colour</mat-option>
+                                <mat-option value="Turkey">Turkey</mat-option>
+                                </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row" *ngIf="showUnitField" style="margin-top: 5px;">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Nationality</mat-label>
+                            <mat-select name="drpNationality">
+                                <mat-option value="Afghanistan">Afghanistan</mat-option>
+                                <mat-option value="Nepal">Nepal</mat-option>
+                                <mat-option value="Turkey">Turkey</mat-option>
+                                </mat-select>
+                        </mat-form-field>
+                    </div>
+                
+                
+                    
+                      
+                    
+
+
+                    
+                </div>
+            </form>
+        </mat-dialog-content>
+    
+   
+       
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+     
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

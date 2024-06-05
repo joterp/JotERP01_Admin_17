@@ -1,0 +1,540 @@
+<fury-page-layout mode="card" class="crewIndexNew-view">
+
+  <!-- search header for PURC_Catalogue -->
+  <fury-page-layout-header>
+
+    <form [formGroup]="CrewIndexFilterForm">
+      <!-- <div>  
+              <h2>{{routeTitle}}</h2>
+          </div> -->
+      <h3>
+
+        <span class="first-letter">C</span>REW
+        <span class="first-letter">I</span>NDEX
+
+      </h3>
+      <div class="filter-area">
+
+        <div fxLayout="row" fxLayoutAlign="start">
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Fleet</mat-label>
+              <mat-select formControlName="drpFleet">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                          {{ b.PARAMETER_NAME }}
+                        </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Vessel</mat-label>
+              <mat-select formControlName="drpVessel">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                          {{ b.PARAMETER_NAME }}
+                        </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Vessel Type</mat-label>
+              <mat-select formControlName="drpVessel_Type">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                          {{ b.PARAMETER_NAME }}
+                        </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Staff Code/Name</mat-label>
+              <input type="text" formControlName="txtStaff_Code" matInput />
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Rank</mat-label>
+              <mat-select formControlName="drpRank">
+                <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Nationality</mat-label>
+              <mat-select formControlName="drpNationality">
+                <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="filter-btn-area">
+            <div>
+              <button class="create" mat-raised-button color="primary" class="filter-btn-traits">
+                Search by Traits
+              </button>
+            </div>
+          </div>
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Manning Office</mat-label>
+              <mat-select formControlName="drpManning_Office">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                              {{ b.PARAMETER_NAME }}
+                            </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+
+            <div class="search-index">
+
+
+              <div>
+
+                <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioVaccination_Status">
+
+                  <table>
+                    <tr>
+                      <td style="padding-bottom: 6px;">
+                        <span style="font-weight: bold;font-family: tahoma;">COVID Vaccination Status</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><mat-radio-button value="2"
+                          [checked]="CrewIndexFilterForm.get('radioVaccination_Status').value == 2">
+                          <label [class.active-label]="CrewIndexFilterForm.get('radioVaccination_Status').value == 2"
+                            style="font-family: tahoma;">Booster</label>
+                        </mat-radio-button>
+                      </td>
+                      <td>
+                        <mat-radio-button value="0"
+                          [checked]="CrewIndexFilterForm.get('radioVaccination_Status').value == 0">
+                          <label [class.active-label]="CrewIndexFilterForm.get('radioVaccination_Status').value == 0"
+                            style="font-family: tahoma;">All</label>
+                        </mat-radio-button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <mat-radio-button value="3"
+                          [checked]="CrewIndexFilterForm.get('radioVaccination_Status').value == 3">
+                          <label [class.active-label]="CrewIndexFilterForm.get('radioVaccination_Status').value == 3"
+                            style="font-family: tahoma;">Dose 1</label>
+                        </mat-radio-button>
+                      </td>
+                      <td>
+                        <mat-radio-button value="1"
+                          [checked]="CrewIndexFilterForm.get('radioVaccination_Status').value == 1">
+                          <label [class.active-label]="CrewIndexFilterForm.get('radioVaccination_Status').value == 1"
+                            style="font-family: tahoma;">Not taken</label>
+                        </mat-radio-button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <mat-radio-button value="4"
+                          [checked]="CrewIndexFilterForm.get('radioVaccination_Status').value == 4">
+                          <label [class.active-label]="CrewIndexFilterForm.get('radioVaccination_Status').value == 4"
+                            style="font-family: tahoma;">Final</label>
+                        </mat-radio-button>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <!--                         
+                            <mat-radio-button value="2"
+                            [checked]="CrewIndexFilterForm.get('radioVaccination_Status').value == 2">
+                            <label [class.active-label]="CrewIndexFilterForm.get('radioVaccination_Status').value == 2" style="font-size: 18px;">&lt;&equals;</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="3"
+                            [checked]="CrewIndexFilterForm.get('radioVaccination_Status').value == 3">
+                            <label [class.active-label]="CrewIndexFilterForm.get('radioVaccination_Status').value == 3" style="font-size: 18px;">&gt;&equals;</label>
+                            </mat-radio-button> -->
+                </mat-radio-group>
+              </div>
+
+            </div>
+          </div>
+
+
+
+
+          <div class="filter-btn-text" fxFlex>
+
+            <div class="search-index2">
+              <table style="width: 100%;">
+                <tr>
+                  <td class="crew-status">Candidate</td>
+                  <td class="crew-status">Ready-To-Join</td>
+                  <td class="crew-status">On Leave</td>
+                  <td class="crew-status">Rejected</td>
+                </tr>
+                <tr>
+                  <td class="crew-status">Invite for Course</td>
+                  <td class="crew-status">Onboard</td>
+                  <td class="crew-status">NTBR</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="crew-status">Under Process</td>
+                  <td class="crew-status">Signed-Off</td>
+                  <td class="crew-status">Inactive</td>
+                  <td class="crew-status">ALL Status</td>
+                </tr>
+              </table>
+            </div>
+
+            <div>
+              <table style="width: 100%;">
+                <tr>
+                  <td>
+                    <div>
+                      <button class="create" mat-raised-button color="primary" class="filter-btn">
+                        Search
+                      </button>
+
+                      <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                        Clear
+                      </button>
+                    </div>
+                  </td>
+                  <td>
+                    <a class="crew-text">Show Crew Count</a><br>
+                    <a class="crew-text">Propose to Owner</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+
+    <button mat-stroked-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="    background: linear-gradient(#f1f1f1, #f1f1f1);
+      color: #676565;
+      font-family: tahoma;">
+      Actions <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu" yPosition="below" xPosition="before">
+      <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+  height: 26px !important;
+  font-size: 13px !important;
+  color: #000 !important;">
+        <span>
+          <img src="../../../../assets/img/View.png" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;" />
+        </span>
+        <span>View Owner CV</span>
+      </button>
+      <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+  height: 26px !important;
+  font-size: 13px !important;
+  color: #000 !important;">
+        <span>
+          <img src="../../../../assets/img/resume_.png" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;" />
+        </span>
+        <span>View CV Short</span>
+      </button>
+      <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+      height: 26px !important;
+      font-size: 13px !important;
+      color: #000 !important;">
+            <span>
+              <img src="../../../../assets/img/resume_.png" class="logo" alt="excel" style="margin-right: 10px;
+          margin-bottom: -4px;" />
+            </span>
+            <span>View CV Long</span>
+          </button>
+      <hr>
+      <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+  height: 26px !important;
+  font-size: 13px !important;
+  color: #000 !important;">
+        <span>
+          <img src="../../../../assets/img/Edit.png" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;" />
+        </span>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+  height: 26px !important;
+  font-size: 13px !important;
+  color: #000 !important;">
+        <span>
+          <img src="../../../../assets/img/Msg2.jpg" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;" />
+        </span>
+        <span>Send Profile</span>
+      </button>
+      <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+  height: 26px !important;
+  font-size: 13px !important;
+  color: #000 !important;">
+        <span>
+          <img src="../../../../assets/img/addItem.png" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;" />
+        </span>
+        <span>Add Ad-Hoc Fees</span>
+      </button>
+      <hr>
+      <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+  height: 26px !important;
+  font-size: 13px !important;
+  color: #000 !important;">
+        <span>
+          <img src="../../../../assets/img/button-check_yellow1.png" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;" />
+        </span>
+        <span>Issue Yellow-Card</span>
+      </button>
+      <button mat-menu-item appAddSpinnerOnClick style=" line-height: 23px !important;
+  height: 26px !important;
+  font-size: 13px !important;
+  color: #000 !important;">
+        <span>
+          <img src="../../../../assets/img/button-check_red1.png" class="logo" alt="excel" style="margin-right: 10px;
+      margin-bottom: -4px;" />
+        </span>
+        <span>Issue Red-Card</span>
+      </button>
+
+    </mat-menu>
+
+  </fury-page-layout-header>
+
+
+  <fury-page-layout-content [@fadeInUp] style="margin-top:9px;">
+    <div class="actions-area">
+      <table style="display: flex;">
+        <tr>
+          <td>
+            <div fxLayout="row">
+              <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-approve-btn save-btn"
+                (click)="gotoCREW_New_Edit('CREW_New_Edit')">
+                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+              </button>
+              <span style="margin-top: 3px;
+                              margin-left: 6px;font-size: 15px;">Add New Crew Details</span>
+            </div>
+          </td>
+        </tr>
+        <tr style="margin-left: 50px;">
+          <td>
+            <div fxLayout="row">
+              <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-approve-btn save-btn"
+                (click)="gotoCREW_IndexAdd('CREW_INDEX_ADD_FORM')">
+                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+              </button>
+              <span style="margin-top: 3px;
+                          margin-left: 6px;font-size: 15px;">Add Crew (Short)</span>
+            </div>
+          </td>
+        </tr>
+
+      </table>
+
+
+      <div>
+        <span style="cursor: pointer">
+          <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+          <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+          <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+        </span>
+      </div>
+      <!-- <div class="content-loader">
+              <mat-progress-spinner
+                mode="indeterminate"
+                color="accent"
+              ></mat-progress-spinner>
+            </div> -->
+    </div>
+
+    <div #TABLE>
+      <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+
+
+        <ng-container matColumnDef="Last">
+          <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">Last</th>
+
+        </ng-container>
+
+        <ng-container matColumnDef="Avg">
+          <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">Avg</th>
+
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-first-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-second-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+            Staff Code
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-third-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+            Last,First Name
+          </th>
+        </ng-container>
+
+
+        <ng-container matColumnDef="header-row-fourth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+            Rank
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-fifth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-sixth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+            Vessel
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-seventh-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+            No Of Contract
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-eighth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+            Nationality
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-nineth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+            DOB
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-tenth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+            Age
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-eleventh-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+            Eval(%)
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-twelth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+            Available Date
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-thirteenth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+            Date Left Home
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-fourteenth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+            Sign On Date
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-fifteenth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+            EOC
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-sixteenth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+            Manning Office
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-seventeenth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+            Current Status
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-eighteenth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-nineteenth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+
+          </th>
+        </ng-container>
+
+        <tr mat-header-row
+          *matHeaderRowDef="['header-row-first-group', 'header-row-second-group', 'header-row-third-group', 'header-row-fourth-group', 'header-row-fifth-group',
+              'header-row-sixth-group', 'header-row-seventh-group', 'header-row-eighth-group', 'header-row-nineth-group', 'header-row-tenth-group',
+              'header-row-eleventh-group', 'header-row-twelth-group', 'header-row-thirteenth-group', 'header-row-fourteenth-group', 'header-row-fifteenth-group',
+              'header-row-sixteenth-group', 'header-row-seventeenth-group', 'header-row-eighteenth-group', 'header-row-nineteenth-group']"
+          style="height:32px">
+        </tr>
+
+
+
+        <tr *matHeaderRowDef="visibleColumns" mat-header-row style="height:32px"></tr>
+        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9999">No data found</td>
+        </tr>
+      </table>
+    </div>
+
+    <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+
+  </fury-page-layout-content>
+
+
+</fury-page-layout>

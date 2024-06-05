@@ -1,0 +1,651 @@
+<div class="toolbar" fxLayout="row" fxLayoutAlign="space-between">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <fury-toolbar-sidenav-mobile-toggle
+      (openSidenav)="openSidenav.emit()"
+    ></fury-toolbar-sidenav-mobile-toggle>
+
+    <!-- <div
+      [fxShow.gt-sm]="topNavigation$ | async"
+      [fxShow.xs]="false"
+      [routerLink]="['/']"
+      class="toolbar-logo"
+      fxShow
+    >
+      <svg viewBox="0 0 138.16 70.27" xmlns="http://www.w3.org/2000/svg">
+        <title>Logo</title>
+        <polygon
+          points="0 54.1 11.05 54.1 11.03 32 28.82 32 30.83 23.22 11.07 23.22 11.03 8.8 34.48 8.8 36.85 0 0 0 0 54.1"
+        ></polygon>
+        <path
+          d="M44.34,34.92a8.78,8.78,0,0,0,.72,3.53A9.28,9.28,0,0,0,47,41.33a8.71,8.71,0,0,0,2.91,1.91,9.56,9.56,0,0,0,3.57.68,8.79,8.79,0,0,0,6.33-2.59,9.28,9.28,0,0,0,2-2.88,9,9,0,0,0,.72-3.53V15.77h10V34.92A19,19,0,0,1,71,42.37a19.43,19.43,0,0,1-4,6.09,18.7,18.7,0,0,1-6,4.06A18.37,18.37,0,0,1,53.63,54a19,19,0,0,1-7.52-1.48A19.36,19.36,0,0,1,40,48.46a19.05,19.05,0,0,1-4.14-6.05,18.47,18.47,0,0,1-1.52-7.49V15.77h10Z"
+        ></path>
+        <path
+          d="M93.81,25.85a8.74,8.74,0,0,0-3.53.72,9.19,9.19,0,0,0-2.88,1.94,8.68,8.68,0,0,0-1.91,2.88,8.22,8.22,0,0,0-.61,3.53V54H74.65V34.92A19.1,19.1,0,0,1,80.2,21.38a19.57,19.57,0,0,1,6.08-4.1,18.51,18.51,0,0,1,7.45-1.51H96V25.85Z"
+        ></path>
+        <path
+          d="M138.16,15.77v36a18.35,18.35,0,0,1-1.59,7.2,19.2,19.2,0,0,1-4.07,5.9,18.8,18.8,0,0,1-13.28,5.4V60.34a8.34,8.34,0,0,0,3.38-.69,8.84,8.84,0,0,0,2.78-1.87,9.41,9.41,0,0,0,1.9-2.77,9.06,9.06,0,0,0,.8-3.39,16.87,16.87,0,0,1-4.25,1.77,18.11,18.11,0,0,1-4.68.61,18.48,18.48,0,0,1-7.45-1.51,19.84,19.84,0,0,1-6.12-4.11,19.51,19.51,0,0,1-4.18-6,18,18,0,0,1-1.55-7.42V15.77h10V34.92a9.37,9.37,0,0,0,2.74,6.34,9,9,0,0,0,9.86,1.87,9.25,9.25,0,0,0,4.82-4.79,8.33,8.33,0,0,0,.72-3.42V15.77Z"
+        ></path>
+      </svg>
+    </div> -->
+    <span (click)="toggleCollapsed()" class="toggle-btn"><mat-icon aria-hidden="false" aria-label="Example home icon" style="color:white !important;">menu</mat-icon></span>
+    <!-- <h2>{{ routeTitle }}</h2> -->
+  </div>
+
+
+<!-- Mat Menu Items in Navbar-->
+<div class="navItems" >
+  <ul>
+    <li class="nav-item" routerLinkActive="active" (mouseover)="createAdminmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createAdminmenuTrigger.openMenu()">
+      <button mat-button  class="nav-link"  #createAdminmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="admin">Admin</button>
+      <mat-menu #admin="matMenu">
+        <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="adminusersmenu">Users & Menu</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">Administrative Panel</button>
+        <button mat-menu-item class="menuItemSpace">Application Settings</button>
+        <button mat-menu-item class="menuItemSpace">Manage Scheduler</button>
+        <button mat-menu-item class="menuItemSpace">File Size Reduction</button>
+        <button mat-menu-item class="menuItemSpace">Sync Packet Viewer </button>
+        <button mat-menu-item [matMenuTriggerFor]="adminJotERPImplementation" class="menuItemSpace">Jot ERP
+          Implementation </button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">Training Log</button>
+        <button mat-menu-item class="menuItemSpace">User Log</button>
+        <button mat-menu-item class="menuItemSpace">Feedback</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item [matMenuTriggerFor]="adminReports" class="menuItemSpace">Reports</button>
+        <button mat-menu-item [matMenuTriggerFor]="adminLibraries" class="menuItemSpace">Libraries</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">Change Log</button>
+        <button mat-menu-item class="menuItemSpace">Site Map</button>
+      </mat-menu>
+      <mat-menu #adminusersmenu="matMenu">
+        <button mat-menu-item class="menuItemSpace" >Menu Management</button>
+        <button mat-menu-item class="menuItemSpace" >User Management</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+          <button mat-menu-item class="menuItemSpace">User-Menu Relationship</button>
+          <button mat-menu-item class="menuItemSpace">User Approval Limits</button>
+          <button mat-menu-item class="menuItemSpace">PO-User Relationshipt</button>
+          <button mat-menu-item class="menuItemSpace">User Dashboard Button Access</button>
+          <button mat-menu-item class="menuItemSpace">User-Vessel Relationship</button>
+          <button mat-menu-item class="menuItemSpace">User-Mobile Devices</button>
+          <button mat-menu-item class="menuItemSpace">Menu Management</button>
+          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+          <button mat-menu-item class="menuItemSpace">HR User-Company Access</button>
+          <button mat-menu-item class="menuItemSpace">User-Alert Relationship</button>
+          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+          <button mat-menu-item class="menuItemSpace">Crew Portal Menu Access</button>
+          <button mat-menu-item class="menuItemSpace">Crew Portal Menu Access</button>
+      </mat-menu>
+
+      <mat-menu #adminJotERPImplementation="matMenu">
+        <button mat-menu-item class="menuItemSpace">Implementation Report</button>
+        <button mat-menu-item class="menuItemSpace">Implementation Report - Grid</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">Manage Task</button>
+        <button mat-menu-item class="menuItemSpace">Manage Project</button>
+      </mat-menu>
+
+      <mat-menu #adminReports="matMenu">
+        <button mat-menu-item class="menuItemSpace">Sister Vessel Report</button>
+        <button mat-menu-item class="menuItemSpace">Manage Report Connection</button>
+        <button mat-menu-item class="menuItemSpace">Manage Reports</button>
+        <button mat-menu-item class="menuItemSpace">View Reports</button>
+      </mat-menu>
+      <mat-menu #adminLibraries="matMenu">
+        <button mat-menu-item class="menuItemSpace">Companies</button>
+        <button mat-menu-item class="menuItemSpace">Company Offices</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">Company Bank Accounts</button>
+        <button mat-menu-item class="menuItemSpace">Company Office Holidays</button>
+        <button mat-menu-item class="menuItemSpace">Fleets</button>
+        <button mat-menu-item class="menuItemSpace">Vessel Flags</button>
+        <button mat-menu-item class="menuItemSpace">VesselFlag-Vessel Manager Relation</button>
+        <button mat-menu-item class="menuItemSpace">Vessels</button>
+        <button mat-menu-item class="menuItemSpace">Office Departments</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">Vessel Departments</button>
+        <button mat-menu-item class="menuItemSpace">Countries</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">Countries</button>
+        <button mat-menu-item class="menuItemSpace">Cities</button>
+        <button mat-menu-item class="menuItemSpace">Airports</button>
+        <button mat-menu-item class="menuItemSpace">Ports</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">System Parameters</button>
+        <button mat-menu-item class="menuItemSpace">Dashboard Notification Buttons</button>
+        <button mat-menu-item class="menuItemSpace">KPIs & Report</button>
+        <button mat-menu-item class="menuItemSpace">Manage Personal Alerts</button>
+      </mat-menu>
+    </li>
+
+    <li class="nav-item" routerLinkActive="active" (mouseover)="createAccountsmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createAccountsmenuTrigger.openMenu()">
+      <button mat-button  class="nav-link"  #createAccountsmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="accounts">Accounts</button>
+      <mat-menu #accounts="matMenu">
+        <button mat-menu-item class="menuItemSpace">Manage Exchange Rates</button>
+        <button mat-menu-item class="menuItemSpace">Vessel Budgeting</button>
+        <button mat-menu-item class="menuItemSpace">DRC Definitions</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="accountsquotation">Quotation & Invoicing</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="accountsReports">Report</button>
+        <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="accountsLibraries">Libraries</button>
+      </mat-menu>
+      <mat-menu #accountsquotation="matMenu">
+        <button mat-menu-item class="menuItemSpace" >Index</button>
+        <button mat-menu-item class="menuItemSpace" >Q&I Templates</button>
+      </mat-menu>
+
+      <mat-menu #accountsReports="matMenu">
+        <button mat-menu-item class="menuItemSpace">Accounts KPIs</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">DRC/Budget Report, Tree-view</button>
+        <button mat-menu-item class="menuItemSpace">DRC/Budget Report, Month-wise</button>
+        <button mat-menu-item class="menuItemSpace">DRC/Budget Report, Calendar-wise</button>
+        <button mat-menu-item class="menuItemSpace">DRC/Budget Report, Calendar-Wise_New</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">Mnth-on-Mnth PO Report</button>
+        <button mat-menu-item class="menuItemSpace">MIS Report</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">Approved POs</button>
+        <button mat-menu-item class="menuItemSpace">Approved Invoices</button>
+        <button mat-menu-item class="menuItemSpace">Paid Invoices</button>
+        <button mat-menu-item class="menuItemSpace">Invoice Summary</button>
+      </mat-menu>
+
+      <mat-menu #accountsLibraries="matMenu">
+        <button mat-menu-item class="menuItemSpace">Manage Currencies</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">DRC Account Codes</button>
+        <button mat-menu-item class="menuItemSpace">DRC Account Categories</button>
+        <button mat-menu-item class="menuItemSpace">DRC Report ACC Categorization</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">Debit/Credit Card List</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+        <button mat-menu-item class="menuItemSpace">Q&I Service Providers</button>
+        <button mat-menu-item class="menuItemSpace">Q&I Items</button>
+        <button mat-menu-item class="menuItemSpace">Q&I Foot notes</button>
+
+      </mat-menu>
+
+    </li>
+
+   <!-- crew -->
+   <li class="nav-item" routerLinkActive="active" (mouseover)="createCrewmenuTrigger.openMenu()"
+   (mouseout)="$event.stopPropagation();createCrewmenuTrigger.openMenu()">
+   <button mat-button class="nav-link" #createCrewmenuTrigger="matMenuTrigger"
+     [matMenuTriggerFor]="crew">Crew</button>
+   <mat-menu #crew="matMenu">
+
+     <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_Index_New')">Crew Index</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_Client_Index')">Crew Index - 3rd Party</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('Crew_Registration')">Crew Registration</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('ProposeToOwner_Index')">Crew Proposal to Owner</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_Calender')">Crew Interview Calendar</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_ManningRequirement')">Crew Vacancies</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('Crew_Proposal')">Client Vacancy Request</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('Rotation_And_Assignment')">Crew Rotation & Assignment</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('VesselAssignment')">Crew Vessel Assignment</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('EventPlanningIndex')">Crew Event Planning</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="crewPortageBill">Crew Portage Bill</button>
+     <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="crewBondedStores">Victualling & Bonded
+       Stores</button>
+     <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="crewMatrix">Crew Matrix</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('EvaluationCalender')">Crew Evaluation Calendar</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('EvaluationIndex')">Seafarer Evaluation Index</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('MedicalIndex')">Crew Medical Index</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('QueryIndex')">Crew Queries Index</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('CostRegistration')">Crew Cost Registration</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="crewManningAgents">Manning Agents</button>
+     <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="crewCadetTraining">Cadet Training</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="crewReports">Reports</button>
+     <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="crewContractTM">Contract Template
+       Mgmt</button>
+     <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="crewLibraries">Libraries</button>
+   </mat-menu>
+   <!-- Crew Portage Bill sub menu items-->
+   <mat-menu #crewPortageBill="matMenu">
+     <button mat-menu-item class="menuItemSpace" (click)="goto('PortageBill_Record_Summary')">Portage Bill Summary</button>
+     <button mat-menu-item class="menuItemSpace">Allotment Index </button>
+     <button mat-menu-item class="menuItemSpace">CTM Index</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('Salary_Structure')">Crew Salary Structure</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('Salary_Names')">Salary Names</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('RankSalaryAssignment')">Rank - Salary Assignment</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('SeniorityManagement')">Seniority Management</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('AllotmentsMinimumValueIndex')">Allotment Minimum Value Setup</button>
+   </mat-menu>
+   <!-- BondedStores sub menu items -->
+   <mat-menu #crewBondedStores="matMenu">
+     <button mat-menu-item class="menuItemSpace" (click)="goto('PBVictuallingMealIndex')">PB Victualling Meal Index</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('PB_Victualling_Purchase_Index')">PB Victualling Purchase Index </button>
+     <button mat-menu-item class="menuItemSpace" >---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('PB_Victualling_Purchase_Index')">PB Bonded Consumption Index</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('PBVictuallingStdRates')">PB Victualling Std Rates</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('PBBondedItems')">PB Bonded Items Lib</button>
+   </mat-menu>
+   <!-- crewMatrix -->
+   <mat-menu #crewMatrix="matMenu">
+     <button mat-menu-item class="menuItemSpace" (click)="goto('MatrixIndex')" >Matrix Index</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('MatrixExceptionLog')">Matrix Exceptions Log</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('MatrixRuleTemplate')">Matrix - Rule Templates</button>
+     <button mat-menu-item class="menuItemSpace"  (click)="goto('MatrixRuleAssignment')">Matrix - Rule Assignments</button>
+   </mat-menu>
+   <!--  crewManningAgents-->
+   <mat-menu #crewManningAgents="matMenu">
+     <button mat-menu-item class="menuItemSpace" >Manning Agents' List</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('ManningFeeTransaction')">Manning Agent Fee Statements </button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('ManningAnnualReport')">Manning Fee Annual Report</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('ManningFeeManagement')">Manning Agent Fee Setup</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('ManningFeeStructure')">Manning Fee Structure</button>
+   </mat-menu>
+   <!-- crewCadetTraining -->
+   <mat-menu #crewCadetTraining="matMenu">
+     <button mat-menu-item class="menuItemSpace" (click)="goto('CadetTrainingPlan')">Cadet Training Plan</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('CadetLogType')">Cadet Log Types Lib</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('CadetLogChapters')">Cadet Log Chapter Lib</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('CadetLogCategories')">Cadet Log Category Lib</button>
+
+     <button mat-menu-item class="menuItemSpace" (click)="goto('CadetLogGrades')">Cadet Log Grade Lib</button>
+     <button mat-menu-item class="menuItemSpace" (click)="goto('CadetLogItems')">Cadet Log Items Lib</button>
+   </mat-menu>
+   <!-- crewReports -->
+   <mat-menu #crewReports="matMenu">
+     <button mat-menu-item class="menuItemSpace">Crew KPIs</button>
+     <button mat-menu-item class="menuItemSpace">Crew List - Historical</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace">Crew Experience Matrix Index</button>
+     <button mat-menu-item class="menuItemSpace">Intertanko Retention Report</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace">Crew Missing Data Report</button>
+     <button mat-menu-item class="menuItemSpace">Crew Document Report</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace">Crew Planned/Assignment Report</button>
+     <button mat-menu-item class="menuItemSpace">Crew Joined Last Month</button>
+     <button mat-menu-item class="menuItemSpace">Crew Days-Onboard Report</button>
+     <button mat-menu-item class="menuItemSpace">Crew Promotions' Annual Report</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace">Crew Overlap Wage Report</button>
+     <button mat-menu-item class="menuItemSpace">Seafarer Calculated Wages Report</button>
+     <button mat-menu-item class="menuItemSpace">Crew Overlap Wage Report</button>
+     <button mat-menu-item class="menuItemSpace">Seafarer Calculated Wages Report</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     <button mat-menu-item class="menuItemSpace">Crew Trainings - Matrix Reportt</button>
+     <button mat-menu-item class="menuItemSpace">Contract Template Mgmt</button>
+
+   </mat-menu>
+   <!-- crewContractTM -->
+   <mat-menu #crewContractTM="matMenu">
+     <button mat-menu-item class="menuItemSpace" (click)="goto('ContractTemplateIndex')">Template List</button>
+   </mat-menu>
+   <!-- crewLibraries -->
+   <mat-menu #crewLibraries="matMenu">
+    <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_Rank')">Ranks</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_Rank_Category')">Rank Categories</button>
+    <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_Signoff_Reason')">Sign-Off Reasons</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_Additional_Checks')">Crew Registration Additional Fields</button>
+   
+    <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_QuestionCategory')">Crew Interview Question Categories</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_InterviewGrade')">Crew Interviews Grade</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('InterviewQuestions')">Crew Interview Questions</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('IntreviewSheet')">Crew Interview</button>
+    <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_Document')">Crew Documents</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_RankAssignment')">Crew Docs-Rank Assignment</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('RankExpiryNotifications')">Crew Docs-Rank Expiry Alert</button>
+    <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('EvaluationSheet')">Crew Evaluation Sheet</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('EvaluationCategory')">Crew Evaluation Category</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('EvaluationGrade')">Crew Evaluation Grades</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('EvaluationPeriods')">Crew Evaluation Periods</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('EvaluationQuestions')">Crew Evaluation Questions</button>
+    <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('Tainings')">Crew Trainings</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('RankAssignment')">Crew Training Rank-Assignment</button>
+  </mat-menu>
+
+
+
+ </li>
+
+    <li class="nav-item" routerLinkActive="active" (mouseover)="createHRMmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createHRMmenuTrigger.openMenu()">
+      <button mat-button  class="nav-link"  #createHRMmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="hrm">HRM</button>
+      <mat-menu #hrm="matMenu">
+        <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="hrmreports">Reports</button>
+        <button mat-menu-item class="menuItemSpace">HRM</button>
+        
+      </mat-menu>
+      <mat-menu #hrmreports="matMenu">
+        <button mat-menu-item class="menuItemSpace" >Employee Leave Status</button>
+        <button mat-menu-item class="menuItemSpace" >HRM KPIs</button>
+      </mat-menu>
+    </li>
+
+
+
+  <li class="nav-item" routerLinkActive="active" (mouseover)="createOperationsmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createOperationsmenuTrigger.openMenu()">
+    <button mat-button  class="nav-link"  #createOperationsmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="operations">Operations</button>
+    <mat-menu #operations="matMenu">
+      <button mat-menu-item class="menuItemSpace"  (click)="goto('OPSVIDIndex')">Vessel Info DB (VID)</button>
+      <button mat-menu-item class="menuItemSpace"  (click)="goto('OPSVOYAGECPLIBRARY')">Vessel Voyage</button>
+      <button mat-menu-item class="menuItemSpace"  [matMenuTriggerFor]="operationsvesselportcalls" >Vessel Port Calls</button>
+
+      <button mat-menu-item class="menuItemSpace" >---------------------------------------</button>
+
+      <button mat-menu-item class="menuItemSpace"  [matMenuTriggerFor]="operationsnoonreports">Noon Reports</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_Offshore_Mid_Night_Report_Index')">Offshore Midnight Report</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_FleetLocationMap')">Fleet Location - Map</button>
+          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_DeckLogBook_Index')">Deck Log Book</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_CARGO_LOG_MAIN')">Voyage Cargo Log</button>
+          <button mat-menu-item class="menuItemSpace"  (click)="goto('OPS_NAD_Voyage_Log_Abstract')">Barge Voyage Log</button>
+          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_Report_Index')">Report/Form Index</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_FOLLOWUP_INDEX')">Report/Form Followup Index</button>
+          <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="OPSDefectList">Defect List</button>
+          <button mat-menu-item class="menuItemSpace" >Port Agents' List</button>
+          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+          <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="OPSSecurityAlerts">Security Alerts</button>
+          <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="operationsFireArmslog">FireArms Log</button>
+      <button mat-menu-item class="menuItemSpace" >Reports</button>
+      <button mat-menu-item class="menuItemSpace"  [matMenuTriggerFor]="operationslibraries">Libraries</button>
+    </mat-menu>
+    <mat-menu #OPSDefectList="matMenu">
+      <button mat-menu-item class="menuItemSpace" >Index</button>
+    </mat-menu>
+
+    <mat-menu #OPSSecurityAlerts="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_SEC_SecurityDashBoard')">Dashboard</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_SEC_AlertList')">Security Alerts</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_SEC_VesselList')">Vessels List</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_SEC_AlertAreas')">Manage High Risk Areas</button>
+    </mat-menu>
+
+    <mat-menu #operationsFireArmslog="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_FAM_AmmunitionKit')">Kit Index</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_FAM_AmmunitionItem')">Items</button>
+    </mat-menu>
+
+    <mat-menu #operationsvesselportcalls="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_VesselPortCall')">Index</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_PortCall_Reports')" >Vessel Port Call Reports_History</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_VesselPortCall_CheckListIndex')">Vessel Port Call Checklist Index</button>
+    </mat-menu>
+
+    <mat-menu #operationsnoonreports="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_NAD_Index')">Index</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('ASM_OPS_NAD_Index')" >ASM - Excel Noon Report</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('NAD_Bunker_Costs')" >Bunker ROBs and Costs</button>
+
+      <button mat-menu-item class="menuItemSpace" class="menuItemSpace" class="menuItemSpace">---------------------------------------</button>
+      
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_Vessel_Threshold')" >NAD Consumptions Threshold</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_SEEMP_REPORTS')" >SEEMP Resource Data</button>
+
+      <button mat-menu-item class="menuItemSpace" class="menuItemSpace" class="menuItemSpace">---------------------------------------</button>
+
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_NAD_CHARTER_PARTY_ACTIVITY')" >CP Activity Log</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_NAD_CHARTER_PARTY_CONS_INDEX')" >CP Consumptions' Index</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_NAD_LIBRARY_CHARTERER_THRESHOLD')" >CP Thresholds</button>
+
+      <button mat-menu-item class="menuItemSpace" class="menuItemSpace" class="menuItemSpace">---------------------------------------</button>
+
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_NAD_LIB_CO2_PERMITS')" >CO2 Permits</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_NAD_LIB_CO2_CF')" >CO2 Emission Multipler Factor</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_NAD_CII_REDUCTION_FACTOR')" >CII Reduction Factor</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_OPS_NAD_CII_DETAILS')" >CII Details</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_NAD_CII_CALCULATION_INDEX')" >CII Calculation</button>
+    </mat-menu>
+
+    <mat-menu #operationslibraries="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_VID_NEW_LIBRARY')">VID Lib New</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_Lib_Nad_Custom_Fields')">NAD Custom Fields</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_NAD_Custom_Fields_Assignment')">NAD Custom Fields Vessel Assignment</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_NAD_LIB_DOCUMENTS')">NAD Documents</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_NAD_LIB_DOCUMENTS_VESSEL_ASSIGNMENT')">NAD Document Vessel Assignment</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_OMR_PRODUCT')">OMR Product Name</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_WaterIN')">Deck Log Tanks/Hold Mgmt</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_VesselPortcall_Checklist')">Port-Call Checklist</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_Add_Report')">Report/Forms List Mgmt</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_VESSEL_Assignement')">Report/Form Vessel Assign</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_VSL_PARTICULARS_LABELS')">Vessel Particulars Labels</button>
+    </mat-menu>
+  </li> 
+
+  <li class="nav-item" routerLinkActive="active" (mouseover)="createProcurementmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createProcurementmenuTrigger.openMenu()">
+    <button mat-button  class="nav-link"  #createProcurementmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="procurement">Procurement</button>
+    <mat-menu #procurement="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('PURCNewIndex')">Procurement Process</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('DirectPurchaseOrder')">Direct Purchase</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('ApprovedSupplierList')">Approved Supplier List</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('ApprovalPortal')">Approval Portal</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('PURCAccountPayable')">Account - Payable Portal</button>
+
+      <button mat-menu-item class="menuItemSpace" class="menuItemSpace" class="menuItemSpace">---------------------------------------</button>
+
+      <button mat-menu-item class="menuItemSpace" (click)="goto('PURCPurchaseRemarkIndex')">Procurement Followup Index</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('PURCContractModule')">Supplier Contracts Module</button>
+
+      <button mat-menu-item class="menuItemSpace" class="menuItemSpace" class="menuItemSpace">---------------------------------------</button>
+
+      <button mat-menu-item class="menuItemSpace" (click)="goto('PURCUpdateInventory')">Inventory Management</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('PURCShipManagerCommission')">Ship Manager Commission</button>
+
+      <button mat-menu-item class="menuItemSpace" class="menuItemSpace" class="menuItemSpace">---------------------------------------</button>
+
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="procurementlibraries">Libraries</button>
+    </mat-menu>
+    <mat-menu #procurementlibraries="matMenu">
+      <button mat-menu-item class="menuItemSpace"  (click)="goto('PURC_UnitPacking')">Units And Packings</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('Catalogues')">Catalogues/Machinery</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('PURC_Add_ITEM_TEMPLATE')">Requisitions Templates</button>
+          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+          
+          <button mat-menu-item class="menuItemSpace" (click)="goto('Catalogues')">Catalogues/Machinery</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('Purc_Lib_Catalouge_Excel_Import')">Catalogue - Excel Import</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('PURC_Spare_Parts_Excel_Import')">Catalogue Items - Excel Import</button>
+          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('PURC_New_RFQ_TERM')">RFQ Terms & Conditions</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('PURC_POTerms')">PO Terms & Conditions</button>
+          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('PURC_LIB_ASL_EXCEL_IMPORT')">ASL - Excel Import</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('PURC_ApproveSupplier_Question')">ASL Evaluation Questions</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('PURC_LIB_Supplier_Documents')">Supplier Document Types</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('PURC_ASL_Supp_Type_Dept_Mapping')">Supplier-Type & Dept Mapping</button>
+          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+          <button mat-menu-item class="menuItemSpace" (click)="goto('PURC_Tacit_Relation')">PO-Type & Tacit Approval Mapping</button>
+    </mat-menu>
+  </li>
+
+  <li class="nav-item" routerLinkActive="active" (mouseover)="createHSEQmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createHSEQmenuTrigger.openMenu()">
+    <button mat-button  class="nav-link"  #createHSEQmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="hseq">HSEQ</button>
+    <mat-menu #hseq="matMenu">
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="hseqqms">QMS</button>
+      <button mat-menu-item class="menuItemSpace">Alerts / Policy discussions</button>
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="hseqlibraries">Libraries</button>
+    </mat-menu>
+
+    <mat-menu #hseqqms="matMenu">
+      <button mat-menu-item class="menuItemSpace" >QMS Index</button>
+      <button mat-menu-item class="menuItemSpace" >QMS Read Report</button>
+      <button mat-menu-item class="menuItemSpace" >DB Based - WiP</button>
+    </mat-menu>
+    <mat-menu #hseqlibraries="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('VesselInspectionLibrary')">Vessel Inspection Lib New</button>
+      <button mat-menu-item class="menuItemSpace">Vessel Inspection QR Codes</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('InspectionReference')">Vsl Insp Best Practices/Risk Reference</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('RiskAssessment')">Risk Assessment - Work Activity</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('RAAcitivityOperationControl')">Risk Assessment - Hazard</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('LikehoodDetails')">Risk Assessment - Likelihood</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('DegreeOfImpact')">Risk Assessment - Degree of Impact</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('AdditionalControls')"> Risk Assessment - Additional Controls</button>
+      <button mat-menu-item class="menuItemSpace"  (click)="goto('ReviewFrequency')">Risk Assessment - Review Frequency</button> 
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace"  (click)="goto('VesselKPILibrary')">Vessel KPI Library</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('SecurityDrill')">ISPS Security Drills</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('AlertManageCategoryForms')">Alerts'-Forms Mapping</button>
+    </mat-menu>
+  </li> 
+
+  <li class="nav-item" routerLinkActive="active" (mouseover)="createTechnicalmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createTechnicalmenuTrigger.openMenu()">
+    <button mat-button  class="nav-link"  #createTechnicalmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="technical">Technical</button>
+    <mat-menu #technical="matMenu">
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="technicalplannedmain">Planned Maintenance</button>
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="technicaldefectlist">Defect List</button>
+
+      <button mat-menu-item class="menuItemSpace" class="menuItemSpace" class="menuItemSpace">---------------------------------------</button>
+
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECHVMPPMSChangeRequestIndex')">VMP/PMS Change Request Index</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECHEngineLogIndex')">Engine Log Book</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECHLubeOilSampleLabTestingLog')">L.O.Samples - Lab Tests</button>
+
+      <button mat-menu-item class="menuItemSpace" class="menuItemSpace" class="menuItemSpace">---------------------------------------</button>
+      
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="technicaldailymeeting">Daily Meeting</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECH_TimeLapse_Index')">TimeLapse</button>
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="techWeeklyReportIndex">Newbuild Weekly Report</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECH_DTL_WINCH_Index')">Mooring Winches Brake Holding Tests</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECH_DTL_CRITICAL_ALARM_INDEX')">Critical Alarm/Trip Log</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" >Reports</button>
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="technicallibraries">Libraries</button>
+    </mat-menu>
+    <mat-menu #technicalplannedmain="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECHPMSJobStatus')">PM Jobs Status</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECHPMSFOLLOWUPINDEX')">PMS Followup Index</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECHPMSUpdateRunningStatus')">Running Hours Weekly Update</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('PMSDefermentJobIndex')">PMS Deferment Log</button>
+    </mat-menu>
+    <mat-menu #techWeeklyReportIndex="matMenu">
+      <button mat-menu-item (click)="goto('TECH_Weekly_Work_Index')" class="menuItemSpace">Weekly Report Index</button>
+    </mat-menu>
+    <mat-menu #technicaldefectlist="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECHDefectListIndex')">Index</button>
+    </mat-menu>
+    <mat-menu #technicaldailymeeting="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECHDMMMeetingIndex')">Meeting Index</button>
+    </mat-menu>
+    <mat-menu #technicallibraries="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('PURC_Location')">PMS - Vessel Locations</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECH_Library_PMS')" >PMS Jobs List</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECH_LIB_PMS_JOB_LIST_EXCEL_IMPORT')">PMS Jobs - Excel Import</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECH_LIB_CRITICAL_ALARM')">Critical Alarm/Trip Library</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECH_LIB_Winch')">Mooring Winches/Windlass Library</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_LUBE_SAMPLE_NAME')">Lube Oil Sample Names</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('TECH_SFI_LIST')">SFI List</button>
+    </mat-menu>
+  </li> 
+
+  <li class="nav-item" routerLinkActive="active" (mouseover)="createSurveysCertificatesmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createSurveysCertificatesmenuTrigger.openMenu()">
+    <button mat-button  class="nav-link"  #createSurveysCertificatesmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="surveyscertificates">Surveys & Certificates</button>
+    <mat-menu #surveyscertificates="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('SURVEY_Certificate_Index')">Index</button>
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="surveyscertificatesreports">Reports</button>
+      <button mat-menu-item class="menuItemSpace"
+      [matMenuTriggerFor]="surveyscertificatesLibraries">Libraries</button>
+      
+    </mat-menu>
+    <mat-menu #surveyscertificatesreports="matMenu">
+      <button mat-menu-item class="menuItemSpace" >Surveys & Certificates KPIs</button>
+    </mat-menu>
+    <mat-menu #surveyscertificatesLibraries="matMenu">
+      <button mat-menu-item class="menuItemSpace" (click)="goto('SURVEY_Categories')">Survey Categories</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('SURVEY_Tenure')">Survey Tenures</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('SURVEY_Certificate')">Survey-Certificates
+        Listing</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('SURVEY_Vessel_Assignment')">Survey-Vessel
+        Assignment</button>
+    </mat-menu>
+  </li> 
+
+  <li class="nav-item" routerLinkActive="active" (mouseover)="createTravelmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createTravelmenuTrigger.openMenu()">
+    <button mat-button  class="nav-link"  #createTravelmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="travel">Travel</button>
+    <mat-menu #travel="matMenu">
+      <button mat-menu-item class="menuItemSpace">Index</button>
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="travelreports">Reports</button>
+
+      
+    </mat-menu>
+    <mat-menu #travelreports="matMenu">
+      <button mat-menu-item class="menuItemSpace" >Travel KPIs</button>
+    </mat-menu>
+  </li> 
+
+  <li class="nav-item" routerLinkActive="active" (mouseover)="createClientPortalmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createClientPortalmenuTrigger.openMenu()">
+    <button mat-button  class="nav-link"  #createClientPortalmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="clientportal">Client Portal</button>
+    <mat-menu #clientportal="matMenu">
+    
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="clientportalcrew">Crew</button>
+
+      
+    </mat-menu>
+    <mat-menu #clientportalcrew="matMenu">
+      <button mat-menu-item class="menuItemSpace" >Crew Index</button>
+      <button mat-menu-item class="menuItemSpace" >Crew List</button>
+      <button mat-menu-item class="menuItemSpace" >Crew Documents</button>
+      <button mat-menu-item class="menuItemSpace" >Portage Bill</button>
+      <button mat-menu-item class="menuItemSpace" >Seafarer Joined Last Month</button>
+    </mat-menu>
+  </li>
+
+  <li class="nav-item" routerLinkActive="active" (mouseover)="createSupplierPortalmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createSupplierPortalmenuTrigger.openMenu()">
+    <button mat-button  class="nav-link"  #createSupplierPortalmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="supplierportal">Supplier Portal</button>
+    <mat-menu #supplierportal="matMenu">
+    
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="supplierportalprocurement">Procurement</button>
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="supplierportaltravel">Travel</button>
+      
+    </mat-menu>
+    <mat-menu #supplierportalprocurement="matMenu">
+      <button mat-menu-item class="menuItemSpace" >Procurement Index</button>
+    </mat-menu>
+    <mat-menu #supplierportaltravel="matMenu">
+      <button mat-menu-item class="menuItemSpace" >Travel Index</button>
+    </mat-menu>
+  </li>
+
+  </ul>
+</div>
+
+  <div fxLayout="row">
+    <fury-toolbar-fullscreen-toggle
+      class="toolbar-button"
+    ></fury-toolbar-fullscreen-toggle>
+
+    <fury-toolbar-search
+      fxHide
+      fxShow.gt-sm
+      fxHide.gt-md
+      class="toolbar-button"
+    ></fury-toolbar-search>
+
+    <fury-toolbar-user class="toolbar-button"></fury-toolbar-user>
+
+    <fury-toolbar-quickpanel-toggle
+      (openQuickPanel)="openQuickPanel.emit()"
+      class="toolbar-button"
+    ></fury-toolbar-quickpanel-toggle>
+  </div>
+</div>

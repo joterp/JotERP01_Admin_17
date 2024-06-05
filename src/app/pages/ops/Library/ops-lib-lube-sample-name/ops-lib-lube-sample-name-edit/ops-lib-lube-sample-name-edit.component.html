@@ -1,0 +1,48 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add Lube Oil Sample
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <mat-dialog-content style="height: 100% !important">
+      <form [formGroup]="oilSampleFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row" >
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Machinery</mat-label>
+                    <mat-select formControlName="drpMachinery" >
+                      <mat-option value="FirePump">Fire Pump</mat-option>
+                      <mat-option value="Windlass">Windlass</mat-option>
+                      
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Sample Name</mat-label>
+              <input formControlName="txtSample_Name" matInput placeholder="Search by Sample Name" type="text" />
+            </mat-form-field>
+  
+          </div>
+        </div>
+      </form>
+    </mat-dialog-content>
+  
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" >
+     
+      <button mat-raised-button color="primary" class="save-btn">
+        Copy to Clipboard
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        SAVE
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

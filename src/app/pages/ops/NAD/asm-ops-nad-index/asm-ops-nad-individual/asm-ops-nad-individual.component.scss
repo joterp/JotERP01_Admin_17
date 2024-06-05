@@ -1,0 +1,114 @@
+
+
+fury-asm-ops-nad-individual {
+    .asm-nadindex-individual-view{
+       .asm-title{
+        text-align: center;
+        font-size: 25px;
+        font-family: Tahoma;
+        vertical-align: middle;
+        background-color: #194775;
+        color: White;
+        padding: 10px;
+       }
+       .td-title-1{
+        height: 30px;
+        background-color: #1F497D;
+        text-align: center;
+        font-family: tahoma;
+        color: white;
+        font-weight: bold;
+       }
+
+       .td-title-2{
+        height: 30px;
+        background-color: #1F497D;
+        font-family: tahoma;
+        color: white;
+        font-weight: bold;
+       }
+       
+       .draft-input{
+        width: 80%;
+        border-radius: 
+        5px;
+        height: 24px;
+        border: 1px solid #8e8e8e;
+       }
+       .hrs-input{
+        width: 98%;
+        border-radius: 
+        5px;
+        height: 24px;
+        border: 1px solid #8e8e8e;
+       }
+       
+       .td-input-2{
+        width: 95%;
+        border-radius: 5px;
+        height: 24px;
+        border: 1px solid #8e8e8e;
+       }
+
+       .td-title-3{
+        height: 30px;
+        font-family: tahoma;
+        font-weight: 700;
+        background-color: lightgray;
+        padding-left: 5px;
+        color: #000;
+        text-align: start;
+       }
+
+       .mat-tab-header {
+        font-family: Tahoma !important;
+        background: linear-gradient(#d3d3d3, #bfbfbf);
+        color: #7b7b7b;
+        font-family: Tahoma !important;
+        opacity: 1;
+      }
+  
+      .mat-tab-label {
+        // min-width: 25px !important;
+        // padding: 5px;
+        // background-color: #7e8f99;
+  
+        color: #444444;
+        font-family: Tahoma !important;
+        // font-weight: 700;
+      }
+  
+      .mat-tab-group.mat-primary .mat-ink-bar,
+      .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+        background-color: #d3d3d3 !important;
+      }
+  
+      .mat-tab-group>.mat-tab-header .mat-tab-label {
+        border-left: 2px solid #d5dbdf;
+  
+      }
+  
+      .mat-tab-label.mat-tab-label-active {
+        color: #fff !important;
+        text-align: center !important;
+        background: linear-gradient(#575757, #838383);
+        border-radius: 4px;
+        font-family: Tahoma !important;
+        opacity: 1;
+      }
+  
+      .mat-tab-label.mat-tab-label {
+        opacity: 1;
+      }
+  
+      .mat-tab-label.mat-tab-label:hover {
+        background: linear-gradient(#d3d3d3, #bfbfbf) !important;
+      }
+  
+      .remove-border-bottom .mat-tab-header {
+        border-bottom: none;
+      }
+  
+
+    }
+}

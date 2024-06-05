@@ -1,0 +1,1142 @@
+<fury-page-layout mode="card" class="nad-add-DailyNoonReport-view">
+
+    <fury-page-layout-content [@fadeInUp]>
+
+        <div style="    border: 3px solid;
+        ">
+            <form [formGroup]="DailyNoonReport_AlongsideFormGroup">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width:30%"></td>
+                        <td>
+                            <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 35px;margin-bottom: 5px;">
+                                <button mat-raised-button color="primary" class="save-btn save-btn1"
+                                    style="margin-bottom: 10px;">Save</button>
+                                <button mat-raised-button color="primary" class="save-btn save-btn1"
+                                    style="margin-bottom: 10px;">Save & Close</button>
+                                <button mat-raised-button color="warn" class="save-btn1" style="margin-bottom: 10px;"
+                                    (click)="CancelForm()">Cancel</button>
+
+                            </div>
+                        </td>
+                        <td style="width:24%"></td>
+                    </tr>
+                </table>
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="report-title">Daily Noon (At Berth)</td>
+                    </tr>
+
+
+                    <tr>
+                        <table style="width: 100%;margin-top: 10px;" class="main-table-1">
+
+                            <tr>
+
+                                <td style="width: 24%;    vertical-align: top;">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td>
+
+                                                <div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Vessel</mat-label>
+
+                                                            <mat-select formControlName="drpVessel">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                            *ngFor="let b of filtered_port | async"
+                                            [value]="b.PORT_GUID"
+                                          >
+                                            {{ b.Port_Name }}
+                                          </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AlongsideFormGroup.get('drpVessel').hasError('required')">
+                                                                Required</mat-error>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Date</mat-label>
+                                                            <input matInput formControlName="date_Alongside"
+                                                                [matDatepicker]="pickerarrivalreportdate" />
+                                                            <mat-datepicker-toggle matSuffix
+                                                                [for]="pickerarrivalreportdate"></mat-datepicker-toggle>
+                                                            <mat-datepicker #pickerarrivalreportdate></mat-datepicker>
+
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AlongsideFormGroup.get('date_Alongside').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Type</mat-label>
+                                                            <input formControlName="txtType" matInput type="text"
+                                                                readonly />
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Voyage Number</mat-label>
+
+                                                            <mat-select formControlName="drpVoyage_Number">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                        *ngFor="let b of filtered_port | async"
+                                        [value]="b.PORT_GUID"
+                                      >
+                                        {{ b.Port_Name }}
+                                      </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AlongsideFormGroup.get('drpVoyage_Number').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Vessel Cargo Status</mat-label>
+
+                                                            <mat-select formControlName="drpVessel_Cargo_Status">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                    *ngFor="let b of filtered_port | async"
+                                    [value]="b.PORT_GUID"
+                                  >
+                                    {{ b.Port_Name }}
+                                  </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AlongsideFormGroup.get('drpVessel_Cargo_Status').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Location</mat-label>
+
+                                                            <mat-select formControlName="drpLocation">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                *ngFor="let b of filtered_port | async"
+                                [value]="b.PORT_GUID"
+                              >
+                                {{ b.Port_Name }}
+                              </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AlongsideFormGroup.get('drpLocation').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                    fxLayoutGap.gt-sm="24px">
+
+                                                    <mat-form-field fxFlex appearance="fill">
+
+                                                        <mat-label>Port</mat-label>
+
+                                                        <mat-select formControlName="drpPort">
+                                                            <mat-option>
+
+                                                            </mat-option>
+
+                                                            <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+                                                        </mat-select>
+                                                        <mat-error
+                                                            *ngIf="DailyNoonReport_AlongsideFormGroup.get('drpPort').hasError('required')">
+                                                            Required</mat-error>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>UTC</mat-label>
+
+                                                            <mat-select formControlName="drpUTC">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                            *ngFor="let b of filtered_port | async"
+                            [value]="b.PORT_GUID"
+                          >
+                            {{ b.Port_Name }}
+                          </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AlongsideFormGroup.get('drpUTC').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Ship's Clock Changes</mat-label>
+
+                                                            <mat-select formControlName="drpShips_Clock_Changes">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+                                                            </mat-select>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Latitude</mat-label>
+                                                            <input formControlName="txtLatitude" matInput type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AlongsideFormGroup.get('txtLatitude').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Longitude</mat-label>
+                                                            <input formControlName="txtLongitude" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AlongsideFormGroup.get('txtLongitude').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Deadweight</mat-label>
+                                                            <input formControlName="txtDeadweight" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AlongsideFormGroup.get('txtDeadweight').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>DWT-Shore figs:</mat-label>
+                                                            <input formControlName="txtDWT_Shore_figs" matInput
+                                                                type="text" />
+                                                            <mat-error
+                                                                *ngIf="DailyNoonReport_AlongsideFormGroup.get('txtDWT_Shore_figs').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                    fxLayoutGap.gt-sm="24px">
+
+
+                                                    <mat-form-field fxFlex appearance="fill">
+                                                        <mat-label>DWT difference:</mat-label>
+                                                        <input formControlName="txtDWT_difference" matInput
+                                                            type="text" />
+                                                        <mat-error
+                                                            *ngIf="DailyNoonReport_AlongsideFormGroup.get('txtDWT_difference').hasError('required')">
+                                                            Required</mat-error>
+                                                    </mat-form-field>
+
+                                                    <mat-form-field fxFlex appearance="fill">
+                                                        <mat-label>Trim</mat-label>
+                                                        <input formControlName="txtTrim" matInput
+                                                            type="text" />
+                                                        <mat-error
+                                                            *ngIf="DailyNoonReport_AlongsideFormGroup.get('txtTrim').hasError('required')">
+                                                            Required</mat-error>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                </div>
+                                            </td>
+                                        </tr> 
+                                        
+                                        <tr>
+                                            <td>
+                                               <div fxLayout="row" fxLayoutAlign="space-between">
+                                               <div fxFlex="48">
+                                                <table style="width: 100%;">
+                                                <tr>
+                                                    <td class="draft-td">Draft</td>
+                                                </tr>      
+                                                </table>
+                                               <table>
+                                                <tr>
+                                                    <td>Fwd(mtrs)</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                   
+                                                </tr>
+                                                <tr>
+                                                    <td>Mid(mtrs)</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                   
+                                                </tr>
+                                                <tr>
+                                                    <td>Aft(mtrs)</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                   
+                                                </tr>
+                                               </table>
+
+                                                                       
+                                                </div>
+
+                
+
+                                                <div fxFlex="48">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td class="draft-td">Ballast (MT)</td>
+                                                        </tr>
+                                                        </table>
+                                                        <table>
+                                                            <tr>
+                                                                <td>Permanent</td>
+                                                                <td><input type="text" class="rob-input"/></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Additional</td>
+                                                                <td><input type="text" class="rob-input"/></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Total</td>
+                                                                <td><input type="text" class="rob-input"/></td>
+                                                               
+                                                            </tr>
+                                                           </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                               <div fxLayout="row" fxLayoutAlign="space-between">
+                                               <div fxFlex="48">
+                                                <table style="width: 100%;">
+                                                <tr>
+                                                    <td class="draft-td">Cargo Operations</td>
+                                                </tr>      
+                                                </table>
+                                               <table>
+                                                <tr>
+                                                    <td>Loaded</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                    <td>MT/TEU</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Discharged</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                    <td>MT/TEU</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total Onboard</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                    <td>MT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Reefers Onboard</td>
+                                                    <td><input type="text" class="rob-input"/></td>
+                                                    <td>MT</td>
+                                                </tr>
+                                               
+                                               </table>
+
+                                                                       
+                                                </div>
+
+                
+                                                <div fxFlex="48">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td class="draft-td">Ballast Operations</td>
+                                                        </tr>
+                                                        </table>
+                                                        <table>
+                                                            <tr>
+                                                                <td>Loaded</td>
+                                                                <td><input type="text" class="rob-input"/></td>
+                                                                <td>MT</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Discharged</td>
+                                                                <td><input type="text" class="rob-input"/></td>
+                                                                <td>MT</td>
+                                                            </tr>
+                                                            
+                                                           </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                               <div fxLayout="row" fxLayoutAlign="space-between">
+                                               <div fxFlex="48">
+                                               
+                                                <table style="width: 100%;">
+                                                    <tr>
+                                                        <td>
+                                                        <textarea ></textarea>
+                                                    </td>
+                                                    </tr>
+                                                    
+                                                    </table>
+                                         
+                                                </div>
+
+                                                <div fxFlex="48">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td>
+                                                            <textarea ></textarea>
+                                                        </td>
+                                                        </tr>
+                                                        
+                                                        </table>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                    </table>
+
+                                  
+                                </td>
+
+                                <td style=" vertical-align: top;">
+
+                                    <div mode="card" class="agency-po">
+
+
+                                        <mat-tab-group (animationDone)="check()" animationDuration="0ms"
+                                            class="remove-border-bottom" style="margin-top: 10px;">
+
+                                            <form>
+
+                                                <mat-tab label="Details" style="margin-left: #000;margin-right: #000;"
+                                                    class="mat-tab-req">
+                                                    <div>
+
+                                                        <table
+                                                            style="width: 100%;border:1px solid;border-collapse: collapse;">
+                                                            <tr>
+                                                                <td
+                                                                    style="vertical-align: top;width:46%;padding: 9px;">
+
+                                                                    <table style="width: 100%;">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div>
+                                                                                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                                                                                    style="margin-bottom: 12px;">
+                                                                                    <mat-label>Report Applicable to EU-MRV?</mat-label>
+                                                                                    <mat-radio-group fxLayout="row" fxLayoutGap="24px"
+                                                                                        formControlName="radioEU_MRV" style="margin-left: 40px;">
+                                                                                        <mat-radio-button value="1"
+                                                                                            [checked]="DailyNoonReport_AlongsideFormGroup.get('radioEU_MRV').value == 1">
+                                                                                            <label
+                                                                                                [class.active-label]="DailyNoonReport_AlongsideFormGroup.get('radioEU_MRV').value == 1"
+                                                                                                style="font-family: tahoma;">Yes</label>
+                                                                                        </mat-radio-button>
+                                                                                        <mat-radio-button value="0"
+                                                                                            [checked]="DailyNoonReport_AlongsideFormGroup.get('radioEU_MRV').value == 0">
+                                                                                            <label
+                                                                                                [class.active-label]="DailyNoonReport_AlongsideFormGroup.get('radioEU_MRV').value == 0"
+                                                                                                style="font-family: tahoma;">No</label></mat-radio-button>
+                                                                                    </mat-radio-group>
+                                                                                </div>
+
+                                                                                <mat-form-field appearance="fill">
+                                                                                    <mat-label>BWTS Agent</mat-label>
+                                                                                    <input matInput formControlName="BWTS_Agent	" type="text" />
+                                                                                 
+                                                                                </mat-form-field>
+            
+                                                                                <mat-form-field appearance="fill">
+            
+                                                                                    <mat-label>BWTS Agent Form</mat-label>
+                        
+                                                                                    <mat-select formControlName="drpBWTS_Agent_Form	">
+                                                                                        <mat-option>
+                        
+                                                                                        </mat-option>
+                        
+                                                                                        <!-- <mat-option
+                                                                    *ngFor="let b of filtered_port | async"
+                                                                    [value]="b.PORT_GUID"
+                                                                  >
+                                                                    {{ b.Port_Name }}
+                                                                  </mat-option> -->
+                                                                                    </mat-select>
+                                                                                   
+                                                                                </mat-form-field>
+                                                                                    
+                                                                              
+                                                                           
+                                                                                </div>
+                                                                            </td>
+
+                                                                        </tr>
+
+                                                                      
+
+                                                                      
+                                                                
+
+                                                                      
+
+                                                                    </table>
+
+
+                                                                </td>
+
+                                                                <td
+                                                                    style="vertical-align: top;width:50%;padding: 15px;">
+
+                                                         
+                                                                </td>
+                                                            </tr>
+
+
+                                                            <tr>
+                                                                <td style="width: 50%;">
+                                                                    <table style="width: 100%;">
+                                                                        <tr>
+                                                                            <td >
+                                                                                <table style="width: 100%;">
+                                                                                    
+                                                                            <tr>
+                                                                                <td class="arrival-report-td">Remarks</td>
+                                    
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <mat-form-field fxFlex style="margin-top: 10px;">
+                                                                                        <mat-label></mat-label>
+                                                                                        <textarea matInput rows="5" cols="40"></textarea>
+                                                                                    </mat-form-field>
+                                                                                </td>
+                                                                            </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                           </tr>
+                                                                    </table>
+                                                                </td>
+                                                                <td style="width: 50%;">
+
+                                                              
+                                                                <table style="width: 100%;">
+                                                                    <tr>
+                                                                      
+                                                                     <td class="arrival-report-td">Sludge/Bilge Water details
+                                                                                
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="border: 1px solid #B6B8B3;
+                                                                        border-radius: 10px;">
+                                                                            <div >
+                                                                                <table style="display: flex;">
+        
+        
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <div fxLayout="row">
+                                                                                                <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                                                                                    class="add-approve-btn save-btn" (click)="AddSludgeDetail(null, 'Add/Edit Sludge detail')"
+                                                                                                   >
+                                                                                                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                                                                                </button>
+                                                                                                <span style="margin-top: 3px;
+                                                                                                margin-left: 6px;font-size: 15px;">Add Sludge Details</span>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                    
+                                                                    
+                                                                                </table>
+                                                                    
+                                                                    
+                                                                           
+                                                                                <!-- <div class="content-loader">
+                                                                                <mat-progress-spinner
+                                                                                  mode="indeterminate"
+                                                                                  color="accent"
+                                                                                ></mat-progress-spinner>
+                                                                              </div> -->
+                                                                            </div>
+                                                                    
+                                                                            <div #TABLE>
+                                                                                <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                                                                                    <ng-container matColumnDef="Sludge_Or_Bilge">
+                                                                                        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                                                                                            mat-sort-header>
+                                                                                            Sludge Or Bilge
+                                                                                        </th>
+                                                                                        <!-- <td
+                                                                                      *matCellDef="let row; let i = index"
+                                                                                      class="actions-cell"
+                                                                                      [ngStyle]="{ 'white-space': 'initial' }"
+                                                                                      mat-cell
+                                                                                    >
+                                                                                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                                                                                    </td> -->
+                                                                                    </ng-container>
+                                                                    
+                                                                                    <ng-container matColumnDef="Daily_Production">
+                                                                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                                            Daily Production(In MT)
+                                                                                        </th>
+                                                                                        <!-- <td
+                                                                                      *matCellDef="let row; let i = index"
+                                                                                      class="actions-cell"
+                                                                                      mat-cell
+                                                                                    >
+                                                                                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                                                                    </td> -->
+                                                                                    </ng-container>
+                                                                                    <ng-container matColumnDef="Total_Qty">
+                                                                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                                            Total Qty(In MT)
+                                                                                        </th>
+                                                                                        <!-- <td
+                                                                                        *matCellDef="let row; let i = index"
+                                                                                        class="actions-cell"
+                                                                                        mat-cell
+                                                                                      >
+                                                                                        <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                                                                                      </td> -->
+                                                                                    </ng-container>
+                                                                                    <ng-container matColumnDef="Tank_Number">
+                                                                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                                            Tank Number/Name
+                                                                                        <!-- <td
+                                                                                      *matCellDef="let row; let i = index"
+                                                                                      class="actions-cell"
+                                                                                      mat-cell
+                                                                                    >
+                                                                                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                                                                    </td> -->
+                                                                                    </ng-container>
+                                                                                    <ng-container matColumnDef="Current_Filling_Ratio">
+                                                                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                                            Current Filling Ratio(%)
+                                                                                        </th>
+                                                                                        <!-- <td
+                                                                                        *matCellDef="let row; let i = index"
+                                                                                        class="actions-cell"
+                                                                                        mat-cell
+                                                                                      >
+                                                                                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                                                                      </td> -->
+                                                                                    </ng-container>
+                                                                                    <ng-container matColumnDef="Remark">
+                                                                                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                                                                            Remark
+                                                                                        </th>
+                                                                                        <!-- <td
+                                                                                        *matCellDef="let row; let i = index"
+                                                                                        class="actions-cell"
+                                                                                        mat-cell
+                                                                                      >
+                                                                                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                                                                                      </td> -->
+                                                                                    </ng-container>
+                                                                              
+                                                                    
+                                                                                    <tr *matHeaderRowDef="visibleColumns" mat-header-row style="background-color:#194775"></tr>
+                                                                                    <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row>
+                                                                                    </tr>
+                                                                                    <tr class="mat-row" *matNoDataRow>
+                                                                                        <td class="mat-cell" colspan="9999">No data found</td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                            </tr>
+                                                            
+<tr>
+    <td colspan="2">
+    <table style="width: 100%;">
+        <tr>
+         
+                    <td style="border: 1px solid #B6B8B3" >
+                        <table style="width: 100%;">
+                            <tr>
+                                <td
+                                    class="arrival-report-td">
+                                    Attachments :</td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="action-label"
+                                        fxFlex>
+
+                                        <input
+                                            style="display: none;"
+                                            type="file"
+                                            id="fileupload"
+                                            #fileInputattach
+                                            (change)="onFileSelectedattach($event)"
+                                            accept=".pdf,.doc,.docx,.jpg,.png" />
+                                        <button
+                                            type="button"
+                                            class="upload-btn1"
+                                            style="margin-top: 6px;"
+                                            *ngIf="!selectedFileNameAttach">
+                                            <label
+                                                for="fileupload">
+                                                Browse</label>
+                                        </button>
+
+                                        <div
+                                            *ngIf="selectedFileNameAttach">
+                                            <span
+                                                style="margin-top: 2px !important;">
+                                                {{
+                                                selectedFileNameAttach
+                                                }}</span>
+                                            <button
+                                                (click)="removeUploadedFileattach()"
+                                                mat-button
+                                                style="color: #5BB318;">Remove</button>
+                                            &nbsp;
+                                        </div>
+
+
+                                        <div
+                                            class="drop-container-attach">
+
+                                            <input
+                                                type="file"
+                                                id="uploadFile-input"
+                                                style="opacity: 0"
+                                                name="uploadFile"
+                                                accept="all/*"
+                                                multiple />
+                                            <label>Drop
+                                                Files
+                                                Here for
+                                                attachment
+                                            </label>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                   </tr>
+   
+    </table>
+</td>
+</tr>
+                                                           
+
+                                                        </table>
+
+                                                    </div>
+
+                                                </mat-tab>
+
+                                                <mat-tab label="Consumptions Since Last Noon"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                                                    <div>
+
+                                                        <table
+                                                            style="width: 100%;border:1px solid;border-collapse: collapse;">
+                                                            <tr>
+                                                                <td
+                                                                    style="vertical-align: top;width:48%;padding: 9px;">
+
+                                                                    <table style="width: 100%;">
+                                                                    
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width:100%">
+                                                                                <tr>
+
+                                                                                    <td style="width: 47%;"></td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td class="rob">
+                                                                                    ROB
+                                                                                    </td>
+                                                                                   <td></td>
+
+                                                                                </tr>
+                                                                                
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                            <table style="width:100%">
+                                                                                <tr>
+
+                                                                                    <td style="width: 47%;"></td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td  class="rob-1">
+                                                                                        Normal
+                                                                                        (≤3.5% Sulphur)
+                                                                                    </td>
+                                                                                    <td class="rob-1">
+                                                                                        L.S.
+                                                                                        (≤0.5% Sulphur)
+                                                                                    </td>
+                                                                                    <td  class="rob-1">
+                                                                                        V.L.S.
+                                                                                       (≤0.1% Sulphur) 
+                                                                                    </td>
+                                                                                    <td></td>
+
+                                                                                </tr>
+                                                                             
+                                                                            </table>
+                                                                        </td>
+                                                                        </tr>
+                                                                          
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">Heavy Oil</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td>MT</td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">Diesel Oil</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td>MT</td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">MGO</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td>MT</td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">Others / Thermal Oil</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td><input type="text" class="rob-input"/></td>
+                                                                                <td>ltrs</td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">LPG</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input-LPG"/></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">LNG</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input-LPG"/></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">Methanol</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input-LPG"/></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">Ethanol</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input-LPG"/></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">HVO</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input-LPG"/></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">Other Fuel Type	</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input-LPG"/></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">MECC</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input-4"/></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>ltrs</td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">MECYL</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input-4"/></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>ltrs</td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">AECC</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input-4"/></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>ltrs</td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                <table style="width: 100%;">
+                                                                                <td style="width: 47%;    text-align: end;
+                                                                                ">Fresh Water	</td>
+                                                                                <td style="width: 6%;"></td>
+                                                                                <td><input type="text" class="rob-input-4"/></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>MT</td>
+                                                                            </table>
+                                                                        </td>
+                                                                            </tr>
+                                                                     
+                                                                    </table>
+
+
+                                                                </td>
+                                                                
+                                                                <td style="width: 48%;">
+                                                                </td>
+                                                              
+                                                            </tr>
+                                                        </table>
+
+                                                    </div>
+
+                                                </mat-tab>
+
+                                                <mat-tab label="Arrival Bilge / Sludge"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+
+
+                                                </mat-tab>
+                                                <mat-tab label="Custom Fields"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+
+
+                                                </mat-tab>
+                                                <mat-tab label="Documents" style="margin-left: #000;margin-right: #000;"
+                                                    class="mat-tab-req">
+                                                    <div style="padding-top:25px">
+
+                                                    </div>
+
+                                                </mat-tab>
+
+                                            </form>
+
+                                        </mat-tab-group>
+
+                                    </div>
+
+                                </td>
+
+                               
+                            </tr>
+
+
+                        </table>
+                    </tr>
+
+
+                </table>
+
+
+            </form>
+
+        </div>
+
+    </fury-page-layout-content>
+
+</fury-page-layout>

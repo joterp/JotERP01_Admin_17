@@ -1,0 +1,609 @@
+<fury-page-layout mode="card" class="procurementprocess-view">
+
+  <!-- search header for PURC_Catalogue -->
+  <fury-page-layout-header>
+
+    <form [formGroup]="PurchaseIndexFilterForm">
+      <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+      <h3>
+
+        <span class="first-letter">P</span>URCHASE
+        <span class="first-letter">I</span>NDEX
+
+      </h3>
+      <div class="filter-area">
+
+        <div fxLayout="row" fxLayoutAlign="start">
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Vessel</mat-label>
+              <mat-select formControlName="drpVessel">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Department</mat-label>
+              <mat-select [formControl]="departmentControl" multiple formControlName="drpDepartment">
+
+                <mat-select-trigger>
+                  <mat-chip-listbox>
+                    <mat-chip *ngFor="let d of departmentControl.value" [removable]="true"
+                      (removed)="onDepartmentRemoved(d)">
+                      {{ d }}
+                      <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                  </mat-chip-listbox>
+                </mat-select-trigger>
+
+                <mat-option *ngFor="let d of departmentList" [value]="d">{{d}}</mat-option>
+
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Catalogue</mat-label>
+              <mat-select formControlName="drpCatalogue">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Req / PO / Invoice</mat-label>
+              <input type="text" formControlName="txtReq_PO_Invoice" matInput />
+
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Requisition Title</mat-label>
+              <input type="text" formControlName="txtRequisition_Title" matInput />
+
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Pending With</mat-label>
+              <mat-select formControlName="drpPending_With">
+                <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                        {{ b.DEPT_NAME }}
+                      </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+
+          <div fxFlex>
+
+            <mat-form-field appearance="fill">
+              <mat-label>PO Date From</mat-label>
+              <input matInput formControlName="po_date_from" [matDatepicker]="pickerpodatefrom" />
+              <mat-datepicker-toggle matSuffix [for]="pickerpodatefrom"></mat-datepicker-toggle>
+              <mat-datepicker #pickerpodatefrom></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>PO Date To</mat-label>
+              <input matInput formControlName="po_date_to" [matDatepicker]="pickerpodateto" />
+              <mat-datepicker-toggle matSuffix [for]="pickerpodateto"></mat-datepicker-toggle>
+              <mat-datepicker #pickerpodateto></mat-datepicker>
+            </mat-form-field>
+
+            <div style="display: flex;margin: 10px;">
+              <mat-label>Delivered To Vessel</mat-label>
+              <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioDelivered_To_Vessel" style="margin-top: 0px;
+                          margin-left: 20px;">
+                <mat-radio-button value="1"
+                  [checked]="PurchaseIndexFilterForm.get('radioDelivered_To_Vessel').value == 1">
+                  <label [class.active-label]="PurchaseIndexFilterForm.get('radioDelivered_To_Vessel').value == 1">Yes</label>
+                  </mat-radio-button>
+                <mat-radio-button value="0"
+                  [checked]="PurchaseIndexFilterForm.get('radioDelivered_To_Vessel').value == 0">
+                  <label [class.active-label]="PurchaseIndexFilterForm.get('radioDelivered_To_Vessel').value == 0">No</label>
+                  </mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+          </div>
+
+          <div fxFlex>
+            <div class="action-label" style="background: #ececec;box-shadow: 0 0 2px #cccccc;padding: 10px;
+                    ">
+              <table>
+                <tr>
+                  <td>
+                    <div style="background-color: #fff;
+                                padding: 15px;">
+                      <span>
+                        <img src="../../../../assets/img/attachment-icon.png" class="logo2" alt="excel" style="margin-right: 10px;
+                                margin-bottom: -4px;" />
+                      </span>:-
+                      <input style="display: none;" type="file" id="fileupload" #fileImport
+                        (change)="onFileSelectedImport($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+                      <button type="button" class="upload-btn1" *ngIf="!selectedFileNameImport">
+                        <label for="fileupload">
+                          Import Quote</label>
+                      </button>
+
+                      <span *ngIf="selectedFileNameImport">
+                        <span style="margin-top: 2px !important;"> {{ selectedFileNameImport }}</span>
+                        <button (click)="removeUploadedFileimport()" mat-button style="color: #5BB318;">Remove</button>
+                        &nbsp;
+                      </span>
+                    </div>
+                  </td>
+                  <input type="submit" class="btn btn-success" value="Import" class="filter-btn-import" />
+
+                  <td>
+
+                  </td>
+                </tr>
+
+              </table>
+
+            </div>
+            <div style="margin-top: 20px;">
+              <button class="create" mat-raised-button color="primary" class="filter-btn-multiplesupplier">
+                Send RFQ To Multiple Suppliers
+              </button>
+            </div>
+
+          </div>
+
+          <div fxFlex>
+
+            <table class="table-5">
+              <tr>
+                <td class="td-5"><a><input type="button" class="input-5" value="New Requisition" /></a></td>
+                <td class="td-5"><a><input type="button" class="input-5" value="Invoice" /></a></td>
+              </tr>
+              <tr>
+                <td class="td-5"><a><input type="button" class="input-5" value="Quotation" /></a></td>
+                <td class="td-5"><a><input type="button" class="input-5" value="Closed" /></a></td>
+              </tr>
+              <tr>
+                <td class="td-5"><a><input type="button" class="input-5" value="Purchase Order" /></a></td>
+                <td class="td-5"><a><input type="button" class="input-5" value="On Hold" /></a></td>
+              </tr>
+              <tr>
+                <td class="td-5"><a><input type="button" class="input-5" value="Supp Confirmation" /></a></td>
+                <td class="td-5"><a><input type="button" class="input-5" value="Cancelled" /></a></td>
+              </tr>
+              <tr>
+                <td class="td-5"><a><input type="button" class="input-5" value="Logistics & Delivery" /></a></td>
+                <td class="td-5"><a><input type="button" class="input-5" value="All Statges" /></a></td>
+              </tr>
+            </table>
+
+          </div>
+
+          <div class="filter-btn-area" fxFlex>
+            <div>
+              <button class="create" mat-raised-button color="primary" class="filter-btn">
+                Search
+              </button>
+            </div>
+
+            <div>
+              <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                Clear
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+  </fury-page-layout-header>
+
+
+  <fury-page-layout-content [@fadeInUp]>
+
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header style="background-color: #f1f1f1;">
+          <mat-panel-title class="panel-title">
+            Additional Filters
+          </mat-panel-title>
+          <mat-panel-description class="panel-desc">
+            ALL STAGES doesn't include invoice-specific filters
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <form [formGroup]="AdditionalFilterForm">
+          <div class="filter-area">
+
+            <div fxLayout="row" fxLayoutAlign="start">
+
+              <div fxFlex>
+                <mat-form-field appearance="fill">
+                  <mat-label>Fleet</mat-label>
+                  <mat-select formControlName="drpFleet">
+                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                        {{ b.DEPT_NAME }}
+                      </mat-option> -->
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Supplier Type</mat-label>
+                  <mat-select formControlName="drpSupplier_Type">
+                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                        {{ b.DEPT_NAME }}
+                      </mat-option> -->
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Supplier</mat-label>
+                  <mat-select formControlName="drpSupplier">
+                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                        {{ b.DEPT_NAME }}
+                      </mat-option> -->
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Acc Code</mat-label>
+                  <mat-select formControlName="drpAcc_Code">
+                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                        {{ b.DEPT_NAME }}
+                      </mat-option> -->
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex>
+                <mat-form-field appearance="fill">
+                  <mat-label>Requisition Type</mat-label>
+                  <mat-select formControlName="drpRequisition_Type">
+                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                        {{ b.DEPT_NAME }}
+                      </mat-option> -->
+                  </mat-select>
+                </mat-form-field>
+
+                <div style="margin-bottom: 12px;">
+                  <mat-label>New Reqsn Status</mat-label>
+                  <mat-radio-group fxLayout="column" fxLayoutGap="7px" formControlName="radioNew_Reqsn_Status" style="margin-top: 7px; margin-left: 26px;" class="radio-btn-group">
+                    <mat-radio-button value="1" [checked]="AdditionalFilterForm.get('radioNew_Reqsn_Status').value == 1">
+                      <label [class.active-label]="AdditionalFilterForm.get('radioNew_Reqsn_Status').value == 1">Draft</label>
+                    </mat-radio-button>
+                    <mat-radio-button value="0" [checked]="AdditionalFilterForm.get('radioNew_Reqsn_Status').value == 0">
+                      <label [class.active-label]="AdditionalFilterForm.get('radioNew_Reqsn_Status').value == 0">Pending for approval</label>
+                    </mat-radio-button>
+                    <mat-radio-button value="2" [checked]="AdditionalFilterForm.get('radioNew_Reqsn_Status').value == 2">
+                      <label [class.active-label]="AdditionalFilterForm.get('radioNew_Reqsn_Status').value == 2">Approved</label>
+                    </mat-radio-button>
+                    <mat-radio-button value="3" [checked]="AdditionalFilterForm.get('radioNew_Reqsn_Status').value == 3">
+                      <label [class.active-label]="AdditionalFilterForm.get('radioNew_Reqsn_Status').value == 3">All</label>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Reqsn Raised by</mat-label>
+                  <mat-select formControlName="drpReqsn_Raised_by">
+                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                        {{ b.DEPT_NAME }}
+                      </mat-option> -->
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Port Call</mat-label>
+                  <mat-select formControlName="drpPort_Call">
+                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                            {{ b.DEPT_NAME }}
+                          </mat-option> -->
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>PO Type</mat-label>
+                  <mat-select formControlName="drpPO_Type">
+                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                            {{ b.DEPT_NAME }}
+                          </mat-option> -->
+                  </mat-select>
+                </mat-form-field>
+
+                <div>
+                  <!-- <mat-label>New Reqsn Status</mat-label> -->
+                  <mat-radio-group fxLayout="column" fxLayoutGap="7px" formControlName="radioPO_Type" style="margin-top: 10px;
+                          margin-left: 26px;" class="radio-btn-group">
+                    <mat-radio-button value="1" [checked]="AdditionalFilterForm.get('radioPO_Type').value == 1">
+                      <label [class.active-label]="AdditionalFilterForm.get('radioPO_Type').value == 1">All PO</label>
+                      </mat-radio-button>
+                    <mat-radio-button value="0" [checked]="AdditionalFilterForm.get('radioPO_Type').value == 0">
+                      <label [class.active-label]="AdditionalFilterForm.get('radioPO_Type').value == 0">Split PO</label>
+                      </mat-radio-button>
+
+                  </mat-radio-group>
+                </div>
+
+              </div>
+              <div fxFlex>
+                <mat-form-field appearance="fill">
+                  <mat-label>Invoice Status</mat-label>
+                  <mat-select formControlName="drpInvoice_Status">
+                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                            {{ b.DEPT_NAME }}
+                          </mat-option> -->
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Invoice Amount(<=)</mat-label>
+                      <input type="text" formControlName="txtInvoice_Amount" matInput />
+
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Invoice Type</mat-label>
+                  <mat-select formControlName="drpInvoice_Type">
+                    <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                            {{ b.DEPT_NAME }}
+                          </mat-option> -->
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Show Invoice</mat-label>
+                  <mat-select formControlName="drpShow_Invoice">
+                    <mat-option value=""> Active </mat-option>
+                    <mat-option value="1">Deleted </mat-option>
+                    <mat-option value="0">All </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Invoice Due From</mat-label>
+                  <input type="text" formControlName="txtInvoice_Due_From" matInput />
+
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>To</mat-label>
+                  <input type="text" formControlName="txtInvoice_Due_To" matInput />
+
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Payment Planned From</mat-label>
+                  <input type="text" formControlName="txtPayment_Planned_From" matInput />
+
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>To</mat-label>
+                  <input type="text" formControlName="txtPayment_Planned_To" matInput />
+
+                </mat-form-field>
+
+              </div>
+              <div fxFlex>
+
+               <button class="create" mat-raised-button color="primary" class="additional-filter-btn" style="margin-top: 3px;">
+                  Delivery Listing
+                </button>
+                <button class="create" mat-raised-button color="primary" class="additional-filter-btn" >
+                  Raise Logistic PO
+                </button>
+                <button class="create" mat-raised-button color="primary" class="additional-filter-btn" >
+                  Approve Batch
+                </button>
+                <button class="create" mat-raised-button color="primary" class="additional-filter-btn">
+                 Mark Delivered To Vessel
+                </button>
+                <!-- <div style="padding-top: 8px;"><span><input type="submit" class="rbDecorated"
+                      value="Delivery Listing" /></span></div> -->
+                <!-- <div style="padding-top: 25px;"><span><input type="submit" class="rbDecorated"
+                      value="Raise Logistic PO" /></span></div>
+                <div style="padding-top: 23px;"><span><input type="submit" class="rbDecorated"
+                      value="Approve Batch" /></span></div>
+                <div style="padding-top: 21px;"><span><input type="submit" class="rbDecorated"
+                      value="Mark Delivered To Vessel" /></span></div> -->
+              </div>
+        
+
+              <div class="filter-btn-area" fxFlex>
+                <div class="add-filter-last" style="margin-top: 5px;">
+                  <a style="color: royalblue;">Show Followup <br> Index</a>
+                  <!-- <button class="create" mat-raised-button color="primary" class="filter-btn">
+                      Search
+                    </button> -->
+                </div>
+
+                <div class="add-filter-last" style="margin-top: 20px;">
+                  <a style="color: royalblue;">Requisition <br> Count</a>
+                  <!-- <button class="create"  mat-raised-button color="warn" class="filter-btn"
+                      type="button" >
+                      Clear
+                    </button> -->
+                </div>
+              </div>
+
+            
+            </div>
+          </div>
+        </form>
+
+
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+  </fury-page-layout-content>
+
+
+  <fury-page-layout-content [@fadeInUp] style="margin-top:9px;">
+    <div class="actions-area">
+      <table style="display: flex;">
+        <tr>
+          <td>
+            <div fxLayout="row">
+              <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-approve-btn save-btn"
+                (click)="CreateNewRequisition(null)">
+                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+              </button>
+              <span style="margin-top: 3px;
+                          margin-left: 6px;font-size: 15px;">Create New Requisition</span>
+            </div>
+          </td>
+        </tr>
+        <tr style="margin-left: 50px;">
+          <td>
+            <div fxLayout="row">
+              <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-approve-btn save-btn"
+              (click)="gotoPURC_NewIndex('PURC_QuickRequisition')"
+              >
+                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+              </button>
+              <span style="margin-top: 3px;
+                      margin-left: 6px;font-size: 15px;">Create Quick Requisition</span>
+            </div>
+          </td>
+        </tr>
+
+      </table>
+
+
+      <div>
+        <span style="cursor: pointer">
+          <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+          <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+          <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+        </span>
+      </div>
+      <!-- <div class="content-loader">
+          <mat-progress-spinner
+            mode="indeterminate"
+            color="accent"
+          ></mat-progress-spinner>
+        </div> -->
+    </div>
+
+    <div #TABLE>
+      <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+       
+    
+        <ng-container matColumnDef="Requisition#">
+          <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;"> Requisition # </th>
+
+        </ng-container>
+
+        <ng-container matColumnDef="Rcvd_Date">
+          <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;"> Rcvd Date</th>
+
+        </ng-container>
+        <ng-container matColumnDef="Qtn_Rcvd">
+          <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;"> Qtn Rcvd</th>
+
+        </ng-container>
+      
+      
+
+        <ng-container matColumnDef="header-row-first-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+            Vessel
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-second-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+            Dept
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-third-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+              Catalogue
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-fourth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+            Reqsn Title
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-fifth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+           Requisition
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-sixth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="4" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+            Pending With
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-seventh-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        text-align: center;">
+            Supplier
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-eighth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        text-align: center;">
+            Stage
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-eighth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        text-align: center;">
+            PO Type
+          </th>
+        </ng-container>
+
+
+
+
+        <tr mat-header-row
+          *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group','header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group']"
+          style="height:32px">
+        </tr>
+
+
+
+        <tr *matHeaderRowDef="visibleColumns" mat-header-row style="height:32px"></tr>
+        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9999">No data found</td>
+        </tr>
+      </table>
+    </div>
+
+    <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+
+  </fury-page-layout-content>
+
+
+</fury-page-layout>

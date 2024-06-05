@@ -1,0 +1,151 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Alarm Log 
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+ 
+   
+
+<mat-dialog-content>
+
+ 
+    <form [formGroup]="dtlAlarmIndexFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Vessel</mat-label>
+              <mat-select formControlName="drpVessel">
+                <mat-option value="Alexandre">Alexandre</mat-option>
+                <mat-option value="BluePearl">Blue Pearl</mat-option>
+    
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Machinery</mat-label>
+              <mat-select formControlName="drpMachinery">
+                <mat-option value="ABC">ABC</mat-option>
+                <mat-option value="Test">Test</mat-option>
+    
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Alarm</mat-label>
+              <mat-select formControlName="drpAlarm">
+                <mat-option value="TEST">TEST</mat-option>
+                <mat-option value="TEST_P">Test_P</mat-option>
+    
+              </mat-select>
+            </mat-form-field>
+          </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Alarm Set Value</mat-label>
+            <input formControlName="txtAlarm_Set_Value" matInput placeholder="Search by  Alarm Set Value" type="text" />
+          </mat-form-field>
+        </div>
+       
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>SFI Name</mat-label>
+            <mat-select formControlName="drpSFI_Name">
+              <mat-option value="Select_All">Select All</mat-option>
+  
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+            <mat-label>Date Tested</mat-label>
+            <input matInput formControlName="Date_Tested" [matDatepicker]="pickerTested" />
+            <mat-datepicker-toggle matSuffix [for]="pickerTested"></mat-datepicker-toggle>
+            <mat-datepicker #pickerTested></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Alarm Obtained Value</mat-label>
+              <input formControlName="txtAlarm_Obtained_Value" matInput placeholder="Search by  Alarm Obtained Value" type="text" />
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+            <mat-form-field  fxFlex>
+              <mat-label></mat-label>
+              <input formControlName="txtDifference_1" matInput placeholder="Search by Difference" type="text" />
+            </mat-form-field>
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label></mat-label>
+                <input formControlName="txtDifference_2" matInput placeholder="Search by Difference" type="text" />
+              </mat-form-field>
+          </div>
+
+            <div fxLayout="row"  fxLayoutGap="10px"
+                style="margin-bottom: 24px; margin-top: 26px;">
+                <mat-label>Verified</mat-label>
+                <mat-radio-group fxLayout="row" fxLayoutGap="5px"
+                    formControlName="radioVerified">
+                   
+                    <mat-radio-button value="0">Yes</mat-radio-button>
+                    <mat-radio-button value="1">No</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" >
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Remark</mat-label>
+                <textarea
+                  matInput
+                  formControlName="txtremark"
+                  placeholder="Remarks"
+                ></textarea>
+              </mat-form-field>
+            </div>
+
+
+            <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row" >
+                <!-- Use a button to create a custom file upload button -->
+
+                <mat-label style="margin: 8px;">Upload File :</mat-label> &nbsp;
+
+                <input style="display: none;" type="file" id="imageupload" #fileInput
+                    (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+
+                <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                    <label for="imageupload">
+                        Select</label>
+                </button>
+                <div *ngIf="selectedFileName" fxFlex>
+                    <span  aria-placeholder="Select files"> {{ selectedFileName
+                        }}</span>
+                    <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+                </div>
+
+                <!-- File input element, hidden from view -->
+            </div>
+          
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  
+</mat-dialog-content>

@@ -1,0 +1,359 @@
+<fury-page-layout mode="card" class="certificate-index">
+
+  <fury-page-layout-header>
+
+    <form [formGroup]="indexfilterFormGroup">
+      <h3 class="unit-packing">
+
+        <span class="first-letter">S</span>URVEY
+        <span class="first-letter">C</span>ERTIFICATES -
+        <span class="first-letter">C</span>URRENT
+        <SPAN class="first-letter">S</SPAN>TATUS
+
+      </h3>
+      <div class="filter-area">
+        <div fxLayout="row" fxLayoutAlign="start">
+
+          <div fxFlex>
+
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>Vessel</mat-label>
+              <mat-select [(ngModel)]="selectedOptions" multiple formControlName="drpVessel">
+                <mat-option value="selectAll" (click)="toggleSelectAll()">Check All</mat-option>
+                <mat-option *ngFor="let option of availableOptions" [value]="option.value">
+                  {{ option.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field> -->
+
+
+           
+              <mat-form-field appearance="fill">
+                <mat-label>Vessel</mat-label>
+                <mat-select  #select multiple formControlName="drpVessel">
+                  <div class="select-all">
+                      <mat-checkbox [(ngModel)]="allSelected"
+                                      [ngModelOptions]="{standalone: true}"
+                                      (change)="toggleAllSelection()">Check All</mat-checkbox>
+                  </div>
+                  <mat-option (click)="optionClick()" *ngFor="let dept of Department" [value]="dept.value">
+                    {{dept.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+           
+
+            <mat-form-field appearance="fill">
+              <mat-label>Department</mat-label>
+              <mat-select formControlName="drpDepartment">
+                <mat-option>
+                  <ngx-mat-select-search formControlName="principal_Filter" [placeholderLabel]="'search...'"
+                    [noEntriesFoundLabel]="'no matching found!'">
+                  </ngx-mat-select-search>
+                </mat-option>
+
+                <!-- <mat-option
+                        *ngFor="let b of filtered_principal | async"
+                        [value]="b.COMPANY_GUID"
+                      >
+                        {{ b.COMPANY_NAME }}
+                      </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Category</mat-label>
+              <mat-select formControlName="drpCategory">
+                <mat-option>
+                  <ngx-mat-select-search formControlName="principal_Filter" [placeholderLabel]="'search...'"
+                    [noEntriesFoundLabel]="'no matching found!'">
+                  </ngx-mat-select-search>
+                </mat-option>
+
+                <!-- <mat-option
+                        *ngFor="let b of filtered_principal | async"
+                        [value]="b.COMPANY_GUID"
+                      >
+                        {{ b.COMPANY_NAME }}
+                      </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Survey Certificate</mat-label>
+              <mat-select formControlName="drpSurvey_Certificate">
+                <mat-option>
+                  <ngx-mat-select-search formControlName="principal_Filter" [placeholderLabel]="'search...'"
+                    [noEntriesFoundLabel]="'no matching found!'">
+                  </ngx-mat-select-search>
+                </mat-option>
+
+                <!-- <mat-option
+                        *ngFor="let b of filtered_principal | async"
+                        [value]="b.COMPANY_GUID"
+                      >
+                        {{ b.COMPANY_NAME }}
+                      </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Make Model</mat-label>
+              <input formControlName="txtMake_Model" matInput type="text" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Tenure</mat-label>
+              <mat-select formControlName="drpTenure">
+                <mat-option>
+                  <ngx-mat-select-search formControlName="principal_Filter" [placeholderLabel]="'search...'"
+                    [noEntriesFoundLabel]="'no matching found!'">
+                  </ngx-mat-select-search>
+                </mat-option>
+
+                <!-- <mat-option
+                    *ngFor="let b of filtered_principal | async"
+                    [value]="b.COMPANY_GUID"
+                  >
+                    {{ b.COMPANY_NAME }}
+                  </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Issued_Before</mat-label>
+              <input matInput formControlName="Issued_Before" [matDatepicker]="pickerTo" />
+              <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+              <mat-datepicker #pickerTo></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Expired_Before</mat-label>
+              <input matInput formControlName="Expired_Before" [matDatepicker]="pickerFrom" />
+              <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+              <mat-datepicker #pickerFrom></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Remind Before</mat-label>
+              <input matInput formControlName="Remind_Before" [matDatepicker]="pickerRemind" />
+              <mat-datepicker-toggle matSuffix [for]="pickerRemind"></mat-datepicker-toggle>
+              <mat-datepicker #pickerRemind></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Expired</mat-label>
+              <mat-select formControlName="drpExpired">
+                <mat-option value="0"> Select All </mat-option>
+                <mat-option value="1"> Yes</mat-option>
+                <mat-option value="2"> No</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Verified</mat-label>
+              <mat-select formControlName="drpVerified">
+                <mat-option value="0"> Select All </mat-option>
+                <mat-option value="1"> Yes</mat-option>
+                <mat-option value="2"> No</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Show</mat-label>
+              <mat-select formControlName="drpShow">
+                <mat-option value="0"> All </mat-option>
+                <mat-option value="1"> Applicable</mat-option>
+                <mat-option value="2">Not Applicable</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+
+
+
+          <div class="filter-btn-area" fxFlex>
+            <div>
+              <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+              <button mat-raised-button color="primary" style="background-color: #5cb85c;" class="filter-btn">
+                Search
+              </button>
+            </div>
+
+            <div>
+              <button class="create" mat-raised-button color="warn" class="filter-btn" type="button"
+                (click)="clearFilter()">
+                Clear
+              </button>
+            </div>
+            <div>
+              <button class="create" mat-raised-button color="primary" class="filter-btn" type="button"
+                (click)="SaveCreateLink(null, false)">
+                Create Link
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+  </fury-page-layout-header>
+  <fury-page-layout-content [@fadeInUp] class="content-area">
+
+
+
+    <div class="actions-area">
+      <div fxLayout="row" style="justify-content: flex-end;">
+        <span class="add-sp-btn">
+          <img src="../../../../assets/img/send.png" class="logoinvite" alt="excel" />
+        </span>
+        <span style="margin-top: 5px; margin-left: 6px; font-size: 15px;cursor: pointer;" (click)="SaveAttachment(null, false)">Send
+          Attachment</span>
+        <span style="cursor: pointer; display: flex; justify-content: flex-end; margin-left: 30px;">
+          <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel"  />
+          <img src="../../../../assets/img/pdf.png" class="logo" alt="pdf" />
+          <img src="../../../../assets/img/XML1.png" class="logo" alt="xml" />
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="indexdataSource"  class="example-container">
+
+
+
+
+        <ng-container matColumnDef="cadTrade.total">
+          <th mat-header-cell *matHeaderCellDef  class="borderstyle"> Months </th>
+
+        </ng-container>
+
+        <ng-container matColumnDef="cadTrade.amount">
+          <th mat-header-cell *matHeaderCellDef  class="borderstyle"> - </th>
+
+        </ng-container>
+
+        <ng-container matColumnDef="data2.total">
+          <th mat-header-cell *matHeaderCellDef  class="borderstyle"> + </th>
+
+        </ng-container>
+
+        <ng-container matColumnDef="data2.amount">
+          <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"> Last Date </th>
+
+        </ng-container>
+
+        <ng-container matColumnDef="data3.total">
+          <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"> Next Due </th>
+
+        </ng-container>
+
+
+
+
+
+
+
+
+        <ng-container matColumnDef="header-row-first-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Vessel
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-second-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Category
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-third-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Survey Certificate
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-fourth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Cert Num
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-fifth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Department
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-sixth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Make Model
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-seventh-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="3"  class="borderstyle">
+            Tenure
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-eighth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Date Issued
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-nineth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Expiry Date
+          </th>
+        </ng-container>
+        <ng-container matColumnDef="header-row-tenth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Expired
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-eleventh-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2"  class="borderstyle">
+            Endorsement
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-tweleveth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Remainder Date
+          </th>
+        </ng-container>
+
+        <ng-container matColumnDef="header-row-thirteenth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Verified ?
+          </th>
+        </ng-container>
+
+
+        <ng-container matColumnDef="header-row-fourteenth-group">
+          <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Reamrk
+          </th>
+        </ng-container>
+        <tr mat-header-row
+          *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group','header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group','header-row-nineth-group','header-row-tenth-group','header-row-eleventh-group','header-row-tweleveth-group','header-row-thirteenth-group','header-row-fourteenth-group']">
+        </tr>
+        <tr mat-header-row *matHeaderRowDef="visibleColumns;sticky:true"></tr>
+        <tr mat-row *matRowDef="let row; columns: visibleColumns;"></tr>
+      </table>
+
+    </div>
+    <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+  </fury-page-layout-content>
+
+</fury-page-layout>

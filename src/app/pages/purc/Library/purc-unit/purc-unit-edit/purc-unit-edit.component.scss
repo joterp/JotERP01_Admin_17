@@ -1,0 +1,48 @@
+.purc-unit-edit{
+  margin-top: 10px;
+    .left-label {
+      width: 18%;
+      margin-top: 15px;
+    }
+  
+    .mat-form-field-infix {
+      border-top: 0.84375em solid transparent;
+    }
+  
+    .mat-form-field-infix {
+      border-top: 0.84375em solid transparent !important;
+    }
+  
+    .right-text {
+      text-align: right;
+    }
+
+    .example-full-width {
+      width: 100%;
+      
+    }
+    
+  }
+
+  .mat-mdc-dialog-container .mdc-dialog__title{
+    color: #fff;
+    background-color: black;
+    
+  }
+ 
+  .dialog-title {
+    display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+    transition: all 0.3s ease; /* Add transition for smooth animation */
+  }
+  
+  .close-button {
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Add transition for opacity change */
+  }
+  
+  .dialog-title:hover .close-button {
+    opacity: 1; /* Show the close button on hover */
+  }
+  

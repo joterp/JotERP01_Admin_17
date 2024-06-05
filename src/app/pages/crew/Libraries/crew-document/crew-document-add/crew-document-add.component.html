@@ -1,0 +1,134 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add Crew Document
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+    <mat-dialog-content>
+        <form [formGroup]="newDocumentFormGroup">
+            <div mat-dialog-container style="padding-top: 20px;">
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Document Type</mat-label>
+                    <mat-select formControlName="drpDocument_Type">
+                      <mat-option value="Contract_Related">Contract Related</mat-option>
+                      <mat-option value="Not_relevantr">Not relevant</mat-option>
+                      <mat-option value="Perpetual">Perpetual</mat-option>
+                      <mat-option value="Perpetual_Current_Rank">Perpetual - Current Rank</mat-option>
+                      <mat-option value="Travel_Documents">Travel Documents</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Document Name</mat-label>
+                  <input formControlName="txtDocument_Name" matInput placeholder="Search by Document" type="text" />
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Document Short Name</mat-label>
+                  <input formControlName="txtDocument_Short_Name" matInput placeholder="Search by Document Short Name"
+                    type="text" />
+                </mat-form-field>
+              </div>
+              
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Document Code (Deck)</mat-label>
+                    <input formControlName="txtDocument_Code_Deck" matInput placeholder="Search by Document Code Deck"
+                      type="text" />
+                  </mat-form-field>
+              </div>
+      
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Document Code (Engine)</mat-label>
+                    <input formControlName="txtDocument_Code_Engine" matInput placeholder="Search by Document Code Engine"
+                      type="text" />
+                  </mat-form-field>
+              </div>
+      
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Alarm Days</mat-label>
+                    <input formControlName="txtAlaram_Days" matInput placeholder="Search by Alaram Days"
+                      type="text" />
+                  </mat-form-field>
+              </div>
+      
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Is Mandatory ?</mat-label>
+                    <mat-select formControlName="drpMandatory">
+                      <mat-option value="No">No</mat-option>
+                      <mat-option value="Yes">Yes</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Sort Order</mat-label>
+                    <input formControlName="txtSort_Order" matInput placeholder="Search by Sort Order"
+                      type="text" />
+                  </mat-form-field>
+              </div>
+      
+              <div fxLayout="column" fxLayout="row" fxLayoutAlign="space-between center" style="padding: 5px;">
+                  <section class="example-section" >
+                     Is Upload Manual ?
+                      <mat-checkbox  formControlName="txtCheck_Manual"
+                      style="margin-left: 29px;"
+                         >
+                    
+                      </mat-checkbox>
+                    </section>
+                    <section class="example-section">
+                      Is Certificate of Competency ?
+                       <mat-checkbox  formControlName="txtCertificate"
+                           class="example-margin" >
+                     
+                       </mat-checkbox>
+                     </section>
+                </div>
+      
+                <div fxLayout="column" fxLayout="row" fxLayoutAlign="space-between center" style="padding: 5px;">
+                  <section class="example-section">
+                     Is Course Document ?
+                      <mat-checkbox  formControlName="txtCourse"
+                          class="example-margin"
+                         >
+                    
+                      </mat-checkbox>
+                    </section>
+                    <section class="example-section">
+                      Is Danger Cargo Endorsement ?
+                       <mat-checkbox  formControlName="txtCargo"
+                           class="example-margin"
+                          >
+                     
+                       </mat-checkbox>
+                     </section>
+                </div>
+             
+               
+            </div>
+        </form>
+    </mat-dialog-content>
+   
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>

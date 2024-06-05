@@ -1,0 +1,122 @@
+fury-crew-evaluations {
+
+    .crew-Evaluations-view{
+    
+        .evaluations-td{
+            background-color: #1F497D;
+            color: White;
+            height: 28px;
+            border-radius: 5px;
+            overflow: hidden;
+            padding-left: 5px;
+            font-family: tahoma;
+        }
+        .Send-Suptd{
+            float: right;
+            padding: 10px 10px 10px 10px;
+            font-weight: bold;
+            color: white;
+            background-color: navy;
+            font-family: tahoma;
+            font-size: 13px;
+            cursor: pointer;
+        }
+    
+        // table
+    
+        table.mat-table {
+            border-spacing: 0;
+            width: 100%;
+          }
+          .details-table {
+            margin-bottom: 20px;
+          }
+    
+        .add-approve-btn {
+            height: 24px;
+            width: 24px;
+            align-items: center;
+            display: flex;
+          }
+      
+          .add-approve-btn-icon {
+            font-size: 24px;
+            align-self: center;
+            margin-top: -1px;
+            cursor: pointer;
+          }
+        
+        .actions-area {
+            background: #fff;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          }
+        
+        
+          p.tbl-row-item {
+            font-size: 12px;
+            margin-top: 10px;
+            // margin-bottom: 10px;
+            padding: 0px 5px;
+          }
+        
+          tr.mat-header-row {
+            height: 56px;
+            background-color: #1f497d;
+          }
+        
+          th.mat-header-cell {
+            text-align: left;
+            color: white;
+          }
+        
+          .content-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        
+          th.mat-header-cell:last-of-type,
+          td.mat-cell:last-of-type,
+          td.mat-footer-cell:last-of-type {
+            padding-right: 10px;
+            min-width: 100px;
+          }
+        
+          th.mat-header-cell:first-of-type,
+          td.mat-cell:first-of-type,
+          td.mat-footer-cell:first-of-type {
+            padding-left: 10px;
+          }
+        
+          .mat-form-field-appearance-fill .mat-form-field-flex {
+            border-radius: 4px 4px 0 0;
+            padding: 5px 8px 0;
+          }
+        
+          .mat-form-field-appearance-fill .mat-form-field-infix {
+            padding: 0.05em 0 0.75em;
+          }
+        
+          .logo {
+            height: 30px;
+            width: 30px;
+            margin-top: 5px;
+          }
+          .logoinvite {
+            height: 26px;
+            width: 26px;
+            margin-top: 5px;
+          }
+          td.mat-cell.cdk-cell.actions-cell.cdk-column-Remarks.mat-column-Remarks.ng-star-inserted {
+            max-width: 100px;
+            word-break: break-word;
+          }
+    }
+    
+    }

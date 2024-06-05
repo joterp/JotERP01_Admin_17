@@ -1,0 +1,304 @@
+
+
+<fury-page-layout mode="card" class="enginelog-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+        
+      <form [formGroup]="EngineLogFilterForm">
+        <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+        <h3 >
+         
+            <span class="first-letter">E</span>NGINE
+            <span class="first-letter">L</span>OG
+            <span class="first-letter">B</span>OOK
+            <span >-</span>
+            <span class="first-letter">M</span>AIN
+            <span class="first-letter">I</span>NDEX
+       
+      </h3>
+        <div class="filter-area">
+           
+          <div fxLayout="row" fxLayoutAlign="start">
+  
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Fleet</mat-label>
+                    <mat-select formControlName="drpFleet">
+                      <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Vessel</mat-label>
+                    <mat-select formControlName="drpVessel">
+                      <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>              
+            </div>
+       
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>From Date</mat-label>
+                    <input
+                      matInput
+                      formControlName="from_date"
+                      [matDatepicker]="pickerfromdate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerfromdate"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerfromdate></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>To Date</mat-label>
+                    <input
+                      matInput
+                      formControlName="to_date"
+                      [matDatepicker]="pickertodate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickertodate"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickertodate></mat-datepicker>
+                  </mat-form-field>
+
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>From Port</mat-label>
+                    <mat-select formControlName="drpFrom_Port">
+                      <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>To Port</mat-label>
+                    <mat-select formControlName="drpTo_Port">
+                      <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                
+            </div>
+      
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <button class="create" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button>
+              </div>
+  
+              <div>
+                <button class="create"  mat-raised-button color="warn" class="filter-btn"
+                  type="button" >
+                  Clear
+                </button>
+              </div>
+              
+              <div>
+                <button class="create"  mat-raised-button color="warn" class="filter-btn"
+                  type="button" (click)="EngineLogDetails('TECH_EngineLog_Details')">
+                  engine log td
+                </button>
+              </div>
+
+            </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+  
+    <fury-page-layout-content [@fadeInUp]>
+        <div class="actions-area" fxLayout="row" fxLayoutAlign="end center">
+          <div>
+            <span
+           
+              style="cursor: pointer"
+             
+            >
+              <img
+                src="../../../../assets/img/XLSX.jpg"
+                class="logo"
+                alt="excel"
+              />
+              <img
+                src="../../../../assets/img/pdf.png"
+                class="logo"
+                alt="excel"
+              />
+              <img
+                src="../../../../assets/img/XML1.png"
+                class="logo"
+                alt="excel"
+              />
+            </span>
+          </div>
+          <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+        </div>
+    
+         <div #TABLE>
+          <table
+            [dataSource]="EngineLogdataSource"
+            mat-table
+            matSort
+            #table
+            class="details-table"
+          >
+            <ng-container matColumnDef="Vessel">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                [ngStyle]="{ 'white-space': 'initial' }"
+                mat-header-cell
+                mat-sort-header
+              >
+              Vessel
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                [ngStyle]="{ 'white-space': 'initial' }"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+              </td> -->
+            </ng-container>
+    
+            <ng-container matColumnDef="From_Date">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              From Date
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+              </td> -->
+            </ng-container>
+            <ng-container matColumnDef="To_Date">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                To Date
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+              </ng-container>
+            <ng-container matColumnDef="Last_Finalize_Watch">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Last Finalize Watch
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+            </ng-container>
+            <ng-container matColumnDef="From_Port">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                From Port
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container>    
+              <ng-container matColumnDef="To_Port">
+                <th
+                  *matHeaderCellDef
+                  class="actions-cell"
+                  mat-header-cell
+                  mat-sort-header
+                >
+                To Port
+                </th>
+                <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+              </ng-container> 
+    
+            <tr *matHeaderRowDef="visibleColumnsEngineLog" mat-header-row></tr>
+            <tr
+              *matRowDef="let row; columns: visibleColumnsEngineLog"
+              class="clickable route-animations-elements"
+              mat-row
+            ></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="9999">No data found</td>
+            </tr>
+          </table>
+        </div>
+    
+         <mat-paginator
+          class="paginator"
+          [pageSizeOptions]="[10, 25, 50, 100]"
+          [pageSize]="pageSize"
+        ></mat-paginator>
+    
+     
+      </fury-page-layout-content>
+  
+
+</fury-page-layout>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,270 @@
+<fury-page-layout mode="card" class="crew-bank-acc-salary-exception-view">
+
+    <div style="padding: 0px 180px 0px 180px;">
+
+        <h3 class="unit-packing" style="text-align: center;margin: 30px;">
+            <span class="first-letter">B</span>ANK
+            <span class="first-letter">A</span>CC
+            <span class="first-letter">&</span>&nbsp;
+            <span class="first-letter">S</span>ALARY
+            <span class="first-letter">E</span>SCEPTION
+            <span class="first-letter">R</span>EPORT
+        </h3>
+
+        <fury-page-layout-content>
+
+            <div fxLayout="row">
+
+
+                <div fxFlex style="margin: 10px;">
+                    <div class="checkbox-style">Vessel</div>
+                    <mat-list dense
+                        style="border: 1px solid #979797;cursor: pointer;padding: 0;background-color: #f4f4f4;">
+                        <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                            <mat-checkbox [(ngModel)]=" select_Rank_data"
+                                (ngModelChange)="onSelectRank($event)"></mat-checkbox>
+                            <span fxFlex="5"></span>
+                            <span class="checkbox-text">Select all</span>
+                        </mat-list-item>
+
+                        <ng-container *ngFor="let d of dataRank;">
+                            <mat-list-item style="height: 35px;">
+                                <mat-checkbox [(ngModel)]="d.is_selected"></mat-checkbox>
+                                <span fxFlex="5"></span>
+                                <span class="checkbox-text">{{ d.name }}</span>
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+
+                </div>
+
+                <div fxFlex style="margin: 10px;">
+                    <div class="checkbox-style">Rank</div>
+                    <mat-list dense
+                        style="border: 1px solid #979797;cursor: pointer;padding: 0;background-color: #f4f4f4;">
+                        <mat-list-item style="height: 35px;background-color: #d5d5d5;">
+                            <mat-checkbox [(ngModel)]="select_CostType_data"
+                                (ngModelChange)="onSelectCostType($event)"></mat-checkbox>
+                            <span fxFlex="5"></span>
+                            <span class="checkbox-text">Select all</span>
+                        </mat-list-item>
+
+                        <ng-container *ngFor="let d of dataCostType;">
+                            <mat-list-item style="height: 35px;">
+                                <mat-checkbox [(ngModel)]="d.is_selected"></mat-checkbox>
+                                <span fxFlex="5"></span>
+                                <span class="checkbox-text">{{ d.name }}</span>
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+
+                </div>
+                <div fxFlex style="margin-top: 40px;">
+                    <form [formGroup]="BankAccSalaryFormGroup">
+
+                        <div>
+                            <div>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Seafarer</mat-label>
+                                    <input formControlName="Seafarer" matInput type="text" />
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioShow_Status">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td style="padding-bottom: 6px;vertical-align: top;">
+                                            <span style="font-weight: bold;font-family: tahoma;">Show :</span>
+                                        </td>
+
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <mat-radio-button value="1"
+                                                        [checked]="BankAccSalaryFormGroup.get('radioShow_Status').value == 1">
+                                                        <label
+                                                            [class.active-label]="BankAccSalaryFormGroup.get('radioShow_Status').value == 1"
+                                                            style="font-family: tahoma;">Exceptions</label>
+                                                    </mat-radio-button>
+                                                </tr>
+                                                <tr>
+                                                    <mat-radio-button value="2"
+                                                        [checked]="BankAccSalaryFormGroup.get('radioShow_Status').value == 2">
+                                                        <label
+                                                            [class.active-label]="BankAccSalaryFormGroup.get('radioShow_Status').value == 2"
+                                                            style="font-family: tahoma;">Complied</label>
+                                                    </mat-radio-button>
+                                                </tr>
+                                                <tr>
+                                                    <mat-radio-button value="0"
+                                                        [checked]="BankAccSalaryFormGroup.get('radioShow_Status').value == 0">
+                                                        <label
+                                                            [class.active-label]="BankAccSalaryFormGroup.get('radioShow_Status').value == 0"
+                                                            style="font-family: tahoma;">All</label>
+                                                    </mat-radio-button>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <button class="create" mat-raised-button color="primary"
+                                                            class="filter-btn">
+                                                            Search
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <button class="create" mat-raised-button color="warn"
+                                                            class="filter-btn" type="button">
+                                                            Clear
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </mat-radio-group>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </fury-page-layout-content>
+
+
+        <fury-page-layout-content [@fadeInUp]>
+            <div class="actions-area-table">
+
+                <table style="width: 14%;">
+                    <tr>
+                        <td><img
+                            src="../../../../assets/img/send.png"
+                            class="logoinvite"
+                            alt="excel"
+                          /></td>
+                        <td><span style="font-weight: bold;font-family: tahoma;">Send Email</span></td>
+                        <td><img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" /></td>
+            
+                    </tr>
+                </table>
+
+                <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+            </div>
+
+            <div #TABLE>
+                <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+          
+          
+                  <ng-container matColumnDef="Contract_Date">
+                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                            border-bottom: 1px solid #ddd;
+                            text-align: center;">Contract Date</th>
+          
+                  </ng-container>
+          
+                  <ng-container matColumnDef="Contract_Date_Left_Home">
+                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                            border-bottom: 1px solid #ddd;
+                            text-align: center;">Date Left Home</th>
+          
+                  </ng-container>
+
+                  <ng-container matColumnDef="Salary_Date_Left_Home">
+                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                            border-bottom: 1px solid #ddd;
+                            text-align: center;">Date Left Home</th>
+          
+                  </ng-container>
+
+                  <ng-container matColumnDef="Salary_Effective_Date">
+                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                            border-bottom: 1px solid #ddd;
+                            text-align: center;">Effective Date</th>
+          
+                  </ng-container>
+          
+                  <ng-container matColumnDef="header-row-first-group" >
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                            border-bottom: 1px solid #ddd;
+                            text-align: center;background-color: #1F497D">
+                     Vessel
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-second-group" >
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                            border-bottom: 1px solid #ddd;
+                            text-align: center;background-color: #1F497D">
+                     Seafarers
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-third-group" >
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                              border-bottom: 1px solid #ddd;
+                              text-align: center;background-color: #1F497D">
+                      Rank
+                    </th>
+                  </ng-container>
+          
+          
+                  <ng-container matColumnDef="header-row-fourth-group" >
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                            border-bottom: 1px solid #ddd;
+                            text-align: center;background-color: #1F497D">
+                      Bank Account
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-fifth-group" >
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+                            border-bottom: 1px solid #ddd;
+                            text-align: center;background-color: #1F497D">
+                     Contract
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-sixth-group" >
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+                          border-bottom: 1px solid #ddd;
+                          text-align: center;background-color: #1F497D">
+                      Salary
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-seventh-group" >
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;background-color: #1F497D">
+                     
+                    </th>
+                  </ng-container>
+                      
+                  <tr mat-header-row
+                    *matHeaderRowDef="['header-row-first-group', 'header-row-second-group', 'header-row-third-group', 'header-row-fourth-group', 'header-row-fifth-group',
+                        'header-row-sixth-group', 'header-row-seventh-group']"
+                    style="height:32px">
+                  </tr>
+                 
+                  <tr *matHeaderRowDef="visibleColumns" mat-header-row style="height:32px;background-color: #1F497D" ></tr>
+                  <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                  </tr>
+                </table>
+              </div>
+
+            <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+        </fury-page-layout-content>
+
+    </div>
+</fury-page-layout>

@@ -1,0 +1,33 @@
+.mat-dialog-title{
+    background-color: black;   //new added
+
+} 
+.logo {
+    width: 20px;     //new added
+    height: 20px;
+}
+ 
+.filter-area {
+    background: #ffffff;
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    color: #252525;
+  }
+
+  .filter-btn-area {
+    padding: 8px 0px;
+     text-align: center;
+    
+   }
+ 
+   .filter-btn {
+     margin-left: 5px !important;
+     width: 100px;
+     margin-bottom: 10px !important;
+   }
+ 
+   .alert-box-error {
+    padding: 10px;
+   }

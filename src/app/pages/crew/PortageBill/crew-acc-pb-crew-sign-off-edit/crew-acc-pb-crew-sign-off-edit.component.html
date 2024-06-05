@@ -1,0 +1,330 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+    <fury-page-layout mode="card" class="crew-signoffedit-view">
+
+        <div>
+            <form [formGroup]="SignOffEditFormGroup">
+
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <div style="margin-bottom: 10px;" fxFlex>
+                        <table style="width: 100%;
+                        font-weight: bold;
+                        font-family: tahoma;">
+                            <tr>
+                                <td style="width: 50%;"><span>Staff Name</span></td>
+                                <td><span>10447 - Abhi Shinde - C/OFF</span></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div fxFlex>
+
+                    </div>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Sign Off Date</mat-label>
+                        <input matInput formControlName="sign_off_date" [matDatepicker]="pickersign_off_date" />
+                        <mat-datepicker-toggle matSuffix [for]="pickersign_off_date"></mat-datepicker-toggle>
+                        <mat-datepicker #pickersign_off_date></mat-datepicker>
+
+                        <mat-error *ngIf="SignOffEditFormGroup.get('sign_off_date').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div fxFlex>
+                        <button mat-raised-button class="btn-primary">
+                            Report for Balance of wages
+                        </button>
+                    </div>
+
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Date Of Arrival Homeport</mat-label>
+                        <input matInput formControlName="date_of_arrival_homeport"
+                            [matDatepicker]="pickerdate_of_arrival_homeport" />
+                        <mat-datepicker-toggle matSuffix [for]="pickerdate_of_arrival_homeport"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerdate_of_arrival_homeport></mat-datepicker>
+
+                        <mat-error *ngIf="SignOffEditFormGroup.get('date_of_arrival_homeport').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div fxFlex> </div>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Sign-Off Reason</mat-label>
+                        <mat-select formControlName="drpSign_Off_Reason">
+                        </mat-select>
+                        <mat-error *ngIf="SignOffEditFormGroup.get('drpSign_Off_Reason').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div style="margin-top: 123px;" fxFlex>
+                        <span class="maroon-text">Current month Allotment is not finalized</span>
+                    </div>
+
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Sign-Off Port</mat-label>
+                        <mat-select formControlName="drpSign_Off_Port">
+                        </mat-select>
+                        <mat-error *ngIf="SignOffEditFormGroup.get('drpSign_Off_Port').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+                    <div fxFlex>
+
+                    </div>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Expected Date of Rejoining</mat-label>
+                        <input matInput formControlName="expected_date_of_rejoining"
+                            [matDatepicker]="pickerexpected_date_of_rejoining" />
+                        <mat-datepicker-toggle matSuffix
+                            [for]="pickerexpected_date_of_rejoining"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerexpected_date_of_rejoining></mat-datepicker>
+
+                        <mat-error
+                            *ngIf="SignOffEditFormGroup.get('pickerexpected_date_of_rejoining').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div style="margin-top: 123px;" fxFlex>
+                        <span class="text-for-date">Date when this sea-staff is ready to join back a client ship</span>
+                    </div>
+
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Replaced By Seafarer</mat-label>
+                        <mat-select formControlName="drpReplaced_By_Seafarer">
+                        </mat-select>
+                        <mat-error *ngIf="SignOffEditFormGroup.get('drpReplaced_By_Seafarer').hasError('required')">
+                            Required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div fxFlex>
+
+                    </div>
+
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <div class="usd" style="margin-bottom: 10px;" fxFlex>
+                        All amounts are showing in USD
+                    </div>
+
+                    <div fxFlex>
+
+                    </div>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <div fxFlex>
+                        <table class="roundedTable">
+                            <thead>
+                                <tr>
+                                    <th style=" background-color: #1f497d;
+                                   color: #FFF;
+                                   padding: 6px;">Earning</th>
+                                    <th style=" background-color: #1f497d;
+                                   color: #FFF;
+                                   padding: 6px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Opening Balance</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Opening Balance</td>
+                                    <td>5,000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td>-533.33</td>
+                                </tr>
+                                <tr>
+                                    <td>Leave Wages</td>
+                                    <td>-266.67</td>
+                                </tr>
+                                <tr>
+                                    <td>Office Instruction</td>
+                                    <td>0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div fxFlex>
+                        <table class="roundedTable">
+                            <thead>
+                                <tr>
+                                    <th style=" background-color: tomato;
+                                       color: #FFF;
+                                       padding: 6px;">Deduction</th>
+                                    <th style=" background-color: tomato;
+                                       color: #FFF;
+                                       padding: 6px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Opening Balance</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Opening Balance</td>
+                                    <td>5,000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td>-533.33</td>
+                                </tr>
+                                <tr>
+                                    <td>Leave Wages</td>
+                                    <td>-266.67</td>
+                                </tr>
+                                <tr>
+                                    <td>Office Instruction</td>
+                                    <td>0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Balance as of DOA Homeport</mat-label>
+                        <input type="text" formControlName="txtBalance_as_of_DOA_Homeport" matInput />
+                    </mat-form-field>
+
+                    <div style="margin-top: 123px;" fxFlex>
+                        <span class="text-for-recommended">It is recommended to send the Balance Wages as Allotment,and
+                            minimum cash is paid in hand to the staff!</span>
+                    </div>
+
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Leave Pay Accumulated</mat-label>
+                        <input type="text" formControlName="txtLeave_Pay_Accumulated" matInput />
+                    </mat-form-field>
+
+                    <div fxFlex>
+
+                    </div>
+
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Allotment to send</mat-label>
+                        <input type="text" formControlName="txtAllotment_to_send" matInput />
+                    </mat-form-field>
+
+                    <div fxFlex>
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Select Bank Account</mat-label>
+                            <mat-select formControlName="drpSelect_Bank_Account">
+                            </mat-select>
+                            <mat-error *ngIf="SignOffEditFormGroup.get('drpSelect_Bank_Account').hasError('required')">
+                                Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Cash paid in hand at Sign-off</mat-label>
+                        <input type="text" formControlName="txtCash_paid_in_hand_at_Sign-off" matInput />
+                    </mat-form-field>
+
+
+                    <div style="margin-top: 123px;" fxFlex>
+                        <span class="text-for-previous">Previous cash advance paid amount is 10.00
+                            This entered amount will be automatically added to the CASH ADVANCE section</span>
+                    </div>
+
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Round-off Correction</mat-label>
+                        <input type="text" formControlName="txtRound_off_Correction" matInput />
+                    </mat-form-field>
+
+
+                    <div style="margin-top: 123px;" fxFlex>
+                        <span class="text-for-que">What is this?</span>
+                    </div>
+
+
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Balance</mat-label>
+                        <input type="text" formControlName="txtBalance" matInput />
+                    </mat-form-field>
+
+
+                    <div fxFlex>
+
+                    </div>
+
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!SignOffEditFormGroup.valid ? '' : 'save-btn']" [disabled]="!SignOffEditFormGroup.valid">
+        FINALIZE
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

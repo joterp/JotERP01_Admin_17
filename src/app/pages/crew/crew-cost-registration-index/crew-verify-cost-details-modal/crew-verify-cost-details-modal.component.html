@@ -1,0 +1,148 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Add Cost Details
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+
+<mat-dialog-content>
+    <form [formGroup]="newCostDetailsFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Vessel</mat-label>
+                    <mat-select formControlName="drpVessel">
+                        <mat-option value="Alexa">Alexa</mat-option>
+                        <mat-option value="Alexandre">Alexandre</mat-option>
+                        <mat-option value="Bryce">Bryce</mat-option>
+                        <mat-option value="Catalan_Sea">Catalan Sea</mat-option>
+                        <mat-option value="Charley">Charley</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Seafarer</mat-label>
+                    <mat-select formControlName="drpSeafarer">
+                        <mat-option value="No">10016 YANG, Lie Regional - MST</mat-option>
+                        <mat-option value="Yes">10051 KUMAR , Namitt - MST</mat-option>
+                        <mat-option value="No">10156 suwondo, Suwondo - MST</mat-option>
+                        <mat-option value="Yes">10190 WILLS, Kane - MST</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Cost Type</mat-label>
+                    <mat-select formControlName="drpCost_Type">
+                        <mat-option value="Medical">Medical</mat-option>
+                        <mat-option value="PPE">PPE</mat-option>
+                        <mat-option value="Training">Traning</mat-option>
+                        <mat-option value="Travel">Travel</mat-option>
+                        <mat-option value="Visa">Visa</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Cost Date</mat-label>
+                    <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFrom></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Cost Details</mat-label>
+                    <textarea matInput formControlName="txtCost_Details" placeholder="Cost Details"></textarea>
+                </mat-form-field>
+            </div>
+
+
+
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Currency</mat-label>
+                    <mat-select formControlName="drpCurrency">
+                        <mat-option value="No">AED - United Arab Emirates Dirham</mat-option>
+                        <mat-option value="Yes">AFN - Afghanistan Afghani</mat-option>
+                        <mat-option value="No">IDR - Indonesia Rupiah</mat-option>
+                        <mat-option value="Yes">IRR - Iran Rial</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Amount</mat-label>
+                    <input formControlName="txtAmount" matInput placeholder="Search by Amount" type="text" />
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>USD Amount</mat-label>
+                    <input formControlName="txtUSD_Amount" matInput placeholder="Search by USD Amount" type="text" />
+                    <mat-hint align="start" style="color: brown;font-weight: 600;"> 1 USD = 1.0000 USD</mat-hint>
+                </mat-form-field>
+
+            </div>
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row" style="margin-top: 10px;">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Verification Remark</mat-label>
+                    <textarea matInput formControlName="txtVerification_Remark" placeholder="Verification Remark"></textarea>
+                </mat-form-field>
+            </div>
+           
+
+            
+            <div #TABLE>
+                <table [dataSource]="costRegistrationdataSource" mat-table matSort #table class="details-table" style  =" width: 100%;
+                border-radius: 15px;
+                overflow: hidden;    border: 1px solid #e4e4e4;    ">
+
+
+                    <ng-container matColumnDef="Vessel">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header style="color: White;
+                        background-color: #1F497D;">
+                           Attachments
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                            <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                    </ng-container>
+
+                   
+                    
+                    <tr *matHeaderRowDef="costRegistrationvisibleColumns" mat-header-row></tr>
+                    <tr *matRowDef="let row; columns: costRegistrationvisibleColumns"
+                        class="clickable route-animations-elements" mat-row></tr>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;margin-top: 20px;">
+
+    <button mat-raised-button color="primary" >
+      Verify
+    </button>
+    
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+</mat-dialog-actions>

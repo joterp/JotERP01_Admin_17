@@ -1,0 +1,692 @@
+<div mat-dialog-title><span>
+  <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+  margin-bottom: -4px;"/>
+</span>{{modeltitle}}</div>
+
+<!-- <div mat-dialog-title>Add Contact Detail</div> -->
+<div *ngIf="showAddContact && !showBankDetail && !showAssignScope && !showSupplierFeedback && !showAddEvaluation">
+  <mat-dialog-content style="height: 100% !important" class="edit-planner">
+    <form [formGroup]="ContactFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Name</mat-label>
+          <input type="text" formControlName="txtName" matInput />
+          <mat-error *ngIf="ContactFormGroup.get('txtName').hasError('required')">
+            Name is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Department</mat-label>
+          <input type="text" formControlName="txtDepartment" matInput />
+          <mat-error *ngIf="ContactFormGroup.get('txtDepartment').hasError('required')">
+            Department is required
+          </mat-error>
+        </mat-form-field>
+
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Address</mat-label>
+          <textarea matInput formControlName="txtAddress"></textarea>
+        </mat-form-field>
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Country</mat-label>
+          <mat-select formControlName="drpCountry">
+            <!-- <mat-option>
+            <ngx-mat-select-search
+              formControlName="port_Filter"
+              [placeholderLabel]="'search...'"
+              [noEntriesFoundLabel]="'no matching found!'"
+            >
+            </ngx-mat-select-search>
+          </mat-option> -->
+
+            <!-- <mat-option
+            *ngFor="let b of filtered_port | async"
+            [value]="b.PORT_GUID"
+          >
+            {{ b.Port_Name }}
+          </mat-option> -->
+          </mat-select>
+          <mat-error *ngIf="ContactFormGroup.get('drpCountry').hasError('required')">
+            Country is required
+          </mat-error>
+        </mat-form-field>
+
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>City</mat-label>
+          <mat-select formControlName="txtCity">
+            <!-- <mat-option>
+            <ngx-mat-select-search
+              formControlName="vessel_Filter"
+              [placeholderLabel]="'search...'"
+              [noEntriesFoundLabel]="'no matching found!'"
+            >
+            </ngx-mat-select-search>
+          </mat-option> -->
+
+            <!-- <mat-option
+            *ngFor="let b of filtered_vessel | async"
+            [value]="b.VESSEL_GUID"
+          >
+            {{ b.VESSEL_NAME }}
+          </mat-option> -->
+          </mat-select>
+          <mat-error *ngIf="ContactFormGroup.get('txtCity').hasError('required')">
+            City is required</mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Pin Code</mat-label>
+          <input matInput formControlName="txtPincode" readonly />
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Mobile</mat-label>
+          <input type="text" formControlName="txtMobile" matInput />
+          <mat-error *ngIf="ContactFormGroup.get('txtMobile').hasError('required')">
+            Mobile is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input type="text" formControlName="txtMobile" matInput />
+          <mat-error *ngIf="ContactFormGroup.get('txtMobile').hasError('required')">
+            Phone is required
+          </mat-error>
+        </mat-form-field>
+
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Email(Individual)</mat-label>
+          <input type="text" formControlName="txtEmail_Individual" matInput />
+          <mat-error *ngIf="ContactFormGroup.get('txtEmail_Individual').hasError('required')">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Email(Department)</mat-label>
+          <input type="text" formControlName="txtEmail_Department" matInput />
+          <mat-error *ngIf="ContactFormGroup.get('txtEmail_Department').hasError('required')">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Email for RFQ</mat-label>
+          <input type="text" formControlName="txtEmail_for_RFQ" matInput />
+          <mat-error *ngIf="ContactFormGroup.get('txtEmail_for_RFQ').hasError('required')">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>EmaiL for Invoices</mat-label>
+          <input type="text" formControlName="txtEmail_for_Invoices" matInput />
+          <mat-error *ngIf="ContactFormGroup.get('txtEmail_for_Invoices').hasError('required')">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Remarks</mat-label>
+          <textarea matInput formControlName="txtRemarks" placeholder="Remarks"></textarea>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!ContactFormGroup.valid ? '' : 'save-btn']"
+      [disabled]="!ContactFormGroup.valid">
+      SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!ContactFormGroup.valid">
+      SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+</div>
+
+
+<div *ngIf="showBankDetail && !showAddContact && !showAssignScope && !showSupplierFeedback && !showAddEvaluation">
+  <mat-dialog-content style="height: 100% !important" class="edit-planner">
+    <form [formGroup]="BankDetailFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Bank Name</mat-label>
+          <input type="text" formControlName="txtBank_Name" matInput />
+          <mat-error *ngIf="BankDetailFormGroup.get('txtBank_Name').hasError('required')">
+            Bank Name is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Beneficiary Name</mat-label>
+          <input type="text" formControlName="txtBenefiary_Name" matInput />
+          <mat-error *ngIf="BankDetailFormGroup.get('txtBenefiary_Name').hasError('required')">
+            Beneficiary Name is required
+          </mat-error>
+        </mat-form-field>
+
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Account Number</mat-label>
+          <input type="text" formControlName="txtAccount_Number" matInput />
+          <mat-error *ngIf="BankDetailFormGroup.get('txtAccount_Number').hasError('required')">
+            Account Number is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Currency</mat-label>
+          <mat-select formControlName="drpCurrency">
+
+          </mat-select>
+          <mat-error *ngIf="BankDetailFormGroup.get('drpCurrency').hasError('required')">Currency is
+            required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Bank Address</mat-label>
+          <textarea matInput formControlName="txtBank_Address"></textarea>
+          <mat-error *ngIf="BankDetailFormGroup.get('txtAccount_Number').hasError('required')">
+            Bank Address is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Bank Code</mat-label>
+          <input type="text" formControlName="txtBank_Code" matInput />
+          <mat-error *ngIf="BankDetailFormGroup.get('txtBank_Code').hasError('required')">
+            Bank Code is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Branch Code</mat-label>
+          <input type="text" formControlName="txtBranch_Code" matInput />
+          <mat-error *ngIf="BankDetailFormGroup.get('txtBranch_Code').hasError('required')">
+            Branch Code is required
+          </mat-error>
+        </mat-form-field>
+
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>SWIFT Code</mat-label>
+          <input type="text" formControlName="txtSWIFT_Code" matInput />
+          <mat-error *ngIf="BankDetailFormGroup.get('txtSWIFT_Code').hasError('required')">
+            SWIFT Code is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>IBAN Code</mat-label>
+          <input type="text" formControlName="txtIBAN_Code" matInput />
+
+        </mat-form-field>
+
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Contact</mat-label>
+          <input type="text" formControlName="txtContact" matInput />
+          <mat-error *ngIf="BankDetailFormGroup.get('txtContact').hasError('required')">
+            Contact Number is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>IFSC Code</mat-label>
+          <input type="text" formControlName="txtIFSC_Code" matInput />
+          <mat-error *ngIf="BankDetailFormGroup.get('txtIFSC_Code').hasError('required')">
+            IFSC Code is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Intermediary Bank Detail</mat-label>
+          <textarea matInput formControlName="txtInter_Bank_Detail"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+      [ngClass]="[!BankDetailFormGroup.valid ? '' : 'save-btn']" [disabled]="!BankDetailFormGroup.valid">
+      SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!BankDetailFormGroup.valid">
+      SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+</div>
+
+<div *ngIf="showAssignScope && !showAddContact && !showBankDetail && !showSupplierFeedback && !showAddEvaluation">
+  <mat-dialog-content style="height: 100% !important" class="edit-planner">
+    <form [formGroup]="AssignScopeFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+
+      <div fxLayout="row" fxLayoutAlign="space-between start">
+
+        <div fxFlex="48">
+          <div >
+
+            <mat-form-field appearance="fill">
+              <mat-label>Port</mat-label>
+              <input type="text" formControlName="txtPort" matInput />
+            
+            </mat-form-field>
+            </div>
+          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="border: 1px solid #ccc;height: 400px;
+             overflow-x: hidden;">
+
+            <!-- <mat-icon>search</mat-icon>
+
+                    <input
+                      type="text"
+                      [(ngModel)]="searchString"
+                      placeholder="Search by name or country"
+                    /> -->
+
+            <div class="col-md-12 align-items-center">
+              <ul class="list-group">
+                <li class="list-group-item" >
+                  <input type="checkbox" value="" />
+                  Barentsburg 
+
+                </li>
+                <li class="list-group-item" >
+                  <input type="checkbox" value="" />
+                  Coles Bay Oil Termin
+
+                </li>
+                <li class="list-group-item" >
+                  <input type="checkbox" value="" />
+                  Flying Fish Cove
+                </li>
+                <li class="list-group-item">
+                  <input type="checkbox" value="" />
+                  Goto Oil Terminal
+
+                </li>
+           
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div fxFlex="48">
+         
+          <div >
+
+            <mat-form-field appearance="fill">
+              <mat-label>Scope</mat-label>
+              <input type="text" formControlName="txtScope" matInput />
+            
+            </mat-form-field>
+            </div>
+          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="border: 1px solid #ccc;height: 400px;
+          overflow-x: hidden;">
+
+            <!-- <mat-icon>search</mat-icon>
+
+                    <input
+                      type="text"
+                      [(ngModel)]="searchString"
+                      placeholder="Search by name or country"
+                    /> -->
+
+            <div class="col-md-12 align-items-center">
+              <ul class="list-group">
+                <li class="list-group-item" >
+                  <input type="checkbox" value="" />
+                  Barentsburg
+
+                </li>
+                <li class="list-group-item" >
+                  <input type="checkbox" value="" />
+                  Coles Bay Oil Termin
+
+                </li>
+                <li class="list-group-item" >
+                  <input type="checkbox" value="" />
+                  Flying Fish Cove
+                </li>
+                <li class="list-group-item">
+                  <input type="checkbox" value="" />
+                  Goto Oil Terminal
+
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+      [ngClass]="[!AssignScopeFormGroup.valid ? '' : 'save-btn']" [disabled]="!AssignScopeFormGroup.valid">
+      SAVE
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+</div>
+
+<div *ngIf="showAddEvaluation && !showAddContact && !showBankDetail && !showSupplierFeedback && !showAssignScope">
+  <mat-dialog-content style="height: 100% !important" class="edit-planner">
+    <form [formGroup]="EvaluationDetailsFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label class="left-label">Evaluation Date</mat-label>
+
+          <input type="text" class="right-text" formControlName="evaluation_date" matInput />
+
+          <mat-error *ngIf="EvaluationDetailsFormGroup.get('evaluation_date').hasError('required')">Evaluation Date is
+            required</mat-error>
+        </mat-form-field>
+
+
+
+
+        <mat-form-field appearance="fill">
+          <mat-label>Evaluation Remark</mat-label>
+          <textarea matInput formControlName="txtEvaluation_Remark"></textarea>
+          <mat-error *ngIf="EvaluationDetailsFormGroup.get('txtEvaluation_Remark').hasError('required')">Evaluation
+            Remark is required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div #TABLE class="example-container mat-elevation-z8">
+        <table mat-table [dataSource]="EvaluationDetailsPopupdataSource" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="Weightage">
+            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;"> Weightage </th>
+
+          </ng-container>
+
+          <ng-container matColumnDef="Marks">
+            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;"> Marks (1- Lowest, 10- Highest)</th>
+
+          </ng-container>
+
+          <ng-container matColumnDef="header-row-first-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+              #
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-second-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+              Question Title
+            </th>
+          </ng-container>
+
+          <ng-container matColumnDef="header-row-third-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-fourth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+              Score
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-fifth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+              Min
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-sixth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+              Total
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-seventh-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          text-align: center;">
+              Remarks
+            </th>
+          </ng-container>
+
+
+
+
+          <tr mat-header-row
+            *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group','header-row-fifth-group','header-row-sixth-group','header-row-seventh-group']"
+            style="height:32px">
+          </tr>
+          <tr mat-header-row *matHeaderRowDef="visibleColumnsevaluationdetailspopup;sticky:true" style="height:32px">
+          </tr>
+          <tr mat-row *matRowDef="let row; columns: visibleColumnsevaluationdetailspopup;"></tr>
+        </table>
+
+      </div>
+
+    </form>
+  </mat-dialog-content>
+
+
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-evenly center" style="margin-top: 21px;">
+    <div class="col-6">
+
+
+      <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!EvaluationDetailsFormGroup.valid ? '' : 'save-btn']"
+        [disabled]="!EvaluationDetailsFormGroup.valid">
+        Save & Close
+      </button>
+
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </div>
+
+    <div class="col-6">
+      <table style="width: 159%;
+               background-color: yellow;
+           ">
+        <tr>
+          <td class="evaluation-table">Minimum Overall Marks </td>
+          <td>:</td>
+          <td>145</td>
+        </tr>
+        <tr>
+          <td class="evaluation-table">Minimum Marks </td>
+          <td>:</td>
+          <td>220</td>
+        </tr>
+        <tr>
+          <td class="evaluation-table">Total Marks Scored</td>
+          <td>:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="evaluation-table">Total Marks Scored %</td>
+          <td>:</td>
+          <td></td>
+        </tr>
+      </table>
+
+    </div>
+  </mat-dialog-actions>
+</div>
+
+
+<div *ngIf="showSupplierFeedback && !showAddContact && !showAssignScope && !showBankDetail && !showAddEvaluation">
+  <mat-dialog-content style="height: 100% !important" class="edit-planner">
+    <form [formGroup]="FeedbackFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Catagory</mat-label>
+          <mat-select formControlName="drpCategory">
+
+          </mat-select>
+          <mat-error *ngIf="FeedbackFormGroup.get('drpCategory').hasError('required')">Catagory is required</mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Feedback/Remark</mat-label>
+          <textarea matInput formControlName="txtFeedback"></textarea>
+
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <!-- Use a button to create a custom file upload button -->
+
+        <mat-label>Attach Files</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <!-- <button
+            mat-button
+            class="custom-file-upload-btn"
+            (click)="fileInput.click()"
+            >
+    
+            <input
+            style="display: none;"
+            type="file" id="imageupload"
+            #fileInput
+            (change)="onFileSelected($event)"
+            accept=".pdf,.doc,.docx,.jpg,.png"
+            />
+            </button> -->
+
+        <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+          accept=".pdf,.doc,.docx,.jpg,.png" />
+
+        <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+          <label for="imageupload">
+            Browse </label>
+        </button>
+        <div *ngIf="selectedFileName" fxFlex>
+          <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+          <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+        </div>
+
+        <!-- File input element, hidden from view -->
+      </div>
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!FeedbackFormGroup.valid ? '' : 'save-btn']"
+      [disabled]="!FeedbackFormGroup.valid">
+      SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!FeedbackFormGroup.valid">
+      SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+
+
+  <div #TABLE style="margin-top: 30px;">
+    <table [dataSource]="FeedbackPopupdataSource" mat-table matSort #table class="details-table">
+      <ng-container matColumnDef="File_Name">
+        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+          mat-sort-header>
+          File Name
+        </th>
+        <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                </td> -->
+      </ng-container>
+
+      <ng-container matColumnDef="Uploaded_By">
+        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Uploaded By
+        </th>
+        <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+      </ng-container>
+      <ng-container matColumnDef="Uploaded_On">
+        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Uploaded On
+        </th>
+        <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                  </td> -->
+      </ng-container>
+
+      <tr *matHeaderRowDef="visibleColumnsFeedbackPopup" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: visibleColumnsFeedbackPopup" class="clickable route-animations-elements"
+        mat-row></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="9999">No data found</td>
+      </tr>
+    </table>
+  </div>
+
+  <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+</div>

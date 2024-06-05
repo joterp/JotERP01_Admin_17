@@ -1,0 +1,260 @@
+<fury-page-layout mode="card" class="contractmodule-view">
+
+  <!-- search header for PURC_Catalogue -->
+  <fury-page-layout-header>
+
+    <form [formGroup]="PurchaseContractFilterForm">
+      <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+      <h3>
+
+        <span class="first-letter">P</span>URCHASE
+        <span class="first-letter">C</span>ONTRACT
+
+      </h3>
+      <div class="filter-area">
+
+        <div fxLayout="row" fxLayoutAlign="start">
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Supplier</mat-label>
+              <mat-select formControlName="drpSupplier">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Port</mat-label>
+              <mat-select formControlName="drpPort">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Valid From</mat-label>
+              <input matInput formControlName="valid_from" [matDatepicker]="pickervalidfrom" />
+              <mat-datepicker-toggle matSuffix [for]="pickervalidfrom"></mat-datepicker-toggle>
+              <mat-datepicker #pickervalidfrom></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>To</mat-label>
+              <input matInput formControlName="valid_from_to" [matDatepicker]="pickervalidfromto" />
+              <mat-datepicker-toggle matSuffix [for]="pickervalidfromto"></mat-datepicker-toggle>
+              <mat-datepicker #pickervalidfromto></mat-datepicker>
+            </mat-form-field>
+
+          </div>
+
+          <div fxFlex>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Supplier Ref No</mat-label>
+              <input matInput formControlName="txtSupplier_Ref_No" />
+            </mat-form-field>
+
+            <div style="display: flex;margin: 10px;">
+              <mat-label>Approved?</mat-label>
+              <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioApproved" style="margin-top: 0px;
+                                margin-left: 20px;">
+                <mat-radio-button value="2" [checked]="PurchaseContractFilterForm.get('radioApproved').value == 2">
+                  <label [class.active-label]="PurchaseContractFilterForm.get('radioApproved').value == 2"
+                    style="font-family: tahoma;">All</label>
+                </mat-radio-button>
+                <mat-radio-button value="1" [checked]="PurchaseContractFilterForm.get('radioApproved').value == 1">
+                  <label [class.active-label]="PurchaseContractFilterForm.get('radioApproved').value == 1"
+                    style="font-family: tahoma;">Yes</label>
+                </mat-radio-button>
+                <mat-radio-button value="0" [checked]="PurchaseContractFilterForm.get('radioApproved').value == 0">
+                  <label [class.active-label]="PurchaseContractFilterForm.get('radioApproved').value == 0"
+                    style="font-family: tahoma;">No</label>
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+          </div>
+
+          <div class="filter-btn-area" fxFlex>
+            <div>
+              <button class="create" mat-raised-button color="primary" class="filter-btn">
+                Search
+              </button>
+            </div>
+
+            <div>
+              <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                Clear
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+  </fury-page-layout-header>
+
+
+
+  <fury-page-layout-content [@fadeInUp]>
+    <div class="actions-area">
+      <table style="display: flex;">
+        <tr>
+          <td>
+            <div fxLayout="row">
+              <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-approve-btn save-btn"
+                (click)="gotoPURC_ContractDetails('PURC_Contract_Module_Details')">
+                <mat-icon class="add-approve-btn-icon">add</mat-icon>
+              </button>
+              <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;">Add Contract</span>
+            </div>
+          </td>
+        </tr>
+
+
+      </table>
+
+
+      <div>
+        <span style="cursor: pointer">
+          <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+          <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+          <!-- <img
+                src="../../../../assets/img/XML1.png"
+                class="logo"
+                alt="excel"
+              /> -->
+        </span>
+      </div>
+      <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+    </div>
+
+    <div #TABLE>
+      <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+        <ng-container matColumnDef="Supplier">
+          <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+            mat-sort-header>
+            Supplier
+          </th>
+          <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                </td> -->
+        </ng-container>
+
+        <ng-container matColumnDef="Port">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Port
+          </th>
+          <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Item_Count">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Item Count
+          </th>
+          <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                  </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Supplier_Ref_No">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Supplier Ref No
+          </th>
+          <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Valid_From">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Valid From
+          </th>
+          <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Vaid_To">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Vaid To
+          </th>
+          <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Pending_With">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Pending With
+          </th>
+          <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Approved">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Approved?
+          </th>
+          <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                  </td> -->
+        </ng-container>
+
+        <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9999">No data found</td>
+        </tr>
+      </table>
+    </div>
+
+    <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+  </fury-page-layout-content>
+
+</fury-page-layout>

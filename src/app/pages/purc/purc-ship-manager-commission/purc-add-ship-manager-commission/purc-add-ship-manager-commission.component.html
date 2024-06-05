@@ -1,0 +1,172 @@
+<div mat-dialog-title><span>
+    <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+    margin-bottom: -4px;"/>
+  </span>Add Ship Manager Commission</div>
+
+
+  <mat-dialog-content style="height: 100% !important" class="edit-planner">
+    <form [formGroup]="ShipManagerFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-bottom: 8px;">
+            <div fxFlex>
+              <mat-label>Supplier: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CAMP</mat-label>
+            </div>
+    
+          </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label>Account Code</mat-label>
+          <mat-select formControlName="drpAccount_Code">
+
+          </mat-select>
+        </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex appearance="fill">
+            <mat-label class="left-label">Commission Rate</mat-label>
+           
+              <input
+                type="text"
+                class="right-text"
+                formControlName="txtCommission_Rate"
+                placeholder="%"
+                matInput
+              />
+           
+            <mat-error
+              *ngIf="ShipManagerFormGroup.get('txtCommission_Rate').hasError('required')"
+              >Required</mat-error
+            >
+          </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Implementation Date</mat-label>
+            <input
+              matInput
+              formControlName="Implementation_Date"
+              [matDatepicker]="pickerimpdate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="pickerimpdate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerimpdate></mat-datepicker>
+            <mat-error
+            *ngIf="ShipManagerFormGroup.get('Implementation_Date').hasError('required')"
+            >Required</mat-error
+          >
+          </mat-form-field>
+
+      </div>
+      
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!ShipManagerFormGroup.valid ? '' : 'save-btn']"
+      [disabled]="!ShipManagerFormGroup.valid">
+      SAVE & CLOSE
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+
+  <div #TABLE style="margin-top: 30px;">
+    <table [dataSource]="FeedbackPopupdataSource" mat-table matSort #table class="details-table">
+
+        <ng-container matColumnDef="Acct_Code">
+            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+              mat-sort-header>
+              Acct Code
+            </th>
+            <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      [ngStyle]="{ 'white-space': 'initial' }"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                    </td> -->
+          </ng-container>
+
+
+      <ng-container matColumnDef="Acct_Code">
+        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+          mat-sort-header>
+          Acct Code
+        </th>
+        <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  [ngStyle]="{ 'white-space': 'initial' }"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                </td> -->
+      </ng-container>
+
+      <ng-container matColumnDef="Commision_Rate">
+        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Commision_Rate (%)
+        </th>
+        <!-- <td
+                  *matCellDef="let row; let i = index"
+                  class="actions-cell"
+                  mat-cell
+                >
+                  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                </td> -->
+      </ng-container>
+      <ng-container matColumnDef="Implentation_Date">
+        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Implentation Date
+        </th>
+        <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                  </td> -->
+      </ng-container>
+      <ng-container matColumnDef="Created_By">
+        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Created By
+        </th>
+        <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                  </td> -->
+      </ng-container>
+      <ng-container matColumnDef="Created_On">
+        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Created On
+        </th>
+        <!-- <td
+                    *matCellDef="let row; let i = index"
+                    class="actions-cell"
+                    mat-cell
+                  >
+                    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                  </td> -->
+      </ng-container>
+
+      <tr *matHeaderRowDef="visibleColumnsFeedbackPopup" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: visibleColumnsFeedbackPopup" class="clickable route-animations-elements"
+        mat-row></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="9999">No data found</td>
+      </tr>
+    </table>
+  </div>
+
+  <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+ 
+
+  

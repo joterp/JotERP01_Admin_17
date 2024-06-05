@@ -1,0 +1,145 @@
+@import url('https://cdn.quilljs.com/1.2.6/quill.snow.css');
+
+.email-vendor {
+
+  .left-label {
+    width: 20%;
+    margin-top: 15px;
+  }
+
+  .mat-form-field-flex {
+    align-items: flex-start !important;
+  }
+
+  .mat-form-field-infix {
+    border-top: 0.84375em solid transparent;
+  }
+}
+
+.attach-file {
+  display: flex;
+}
+
+.list-group {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  // overflow: scroll;
+  white-space: normal;
+  float: left;
+  width: 100%;
+
+  word-wrap: break-word;
+  border: 1px solid #ccc;
+  overflow: scroll;
+  height: 700px;
+
+}
+
+.list-group-item {
+  cursor: default;
+  padding: 4px 5px;
+  white-space: normal;
+  float: left;
+  width: 97%;
+  height: auto;
+  word-wrap: break-word;
+}
+
+.list-group-item:hover {
+  background-color: #bbeaf3;
+
+}
+
+.add-sp-btn {
+  height: 24px;
+  width: 24px;
+
+  align-items: center;
+  display: flex;
+}
+
+.upload-btn {
+  width: 113px;
+  height: 29px;
+  background: #008000;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.upload-btn1 {
+  width: 113px;
+  height: 29px;
+  background-color: #919191;
+  color: #fff;
+  // border: 1px solid #505050;
+  border-radius: 4px;
+}
+
+.Attachment {
+  // border: 1px solid gray;                           /// new added for attachment button
+  height: 65px;
+  text-align: center;
+  background-color: #F7F7F7;
+  padding-top: 20px;
+  padding-left: 15px;
+  // margin-bottom: 10px;
+}
+
+.checkbox-table{
+  height: 790px;
+  border: 1px solid grey;
+  overflow: scroll;
+  background: #fff;
+}
+
+.usermenu {
+
+
+  margin: 10px;
+}
+
+.dialog-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-model {
+  cursor: pointer;
+}
+
+.emailsendbtn {
+  // border: 1px solid grey;
+  padding: 10px;
+  margin-bottom: 10px;
+  // background-color: #D1E9D2;
+}
+
+.sendbutton {
+  height: 57px;
+  width: 63px;
+  color: #fff;
+  background-color: green;
+  border: 1px solid;
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+}
+
+
+.add-sp-btn {
+  height: 24px;
+  width: 24px;
+  align-items: center;
+  display: flex;
+}
+
+.add-sp-btn-icon {
+  font-size: 24px;
+  align-self: center;
+  margin-top: -1px;
+}

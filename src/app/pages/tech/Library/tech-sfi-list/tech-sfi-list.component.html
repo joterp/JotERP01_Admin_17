@@ -1,0 +1,158 @@
+
+       <h3 class="unit-packing" style="color: #20435E;
+       text-align: center;
+       font-size: x-large;margin-top: 100px;">
+        <span class="first-letter">SFI</span>
+        <span class="first-letter"> L</span>IST
+    
+      </h3>
+      <table style="width: 100%;">
+        <tbody>
+          <!-- Existing table rows go here -->
+      
+          <!-- Add the new row here -->
+          <tr style="height: 50px;">
+            <td style="text-align:right;padding-bottom: 19px;">Search SFI Code/Name</td>
+            <td>
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-form-field fxFlex="45">
+                    <input matInput placeholder="Search here" formControlName="search"
+                        >
+                    <button mat-icon-button matSuffix><mat-icon style="padding-top: 7px;">search</mat-icon></button>
+                </mat-form-field>
+                <td style="padding-bottom: 45px;">
+                  <img src="../../../../assets/img/ClearFilters.png"  alt="excel" />
+                </td>
+                <td style="    padding-left: 44px;
+                padding-bottom: 21px;">
+                  <span >
+                    <img src="../../../../assets/img/Expand-Folder.png" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/Collapse-Folder.png" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" /> <br>
+                    <a (click)="toggleTable()">
+                      {{ showGrid ? 'Hide Grid' : 'Show Grid' }}
+                    </a>
+                  </span>
+                </td>
+                
+            </div>
+            </td>
+            
+            
+          </tr>
+      
+          <!-- Continue with other existing rows if needed -->
+        </tbody>
+      </table>
+      
+
+      <!-- SFI Tree List -->
+      <div fxLayout="row"  style="margin-left: 328px;" >
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node *matTreeNodeDef="let node; let i=index;" matTreeNodeToggle matTreeNodePadding>
+          <button mat-icon-button disabled></button>
+          <span class="checklist-leaf-node"
+                        [checked]="checklistSelection.isSelected(node)"
+                        (change)="todoLeafItemSelectionToggle(node)">{{i}} - {{node.item}}</span>
+        </mat-tree-node>
+      
+      
+        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'Toggle ' + node.item">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'indeterminate_check_box' : 'add'}}
+            </mat-icon>
+          </button>
+          <span 
+         [checked]="descendantsAllSelected(node)" 
+                        [indeterminate]="descendantsPartiallySelected(node)"
+                        (change)="todoItemSelectionToggle(node)">{{node.item}}</span>
+     
+        </mat-tree-node>
+      </mat-tree>
+    </div>
+
+
+
+<!-- QR Code Table -->
+
+    <div #TABLE  *ngIf="showGrid" style="width: 70%; margin: 190px;">
+      <div class="actions-area" style="padding: 0px;" >
+        <div>
+         <span class="create" >
+           
+            <p style="color: red;margin-left: 140px;">You can export one page/500 Items in one Go!</p>
+          </span>
+        </div>
+        <div style="margin: 15px;">
+            <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+          <span>
+           
+            <img src="../../../../assets/img/pdf.png"  alt="excel" />
+           
+          </span>
+        </div>
+             
+      </div>
+      <table [dataSource]="locationdataSource" mat-table matSort #table class="tableDetails">
+        <ng-container matColumnDef="Description">
+          <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+            mat-sort-header>
+        Description
+          </th>
+          <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+            mat-cell>
+            <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+          </td>
+        </ng-container>
+
+     
+       
+
+
+
+      
+        <ng-container matColumnDef="QR_Code">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          QR Code
+          </th>
+          <td *matCellDef="let row" class="actions-cell" mat-cell>
+            <!-- -->
+            <button mat-icon-button color="primary">
+              <mat-icon class="icon-display">edit</mat-icon>
+            </button>
+
+            <button mat-icon-button color="warn" >
+              <mat-icon>close</mat-icon>
+            </button>
+            <button mat-icon-button  >
+              <mat-icon class="icon-display">info</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9999">No data found</td>
+        </tr>
+       
+      </table>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+    </div>
+
+   
+
+
+
+
+
+  
+      
+  
+  
+    
+  
+  
+  

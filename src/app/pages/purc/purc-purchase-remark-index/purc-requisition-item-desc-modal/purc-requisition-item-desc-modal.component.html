@@ -1,0 +1,250 @@
+<div class="dialog-title" style="margin-top: -23px;
+">
+    <span class="item-title">
+        <!-- <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+        Requisition -->
+
+        Item: Bottle
+    </span>
+
+    <button type="button" mat-icon-button (click)="CloseModal()">
+        <mat-icon>close</mat-icon>
+    </button>   
+</div>
+
+<mat-card style="box-shadow: 0px 2px 15px 2px rgb(0 0 0 / 32%), 0px 1px 1px 0px rgb(0 0 0 / 30%), 0px 1px 3px 0px rgb(0 0 0 / 4%) !important;">
+          
+    <mat-tab-group (animationDone)="check()" animationDuration="0ms" >
+        <mat-tab label="Item Image">
+            <!-- <div style="padding:25px 77px 25px 77px;">
+           
+        </div> -->
+
+          </mat-tab>
+
+        <mat-tab label="Item Spec">
+            <!-- <cdk-virtual-scroll-viewport tvsItemSize headerHeight="56" rowHeight="48" style="height: 400px;"> -->
+    
+        
+
+    
+            <!-- </cdk-virtual-scroll-viewport> -->
+        </mat-tab>
+        <mat-tab label="Item History">
+ 
+            <table width="100%" style="padding: 2px;">
+                <tbody>
+                    <tr class="tr1">
+                        <td class="td1" >Item</td>
+                        <td class="td2">:</td>
+                        <td class="td3" colspan="6">new item at PO</td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="td1">Catalogue</td>
+                        <td class="td2">:</td>
+                        <td class="td3">test lube oil</td>
+                        <td>&nbsp;</td>
+                        <td class="td1">Serial Number</td>
+                        <td class="td2">:</td>
+                        <td class="td3">23</td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="td1">Model</td>
+                        <td class="td2">:</td>
+                        <td class="td3">model11</td>
+                        <td>&nbsp;</td>
+                        <td class="td1">Maker</td>
+                        <td class="td2">:</td>
+                        <td class="td3">eNix Marine Spares</td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="td1">Item Details</td>
+                        <td class="td2">:</td>
+                        <td class="td3" colspan="5">Sometimes users new item at PO</td>
+                    </tr>
+
+                    
+                   
+                </tbody>
+            </table>
+            <table class="tbl-head">
+            <tr>
+                        <td colspan="7">
+                            <b style="font-size: 13.4px;">Item History from Same Vessel</b>
+                        </td>
+                    </tr>
+            </table>
+
+            <div #TABLE style="margin-top: 20px;margin-top: 20px;padding: 0px 6px 0px 6px;">
+                <div >
+                <table
+                  [dataSource]="ItemDescdataSource"
+                  mat-table
+                  matSort
+                  #table
+                  class="details-table"
+                  
+                >
+                  <ng-container matColumnDef="Inventory_Date">
+                    <th
+                      *matHeaderCellDef
+                      class="actions-cell"
+                      [ngStyle]="{ 'white-space': 'initial' }"
+                      mat-header-cell
+                      mat-sort-header
+                    >
+                    Inventory Date
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      [ngStyle]="{ 'white-space': 'initial' }"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                    </td> -->
+                  </ng-container>
+          
+                  <ng-container matColumnDef="Inventory">
+                    <th
+                      *matHeaderCellDef
+                      class="actions-cell"
+                      mat-header-cell
+                      mat-sort-header
+                    >
+                    Inventory
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                    </td> -->
+                  </ng-container>
+                  <ng-container matColumnDef="ROB_Qty">
+                      <th
+                        *matHeaderCellDef
+                        class="actions-cell"
+                        mat-header-cell
+                        mat-sort-header
+                      >
+                      ROB Qty
+                      </th>
+                      <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                      </td> -->
+                    </ng-container>
+                  <ng-container matColumnDef="PO#">
+                    <th
+                      *matHeaderCellDef
+                      class="actions-cell"
+                      mat-header-cell
+                      mat-sort-header
+                    >
+                    PO #
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                    </td> -->
+                  </ng-container>
+                  <ng-container matColumnDef="Req_Qty">
+                      <th
+                        *matHeaderCellDef
+                        class="actions-cell"
+                        mat-header-cell
+                        mat-sort-header
+                      >
+                      Req Qty
+                      </th>
+                      <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                    </ng-container>  
+                    <ng-container matColumnDef="Unit_Price">
+                      <th
+                        *matHeaderCellDef
+                        class="actions-cell"
+                        mat-header-cell
+                        mat-sort-header
+                      >
+                      Unit Price
+                     </th>
+                      <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                    </ng-container>    
+                    <ng-container matColumnDef="Order_Date">
+                      <th
+                        *matHeaderCellDef
+                        class="actions-cell"
+                        mat-header-cell
+                        mat-sort-header
+                      >
+                      Order_Date
+                      </th>
+                      <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                    </ng-container>    
+                    <ng-container matColumnDef="Delivered_At">
+                      <th
+                        *matHeaderCellDef
+                        class="actions-cell"
+                        mat-header-cell
+                        mat-sort-header
+                      >
+                      Delivered At
+                      </th>
+                      <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                    </ng-container>    
+               
+                  <tr *matHeaderRowDef="visibleColumnsitemdesc" mat-header-row></tr>
+                  <tr
+                    *matRowDef="let row; columns: visibleColumnsitemdesc"
+                    class="clickable route-animations-elements"
+                    mat-row
+                  ></tr>
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                  </tr>
+                </table>
+            </div>
+              </div>
+
+        </mat-tab>
+        <mat-tab label="Contract Pricing">
+          
+        </mat-tab>
+      
+    </mat-tab-group>
+
+</mat-card>
+

@@ -1,0 +1,39 @@
+.mat-dialog-title {
+    background-color: black;
+
+}
+
+.logo {
+    width: 20px;
+    height: 20px;
+}
+.close-model {
+    cursor: pointer;
+}
+
+.dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+    .left-label {
+        width: 20%;
+        margin-top: 15px;
+    }
+
+    .mat-form-field-flex {
+        align-items: flex-start !important;
+    }
+
+    .mat-form-field-infix {
+        border-top: 0.84375em solid transparent;
+    }
+
+
+.tabledata {
+    margin-left: 2px;
+
+}

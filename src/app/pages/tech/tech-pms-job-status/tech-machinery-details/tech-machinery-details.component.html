@@ -1,0 +1,60 @@
+<div div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center" class="dialog-title">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+        Machinery Particulars
+    </span>
+    <button type="button" mat-icon-button (click)="CloseModal();">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<div>
+    <div class="pmsupdaterunning-view" style="text-align: center;">
+
+        <div>
+            <table style="text-align: center;width: 100%;margin-bottom: 20px;
+             margin-top: 20px;">
+                <tr>
+                    <td>Vessel Name</td>
+                    <td>&nbsp;</td>
+                    <td style="text-align: start;">Stena A</td>
+                </tr>
+                <tr>
+                    <td>Catalogue</td>
+                    <td>&nbsp;</td>
+                    <td style="text-align: start;">A.E Fuel Oil Bypass Filter</td>
+                </tr>
+                <tr>
+                    <td>Model</td>
+                    <td>&nbsp;</td>
+                    <td style="text-align: start;"></td>
+                </tr>
+                <tr>
+                    <td>Maker Name</td>
+                    <td>&nbsp;</td>
+                    <td style="text-align: start;"></td>
+                </tr>
+                <tr>
+                    <td>Particulars</td>
+                    <td>&nbsp;</td>
+                    <td style="text-align: start;"></td>
+                </tr>
+                <tr>
+                    <td>Sets Installed</td>
+                    <td>&nbsp;</td>
+                    <td style="text-align: start;">0</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" style="margin-top: 12px;">
+
+            <button mat-raised-button color="warn" class="save-btn1" style="margin-left: 10px" (click)="CloseModal()">
+                Close
+            </button>
+        </mat-dialog-actions>
+
+    </div>
+</div>

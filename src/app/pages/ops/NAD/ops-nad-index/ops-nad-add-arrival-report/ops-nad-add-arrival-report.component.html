@@ -1,0 +1,1124 @@
+<fury-page-layout mode="card" class="nad-add-arrival-report-view">
+
+    <fury-page-layout-content [@fadeInUp]>
+
+        <div style="    border: 3px solid;
+        ">
+            <form [formGroup]="ArrivalReportFormGroup">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width:30%"></td>
+                        <td>
+                            <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 35px;margin-bottom: 5px;">
+                                <button mat-raised-button color="primary" class="save-btn save-btn1"
+                                    style="margin-bottom: 10px;">Save</button>
+                                <button mat-raised-button color="primary" class="save-btn save-btn1"
+                                    style="margin-bottom: 10px;">Save & Close</button>
+                                <button mat-raised-button color="warn" class="save-btn1" style="margin-bottom: 10px;"
+                                    (click)="CancelForm()">Cancel</button>
+
+                            </div>
+                        </td>
+                        <td style="width:24%"></td>
+                    </tr>
+                </table>
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="report-title">Arrival Report</td>
+                    </tr>
+
+
+                    <tr>
+                        <table style="width: 100%;margin-top: 10px;" class="main-table-1">
+
+                            <tr>
+
+                                <td style="width: 24%;    vertical-align: top;">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td>
+
+                                                <div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Vessel</mat-label>
+
+                                                            <mat-select formControlName="drpVessel">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                            *ngFor="let b of filtered_port | async"
+                                            [value]="b.PORT_GUID"
+                                          >
+                                            {{ b.Port_Name }}
+                                          </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="ArrivalReportFormGroup.get('drpVessel').hasError('required')">
+                                                                Required</mat-error>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Date</mat-label>
+                                                            <input matInput formControlName="Arrival_Report_Date"
+                                                                [matDatepicker]="pickerarrivalreportdate" />
+                                                            <mat-datepicker-toggle matSuffix
+                                                                [for]="pickerarrivalreportdate"></mat-datepicker-toggle>
+                                                            <mat-datepicker #pickerarrivalreportdate></mat-datepicker>
+
+                                                            <mat-error
+                                                                *ngIf="ArrivalReportFormGroup.get('Arrival_Report_Date').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Type</mat-label>
+                                                            <input formControlName="txtType" matInput type="text"
+                                                                readonly />
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Voyage Number</mat-label>
+
+                                                            <mat-select formControlName="drpVoyage_Number">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                        *ngFor="let b of filtered_port | async"
+                                        [value]="b.PORT_GUID"
+                                      >
+                                        {{ b.Port_Name }}
+                                      </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="ArrivalReportFormGroup.get('drpVoyage_Number').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Vessel Cargo Status</mat-label>
+
+                                                            <mat-select formControlName="drpVessel_Cargo_Status">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                    *ngFor="let b of filtered_port | async"
+                                    [value]="b.PORT_GUID"
+                                  >
+                                    {{ b.Port_Name }}
+                                  </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="ArrivalReportFormGroup.get('drpVessel_Cargo_Status').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Arrival Port</mat-label>
+
+                                                            <mat-select formControlName="drpArrival_Port">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                *ngFor="let b of filtered_port | async"
+                                [value]="b.PORT_GUID"
+                              >
+                                {{ b.Port_Name }}
+                              </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="ArrivalReportFormGroup.get('drpArrival_Port').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>UTC</mat-label>
+
+                                                            <mat-select formControlName="drpUTC">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                            *ngFor="let b of filtered_port | async"
+                            [value]="b.PORT_GUID"
+                          >
+                            {{ b.Port_Name }}
+                          </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="ArrivalReportFormGroup.get('drpUTC').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Draft</mat-label>
+                                                            <input formControlName="txtDraft" matInput type="text"
+                                                                readonly />
+                                                            <mat-error
+                                                                *ngIf="ArrivalReportFormGroup.get('txtDraft').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Water Density</mat-label>
+                                                            <input formControlName="txtWater_Density" matInput
+                                                                type="text" readonly />
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px"
+                                                        style="margin-bottom: 12px;">
+                                                        <mat-label>Report Applicable to EU-MRV?</mat-label>
+                                                        <mat-radio-group fxLayout="row" fxLayoutGap="24px"
+                                                            formControlName="radioEU_MRV" style="margin-left: 40px;">
+                                                            <mat-radio-button value="1"
+                                                                [checked]="ArrivalReportFormGroup.get('radioEU_MRV').value == 1">
+                                                                <label
+                                                                    [class.active-label]="ArrivalReportFormGroup.get('radioEU_MRV').value == 1"
+                                                                    style="font-family: tahoma;">Yes</label>
+                                                            </mat-radio-button>
+                                                            <mat-radio-button value="0"
+                                                                [checked]="ArrivalReportFormGroup.get('radioEU_MRV').value == 0">
+                                                                <label
+                                                                    [class.active-label]="ArrivalReportFormGroup.get('radioEU_MRV').value == 0"
+                                                                    style="font-family: tahoma;">No</label></mat-radio-button>
+                                                        </mat-radio-group>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="arrival-report-td">Tugs Used</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <mat-form-field fxFlex style="margin-top: 10px;">
+                                                    <mat-label></mat-label>
+                                                    <textarea matInput rows="5" cols="40"></textarea>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="arrival-report-td">Remarks</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <mat-form-field fxFlex style="margin-top: 10px;">
+                                                    <mat-label></mat-label>
+                                                    <textarea matInput rows="5" cols="40"></textarea>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+
+
+
+                                <td style=" vertical-align: top;">
+
+                                    <div mode="card" class="agency-po">
+
+
+                                        <mat-tab-group (animationDone)="check()" animationDuration="0ms"
+                                            class="remove-border-bottom" style="margin-top: 10px;">
+
+                                            <form>
+
+                                                <mat-tab label="Details" style="margin-left: #000;margin-right: #000;"
+                                                    class="mat-tab-req">
+                                                    <div>
+
+                                                        <table
+                                                            style="width: 100%;border:1px solid;border-collapse: collapse;">
+                                                            <tr>
+                                                                <td
+                                                                    style="vertical-align: top;width:48%;border:1px solid;padding: 9px;">
+
+                                                                    <table>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div
+                                                                                    style="border: 1px solid #B6B8B3;padding: 5px;">
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Average Speed (Last
+                                                                                            Noon To
+                                                                                            Arrival)</mat-label>
+                                                                                        <input matInput type="text"
+                                                                                            readonly />
+                                                                                    </mat-form-field>
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Average Speed (Since
+                                                                                            last
+                                                                                            departure)</mat-label>
+                                                                                        <input matInput type="text"
+                                                                                            readonly />
+                                                                                    </mat-form-field>
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Instructed
+                                                                                            Speed</mat-label>
+                                                                                        <input matInput type="text"
+                                                                                            readonly />
+                                                                                    </mat-form-field>
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Total Passage Time
+                                                                                            (Since Last
+                                                                                            Departure)</mat-label>
+                                                                                        <input matInput type="text"
+                                                                                            readonly />
+                                                                                    </mat-form-field>
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Total Steaming Time
+                                                                                            (Last Noon To
+                                                                                            Arrival)
+                                                                                        </mat-label>
+                                                                                        <input matInput type="text"
+                                                                                            readonly />
+                                                                                    </mat-form-field>
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Total Distance (Since
+                                                                                            Last
+                                                                                            Departure)</mat-label>
+                                                                                        <input matInput type="text"
+                                                                                            readonly />
+                                                                                    </mat-form-field>
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Total Distance (Last
+                                                                                            Noon To Arrival)
+                                                                                        </mat-label>
+                                                                                        <input matInput type="text"
+                                                                                            readonly />
+                                                                                    </mat-form-field>
+
+                                                                                </div>
+                                                                            </td>
+
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div style="border: 1px solid #B6B8B3;
+                                                                            margin-top: 15px;margin-bottom: 15px;
+
+                                                                            padding: 7px;">
+
+                                                                                    <div fxLayout="column"
+                                                                                        fxLayout.gt-sm="row"
+                                                                                        fxLayoutGap.gt-sm="24px"
+                                                                                        style="margin-bottom: 12px;">
+                                                                                        <mat-label>Are you bunkering in
+                                                                                            this port?</mat-label>
+                                                                                        <mat-radio-group fxLayout="row"
+                                                                                            fxLayoutGap="24px"
+                                                                                            formControlName="radioBunkering"
+                                                                                            style="margin-left: 40px;">
+                                                                                            <mat-radio-button value="1"
+                                                                                                [checked]="ArrivalReportFormGroup.get('radioBunkering').value == 1">
+                                                                                                <label
+                                                                                                    [class.active-label]="ArrivalReportFormGroup.get('radioBunkering').value == 1"
+                                                                                                    style="font-family: tahoma;">Yes</label>
+                                                                                            </mat-radio-button>
+                                                                                            <mat-radio-button value="0"
+                                                                                                [checked]="ArrivalReportFormGroup.get('radioBunkering').value == 0">
+                                                                                                <label
+                                                                                                    [class.active-label]="ArrivalReportFormGroup.get('radioBunkering').value == 0"
+                                                                                                    style="font-family: tahoma;">No</label></mat-radio-button>
+                                                                                        </mat-radio-group>
+                                                                                    </div>
+
+                                                                                    <div fxLayout="column"
+                                                                                        fxLayout.gt-sm="row"
+                                                                                        fxLayoutGap.gt-sm="24px"
+                                                                                        style="margin-bottom: 12px;">
+                                                                                        <mat-label>If bunkering, is your
+                                                                                            pre-Bunker plan
+                                                                                            ready?</mat-label>
+                                                                                        <mat-radio-group fxLayout="row"
+                                                                                            fxLayoutGap="24px"
+                                                                                            formControlName="radioPre_Bunker"
+                                                                                            style="margin-left: 40px;">
+                                                                                            <mat-radio-button value="1"
+                                                                                                [checked]="ArrivalReportFormGroup.get('radioPre_Bunker').value == 1">
+                                                                                                <label
+                                                                                                    [class.active-label]="ArrivalReportFormGroup.get('radioPre_Bunker').value == 1"
+                                                                                                    style="font-family: tahoma;">Yes</label>
+                                                                                            </mat-radio-button>
+                                                                                            <mat-radio-button value="0"
+                                                                                                [checked]="ArrivalReportFormGroup.get('radioPre_Bunker').value == 0">
+                                                                                                <label
+                                                                                                    [class.active-label]="ArrivalReportFormGroup.get('radioPre_Bunker').value == 0"
+                                                                                                    style="font-family: tahoma;">No</label></mat-radio-button>
+                                                                                        </mat-radio-group>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+
+
+
+                                                                        <tr>
+                                                                            <td style="border: 1px solid #B6B8B3;
+                                                                        ">
+                                                                                <table style="width: 100%;">
+                                                                                    <tr>
+                                                                                        <table style="width: 100%;">
+                                                                                            <tr>
+                                                                                                <td
+                                                                                                    class="arrival-report-td">
+                                                                                                    No.Of containers
+                                                                                                    damaged since last
+                                                                                                    departure :</td>
+                                                                                                <td><input type="text"
+                                                                                                        style="width: 100px;" />
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+
+
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="arrival-report-td">
+                                                                                            Reasons for damage to
+                                                                                            containers :</td>
+
+
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <mat-form-field fxFlex
+                                                                                                style="margin-top: 10px;">
+                                                                                                <mat-label></mat-label>
+                                                                                                <textarea matInput
+                                                                                                    rows="5"
+                                                                                                    cols="40"></textarea>
+                                                                                            </mat-form-field>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+
+
+                                                                        </tr>
+                                                                        <br>
+                                                                        <tr>
+                                                                            <td style="border: 1px solid #B6B8B3;
+                                                                        ">
+                                                                                <table style="width: 100%;">
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <table style="width: 100%;">
+                                                                                                <tr>
+                                                                                                    <td
+                                                                                                        class="arrival-report-td">
+                                                                                                        Attachments :
+                                                                                                    </td>
+
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>
+                                                                                                        <div class="action-label"
+                                                                                                            fxFlex>
+
+                                                                                                            <input
+                                                                                                                style="display: none;"
+                                                                                                                type="file"
+                                                                                                                id="fileupload"
+                                                                                                                #fileInputattach
+                                                                                                                (change)="onFileSelectedattach($event)"
+                                                                                                                accept=".pdf,.doc,.docx,.jpg,.png" />
+                                                                                                            <button
+                                                                                                                type="button"
+                                                                                                                class="upload-btn1"
+                                                                                                                style="margin-top: 6px;"
+                                                                                                                *ngIf="!selectedFileNameAttach">
+                                                                                                                <label
+                                                                                                                    for="fileupload">
+                                                                                                                    Browse</label>
+                                                                                                            </button>
+
+                                                                                                            <div
+                                                                                                                *ngIf="selectedFileNameAttach">
+                                                                                                                <span
+                                                                                                                    style="margin-top: 2px !important;">
+                                                                                                                    {{
+                                                                                                                    selectedFileNameAttach
+                                                                                                                    }}</span>
+                                                                                                                <button
+                                                                                                                    (click)="removeUploadedFileattach()"
+                                                                                                                    mat-button
+                                                                                                                    style="color: #5BB318;">Remove</button>
+                                                                                                                &nbsp;
+                                                                                                            </div>
+
+
+                                                                                                            <div
+                                                                                                                class="drop-container-attach">
+
+                                                                                                                <input
+                                                                                                                    type="file"
+                                                                                                                    id="uploadFile-input"
+                                                                                                                    style="opacity: 0"
+                                                                                                                    name="uploadFile"
+                                                                                                                    accept="all/*"
+                                                                                                                    multiple />
+                                                                                                                <label>Drop
+                                                                                                                    Files
+                                                                                                                    Here
+                                                                                                                    for
+                                                                                                                    attachment
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </td>
+
+                                                                                    </tr>
+
+
+                                                                                </table>
+                                                                            </td>
+
+
+                                                                        </tr>
+
+                                                                    </table>
+
+
+                                                                </td>
+
+                                                                <td
+                                                                    style="vertical-align: top;width:48%;border:1px solid ;padding: 15px;">
+
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>EOSP</mat-label>
+                                                                        <input matInput formControlName="date_EOSP"
+                                                                            [matDatepicker]="pickerarrivalreporteosp" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickerarrivalreporteosp"></mat-datepicker-toggle>
+                                                                        <mat-datepicker
+                                                                            #pickerarrivalreporteosp></mat-datepicker>
+
+                                                                        <mat-error
+                                                                            *ngIf="ArrivalReportFormGroup.get('date_EOSP').hasError('required')">
+                                                                            Required</mat-error>
+                                                                    </mat-form-field>
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>EOSP Latitude </mat-label>
+                                                                        <input matInput formControlName="EOSP_Latitude"
+                                                                            type="text" />
+                                                                        <mat-error
+                                                                            *ngIf="ArrivalReportFormGroup.get('EOSP_Latitude').hasError('required')">
+                                                                            Required</mat-error>
+                                                                    </mat-form-field>
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>EOSP Longitude </mat-label>
+                                                                        <input matInput formControlName="EOSP_Longitude"
+                                                                            type="text" />
+                                                                        <mat-error
+                                                                            *ngIf="ArrivalReportFormGroup.get('EOSP_Longitude').hasError('required')">
+                                                                            Required</mat-error>
+                                                                    </mat-form-field>
+
+
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>Anchored</mat-label>
+                                                                        <input matInput formControlName="date_Anchored"
+                                                                            [matDatepicker]="pickeranchored" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickeranchored"></mat-datepicker-toggle>
+                                                                        <mat-datepicker
+                                                                            #pickeranchored></mat-datepicker>
+
+
+                                                                    </mat-form-field>
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>Anchorage No </mat-label>
+                                                                        <input matInput
+                                                                            formControlName="txtAnchorage_No"
+                                                                            type="text" />
+                                                                    </mat-form-field>
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>Reasons for Anchoring </mat-label>
+                                                                        <textarea matInput
+                                                                            formControlName="txtReasons_for_Anchoring"></textarea>
+                                                                    </mat-form-field>
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>Let go Anchor</mat-label>
+                                                                        <input matInput
+                                                                            formControlName="date_Let_go_Anchor"
+                                                                            [matDatepicker]="pickerletgoanchor" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickerletgoanchor"></mat-datepicker-toggle>
+                                                                        <mat-datepicker
+                                                                            #pickerletgoanchor></mat-datepicker>
+
+
+                                                                    </mat-form-field>
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>Commence Having Anchor</mat-label>
+                                                                        <input matInput
+                                                                            formControlName="date_Commence_Having_Anchor"
+                                                                            [matDatepicker]="pickercommencehavinganchor" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickercommencehavinganchor"></mat-datepicker-toggle>
+                                                                        <mat-datepicker
+                                                                            #pickercommencehavinganchor></mat-datepicker>
+
+
+                                                                    </mat-form-field>
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>Anchor Aweigh</mat-label>
+                                                                        <input matInput
+                                                                            formControlName="date_Anchor_Aweigh"
+                                                                            [matDatepicker]="pickeranchoraweigh" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickeranchoraweigh"></mat-datepicker-toggle>
+                                                                        <mat-datepicker
+                                                                            #pickeranchoraweigh></mat-datepicker>
+
+
+                                                                    </mat-form-field>
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>Anchor position Latitude </mat-label>
+                                                                        <input matInput
+                                                                            formControlName="txtAnchor_position_Latitude"
+                                                                            type="text" />
+                                                                    </mat-form-field>
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>Anchor Position Longitude
+                                                                        </mat-label>
+                                                                        <input matInput
+                                                                            formControlName="txtAnchor_Position_Longitude"
+                                                                            type="text" />
+                                                                    </mat-form-field>
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>FWE(Finish with engine) </mat-label>
+                                                                        <input matInput formControlName="date_FWE"
+                                                                            [matDatepicker]="pickerfwe" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickerfwe"></mat-datepicker-toggle>
+                                                                        <mat-datepicker #pickerfwe></mat-datepicker>
+                                                                        <mat-error
+                                                                            *ngIf="ArrivalReportFormGroup.get('date_FWE').hasError('required')">
+                                                                            Required</mat-error>
+
+                                                                    </mat-form-field>
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>SBE </mat-label>
+                                                                        <input matInput formControlName="date_SBE"
+                                                                            [matDatepicker]="pickersbe" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickersbe"></mat-datepicker-toggle>
+                                                                        <mat-datepicker #pickersbe></mat-datepicker>
+                                                                        <mat-error
+                                                                            *ngIf="ArrivalReportFormGroup.get('date_SBE').hasError('required')">
+                                                                            Required</mat-error>
+
+                                                                    </mat-form-field>
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>POB </mat-label>
+                                                                        <input matInput formControlName="date_POB"
+                                                                            [matDatepicker]="pickerpob" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickerpob"></mat-datepicker-toggle>
+                                                                        <mat-datepicker #pickerpob></mat-datepicker>
+
+
+                                                                    </mat-form-field>
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>First line ashore </mat-label>
+                                                                        <input matInput
+                                                                            formControlName="date_First_line_ashore"
+                                                                            [matDatepicker]="pickerfirstlineashore" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickerfirstlineashore"></mat-datepicker-toggle>
+                                                                        <mat-datepicker
+                                                                            #pickerfirstlineashore></mat-datepicker>
+
+
+                                                                    </mat-form-field>
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>All made fast</mat-label>
+                                                                        <input matInput
+                                                                            formControlName="date_All_made_fast"
+                                                                            [matDatepicker]="pickerallmadefast" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickerallmadefast"></mat-datepicker-toggle>
+                                                                        <mat-datepicker
+                                                                            #pickerallmadefast></mat-datepicker>
+
+
+                                                                    </mat-form-field>
+
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>NOR</mat-label>
+                                                                        <input matInput formControlName="date_NOR"
+                                                                            [matDatepicker]="pickernor" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickernor"></mat-datepicker-toggle>
+                                                                        <mat-datepicker #pickernor></mat-datepicker>
+
+
+                                                                    </mat-form-field>
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>ETB</mat-label>
+                                                                        <input matInput formControlName="date_ETD"
+                                                                            [matDatepicker]="pickeretb" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickeretb"></mat-datepicker-toggle>
+                                                                        <mat-datepicker #pickeretb></mat-datepicker>
+
+
+                                                                    </mat-form-field>
+                                                                    <mat-form-field appearance="fill">
+                                                                        <mat-label>ETD</mat-label>
+                                                                        <input matInput formControlName="date_ETD"
+                                                                            [matDatepicker]="pickeretd" />
+                                                                        <mat-datepicker-toggle matSuffix
+                                                                            [for]="pickeretd"></mat-datepicker-toggle>
+                                                                        <mat-datepicker #pickeretd></mat-datepicker>
+
+
+                                                                    </mat-form-field>
+
+
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </div>
+
+                                                </mat-tab>
+
+                                                <mat-tab label="Consumptions Since Last Noon"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                                                    <div>
+
+                                                        <table
+                                                            style="width: 100%;border:1px solid;border-collapse: collapse;">
+                                                            <tr>
+                                                                <td style="vertical-align: top;width:48%;padding: 9px;">
+
+                                                                    <table style="width: 100%;">
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                            ">Method used to measure Fuel Oil
+                                                                                        Consumption </td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width:100%">
+                                                                                    <tr>
+
+                                                                                        <td style="width: 47%;"></td>
+                                                                                        <td style="width: 6%;"></td>
+                                                                                        <td class="rob">
+                                                                                            ROB
+                                                                                        </td>
+                                                                                        <td></td>
+
+                                                                                    </tr>
+
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width:100%">
+                                                                                    <tr>
+
+                                                                                        <td style="width: 47%;"></td>
+                                                                                        <td style="width: 6%;"></td>
+                                                                                        <td class="rob-1">
+                                                                                            Normal
+                                                                                            (≤3.5% Sulphur)
+                                                                                        </td>
+                                                                                        <td class="rob-1">
+                                                                                            L.S.
+                                                                                            (≤0.5% Sulphur)
+                                                                                        </td>
+                                                                                        <td class="rob-1">
+                                                                                            V.L.S.
+                                                                                            (≤0.1% Sulphur)
+                                                                                        </td>
+                                                                                        <td></td>
+
+                                                                                    </tr>
+
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">Heavy Oil</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td>MT</td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">Diesel Oil</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td>MT</td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">MGO</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td>MT</td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">Others / Thermal Oil</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input" /></td>
+                                                                                    <td>ltrs</td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">LPG</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input-LPG" />
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">LNG</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input-LPG" />
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">Methanol</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input-LPG" />
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">Ethanol</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input-LPG" />
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">HVO</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input-LPG" />
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">Other Fuel Type </td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input-LPG" />
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">MECC</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input-4" /></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td>ltrs</td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">MECYL</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input-4" /></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td>ltrs</td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">AECC</td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input-4" /></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td>ltrs</td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table style="width: 100%;">
+                                                                                    <td style="width: 47%;    text-align: end;
+                                                                                ">Fresh Water </td>
+                                                                                    <td style="width: 6%;"></td>
+                                                                                    <td><input type="text"
+                                                                                            class="rob-input-4" /></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td>MT</td>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                    </table>
+
+
+                                                                </td>
+
+                                                                <td style="width: 48%;">
+                                                                </td>
+
+                                                            </tr>
+                                                        </table>
+
+                                                    </div>
+
+                                                </mat-tab>
+
+                                                <mat-tab label="Arrival Bilge / Sludge"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+
+
+                                                </mat-tab>
+                                                <mat-tab label="Custom Fields"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+
+
+                                                </mat-tab>
+                                                <mat-tab label="Documents" style="margin-left: #000;margin-right: #000;"
+                                                    class="mat-tab-req">
+                                                    <div style="padding-top:25px">
+
+                                                    </div>
+
+                                                </mat-tab>
+
+                                            </form>
+
+                                        </mat-tab-group>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                        </table>
+                    </tr>
+
+
+                </table>
+
+
+            </form>
+
+        </div>
+
+    </fury-page-layout-content>
+
+</fury-page-layout>

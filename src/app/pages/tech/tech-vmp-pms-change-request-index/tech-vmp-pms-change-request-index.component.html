@@ -1,0 +1,1420 @@
+<div style="text-align: center;font-weight: bold;    height: 24px;
+vertical-align: middle;margin-top: 30px;">
+    <h3>
+
+        <span class="first-letter">C</span>HANGE
+        <span class="first-letter">R</span>EQUEST
+        <span class="first-letter">M</span>ODULE
+        <span class="first-letter">I</span>NDEX
+
+    </h3>
+</div>
+
+<fury-page-layout mode="card" class="vmppmsrequest">
+
+    <div style="padding:10px 100px 31px 100px;">
+
+        <mat-tab-group (animationDone)="check()" animationDuration="0ms" mat-stretch-tabs class="remove-border-bottom">
+
+            <form action="">
+
+                <mat-tab label="Catalogues" style="margin-left: #000;margin-right: #000;">
+
+                    <ng-template mat-tab-label>
+                        <span matBadge="0" matBadgeColor="warn" matBadgeOverlap="false" class="stretch-badge">
+                            Catalogues
+                        </span>
+                    </ng-template>
+
+                    <div style="padding-top: 14px;">
+                        <div style="margin-bottom: 15px;">
+                            <mat-accordion>
+                                <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;
+                                ">
+                                    <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;    height: 46px;
+                                  ">
+                                        <mat-panel-title class="panel-title">
+                                            Search Criteria
+                                        </mat-panel-title>
+                                        <mat-panel-description class="panel-desc">
+
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+
+                                    <form [formGroup]="CatalogueFilterForm">
+                                        <div class="filter-area">
+
+                                            <div fxLayout="row" fxLayoutAlign="start">
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Fleet</mat-label>
+                                                        <mat-select formControlName="drpFleet">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Vessel</mat-label>
+                                                        <mat-select formControlName="drpVessel">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Template Type</mat-label>
+                                                        <mat-select formControlName="drpTemplate_Type">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Case Status</mat-label>
+                                                        <mat-select formControlName="drpDepartment">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Vessel Location</mat-label>
+                                                        <mat-select formControlName="drpVessel_Location">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Show</mat-label>
+                                                        <mat-select formControlName="drpShow">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Is Verified?</mat-label>
+                                                        <mat-select formControlName="drpIs_Verified">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Is Actioned?</mat-label>
+                                                        <mat-select formControlName="drpIs_Actioned">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+
+                                                <div class="filter-btn-area" fxFlex>
+                                                    <div>
+                                                        <button class="create" mat-raised-button color="primary"
+                                                            class="filter-btn">
+                                                            Search
+                                                        </button>
+                                                    </div>
+
+                                                    <div>
+                                                        <button class="create" mat-raised-button color="warn"
+                                                            class="filter-btn" type="button">
+                                                            Clear
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+
+                        </div>
+
+                        <div #TABLE>
+                            <table [dataSource]="CataloguesdataSource" mat-table matSort #table class="details-table">
+
+                                <ng-container matColumnDef="Old_Catalogue">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Catalogue </th>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Old_Particulars">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Particulars </th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Set_Installed">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                       border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Set Installed</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Model">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Model</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Serial_Number">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Serial Number</th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="Old_Critical">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                          border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Critical</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Motor_Rating">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Motor_Rating(KW)</th>
+
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Motor_Running_Current">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                       border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Motor Running
+                                        Current(Amps)</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Bearing_Coupling_End">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                          border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Bearing Coupling End
+                                    </th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="Old_Bearing_Free_End">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Bearing Free End</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Shipboard_PIC">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                           border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Shipboard PIC</th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="New_Catalogue">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                            border-bottom: 1px solid #fff;
+                                            text-align: center;    color: Black;
+    background-color: #F4D7D7;"> Catalogue </th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="New_Particulars">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                            border-bottom: 1px solid #fff;
+                                            text-align: center;    color: Black;
+    background-color: #F4D7D7;">Particulars </th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Set_Installed">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                            border-bottom: 1px solid #fff;
+                                            text-align: center;    color: Black;
+    background-color: #F4D7D7;">Set Installed</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Model">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                              border-bottom: 1px solid #fff;
+                                              text-align: center;    color: Black;
+    background-color: #F4D7D7;">Model</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Serial_Number">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                              border-bottom: 1px solid #fff;
+                                              text-align: center;    color: Black;
+    background-color: #F4D7D7;">Serial Number</th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="New_Critical">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                              border-bottom: 1px solid #fff;
+                                              text-align: center;    color: Black;
+    background-color: #F4D7D7;">Critical</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Motor_Rating">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                              border-bottom: 1px solid #fff;
+                                              text-align: center;    color: Black;
+    background-color: #DDE9CC;">Motor_Rating(KW)</th>
+
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Motor_Running_Current">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                              border-bottom: 1px solid #fff;
+                                              text-align: center;    color: Black;
+    background-color: #DDE9CC;">Motor Running Current(Amps)</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Bearing_Coupling_End">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                              border-bottom: 1px solid #fff;
+                                              text-align: center;    color: Black;
+    background-color: #DDE9CC;">Bearing Coupling End</th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="New_Bearing_Free_End">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                              border-bottom: 1px solid #fff;
+                                              text-align: center;    color: Black;
+    background-color: #DDE9CC;">Bearing Free End</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Shipboard_PIC">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                                border-bottom: 1px solid #fff;
+                                                text-align: center;    color: Black;
+    background-color: #DDE9CC;">Shipboard PIC</th>
+
+                                </ng-container>
+
+
+                                <ng-container matColumnDef="header-row-first-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Vessel
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-second-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Request No
+                                    </th>
+                                </ng-container>
+
+
+                                <ng-container matColumnDef="header-row-third-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center"
+                                        [attr.colspan]="11"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #BBD399;">
+                                        Old Catalogue Data
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-fourth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center"
+                                        [attr.colspan]="11"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #ECBBBB;">
+                                        New Catalogue Data
+                                    </th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-fifth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                      border-bottom: 1px solid #fff;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Request Type
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-sixth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Is Verified?
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-seventh-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Is Actioned?
+                                    </th>
+                                </ng-container>
+
+                                <ng-container matColumnDef="header-row-eighth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-nineth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+
+                                    </th>
+                                </ng-container>
+                                <tr mat-header-row
+                                    *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group',
+                                    'header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group','header-row-nineth-group']"
+                                    style="height:32px">
+                                </tr>
+
+
+
+                                <tr *matHeaderRowDef="visibleColumnsCatalogues" mat-header-row style="height:32px"></tr>
+                                <tr *matRowDef="let row; columns: visibleColumnsCatalogues"
+                                    class="clickable route-animations-elements" mat-row></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"
+                            [pageSize]="pageSize"></mat-paginator>
+
+                    </div>
+
+
+
+                </mat-tab>
+
+                <mat-tab label="SubCatalogues">
+                    <!-- <cdk-virtual-scroll-viewport tvsItemSize headerHeight="56" rowHeight="48" style="height: 400px;"> -->
+
+                    <ng-template mat-tab-label>
+                        <span matBadge="0" matBadgeColor="warn" matBadgeOverlap="false" class="stretch-badge">
+                            SubCatalogues
+                        </span>
+                    </ng-template>
+                    <div style="padding-top: 14px;">
+                        <div style="margin-bottom: 15px;">
+                            <mat-accordion>
+                                <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;
+                                ">
+                                    <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;    height: 46px;
+                                  ">
+                                        <mat-panel-title class="panel-title">
+                                            Search Criteria
+                                        </mat-panel-title>
+                                        <mat-panel-description class="panel-desc">
+
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+
+                                    <form [formGroup]="SubCatalogueFilterForm">
+                                        <div class="filter-area">
+
+                                            <div fxLayout="row" fxLayoutAlign="start">
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Fleet</mat-label>
+                                                        <mat-select formControlName="drpFleet">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Vessel</mat-label>
+                                                        <mat-select formControlName="drpVessel">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Template Type</mat-label>
+                                                        <mat-select formControlName="drpTemplate_Type">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Case Status</mat-label>
+                                                        <mat-select formControlName="drpDepartment">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Vessel Location</mat-label>
+                                                        <mat-select formControlName="drpVessel_Location">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Show</mat-label>
+                                                        <mat-select formControlName="drpShow">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Is Verified?</mat-label>
+                                                        <mat-select formControlName="drpIs_Verified">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Is Actioned?</mat-label>
+                                                        <mat-select formControlName="drpIs_Actioned">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+
+                                                <div class="filter-btn-area" fxFlex>
+                                                    <div>
+                                                        <button class="create" mat-raised-button color="primary"
+                                                            class="filter-btn">
+                                                            Search
+                                                        </button>
+                                                    </div>
+
+                                                    <div>
+                                                        <button class="create" mat-raised-button color="warn"
+                                                            class="filter-btn" type="button">
+                                                            Clear
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+
+                        </div>
+
+                        <div #TABLE>
+                            <table [dataSource]="SubCataloguesdataSource" mat-table matSort #table
+                                class="details-table">
+
+
+                                <ng-container matColumnDef="Old_SubCatalogue">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">SubCatalogue </th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="Old_Particulars">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Particulars </th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_SubCatalogue">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                       border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                       background-color: #F4D7D7;">SubCatalogue</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Particulars">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Particulars</th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="header-row-first-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Vessel
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-second-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Request No
+                                    </th>
+                                </ng-container>
+
+
+                                <ng-container matColumnDef="header-row-third-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #BBD399;">
+                                        Old SubCatalogue Data
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-fourth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #ECBBBB;">
+                                        New SubCatalogue Data
+                                    </th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-fifth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                      border-bottom: 1px solid #fff;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Request Type
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-sixth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Is Verified?
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-seventh-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Is Actioned?
+                                    </th>
+                                </ng-container>
+
+                                <ng-container matColumnDef="header-row-eighth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-nineth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+
+                                    </th>
+                                </ng-container>
+                                <tr mat-header-row
+                                    *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group',
+                                    'header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group','header-row-nineth-group']"
+                                    style="height:32px">
+                                </tr>
+
+
+
+                                <tr *matHeaderRowDef="visibleColumnsSubCatalogues" mat-header-row style="height:32px">
+                                </tr>
+                                <tr *matRowDef="let row; columns: visibleColumnsSubCatalogues"
+                                    class="clickable route-animations-elements" mat-row></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"
+                            [pageSize]="pageSize"></mat-paginator>
+
+                    </div>
+
+
+                    <!-- </cdk-virtual-scroll-viewport> -->
+                </mat-tab>
+                <mat-tab label="Items">
+
+                    <ng-template mat-tab-label>
+                        <span matBadge="0" matBadgeColor="warn" matBadgeOverlap="false" class="stretch-badge">
+                            Items
+                        </span>
+                    </ng-template>
+
+                    <div style="padding-top: 14px;">
+                        <div style="margin-bottom: 15px;">
+                            <mat-accordion>
+                                <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;
+                                ">
+                                    <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;    height: 46px;
+                                  ">
+                                        <mat-panel-title class="panel-title">
+                                            Search Criteria
+                                        </mat-panel-title>
+                                        <mat-panel-description class="panel-desc">
+
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+
+                                    <form [formGroup]="ItemsFilterForm">
+                                        <div class="filter-area">
+
+                                            <div fxLayout="row" fxLayoutAlign="start">
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Fleet</mat-label>
+                                                        <mat-select formControlName="drpFleet">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Vessel</mat-label>
+                                                        <mat-select formControlName="drpVessel">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Catalogue</mat-label>
+                                                        <mat-select formControlName="drpCatalogue">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>SubCatalogues</mat-label>
+                                                        <mat-select formControlName="drpSubCatalogues">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Show</mat-label>
+                                                        <mat-select formControlName="drpShow">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Description</mat-label>
+                                                        <mat-select formControlName="drpDescription">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Is Verified?</mat-label>
+                                                        <mat-select formControlName="drpIs_Verified">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Is Actioned?</mat-label>
+                                                        <mat-select formControlName="drpIs_Actioned">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+
+                                                <div class="filter-btn-area" fxFlex>
+                                                    <div>
+                                                        <button class="create" mat-raised-button color="primary"
+                                                            class="filter-btn">
+                                                            Search
+                                                        </button>
+                                                    </div>
+
+                                                    <div>
+                                                        <button class="create" mat-raised-button color="warn"
+                                                            class="filter-btn" type="button">
+                                                            Clear
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+
+                        </div>
+
+                        <div #TABLE>
+                            <table [dataSource]="ItemsdataSource" mat-table matSort #table class="details-table">
+
+
+                                <ng-container matColumnDef="Old_Drawing_No">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Drawing No </th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="Old_Part_No">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Part No </th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Item_Name">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                       border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                       background-color: #DDE9CC;">Item Name</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Description">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Description</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Item_Category">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Item Category</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Unit">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;;">Unit</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Critical">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Critical</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Inventory_Max">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Inventory Max</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Inventory_Min">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;;">Inventory Min</th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="New_Drawing_No">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black; 
+                                       background-color: #F4D7D7;">Drawing No </th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="New_Part_No">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                       background-color: #F4D7D7;">Part No </th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Item_Name">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                       border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                       background-color: #F4D7D7;">Item Name</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Description">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Description</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Item_Category">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                       border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                       background-color: #F4D7D7;">Item Category</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Unit">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Unit</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Critical">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Critical</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Inventory_Max">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Inventory Max</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Inventory_Min">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Inventory Min</th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="header-row-first-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Vessel
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-second-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Request No
+                                    </th>
+                                </ng-container>
+
+
+                                <ng-container matColumnDef="header-row-third-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="9"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #BBD399;">
+                                        Old Items Data
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-fourth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="9"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #ECBBBB;">
+                                        New Items Data
+                                    </th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-fifth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                      border-bottom: 1px solid #fff;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Request Type
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-sixth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Is Verified?
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-seventh-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Is Actioned?
+                                    </th>
+                                </ng-container>
+
+                                <ng-container matColumnDef="header-row-eighth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-nineth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+
+                                    </th>
+                                </ng-container>
+
+
+
+
+                                <tr mat-header-row
+                                    *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group',
+                                'header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group','header-row-nineth-group']"
+                                    style="height:32px">
+                                </tr>
+
+                                <tr *matHeaderRowDef="visibleColumnsItems" mat-header-row style="height:32px"></tr>
+                                <tr *matRowDef="let row; columns: visibleColumnsItems"
+                                    class="clickable route-animations-elements" mat-row></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"
+                            [pageSize]="pageSize"></mat-paginator>
+
+                    </div>
+                </mat-tab>
+                <mat-tab label="PMS Jobs">
+
+                    <ng-template mat-tab-label>
+                        <span matBadge="0" matBadgeColor="warn" matBadgeOverlap="false" class="stretch-badge">
+                            PMS Jobs
+                        </span>
+                    </ng-template>
+
+
+                    <div style="padding-top: 14px;">
+                        <div style="margin-bottom: 15px;">
+                            <mat-accordion>
+                                <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;
+                                ">
+                                    <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;    height: 46px;
+                                  ">
+                                        <mat-panel-title class="panel-title">
+                                            Search Criteria
+                                        </mat-panel-title>
+                                        <mat-panel-description class="panel-desc">
+
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+
+                                    <form [formGroup]="PMSJobsFilterForm">
+                                        <div class="filter-area">
+
+                                            <div fxLayout="row" fxLayoutAlign="start">
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Fleet</mat-label>
+                                                        <mat-select formControlName="drpFleet">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Vessel</mat-label>
+                                                        <mat-select formControlName="drpVessel">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Machinery</mat-label>
+                                                        <mat-select formControlName="drpMachinery">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>SubComponent</mat-label>
+                                                        <mat-select formControlName="drpSubComponent">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                  {{ b.DEPT_NAME }}
+                                                </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Show</mat-label>
+                                                        <mat-select formControlName="drpShow">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Description</mat-label>
+                                                        <mat-select formControlName="drpDescription">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                                <div fxFlex>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Is Verified?</mat-label>
+                                                        <mat-select formControlName="drpIs_Verified">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Is Actioned?</mat-label>
+                                                        <mat-select formControlName="drpIs_Actioned">
+                                                            <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                                    {{ b.DEPT_NAME }}
+                                                  </mat-option> -->
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+
+                                                <div class="filter-btn-area" fxFlex>
+                                                    <div>
+                                                        <button class="create" mat-raised-button color="primary"
+                                                            class="filter-btn">
+                                                            Search
+                                                        </button>
+                                                    </div>
+
+                                                    <div>
+                                                        <button class="create" mat-raised-button color="warn"
+                                                            class="filter-btn" type="button">
+                                                            Clear
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+
+                        </div>
+
+                        <div #TABLE>
+                            <table [dataSource]="PMSJobsdataSource" mat-table matSort #table class="details-table">
+
+                                <ng-container matColumnDef="Old_Type">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Type </th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="Old_Value">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Value </th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Type">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                       border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Type </th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Value">
+                                    <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Value </th>
+
+                                </ng-container>
+
+
+                                <ng-container matColumnDef="Old_Job_Code">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Job Code</th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="Old_Job_Title">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Job Title</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Decription">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="border-left: 1px solid #fff; 
+                                       border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                       background-color: #DDE9CC;">Decription</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Rank">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Rank</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Frequency">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff; 
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Frequency</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Department">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Department</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_CMS">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">CMS</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Critical">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Critical</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="Old_Job_Type">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #DDE9CC;">Job Type</th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="New_Job_Code">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Job Code</th>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="New_Job_Title">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Job Title</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Decription">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="border-left: 1px solid #fff;
+                                       border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Decription</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Rank">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Rank</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Frequency">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Frequency</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Department">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Department</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_CMS">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">CMS</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Critical">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Critical</th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="New_Job_Type">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;
+                                        background-color: #F4D7D7;">Job Type</th>
+
+                                </ng-container>
+
+
+
+
+                                <ng-container matColumnDef="header-row-first-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Vessel
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-second-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Request No
+                                    </th>
+                                </ng-container>
+
+
+                                <ng-container matColumnDef="header-row-third-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center"
+                                        [attr.colspan]="10"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #BBD399;">
+                                        Old Items Data
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-fourth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center"
+                                        [attr.colspan]="10"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;color: Black;background-color: #ECBBBB;">
+                                        New Items Data
+                                    </th>
+
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-fifth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                      border-bottom: 1px solid #fff;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Request Type
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-sixth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Is Verified?
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-seventh-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+                                        Is Actioned?
+                                    </th>
+                                </ng-container>
+
+                                <ng-container matColumnDef="header-row-eighth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-nineth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+
+                                    </th>
+                                </ng-container>
+
+                                <ng-container matColumnDef="header-row-tenth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                  border-bottom: 1px solid #fff;text-align: center;text-align: center;background-color: #e6e6e6;color: #000;">
+
+                                    </th>
+                                </ng-container>
+
+
+                                <tr mat-header-row *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group',
+                                'header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group','header-row-nineth-group',
+                                'header-row-tenth-group']" style="height:32px">
+                                </tr>
+
+
+                                <tr *matHeaderRowDef="visibleColumnsPMSJobs1" mat-header-row style="height:32px"></tr>
+
+                                <tr *matRowDef="let row; columns: visibleColumnsPMSJobs1"
+                                    class="clickable route-animations-elements" mat-row></tr>
+
+                                <tr *matHeaderRowDef="visibleColumnsPMSJobs" mat-header-row style="height:32px"></tr>
+
+                                <tr *matRowDef="let row; columns: visibleColumnsPMSJobs"
+                                    class="clickable route-animations-elements" mat-row></tr>
+
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"
+                            [pageSize]="pageSize"></mat-paginator>
+
+                    </div>
+
+                </mat-tab>
+
+            </form>
+
+        </mat-tab-group>
+
+    </div>
+
+
+
+</fury-page-layout>

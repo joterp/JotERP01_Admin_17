@@ -1,0 +1,300 @@
+<div mat-dialog-title><span>
+    <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+    margin-bottom: -4px;"/>
+  </span>{{modeltitle}}</div>
+  
+  <!-- <div mat-dialog-title>Add Contact Detail</div> -->
+  <div *ngIf="editPersonalInfo && !editAccountInfo && !editAddress && !editContacts">
+    <mat-dialog-content style="height: 100% !important" class="editcrew-details">
+      <form [formGroup]="PersonalDetailFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+        <div fxLayout="row" fxLayoutAlign="start" >
+            <div fxFlex>
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input type="text" formControlName="txtFirst_Name" matInput />
+            <mat-error *ngIf="PersonalDetailFormGroup.get('txtFirst_Name').hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input type="text" formControlName="txtLast_Name" matInput />
+            <mat-error *ngIf="PersonalDetailFormGroup.get('txtLast_Name').hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Regional Name</mat-label>
+            <input type="text" formControlName="txtRegional_Name" matInput />
+           
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Date Of Birth</mat-label>
+            <input matInput formControlName="date_of_birth" [matDatepicker]="pickerdate_of_birth" />
+            <mat-datepicker-toggle matSuffix [for]="pickerdate_of_birth"></mat-datepicker-toggle>
+            <mat-datepicker #pickerdate_of_birth></mat-datepicker>
+
+            <mat-error *ngIf="PersonalDetailFormGroup.get('date_of_birth').hasError('required')">
+                Required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Place Of Birth</mat-label>
+            <input type="text" formControlName="txtPlace_Of_Birth" matInput />
+            <mat-error *ngIf="PersonalDetailFormGroup.get('txtPlace_Of_Birth').hasError('required')">
+                Required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="drpGender">
+            </mat-select>
+            <mat-error *ngIf="PersonalDetailFormGroup.get('drpGender').hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Marital Status</mat-label>
+            <mat-select formControlName="drpMarital_Status">
+            </mat-select>
+            <mat-error *ngIf="PersonalDetailFormGroup.get('drpMarital_Status').hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Nationality</mat-label>
+            <mat-select formControlName="drpNationality">
+            </mat-select>
+            <mat-error *ngIf="PersonalDetailFormGroup.get('drpNationality').hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Blood Type</mat-label>
+            <input type="text" formControlName="txtBlood_Type" matInput />
+           
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Intnl Airport</mat-label>
+            <mat-select formControlName="drpIntnl_Airport">
+            </mat-select>
+            <mat-error *ngIf="PersonalDetailFormGroup.get('drpIntnl_Airport').hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Govt. ID NO</mat-label>
+            <input type="text" formControlName="txtGovt_ID_NO" matInput />
+           
+          </mat-form-field>
+  
+        </div>
+    </div>
+    
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!PersonalDetailFormGroup.valid ? '' : 'save-btn']"
+        [disabled]="!PersonalDetailFormGroup.valid">
+        SAVE & CLOSE
+      </button>
+      
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>
+  
+  
+  <div *ngIf="editAccountInfo && !editPersonalInfo && !editAddress && !editContacts">
+    
+    <mat-dialog-content style="height: 100% !important" class="editcrew-details">
+        <form [formGroup]="AccountDetailFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+          <div fxLayout="row" fxLayoutAlign="start" >
+              <div fxFlex>
+           
+                <mat-form-field appearance="fill">
+                    <mat-label>Manning Office</mat-label>
+                    <mat-select formControlName="drpManning_Office">
+                    </mat-select>
+                    <mat-error *ngIf="AccountDetailFormGroup.get('drpManning_Office').hasError('required')">
+                      Required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Rank Applied</mat-label>
+                    <mat-select formControlName="drpRank_Applied">
+                    </mat-select>
+                    <mat-error *ngIf="AccountDetailFormGroup.get('drpRank_Applied').hasError('required')">
+                      Required
+                    </mat-error>
+                  </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Date Applied</mat-label>
+              <input matInput formControlName="date_applied" [matDatepicker]="pickerdate_applied" />
+              <mat-datepicker-toggle matSuffix [for]="pickerdate_applied"></mat-datepicker-toggle>
+              <mat-datepicker #pickerdate_applied></mat-datepicker>
+  
+              <mat-error *ngIf="AccountDetailFormGroup.get('date_applied').hasError('required')">
+                  Required
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Date Available</mat-label>
+            <input matInput formControlName="date_available" [matDatepicker]="pickerdate_available" />
+            <mat-datepicker-toggle matSuffix [for]="pickerdate_available"></mat-datepicker-toggle>
+            <mat-datepicker #pickerdate_available></mat-datepicker>
+
+            <mat-error *ngIf="AccountDetailFormGroup.get('date_available').hasError('required')">
+                Required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Medically Fit</mat-label>
+            <mat-select formControlName="drpMedically_Fit">
+            </mat-select>
+            <mat-error *ngIf="AccountDetailFormGroup.get('drpMedically_Fit').hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Is-Certified Medic?</mat-label>
+            <mat-select formControlName="drpIs_Certified_Medic">
+            </mat-select>
+            <mat-error *ngIf="AccountDetailFormGroup.get('drpIs_Certified_Medic').hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Prefered Meal</mat-label>
+            <input type="text" formControlName="txtPrefered_Meal" matInput />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Frequent Flyer No</mat-label>
+            <input type="text" formControlName="txtFrequent_Flyer_No" matInput />
+          </mat-form-field>
+       
+          </div>
+      </div>
+      
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!AccountDetailFormGroup.valid ? '' : 'save-btn']"
+          [disabled]="!AccountDetailFormGroup.valid">
+          SAVE & CLOSE
+        </button>
+        
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+      </mat-dialog-actions>
+
+  </div>
+  
+  <div *ngIf="editAddress && !editPersonalInfo && !editAccountInfo && !editContacts">
+    
+    <mat-dialog-content style="height: 100% !important" class="editcrew-details">
+        <form [formGroup]="AddressDetailFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+          <div fxLayout="row" fxLayoutAlign="start" >
+              <div fxFlex>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput formControlName="txtAddress"></textarea>
+                    <mat-error *ngIf="AddressDetailFormGroup.get('txtAddress').hasError('required')">
+                        Required
+                    </mat-error>
+                </mat-form-field>      
+                <mat-form-field appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <mat-select formControlName="drpCountry">
+                    </mat-select>
+                    <mat-error *ngIf="AddressDetailFormGroup.get('drpCountry').hasError('required')">
+                      Required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>City</mat-label>
+                    <mat-select formControlName="drpCity">
+                    </mat-select>
+                    <mat-error *ngIf="AddressDetailFormGroup.get('drpCity').hasError('required')">
+                      Required
+                    </mat-error>
+                  </mat-form-field>
+          
+          </div>
+      </div>
+      
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!AddressDetailFormGroup.valid ? '' : 'save-btn']"
+          [disabled]="!AddressDetailFormGroup.valid">
+          SAVE & CLOSE
+        </button>
+        
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+      </mat-dialog-actions>
+
+  </div>
+  
+  <div *ngIf="editContacts && !editPersonalInfo && !editAccountInfo && !editAddress">
+   
+
+    <mat-dialog-content style="height: 100% !important" class="editcrew-details">
+        <form [formGroup]="ContactDetailFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+          <div fxLayout="row" fxLayoutAlign="start" >
+              <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Phone1</mat-label>
+                    <input type="text" formControlName="txtPhone1" matInput />
+                    <mat-error *ngIf="ContactDetailFormGroup.get('txtPhone1').hasError('required')">
+                      Required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Phone2</mat-label>
+                    <input type="text" formControlName="txtPhone2" matInput />
+                   
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Email1</mat-label>
+                    <input type="text" formControlName="txtEmail1" matInput />
+                    <mat-error *ngIf="ContactDetailFormGroup.get('txtEmail1').hasError('required')">
+                      Required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Email2</mat-label>
+                    <input type="text" formControlName="txtEmail2" matInput />
+                  
+                  </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Social Communication</mat-label>
+                    <mat-select formControlName="drpSocial_Communication">
+                    </mat-select>             
+                  </mat-form-field>
+                
+                  <mat-form-field appearance="fill">
+                    <mat-label>IM</mat-label>
+                    <input type="text" formControlName="txtIM" matInput />               
+                  </mat-form-field>
+          
+          </div>
+      </div>
+      
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!AddressDetailFormGroup.valid ? '' : 'save-btn']"
+          [disabled]="!AddressDetailFormGroup.valid">
+          SAVE & CLOSE
+        </button>
+        
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+      </mat-dialog-actions>
+
+  </div>
+  

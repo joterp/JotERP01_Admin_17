@@ -1,0 +1,106 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add Additional Check Details
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+ 
+
+    <div>
+        <mat-dialog-content>
+            <form [formGroup]="newTraitDetailFormGroup">
+                <div mat-dialog-container style="padding-top: 20px;">
+                    
+                
+                    <div fxLayout="column" fxLayout.gt-sm="row" >
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Traits to Check for Crew</mat-label>
+                            <textarea
+                            matInput
+                            formControlName="txtTraits_Check"
+                            placeholder="Trait to check for Crew"
+                            ></textarea>
+                        </mat-form-field>
+                    </div>
+        
+                    <div fxLayout="row" fxLayoutGap="16px" style="padding: 10px;">
+                        <mat-label style="width: 150px;">Type of Trait</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_type_Trait" (change)="toggleUnitField()">
+                            <mat-radio-button value="1" [checked]="newTraitDetailFormGroup.get('radioNew_type_Trait').value == 1"  >
+                                <label [class.active-label]="newTraitDetailFormGroup.get('radioNew_type_Trait').value == 1">Date</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="0" [checked]="newTraitDetailFormGroup.get('radioNew_type_Trait').value == 0" >
+                                <label [class.active-label]="newTraitDetailFormGroup.get('radioNew_type_Trait').value == 0"
+                                
+                                >Number</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="2" [checked]="newTraitDetailFormGroup.get('radioNew_type_Trait').value == 2" >
+                                <label [class.active-label]="newTraitDetailFormGroup.get('radioNew_type_Trait').value == 2">Text</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="3" [checked]="newTraitDetailFormGroup.get('radioNew_type_Trait').value == 3" >
+                                <label [class.active-label]="newTraitDetailFormGroup.get('radioNew_type_Trait').value == 3">Yes/No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+        
+                    <div fxLayout="column" fxLayout.gt-sm="row" *ngIf="showUnitField" style="margin-top: 5px;">
+                        <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Unit</mat-label>
+                        <mat-select formControlName="drpUnit">
+                            <mat-option value="Cubic_Meter">Cubic Meter</mat-option>
+                            <mat-option value="Month">Month</mat-option>
+                            <mat-option value="TEU">TEU</mat-option>
+                            <mat-option value="Ton">Ton</mat-option>
+                            <mat-option value="Year">Year</mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+                    
+                    
+                    <div fxLayout="row" fxLayoutGap="16px" style="padding: 10px;">
+                        <mat-label style="width: 150px;">Show in Crew Individual</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_Crew_Ind">
+                            <mat-radio-button value="1" [checked]="newTraitDetailFormGroup.get('radioNew_Crew_Ind').value == 1">
+                                <label [class.active-label]="newTraitDetailFormGroup.get('radioNew_Crew_Ind').value == 1">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="0" [checked]="newTraitDetailFormGroup.get('radioNew_Crew_Ind').value == 0">
+                                <label [class.active-label]="newTraitDetailFormGroup.get('radioNew_Crew_Ind').value == 0">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+        
+                    <div fxLayout="column" fxLayout.gt-sm="row" style="margin-top: 5px;">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Remarks</mat-label>
+                            <textarea
+                            matInput
+                            formControlName="txtRemarks"
+                            placeholder="Remarks"
+                            ></textarea>
+                        </mat-form-field>
+                    </div>
+                    
+                    
+                </div>
+            </form>
+        </mat-dialog-content>
+    
+   
+       
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

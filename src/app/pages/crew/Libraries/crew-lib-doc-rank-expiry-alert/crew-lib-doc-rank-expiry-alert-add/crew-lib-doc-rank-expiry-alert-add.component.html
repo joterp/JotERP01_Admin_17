@@ -1,0 +1,65 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Add Expiry Notifications
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+    <form [formGroup]="expiryNotificationsFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Document Name</mat-label>
+                    <mat-select formControlName="drpDoc_Name">
+                        <mat-option value="VMT">6G or 4G Certificate</mat-option>
+                        <mat-option value="fire_Fighting">Advanced Fire Fighting</mat-option>
+                        <mat-option value="Fire_Fighting">Basic Fire Fighting</mat-option>
+                        <mat-option value="Certificate">Certificate of Proficiency</mat-option>
+                        <mat-option value="feverBook">Yellow Fever Book </mat-option>
+                        <mat-option value="drugTest">Drug and Alcohol Test</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Rank</mat-label>
+                    <mat-select formControlName="drpRank">
+                        <mat-option value="Master">MST - Master</mat-option>
+                        <mat-option value="Trainee_Master">MST-T - Trainee Master</mat-option>
+                        <mat-option value="Chief_officer">C/OFF-T - Trainee Chief Officer</mat-option>
+                        <mat-option value="officer">2/OFF - 2nd Officer</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Advance expiry Notifications</mat-label>
+                    <input formControlName="txtexp_Notifications" matInput placeholder="Search by Months"
+                        type="text" />
+                </mat-form-field>
+            </div>
+
+
+
+
+        </div>
+    </form>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+        <button mat-raised-button color="primary" class="save-btn">
+            Save
+        </button>
+
+
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+</div>

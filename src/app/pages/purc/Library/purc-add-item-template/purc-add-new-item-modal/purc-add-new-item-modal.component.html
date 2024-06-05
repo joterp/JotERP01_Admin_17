@@ -1,0 +1,70 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/> Add New Item
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon  (click)="CloseModal()">close</mat-icon>
+      </span>
+</div> -->
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle >
+  <span style="font-size: 20px;"> Add New Item</span>
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="new-item-modal">
+    <form [formGroup]="ItemFormGroup" [ngStyle]="{ 'margin-top': '7px' }" >
+      <div mat-dialog-container style="padding-top: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+              <mat-label>Drawing Number</mat-label>
+              <input formControlName="txtDrawing_Number" matInput placeholder="Search by Drawing Number" type="text" />
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Part Number</mat-label>
+            <input formControlName="txtPart_Number" matInput placeholder="Search by Part Number" type="text" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Item Description</mat-label>
+                <textarea
+                  matInput
+                  formControlName="txtItem_Description"
+                  placeholder="Remarks"
+                ></textarea>
+              </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Unit</mat-label>
+            <mat-select formControlName="drp_Unit">
+              <mat-option value="Kilogram">Kilogram - KG</mat-option>
+              <mat-option value="Liters">Milimeter - mm</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Required Quantity</mat-label>
+              <input formControlName="txtRequired_Quantity" matInput placeholder="Search by Required Quantity" type="text" />
+            </mat-form-field>
+          </div>
+        
+      </div>
+    </form>
+    </mat-dialog-content>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+       Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>

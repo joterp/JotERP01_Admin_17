@@ -1,0 +1,36 @@
+.mat-dialog-title {
+    background-color: black;
+
+}
+
+.logo {
+    width: 20px;
+    height: 20px;
+}
+.active-label {
+    color: #009688; // Change this to your desired highlight color 
+    font-weight: 500;
+  }
+  .filter-btn-area {
+    padding: 21px 3px;
+    text-align: center;
+  }
+  .filter-btn {
+    margin-right: 5px !important;
+    width: 100px;
+    margin-bottom: 10px !important;
+  }
+  .example-margin {     // new added for checkbox
+    margin: 0 10px;
+  }
+
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 30px;
+  }
+  
+
+
+ 

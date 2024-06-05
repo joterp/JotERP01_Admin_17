@@ -1,0 +1,266 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+<fury-page-layout mode="card" class="crew-careerhistory">
+
+    <div>
+
+        <mat-tab-group (animationDone)="check()" animationDuration="0ms" class="remove-border-bottom">
+
+            <form [formGroup]="CareerHistoryFormGroup">
+
+                <mat-tab label="Vessel Details" style="margin-left: #000;margin-right: #000;">
+
+                    <ng-template mat-tab-label>
+
+                        Vessel Details
+
+                    </ng-template>
+
+                    <div style="padding-top: 14px;">
+                        <div style="margin-bottom: 15px;">
+
+
+                            <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                                <div fxFlex="48">
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel Owner</mat-label>
+                                            <input type="text" formControlName="txtVessel_Owner" matInput />
+                                            <mat-error
+                                                *ngIf="CareerHistoryFormGroup.get('txtVessel_Owner').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel Manager</mat-label>
+                                            <input type="text" formControlName="txtVessel_Manager" matInput />
+                                            <mat-error
+                                                *ngIf="CareerHistoryFormGroup.get('txtVessel_Manager').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel Charterers</mat-label>
+                                            <input type="text" formControlName="txtVessel_Charterers" matInput />                                       
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel Name</mat-label>
+                                            <input type="text" formControlName="txtVessel_Name" matInput />
+                                            <mat-error
+                                                *ngIf="CareerHistoryFormGroup.get('txtVessel_Name').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel Type</mat-label>
+                                            <mat-select formControlName="drpVessel_Type">
+                                            </mat-select>
+                                            <mat-error
+                                                *ngIf="CareerHistoryFormGroup.get('drpVessel_Type').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel Flag</mat-label>
+                                            <input type="text" formControlName="txtVessel_Flag" matInput />
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel DWT (MT)</mat-label>
+                                            <input type="text" formControlName="txtVessel_DWT" matInput />
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel GRT</mat-label>
+                                            <input type="text" formControlName="txtVessel_GRT" matInput />
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel TEU's</mat-label>
+                                            <input type="text" formControlName="txtVessel_TEU" matInput />
+
+                                        </mat-form-field>
+                                    </div>
+
+
+                                </div>
+
+                                <div fxFlex="48">
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Rank</mat-label>
+                                            <mat-select formControlName="drpRank">
+                                            </mat-select>
+                                            <mat-error
+                                                *ngIf="CareerHistoryFormGroup.get('drpRank').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Date of joining</mat-label>
+                                            <input matInput formControlName="date_of_joining"
+                                                [matDatepicker]="pickerdate_of_joining" />
+                                            <mat-datepicker-toggle matSuffix
+                                                [for]="pickerdate_of_joining"></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerdate_of_joining></mat-datepicker>
+
+                                            <mat-error
+                                                *ngIf="CareerHistoryFormGroup.get('date_of_joining').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Date of signoff</mat-label>
+                                            <input matInput formControlName="date_of_signoff"
+                                                [matDatepicker]="pickerdate_of_signoff" />
+                                            <mat-datepicker-toggle matSuffix
+                                                [for]="pickerdate_of_signoff"></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerdate_of_signoff></mat-datepicker>
+
+                                            <mat-error
+                                                *ngIf="CareerHistoryFormGroup.get('date_of_signoff').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Date Keel Launched</mat-label>
+                                            <input matInput formControlName="date_keel_launched"
+                                                [matDatepicker]="pickerdate_keel_launched" />
+                                            <mat-datepicker-toggle matSuffix
+                                                [for]="pickerdate_keel_launched"></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerdate_keel_launched></mat-datepicker>
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Date Delivered</mat-label>
+                                            <input matInput formControlName="date_delivered"
+                                                [matDatepicker]="pickerdate_delivered" />
+                                            <mat-datepicker-toggle matSuffix
+                                                [for]="pickerdate_delivered"></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerdate_delivered></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Shipyard Name</mat-label>
+                                            <input type="text" formControlName="txtShipyard_Name" matInput />
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Cargo Capacity</mat-label>
+                                            <input type="text" formControlName="txtCargo_Capacity" matInput />
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Year Built</mat-label>
+                                            <input type="text" formControlName="txtYear_Built" matInput />
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                        <mat-label>Sign Off Reason</mat-label>
+                                        <textarea matInput formControlName="txtSign_Off_Reason"></textarea>
+                                      
+                                    </mat-form-field> 
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+
+                </mat-tab>
+
+                <mat-tab label="Vessel Experience" style="margin-left: #000;margin-right: #000;">
+
+                    <ng-template mat-tab-label>
+
+                        Vessel Experience
+
+                    </ng-template>
+
+                    <div style="padding-top: 14px;">
+                        <div style="margin-bottom: 15px;">
+
+
+                        </div>
+
+                    </div>
+
+                </mat-tab>
+
+            </form>
+
+        </mat-tab-group>
+
+    </div>
+
+
+
+</fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!CareerHistoryFormGroup.valid ? '' : 'save-btn']" [disabled]="!CareerHistoryFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!CareerHistoryFormGroup.valid">
+        SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

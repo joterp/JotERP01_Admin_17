@@ -1,0 +1,308 @@
+<fury-page-layout mode="card" class="CashToMasterIndex-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+
+        <form [formGroup]="CashToMasterIndexFilterForm">
+            <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+            <h3>
+
+                <span class="first-letter">C</span>ASH
+                <span class="first-letter">T</span>O
+                <span class="first-letter">M</span>ASTER
+                <span class="first-letter">I</span>NDEX
+
+            </h3>
+            <div class="filter-area">
+
+                <div fxLayout="row" fxLayoutAlign="start">
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel</mat-label>
+                            <mat-select formControlName="drpVessel">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Agent</mat-label>
+                            <mat-select formControlName="drpAgent">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Requested On</mat-label>
+                            <input matInput formControlName="date_requested_on" [matDatepicker]="pickerrequested_on" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerrequested_on"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerrequested_on></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Approved On</mat-label>
+                            <input matInput formControlName="date_approved_on" [matDatepicker]="pickerdate_approved_on" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerdate_approved_on"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerdate_approved_on></mat-datepicker>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Deliver at Port</mat-label>
+                            <mat-select formControlName="drpDeliver_at_Port">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Actual Delivery Port</mat-label>
+                            <mat-select formControlName="drpActual_Delivery_Port">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Status</mat-label>
+                            <mat-select formControlName="drpStatus">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                 
+                    </div>
+
+                    <div class="filter-btn-area" fxFlex>
+                       
+                        <div>
+                            <button class="create" mat-raised-button color="primary" class="filter-btn">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+
+    <fury-page-layout-content [@fadeInUp] style="margin-top:9px;">
+        <div class="actions-area">
+          <table style="display: flex;">
+            <tr>
+              <td>
+                <div fxLayout="row">
+                  <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-approve-btn save-btn"
+                  (click)="AddFormData({}, 'Add CTM Details', 'Add_CTM_Details')">
+                  
+                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                  </button>
+                  <span style="margin-top: 3px;
+                                  margin-left: 6px;font-size: 15px;">Add CTM Details</span>
+                </div>
+              </td>
+            </tr>
+    
+          </table>
+    
+    
+          <div>
+            <span style="cursor: pointer">
+              <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+              <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+              <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+            </span>
+          </div>
+          <!-- <div class="content-loader">
+                  <mat-progress-spinner
+                    mode="indeterminate"
+                    color="accent"
+                  ></mat-progress-spinner>
+                </div> -->
+        </div>
+    
+        <div #TABLE>
+          <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+    
+    
+            <ng-container matColumnDef="Requested_Date">
+              <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                      border-bottom: 1px solid #ddd;
+                      text-align: center;">Date</th>
+    
+            </ng-container>
+    
+            <ng-container matColumnDef="Requested_Amount">
+              <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                      border-bottom: 1px solid #ddd;
+                      text-align: center;">Amount</th>
+    
+            </ng-container>
+
+            <ng-container matColumnDef="Requested_Delivery_At_Port">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Delivery At Port</th>
+      
+              </ng-container>
+              <ng-container matColumnDef="Approved_Date">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Date</th>
+      
+              </ng-container>
+      
+              <ng-container matColumnDef="Approved_Amount">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Amount</th>
+      
+              </ng-container>
+  
+              <ng-container matColumnDef="Received_Date">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Date</th>
+      
+              </ng-container>
+      
+              <ng-container matColumnDef="Received_Amount">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">Amount</th>
+      
+              </ng-container>
+    
+            <ng-container matColumnDef="header-row-first-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                      border-bottom: 1px solid #ddd;
+                      text-align: center;">
+                     Vessel
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-second-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                      border-bottom: 1px solid #ddd;
+                      text-align: center;">
+                Cash On Board
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-third-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;">
+                BOW
+              </th>
+            </ng-container>
+    
+    
+            <ng-container matColumnDef="header-row-fourth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="3" style="border-left: 1px solid #ddd;
+                      border-bottom: 1px solid #ddd;
+                      text-align: center;">
+                Requested
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-fifth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+                      border-bottom: 1px solid #ddd;
+                      text-align: center;">
+                 Approved
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-sixth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                Received
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-seventh-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                Actual Delivery Port
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-eighth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+                Agent	
+              </th>
+            </ng-container>
+    
+            <ng-container matColumnDef="header-row-nineth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+                Status
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-tenth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+               
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-eleventh-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+              
+              </th>
+            </ng-container>
+    
+            <ng-container matColumnDef="header-row-twelth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                
+              </th>
+            </ng-container>
+           
+            <tr mat-header-row
+              *matHeaderRowDef="['header-row-first-group', 'header-row-second-group', 'header-row-third-group', 'header-row-fourth-group', 'header-row-fifth-group',
+                  'header-row-sixth-group', 'header-row-seventh-group', 'header-row-eighth-group', 'header-row-nineth-group', 'header-row-tenth-group',
+                  'header-row-eleventh-group', 'header-row-twelth-group']"
+              style="height:32px">
+            </tr>
+    
+    
+    
+            <tr *matHeaderRowDef="visibleColumns" mat-header-row style="height:32px"></tr>
+            <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="9999">No data found</td>
+            </tr>
+          </table>
+        </div>
+    
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+    
+    
+      </fury-page-layout-content>
+    
+
+</fury-page-layout>

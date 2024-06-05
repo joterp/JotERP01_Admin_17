@@ -1,0 +1,160 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Report
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+</div>
+  <div>
+    <mat-dialog-content>
+        <form [formGroup]="ReportFormGroup">
+            <div mat-dialog-container style="padding-top: 20px;">
+
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Report Name</mat-label>
+                        <input formControlName="txtReport_Name" matInput placeholder="Search by Report Name" type="text" />
+                    </mat-form-field>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Department Name</mat-label>
+                        <mat-select formControlName="drpDepartment_Name">
+                            <mat-option value="Accounts">Accounts</mat-option>
+                            <mat-option value="Admin">Admin</mat-option>
+                            <mat-option value="Chartering">Chartering</mat-option>
+                            <mat-option value="IT">IT</mat-option>
+                            <mat-option value="Management">Management</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Frequency</mat-label>
+                    <input formControlName="txtFrequency" matInput placeholder="Search by Days" type="text" />
+                </mat-form-field>
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Ship File No</mat-label>
+                    <input formControlName="txtShip_File_No" matInput placeholder="Search by Ship File Number" type="text" />
+                </mat-form-field>
+                </div>
+
+                <ng-container matColumnDef="checkbox">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell ><input type="text" (input)="onFilterChange($event.target.value)" placeholder="search..."></th>
+                    <td *matCellDef="let row" class="actions-cell" mat-cell>
+                      <mat-checkbox
+                        [color]="'accent'"
+                        [(ngModel)]="row.selected"
+                      >
+                      </mat-checkbox>
+                    </td>
+                  </ng-container>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5">
+                    <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Document Vesrion</mat-label>
+                    <input formControlName="txtDocument_Vesrion" matInput placeholder="Search by Document Vesrion" type="text" />
+                    </mat-form-field>
+                    <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Ofice File No</mat-label>
+                    <input formControlName="txtOffice_File_No" matInput placeholder="Search by Office File Number" type="text" />
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5">
+                    <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Document Date</mat-label>
+                    <input formControlName="txtDocument_Date" matInput placeholder="Search by Document Date" type="text" />
+                    </mat-form-field>
+                    <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Form No</mat-label>
+                    <input formControlName="txtForm_No" matInput placeholder="Search by Form Number" type="text" />
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5">
+                    <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Revision</mat-label>
+                    <input formControlName="txtRevision" matInput placeholder="Search by Revision" type="text" />
+                    </mat-form-field>
+                    <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Issue</mat-label>
+                    <input formControlName="txtIssue" matInput placeholder="Search by Issue" type="text" />
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Revision Date</mat-label>
+                        <input matInput formControlName="Revision_Date" [matDatepicker]="pickerFrom" />
+                        <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerFrom></mat-datepicker>
+                    </mat-form-field>
+                    
+                    <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Ack Reqd frm office</mat-label>
+                    <mat-select formControlName="drpAck_Reqd">
+                        <mat-option value="Yes">Yes</mat-option>
+                        <mat-option value="No">No</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </div>
+                
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Report Table Name</mat-label>
+                        <mat-select formControlName="drpReport_Table_Name">
+                            <mat-option value="TBL_DTL_OPS_RPT_PTTEST">TBL_DTL_OPS_RPT_PTTEST</mat-option>
+                            <mat-option value="TBL_DTL_OPS_RPT_BMP4_CHECKLIST">TBL_DTL_OPS_RPT_BMP4_CHECKLIST</mat-option>
+                            <mat-option value="TBL_DTL_OPS_RPT_ATTACHMENTS">TBL_DTL_OPS_RPT_ATTACHMENTS</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Form Name - Ship</mat-label>
+                        <textarea matInput placeholder="Form Name Ship" formControlName="txtForm_Name_Ship"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Form Name - Office</mat-label>
+                        <textarea matInput placeholder="Form Name Office" formControlName="txtForm_Name_Office"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Sql Index - Ship</mat-label>
+                        <textarea matInput placeholder="Sql Index Ship" formControlName="txtSql_Index_Ship"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Sql Index - Office</mat-label>
+                        <textarea matInput placeholder="Sql Office Office" formControlName="txtSql_Index_Office"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+
+
+
+       
+    </mat-dialog-content>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+</div>

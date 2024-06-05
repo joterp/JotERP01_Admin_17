@@ -1,0 +1,123 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Add Crew Medical
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+
+<mat-dialog-content>
+    <form [formGroup]="medicalIndexFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Staff Code</mat-label>
+                    <mat-select formControlName="drpStaff_Code">
+                        <mat-option value="Alexa">10016 YANG, Lie Regional  - MST</mat-option>
+                        <mat-option value="Alexandre">10051 KUMAR , Namitt  - MST</mat-option>
+                        <mat-option value="Bryce">10099 Doc, Aniketh  - MST</mat-option>
+                        <mat-option value="Catalan_Sea">10108 Koper, Nayan  - MST</mat-option>
+                        <mat-option value="Charley">10276 P, Tejas  - MST</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Yoyage</mat-label>
+                    <mat-select formControlName="drpVoyage">
+                        
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <h5>Vessel </h5>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Case Type</mat-label>
+                    <mat-select formControlName="drpCase_Type">
+                        <mat-option value="Fatality">Fatality</mat-option>
+                        <mat-option value="Major_Accident">Major Accident</mat-option>
+                        <mat-option value="SmallP_Accident">Small Accident</mat-option>
+                       
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Case Date</mat-label>
+                    <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFrom></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Case Details</mat-label>
+                    <textarea matInput formControlName="txtCase_Details" placeholder="Case Details"></textarea>
+                </mat-form-field>
+            </div>
+
+
+
+
+
+           
+
+            <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row">
+                <!-- Use a button to create a custom file upload button -->
+
+                <mat-label style="margin: 8px;">Attach Files </mat-label> &nbsp;
+
+                <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+                    accept=".pdf,.doc,.docx,.jpg,.png" />
+
+                <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                    <label for="imageupload">
+                        Select</label>
+                </button>
+                <div *ngIf="selectedFileName" fxFlex>
+                    <span aria-placeholder="Select files"> {{ selectedFileName
+                        }}</span>
+                    <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+                </div>
+
+                <!-- File input element, hidden from view -->
+            </div>
+
+            <div class="drop-zone" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
+                (drop)="onDrop($event)">
+                {{ dragFile ? 'File selected' : 'Drop files here' }}
+            </div>
+            <input style="display: none;" type="file" [disabled]="dragFile === 'fileDragged'"
+                (change)="onDragFileSelected($event)" multiple />
+            <ul *ngIf="dragFile">
+                <li *ngFor="let file of files">{{ file.name }}
+                    <button (click)="removedragFileadditem(file.name)" mat-button
+                        style="color: #5BB318;">Remove</button>
+                </li>
+            </ul>
+
+
+
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+    <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+    </button>
+    <button mat-raised-button class="save-btn" color="primary">
+        Close Case
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,229 @@
+<div class="crew-NOKDetails-view">
+
+    <table style="width: 100%;">
+        <tr>
+            <td class="nokdetails-td">
+                <b>Career History</b>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+
+                <div class="actions-area">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="width: 16%;">
+                                <div fxLayout="row">
+                                    <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                        class="add-approve-btn save-btn" (click)="AddFormData({}, 'Add Career History', 'Add_Career_History')">
+                                        <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                    </button>
+                                    <span style="margin-top: 3px;
+                                   margin-left: 6px;font-size: 15px;">Add Career History</span>
+                                </div>
+                            </td>
+
+                            <td style="width: 16%;">
+                                <div fxLayout="row">
+                                    <span>
+                                        <img class="download-image"
+                                            src="../../../../assets/img/Crew/download-image.png">
+                                    </span>
+                                    <span style="margin-top: 3px;
+                                margin-left: 6px;font-size: 15px;">Download Template</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div fxLayout="row">
+                                    <span>
+                                        <img class="download-image" src="../../../../assets/img/Crew/excel.png">
+                                    </span>
+                                    <span style="margin-top: 3px;
+                                margin-left: 6px;font-size: 15px;">Import Career History details</span>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </table>
+
+                    <!-- <div class="content-loader">
+                   <mat-progress-spinner
+                     mode="indeterminate"
+                     color="accent"
+                   ></mat-progress-spinner>
+                 </div> -->
+                </div>
+
+                <div #TABLE>
+                    <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                        <ng-container matColumnDef="Vessel_Manager">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Vessel Manager
+                            </th>
+                            <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         [ngStyle]="{ 'white-space': 'initial' }"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                       </td> -->
+                        </ng-container>
+
+                        <ng-container matColumnDef="Vessel_Name">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Vessel Name
+                            </th>
+                            <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                       </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Vessel_Flag">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Vessel Flag
+                            </th>
+                            <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                         </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Vessel_Type">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Vessel Type
+                            </th>
+                            <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                       </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="GRT">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                GRT
+                            </th>
+                            <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                         </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="DWT">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                DWT(MT)
+                            </th>
+                            <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                         </td> -->
+                        </ng-container>
+
+                        <ng-container matColumnDef="Main_Engine">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Main Engine
+                            </th>
+                            <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Rank">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Rank
+                            </th>
+                            <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Dt_Of_Joining">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Dt Of Joining
+                            </th>
+                            <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Dt_Of_Sign_Off">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                Dt_Of_Sign-Off
+                            </th>
+                            <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                        </ng-container>
+                        <ng-container matColumnDef="Tenure_Onboard">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                TenureOnboard
+                            </th>
+                            <!-- <td
+                        *matCellDef="let row; let i = index"
+                        class="actions-cell"
+                        mat-cell
+                      >
+                        <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                      </td> -->
+                        </ng-container>
+
+
+
+                        <ng-container matColumnDef="Action">
+                            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                            </th>
+                            <!-- <td
+                             *matCellDef="let row; let i = index"
+                             class="actions-cell"
+                             mat-cell
+                           >
+                             <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                           </td> -->
+                        </ng-container>
+
+
+                        <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                        <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements"
+                            mat-row>
+                        </tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+
+</div>

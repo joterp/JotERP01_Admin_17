@@ -1,0 +1,62 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>{{ modeltitle }}
+    </span>
+  
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <mat-dialog-content>
+
+    
+    <form [formGroup]="CopyReportsFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+        
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Copy From</mat-label>
+            <mat-select formControlName="drpCopy_From">
+                <mat-option value="Alexandre">Alexandre</mat-option>
+                <mat-option value="Bryce">Bryce</mat-option>
+                <mat-option value="Catalan_Sea">Catalan Sea</mat-option>
+                <mat-option value="Napoleon">Napoleon</mat-option>
+                <mat-option value="Yami">Yami</mat-option>
+            
+            </mat-select>
+          </mat-form-field>
+        </div>
+        
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Copy To</mat-label>
+              <mat-select formControlName="drpCopy_To">
+                <mat-option value="Alexandre">Alexandre</mat-option>
+                <mat-option value="Bryce">Bryce</mat-option>
+                <mat-option value="Catalan_Sea">Catalan Sea</mat-option>
+                <mat-option value="Napoleon">Napoleon</mat-option>
+                <mat-option value="Yami">Yami</mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+         
+      </div>
+    </form>
+</mat-dialog-content>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button style=" color: #fff;
+      background-color: #5bc0de;
+      border-color: #46b8da;">
+       Copy
+      </button>
+      <!-- <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button> -->
+    </mat-dialog-actions>
+  </div>

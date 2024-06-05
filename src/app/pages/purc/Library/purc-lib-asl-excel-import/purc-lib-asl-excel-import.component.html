@@ -1,0 +1,392 @@
+<fury-page-layout mode="card" class="purc-excelImport">
+
+    <h3 class="unit-packing" style="margin: 35px 35px;">
+        <span class="first-letter">ASL</span> -
+        <span class="fifth-letter"> E</span>XCEL
+        <span class="fifth-letter"> I</span>MPORT
+    </h3>
+
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+             
+                <div fxFlex="23">  
+                        <form [formGroup]="aslImportFilterFormGroup">
+                            <div class="filter-area">
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <button mat-button color="primary" class="filter-btn">
+                                        Select Files
+                                    </button>
+
+                                    <button class="create" mat-raised-button color="warn"
+                                        style="background-color: #5cb85c;" class="filter-btn" type="button"  (click)="alertModal(null,false)">
+                                        Import
+                                    </button>
+                                </div>
+
+                                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px"
+                                    style="margin-bottom: 24px; margin-top: 26px;">
+                                    <mat-label>Uploaded</mat-label>
+                                  
+                                    <mat-radio-group fxLayout="row"  fxLayoutGap="5px" formControlName="radioNew_Reqsn_Status">
+                                        <mat-radio-button value="1" [checked]="aslImportFilterFormGroup.get('radioNew_Reqsn_Status').value == 1">
+                                          <label [class.active-label]="aslImportFilterFormGroup.get('radioNew_Reqsn_Status').value == 1">All</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="0" [checked]="aslImportFilterFormGroup.get('radioNew_Reqsn_Status').value == 0">
+                                          <label [class.active-label]="aslImportFilterFormGroup.get('radioNew_Reqsn_Status').value == 0">Yes</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="2" [checked]="aslImportFilterFormGroup.get('radioNew_Reqsn_Status').value == 2">
+                                           <label [class.active-label]="aslImportFilterFormGroup.get('radioNew_Reqsn_Status').value == 2">No</label>
+                                          </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+
+
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Imported Files</mat-label>
+                                        <mat-select formControlName="drpImported_File">
+                                            <mat-option value="Kilogram">Select File</mat-option>
+
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                                        <div style="
+                                    height: 57px;
+                                    margin-bottom: 11px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    background-color: #dbdbdb;
+                                    color: #3232d8;
+                                    margin-top: 2px;
+                                    cursor: pointer;
+                                    width: 98%;">
+                                    <p style="font-weight: 500;">
+                                        Assigned Traits
+                                    </p>
+                                </div>
+
+
+
+
+
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Type</mat-label>
+                                        <mat-select formControlName="drpType">
+                                            <mat-option>Select Supllier Type</mat-option>
+
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Country</mat-label>
+                                        <mat-select formControlName="drpCountry">
+                                            <mat-option>India</mat-option>
+
+                                            <mat-option>India</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>City</mat-label>
+                                        <mat-select formControlName="drpCity">
+                                            <mat-option></mat-option>
+
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Currency</mat-label>
+                                        <mat-select formControlName="drpCurrency">
+                                            <mat-option value="Kilogram">Select Unit</mat-option>
+
+                                            <mat-option value="Bat">Bat</mat-option>
+                                            <mat-option value="Ball">Ball</mat-option>
+                                            <mat-option value="Ball">Bag</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+
+                                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px"
+                                    style="margin-bottom: 24px; margin-top: 26px;">
+                                    <mat-label>Preferred RFQ format</mat-label>
+                                    <!-- <mat-radio-group fxLayout="row" fxLayoutGap="5px"
+                                        formControlName="">
+                                        <mat-radio-button value="1"></mat-radio-button>
+                                        <mat-radio-button value="0"></mat-radio-button>
+
+                                    </mat-radio-group> -->
+                                    <mat-radio-group fxLayout="row"  fxLayoutGap="5px" formControlName="radioNew_RFQ_Format">
+                                        <mat-radio-button value="1" [checked]="aslImportFilterFormGroup.get('radioNew_RFQ_Format').value == 1">
+                                          <label [class.active-label]="aslImportFilterFormGroup.get('radioNew_RFQ_Format').value == 1">Web</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="0" [checked]="aslImportFilterFormGroup.get('radioNew_RFQ_Format').value == 0">
+                                          <label [class.active-label]="aslImportFilterFormGroup.get('radioNew_RFQ_Format').value == 0">MS Excel</label>
+                                        </mat-radio-button>
+                                      
+                                    </mat-radio-group>
+
+                                </div>
+
+
+
+                            </div>
+                        </form>
+                </div>
+
+                <div fxFlex="83"> 
+                    <div fxLayout="row" fxLayoutAlign="end center" style="color: blue;cursor: pointer;">Download Template</div>
+
+
+
+                    <form [formGroup]="aslExcelFilterFormGroup">
+
+                        <div class="filter-area" style=" border: 1px solid gray ;">
+                            <div fxLayout="row" fxLayoutAlign="start">
+                                <div fxFlex>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Supplier</mat-label>
+                                        <input formControlName="txtSupplier" matInput placeholder="Search by Supplier"
+                                            type="text" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Supplier Code</mat-label>
+                                        <input formControlName="txtSupplierCode" matInput
+                                            placeholder="Search by Supllier Code" type="text" />
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxFlex>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Evaluation Frequency</mat-label>
+                                        <input formControlName="txtEvaFrq" matInput placeholder="Search by Months"
+                                            type="text" />
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Credit Terms</mat-label>
+                                        <input formControlName="txtCreditTerms" matInput placeholder="Search by Days"
+                                            type="text" />
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex style="margin-left: 20px;">
+                                    <mat-label>Supplier Status</mat-label>
+                                    
+                                    <mat-radio-group fxLayout="column" fxLayoutGap="5px" formControlName="radioNew_Supplier_Status" class="radio-btn-group" style="margin-top: 12px; margin-left: 12px;">
+                                        <mat-radio-button value="1" [checked]="aslExcelFilterFormGroup.get('radioNew_Supplier_Status').value == 1">
+                                          <label [class.active-label]="aslExcelFilterFormGroup.get('radioNew_Supplier_Status').value == 1">All</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="0" [checked]="aslExcelFilterFormGroup.get('radioNew_Supplier_Status').value == 0">
+                                          <label [class.active-label]="aslExcelFilterFormGroup.get('radioNew_Supplier_Status').value == 0">Active</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="2" [checked]="aslExcelFilterFormGroup.get('radioNew_Supplier_Status').value == 2">
+                                           <label [class.active-label]="aslExcelFilterFormGroup.get('radioNew_Supplier_Status').value == 2">Deleted</label>
+                                          </mat-radio-button>
+                                    </mat-radio-group>
+                                    
+                                </div>
+
+
+
+
+                               
+                                <div class="filter-btn-area" fxFlex>
+                                    <div>
+                                      
+                                        <button mat-raised-button color="primary" style="background-color: #5cb85c;"
+                                            class="filter-btn">
+                                           Retrieve
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <button class="create" mat-raised-button color="warn" class="filter-btn"
+                                            type="button" (click)="clearFilter()">
+                                            Clear
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <table [dataSource]="aslexcelimportdataSource" mat-table matSort #table1 class="details-table">
+
+                        <ng-container matColumnDef="Supplier">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Supplier
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Address1">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Address1
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Address2">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Address2
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Pin_Code">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Pin Code
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Reg">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Reg. #
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Reg_Date">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Reg. Date
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="GST_VAT_Reg">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                GST VAT Reg. #
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Evaluation_Frequency">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Evaluation Frequency(Months)
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Credit_Terms">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Credit Terms(Days)
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="ISO_Accreditations">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                ISO Accreditations
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Supplier_Code">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Supplier Code
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Assigned_Traits">
+                            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                mat-header-cell mat-sort-header>
+                                Assigned Traits?
+                            </th>
+                            <td *matCellDef="let row; let i = index" class="actions-cell"
+                                [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                            </td>
+                        </ng-container>
+
+
+
+
+                        <ng-container matColumnDef="CheckBox">
+                            <th mat-header-cell *matHeaderCellDef>
+                                <mat-checkbox>
+                                </mat-checkbox>
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                                <mat-checkbox>
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+
+
+
+
+                        <tr *matHeaderRowDef="visibleColumnsCatalogue" mat-header-row></tr>
+                        <tr *matRowDef="let row; columns: visibleColumnsCatalogue"
+                            class="clickable route-animations-elements" mat-row></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+
+
+                    </table>
+                    <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+                </div>
+
+            </div>
+            
+        </mat-card>
+    </fury-page-layout-content>
+</fury-page-layout>

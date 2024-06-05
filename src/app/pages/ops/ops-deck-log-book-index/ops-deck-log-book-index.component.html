@@ -1,0 +1,190 @@
+
+<fury-page-layout mode="card" class="ops-custom-fields">
+ 
+  <fury-page-layout-header>
+    
+    <form [formGroup]="DeckLogIndexFilterFormGroup" >
+      
+        <h3 class="unit-packing">
+          <span class="first-letter">D</span>ECK  
+          <span class="fifth-letter">L</span>OG 
+          <span class="fifth-letter">B</span>OOK - 
+          <span class="first-letter">M</span>AIN  
+          <span class="fifth-letter">I</span>NDEX       
+        </h3>
+    
+      
+      <div class="filter-area">
+        <div fxLayout="row" fxLayoutAlign="start">
+
+          <div fxFlex>
+
+
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>Dept Name</mat-label>
+              <mat-select formControlName="drpCategory_Name" >
+                <mat-option value="Kilogram">Documents</mat-option>
+                <mat-option value="Liters">Health</mat-option>
+                
+              </mat-select>
+            </mat-form-field> -->
+            <mat-form-field appearance="fill">
+              <mat-label>Fleet</mat-label>
+              <mat-select formControlName="drpFleet" >
+                <mat-option value="Admin_Fleet">Admin_Fleet</mat-option>
+                <mat-option value="Fleet">Fleet - A</mat-option>
+                <mat-option value="India-Fleet">India Fleet</mat-option>
+                
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Vessel Name</mat-label>
+              <mat-select  #select multiple formControlName="drpVessel_Name">
+                <div class="select-all">
+                    <mat-checkbox [(ngModel)]="allSelected"
+                                    [ngModelOptions]="{standalone: true}"
+                                    (change)="toggleAllSelection()">Check All</mat-checkbox>
+                </div>
+                <mat-option (click)="optionClick()" *ngFor="let vsl of Vessel" [value]="vsl.value">
+                  {{vsl.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Report Date</mat-label>
+              <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" placeholder="Report Date From" />
+              <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+              <mat-datepicker #pickerFrom></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Report To</mat-label>
+              <input matInput [matDatepicker]="pickerTo" formControlName="Date_To"  placeholder="Report Date To">
+              <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+              <mat-datepicker #pickerTo></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+
+
+
+
+          
+          <div class="filter-btn-area" fxFlex>
+            <div>
+              <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                Search
+              </button> -->
+              <button
+              mat-raised-button
+              color="primary"
+             style="background-color: #5cb85c;"
+              class="filter-btn"
+            
+            >
+              Search
+            </button>
+            </div>
+
+            <div>
+              <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                type="button" (click)="clearFilter()">
+                Clear
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+  </fury-page-layout-header>
+  <fury-page-layout-content [@fadeInUp] class="content-area">
+    <div class="actions-area" >
+    
+      <div fxLayout="row">
+        <!-- <button mat-mini-fab color="primary" [matTooltip]="'Add Custom Fields'"
+            class="add-approve-btn save-btn" >
+            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+        </button>
+        <span style="margin-top: 3px;
+        margin-left: 6px;font-size: 15px;"> Add Custom Fields</span> -->
+    </div>
+      <div>
+          <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+        <span>
+          <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+          <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+          <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+        </span>
+      </div>
+           
+    </div>
+
+    <div #TABLE>
+      <table [dataSource]="DeckLogdataSource" mat-table matSort #table class="details-table">
+        <ng-container matColumnDef="Vessel">
+          <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+            mat-sort-header>
+          Vessel
+          </th>
+          <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+            mat-cell>
+            <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Report_date">
+        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+       Report Date
+        </th>
+        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+        </td>
+      </ng-container>
+     
+      <ng-container matColumnDef="Form_Port">
+        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+     From_Port
+        </th>
+        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="To_Port">
+        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+      To Port
+        </th>
+        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Incidents">
+        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+      Incidents
+        </th>
+        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+        </td>
+      </ng-container>
+      
+
+      <tr *matHeaderRowDef="DeckLogvisibleColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: DeckLogvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="9999">No data found</td>
+      </tr>
+      </table>
+    </div>
+    <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+  </fury-page-layout-content>
+
+</fury-page-layout>
+

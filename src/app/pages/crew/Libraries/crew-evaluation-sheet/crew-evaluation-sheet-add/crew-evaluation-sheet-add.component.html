@@ -1,0 +1,235 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Add New Evaluation Sheet
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<mat-dialog-content>
+    <form [formGroup]="evaluationSheetFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Evaluation Sheet</mat-label>
+                    <input formControlName="textEvaluation_Sheet" matInput placeholder="Search by Evaluation Sheet"
+                        type="text" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Rank</mat-label>
+                <mat-select formControlName="drpRank">
+                    <mat-option value="MST-Master">MST- Master</mat-option>
+                    <mat-option value="Officer">3/OFF - 3rd Officer</mat-option>
+                    <mat-option value="Junior_Officer">J/OFF - Junior Officer</mat-option>
+                    <mat-option value="Deck_Cadet">DCT - Deck Cadet</mat-option>
+                    <mat-option value="Chief_Engineer">C/E - Chief Engineer</mat-option>
+                    <mat-option value="Trainee_Chief_Engineer">C/E-T - Trainee Chief Engineer</mat-option>
+                    <mat-option value="Trainee_Engineer">2/E-T - Trainee 2nd Engineer</mat-option>
+                    <mat-option value="Engineer">3/E - 3rd Engineer</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Copy From </mat-label>
+                <mat-select formControlName="drpCopy_From">
+                    <mat-option value="Officer_Trainee">2 Officer Trainee</mat-option>
+                    <mat-option value="joining">2/E joining</mat-option>
+                    <mat-option value="2/0_joining">2/O joining</mat-option>
+                    <mat-option value="Evaluation_Sheet">2/Off Evaluation Sheet</mat-option>
+                    <mat-option value="officer_Evaluation">2/officer Evaluation</mat-option>
+                    <mat-option value="3_officer_evaluation">3 officer evaluation</mat-option>
+                    <mat-option value="AB_Evaluation_Sheet">AB Evaluation Sheet</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <table style="width: 100%;    border: 1px solid #e8e8e8;
+        padding: 10px;">
+            <tbody>
+                <tr>
+                    <td style="vertical-align: top;">
+                        <h6>Evaluation Period</h6>
+                    </td>
+                    <td stytle="padding: 10px;">
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">At Sign-on</mat-checkbox>
+                            </td>
+                            
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">15 days after sign-on</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">30 days after sign-on</mat-checkbox>
+                            </td>
+                        </tr>
+        
+                        <tr class="example-section">
+        
+                            <td>
+                                <mat-checkbox class="example-margin">3 months after sign-on</mat-checkbox>
+                            </td>
+                        </tr>
+        
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">5 months after sign-on</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">6 months after sign-on</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">At end of contract</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">Annual Appraisal</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">January</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">February</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">March</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">May</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">June</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">July</mat-checkbox>
+                            </td>
+                        </tr>
+
+                    </td>
+                
+                    <td style="padding: 10px;">
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">August</mat-checkbox>
+                            </td>
+                            
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">September</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">30 October</mat-checkbox>
+                            </td>
+                        </tr>
+        
+                        <tr class="example-section">
+        
+                            <td>
+                                <mat-checkbox class="example-margin">November</mat-checkbox>
+                            </td>
+                        </tr>
+        
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">December</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">TEST</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">30 April</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">Sign Off</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">02 September</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">At the time of Sign Off</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">20 days eval-may 23 eq</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">After Joining</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">At the time of Sign Off</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr class="example-section">
+                            <td>
+                                <mat-checkbox class="example-margin">After 3 months</mat-checkbox>
+                            </td>
+                        </tr>
+
+                    </td>
+                   
+                
+
+            </tbody>
+        </table>
+        
+
+    </form>
+</mat-dialog-content>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+        <button mat-raised-button color="primary" class="save-btn">
+            Save
+        </button>
+
+
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>

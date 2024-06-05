@@ -1,0 +1,386 @@
+<fury-page-layout mode="card" class="approvalportal-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+        
+      <form [formGroup]="ApprovalPortalFilterForm">
+        <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+        <h3 >
+         
+          <span class="first-letter">A</span>PPROVAL 
+          <span class="first-letter">P</span>ORTAL
+     
+      </h3>
+        <div class="filter-area">
+           
+          <div fxLayout="row" fxLayoutAlign="start">
+  
+            <div fxFlex>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Fleet</mat-label>
+                    <mat-select formControlName="drpFleet">
+                      <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                        {{ b.DEPT_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Vessel</mat-label>
+                    <mat-select formControlName="drpVessel">
+                      <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                        {{ b.DEPT_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Supplier</mat-label>
+                    <mat-select formControlName="drpSupplier">
+                      <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                        {{ b.DEPT_NAME }}
+                      </mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+               
+            </div>
+  
+            <div fxFlex>
+              <mat-form-field appearance="fill">
+                <mat-label>Req / PO / Invoice</mat-label>
+                <input type="text" formControlName="txtReq_PO_Invoice" matInput />
+           
+              </mat-form-field>
+  
+              <mat-form-field appearance="fill">
+                <mat-label>Pending With</mat-label>
+                <mat-select formControlName="drpPending_With">
+                  <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                    {{ b.DEPT_NAME }}
+                  </mat-option> -->
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Approval Stage</mat-label>
+                <mat-select formControlName="drpApproval_Stage">
+                  <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                    {{ b.DEPT_NAME }}
+                  </mat-option> -->
+                </mat-select>
+              </mat-form-field>
+            </div>
+  
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>PO From</mat-label>
+                    <input
+                      matInput
+                      formControlName="PO_From"
+                      [matDatepicker]="pickerpofrom"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerpofrom"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerpofrom></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Invoice Due From</mat-label>
+                    <input
+                      matInput
+                      formControlName="Invoice_Due_From"
+                      [matDatepicker]="pickerinvoiceduefrom"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerinvoiceduefrom"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerinvoiceduefrom></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Payment Planned From</mat-label>
+                    <input
+                      matInput
+                      formControlName="Payment_Planned_From"
+                      [matDatepicker]="pickerpaymentplannedfrom"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerpaymentplannedfrom"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerpaymentplannedfrom></mat-datepicker>
+                  </mat-form-field>
+             
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>To</mat-label>
+                    <input
+                      matInput
+                      formControlName="PO_From_To"
+                      [matDatepicker]="pickerpofromto"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerpofromto"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerpofromto></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>To</mat-label>
+                    <input
+                      matInput
+                      formControlName="Invoice_Due_From_To"
+                      [matDatepicker]="pickerinvoiceduefromto"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerinvoiceduefromto"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerinvoiceduefromto></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>To</mat-label>
+                    <input
+                      matInput
+                      formControlName="Payment_Planned_From_To"
+                      [matDatepicker]="pickerpaymentplannedfromto"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerpaymentplannedfromto"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerpaymentplannedfromto></mat-datepicker>
+                  </mat-form-field>
+             
+            </div>
+  
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <button class="create" mat-raised-button color="primary" class="filter-btn save-btn">
+                  Search
+                </button>
+              </div>
+  
+              <div>
+                <button class="create"  mat-raised-button color="warn" class="filter-btn"
+                  type="button" >
+                  Clear
+                </button>
+              </div>
+              <div>
+                <button class="create" mat-raised-button color="primary" class="filter-btn" style="width: 121px;">
+                  Approve Batch
+                </button>
+              </div>
+            </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+  
+    <fury-page-layout-content [@fadeInUp]>
+       
+
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+
+      <div fxFlex="30">
+
+        <div class="actions-area1" fxLayout="row" fxLayoutAlign="start center" >
+                 
+          
+            <div>
+              <ul class="ul1">
+                <li class="supplier-li" (click)="Supplier()">Supplier</li>
+                <li class="vessel-li" (click)="Vessel()">Vessel</li>
+              </ul>
+             </div>
+
+        
+          
+      
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start start" >
+        <table style="width: -webkit-fill-available;border: 1px solid #c7c7c7;">
+          <colgroup>
+          <col style="width: 70%;">
+          </colgroup>
+          <thead style="    background-color: #1976d2;
+          color: #fff;
+          font-family: tahoma;text-align: center;">
+            <tr>
+              <td style="padding:4px;" *ngIf="showSupplier">Supplier</td>
+              <td style="padding:4px;" *ngIf="showVessel">Vessel</td>
+            </tr>
+          </thead>
+          <tbody >
+           <tr>
+            <td style="padding:4px;">YMLJot Ship Management</td>       
+           </tr>
+          </tbody>
+             </table>
+            </div>
+ 
+
+      </div>
+
+      <div fxFlex="70">
+
+        <div class="actions-area" fxLayout="row" fxLayoutAlign="end center">
+                 
+          <div>
+            <span
+           
+              style="cursor: pointer"
+             
+            >
+              <img
+                src="../../../../assets/img/XLSX.jpg"
+                class="logo"
+                alt="excel"
+              />
+              <img
+                src="../../../../assets/img/pdf.png"
+                class="logo"
+                alt="excel"
+              />
+             
+            </span>
+          </div>
+          <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+        </div>
+
+        <div #TABLE class="example-container mat-elevation-z8">
+            <table mat-table [dataSource]="ApprovalPortalPopupdataSource" class="mat-elevation-z8">
+    
+              
+              <ng-container matColumnDef="Requisition#">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;"> Requisition # </th>
+    
+              </ng-container>
+    
+              <ng-container matColumnDef="Rcvd_Date">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;"> Rcvd Date</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="Qtn_Rcvd">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;"> Qtn Rcvd</th>
+    
+              </ng-container>
+              <ng-container matColumnDef="Pending_With">
+                <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;"> Pending With</th>
+    
+              </ng-container>
+            
+           
+    
+              <ng-container matColumnDef="header-row-first-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                  Vessel
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-second-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                  Supplier
+                </th>
+              </ng-container>
+    
+              <ng-container matColumnDef="header-row-third-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+    Department
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-fourth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;">
+                  Catalogue
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-fifth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                  Requisition Title
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-sixth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="4" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                text-align: center;">
+                  Requisition
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-seventh-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                  Stage
+                </th>
+              </ng-container>
+
+              <ng-container matColumnDef="header-row-eighth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                  PO Type
+                </th>
+              </ng-container>
+            
+    
+    
+    
+    
+              <tr mat-header-row
+                *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group','header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group']"
+                style="height:32px">
+              </tr>
+              <tr mat-header-row *matHeaderRowDef="visibleColumnsapprovalportalpopup;sticky:true" style="height:32px">
+              </tr>
+              <tr mat-row *matRowDef="let row; columns: visibleColumnsapprovalportalpopup;"></tr>
+            </table>
+    
+          </div>
+    
+         <mat-paginator
+          class="paginator"
+          [pageSizeOptions]="[10, 25, 50, 100]"
+          [pageSize]="pageSize"
+        ></mat-paginator>
+</div>
+    </div>
+    
+     
+      </fury-page-layout-content>
+
+
+
+  </fury-page-layout>
+  

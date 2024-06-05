@@ -1,0 +1,2790 @@
+<!-- <div style="text-align: center;font-weight: bold;    height: 24px;
+vertical-align: middle;margin-top: 30px;">
+    <h3>
+
+       Engine Log Book
+
+    </h3>
+</div> -->
+
+<div fxLayout="row" fxLayoutAlign="start start">
+
+    <div fxFlex="17">
+        <div>
+            <span
+           
+              style="cursor: pointer"
+             
+            >
+              <img
+                src="../../../../assets/img/enix.jpg"
+                class="enix-logo"
+                alt="excel"
+              />
+            </span>
+          </div>
+        </div>
+        <div fxFlex>
+            <div class="enginelog-title">
+                <h2>
+
+                Engine Log Book
+         
+             </h2>
+            </div>
+            <div>
+                <table width="100%">
+                    <tr>
+                        <td class="td-left">Vessel</td>
+                        <td class="td-center">:</td>
+                        <td class="td-right">Napoleon</td>
+
+                        <td class="td-left">From</td>
+                        <td class="td-center">:</td>
+                        <td class="td-right">Pagadian</td>
+
+                        <td class="td-left">Voyage</td>
+                        <td class="td-center">:</td>
+                        <td >Pagadian</td>
+                    </tr>
+                    <tr>
+                        <td class="td-left">Date</td>
+                        <td class="td-center">:</td>
+                        <td class="td-right">12 May 2018</td>
+
+                        <td class="td-left">To</td>
+                        <td class="td-center">:</td>
+                        <td class="td-right">Kingston Upon Hull	</td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </div>
+
+        <fury-page-layout-content [@fadeInUp]>
+           
+            
+            <div>
+              
+                <mat-tab-group (animationDone)="check()" animationDuration="0ms" >
+                    <mat-tab label="Main Engine">
+                        <div >
+                            <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 3px;margin-bottom: 3px;">
+                                <button mat-raised-button class="watch-btn" >Finalize Watch</button>
+                                <button mat-raised-button color="primary" class="save-btn save-btn1" style="margin-left: 15px;">Save</button>
+                                <button mat-raised-button class="threshold-btn" style="margin-left: 15px;">Turbo Blowers Thresholds</button>
+                                <button mat-raised-button color="info" class="threshold-btn" style="margin-left: 15px;">Main Engine Thresholds</button>
+                              </div>
+                    </div> 
+
+                    <div style="border: 1px solid #a3a3a3;">
+
+                    <div #TABLE>
+                        <table [dataSource]="MainEnginedataSource" mat-table matSort #table class="details-table" style="width: 100%;">
+
+
+                            <ng-container matColumnDef="INLET_NUM_1">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">1 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="INLET_NUM_2">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">2 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="INLET_NUM_3">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">3 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="OUTLET_NUM_1">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">1 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="OUTLET_NUM_2">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">2 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="OUTLET_NUM_3">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">3 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_1">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">1 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="AIR_COOLER_NUM_1_IN">
+                                <th mat-header-cell *matHeaderCellDef 
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">IN </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="AIR_COOLER_NUM_1_OUT">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">OUT </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="AIR_COOLER_NUM_2_IN">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">IN </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="AIR_COOLER_NUM_2_OUT">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">OUT </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="AIR_COOLER_NUM_3_IN">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">IN </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="AIR_COOLER_NUM_3_OUT">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">OUT </th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="COOLING_WATER_IN_BLANK">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;"> </th>
+
+                            </ng-container>
+                            
+                            <ng-container matColumnDef="COOLING_WATER_OUT_NUM_1">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">1</th>
+
+                            </ng-container>
+                           
+                            <ng-container matColumnDef="COOLING_WATER_OUT_NUM_2">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">2</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="COOLING_WATER_OUT_NUM_3">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">3</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LUB_OIL_NUM_1_B">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">B</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LUB_OIL_NUM_1_T">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">T</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LUB_OIL_NUM_2_B">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">B</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LUB_OIL_NUM_2_T">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">T</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LUB_OIL_NUM_3_B">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">B</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LUB_OIL_NUM_3_T">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">T</th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="PRESS_DROP_AIR_COOLER_NUM_1">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">1</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="PRESS_DROP_AIR_COOLER_NUM_2">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">2</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="PRESS_DROP_AIR_COOLER_NUM_3">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">3</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="PRESS_DROP_AIR_FILTER_NUM_1">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">1</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="PRESS_DROP_AIR_FILTER_NUM_2">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">2</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="PRESS_DROP_AIR_FILTER_NUM_3">
+                                <th mat-header-cell *matHeaderCellDef
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">3</th>
+
+                            </ng-container>
+
+
+
+
+                            <ng-container matColumnDef="EXHAUST_NUM_1">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">1 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_2">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">2 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_3">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">3 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_4">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">4 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_5">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">5 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_6">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">6 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_7">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">7 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_8">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;"> 8</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_9">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">9 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_10">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;"> 10</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_11">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;"> 11</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_NUM_12">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">12 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="INLET">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">INLET </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="OUTLET">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">OUTLET </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="AIR_COOLER_NUM_1">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">1 </th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="AIR_COOLER_NUM_2">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">2 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="AIR_COOLER_NUM_3">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">3 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="COOLING_WATER_IN">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="1"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">IN </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="COOLING_WATER_OUT">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">OUT </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LUB_OIL_NUM_1">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">1 </th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="LUB_OIL_NUM_2">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">2 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LUB_OIL_NUM_3">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">3 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="PRESS_DROP_AIR_COOLER">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">AIR COOLER </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="PRESS_DROP_AIR_FILTER">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">AIR FILTER </th>
+
+                            </ng-container>
+
+
+                            
+
+
+                            <ng-container matColumnDef="COUNTER">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">COUNTER </th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="RPM">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff; 
+                                    border-bottom: 1px solid #fff;text-align: center;">RPM </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="12" style="border-left: 1px solid #fff;
+                                   border-bottom: 1px solid #fff;text-align: center;">EXHAUST </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="CHGR_NUM_1">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">1 </th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="CHGR_NUM_2">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">2 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="CHGR_NUM_3">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">3 </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXHAUST_GAS">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="6" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">EXHAUST GAS</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="AIR_COOLER_AIR">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="6" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">AIR COOLER AIR</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="Scavenge">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Scavenge</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="COOLING_WATER">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">COOLING WATER</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LUB_OIL">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="6" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">LUB OIL</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="Scav_Km">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Scav Km/Cm-Square</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="EXN_BACK">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">EXN BACK</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="Press_Drop_Mm_Wc">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="6" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Press Drop Mm Wc</th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="blank_1">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;"></th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="WATCH">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4" style="border-left: 1px solid #fff; 
+                                   border-bottom: 1px solid #fff;text-align: center;">WATCH</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="HOURS">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">HOURS</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="MINUTES">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">MINUTES</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="REVOLUTIONS">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff; 
+                                    border-bottom: 1px solid #fff;text-align: center;">REVOLUTIONS</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="ME_CONTROL">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">M.E. CONTROL</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="GOV_CONTROL">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">GOV. CONTROL</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LOAD_INDICATOR">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">LOAD INDICATOR</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="FUEL_PP_INDEX">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">FUEL PP INDEX</th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="FUEL_FLOWMETER">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">FUEL FLOWMETER</th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="TEMPERATURE">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="12" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">TEMPERATURE Deg. C</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="CHGR">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="3" style="border-left: 1px solid #fff;
+                                   border-bottom: 1px solid #fff;text-align: center;">T/CHGR RPM X 1000</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="TURBO_TEMPERATURE">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="23" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">TEMPERATURE Deg. C</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="PRESSURE">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="8" style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">PRESSURE</th>
+
+                            </ng-container>
+                            
+                            <ng-container matColumnDef="header-row-first-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="23"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;
+                                    text-align: center;">
+                                    MAIN ENGINES
+                                </th>
+                            </ng-container>
+                            <ng-container matColumnDef="header-row-second-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="34"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;
+                                    text-align: center;">
+                                    MAIN ENGINE TURBO BLOWERS
+                                </th>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="['header-row-first-group','header-row-second-group']" style="height:35px">
+                            </tr>
+
+
+                            <tr *matHeaderRowDef="visibleColumnsMainEngine1" mat-header-row style="height:35px"></tr>
+
+                            <tr *matRowDef="let row; columns: visibleColumnsMainEngine1"
+                                class="clickable route-animations-elements" mat-row></tr>
+
+                            <tr *matHeaderRowDef="visibleColumnsMainEngine2" mat-header-row ></tr>
+
+                            <tr *matHeaderRowDef="visibleColumnsMainEngine3" mat-header-row ></tr>
+
+                            <tr *matHeaderRowDef="visibleColumnsMainEngine4" mat-header-row ></tr>
+
+                            <tr *matRowDef="let row; columns: visibleColumnsMainEngine3"
+                                class="clickable route-animations-elements" mat-row></tr>
+
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" colspan="9999">No data found</td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                   
+                        
+    </div>
+    <div >
+        <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 3px;margin-bottom: 3px;">
+            <button mat-raised-button color="primary" class="save-btn save-btn1" style="margin-left: 15px;">Save</button>
+           
+          </div>
+</div> 
+
+    <div style="border: 1px solid #a3a3a3;">
+        <div>
+            <div #TABLE>
+                <table [dataSource]="MainEngine2dataSource" mat-table matSort #table class="details-table" style="width: 100%;">
+
+                    <!-- 4th row -->
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_1">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">1 </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_2">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">2 </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_3">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">3 </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_4">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">4 </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_5">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">5 </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_6">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">6 </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_7">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">7 </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_8">
+                        <th mat-header-cell *matHeaderCellDef 
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">8 </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_9">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">9 </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_10">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">10</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_11">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">11 </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET_NUM_12">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">12 </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_1">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">1 </th>
+
+                    </ng-container>
+
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_2">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;"> 2</th>
+
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_3">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">3</th>
+
+                    </ng-container>
+                   
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_4">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">4</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_5">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">5</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_6">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">6</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_7">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">7</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_8">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">8</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_9">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">9</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_10">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">10</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_11">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">11</th>
+
+                    </ng-container>
+
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET_NUM_12">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">12</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_1">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">1</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_2">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">2</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_3">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">3</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_4">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">4</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_5">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">5</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_6">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">6</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_7">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">7</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_8">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">8</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_9">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">9</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_10">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">10</th>
+
+                    </ng-container>
+
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_11">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">11</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET_NUM_12">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">12</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLER_SW_IN">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">IN</th>
+
+                    </ng-container>
+
+                    <ng-container matColumnDef="JACKET_COOLER_SW_OUT">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">OUT</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLER_FW_IN">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">IN</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLER_FW_OUT">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">OUT</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="LO_COOLER_SW_IN">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">IN</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="LO_COOLER_SW_OUT">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">OUT</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="LO_COOLER_FW_IN">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">IN</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="LO_COOLER_FW_OUT">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">OUT</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLER_SW_IN">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">IN</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLER_SW_OUT">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">OUT</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLER_LO_IN">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">IN</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLER_LO_OUT">
+                        <th mat-header-cell *matHeaderCellDef
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">OUT</th>
+
+                    </ng-container>
+ 
+                    <!-- 3rd row -->
+                    <ng-container matColumnDef="MAIN_BEARING_IN">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">IN </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="MAIN_BEARING_OUTLET">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="12"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">OUTLET </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLING_IN">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">IN </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLING_OUTLET">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="12"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">OUTLET </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_IN">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">IN </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING_OUTLET">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="12"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">OUTLET </th>
+
+                    </ng-container>
+                
+                    <ng-container matColumnDef="JACKET_COOLER_SW">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">SW</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="JACKET_COOLER_FW">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">FW </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="LO_COOLER_SW">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">SW</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="LO_COOLER_FW">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">FW</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLER_SW">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">SW </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLER_LO">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">LO/FW</th>
+
+                    </ng-container>
+                    
+
+                    <!-- 2nd row-->
+                    <ng-container matColumnDef="MAIN_BEARING">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="13"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">MAIN BEARING </th>
+
+                    </ng-container>
+
+                    <ng-container matColumnDef="JACKET_COOLING">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="13"
+                            style="border-left: 1px solid #fff; 
+                            border-bottom: 1px solid #fff;text-align: center;">JACKET COOLING </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLING">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="13" style="border-left: 1px solid #fff;
+                           border-bottom: 1px solid #fff;text-align: center;">PISTON COOLING </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="FUEL_OIL">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">FUEL OIL </th>
+
+                    </ng-container>
+
+                    <ng-container matColumnDef="JACKET_COOLER">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">JACKET COOLER </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="LO_COOLER">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">LO COOLER </th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PISTON_COOLER">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">PISTON COOLER</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="Sea_Water">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">Sea Water</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="Jacket_Water">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">Jacket Water</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="Bearing">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">Bearing</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="Canshaft_LO">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">Canshaft LO</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="FV_Cooling">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">FV Cooling</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="Fuel_Oil">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">Fuel Oil</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="Piston_Cooling_2">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">Piston Cooling</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="Control_Air">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">Control Air</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="Service_Air">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">Service Air</th>
+
+                    </ng-container>
+
+                    <!-- 1st row -->
+                    <ng-container matColumnDef="blank_1">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;"></th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="WATCH">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4" style="border-left: 1px solid #fff; 
+                           border-bottom: 1px solid #fff;text-align: center;">WATCH</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="TEMPERATURE">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="40"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">TEMPERATURE Deg. C</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="FUEL_VISC">
+                        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">FUEL VISC</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="HEAT_EXCHANGERS_TEMP">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="12"
+                            style="border-left: 1px solid #fff; 
+                            border-bottom: 1px solid #fff;text-align: center;">HEAT EXCHANGERS TEMPERATURES Deg. C</th>
+
+                    </ng-container>
+                    <ng-container matColumnDef="PRESSURE_Kg">
+                        <th mat-header-cell *matHeaderCellDef [attr.colspan]="9"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;text-align: center;">PRESSURE Kg/Cm-Sq.</th>
+
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="header-row-first-group">
+                        <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="65"
+                            style="border-left: 1px solid #fff;
+                            border-bottom: 1px solid #fff;
+                            text-align: center;">
+                            MAIN ENGINES
+                        </th>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="['header-row-first-group']" style="height:35px">
+                    </tr>
+
+
+                    <tr *matHeaderRowDef="visibleColumnsMainEngine2_1" mat-header-row style="height:35px"></tr>
+
+                    <tr *matRowDef="let row; columns: visibleColumnsMainEngine2_1"
+                        class="clickable route-animations-elements" mat-row></tr>
+
+                    <tr *matHeaderRowDef="visibleColumnsMainEngine2_2" mat-header-row ></tr>
+
+                    <tr *matHeaderRowDef="visibleColumnsMainEngine2_3" mat-header-row ></tr>
+
+                    <tr *matHeaderRowDef="visibleColumnsMainEngine2_4" mat-header-row ></tr>
+
+                    <tr *matRowDef="let row; columns: visibleColumnsMainEngine2_3"
+                        class="clickable route-animations-elements" mat-row></tr>
+
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                    </tr>
+
+                </table>
+            </div>
+
+ 
+            </div>
+
+    </div>
+    
+                    </mat-tab>
+    
+                    <mat-tab label="Boiler & Purifier">
+                        <!-- <cdk-virtual-scroll-viewport tvsItemSize headerHeight="56" rowHeight="48" style="height: 400px;"> -->
+                
+                            <div >
+                                <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 3px;margin-bottom: 3px;">
+                                    <button mat-raised-button color="primary" class="save-btn save-btn1" style="margin-left: 15px;">Save</button>
+                                    <button mat-raised-button class="threshold-btn" style="margin-left: 15px;">Other Thresholds</button>
+                                    <button mat-raised-button color="info" class="threshold-btn" style="margin-left: 15px;">Tank Level Thresholds</button>
+                                  </div>
+                        </div> 
+    
+                        <div style="border: 1px solid #a3a3a3;">
+    
+                        <div #TABLE>
+                            <table [dataSource]="BoilerPurifierdataSource" mat-table matSort #table class="details-table" style="width: 100%;">
+    
+                               <!-- 1st row -->
+                                <ng-container matColumnDef="Air_Temp_Deg_C_P_IN">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">IN </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Air_Temp_Deg_C_P_OUT">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">OUT </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Air_Temp_Deg_C_S_IN">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">IN </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Air_Temp_Deg_C_S_OUT">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">OUT </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Heat_Exchanger_Deg_C_FW_IN">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">IN</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Heat_Exchanger_Deg_C_FW_OUT">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">OUT </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Heat_Exchanger_Deg_C_SW_IN">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">IN </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Heat_Exchanger_Deg_C_SW_OUT">
+                                    <th mat-header-cell *matHeaderCellDef 
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">OUT </th>
+    
+                                </ng-container>                             
+                            
+    
+                                <!-- 2nd row -->
+                                <ng-container matColumnDef="P_Suct">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Suct </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="P_Disch">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Disch</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="P_LO">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">LO </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="P_Cooling_Water">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Cooling Water </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="S_Suct">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Suct </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="S_Disch">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Disch </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="S_LO">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">LO </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="S_Cooling_Water">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;"> Cooling Water</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Air_Temp_Deg_C_P">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">P </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Air_Temp_Deg_C_S">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;"> S</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="PRESSURE_Kg_Comp_No">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;"> Comp. No</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="PRESSURE_Kg_Suct">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Suct </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="PRESSURE_Kg_Disch">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Disch </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="PRESSURE_Kg_LO">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">L. O. </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Temp_Deg_C_Meat">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Meat </th>
+    
+                                </ng-container>
+    
+                                <ng-container matColumnDef="Temp_Deg_C_Fish">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Fish </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Temp_Deg_C_Veg">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Veg/Labby </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Heat_Exchanger_Deg_C_FW">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">FW </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Heat_Exchanger_Deg_C_SW">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">SW </th>
+    
+                                </ng-container>
+    
+                                <ng-container matColumnDef="HO_Hrs_Run">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;"> Hrs. Run </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="HO_Temp">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Temp</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="LO_Hrs_Run">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;"> Hrs. Run </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="LO_Temp">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Temp </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="DO_Temp">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Temp </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Temperature_Deg_C_Thust_Brg">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Thust Brg. </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Temperature_Deg_C_Interm_Brg">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Interm Brg. </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Temperature_Deg_C_Stem_Tube_Oil">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Stem Tube Oil </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Temperature_Deg_C_Sea_Water">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Sea Water </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Temperature_Deg_C_ER">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">E.R. </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="HO_Sett_1">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">1 </th>
+    
+                                </ng-container>
+    
+                                <ng-container matColumnDef="HO_Sett_2">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">2</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="HO_Serv_1">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">1 </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="HO_Serv_2">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">2 </th>
+    
+                                </ng-container>
+    
+                                <!-- 1st row -->
+                                <ng-container matColumnDef="blank_1">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;"> </th>
+    
+                                </ng-container>
+    
+                                <ng-container matColumnDef="WATCH">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff; 
+                                        border-bottom: 1px solid #fff;text-align: center;">WATCH </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="AIR_P">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" style="border-left: 1px solid #fff;
+                                       border-bottom: 1px solid #fff;text-align: center;">P </th>
+    
+                                </ng-container>
+                                 <ng-container matColumnDef="AIR_S">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">S </th>
+    
+                                </ng-container>
+    
+                                <ng-container matColumnDef="Air_Temp_Deg_C">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Air Temp Deg. C </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="PRESSURE_Kg">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">PRESSURE Kg/Cm-Sq. </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Temp_Deg_C">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="3" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Temp Deg. C</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Running_Hours">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Running Hours</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Heat_Exchanger_Deg_C">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="4" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Heat Exchanger Deg. C</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Vacuum_Cm">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Vacuum Cm. Hg</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Shell_Temp_C">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Shell Temp C</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Salinity_PPM">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Salinity PPM</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Flowmeter">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Flowmeter</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Oile_Finning_Hours">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Oile Finning Hours</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Stream_Press">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Stream Press.</th>
+    
+                                </ng-container>
+    
+                                <ng-container matColumnDef="Feed_Water_Temp">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Feed Water Temp</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="EGE_Soot_Bown">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff; 
+                                       border-bottom: 1px solid #fff;text-align: center;">EGE Soot Bown</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="HO">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">HO</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="LO">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">LO</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="DO">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="1"
+                                        style="border-left: 1px solid #fff; 
+                                        border-bottom: 1px solid #fff;text-align: center;">DO</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Staff_Grounding">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Staff Grounding</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="Temperature_Deg_C">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="5"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Temperature Deg. C</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="HO_Sett">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">HO Sett.</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="HO_Serv">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">HO Serv.</th>
+    
+                                </ng-container>
+    
+                                <ng-container matColumnDef="Incinerator_Run_Hrs">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3" style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">Incinerator Run Hrs.</th>
+    
+                                </ng-container>
+
+                                <!-- Main row -->
+                                <ng-container matColumnDef="header-row-first-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="14"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;">
+                                        AIR CONDITIONING
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-second-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="7"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;">
+                                        REFRIGERATION PLANT
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-third-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="9"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;">
+                                        FRESH WATER GENERATOR
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-fourth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="4"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;">
+                                        BOILER
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-fifth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="5"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;">
+                                        PURIFIER
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-sixth-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="11"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;">
+                                        MISCELLANEOUS
+                                    </th>
+                                </ng-container>
+    
+                               
+                            <tr mat-header-row *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group', 'header-row-fourth-group', 'header-row-fifth-group', 'header-row-sixth-group']" style="height:35px">
+                            </tr>
+
+
+                            <tr *matHeaderRowDef="visibleColumnsBoilerPurifier1" mat-header-row style="height:35px"></tr>
+
+                            <tr *matRowDef="let row; columns: visibleColumnsBoilerPurifier1"
+                                class="clickable route-animations-elements" mat-row></tr>
+
+                            <tr *matHeaderRowDef="visibleColumnsBoilerPurifier2" mat-header-row ></tr>
+
+                            <tr *matHeaderRowDef="visibleColumnsBoilerPurifier3" mat-header-row ></tr>
+
+                            <tr *matRowDef="let row; columns: visibleColumnsBoilerPurifier3"
+                                class="clickable route-animations-elements" mat-row></tr>
+
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" colspan="9999">No data found</td>
+                            </tr>
+
+    
+                            </table>
+                        </div>
+                     
+        </div>
+     
+    
+    
+                       <div style="border: 1px solid #a3a3a3;">
+                        <div >
+                            <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 3px;margin-bottom: 3px;">
+                                <button mat-raised-button color="primary" class="save-btn save-btn1" style="margin-left: 15px;">Save</button>
+                               
+                              </div>
+                    </div> 
+            <table style="width:100%">
+                <tr>
+                    <td style="width:50%">
+                        <div #TABLE>
+                            <table [dataSource]="BoilerdataSource" mat-table matSort #table class="details-table" style="width: 100%;">
+    
+                               <!-- 1st row -->
+                                <ng-container matColumnDef="JKT">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">JKT </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="PIST">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">PIST </th>
+    
+                                </ng-container>
+                             
+    
+                                <!-- 2nd row -->
+                                <ng-container matColumnDef="Boiler_blank_1">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;"> </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="BLR">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">BLR</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="ME">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">ME </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="AE">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">AE</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="COMPR">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">COMPR </th>
+    
+                                </ng-container>
+                        
+                                <!-- Main row -->
+                                <ng-container matColumnDef="header-row-first-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;">
+                                        
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-second-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="6"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;">
+                                        BOILER/ COOLING WATER TEST
+
+                                    </th>
+                                </ng-container>
+                            
+    
+                               
+                            <tr mat-header-row *matHeaderRowDef="['header-row-first-group','header-row-second-group']" style="height:35px">
+                            </tr>
+
+
+                            <tr *matHeaderRowDef="visibleColumnsBoiler1" mat-header-row style="height:35px"></tr>
+
+                            <tr *matRowDef="let row; columns: visibleColumnsBoiler1"
+                                class="clickable route-animations-elements" mat-row></tr>
+
+                            <tr *matHeaderRowDef="visibleColumnsBoiler2" mat-header-row ></tr>
+
+                
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" colspan="9999">No data found</td>
+                            </tr>
+
+    
+                            </table>
+                        </div>
+                    </td>
+                    <td style="width:50%">
+                        <div #TABLE>
+                            <table [dataSource]="BoilerdataSource" mat-table matSort #table class="details-table" style="width: 100%;">
+    
+                               <!-- 1st row -->
+                                <ng-container matColumnDef="JKT">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">JKT </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="PIST">
+                                    <th mat-header-cell *matHeaderCellDef
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">PIST </th>
+    
+                                </ng-container>
+                             
+    
+                                <!-- 2nd row -->
+                                <ng-container matColumnDef="Boiler_blank_1">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;"> </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="BLR">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">BLR</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="ME">
+                                    <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">ME </th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="AE">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">AE</th>
+    
+                                </ng-container>
+                                <ng-container matColumnDef="COMPR">
+                                    <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;text-align: center;">COMPR </th>
+    
+                                </ng-container>
+                        
+                                <!-- Main row -->
+                                <ng-container matColumnDef="header-row-first-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="3"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;">
+                                        
+                                    </th>
+                                </ng-container>
+                                <ng-container matColumnDef="header-row-second-group">
+                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="6"
+                                        style="border-left: 1px solid #fff;
+                                        border-bottom: 1px solid #fff;
+                                        text-align: center;">
+                                        BOILER/ COOLING WATER TEST
+
+                                    </th>
+                                </ng-container>
+                            
+    
+                               
+                            <tr mat-header-row *matHeaderRowDef="['header-row-first-group','header-row-second-group']" style="height:35px">
+                            </tr>
+
+
+                            <tr *matHeaderRowDef="visibleColumnsBoiler1" mat-header-row style="height:35px"></tr>
+
+                            <tr *matRowDef="let row; columns: visibleColumnsBoiler1"
+                                class="clickable route-animations-elements" mat-row></tr>
+
+                            <tr *matHeaderRowDef="visibleColumnsBoiler2" mat-header-row ></tr>
+
+                
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" colspan="9999">No data found</td>
+                            </tr>
+
+    
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+           
+                        </div>
+            
+                        <!-- </cdk-virtual-scroll-viewport> -->
+                    </mat-tab>
+                    <mat-tab label="Generator Engine">
+                        <div >
+                            <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 3px;margin-bottom: 3px;">
+                                
+                                <button mat-raised-button color="primary" class="save-btn save-btn1" style="margin-left: 15px;">Save</button>
+                                <button mat-raised-button class="threshold-btn" style="margin-left: 15px;">Generator Engine Thresholds</button>
+                                <button mat-raised-button color="info" class="threshold-btn" style="margin-left: 15px;">Shaft Engine Thresholds</button>
+                              </div>
+                    </div> 
+
+                    <div style="border: 1px solid #a3a3a3;">
+
+                    <div #TABLE>
+                        <table [dataSource]="GeneratorEngine1dataSource" mat-table matSort #table class="details-table" style="width: 100%;">
+
+                            <ng-container matColumnDef="SW_In">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">In </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="SW_Out">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Out </th>
+
+                            </ng-container> 
+                            <ng-container matColumnDef="LO_In">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">In </th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="LO_Out ">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Out </th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="Exhaust_Max">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Max </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="Exhaust_Min">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Min </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="CW_In">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">In </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="CW_Out">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Out </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LO_In">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">In </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LO_Out">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Out </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="SW">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">SW </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LO">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">LO </th>
+
+                            </ng-container>
+                   
+
+
+                            <ng-container matColumnDef="WATCH">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">WATCH </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="blank_1">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;"> </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="blank_2">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;"> </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="Generator_No">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Generator No. </th>
+
+                            </ng-container>
+                       
+                            <ng-container matColumnDef="Running_Hrs">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Running Hrs. </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="Exhaust">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Exhaust</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="CW">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">CW</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LO">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">LO</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="Boost_Air">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Boost Air</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="Pedestal_Bearing">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Pedestal Bearing</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="Fuel_IN">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Fuel IN </th>
+
+                            </ng-container>
+                    
+                            <ng-container matColumnDef="AE_LO_COOLER">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="4"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">A/E LO COOLER</th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="LO_1">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">L.O. </th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="CW_1">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">C.W. </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="Boost_Air_1">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="3"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Boost Air </th>
+
+                            </ng-container>
+                            <ng-container matColumnDef="Fuel_Oil">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Fuel Oil</th>
+
+                            </ng-container>
+                
+                            
+
+
+                            <ng-container matColumnDef="Temperator">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="18"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Temperator </th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="PRESSURE-Kg">
+                                <th mat-header-cell *matHeaderCellDef [attr.colspan]="4"
+                                    style="border-left: 1px solid #fff; 
+                                    border-bottom: 1px solid #fff;text-align: center;">PRESSURE-Kg/Cm-Sq.</th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="Amps">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;text-align: center;">Amps </th>
+
+                            </ng-container>
+
+                            <ng-container matColumnDef="KW">
+                                <th mat-header-cell *matHeaderCellDef [attr.rowspan]="4"
+                                    style="border-left: 1px solid #fff; 
+                                    border-bottom: 1px solid #fff;text-align: center;">KW</th>
+
+                            </ng-container>
+                           
+                            <ng-container matColumnDef="header-row-first-group">
+                                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="24"
+                                    style="border-left: 1px solid #fff;
+                                    border-bottom: 1px solid #fff;
+                                    text-align: center;">
+                                    GENERATOR ENGINES
+                                </th>
+                            </ng-container>
+                            
+
+                            <tr mat-header-row *matHeaderRowDef="['header-row-first-group']" style="height:35px">
+                            </tr>
+
+
+                            <tr *matHeaderRowDef="visibleColumnsGeneratorEngine1_1" mat-header-row style="height:35px"></tr>
+
+                            <tr *matRowDef="let row; columns: visibleColumnsGeneratorEngine1_1"
+                                class="clickable route-animations-elements" mat-row></tr>
+
+                            <tr *matHeaderRowDef="visibleColumnsGeneratorEngine1_2" mat-header-row ></tr>
+
+                            <tr *matHeaderRowDef="visibleColumnsGeneratorEngine1_3" mat-header-row ></tr>
+
+                            <tr *matHeaderRowDef="visibleColumnsGeneratorEngine1_4" mat-header-row ></tr>
+
+                            <tr *matRowDef="let row; columns: visibleColumnsGeneratorEngine1_3"
+                                class="clickable route-animations-elements" mat-row></tr>
+
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" colspan="9999">No data found</td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                   
+                        
+    </div>
+
+
+
+    <div >
+        <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 3px;margin-bottom: 3px;">
+            <button mat-raised-button color="primary" class="save-btn save-btn1" style="margin-left: 15px;">Save</button>
+           
+          </div>
+</div> 
+
+    <div style="border: 1px solid #a3a3a3;">
+        <div>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="GeneratorEngine2dataSource"  class="example-container">
+              
+              
+              
+              
+                  <ng-container matColumnDef="Run_Hrs_1">
+                    <th mat-header-cell *matHeaderCellDef  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> Run Hrs. </th>
+                  
+                  </ng-container>
+              
+                  <ng-container matColumnDef="Strim_Press_1">
+                    <th mat-header-cell *matHeaderCellDef  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;">Strim Press </th>
+              
+                  </ng-container>
+              
+                  <ng-container matColumnDef="Cond_Vac_1">
+                    <th mat-header-cell *matHeaderCellDef  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> Cond Vac. </th>
+              
+                  </ng-container>
+              
+                  <ng-container matColumnDef="Gland_Steam_1">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> Gland Steam </th>
+              
+                  </ng-container>
+                  <ng-container matColumnDef="Lo_Press_1">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> LO Press</th>
+              
+                  </ng-container>
+              
+                  <ng-container matColumnDef="Lo_Temp_1">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> L.O.Temp </th>
+              
+                  </ng-container>
+                  <ng-container matColumnDef="Thrust_Brg_1">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> Thrust Brg Deg.C</th>
+              
+                  </ng-container>
+              
+                  <ng-container matColumnDef="Thrust_End_1">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> Thrust End Deg.C</th>
+              
+                  </ng-container>
+                  <ng-container matColumnDef="Blank_1">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> </th>
+              
+                  </ng-container>
+                  <ng-container matColumnDef="KW_1">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;">KW</th>
+              
+                  </ng-container>
+                  <ng-container matColumnDef="Amps_1">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;">Amps</th>
+                  </ng-container>
+                    
+                  <!--  -->
+              
+              
+              
+                  <ng-container matColumnDef="Run_Hrs_2">
+                    <th mat-header-cell *matHeaderCellDef  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> Run Hrs. </th>
+                   
+                  </ng-container>
+                  <ng-container matColumnDef="Clutch_2">
+                    <th mat-header-cell *matHeaderCellDef  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> Clutch Air Pr. </th>
+                   
+                  </ng-container>
+                  <ng-container matColumnDef="Lo_Press_2">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> Lo Press</th>
+              
+                  </ng-container>
+                  <ng-container matColumnDef="Lo_Temp_2">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> L.O.Temp </th>
+              
+                  </ng-container>
+              
+                  <ng-container matColumnDef="Blank_Data_2">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> </th>
+              
+                  </ng-container>
+                  <ng-container matColumnDef="SG_Cont_2">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;">SG Cont Brg Temp </th>
+                      SG Cont Brg Temp
+                  </ng-container>
+                  <ng-container matColumnDef="Blank_2">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;"> </th>
+              
+                  </ng-container>
+                  <ng-container matColumnDef="KW_2">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;">KW</th>
+              
+                  </ng-container>
+                  <ng-container matColumnDef="Amps_2">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="{ 'white-space': 'initial' }"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;">Amps</th>
+                  </ng-container>
+              
+              
+              
+                  <!--  -->
+                  <ng-container matColumnDef="header-row-first-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;">
+                     Watch
+                    </th>
+                  </ng-container>
+                  <ng-container matColumnDef="header-row-second-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="11"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;">
+                     TURBO ALTERNATOR
+                    </th>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="header-row-third-group">
+                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center"  [attr.colspan]="9"  class="borderstyle"  style="border-left: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    text-align: center;">
+                      SHAFT GENERATOR
+                    </th>
+                  </ng-container>
+                  
+                  <tr mat-header-row
+                    *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group']">
+                  </tr>
+                  <tr mat-header-row *matHeaderRowDef="visibleColumnsGeneratorEngine2;sticky:true"></tr>
+                  <tr mat-row *matRowDef="let row; columns: visibleColumnsGeneratorEngine2;"></tr>
+                </table>
+              
+              </div>
+ 
+            </div>
+
+    </div>
+    
+                    </mat-tab>
+                    <mat-tab label="Fuel & Fresh Water Account">
+                    
+                        <div>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td style="width:32%">
+                                        <div #TABLE>
+                                            <table [dataSource]="FuelWaterAccountdataSource_1" mat-table matSort #table class="details-table" style="width: 100%;">
+                            
+                                          
+                                                <ng-container matColumnDef="WATCH">
+                                                    <th mat-header-cell *matHeaderCellDef
+                                                        style="text-align: center;">WATCH </th>
+                            
+                                                </ng-container>
+                                                <ng-container matColumnDef="REMARK_OF_ENGINEER_OFFICER_ON_WATCH">
+                                                    <th mat-header-cell *matHeaderCellDef
+                                                        style="text-align: center;">REMARK OF ENGINEER OFFICER ON WATCH </th>
+                            
+                                                </ng-container>
+                                                       
+                                                <tr *matHeaderRowDef="visibleColumnsFuelWaterAccount" mat-header-row style="height:35px"></tr>
+                            
+                                                <tr *matRowDef="let row; columns: visibleColumnsFuelWaterAccount"
+                                                    class="clickable route-animations-elements" mat-row></tr>
+                            
+                                                <tr class="mat-row" *matNoDataRow>
+                                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                                </tr>
+                            
+                                            </table>
+                                        </div>
+                            
+                                    </td>
+                                    <td style="width:32%">
+                                    
+                                        <div #TABLE>
+                                            <table [dataSource]="FuelWaterAccountdataSource_2" mat-table matSort #table class="details-table" style="width: 100%;">
+                            
+                                                <!-- 2nd row -->
+                                                <ng-container matColumnDef="blank_1">
+                                                    <th mat-header-cell *matHeaderCellDef
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;text-align: center;"> </th>
+                            
+                                                </ng-container>
+                                                <ng-container matColumnDef="HO">
+                                                    <th mat-header-cell *matHeaderCellDef
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;text-align: center;">H.O. </th>
+                            
+                                                </ng-container>
+                                                <ng-container matColumnDef="DO">
+                                                    <th mat-header-cell *matHeaderCellDef
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;text-align: center;">D.O. </th>
+                            
+                                                </ng-container>
+                                                <ng-container matColumnDef="GO">
+                                                    <th mat-header-cell *matHeaderCellDef
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;text-align: center;">G.O. </th>
+                            
+                                                </ng-container>
+                                                             
+                                                <!-- 1st row -->                                               
+                                                <ng-container matColumnDef="header-row-first-group">
+                                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;
+                                                        text-align: center;">
+                                                        
+                                                    </th>
+                                                </ng-container>
+                                                <ng-container matColumnDef="header-row-second-group">
+                                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="4"
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;
+                                                        text-align: center;">
+                                                         FRESH OIL DAILY ACCOUNT(MT)
+                                                    </th>
+                                                </ng-container>
+                            
+                                                <tr mat-header-row *matHeaderRowDef="['header-row-first-group','header-row-second-group']" style="height:35px">
+                                                </tr>
+                            
+                            
+                                                <tr *matHeaderRowDef="visibleColumnsFuelWaterAccount2_1" mat-header-row style="height:35px"></tr>
+                            
+                                                <tr *matRowDef="let row; columns: visibleColumnsFuelWaterAccount2_1"
+                                                    class="clickable route-animations-elements" mat-row></tr> 
+                            
+                            
+                                                <tr class="mat-row" *matNoDataRow>
+                                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                                </tr>
+                            
+                                            </table>
+                                        </div>
+
+                                    </td>
+                                    <td style="width:32%">
+                                    
+                                        <div #TABLE>
+                                            <table [dataSource]="FuelWaterAccountdataSource_2" mat-table matSort #table class="details-table" style="width: 100%;">
+                            
+                                                <!-- 2nd row -->
+                                                <ng-container matColumnDef="blank_1">
+                                                    <th mat-header-cell *matHeaderCellDef
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;text-align: center;"> </th>
+                            
+                                                </ng-container>
+                                                <ng-container matColumnDef="HO">
+                                                    <th mat-header-cell *matHeaderCellDef
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;text-align: center;">H.O. </th>
+                            
+                                                </ng-container>
+                                                <ng-container matColumnDef="DO">
+                                                    <th mat-header-cell *matHeaderCellDef
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;text-align: center;">D.O. </th>
+                            
+                                                </ng-container>
+                                                <ng-container matColumnDef="GO">
+                                                    <th mat-header-cell *matHeaderCellDef
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;text-align: center;">G.O. </th>
+                            
+                                                </ng-container>
+                                                             
+                                                <!-- 1st row -->                                               
+                                                <ng-container matColumnDef="header-row-first-group">
+                                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;
+                                                        text-align: center;">
+                                                        
+                                                    </th>
+                                                </ng-container>
+                                                <ng-container matColumnDef="header-row-second-group">
+                                                    <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="4"
+                                                        style="border-left: 1px solid #fff;
+                                                        border-bottom: 1px solid #fff;
+                                                        text-align: center;">
+                                                         FRESH OIL DAILY ACCOUNT(MT)
+                                                    </th>
+                                                </ng-container>
+                            
+                                                <tr mat-header-row *matHeaderRowDef="['header-row-first-group','header-row-second-group']" style="height:35px">
+                                                </tr>
+                            
+                            
+                                                <tr *matHeaderRowDef="visibleColumnsFuelWaterAccount2_1" mat-header-row style="height:35px"></tr>
+                            
+                                                <tr *matRowDef="let row; columns: visibleColumnsFuelWaterAccount2_1"
+                                                    class="clickable route-animations-elements" mat-row></tr> 
+                            
+                            
+                                                <tr class="mat-row" *matNoDataRow>
+                                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                                </tr>
+                            
+                                            </table>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </mat-tab>
+
+
+
+                    <mat-tab label="Chief Engineer Remark">
+                        
+                     <table style="width:100%">
+                        <tr>
+                            <td style="width:50%">
+                                <div #TABLE>
+                                    <table [dataSource]="ChiefEngineerdataSource1" mat-table matSort #table class="details-table" style="width: 100%;">
+                    
+                                        <!-- 2nd row -->
+                                        <ng-container matColumnDef="Grade">
+                                            <th mat-header-cell *matHeaderCellDef
+                                                style="border-left: 1px solid #fff;
+                                                border-bottom: 1px solid #fff;text-align: center;">Grade </th>
+                    
+                                        </ng-container>
+                                        <ng-container matColumnDef="MECC">
+                                            <th mat-header-cell *matHeaderCellDef
+                                                style="border-left: 1px solid #fff;
+                                                border-bottom: 1px solid #fff;text-align: center;">MECC</th>
+                    
+                                        </ng-container>
+                                        <ng-container matColumnDef="MECYL">
+                                            <th mat-header-cell *matHeaderCellDef
+                                                style="border-left: 1px solid #fff;
+                                                border-bottom: 1px solid #fff;text-align: center;">MECYL</th>
+                    
+                                        </ng-container>
+                                        <ng-container matColumnDef="AECC">
+                                            <th mat-header-cell *matHeaderCellDef
+                                                style="border-left: 1px solid #fff;
+                                                border-bottom: 1px solid #fff;text-align: center;">AECC</th>
+                    
+                                        </ng-container>
+                                                     
+                                        <!-- 1st row -->                                               
+                                        <ng-container matColumnDef="header-row-first-group">
+                                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                                style="border-left: 1px solid #fff;
+                                                border-bottom: 1px solid #fff;
+                                                text-align: center;">
+                                                
+                                            </th>
+                                        </ng-container>
+                                        <ng-container matColumnDef="header-row-second-group">
+                                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="4"
+                                                style="border-left: 1px solid #fff;
+                                                border-bottom: 1px solid #fff;
+                                                text-align: center;">
+                                                 LUBRICATING OIL DAILY ACCOUNT (Ltr)
+                                            </th>
+                                        </ng-container>
+                    
+                                        <tr mat-header-row *matHeaderRowDef="['header-row-first-group','header-row-second-group']" style="height:35px">
+                                        </tr>
+                    
+                    
+                                        <tr *matHeaderRowDef="visibleColumnsChiefEngineer1" mat-header-row style="height:35px"></tr>
+                    
+                                        <tr *matRowDef="let row; columns: visibleColumnsChiefEngineer1"
+                                            class="clickable route-animations-elements" mat-row></tr> 
+                    
+                    
+                                        <tr class="mat-row" *matNoDataRow>
+                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                        </tr>
+                    
+                                    </table>
+                                </div>
+                            
+                            </td>
+                            <td style="width:50%">
+                                <div #TABLE>
+                                    <table [dataSource]="ChiefEngineerdataSource2" mat-table matSort #table class="details-table" style="width: 100%;">
+                    
+                                        <!-- 2nd row -->
+                                        <ng-container matColumnDef="CHIEF_ENGINEER_REMARK">
+                                            <th mat-header-cell *matHeaderCellDef
+                                                style="border-left: 1px solid #fff;
+                                                border-bottom: 1px solid #fff;text-align: center;"> CHIEF ENGINEER'S REMARK</th>
+                                            
+
+                                        </ng-container>
+
+                                        <tr *matHeaderRowDef="visibleColumnsChiefEngineer2" mat-header-row style="height:35px"></tr>
+                    
+                                        <tr *matRowDef="let row; columns: visibleColumnsChiefEngineer2"
+                                            class="clickable route-animations-elements" mat-row></tr> 
+                    
+                    
+                                        <tr class="mat-row" *matNoDataRow>
+                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                        </tr>
+                    
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                     </table>
+    
+                    </mat-tab>
+                    <mat-tab label="Working & Daily Performance">
+                        
+              <div>
+                <div #TABLE>
+                    <table [dataSource]="WorkingDailydataSource1" mat-table matSort #table class="details-table" style="width: 100%;">
+    
+                        <!-- 2nd row -->
+                        <ng-container matColumnDef="blank_1">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;"> </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="ME">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;">M/E </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="AE-1">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;">AE-1 </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="AE-2">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;">AE-2 </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="AE-3">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;">AE-3 </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="AE-4">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;">AE-4 </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="TA">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;">TA </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="SG">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;">SG </th>
+    
+                        </ng-container>
+                                     
+                        <!-- 1st row -->                                               
+                        <ng-container matColumnDef="header-row-first-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;
+                                text-align: center;">
+                                
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-second-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="8"
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;
+                                text-align: center;">
+                                 WORKING HOURS
+                            </th>
+                        </ng-container>
+    
+                        <tr mat-header-row *matHeaderRowDef="['header-row-first-group','header-row-second-group']" style="height:35px">
+                        </tr>
+    
+    
+                        <tr *matHeaderRowDef="visibleColumnsWorkingDaily1" mat-header-row style="height:35px"></tr>
+    
+                        <tr *matRowDef="let row; columns: visibleColumnsWorkingDaily1"
+                            class="clickable route-animations-elements" mat-row></tr> 
+    
+    
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+    
+                    </table>
+                </div>
+                <div >
+                    <div fxLayout="row" fxLayoutAlign="start center" style="margin-top: 3px;margin-bottom: 3px;">
+                      
+                        <button mat-raised-button color="primary" class="save-btn save-btn1" style="margin-left: 15px;">Save</button>
+                        
+                      </div>
+            </div> 
+              </div>
+
+              <div>
+                <div #TABLE>
+                    <table [dataSource]="WorkingDailydataSource2" mat-table matSort #table class="details-table" style="width: 100%;">
+    
+                        <!-- 2nd row -->
+                        <ng-container matColumnDef="blank_1">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;"> </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="blank_2">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;"> </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="blank_3">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;"> </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="blank_4">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;"> </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="blank_5">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;"> </th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="blank_6">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;"></th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="blank_7">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;"></th>
+    
+                        </ng-container>
+                        <ng-container matColumnDef="blank_8">
+                            <th mat-header-cell *matHeaderCellDef
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;text-align: center;"></th>
+    
+                        </ng-container>
+                                     
+                        <!-- 1st row -->                                               
+                        <ng-container matColumnDef="header-row-first-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;
+                                text-align: center;">
+                                
+                            </th>
+                        </ng-container>
+                        <ng-container matColumnDef="header-row-second-group">
+                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="8"
+                                style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #fff;
+                                text-align: center;">
+                                 DAILY PERFORMANCE
+
+                            </th>
+                        </ng-container>
+    
+                        <tr mat-header-row *matHeaderRowDef="['header-row-first-group','header-row-second-group']" style="height:35px">
+                        </tr>
+    
+    
+                        <tr *matHeaderRowDef="visibleColumnsWorkingDaily2_1" mat-header-row style="height:35px"></tr>
+    
+                        <tr *matRowDef="let row; columns: visibleColumnsWorkingDaily2_1"
+                            class="clickable route-animations-elements" mat-row></tr> 
+    
+    
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="9999">No data found</td>
+                        </tr>
+    
+                    </table>
+                </div>
+                <div >
+                    <div fxLayout="row" fxLayoutAlign="start center" style="margin-top: 3px;margin-bottom: 3px;">
+                      
+                        <button mat-raised-button color="primary" class="save-btn save-btn1" style="margin-left: 15px;">Save</button>
+                        
+                      </div>
+            </div> 
+              </div>
+                  
+                     
+    
+                    </mat-tab>
+                </mat-tab-group>
+            
+            </div>
+        
+          </fury-page-layout-content>
+
+

@@ -1,0 +1,142 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Assign Nationality
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+
+
+<div >
+    <h6 style="margin: 16px;">Document Type </h6>
+    <h6 style="margin: 16px;">Document Name </h6>
+
+    <table style="    width: 100%;
+    border: 1px solid #f5f5f5;
+    padding: 10px;">
+        <tbody>
+            <tr>
+                <td>
+                    <h6> Un-assigned Nationality
+                    </h6>
+
+                    <div class="search" fxLayout="row" fxLayoutAlign="space-between">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>search...</mat-label> <button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
+                            <input type="text" matInput />
+                        </mat-form-field>
+                    </div>
+                    <!-- <table>
+                        <tbody>
+                            <tr class="example-section">
+                                <td>
+                                    <mat-checkbox class="example-margin" >Select All</mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr class="example-section">
+                                <td>
+                                    <mat-checkbox class="example-margin" >Japan</mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr class="example-section">
+                                <td>
+                                    <mat-checkbox class="example-margin" >India</mat-checkbox>
+                                </td>
+                            </tr>
+                               
+                            <tr class="example-section">
+                           
+                                <td>
+                                    <mat-checkbox class="example-margin" >Slovakia</mat-checkbox>
+                                </td>
+                            </tr>
+                                
+                            <tr class="example-section">
+                                <td>
+                                    <mat-checkbox class="example-margin" >Swizerland</mat-checkbox>
+                                </td>
+                            </tr>  
+                     
+                        </tbody>
+                    </table> -->
+
+                    <mat-list dense style="border: 1px solid #e2e2e2;cursor: pointer;">
+                        <mat-list-item>
+                      <mat-checkbox [(ngModel)]="select_all" (ngModelChange)="onSelectAll($event)"></mat-checkbox>
+                      <span fxFlex="5"></span>    
+                      <span>Select all</span>
+                        </mat-list-item>
+                
+                        <ng-container *ngFor="let d of data;">
+                            <mat-list-item>
+                                    <mat-checkbox [(ngModel)]="d.is_selected"></mat-checkbox>
+                          <span fxFlex="5"></span>    
+                                    <span>{{ d.name }}</span>
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+
+                    
+                </td>
+                <td>
+                   
+
+                    <div class="filter-btn-area" >
+                        <div>
+                            <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                            <button mat-raised-button color="primary" style="background-color: #5cb85c;"
+                                class="filter-btn">
+                               Assign
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button  style="background-color: #5bc0de;
+                            border-color: #46b8da;color: #fff;"  class="filter-btn"
+                                >
+                                Unassign
+                                
+                            </button>
+                        </div>
+                    </div>
+                  
+                </td>
+                <td>
+                    <h6>Assigned Nationality</h6>
+                    <div class="search" fxLayout="row" fxLayoutAlign="space-between">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>search...</mat-label><button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
+                            <input type="text" matInput />
+                        </mat-form-field>
+                    </div>
+
+                        <mat-list dense style="border: 1px solid #e2e2e2;cursor: pointer;">
+                            <mat-list-item>
+                          <mat-checkbox [(ngModel)]="select_all_data" (ngModelChange)="onSelectAllData($event)"></mat-checkbox>
+                          <span fxFlex="5"></span>    
+                          <span>Select all</span>
+                            </mat-list-item>
+                    
+                            <ng-container *ngFor="let d of dataTwo;">
+                                <mat-list-item>
+                                        <mat-checkbox [(ngModel)]="d.is_selected"></mat-checkbox>
+                              <span fxFlex="5"></span>    
+                                        <span>{{ d.name }}</span>
+                                </mat-list-item>
+                            </ng-container>
+                        </mat-list>
+
+
+                    
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

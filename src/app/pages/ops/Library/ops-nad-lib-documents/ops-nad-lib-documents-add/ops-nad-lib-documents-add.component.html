@@ -1,0 +1,88 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Documents
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <mat-dialog-content>
+
+    
+    <form [formGroup]="AddDocumentFieldFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Document Name</mat-label>
+            <input formControlName="txtDocument_Name" matInput placeholder="Search by Document Name" type="text" />
+          </mat-form-field>
+        </div>
+        
+       
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>NAD Type</mat-label>
+            <mat-select formControlName="drpNAD_Type">
+              <mat-option value="Arrival">Arrival</mat-option>
+              <mat-option value="Departure">Departure</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>NAD Location</mat-label>
+              <mat-select formControlName="drpNAD_Location">
+                <mat-option value="Arrival">Alongside</mat-option>
+                      <mat-option value="Departure">Anchorage</mat-option>
+                      <mat-option value="Departure">At Sea</mat-option>
+                      <mat-option value="Departure">Drifting</mat-option>
+                      <mat-option value="Departure">SBM</mat-option>
+                      <mat-option  value="Departure">STS</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Cargo State</mat-label>
+            <mat-select formControlName="drpCargo_State" >
+              <option value="Activated">Select All</option>
+              <option value="Deleted">Laden</option>
+              <option value="Deleted">Ballast</option>
+              
+              
+            </mat-select>
+          </mat-form-field>
+          </div>
+
+          <div fxLayout="row"  fxLayoutGap="10px"
+          style="margin-bottom: 24px; margin-top: 26px;">
+          <mat-label>Is Mandatory</mat-label>
+          <mat-radio-group fxLayout="row" fxLayoutGap="5px"
+              formControlName="radioMandatory">
+             
+              <mat-radio-button value="0" >Yes</mat-radio-button>
+              <mat-radio-button value="1" >No</mat-radio-button>
+          </mat-radio-group>
+      </div>
+      </div>
+    </form>
+   
+
+    
+</mat-dialog-content>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

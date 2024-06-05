@@ -1,0 +1,184 @@
+
+
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>{{modeltitle}}
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+  <div>
+
+        <div *ngIf="showItemCategory && !showItemType ">
+            <form [formGroup]="ItemCategoryFormGroup">
+                <div mat-dialog-container style="padding-top: 20px;">
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Item Category</mat-label>
+                      <input formControlName="txtItem_Category" matInput placeholder="Item Category" type="text" />
+                    </mat-form-field>
+                  </div>
+                  
+                </div>
+              </form>
+        </div>
+
+
+
+        <div *ngIf="showItemType && !showItemCategory ">
+            <form [formGroup]="ItemTypeFormGroup">
+                <div mat-dialog-container style="padding-top: 20px;">
+
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Category</mat-label>
+                          <mat-select formControlName="drpCategory">
+                            <mat-option value="Ammunition">Ammunition</mat-option>
+                            <mat-option value="AmmunitionRoundsCaliber">Ammunition rounds Caliber</mat-option>
+                            <mat-option value="DigitalCamera">Digital Camera</mat-option>
+                            <mat-option value="Laptop">Laptop</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Item Type</mat-label>
+                        <input formControlName="txtItem_Type" matInput placeholder="Item Type" type="text" />
+                        </mat-form-field>
+                    </div>
+                  
+                </div>
+              </form>
+        </div>
+
+        <div *ngIf="showItem && !showItemCategory ">
+            <form [formGroup]="ItemFormGroup">
+                <div mat-dialog-container style="padding-top: 20px;">
+
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Category</mat-label>
+                          <mat-select formControlName="drpCategory">
+                            <mat-option value="Ammunition">Ammunition</mat-option>
+                            <mat-option value="AmmunitionRoundsCaliber">Ammunition rounds Caliber</mat-option>
+                            <mat-option value="DigitalCamera">Digital Camera</mat-option>
+                            <mat-option value="Laptop">Laptop</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Item Type</mat-label>
+                          <mat-select formControlName="drpItem_Type">
+                            
+                          </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Item</mat-label>
+                        <input formControlName="txtItem" matInput placeholder="Item" type="text" />
+                        </mat-form-field>
+                    </div>
+                  
+                </div>
+              </form>
+        </div>
+
+        <div *ngIf="showItemModel && !showItemCategory ">
+            <form [formGroup]="ItemModelFormGroup">
+                <div mat-dialog-container style="padding-top: 20px;">
+
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Category</mat-label>
+                          <mat-select formControlName="drpCategory">
+                            <mat-option value="Ammunition">Ammunition</mat-option>
+                            <mat-option value="AmmunitionRoundsCaliber">Ammunition rounds Caliber</mat-option>
+                            <mat-option value="DigitalCamera">Digital Camera</mat-option>
+                            <mat-option value="Laptop">Laptop</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Item Type</mat-label>
+                          <mat-select formControlName="drpItem_Type">
+                            
+                          </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Item Model</mat-label>
+                        <input formControlName="txtItem_Model" matInput placeholder="Item Model" type="text" />
+                        </mat-form-field>
+                    </div>
+                  
+                </div>
+              </form>
+        </div>
+
+        <div *ngIf="showItemMaker && !showItemCategory ">
+            <form [formGroup]="ItemMakerFormGroup">
+                <div mat-dialog-container style="padding-top: 20px;">
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Item Maker</mat-label>
+                      <input formControlName="txtItem_Maker" matInput placeholder="Item Maker" type="text" />
+                    </mat-form-field>
+                  </div>
+                  
+                </div>
+              </form>
+        </div>
+
+
+        <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+            <button mat-raised-button color="primary" class="save-btn">
+              Save 
+            </button>
+      
+            <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+          </mat-dialog-actions>
+
+</div>
+
+
+   
+  
+    
+<!-- <div fxLayout="column" fxLayout.gt-sm="row">
+    <mat-form-field fxFlex appearance="fill">
+      <mat-label>Department Short Code</mat-label>
+      <input formControlName="txtDept_Short_Code" matInput placeholder="Search by Department Short Code"
+        type="text" />
+    </mat-form-field>
+  </div>
+  <div fxLayout="column" fxLayout.gt-sm="row">
+    <mat-form-field fxFlex appearance="fill">
+      <mat-label>Form Type</mat-label>
+      <mat-select formControlName="drpForm_Type">
+        <mat-option value="11188-TEST">Management</mat-option>
+        <mat-option value="01001-Food">Repairs</mat-option>
+
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxLayout="column" fxLayout.gt-sm="row">
+    <mat-form-field fxFlex appearance="fill">
+      <mat-label>A/C Classification</mat-label>
+      <mat-select formControlName="drpAC_Classification">
+        <mat-option value="Kilogram">11188 - TEST</mat-option>
+        <mat-option value="Liters">01001 - Food</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> -->

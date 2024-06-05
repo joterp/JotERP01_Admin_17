@@ -1,0 +1,38 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="width: 20px;
+          height:20px; margin-right: 10px;margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="crew-followup-view">
+
+    <div>
+        <form [formGroup]="AddFollowupFormGroup">
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Followup Remark</mat-label>
+                    <textarea matInput formControlName="txtFollowup_Remark"></textarea>
+                </mat-form-field>
+            </div>
+
+            </form>
+            </div>
+            </mat-dialog-content>
+
+            <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+
+                <button mat-raised-button color="primary" class="save-btn"
+                  [ngClass]="[!AddFollowupFormGroup.valid ? '' : 'save-btn']" [disabled]="!AddFollowupFormGroup.valid">
+                  SAVE & CLOSE
+                </button>
+              
+                <button mat-raised-button color="primary" class="save-btn" [disabled]="!AddFollowupFormGroup.valid">
+                  SAVE & ADD NEW
+                </button>
+              
+                <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+              </mat-dialog-actions>
+

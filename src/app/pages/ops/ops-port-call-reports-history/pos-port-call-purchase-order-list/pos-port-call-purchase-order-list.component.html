@@ -1,0 +1,92 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    PortCall Purchase Order List
+</div>
+
+<mat-dialog-content>
+
+    <div #TABLE>
+        <table
+          [dataSource]="PortCallPurchaseOrderdataSource"
+          mat-table
+          matSort
+          #table
+          class="details-table"
+        >
+          <ng-container matColumnDef="Requisition_Code">
+            <th
+              *matHeaderCellDef
+              class="actions-cell"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              mat-header-cell
+              mat-sort-header
+            >
+            Requisition Code
+            </th>
+            <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+            </td> -->
+          </ng-container>
+  
+          <ng-container matColumnDef="PO_Code">
+            <th
+              *matHeaderCellDef
+              class="actions-cell"
+              mat-header-cell
+              mat-sort-header
+            >
+            PO Code
+            </th>
+            <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+            </td> -->
+          </ng-container>
+          <ng-container matColumnDef="Supplier">
+              <th
+                *matHeaderCellDef
+                class="actions-cell"
+                mat-header-cell
+                mat-sort-header
+              >
+              Supplier
+              </th>
+              <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+              </td> -->
+            </ng-container>
+     
+          <tr *matHeaderRowDef="visibleColumnsPortCallPurchaseOrder" mat-header-row></tr>
+          <tr
+            *matRowDef="let row; columns: visibleColumnsPortCallPurchaseOrder"
+            class="clickable route-animations-elements"
+            mat-row
+          ></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div>
+  
+       <mat-paginator
+        class="paginator"
+        [pageSizeOptions]="[10, 25, 50, 100]"
+        [pageSize]="pageSize"
+      ></mat-paginator>
+
+</mat-dialog-content>

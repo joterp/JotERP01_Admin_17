@@ -1,0 +1,72 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Add New Category Forms
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+    <form [formGroup]="newInspectionReferenceFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="drpCategory">
+                        <mat-option value="select">-SELECT All-</mat-option>
+                        <mat-option value="third_Party_Complaint">3rd Party Complaint</mat-option>
+                        <mat-option value="Accounts">Accounts</mat-option>
+                        <mat-option value="Clients">Clients</mat-option>
+                        <mat-option value="Procurement">Procurement</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Form Code</mat-label>
+                    <input formControlName="txtForm_Code" matInput placeholder="Search by Form Code" type="text" />
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Form Name</mat-label>
+                    <input formControlName="txtForm_Name" matInput placeholder="Search by Form Name" type="text" />
+                  </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <label style="padding-top: 6px;
+               color: black;
+               font-weight: 500;">Attachments </label>
+                <div>
+                  <input type="file" id="uploadFile1" style="opacity: 0" (change)="filesDropped($event)" name="uploadFile"
+                    accept="all/*" multiple />
+                  <label>Drop OR Click here to <button type="button" mat-raised-button>
+                      <label class="drop-label" for="uploadFile1" style="margin-left: 5px;">
+                        Upload File</label>
+                    </button>
+                  </label>
+                </div>
+              </div>
+        
+
+
+
+        </div>
+    </form>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+        <button mat-raised-button color="primary" class="save-btn">
+            Save & Close
+        </button>
+        <button mat-raised-button color="primary" class="save-btn">
+            Save & Add new
+        </button>
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+</div>

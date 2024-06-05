@@ -1,0 +1,438 @@
+<fury-page-layout mode="card" class="purchasefolloupindex-view">
+
+  <!-- search header for PURC_Catalogue -->
+  <fury-page-layout-header>
+
+    <form [formGroup]="PurchaseFollowIndexFilterForm">
+      <!-- <div>  
+              <h2>{{routeTitle}}</h2>
+          </div> -->
+      <h3>
+
+        <span class="first-letter">P</span>URCHASE
+        <span class="first-letter">F</span>OLLOWUP
+        <span class="first-letter">I</span>NDEX
+
+      </h3>
+      <div class="filter-area">
+
+        <div fxLayout="row" fxLayoutAlign="start">
+
+          <div fxFlex>
+            <mat-form-field appearance="fill">
+              <mat-label>Vessel</mat-label>
+              <mat-select formControlName="drpVessel">
+                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                          {{ b.PARAMETER_NAME }}
+                        </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Requisition / PO / Invoice No</mat-label>
+              <input type="text" formControlName="txtRequisition_PO_Invoice" matInput />
+
+            </mat-form-field>
+
+          </div>
+
+          <div fxFlex>
+            <div style="margin-left: 60px;">
+              <mat-label>Show To Supplier</mat-label>
+              <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioShow_To_Supplier"
+                style="margin-top: 0px;">
+                <mat-radio-button value="1"
+                  [checked]="PurchaseFollowIndexFilterForm.get('radioShow_To_Supplier').value == 1">
+                  <label [class.active-label]="PurchaseFollowIndexFilterForm.get('radioShow_To_Supplier').value == 1"
+                    style="font-family: tahoma;">Yes</label>
+                </mat-radio-button>
+                <mat-radio-button value="0"
+                  [checked]="PurchaseFollowIndexFilterForm.get('radioShow_To_Supplier').value == 0">
+                  <label [class.active-label]="PurchaseFollowIndexFilterForm.get('radioShow_To_Supplier').value == 0"
+                    style="font-family: tahoma;">No</label>
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <div style="margin-left: 60px;margin-top: 31px;">
+              <mat-label>Pending With</mat-label>
+              <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioPending_With"
+                style="margin-top: 0px;">
+                <mat-radio-button value="1"
+                  [checked]="PurchaseFollowIndexFilterForm.get('radioPending_With').value == 1">
+                  <label [class.active-label]="PurchaseFollowIndexFilterForm.get('radioPending_With').value == 1"
+                    style="font-family: tahoma;">Any one</label>
+                </mat-radio-button>
+                <mat-radio-button value="0"
+                  [checked]="PurchaseFollowIndexFilterForm.get('radioPending_With').value == 0">
+                  <label [class.active-label]="PurchaseFollowIndexFilterForm.get('radioPending_With').value == 0"
+                    style="font-family: tahoma;">Me</label>
+                </mat-radio-button>
+
+              </mat-radio-group>
+            </div>
+
+          </div>
+
+          <div fxFlex>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Requisition Date</mat-label>
+              <input matInput formControlName="requisition_date" [matDatepicker]="pickerrequisitiondate" />
+              <mat-datepicker-toggle matSuffix [for]="pickerrequisitiondate"></mat-datepicker-toggle>
+              <mat-datepicker #pickerrequisitiondate></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Remark Date</mat-label>
+              <input matInput formControlName="remark_date" [matDatepicker]="pickerremarkdate" />
+              <mat-datepicker-toggle matSuffix [for]="pickerremarkdate"></mat-datepicker-toggle>
+              <mat-datepicker #pickerremarkdate></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>PO Date From</mat-label>
+              <input matInput formControlName="PO_date_from" [matDatepicker]="pickerpodatefrom" />
+              <mat-datepicker-toggle matSuffix [for]="pickerpodatefrom"></mat-datepicker-toggle>
+              <mat-datepicker #pickerpodatefrom></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Invoice Date From</mat-label>
+              <input matInput formControlName="invoice_date_from" [matDatepicker]="pickerinvoicedatefrom" />
+              <mat-datepicker-toggle matSuffix [for]="pickerinvoicedatefrom"></mat-datepicker-toggle>
+              <mat-datepicker #pickerinvoicedatefrom></mat-datepicker>
+            </mat-form-field>
+
+          </div>
+
+          <div fxFlex>
+
+            <mat-form-field appearance="fill">
+              <mat-label>To</mat-label>
+              <input matInput formControlName="requisition_date_to" [matDatepicker]="pickerrequisitiondateto" />
+              <mat-datepicker-toggle matSuffix [for]="pickerrequisitiondateto"></mat-datepicker-toggle>
+              <mat-datepicker #pickerrequisitiondateto></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>To</mat-label>
+              <input matInput formControlName="remark_date_to" [matDatepicker]="pickerremarkdateto" />
+              <mat-datepicker-toggle matSuffix [for]="pickerremarkdateto"></mat-datepicker-toggle>
+              <mat-datepicker #pickerremarkdateto></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>To</mat-label>
+              <input matInput formControlName="PO_date_to" [matDatepicker]="pickerpodateto" />
+              <mat-datepicker-toggle matSuffix [for]="pickerpodateto"></mat-datepicker-toggle>
+              <mat-datepicker #pickerpodateto></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>To</mat-label>
+              <input matInput formControlName="invoice_date_to" [matDatepicker]="pickerinvoicedateto" />
+              <mat-datepicker-toggle matSuffix [for]="pickerinvoicedateto"></mat-datepicker-toggle>
+              <mat-datepicker #pickerinvoicedateto></mat-datepicker>
+            </mat-form-field>
+
+          </div>
+
+
+          <div fxFlex>
+
+            <table class="table-5">
+              <tr>
+                <td class="td-5"><a><input type="button" class="input-5" value="New Requisition" /></a></td>
+                <td class="td-5"><a><input type="button" class="input-5" value="Invoice" /></a></td>
+              </tr>
+              <tr>
+                <td class="td-5"><a><input type="button" class="input-5" value="Quotation" /></a></td>
+                <td class="td-5"><a><input type="button" class="input-5" value="Closed" /></a></td>
+              </tr>
+              <tr>
+                <td class="td-5"><a><input type="button" class="input-5" value="Purchase Order" /></a></td>
+                <td class="td-5"><a><input type="button" class="input-5" value="On Hold" /></a></td>
+              </tr>
+              <tr>
+                <td class="td-5"><a><input type="button" class="input-5" value="Supp Confirmation" /></a></td>
+                <td class="td-5"><a><input type="button" class="input-5" value="Cancelled" /></a></td>
+              </tr>
+              <tr>
+                <td class="td-5"><a><input type="button" class="input-5" value="Logistics & Delivery" /></a></td>
+                <td class="td-5"><a><input type="button" class="input-5" value="All Statges" /></a></td>
+              </tr>
+            </table>
+
+          </div>
+
+          <div class="filter-btn-area" fxFlex>
+            <div>
+              <button class="create" mat-raised-button color="primary" class="filter-btn">
+                Search
+              </button>
+            </div>
+
+            <div>
+              <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                Clear
+              </button>
+            </div>
+
+            <!-- <div>
+                <button class="create" mat-raised-button color="warn" class="filter-btn" type="button" (click)="RequisitionDetail(null)">
+                  Requisition#  
+                </button>
+              </div> -->
+
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+  </fury-page-layout-header>
+
+
+
+  <fury-page-layout-content [@fadeInUp]>
+    <div class="actions-area" fxLayout="row" fxLayoutAlign="end center">
+      <div>
+        <span style="cursor: pointer">
+          <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+          <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+          <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+        </span>
+      </div>
+      <!-- <div class="content-loader">
+          <mat-progress-spinner
+            mode="indeterminate"
+            color="accent"
+          ></mat-progress-spinner>
+        </div> -->
+    </div>
+
+    <div #TABLE>
+      <table [dataSource]="PurchaseFollowIndexdataSource" mat-table matSort #table class="details-table">
+        <ng-container matColumnDef="Vessel">
+          <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+            mat-sort-header>
+            Vessel
+          </th>
+          <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+            mat-cell>
+            <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Stage">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Stage
+          </th>
+          <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+            </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Pending_With">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Pending With
+          </th>
+          <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+              </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Remark_Date">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Remark Date
+          </th>
+          <!-- <td
+              *matCellDef="let row; let i = index"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+            </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Remark_By">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Remark By
+          </th>
+          <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Followup_Remarks">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Followup Remarks
+          </th>
+          <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Show_To_Supplier">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Show To Supplier
+          </th>
+          <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Requisition_Date">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Requisition Date
+          </th>
+          <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Requisition#">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Requisition #
+          </th>
+          <!-- <td
+                *matCellDef="let row; let i = index"
+                class="actions-cell"
+                mat-cell
+              >
+                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+              </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Expiry_Date">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Expiry Date
+          </th>
+          <!-- <td
+              *matCellDef="let row"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">
+                {{ row.Boat_Date | date : "d MMM yyyy HH:mm" }}
+              </p>
+            </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Qtn_Rcvd">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Qtn Rcvd
+          </th>
+          <!-- <td
+              *matCellDef="let row"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.Boat_Type_Name }}</p>
+            </td> -->
+        </ng-container>
+
+        <ng-container matColumnDef="PO_Date">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            PO Date
+          </th>
+          <!-- <td
+              *matCellDef="let row"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.Vendor_Name }}</p>
+            </td> -->
+        </ng-container>
+
+        <ng-container matColumnDef="PO#">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            PO #
+          </th>
+          <!-- <td
+              *matCellDef="let row"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.Boat_From_Name }}</p>
+            </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Invoice_Date">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Invoice Date
+          </th>
+          <!-- <td
+              *matCellDef="let row"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.Boat_From_Name }}</p>
+            </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Invoice#">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Invoice #
+          </th>
+          <!-- <td
+              *matCellDef="let row"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.Boat_From_Name }}</p>
+            </td> -->
+        </ng-container>
+        <ng-container matColumnDef="Invoice_Type">
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+            Invoice Type/Status
+          </th>
+          <!-- <td
+              *matCellDef="let row"
+              [ngStyle]="{ 'white-space': 'initial' }"
+              class="actions-cell"
+              mat-cell
+            >
+              <p class="tbl-row-item">{{ row.Boat_From_Name }}</p>
+            </td> -->
+        </ng-container>
+
+
+
+        <tr *matHeaderRowDef="visibleColumnsPurchaseFollowIndex" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: visibleColumnsPurchaseFollowIndex" class="clickable route-animations-elements"
+          mat-row></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9999">No data found</td>
+        </tr>
+      </table>
+    </div>
+
+    <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+
+  </fury-page-layout-content>
+
+
+
+</fury-page-layout>

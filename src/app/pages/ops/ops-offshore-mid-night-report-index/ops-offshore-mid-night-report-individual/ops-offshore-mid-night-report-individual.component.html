@@ -1,0 +1,2783 @@
+
+<fury-page-layout mode="card" class="ops-midnight-individual">
+        
+    <!-- <h3 style="text-align: center;">
+        <span class="first-letter">V</span>OYAGE
+        <span class="first-letter">A</span>BSTRACT
+        <span class="first-letter">L</span>OG
+    </h3>
+         -->
+        
+    <fury-page-layout-content [@fadeInUp] >
+        <mat-card class="sp-card-view" style="    margin: 74px 166px;">
+            
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" >
+                        
+                            
+                        <span class="text-voyage-log" style="font-size: 21px;">Offshore Midnight Report</span>
+               
+                    </div>
+
+                </mat-card-header>
+                
+               <mat-card-content>
+                <form [formGroup]="MidnightReportFilterFormGroup" style="margin-bottom: 30px;">
+                    <div class="filter-area">
+                        <div fxLayout="row" fxLayoutAlign="start" fxLayoutAlign="space-between">
+                            <div fxFlex>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vessel</mat-label>
+                                            <mat-select formControlName="drpVessel" >
+                                              <mat-option value="Alexa">Alexa</mat-option>
+                                              <mat-option value="Alexandre">Alexandre A</mat-option>
+                                              <mat-option value="Bryce">Bryce</mat-option>
+                                              <mat-option value="Charley">Charley</mat-option>
+                                             
+                                            </mat-select>
+                                        </mat-form-field>
+                    
+                                       
+                                          <mat-form-field appearance="fill">
+                                              <mat-label>Master</mat-label>
+                                              <input formControlName="txtMaster" matInput placeholder="Master" type="text" />
+                                            </mat-form-field>
+
+                                            <mat-form-field appearance="fill">
+                                              <mat-label>Client with contact details</mat-label>
+                                              <input formControlName="txtClient_Details" matInput placeholder="Client Contact Details" type="text" />
+                                            </mat-form-field>
+
+                                            <mat-form-field appearance="fill">
+                                              <mat-label>Agent with contact details</mat-label>
+                                              <input formControlName="txtAgent_Details" matInput placeholder="Agent Contact Details" type="text" />
+                                            </mat-form-field>
+        
+                            </div>
+                            <div fxFlex="10">
+                                
+                            </div>
+                            <div fxFlex>
+        
+                                              
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Date </mat-label>
+                                                    <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                                                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                                                    <mat-datepicker #pickerFrom></mat-datepicker>
+                                                  </mat-form-field>
+                                
+                                                
+                                           
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Crew O/B</mat-label>
+                                                    <input formControlName="txtCrew_ob" matInput placeholder="Enter by Departure Port" type="text" />
+                                                </mat-form-field>
+        
+                                               
+                                                  
+                            </div>
+                            <div fxFlex="10">
+
+                            </div>
+                            <div fxFlex>
+                                       
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Location</mat-label>
+                                                    <input formControlName="txtLocation" matInput placeholder="Location" type="text" />
+                                                </mat-form-field>
+                    
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Position</mat-label>
+                                                    <input formControlName="txtPosition" matInput placeholder="Position" type="text" />
+                                                </mat-form-field>
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>From</mat-label>
+                                                    <input formControlName="txtFrom" matInput placeholder="From" type="text" />
+                                                </mat-form-field>
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>To</mat-label>
+                                                    <input formControlN
+                                                    ame="txtTo" matInput placeholder="To" type="text" />
+                                                </mat-form-field>
+        
+                                                
+                                              
+                    
+                                                
+                                
+                                                    
+                                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <table style="padding: 19px;">
+                        <tbody>
+                            <tr>
+                                <td style="padding: 5px;">MARINE CREW</td>
+                                <td style="padding: 5px;">CREW OFF</td>
+                                <td style="padding: 5px;">CREW ON</td>
+                                <td style="padding: 5px;">POB (OWNER)</td>
+                                <td style="padding: 5px;">PASSENGER'S</td>
+                                <td style="padding: 5px;">POB SERVICE</td>
+                                <td style="padding: 5px;">TOTAL ONBOARD</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                      type="ETA"
+                                     
+                                     
+                                      required
+                                      style="height: 30px;border-radius: 5px;border: 1px solid gray; "
+                                     >
+                                </td>
+                                <td>
+                                    <input
+                                      type="ETA"
+                                     
+                                     
+                                      required
+                                      style="height: 30px;border-radius: 5px;border: 1px solid gray; "
+                                     >
+                                </td>
+                                <td>
+                                    <input
+                                      type="ETA"
+                                     
+                                     
+                                      required
+                                      style="height: 30px;border-radius: 5px;border: 1px solid gray; "
+                                     >
+                                </td>
+                                <td>
+                                    <input
+                                      type="ETA"
+                                     
+                                     
+                                      required
+                                      style="height: 30px;border-radius: 5px;border: 1px solid gray; "
+                                     >
+                                </td>
+                                <td>
+                                    <input
+                                      type="ETA"
+                                     
+                                     
+                                      required
+                                      style="height: 30px;border-radius: 5px;border: 1px solid gray; "
+                                     >
+                                </td>
+                                <td>
+                                    <input
+                                      type="ETA"
+                                     
+                                     
+                                      required
+                                      style="height: 30px;border-radius: 5px;border: 1px solid gray; "
+                                     >
+                                </td>
+                                <td>
+                                    <input
+                                      type="ETA"
+                                     
+                                     
+                                      required
+                                      style="height: 30px;border-radius: 5px;border: 1px solid gray; "
+                                     >
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+
+
+                    <mat-card-header fxLayout="column">
+                        <div fxLayout="row" fxLayoutAlign="space-between" >
+                            
+                                
+                            <span class="text-voyage-log" style="font-size: 15px;">BULKS</span>
+                            <span class="text-voyage-log" style="font-size: 15px;">Operation Details</span>
+                   
+                   
+                        </div>
+    
+                    </mat-card-header>
+
+                    <div fxLayout="row"  fxLayoutAlign="space-between" fxLayoutGap="10px" >
+                        <div fxFlex="65">
+                            <table style="  width: 100%;
+                            table-layout: auto;
+                            empty-cells: show;
+                            text-align: center;" >
+                                <thead >
+                                    <tr class="header-section">
+                                        <th rowspan="2"  class="borderstyle" style="width: 10%;font-weight: 500;">Products</th>
+                                        <th rowspan="2"  class="borderstyle" style="width: 10%;font-weight: 500;">Units</th>
+                                        <th rowspan="2"  class="borderstyle" style="font-weight: 500;">Opening Books</th>
+                                        <th colspan="2"  class="borderstyle" style="font-weight: 500;">Loaded</th>
+                                        <th rowspan="2"  class="borderstyle" style="font-weight: 500;">Consumed</th>
+                                        <th rowspan="2"  class="borderstyle" style="font-weight: 500;">Discharged</th>
+                                        <th rowspan="2"  class="borderstyle" style="font-weight: 500;">Remained</th>
+                                        <th rowspan="2"  class="borderstyle" style="border-right: 1px solid #dddd;font-weight: 500;">TopUp</th>
+                                    </tr>
+                                    <tr class="header-section">
+                                        <th class="borderstyle" style="font-weight: 500;">Owner</th>
+                                        <th  class="borderstyle" style="font-weight: 500;">Charterer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Barite</td>
+                                        <td>MT</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                 
+                                    <tr>
+                                        <td>A/E L/O</td>
+                                        <td>Ltrs</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Base Oil</td>
+                                        <td>Bbls</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Brine- 8.4 ppg</td>
+                                        <td>Bbls</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Brine- 8.6 ppg</td>
+                                        <td>Bbls</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Brine- 8.7 ppg</td>
+                                        <td>Bbls</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Brine- 9.6 ppg</td>
+                                        <td>Bbls</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Cement</td>
+                                        <td>MT</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                   
+                                    <tr>
+                                        <td>DW Ballast (SW)</td>
+                                        <td>m3</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>DW Ballast (FW)</td>
+                                        <td>m3</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>DW Client</td>
+                                        <td>m3</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>FO Owner</td>
+                                        <td>m3</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>FW</td>
+                                        <td>m3</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>FW Client</td>
+                                        <td>m3</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Gear Oil</td>
+                                        <td>Ltrs</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Grease</td>
+                                        <td>Kgs</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>ME L/O</td>
+                                        <td>Ltrs</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>NABM</td>
+                                        <td>Bbls</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Hyd Oil</td>
+                                        <td>Ltrs</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Others / Deck Cargo</td>
+                                        <td>MT</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Slops</td>
+                                        <td>Bbls</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>SOBM-C</td>
+                                        <td>Bbls</td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray; margin: 5px;"
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                                   
+                               
+                            </table>
+                            
+                        </div>
+                        <div fxFlex="35">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                      <td style="width:45%;text-align:right;">Latitude</td>
+                                        <td><input
+                                            type="ETA"
+                                            style="    width: 14%;
+                                            height: 30px;
+                                            border-radius: 5px;
+                                            margin: 10px;"
+                                           
+                                            required
+                                           
+                                           >
+                                           <input
+                                            type="ETA"
+                                           style="    width: 14%;
+                                           height: 30px;
+                                           border-radius: 5px;
+                                           margin: 10px;"
+                                           
+                                            required
+                                           
+                                           >
+                                           <input
+                                            type="ETA"
+                                           
+                                           style="    width: 14%;
+                                           height: 30px;
+                                           border-radius: 5px;
+                                           margin: 10px;"
+                                            required
+                                            
+                                           >
+                                           <select class="classic" >
+                                            <option>N</option>
+                                            <option>S</option>
+                                           </select>
+                                           
+                                        </td>
+                                           
+                                          
+                                           
+                                    </tr>
+                                    <tr>
+                                      <td style="width:45%;text-align:right;">Longitude</td>
+                                        <td><input
+                                            type="ETA"
+                                            style="    width: 14%;
+                                            height: 30px;
+                                            border-radius: 5px;
+                                            margin: 10px;"
+                                           
+                                            required
+                                           
+                                           >
+                                           <input
+                                            type="ETA"
+                                           style="    width: 14%;
+                                           height: 30px;
+                                           border-radius: 5px;
+                                           margin: 10px;"
+                                           
+                                            required
+                                           
+                                           >
+                                           <input
+                                            type="ETA"
+                                           
+                                           style="    width: 14%;
+                                           height: 30px;
+                                           border-radius: 5px;
+                                           margin: 10px;"
+                                            required
+                                            
+                                           >
+                                           <select class="classic" >
+                                            <option>N</option>
+                                            <option>S</option>
+                                           </select>
+                                          
+                                        </td>
+                                           
+                                          
+                                           
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">Next Port</td>
+                                        <td ><select class="classic" style="width: 97%;margin: 10px;"> 
+                                            <option >Select -All</option>
+                                            <option>Albania - Durres</option>
+                                            <option>Albania - Shengjin</option>
+                                            <option>Albania - Vlores</option>
+                                            <option>Algeria - Beni Saf</option>
+                                            <option>Algeria - Jijel</option>
+                                            <option>Algeria - Djen-Djen</option>
+                                          </select></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">ETA</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 96%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">Distance To Go (Nm)</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">Distance Run (Nm)</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">Vessel Speed (Kts)</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">Total Distance Run</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">General Average Speed</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">Hours in Port / Anchorage & Transiting channel</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">Hours Sea Passage</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align: end;">Hours Working Offshore</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">Hours Stand-by Offshore</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">Hours Waiting on Weather</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">Hours Downtime</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: end;">Total Hours</td>
+                                        <td><input
+                                            type="ETA"
+                                           
+                                           
+                                            required
+                                            style="height: 30px;
+                                            width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                           ></td>
+                                    </tr>
+                                    <tr>
+                                      <td style="text-align: end;">Hours on DP</td>
+                                      <td><input
+                                          type="ETA"
+                                         
+                                         
+                                          required
+                                          style="height: 30px;
+                                          width: 95%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                         ></td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                            <mat-card-header fxLayout="column">
+                                <div fxLayout="row" fxLayoutAlign="space-between" >
+                                    
+                                        
+                                    <span class="text-voyage-log" style="font-size: 15px;">Meterlogical</span>
+                                   
+                           
+                           
+                                </div>
+            
+                            </mat-card-header>
+                            <table style="    width: 100%;
+                            table-layout: auto;
+                            empty-cells: show;
+                            text-align: center;">
+                               
+                                    <tr class="header-section">
+                                        <td class="borderstyle">Time</td>
+                                        <td class="borderstyle">06:00 Hrs</td>
+                                        <td class="borderstyle">12:00 Hrs</td>
+                                        <td class="borderstyle">18:00 Hrs</td>
+                                        <td class="borderstyle">24:00 Hrs</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:24%">
+                                            Wind Speed(Kts)
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:24%">
+                                            Wind Direction(Deg)
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:24%">
+                                           Wave Height(Mtrs)
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:24%">
+                                            Sea Water(deg c)
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:24%">
+                                           Air Temp(deg c)
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:24%">
+                                            Visibility(Nm)
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                        <td>
+                                            <input
+                                              type="ETA"
+                                             
+                                             
+                                              required
+                                              style="height: 30px;
+                                              width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                             >
+                                        </td>
+                                    </tr>
+                                    
+                               
+                            </table>
+
+                        </div>
+                    </div>
+
+
+                    <mat-card-header fxLayout="column">
+                        <div fxLayout="row" fxLayoutAlign="space-between" >
+                                
+                            <span class="text-voyage-log" style="font-size: 15px;">Vessel Activity</span>
+                          
+                   
+                        </div>
+    
+                    </mat-card-header>
+                    <table style="width: 100%; text-align: center;">
+                        <tbody>
+                            <tr class="header-section">
+                                <td style="width: 10%;">Installation</td>
+                                <td style="width: 10%;">Time From</td>
+                                <td style="width: 10%;">Time To</td>
+                                <td >Description</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                    type="ETA"
+                                   
+                                   
+                                    required
+                                    style="height: 30px;
+                                    width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                   >
+                                </td>
+                                <td>
+                                    <input
+                                    type="ETA"
+                                   
+                                   
+                                    required
+                                    style="height: 30px;
+                                    width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                   >
+                                </td>
+                                <td>
+                                    <input
+                                    type="ETA"
+                                   
+                                   
+                                    required
+                                    style="height: 30px;
+                                    width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                   >
+                                </td>
+                                <td>
+                                    <textarea style="    height: 30px;
+                                    width: 98%;
+                                    border-radius: 5px;
+                                    border: 1px solid gray;
+                                    margin: 5px;"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table style="width: 100%; text-align: center;">
+                        <tbody>
+                            <tr class="header-section">
+                                <td >Ship's Crew</td>
+                                <td colspan="2">Engine Run Times</td>
+                                <td>0</td>
+                                <td>Passenger</td>
+                                <td >Number</td>
+                                <td colspan="2"> Draft</td>
+                               
+                                
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>STBD</td>
+                                <td>Main Engine</td>
+                                <td><input
+                                    type="ETA"
+                                   
+                                   
+                                    required
+                                    style="height: 30px;
+                                    width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                   ></td>
+                                <td>Breakfast</td>
+                                <td><input
+                                    type="ETA"
+                                   
+                                   
+                                    required
+                                    style="height: 30px;
+                                    width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                   ></td>
+                                   <td>BOW</td>
+                                   <td><input
+                                    type="ETA"
+                                   
+                                   
+                                    required
+                                    style="height: 30px;
+                                    width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                                   ></td>
+                            </tr>
+
+                       
+                     
+                     
+
+                       <tr>
+                            <td></td>
+                            <td>Port</td>
+                            <td>Main Engine</td>
+                            <td>
+                                <input
+                                type="ETA"
+                               
+                               
+                                required
+                                style="height: 30px;
+                                width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                               >
+                            </td>
+                            <td>
+                               Lunch
+                            </td>
+                            <td>
+                                <input
+                                type="ETA"
+                               
+                               
+                                required
+                                style="height: 30px;
+                                width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                               >
+
+                            </td>
+                            <td>
+                               Average
+                            </td>
+                            <td>
+                                <input
+                                type="ETA"
+                               
+                               
+                                required
+                                style="height: 30px;
+                                width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                               >
+
+                            </td>
+
+
+                        </tr> 
+                        
+                       <tr>
+                        <td></td>
+                        <td>AUXILIARY ENGINE 1</td>
+                      <td></td>
+                        <td>
+                            <input
+                            type="ETA"
+                           
+                           
+                            required
+                            style="height: 30px;
+                            width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                           >
+                        </td>
+                        <td>
+                           Dinner
+                        </td>
+                        <td>
+                            <input
+                            type="ETA"
+                           
+                           
+                            required
+                            style="height: 30px;
+                            width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                           >
+
+                        </td>
+                        <td>
+                          Stern
+                        </td>
+                        <td>
+                            <input
+                            type="ETA"
+                           
+                           
+                            required
+                            style="height: 30px;
+                            width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                           >
+
+                        </td>
+
+
+                    </tr> 
+                          
+                    <tr>
+                      <td></td>
+                      <td>AUXILIARY ENGINE 2</td>
+                    <td></td>
+                      <td>
+                          <input
+                          type="ETA"
+                         
+                         
+                          required
+                          style="height: 30px;
+                          width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                         >
+                      </td>
+                      
+
+
+                  </tr> 
+                  <tr>
+                    <td></td>
+                    <td>AUXILIARY ENGINE 3</td>
+                  <td></td>
+                    <td>
+                        <input
+                        type="ETA"
+                       
+                       
+                        required
+                        style="height: 30px;
+                        width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                       >
+                    </td>
+                    
+
+
+                </tr> 
+                <tr>
+                  <td></td>
+                  <td>AUXILIARY ENGINE 4</td>
+                <td></td>
+                  <td>
+                      <input
+                      type="ETA"
+                     
+                     
+                      required
+                      style="height: 30px;
+                      width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                     >
+                  </td>
+                  
+
+
+              </tr> 
+              <tr>
+                <td></td>
+                <td>AUXILIARY ENGINE 5</td>
+              <td></td>
+                <td>
+                    <input
+                    type="ETA"
+                   
+                   
+                    required
+                    style="height: 30px;
+                    width: 60%;;border-radius: 5px;border: 1px solid gray;margin: 5px; "
+                   >
+                </td>
+                
+
+
+            </tr> 
+                        </tbody>
+                    </table>
+
+
+                    <div fxLayout="row"  fxLayoutAlign="space-between" fxLayoutGap="10px" >
+                        <div fxFlex="09">
+
+                        </div>
+                        <div fxFlex="91">
+
+                        <mat-card-header fxLayout="column">
+                            <div fxLayout="row" fxLayoutAlign="space-between" >
+                                    
+                                <span class="text-voyage-log" style="font-size: 15px;">Remarks</span>
+                          
+                    
+                            </div>
+    
+                        </mat-card-header>
+                        <textarea style="    height: 30px;
+                        width: 99%;
+                        border-radius: 5px;
+                        border: 1px solid gray;
+                        margin: 5px;"></textarea>
+
+
+                        <mat-card-header fxLayout="column">
+                            <div fxLayout="row" fxLayoutAlign="space-between" >
+                                    
+                                <span class="text-voyage-log" style="font-size: 15px;">Drills</span>
+                               
+                    
+                            </div>
+    
+                        </mat-card-header>
+                        <textarea style="    height: 30px;
+                        width: 99%;
+                        border-radius: 5px;
+                        border: 1px solid gray;
+                        margin: 5px;"></textarea>
+                        </div>
+                    </div>
+
+
+
+              
+
+
+                    
+                </form> 
+                <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" style="margin-bottom: 5px;" fxLayoutGap="5px">
+  
+                    <button mat-raised-button color="primary" class="save-btn">
+                      Save & Close
+                    </button>
+                    <button mat-raised-button class="save-btn" color="primary">
+                      Save & Add New
+                    </button>
+                
+                    <button mat-raised-button color="warn" >Cancel</button>
+                  </mat-dialog-actions>
+                </mat-card-content>
+        </mat-card>
+    </fury-page-layout-content>
+</fury-page-layout>

@@ -1,0 +1,105 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>{{modeltitle}}
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+
+    <mat-dialog-content style="height: 100% !important" class="email-vendor">
+
+        <div>
+            <span class="superint-title">
+                Superintendent</span>
+        </div>
+    
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+        <div fxFlex="35" class="usermenu">
+            
+            <div id="table-wrapper">
+                <div id="table-scroll">
+                  <table>
+                      <tbody>
+                        <tr> <td>Jot Support</td> 
+                         </tr>
+                        <tr> <td>Wen Hu Song</td> 
+                         </tr>
+                        <tr> <td>Lui Hon-Man</td> 
+                        </tr>
+                        <tr> <td>Kaith Yang</td> 
+                         </tr>
+                        <tr> <td>Lie Yang</td> 
+                        </tr>
+                        <tr> <td>Bing Li</td> 
+                         </tr>
+                         <tr> <td>Jot Support</td> 
+                         </tr>
+                        <tr> <td>Wen Hu Song</td> 
+                         </tr>
+                        <tr> <td>Lui Hon-Man</td> 
+                        </tr>
+                        <tr> <td>Kaith Yang</td> 
+                         </tr>
+                        <tr> <td>Lie Yang</td> 
+                        </tr>
+                        <tr> <td>Bing Li</td> 
+                         </tr>
+                       
+                      </tbody>
+                  </table>
+                </div>
+              </div>
+
+        </div>
+          
+        <div fxFlex="65" class="emailcss">
+
+            <form [formGroup]="SuperintendentFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+                <div class="emailsendbtn">
+                   
+                    <div fxFlex>
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label class="left-label">To</mat-label>
+                                <input type="text" formControlName="mail_to" matInput />                            
+                            </mat-form-field>
+                        </div>
+                      
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                            <mat-form-field fxFlex >
+                                <mat-label class="left-label">Subject</mat-label>
+                                <input type="text" formControlName="subject" matInput value="Crew Evaluations To Verify"/>                            
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                    <quill-editor [styles]="{ height: '250px' }" id="textEditor" (onEditorCreated)="created($event)"
+                        (onContentChanged)="contentChanged($event)">
+                    </quill-editor>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" *ngIf="ErrorMessage">
+                    <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+                </div>
+            </form>
+        </div>
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" class="save-btn"
+            [ngClass]="[!SuperintendentFormGroup.valid ? '' : 'save-btn']" [disabled]="!SuperintendentFormGroup.valid">
+            Send
+        </button>
+      
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+    

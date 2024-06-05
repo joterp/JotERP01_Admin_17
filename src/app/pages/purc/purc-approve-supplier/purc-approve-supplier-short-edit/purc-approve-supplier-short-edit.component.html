@@ -1,0 +1,298 @@
+<div style="text-align: center;font-weight: bold;    height: 24px;
+vertical-align: middle;margin-bottom:23px;">  
+    <h2 class="routerTitle">{{routeTitle}}</h2>
+</div>
+
+<fury-page-layout mode="card" class="add-approvesupplier-short">
+    <div style="padding:10px 100px 31px 100px;">
+        <div style="border: 1px solid lightgray; padding: 25px 77px;">
+    <form [formGroup]="ApproveSupplierShortFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+
+
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <div fxFlex="48">
+        
+          <mat-form-field appearance="fill">
+            <mat-label class="left-label">Supplier Name</mat-label>
+           
+              <input
+                type="text"
+                class="right-text"
+                formControlName="txtSupplier_Name"
+                matInput
+              />
+           
+            <mat-error
+              *ngIf="ApproveSupplierShortFormGroup.get('txtSupplier_Name').hasError('required')"
+              >Supplier Name is required</mat-error
+            >
+          </mat-form-field>
+    
+         <mat-form-field  appearance="fill" >
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="drpType">
+          <!-- <mat-option
+            *ngFor="let b of filteredBoatType | async"
+            [value]="b.PARAMETER_GUID"
+          >
+            {{ b.PARAMETER_NAME }}
+          </mat-option> -->
+        </mat-select>
+        <mat-error *ngIf="ApproveSupplierShortFormGroup.get('drpType').hasError('required')"
+          >Type is required</mat-error
+        >
+      </mat-form-field>
+   <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <textarea
+        matInput
+        formControlName="txtAddress"
+        
+      ></textarea>
+      <mat-error *ngIf="ApproveSupplierShortFormGroup.get('txtAddress').hasError('required')"
+      >Address is required</mat-error
+    >
+    </mat-form-field>
+ <mat-form-field appearance="fill" >
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="drpCountry">
+          <!-- <mat-option
+            *ngFor="let b of filteredBoatType | async"
+            [value]="b.PARAMETER_GUID"
+          >
+            {{ b.PARAMETER_NAME }}
+          </mat-option> -->
+        </mat-select>
+        <mat-error *ngIf="ApproveSupplierShortFormGroup.get('drpCountry').hasError('required')"
+          >Country is required</mat-error
+        >
+      </mat-form-field>
+   <mat-form-field appearance="fill" >
+        <mat-label>City</mat-label>
+        <mat-select formControlName="drpCity">
+        
+        </mat-select>
+        <mat-error *ngIf="ApproveSupplierShortFormGroup.get('drpCity').hasError('required')"
+          >City is required</mat-error
+        >
+      </mat-form-field>
+  <mat-form-field appearance="fill">
+        <mat-label class="left-label">Registration Number</mat-label>
+       
+          <input
+            type="text"
+            class="right-text"
+            formControlName="txtRegistration_Number"
+            matInput
+          />
+          <mat-error
+          *ngIf="ApproveSupplierShortFormGroup.get('txtRegistration_Number').hasError('required')"
+          >Email for invoice is required</mat-error
+        >
+      </mat-form-field>
+  
+   <mat-form-field appearance="fill">
+    <mat-label>Date Registered</mat-label>
+    <input
+      matInput
+      formControlName="date_registered"
+      [matDatepicker]="pickerdater"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="pickerdater"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #pickerdater></mat-datepicker>
+  </mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Internal Reference</mat-label>
+  <textarea
+    matInput
+    formControlName="txtInternal_Reference"
+   
+  ></textarea>
+ 
+</mat-form-field>
+<mat-form-field  appearance="fill" >
+    <mat-label>Currency</mat-label>
+    <mat-select formControlName="drpCurrency">
+    
+    </mat-select>
+    <mat-error *ngIf="ApproveSupplierShortFormGroup.get('drpCurrency').hasError('required')"
+      >Currency is required</mat-error
+    >
+  </mat-form-field>
+
+
+<div style="background-color: yellow;">
+    <mat-label>Preferred RFQ format</mat-label>
+    <mat-radio-group
+      fxLayout="row"
+      fxLayoutGap="16px"
+      formControlName="radioPreferred_RFQ_Format"
+      style="margin-top: 7px;"
+    >
+      <mat-radio-button
+        value="1"
+        [checked]="ApproveSupplierShortFormGroup.get('radioPreferred_RFQ_Format').value == 1"
+        >Web</mat-radio-button
+      >
+      <mat-radio-button
+        value="0"
+        [checked]="ApproveSupplierShortFormGroup.get('radioPreferred_RFQ_Format').value == 0"
+        >MS Excel</mat-radio-button
+      >
+    </mat-radio-group>
+</div>
+
+  
+ 
+    </div>
+    <div fxFlex="48">
+    
+      <div >
+        <div class="contact-detail-title">Contact Details</div>
+    </div>
+<mat-form-field appearance="fill">
+    <mat-label class="left-label">Contact Name</mat-label>
+   
+      <input
+        type="text"
+        class="right-text"
+        formControlName="txtContact_Name"
+        matInput
+        readonly
+      />
+   
+    <mat-error
+      *ngIf="ApproveSupplierShortFormGroup.get('txtContact_Name').hasError('required')"
+      >Contact Name is required</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label class="left-label">Mobile</mat-label>
+   
+      <input
+        type="text"
+        class="right-text"
+        formControlName="txtMobile"
+        matInput
+      />
+
+  </mat-form-field>
+
+      <mat-form-field appearance="fill">
+    <mat-label class="left-label">Email for RFQ</mat-label>
+   
+      <input
+        type="text"
+        class="right-text"
+        formControlName="txtEmail_For_RFQ"
+        matInput
+
+      />
+   
+    <mat-error
+      *ngIf="ApproveSupplierShortFormGroup.get('txtEmail_For_RFQ').hasError('required')"
+      >Email is required</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label class="left-label">Email for Invoices</mat-label>
+   
+      <input
+        type="text"
+        class="right-text"
+        formControlName="txtEmail_For_Invoices"
+        matInput
+
+      />
+   
+    <mat-error
+      *ngIf="ApproveSupplierShortFormGroup.get('txtEmail_For_Invoices').hasError('required')"
+      >Email for invoice is required</mat-error
+    >
+  </mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>REFERENCE 1</mat-label>
+  <textarea
+    matInput
+    formControlName="txtReference1"
+   
+  ></textarea>
+ 
+</mat-form-field>
+<mat-form-field appearance="fill">
+<mat-label>REFERENCE 2</mat-label>
+<textarea
+  matInput
+  formControlName="txtReference2"
+ 
+></textarea>
+
+</mat-form-field>
+<div>
+  <mat-label>PO Confirm Required?</mat-label>
+  <mat-radio-group
+    fxLayout="row"
+    fxLayoutGap="16px"
+    formControlName="radioPO_Confirm"
+    style="margin-top: 7px;"
+  >
+    <mat-radio-button
+      value="1"
+      [checked]="ApproveSupplierShortFormGroup.get('radioPO_Confirm').value == 1"
+      >Yes</mat-radio-button
+    >
+    <mat-radio-button
+      value="0"
+      [checked]="ApproveSupplierShortFormGroup.get('radioPO_Confirm').value == 0"
+      >No</mat-radio-button
+    >
+  </mat-radio-group>
+</div>
+
+        </div>
+    </div>
+
+      <div
+        fxLayout="column"
+        fxLayout.gt-sm="row"
+        fxLayoutGap.gt-sm="24px"
+        *ngIf="ErrorMessage"
+      >
+        <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+      </div>
+    </form>
+</div>
+
+<div style="color:royalblue; margin-top: 15px;margin-bottom: 20px;">
+    <div>Supplier Code will be automatically generated for the new supplier.</div>
+    <div>This Supplier will be approved automatically for 12 months.You can view the details in Approved Stage of ASL Index.</div>
+
+</div>
+    <div style="text-align: center;">
+      <button
+        mat-raised-button
+        color="primary"
+        [ngClass]="[!ApproveSupplierShortFormGroup.valid ? '' : 'save-btn']"
+        [disabled]="!ApproveSupplierShortFormGroup.valid"
+      >
+        SAVE
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="CancelForm()"
+        style="margin-left: 10px"
+      >
+        CANCEL
+      </button>
+    </div>
+
+</div>
+  </fury-page-layout>
+
+
+
+

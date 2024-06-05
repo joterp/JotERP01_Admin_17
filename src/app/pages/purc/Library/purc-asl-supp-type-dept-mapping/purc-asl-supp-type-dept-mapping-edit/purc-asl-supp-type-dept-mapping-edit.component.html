@@ -1,0 +1,59 @@
+
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle >
+  <span style="font-size: 20px;">Map Supplier Type To Department</span>
+</div>
+
+
+<mat-dialog-content style="height: 100% !important" class="dept-mapping-modal">    
+  <form [formGroup]="deptMappingFormGroup"   [ngStyle]="{ 'margin-top': '7px' }">
+      <div mat-dialog-container style="padding-top: 20px;">
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Supplier Type</mat-label>
+              <mat-select formControlName="drpSupplier_Type">
+                <mat-option value="Agent">Agent</mat-option>
+                <mat-option value="Broker">Broker</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          
+          <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Department</mat-label>
+            <mat-select  #select multiple formControlName="drpDepartment">
+              <div class="select-all">
+                  <mat-checkbox [(ngModel)]="allSelected"
+                                  [ngModelOptions]="{standalone: true}"
+                                  (change)="toggleAllSelection()">Check All</mat-checkbox>
+              </div>
+              <mat-option (click)="optionClick()" *ngFor="let dept of Department" [value]="dept.value">
+                {{dept.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        
+     
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Email</mat-label>
+                <input formControlName="txtEmail" matInput placeholder="Search by Email" type="text" />
+              </mat-form-field>
+          </div>
+        
+      </div>
+    </form>
+</mat-dialog-content>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+       Save & Close
+      </button>
+      
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+

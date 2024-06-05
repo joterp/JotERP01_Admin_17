@@ -1,0 +1,88 @@
+<div div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center" class="dialog-title">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+        Vessel Port Questionnnaire
+    </span>
+    <button type="button" mat-icon-button (click)="CloseModal();">
+        <mat-icon>close</mat-icon>
+      </button>
+</div>
+
+
+
+<mat-dialog-content style="height: 100% !important" class="vessel-port-que">
+
+    <form [formGroup]="VesselPortQuesFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Upload By</mat-label>
+              <input formControlName="txtUpload_By" matInput placeholder="Search by Upload By" type="text" />
+            </mat-form-field>
+          </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Questionnaires Date</mat-label>
+                    <input matInput [matDatepicker]="pickerTo"  [formControl]="date">
+                    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerTo></mat-datepicker>
+                  </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" >
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Remarks</mat-label>
+                    <textarea
+                    matInput
+                    formControlName="txtRemarks"
+                    ></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row" style="padding-bottom: 59px;">
+                <!-- Use a button to create a custom file upload button -->
+
+                 <mat-label style="margin: 8px;">Upload File :</mat-label> &nbsp;
+
+                <input style="display: none;" type="file" id="imageupload" #fileInput
+                    (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+
+                <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                    <label for="imageupload">
+                        Select</label>
+                </button>
+                <div *ngIf="selectedFileName" fxFlex>
+                    <span  aria-placeholder="Select files"> {{ selectedFileName
+                        }}</span>
+                    <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+                </div>
+
+                <!-- File input element, hidden from view -->
+            </div>
+  
+            
+        </div>
+       
+      </form>
+
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" [ngClass]="[!VesselPortQuesFormGroup.valid ? '' : 'save-btn']"
+      [disabled]="!VesselPortQuesFormGroup.valid">
+      SAVE & CLOSE
+    </button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!VesselPortQuesFormGroup.valid">
+      SAVE & ADD NEW
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+
+
+
+
+

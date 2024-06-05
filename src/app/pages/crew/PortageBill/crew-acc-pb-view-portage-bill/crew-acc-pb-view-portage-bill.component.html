@@ -1,0 +1,656 @@
+<fury-page-layout mode="card" class="ViewPortageBill-view">
+
+    <div>
+        <div style="padding: 5px 5px 0px 5px;">
+
+            <table style="width: 100%;">
+
+                <tr>
+                    <td style="width: 35%;">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td>
+                                    <span>
+                                        <img src="../../../../assets/img/4.png" class="logo-4" alt="excel" style="margin-right: 10px;margin-bottom: -4px;" />
+                                    </span>
+                                </td>
+
+                                <td class="PortageBill-title">
+                                    <span>Portage Bill (Wage Statement)</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                               <td class="PortageBill-title2">
+                                <span>Vessel :  Alexandre (USD)</span>
+                               </td>
+                               <td class="PortageBill-title2">May   /   2023
+                            </td> 
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width: 65%;vertical-align: bottom;text-align: end;">
+                     
+                      <span class="instruction-text">All Amounts below in blue color are having remark</span>
+                      &nbsp;&nbsp;&nbsp;
+                      <a class="export-report">Export Data to Report</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+
+                        <div style="height: 300px; border: 1px solid #ababab">
+                            <as-split [useTransition]="true" unit="percent" [gutterSize]="10">
+                              <as-split-area [size]="35" [order]="1" [visible]="keepLeft" style="overflow-x: scroll;">
+                                
+                                <div #TABLE>
+                                    <table [dataSource]="CrewListsdataSource" mat-table matSort #table class="details-table">
+                
+                                        <ng-container matColumnDef="Pay_Slip">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;">Pay Slip</th>
+                
+                                        </ng-container>
+                
+                                        <ng-container matColumnDef="Staff_Code">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;">Staff Code</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Name">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;">Name</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Rank">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;">Rank</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Contract_Date">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;">Contract Date</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="From">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;">From</th>
+                
+                                        </ng-container>
+                
+                                        <ng-container matColumnDef="To">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;">To</th>
+                
+                                        </ng-container>
+                
+                                        <ng-container matColumnDef="DOA_Homeport">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;">DOA Homeport</th>
+                
+                                        </ng-container>
+                                 
+                                        <ng-container matColumnDef="Gross_Salary">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;">Gross Salary</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Worked_For_Days">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;">Worked For(Days)</th>
+                
+                                        </ng-container>
+                                             
+                                        <ng-container matColumnDef="header-row-first-group">
+                                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="10" style="border-left: 1px solid #ddd;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;">
+                                                Crew Lists
+                                            </th>
+                                        </ng-container>
+                                                      
+                                        <tr mat-header-row *matHeaderRowDef="['header-row-first-group']" style="height:32px;background-color: #A2C4DD;">
+                                        </tr>
+                               
+                                        <tr *matHeaderRowDef="visibleColumnsCrewLists" mat-header-row style="height:32px;background-color: #A2C4DD;">
+                                        </tr>
+                                        <tr *matRowDef="let row; columns: visibleColumnsCrewLists"
+                                            class="clickable route-animations-elements" mat-row></tr>
+                                        <tr class="mat-row" *matNoDataRow>
+                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+
+                              </as-split-area>
+                              <as-split-area [size]="65" [order]="2" [visible]="true" style="overflow-x: scroll;">
+                           
+                                
+                                <div #TABLE>
+                                    <table [dataSource]="EarningsDeductionsdataSource" mat-table matSort #table class="details-table">
+                
+                                        <ng-container matColumnDef="Opening_Balance">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;background-color: #DDE9CC;">Opening Balance</th>
+                
+                                        </ng-container>
+                
+                                        <ng-container matColumnDef="Basic_Wages">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;background-color: #DDE9CC;">Basic Wages</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="RoundOff_Correction">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;background-color: #DDE9CC;">RoundOff Correction</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Leave_Wages">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;background-color: #DDE9CC;">Leave_Wages</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Office_Instruction_Earnings">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;background-color: #DDE9CC;">Office Instruction</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Other_Earning">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Other Earning</th>
+                
+                                        </ng-container>
+                
+                                        <ng-container matColumnDef="SPV_Salary_2">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">SPV Salary 2</th>
+                
+                                        </ng-container>
+                
+                                        <ng-container matColumnDef="SPV_Salary">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">SPV Salary</th>
+                
+                                        </ng-container>
+                                 
+                                        <ng-container matColumnDef="Incentive_Earnings">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Incentive</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Pre_SignOn_Salary">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Pre SignOn Salary</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="SPV_Daily_Wage">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">SPV Daily Wage</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Post_SignOff_Salary">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Post SignOff Salary</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Side_Letter">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Side Letter</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Medical_Emegency_Earnings">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Medical Emergency</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Traveling_Allownce">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Traveling Allownce</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Incentive_Deductions">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Incentive</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Seniority">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Seniority</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Total_Earnings">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Total Earnings</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Allotment">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Allotment</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Bond_Consumption">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Bond Consumption</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Bond_Consumption">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Bond Consumption</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Cash_Advance">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Cash Advance</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Radio_Communication">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Radio Communication</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Other_Deduction">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Other Deduction</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Office_Instruction">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Office Instruction</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="PF">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">P. F.</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Medical_Emegency_Deductions">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Medical Emegency</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Test">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Test</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Total_Deduction">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Total Deduction</th>
+            
+                                        </ng-container>
+                                        <ng-container matColumnDef="Balance_To_Next_Month">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #e6e6e6;">Balance To Next Month</th>
+            
+                                        </ng-container>
+                                             
+                                        <ng-container matColumnDef="header-row-first-group">
+                                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="18" style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #fff;
+                                 text-align: center;background-color: #BBD399;">
+                                                Earning
+                                            </th>
+                                        </ng-container>
+                        
+                                        <ng-container matColumnDef="header-row-two-group">
+                                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="10" style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #fff;
+                                 text-align: center;background-color: #ECBBBB;">
+                                                Deduction
+                                            </th>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="header-row-three-group">
+                                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="1" style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #fff;
+                                 text-align: center;background-color: #e6e6e6;">
+                                                
+                                            </th>
+                                        </ng-container>
+                                                      
+                                        <tr mat-header-row *matHeaderRowDef="['header-row-first-group', 'header-row-two-group', 'header-row-three-group']" style="height:32px;background-color: #A2C4DD;">
+                                        </tr>
+                               
+                                        <tr *matHeaderRowDef="visibleColumnsEarningsDeductions" mat-header-row style="height:32px;background-color: #A2C4DD;">
+                                        </tr>
+                                        <tr *matRowDef="let row; columns: visibleColumnsEarningsDeductions"
+                                            class="clickable route-animations-elements" mat-row></tr>
+                                        <tr class="mat-row" *matNoDataRow>
+                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                              </as-split-area>
+                            </as-split>
+                          </div>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="promoted-text"><span></span>Promoted Seafarer List for this month</td>
+                    <td style="text-align:end;">
+                        <a class="export-report">Export Data to Report</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+
+                        <div style="height: 300px; border: 1px solid #ababab">
+                            <as-split [useTransition]="true" unit="percent" [gutterSize]="10">
+                              <as-split-area [size]="35" [order]="1" [visible]="keepLeft" style="overflow-x: scroll;">
+                                
+                                <div #TABLE>
+                                    <table [dataSource]="CrewLists2dataSource" mat-table matSort #table class="details-table">
+                
+                                        <ng-container matColumnDef="Staff_Code">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;">Staff Code</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Name">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;">Name</th>
+                
+                                        </ng-container>
+                                                
+                                        <ng-container matColumnDef="header-row-first-group">
+                                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;">
+                                                Crew Lists
+                                            </th>
+                                        </ng-container>
+                                                      
+                                        <tr mat-header-row *matHeaderRowDef="['header-row-first-group']" style="height:32px;background-color: #A2C4DD;">
+                                        </tr>
+                               
+                                        <tr *matHeaderRowDef="visibleColumnsCrewLists2" mat-header-row style="height:32px;background-color: #A2C4DD;">
+                                        </tr>
+                                        <tr *matRowDef="let row; columns: visibleColumnsCrewLists2"
+                                            class="clickable route-animations-elements" mat-row></tr>
+                                        <tr class="mat-row" *matNoDataRow>
+                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+
+                              </as-split-area>
+                              <as-split-area [size]="65" [order]="2" [visible]="true" style="overflow-x: scroll;">
+                           
+                                
+                                <div #TABLE>
+                                    <table [dataSource]="EarningsDeductions2dataSource" mat-table matSort #table class="details-table">
+                
+                                        <ng-container matColumnDef="Opening_Balance">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;background-color: #DDE9CC;">Opening Balance</th>
+                
+                                        </ng-container>
+                
+                                        <ng-container matColumnDef="Basic_Wages">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;background-color: #DDE9CC;">Basic Wages</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="RoundOff_Correction">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;background-color: #DDE9CC;">RoundOff Correction</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Leave_Wages">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;background-color: #DDE9CC;">Leave_Wages</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Office_Instruction_Earnings">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #ddd;
+                                 text-align: center;background-color: #DDE9CC;">Office Instruction</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Other_Earning">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Other Earning</th>
+                
+                                        </ng-container>
+                
+                                        <ng-container matColumnDef="SPV_Salary_2">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">SPV Salary 2</th>
+                
+                                        </ng-container>
+                
+                                        <ng-container matColumnDef="SPV_Salary">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">SPV Salary</th>
+                
+                                        </ng-container>
+                                 
+                                        <ng-container matColumnDef="Incentive_Earnings">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Incentive</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Pre_SignOn_Salary">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Pre SignOn Salary</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="SPV_Daily_Wage">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">SPV Daily Wage</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Post_SignOff_Salary">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Post SignOff Salary</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Side_Letter">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Side Letter</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Medical_Emegency_Earnings">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Medical Emergency</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Traveling_Allownce">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Traveling Allownce</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Incentive_Deductions">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Incentive</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Seniority">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Seniority</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Total_Earnings">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #DDE9CC;">Total Earnings</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Allotment">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Allotment</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Bond_Consumption">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Bond Consumption</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Bond_Consumption">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Bond Consumption</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Cash_Advance">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Cash Advance</th>
+                
+                                        </ng-container> 
+                                        <ng-container matColumnDef="Radio_Communication">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Radio Communication</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Other_Deduction">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Other Deduction</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Office_Instruction">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Office Instruction</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="PF">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">P. F.</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Medical_Emegency_Deductions">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Medical Emegency</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Test">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Test</th>
+                
+                                        </ng-container>
+                                        <ng-container matColumnDef="Total_Deduction">
+                                            <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #fff;
+                                border-bottom: 1px solid #ddd;
+                                text-align: center;background-color: #F4D7D7;">Total Deduction</th>
+            
+                                        </ng-container>
+                                             
+                                        <ng-container matColumnDef="header-row-first-group">
+                                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="18" style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #fff;
+                                 text-align: center;background-color: #BBD399;">
+                                                Earning
+                                            </th>
+                                        </ng-container>
+                        
+                                        <ng-container matColumnDef="header-row-two-group">
+                                            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="10" style="border-left: 1px solid #fff;
+                                 border-bottom: 1px solid #fff;
+                                 text-align: center;background-color: #ECBBBB;">
+                                                Deduction
+                                            </th>
+                                        </ng-container>
+                                                      
+                                        <tr mat-header-row *matHeaderRowDef="['header-row-first-group', 'header-row-two-group']" style="height:32px;background-color: #A2C4DD;">
+                                        </tr>
+                               
+                                        <tr *matHeaderRowDef="visibleColumnsEarningsDeductions2" mat-header-row style="height:32px;background-color: #A2C4DD;">
+                                        </tr>
+                                        <tr *matRowDef="let row; columns: visibleColumnsEarningsDeductions2"
+                                            class="clickable route-animations-elements" mat-row></tr>
+                                        <tr class="mat-row" *matNoDataRow>
+                                            <td class="mat-cell" colspan="9999">No data found</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                              </as-split-area>
+                            </as-split>
+                          </div>
+
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+
+</fury-page-layout>

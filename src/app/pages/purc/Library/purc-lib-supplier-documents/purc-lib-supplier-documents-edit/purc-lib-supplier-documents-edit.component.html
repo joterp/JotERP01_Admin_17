@@ -1,0 +1,54 @@
+
+  <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle >
+    <span style="font-size: 20px;">Add New Documnet</span> 
+  </div>
+
+  <mat-dialog-content style="height: 100% !important" class="supplier-docs-modal">
+
+  <form [formGroup]="supplierDocFormGroup"   [ngStyle]="{ 'margin-top': '7px' }">
+    <div mat-dialog-container style="padding-top: 20px;">
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <mat-form-field fxFlex appearance="fill">
+            <mat-label>Documnet Name</mat-label>
+            <input formControlName="txtDocumnet_Name" matInput placeholder="Search by Documnet Name" type="text" />
+          </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row">
+        <section class="example-section">
+            Mark As Mandatory
+            <mat-checkbox  formControlName="txtCheck_Mandatory"
+                class="example-margin" style="margin-left: 17px;"
+               >
+           
+            </mat-checkbox>
+          </section>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" style="margin-top: 7px;">
+        <section class="example-section">
+            Mark As Confidential
+            <mat-checkbox  formControlName="txtCheck_Confidential"
+                class="example-margin" style="margin-left: 10px;"
+               >
+            </mat-checkbox>
+          </section>
+      </div>
+
+    </div>
+  </form>
+</mat-dialog-content>
+
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+    <button mat-raised-button color="primary" class="save-btn">
+     Save & Close
+    </button>
+    <button mat-raised-button class="save-btn" color="primary">
+      Save & Add New
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+  </mat-dialog-actions>
+
+

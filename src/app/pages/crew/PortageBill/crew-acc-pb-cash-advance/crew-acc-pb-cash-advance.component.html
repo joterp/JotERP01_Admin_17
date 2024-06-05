@@ -1,0 +1,200 @@
+<fury-page-layout mode="card" class="Cash_Advance-view">
+
+    <div>
+        <div style="padding: 5px 150px 0px 150px;">
+
+            <table style="width: 100%;">
+                <tr>
+                    <td rowspan="2">
+                        <span>
+                            <img src="../../../../assets/img/4.png" class="logo-4" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+                        </span>
+                    </td>
+                    <td>
+                        <div style="text-align: center;font-weight: bold;height: 24px;
+vertical-align: middle;margin-top: 30px;margin-bottom: 30px;">
+                            <h3>
+
+                                <span class="earnings-text">Cash Advance - Alexa (USD)</span>
+
+                            </h3>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <form [formGroup]="CashAdvanceFilterForm">
+
+                            <div class="filter-area">
+
+                                <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap.gt-sm="70px">
+
+                                    <div fxFlex>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Paid Date</mat-label>
+                                            <input matInput formControlName="Paid_Date"
+                                                [matDatepicker]="pickerPaid_Date" />
+                                            <mat-datepicker-toggle matSuffix
+                                                [for]="pickerPaid_Date"></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerPaid_Date></mat-datepicker>
+                                        </mat-form-field>
+
+                                    </div>
+
+                                    <div fxFlex>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Sent to office?</mat-label>
+                                            <mat-select formControlName="drpSent_to_office">
+                                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                       {{ b.PARAMETER_NAME }}
+                                     </mat-option> -->
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+
+                                        <div>
+                                            <button class="create" mat-raised-button color="primary" class="filter-btn">
+                                                Search
+                                            </button>
+                                            <button class="create" mat-raised-button color="warn" class="filter-btn"
+                                                type="button">
+                                                Clear
+                                            </button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="2">
+                        <table
+                            style="width: 100%;border: 1px solid lightgrey;border-top-left-radius: 10px;border-top-right-radius: 10px;height: 51px;
+                            ">
+                            <tr>
+                                <td>
+                                    <div fxLayout="row">
+                                        <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+                                            class="add-approve-btn save-btn" (click)="gotoCREW_Cash_Advance_Detail('Cash_Advance_Detail')">
+
+                                            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                        </button>
+                                        <span style="margin-top: 3px;margin-left: 6px;font-size: 15px;">Add
+                                            Cash Advance</span>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+
+
+
+                        <div #TABLE>
+                            <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                                <ng-container matColumnDef="Paid_On_Date">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                        Paid On Date
+                                    </th>
+                                    <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         [ngStyle]="{ 'white-space': 'initial' }"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                       </td> -->
+                                </ng-container>
+
+                                <ng-container matColumnDef="Total_Amount">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Total Amount
+                                    </th>
+                                    <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                       </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Number_Of_Staff">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Number Of Staff
+                                    </th>
+                                    <!-- <td
+                           *matCellDef="let row; let i = index"
+                           class="actions-cell"
+                           mat-cell
+                         >
+                           <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                         </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Sent_To_Office">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                                        Sent To Office?
+                                    </th>
+                                    <!-- <td
+                         *matCellDef="let row; let i = index"
+                         class="actions-cell"
+                         mat-cell
+                       >
+                         <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                       </td> -->
+                                </ng-container>
+                            
+                                <ng-container matColumnDef="Action">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                                    </th>
+                                    <!-- <td
+                             *matCellDef="let row; let i = index"
+                             class="actions-cell"
+                             mat-cell -
+                           >
+                             <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                           </td> -->
+                                </ng-container>
+                                <ng-container matColumnDef="Print">
+                                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+
+                                    </th>
+                                    <!-- <td
+                             *matCellDef="let row; let i = index"
+                             class="actions-cell"
+                             mat-cell
+                           >
+                             <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                           </td> -->
+                                </ng-container>
+
+
+                                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: visibleColumns"
+                                    class="clickable route-animations-elements" mat-row>
+                                </tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+
+</fury-page-layout>

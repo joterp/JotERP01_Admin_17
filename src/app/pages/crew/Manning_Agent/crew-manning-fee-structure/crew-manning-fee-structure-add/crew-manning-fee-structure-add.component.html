@@ -1,0 +1,68 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add Fee
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+
+    <mat-dialog-content>
+        <form [formGroup]="newDocumentFormGroup">
+            <div mat-dialog-container style="padding-top: 20px;">
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Fee Name</mat-label>
+                      <input formControlName="txtFee_Name" matInput placeholder="Search by Fee Name" type="text" />
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Fee Short Name</mat-label>
+                      <input formControlName="txtFee_Short_Name" matInput placeholder="Search by Fee Short Name" type="text" />
+                    </mat-form-field>
+                  </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Fee Type</mat-label>
+                    <mat-select formControlName="drpFee_Type">
+                      <mat-option value="Contract_Related">Adhoc</mat-option>
+                      <mat-option value="Not_relevantr">Begining of Contract</mat-option>
+                      <mat-option value="Perpetual">Monthly</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+
+              <div fxLayout="row"  fxLayoutGap="16px" style="margin-bottom: 20px;">
+                <mat-label>Calculation : </mat-label>
+				<mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_Reqsn_Status">
+					<mat-radio-button value="1" [checked]="newDocumentFormGroup.get('radioNew_Reqsn_Status').value == 1">
+					  <label [class.active-label]="newDocumentFormGroup.get('radioNew_Reqsn_Status').value == 1">Pro rata</label>
+					</mat-radio-button>
+					<mat-radio-button value="0" [checked]="newDocumentFormGroup.get('radioNew_Reqsn_Status').value == 0">
+					  <label [class.active-label]="newDocumentFormGroup.get('radioNew_Reqsn_Status').value == 0">Fixed</label>
+					</mat-radio-button>
+					
+				</mat-radio-group>
+            </div>
+              
+             
+               
+            </div>
+        </form>
+    </mat-dialog-content>
+   
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>

@@ -1,0 +1,299 @@
+<fury-page-layout mode="card" class="comparenadreport-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+
+        <form [formGroup]="CompareNADReportFilterForm">
+            <!-- <div>  
+            <h2>{{routeTitle}}</h2>
+        </div> -->
+            <h3>
+
+                <span class="first-letter">C</span>OMPARE
+                <span class="first-letter">NAD</span>&nbsp;
+                <span class="first-letter">R</span>EPORT
+
+            </h3>
+            <div class="filter-area" style="width: 90%;">
+
+                <div class="date-validate">The Report date FROM & TO gap can't be more then one month</div>
+
+                <div fxLayout="row" fxLayoutAlign="start">
+
+                    <div class="filter-btn-area" style="text-align: start;padding-left: 2px;" fxFlex="10">
+                        <div>
+                            <button class="create" mat-raised-button color="primary" class="filter-btn">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button">
+                                Clear Filter
+                            </button>
+                        </div>
+                    </div>
+
+                    <div fxFlex="12">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fleet</mat-label>
+                            <mat-select formControlName="drpFleet">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel</mat-label>
+                            <mat-select formControlName="drpVessel">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Voyage</mat-label>
+                            <mat-select formControlName="drpVoyage">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Cargo State</mat-label>
+                            <mat-select formControlName="drpCargo_State">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div fxFlex="12">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Report Date</mat-label>
+                            <input matInput formControlName="report_date" [matDatepicker]="pickerreport_date" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerreport_date"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerreport_date></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Location</mat-label>
+                            <mat-select formControlName="drpLocation">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>NAD Type</mat-label>
+                            <mat-select formControlName="drpNAD_Type">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                        {{ b.PARAMETER_NAME }}
+                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Wind Force</mat-label>
+                            <input type="text" formControlName="txtWind_Force" matInput />
+                        </mat-form-field>
+
+                    </div>
+
+                    <div fxFlex="12">
+                        <mat-form-field appearance="fill">
+                            <mat-label>To</mat-label>
+                            <input matInput formControlName="report_date_to" [matDatepicker]="pickerreport_date_to" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerreport_date_to"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerreport_date_to></mat-datepicker>
+                        </mat-form-field>
+
+                        <div style="height: 51px;"></div>
+                        <div style="height: 51px;"></div>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>To</mat-label>
+                            <input type="text" formControlName="txtWind_Force_to" matInput />
+                        </mat-form-field>
+
+                    </div>
+                    <div fxFlex="7">
+                        <div class="exception-text">Show Exceptions</div>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>HO</mat-label>
+                            <mat-select formControlName="drpHO">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>DO</mat-label>
+                            <mat-select formControlName="drpDO">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>FW</mat-label>
+                            <mat-select formControlName="drpFW">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div fxFlex class="middle-line"></div>
+
+                    <div fxFlex="12" style="margin-left: 5px;">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fleet</mat-label>
+                            <mat-select formControlName="drpFleet">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel</mat-label>
+                            <mat-select formControlName="drpVessel">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Voyage</mat-label>
+                            <mat-select formControlName="drpVoyage">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Cargo State</mat-label>
+                            <mat-select formControlName="drpCargo_State">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div fxFlex="12">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Report Date</mat-label>
+                            <input matInput formControlName="report_date" [matDatepicker]="pickerreport_date" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerreport_date"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerreport_date></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Location</mat-label>
+                            <mat-select formControlName="drpLocation">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>NAD Type</mat-label>
+                            <mat-select formControlName="drpNAD_Type">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                {{ b.PARAMETER_NAME }}
+                              </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Wind Force</mat-label>
+                            <input type="text" formControlName="txtWind_Force" matInput />
+                        </mat-form-field>
+
+                    </div>
+
+                    <div fxFlex="12">
+                        <mat-form-field appearance="fill">
+                            <mat-label>To</mat-label>
+                            <input matInput formControlName="report_date_to" [matDatepicker]="pickerreport_date_to" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerreport_date_to"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerreport_date_to></mat-datepicker>
+                        </mat-form-field>
+
+                        <div style="height: 51px;"></div>
+                        <div style="height: 51px;"></div>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>To</mat-label>
+                            <input type="text" formControlName="txtWind_Force_to" matInput />
+                        </mat-form-field>
+
+                    </div>
+                    <div fxFlex="7">
+                        <div class="exception-text">Show Exceptions</div>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>HO</mat-label>
+                            <mat-select formControlName="drpHO">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                        {{ b.PARAMETER_NAME }}
+                                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>DO</mat-label>
+                            <mat-select formControlName="drpDO">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                        {{ b.PARAMETER_NAME }}
+                                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>FW</mat-label>
+                            <mat-select formControlName="drpFW">
+                                <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                        {{ b.PARAMETER_NAME }}
+                                      </mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+
+
+    <fury-page-layout-content [@fadeInUp]>
+     
+     <table style="width: 100%;border: 1px solid #8d8d8d;border-collapse: collapse;margin-top: 64px;">
+        <tr>
+           <td width="65%">
+
+            <table style="width: 100%;border: 1px solid #8d8d8d;border-collapse: collapse; ">
+                <tr>
+                    <th class="report-th">Report Details</th>
+                    <th  class="report-th">03/Oct/2023</th>
+                </tr>
+                <tr>
+                    <td  class="report-td">Report Details</td>
+                    <td class="report-td">Napoleon</td>
+                </tr>
+            </table>
+
+           </td>
+           <td width="65%">
+
+           </td>
+        </tr>
+     </table>
+    </fury-page-layout-content>
+
+</fury-page-layout>

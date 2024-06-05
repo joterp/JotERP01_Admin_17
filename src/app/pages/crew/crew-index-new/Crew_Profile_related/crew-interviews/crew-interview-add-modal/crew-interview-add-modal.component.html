@@ -1,0 +1,171 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+<fury-page-layout mode="card" class="crew-interviews">
+
+    <div>
+            <form [formGroup]="InterviewsFormGroup">
+
+                            <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                                <div fxFlex="48">
+                                    <div>
+                                    <table style="width: 100%;
+                                    font-weight: bold;
+                                    color: Maroon;
+                                    font-family: tahoma;">
+                                        <tr>
+                                            <td style="width: 50%;"><span>Crew Name</span></td>
+                                            <td><span>Santosh RAO</span></td>
+                                        </tr>
+                                    </table>
+                                       
+                                    </div>
+
+                                    <div>
+                                        <table style="width: 100%;
+                                        font-weight: bold;
+                                        color: Maroon;
+                                        font-family: tahoma;">
+                                            <tr>
+                                                <td style="width: 50%;"><span>Staff Code</span></td>
+                                                <td><span>10417</span></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Rank</mat-label>
+                                            <mat-select formControlName="drpRank">
+                                            </mat-select>
+                                            <mat-error
+                                                *ngIf="InterviewsFormGroup.get('drpRank').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Interview Date</mat-label>
+                                            <input matInput formControlName="interview_date"
+                                                [matDatepicker]="pickerinterview_date" />
+                                            <mat-datepicker-toggle matSuffix
+                                                [for]="pickerinterview_date"></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerinterview_date></mat-datepicker>
+
+                                            <mat-error
+                                                *ngIf="InterviewsFormGroup.get('interview_date').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Interview Timezone</mat-label>
+                                            <input type="text" formControlName="txtInterview_Timezone" matInput />
+                                            <mat-error
+                                                *ngIf="InterviewsFormGroup.get('txtInterview_Timezone').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Interview Type</mat-label>
+                                            <mat-select formControlName="drpInterview_Type">
+                                            </mat-select>
+                                            <mat-error
+                                                *ngIf="InterviewsFormGroup.get('drpInterview_Type').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Interview Name</mat-label>
+                                            <mat-select formControlName="drpInterview_Name">
+                                            </mat-select>
+                                            <mat-error
+                                                *ngIf="InterviewsFormGroup.get('drpInterview_Name').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Interviewer</mat-label>
+                                            <mat-select formControlName="drpInterviewer">
+                                            </mat-select>
+                                            <mat-error
+                                                *ngIf="InterviewsFormGroup.get('drpdrpInterviewer').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                </div>
+
+                                  <div fxFlex="48">
+                            
+                                    <div style="margin-top: 50px;">
+                                        <mat-form-field appearance="fill">
+                                        <mat-label>Interview Comment</mat-label>
+                                        <textarea matInput formControlName="txtInterview_Comment" rows="10" cols="50"></textarea>
+                                      
+                                    </mat-form-field> 
+                                    </div>
+
+                                    <div style="margin-bottom: 12px;">
+                                        
+                                        <mat-radio-group fxLayout="column" fxLayoutGap="7px" formControlName="radioInterview_Mode" style="margin-top: 7px; margin-left: 26px;" class="radio-btn-group">
+                                          <mat-radio-button value="1" [checked]="InterviewsFormGroup.get('radioInterview_Mode').value == 1">
+                                            <label [class.active-label]="InterviewsFormGroup.get('radioInterview_Mode').value == 1">Online</label>
+                                          </mat-radio-button>
+                                          <mat-radio-button value="0" [checked]="InterviewsFormGroup.get('radioInterview_Mode').value == 0">
+                                            <label [class.active-label]="InterviewsFormGroup.get('radioInterview_Mode').value == 0">Personal</label>
+                                          </mat-radio-button>
+                                          <mat-radio-button value="2" [checked]="InterviewsFormGroup.get('radioInterview_Mode').value == 2">
+                                            <label [class.active-label]="InterviewsFormGroup.get('radioInterview_Mode').value == 2">Skype Call</label>
+                                          </mat-radio-button>
+                                          <mat-radio-button value="3" [checked]="InterviewsFormGroup.get('radioInterview_Mode').value == 3">
+                                            <label [class.active-label]="InterviewsFormGroup.get('radioInterview_Mode').value == 3">Telephonic</label>
+                                          </mat-radio-button>
+                                          <mat-radio-button value="4" [checked]="InterviewsFormGroup.get('radioInterview_Mode').value == 4">
+                                            <label [class.active-label]="InterviewsFormGroup.get('radioInterview_Mode').value == 4">Zoom Call</label>
+                                          </mat-radio-button>
+                                        
+                                        </mat-radio-group>
+                                      </div>
+                                    
+                                </div> 
+                                
+                            </div>
+            </form>
+
+    </div>
+
+</fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!InterviewsFormGroup.valid ? '' : 'save-btn']" [disabled]="!InterviewsFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+  
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>
+

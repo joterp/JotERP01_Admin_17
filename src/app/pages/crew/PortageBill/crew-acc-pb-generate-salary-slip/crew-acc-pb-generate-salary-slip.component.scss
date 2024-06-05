@@ -1,0 +1,48 @@
+fury-crew-acc-pb-generate-salary-slip {
+
+    .Generate_SalarySlip-view{
+
+        .heading-style{
+            font-family: tahoma;
+            font-weight: bold;
+            // color: #000;
+        }
+        .heading-td{
+            text-align: center;
+        }
+
+        .Salary-slip-table {
+            border: 1px solid #ababab;
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            font-weight: bold;
+            font-size: 13px;
+            color: #474747;
+          }
+          
+          .Salary-slip-td1 {
+            // border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            width: 14%;
+            text-align: center;
+          }
+          .Salary-slip-td2 {
+            // border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            width: 30%;
+          }
+          .Salary-slip-td3 {
+            // border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+          }
+          
+          .Salary-slip-tr:nth-child(even) {
+            background-color: #efefef;
+          }
+    }
+
+} 

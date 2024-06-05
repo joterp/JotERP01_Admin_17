@@ -1,0 +1,100 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Rank
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  <div>
+    <form [formGroup]="newRankFormGroup">
+      <div mat-dialog-container style="padding-top: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Rank</mat-label>
+            <input formControlName="txtRank" matInput placeholder="Search by Rank" type="text" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Rank Short Name</mat-label>
+            <input formControlName="txtRank_Short_Name" matInput placeholder="Search by Rank Short Name"
+              type="text" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Rank Category</mat-label>
+            <mat-select formControlName="drpRank_Category">
+              <mat-option value="VMT">VMT</mat-option>
+              <mat-option value="Junior_Officer">Junior Officer</mat-option>
+              <mat-option value="Rating">Rating</mat-option>
+              <mat-option value="Supernumerary">Supernumerary</mat-option>
+              <mat-option value="Security">Security</mat-option>
+              <mat-option value="Riding_Gang">Riding Gang</mat-option>
+  
+  
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Vessel Department</mat-label>
+            <mat-select formControlName="drpVessel_dept">
+              <mat-option value="Deck">Deck</mat-option>
+              <mat-option value="Electrical">Electrical</mat-option>
+              <mat-option value="Engine">Enigne</mat-option>
+              <mat-option value="Laundry">Laundry</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Contract Duration(Months)</mat-label>
+              <input formControlName="txtContract_Duration" matInput placeholder="Search by Months"
+                type="text" />
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutGap="16px" style="padding: 10px;">
+            <mat-label style="width: 150px;">Is Cadet</mat-label>
+            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_Is_Cadet">
+                <mat-radio-button value="1" [checked]="newRankFormGroup.get('radioNew_Is_Cadet').value == 1">
+                    <label [class.active-label]="newRankFormGroup.get('radioNew_Is_Cadet').value == 1">Yes</label>
+                </mat-radio-button>
+                <mat-radio-button value="0" [checked]="newRankFormGroup.get('radioNew_Is_Cadet').value == 0">
+                    <label [class.active-label]="newRankFormGroup.get('radioNew_Is_Cadet').value == 0">No</label>
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        
+        <div fxLayout="row" fxLayoutGap="16px" style="padding: 10px;">
+            <mat-label style="width: 150px;">Is Cadet Supervisor</mat-label>
+            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_Is_Cadet_Sup">
+                <mat-radio-button value="1" [checked]="newRankFormGroup.get('radioNew_Is_Cadet_Sup').value == 1">
+                    <label [class.active-label]="newRankFormGroup.get('radioNew_Is_Cadet_Sup').value == 1">Yes</label>
+                </mat-radio-button>
+                <mat-radio-button value="0" [checked]="newRankFormGroup.get('radioNew_Is_Cadet_Sup').value == 0">
+                    <label [class.active-label]="newRankFormGroup.get('radioNew_Is_Cadet_Sup').value == 0">No</label>
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

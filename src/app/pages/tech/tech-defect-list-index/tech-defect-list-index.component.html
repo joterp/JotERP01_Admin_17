@@ -1,0 +1,579 @@
+<fury-page-layout mode="card" class="defectlist-view">
+
+    <!-- search header for PURC_Catalogue -->
+    <fury-page-layout-header>
+
+
+        <form>
+            <!-- <div>  
+              <h2>{{routeTitle}}</h2>
+          </div> -->
+            <h3>
+
+                <span class="first-letter">D</span>EFECT
+                <span class="first-letter">L</span>IST
+                <span class="first-letter">&</span>&nbsp;
+                <span class="first-letter">NCR</span>s
+            </h3>
+
+        </form>
+    </fury-page-layout-header>
+
+
+    <fury-page-layout-content [@fadeInUp]>
+
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;
+        ">
+                <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;">
+                    <mat-panel-title class="panel-title">
+                        Search Criteria
+                    </mat-panel-title>
+                    <mat-panel-description class="panel-desc">
+
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <form [formGroup]="DefectListFilterForm">
+                    <div class="filter-area">
+
+                        <div fxLayout="row" fxLayoutAlign="start">
+
+                            <div fxFlex>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Fleet</mat-label>
+                                    <mat-select formControlName="drpFleet">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Vessel</mat-label>
+                                    <mat-select formControlName="drpVessel">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Description</mat-label>
+                                    <input type="text" formControlName="txtDescription" matInput />
+
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Defect ID/NCR #</mat-label>
+                                    <input type="text" formControlName="txtDefect_List" matInput />
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Modified In Last</mat-label>
+                                    <input type="text" formControlName="txtModified_In_Last" matInput
+                                        placeholder="Days" />
+
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Raised by Rank</mat-label>
+                                    <mat-select formControlName="drpRaised_by_Rank">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </div>
+
+                            <div fxFlex>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Assigned</mat-label>
+                                    <mat-select formControlName="drpAssigned">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                            {{ b.DEPT_NAME }}
+                          </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Defect Status</mat-label>
+                                    <mat-select formControlName="drpDefect_Status">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                            {{ b.DEPT_NAME }}
+                          </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Verified Status</mat-label>
+                                    <mat-select formControlName="drpVerified_Status">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                            {{ b.DEPT_NAME }}
+                          </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Department Office</mat-label>
+                                    <mat-select formControlName="drpDepartment_Office">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                            {{ b.DEPT_NAME }}
+                          </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Department Vessel</mat-label>
+                                    <mat-select formControlName="drpDepartment_Vessel">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                            {{ b.DEPT_NAME }}
+                          </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </div>
+
+                            <div fxFlex>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>drpPrimary_Cat</mat-label>
+                                    <mat-select formControlName="drpPrimary_Cat">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>drpSecondary_Cat</mat-label>
+                                    <mat-select formControlName="drpSecondary_Cat">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>drpInspector</mat-label>
+                                    <mat-select formControlName="drpInspector">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>PIC</mat-label>
+                                    <mat-select formControlName="drpPIC">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label> Inspection</mat-label>
+                                    <mat-select formControlName="drpInspection">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                          {{ b.DEPT_NAME }}
+                        </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </div>
+
+                            <div fxFlex>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Defect Type</mat-label>
+                                    <mat-select formControlName="drpDefect_Type">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                              {{ b.DEPT_NAME }}
+                            </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Priority</mat-label>
+                                    <mat-select formControlName="drpPriority">
+                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                              {{ b.DEPT_NAME }}
+                            </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-checkbox [color]="'primary'" formControlName="chkDefect_Deferred"
+                                    style="margin-top: 10px;">
+                                    Show defects deferred to Dry Dock
+                                </mat-checkbox>
+                                <mat-checkbox [color]="'primary'" formControlName="chkDefect_Sent"
+                                    style="margin-top: 10px;">
+                                    Show Defects/NCRs sent from office
+                                </mat-checkbox>
+                                <mat-checkbox [color]="'primary'" formControlName="chkDaily_Meeting_Jobs"
+                                    style="margin-top: 10px;">
+                                    Show Daily Meeting Jobs
+                                </mat-checkbox>
+                                <mat-checkbox [color]="'primary'" formControlName="chkAawating_Office_Action"
+                                    style="margin-top: 10px;">
+                                    Show Awaiting Office Action
+                                </mat-checkbox>
+
+
+                            </div>
+
+                            <div fxFlex>
+                                <label>
+                                    From Date
+                                </label>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Raised On</mat-label>
+                                    <input matInput formControlName="Raised_On" [matDatepicker]="pickerraisedon" />
+                                    <mat-datepicker-toggle matSuffix [for]="pickerraisedon"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerraisedon></mat-datepicker>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label>ETC</mat-label>
+                                    <input matInput formControlName="ETC" [matDatepicker]="pickeretc" />
+                                    <mat-datepicker-toggle matSuffix [for]="pickeretc"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickeretc></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Completed</mat-label>
+                                    <input matInput formControlName="Completed" [matDatepicker]="pickercompleted" />
+                                    <mat-datepicker-toggle matSuffix [for]="pickercompleted"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickercompleted></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Verified On</mat-label>
+                                    <input matInput formControlName="Verified_On" [matDatepicker]="pickerverifiedon" />
+                                    <mat-datepicker-toggle matSuffix [for]="pickerverifiedon"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerverifiedon></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex>
+                                <label>
+                                    To Date
+                                </label>
+                                <mat-form-field appearance="fill">
+                                    <mat-label></mat-label>
+                                    <input matInput formControlName="Raised_To" [matDatepicker]="pickerraisedto" />
+                                    <mat-datepicker-toggle matSuffix [for]="pickerraisedto"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerraisedto></mat-datepicker>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label></mat-label>
+                                    <input matInput formControlName="ETC_TO" [matDatepicker]="pickeretcto" />
+                                    <mat-datepicker-toggle matSuffix [for]="pickeretcto"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickeretcto></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label></mat-label>
+                                    <input matInput formControlName="Completedto" [matDatepicker]="pickercompletedto" />
+                                    <mat-datepicker-toggle matSuffix [for]="pickercompletedto"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickercompletedto></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label></mat-label>
+                                    <input matInput formControlName="Verified_To" [matDatepicker]="pickerverifiedto" />
+                                    <mat-datepicker-toggle matSuffix [for]="pickerverifiedto"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerverifiedto></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="filter-btn-area" fxFlex>
+                                <div style="text-align: end;">
+                                    <button class="create" mat-raised-button color="primary" class="filter-btn">
+                                        Search
+                                    </button>
+                                </div>
+
+                                <div style="text-align: end;">
+                                    <button class="create" mat-raised-button color="warn" class="filter-btn"
+                                        type="button">
+                                        Clear Filter
+                                    </button>
+                                </div>
+                                <div style="text-align: end;">
+                                    <button class="create" mat-raised-button color="warn" class="filter-btn"
+                                        type="button" (click)="gotoTECH_DefectList_Details('TECHDefectListIndividual')">
+                                        Edit
+                                    </button>
+                                </div>
+                                <div style="text-align: end;">
+                                  <button class="create" mat-raised-button color="warn" class="filter-btn"
+                                      type="button" (click)="OpenMailDefect(null)">
+                                      Fwd Email
+                                  </button>
+                              </div>
+
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <td> <mat-form-field appearance="fill">
+                                                    <mat-label>Reports</mat-label>
+                                                    <mat-select formControlName="drpReports">
+                                                        <!-- <mat-option *ngFor="let b of filtered_Department | async" [value]="b.ID">
+                                          {{ b.DEPT_NAME }}
+                                        </mat-option> -->
+                                                    </mat-select>
+                                                </mat-form-field></td>
+                                            <td> <span>
+                                                    <img src="../../../../assets/img/HRM_Zoom.png" class="search-logo"
+                                                        alt="excel" style="margin-right: 10px;
+                                    margin-bottom: -4px;cursor: pointer;" />
+                                                </span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sfis-filter" style="text-align: end;">
+                                    SFIs/Tags Filter : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span (click)="OpenSFIsList(null)">
+                                        <img src="../../../../assets/img/HRM_Zoom.png" class="search-logo" alt="excel"
+                                            style="margin-right: 10px;
+                            margin-bottom: -4px;cursor: pointer;" />
+                                    </span>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+
+    </fury-page-layout-content>
+
+    <fury-page-layout-content [@fadeInUp] style="margin-top:9px;">
+        <div class="actions-area">
+            <table style="display: flex;">
+                <tr >
+                    <td>
+                        <div fxLayout="row">
+                            <button
+                            mat-mini-fab
+                            color="primary"
+                            [matTooltip]="'Add item'"
+                            class="add-approve-btn save-btn" 
+                            (click)="AddNewDefect({}, 'Add New Defect', 'Add_New_Defect')"
+                          >
+                            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                          </button>
+                            <span style="margin-top: 3px;
+                            margin-left: 6px;font-size: 15px;">Add New Defect List & NCRs</span>
+                          </div>
+                    </td>
+                </tr>
+              
+            
+            </table>          
+
+              
+          <div>
+            <span
+           
+              style="cursor: pointer"
+             
+            >
+              <img
+                src="../../../../assets/img/XLSX.jpg"
+                class="logo"
+                alt="excel"
+              />
+              <img
+                src="../../../../assets/img/pdf.png"
+                class="logo"
+                alt="excel"
+              />
+              <img
+                src="../../../../assets/img/XML1.png"
+                class="logo"
+                alt="excel"
+              />
+            </span>
+          </div>
+          <!-- <div class="content-loader">
+            <mat-progress-spinner
+              mode="indeterminate"
+              color="accent"
+            ></mat-progress-spinner>
+          </div> -->
+        </div>
+        <div #TABLE>
+          <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+           
+        
+            <ng-container matColumnDef="Vsl">
+              <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;"> Vsl </th>
+    
+            </ng-container>
+    
+            <ng-container matColumnDef="Office">
+              <th mat-header-cell *matHeaderCellDef style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;"> Office </th>
+    
+            </ng-container>
+         
+            <ng-container matColumnDef="header-row-first-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                ID
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-second-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                NCR #
+              </th>
+            </ng-container>
+            
+    
+            <ng-container matColumnDef="header-row-third-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="5" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;">
+                  Vessel
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-fourth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+                  border-bottom: 1px solid #ddd;
+                  text-align: center;" >   
+                Prority
+              </th>
+              <!-- <td (click)="SaveData()"></td> -->
+            </ng-container>
+            <ng-container matColumnDef="header-row-fifth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="4" style="border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                 text-align: center;">
+                Description
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-sixth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                 Assigned By
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-seventh-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+               Department
+              </th>
+            </ng-container>
+    
+            <ng-container matColumnDef="header-row-eighth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+              Raised On
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-eighth-group">
+              <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;">
+                ETC
+              </th>
+            </ng-container>
+            <ng-container matColumnDef="header-row-ninth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                 Completed
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-tenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+               Verified
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-eleventh-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-twelth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-thirteenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-forteenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-fifteenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-sixteenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="header-row-seventeenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                
+                </th>
+              </ng-container>
+             
+              <ng-container matColumnDef="header-row-eighteenth-group">
+                <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2" style="border-left: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+              text-align: center;">
+                
+                </th>
+              </ng-container>
+             
+             
+            <tr mat-header-row
+              *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group',
+              'header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group','header-row-ninth-group', 
+              'header-row-tenth-group','header-row-eleventh-group','header-row-twelth-group','header-row-thirteenth-group','header-row-forteenth-group',
+              'header-row-fifteenth-group','header-row-sixteenth-group','header-row-seventeenth-group',
+              'header-row-eighteenth-group']"
+              style="height:32px">
+            </tr>
+    
+    
+    
+            <tr *matHeaderRowDef="visibleColumns" mat-header-row style="height:32px"></tr>
+            <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="9999">No data found</td>
+            </tr>
+          </table>
+        </div>
+    
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+    
+    
+      </fury-page-layout-content>
+
+</fury-page-layout>

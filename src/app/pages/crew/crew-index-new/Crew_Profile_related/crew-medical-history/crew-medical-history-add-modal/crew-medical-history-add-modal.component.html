@@ -1,0 +1,148 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+
+<mat-dialog-content style="height: 100% !important" class="edit-crew-medical">
+    <form [formGroup]="CrewMedicalFormGroup" [ngStyle]="{ 'margin-top': '7px' }">
+        
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Staff Code</mat-label>
+                <mat-select formControlName="drpStaff_Code">
+                    <mat-option>
+
+                    </mat-option>
+
+                    <!-- <mat-option
+                  *ngFor="let b of filtered_port | async"
+                  [value]="b.PORT_GUID"
+                >
+                  {{ b.Port_Name }}
+                </mat-option> -->
+                </mat-select>
+                <mat-error *ngIf="CrewMedicalFormGroup.get('drpStaff_Code').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Voyage</mat-label>
+                <mat-select formControlName="drpVoyage">
+                    <mat-option>
+
+                    </mat-option>
+
+                    <!-- <mat-option
+                  *ngFor="let b of filtered_port | async"
+                  [value]="b.PORT_GUID"
+                >
+                  {{ b.Port_Name }}
+                </mat-option> -->
+                </mat-select>
+                <mat-error *ngIf="CrewMedicalFormGroup.get('drpVoyage').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-bottom: 10px;">
+
+           <table style="width: 100%">
+           <tr>
+            <td class="vessel-title" style="width:7%;">Vessel</td>
+            <td style="color: red;width:3%;">*</td>
+            <td class="vessel-name-title">Alexandre</td>
+           </tr>
+           </table>
+
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Case Type</mat-label>
+                <mat-select formControlName="drpCase_Type">
+                    <mat-option>
+
+                    </mat-option>
+
+                    <!-- <mat-option
+                  *ngFor="let b of filtered_port | async"
+                  [value]="b.PORT_GUID"
+                >
+                  {{ b.Port_Name }}
+                </mat-option> -->
+                </mat-select>
+                <mat-error *ngIf="CrewMedicalFormGroup.get('drpCase_Type').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Case Date</mat-label>
+                <input matInput formControlName="case_date" [matDatepicker]="pickercase_date" />
+                <mat-datepicker-toggle matSuffix [for]="pickercase_date"></mat-datepicker-toggle>
+                <mat-datepicker #pickercase_date></mat-datepicker>
+            </mat-form-field>
+        </div>
+  
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Case Detail</mat-label>
+                <textarea matInput formControlName="txtCase_Detail"></textarea>
+                <mat-error *ngIf="CrewMedicalFormGroup.get('txtCase_Detail').hasError('required')">
+                    Required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        
+            <mat-label>Upload</mat-label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <div>
+          <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+            accept=".pdf,.doc,.docx,.jpg,.png" />
+       
+          <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+            <label for="imageupload">
+              Upload </label>
+          </button>
+          </div>
+
+          <div *ngIf="selectedFileName" fxFlex>
+            <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+            <button (click)="removeUploadedFileadditem()"  mat-button style="color: #5BB318;">Remove</button>
+          </div>
+     
+</div>
+
+        <!-- <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" *ngIf="ErrorMessage">
+            <h6 style="color: #ff0000">{{ ErrorMessage }}</h6>
+        </div> -->
+    </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!CrewMedicalFormGroup.valid ? '' : 'save-btn']" [disabled]="!CrewMedicalFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+    <button class="create" mat-raised-button color="info" class="filter-info-btn btn-info" type="button">
+        CLOSE CASE
+    </button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

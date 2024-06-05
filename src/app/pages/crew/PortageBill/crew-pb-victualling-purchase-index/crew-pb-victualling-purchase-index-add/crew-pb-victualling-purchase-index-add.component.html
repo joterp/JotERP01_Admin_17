@@ -1,0 +1,147 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Add PB Victualling Purchase
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+    <form [formGroup]="purchaseIndexFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Vessel</mat-label>
+                    <mat-select formControlName="drpVessel">
+                        <mat-option value="YML_Cosmos">YML Cosmos</mat-option>
+                        <mat-option value="Hull_1011">Hull - 1011</mat-option>
+                        <mat-option value="Catalan_Sea">Catalan Sea</mat-option>
+                        <mat-option value="Stena_A">Stena A</mat-option>
+                        <mat-option value="Grace_River">Grace River</mat-option>
+                        <mat-option value="Bryce">Bryce</mat-option>
+                        <mat-option value="Plump">Plump</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Date</mat-label>
+                    <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" placeholder="Report Date From" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFrom></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Purchase Port</mat-label>
+                <mat-select formControlName="drpPurchase_Port" >
+                  <mat-option value="Albania">Albania - Durres</mat-option>
+                  <mat-option value="Albania">Albania - Shengjin</mat-option>
+                  <mat-option value="Albania">Albania - Vlores</mat-option>
+                  <mat-option value="Algeria">Algeria - Annaba</mat-option>
+                  <mat-option value="Antarctica">Antarctica - Ellefsen Harbor</mat-option>
+                  <mat-option value="Brunei">Brunei - Kuala Belait</mat-option>
+                  <mat-option value="Cameroon">Cameroon - Limboh Terminal</mat-option>
+                </mat-select>
+            </mat-form-field>
+            </div>
+
+           
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Purchase Supplier</mat-label>
+                    <mat-select formControlName="drpPurchase_Supplier" >
+                      <mat-option value="Approved" style="background-color: #d5d5d5;">Approved</mat-option>
+                      <mat-option value="Black_wall_02">February</mat-option>
+                      <mat-option value="Black-Listed" style="background-color: #d5d5d5;">Black-Listed</mat-option>
+                      <mat-option value="Draft" style="background-color: #d5d5d5;">Draft</mat-option>
+                      <mat-option value="River_Marine">MaRiver Mariney</mat-option>
+                      <mat-option value="Expired" style="background-color: #d5d5d5;">Expired</mat-option>
+                      <mat-option value="Pending for Approval" style="background-color: #d5d5d5;">Pending for Approval</mat-option>
+                      <mat-option value="Rework"style="background-color: #d5d5d5;">Rework</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Puchase Type</mat-label>
+                    <mat-select formControlName="drpPurchase_Type">
+                        <mat-option value="Cash">Cash</mat-option>
+                        <mat-option value="Through_The_Company">Through The Company</mat-option>
+                        <mat-option value="2021">2021</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Purchase Currency</mat-label>
+                    <mat-select formControlName="drpPurchase_Currency">
+                        <mat-option value="AED">AED - United Arab Emirates Dirham</mat-option>
+                        <mat-option value="AFN">AFN - Afghanistan Afghani</mat-option>
+                        <mat-option value="AOA">AOA - Angola Kwanza</mat-option> 
+                        <mat-option value="BRL">BRL - Brazil Real</mat-option> 
+                        <mat-option value="ETB">ETB - Ethiopia Birr</mat-option> 
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Purchase Price</mat-label>
+                    <input formControlName="txtPurchase_Price" matInput placeholder="Search by Purchase Price"
+                        type="text" />
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Purchase Exchange Rate</mat-label>
+                    <input formControlName="txtPurchase_Exch_Rate" matInput placeholder="Search by Purchase Exchange Rate"
+                        type="text" />
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Ship Currency</mat-label>
+                    <mat-select formControlName="drpShip_Currency">
+                        <mat-option value="AED">AED - United Arab Emirates Dirham</mat-option>
+                        <mat-option value="AFN">AFN - Afghanistan Afghani</mat-option>
+                        <mat-option value="AOA">AOA - Angola Kwanza</mat-option> 
+                        <mat-option value="BRL">BRL - Brazil Real</mat-option> 
+                        <mat-option value="ETB">ETB - Ethiopia Birr</mat-option> 
+                    </mat-select>
+                </mat-form-field>
+            </div>
+           
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Price Ship Currency</mat-label>
+                    <input formControlName="txtPrice_Ship_Currency" matInput placeholder="Search by Price Ship Currency"
+                        type="text" />
+                </mat-form-field>
+            </div>
+
+        </div>
+    </form>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+        <button mat-raised-button color="primary" class="save-btn">
+            Save & Close
+        </button>
+        <button mat-raised-button class="save-btn" color="primary">
+            Save & Add New
+        </button>
+    
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+</div>

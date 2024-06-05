@@ -1,0 +1,162 @@
+@import "var";
+
+:host {
+  top: 0;
+  z-index: $toolbar-z-index;
+}
+
+.toolbar {
+  padding-right: 0;
+  height: $toolbar-height;
+  padding-left: $spacing;
+  max-width: 100%;
+
+  .toolbar-button {
+    border-left-width: 1px;
+    border-left-style: solid;
+    display: flex;
+  }
+
+  .toolbar-logo {
+    cursor: pointer;
+    outline: none;
+    margin-bottom: -5px;
+    margin-left: $spacing;
+    margin-right: $spacing;
+
+    svg {
+      height: 35px;
+    }
+  }
+  .toggle-btn {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    .toggle-btn {
+      display: block;
+    }
+  }
+  @include media-xs {
+    padding-left: calc(calc($spacing/3));
+  }
+
+  .navItems {
+    padding-top: 15px;
+  }
+  .nav-item{
+    list-style: none;
+    
+  }
+  
+ .nav-link:hover {
+  color: #9EDA29;
+ }
+ .nav-link{
+  font-family: 13px;
+ }
+  ul {
+    display: flex;
+    background-color: #272829;
+    color: white;
+    margin-top: 7px;
+  }
+  mat-button:hover {
+    background-color:#454545;
+    color: #9EDA29;
+  }
+  .mat-menu-item{
+    color:red !important;
+  }
+
+  .example-menu-bar-item {
+    cursor: pointer;
+    border: none;
+  
+    user-select: none;
+    min-width: 34px;
+    line-height: 26px;
+    padding: 0 16px;
+  }
+  
+  .example-menu-bar-item:hover {
+    background-color: rgb(208, 208, 208);
+  }
+  
+  .example-menu {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 180px;
+    max-width: 280px;
+    background-color: rgb(255, 255, 255);
+    padding: 6px 0;
+  }
+  
+  .example-menu hr {
+    width: 100%;
+    color: rgba(0, 0, 0, 0.12);
+  }
+  
+  .example-menu .example-menu-group {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  
+  .example-menu .example-menu-item {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+  
+    user-select: none;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+  
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex: 1;
+  }
+  
+  .example-menu-item > span {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: flex-end;
+  }
+  
+  .example-menu .example-menu-item:hover {
+    background-color: rgb(208, 208, 208);
+  }
+  
+  .example-menu .example-menu-item[role='menuitemradio'][aria-checked='true'] {
+    background-color: rgb(225, 225, 225);
+  }
+  .example-menu .example-menu-item[role='menuitemcheckbox'][aria-checked='true'] {
+    background-color: rgb(225, 225, 225);
+  }
+  .example-menu .example-menu-item:active {
+    background-color: rgb(170, 170, 170);
+  }
+  
+  .example-menu-bar-item[aria-expanded='true'],
+  .example-menu-item[aria-expanded='true'] {
+    background-color: rgb(208, 208, 208) !important;
+  }
+
+
+}
+
+// .menuItemSpace{
+//   height: 22px;
+//   line-height: 4px; // center text 
+  
+// } 
+.mat-mdc-button:not(:disabled) {
+  color: #fff;
+}
+.mat-mdc-menu-item {
+  min-height: 24px;
+
+}
+ 
+

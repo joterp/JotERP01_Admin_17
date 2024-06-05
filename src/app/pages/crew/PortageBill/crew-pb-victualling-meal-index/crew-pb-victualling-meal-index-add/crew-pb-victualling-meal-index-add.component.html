@@ -1,0 +1,96 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+    fxLayoutAlign="space-between">
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />Update Opening Balance
+    </span>
+
+    <span fxLayoutAlign="end">
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+    </span>
+</div>
+<div>
+    <form [formGroup]="pbMealIndexFormGroup">
+        <div mat-dialog-container style="padding-top: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Vessel</mat-label>
+                    <mat-select formControlName="drpVessel">
+                        <mat-option value="YML_Cosmos">YML Cosmos</mat-option>
+                        <mat-option value="Hull_1011">Hull - 1011</mat-option>
+                        <mat-option value="Catalan_Sea">Catalan Sea</mat-option>
+                        <mat-option value="Stena_A">Stena A</mat-option>
+                        <mat-option value="Grace_River">Grace River</mat-option>
+                        <mat-option value="Bryce">Bryce</mat-option>
+                        <mat-option value="Plump">Plump</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Month</mat-label>
+                    <mat-select formControlName="drpMonth">
+                        <mat-option value="January">January</mat-option>
+                        <mat-option value="February">February</mat-option>
+                        <mat-option value="March">March</mat-option>
+                        <mat-option value="April">April</mat-option>
+                        <mat-option value="May">May</mat-option>
+                        <mat-option value="June">June</mat-option>
+                        <mat-option value="July">July</mat-option>
+                        <mat-option value="August">August</mat-option>
+                        <mat-option value="September">September</mat-option>
+                        <mat-option value="October">October</mat-option>
+                        <mat-option value="November">November</mat-option>
+                        <mat-option value="December">December</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Year</mat-label>
+                    <mat-select formControlName="drpYear">
+                        <mat-option value="2023">2023</mat-option>
+                        <mat-option value="2022">2022</mat-option>
+                        <mat-option value="2021">2021</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Opening Balance</mat-label>
+                    <input formControlName="txtOpening_Balance" matInput placeholder="Search by Opening Balance"
+                        type="text" />
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label> Currency</mat-label>
+                    <mat-select formControlName="drpCurrency">
+                        <mat-option value="AED">AED - United Arab Emirates Dirham</mat-option>
+                        <mat-option value="AUD">AUD - Australia Dollar</mat-option>
+                        <mat-option value="BBD">BBD - Barbados Dollar</mat-option>
+                        <mat-option value="BIF">BIF - Burundi Franc</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+    </form>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+        <button mat-raised-button color="primary" class="save-btn">
+            Save & Close
+        </button>
+
+
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+</div>

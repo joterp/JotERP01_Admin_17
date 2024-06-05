@@ -1,0 +1,195 @@
+
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    Edit Checklist Details
+</div>
+
+
+<mat-dialog-content>
+
+    <div style="margin-top: 20px;margin-bottom: 20px;">
+    <table style="width: 100%;border: 1px solid;
+    border-collapse: collapse;">
+        <tr>
+
+         <td class="deptID">Department ID
+           
+         </td>  
+         <td>
+            <input type="text" value="CO.01.F" class="input-deptID" readonly/>
+         </td>   
+         <td class="version">Version
+           
+         </td>  
+         <td class="version-1">
+            <input type="text" value="1003" class="input-version-1" readonly/>
+         </td>  
+         <td class="dd">DD
+           
+         </td>   
+         <td class="dd-1">
+            <input type="text" value="1003" class="input-dd-1" readonly/>
+         </td>  
+         <td class="mm">MM
+            
+         </td>  
+         <td class="mm-1">
+            <input type="text" value="1003" class="input-mm-1" readonly/>
+         </td> 
+         <td class="yy">YY
+          
+         </td>  
+         <td class="yy-1">
+            <input type="text" value="2016" class="input-yy-1" readonly/>
+         </td>       
+        </tr>
+    </table>
+</div>
+
+    <div>
+ 
+      <form [formGroup]="EditChecklistFormGroup">
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Client</mat-label>
+                <input formControlName="txtClient" matInput  type="text" />
+                  </mat-form-field>
+
+            <div fxFlex>
+
+            </div>
+
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel</mat-label>
+                <input formControlName="txVessel" matInput type="text" />
+                  </mat-form-field>
+
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Vessel Owner</mat-label>
+                    <input formControlName="txtVessel_Owner" matInput type="text" />
+                      </mat-form-field>
+
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>IMO No.</mat-label>
+                <input formControlName="txtIMO_No" matInput type="text" />
+                  </mat-form-field>
+
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Vessel Flag</mat-label>
+                    <input formControlName="txtVessel_Flag" matInput type="text" />
+                      </mat-form-field>
+
+          </div>
+
+      </form>
+
+    </div>
+
+   
+
+    <div #TABLE>
+        <table [dataSource]="ChecklistDetailsdataSource" mat-table matSort #table
+            class="details-table">
+            <ng-container matColumnDef="Task">
+                <th *matHeaderCellDef class="actions-cell"
+                    [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                    mat-sort-header>
+                    Task
+                </th>
+                <!-- <td
+  *matCellDef="let row; let i = index"
+  class="actions-cell"
+  [ngStyle]="{ 'white-space': 'initial' }"
+  mat-cell
+>
+  <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+</td> -->
+            </ng-container>
+
+            <ng-container matColumnDef="Comments">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                    mat-sort-header>
+                    Comments
+                </th>
+                <!-- <td
+  *matCellDef="let row; let i = index"
+  class="actions-cell"
+  mat-cell
+>
+  <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+</td> -->
+            </ng-container>
+            <ng-container matColumnDef="Completed_By">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                    mat-sort-header>
+                    Completed By
+                </th>
+                <!-- <td
+    *matCellDef="let row; let i = index"
+    class="actions-cell"
+    mat-cell
+  >
+    <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+  </td> -->
+            </ng-container>
+            <ng-container matColumnDef="Qty">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                    mat-sort-header>
+                    Qty
+                </th>
+                <!-- <td
+  *matCellDef="let row; let i = index"
+  class="actions-cell"
+  mat-cell
+>
+  <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+</td> -->
+            </ng-container>
+            <ng-container matColumnDef="Completed_Date">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell
+                    mat-sort-header>
+                    Completed Date
+                </th>
+                <!-- <td
+    *matCellDef="let row; let i = index"
+    class="actions-cell"
+    mat-cell
+  >
+    <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+  </td> -->
+            </ng-container>
+       
+
+            <tr *matHeaderRowDef="visibleColumnsChecklistDetails" mat-header-row>
+            </tr>
+            <tr *matRowDef="let row; columns: visibleColumnsChecklistDetails"
+                class="clickable route-animations-elements" mat-row></tr>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="9999">No data found</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+   
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="center end" style="margin-top: 12px;">
+
+    <button mat-raised-button color="warn" class="save-btn1" style="margin-left: 10px" (click)="CloseModal()">
+        Cancel
+    </button>
+</mat-dialog-actions>
+

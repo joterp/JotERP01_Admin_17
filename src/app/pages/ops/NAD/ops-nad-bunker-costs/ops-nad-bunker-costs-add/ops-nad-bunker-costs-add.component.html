@@ -1,0 +1,211 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="width: 20px;
+        height:20px; margin-right: 10px;margin-bottom: -4px;" />
+    </span>
+      {{modeltitle}}
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="edit-new-opening-balance">
+
+    <div>
+        <form [formGroup]="OpeningBalanceFormGroup"> 
+            
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Vessel</mat-label>
+                    <mat-select formControlName="drpVessel">
+                        <mat-option>
+    
+                        </mat-option>
+    
+                        <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+                    </mat-select>
+                    <mat-error *ngIf="OpeningBalanceFormGroup.get('drpVessel').hasError('required')">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+                <div fxFlex="2"></div>
+               <div fxFlex></div>
+             
+            </div>
+
+             
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Fuel Type</mat-label>
+                    <mat-select formControlName="drpFuel_Type">
+                        <mat-option>
+    
+                        </mat-option>
+    
+                        <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+                    </mat-select>
+                    <mat-error *ngIf="OpeningBalanceFormGroup.get('drpFuel_Type').hasError('required')">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+                  <div fxFlex="2"></div>
+               <div fxFlex></div>
+    
+             
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Date Purchased</mat-label>
+                    <input
+                      matInput
+                      formControlName="date_purchased"
+                      [matDatepicker]="pickerdate_purchased"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerdate_purchased"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerdate_purchased></mat-datepicker>
+           
+                  </mat-form-field>
+                  <div fxFlex="2"></div>
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>ROB Unit</mat-label>
+                    <mat-select formControlName="drpROB_Unit">
+                        <mat-option>
+    
+                        </mat-option>
+    
+                        <!-- <mat-option
+                        *ngFor="let b of filtered_port | async"
+                        [value]="b.PORT_GUID"
+                      >
+                        {{ b.Port_Name }}
+                      </mat-option> -->
+                    </mat-select>
+                    <mat-error *ngIf="OpeningBalanceFormGroup.get('drpROB_Unit').hasError('required')">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+             
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label class="left-label">Qty Purchased	</mat-label>
+                   
+                      <input
+                        type="text"
+                        class="right-text"
+                        formControlName="txtQty_Purchased"
+                        matInput
+                      />
+                   
+                  </mat-form-field>
+
+                  <div fxFlex="2"></div>
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label class="left-label">ROB Qty</mat-label>
+                   
+                      <input
+                        type="text"
+                        class="right-text"
+                        formControlName="txtROB_Qty"
+                        matInput
+                      />
+                   
+                  </mat-form-field>
+
+             
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+                <div fxFlex class="company-currency">
+                All figures in SGD - Singapore Dollar (Company Currency)
+            </div>
+             
+            </div>
+
+            
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label class="left-label">Unit Price</mat-label>
+                   
+                      <input
+                        type="text"
+                        class="right-text"
+                        formControlName="txtUnit_Price"
+                        matInput
+                      />
+                   
+                  </mat-form-field>
+                  <div fxFlex="2"></div>
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>ROB Date</mat-label>
+                    <input
+                      matInput
+                      formControlName="rob_date"
+                      [matDatepicker]="pickerrob_date"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerrob_date"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerrob_date></mat-datepicker>
+           
+                  </mat-form-field>
+                 
+               
+             
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Remark</mat-label>
+                <textarea matInput formControlName="txtRemark" ></textarea>
+              </mat-form-field>
+              <div fxFlex="2"></div>
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label class="left-label">ROB Cost</mat-label>
+               
+                  <input
+                    type="text"
+                    class="right-text"
+                    formControlName="txtROB_Cost"
+                    matInput
+                  />
+               
+              </mat-form-field>
+       </div>
+
+    
+
+
+        </form>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" 
+    [ngClass]="[!OpeningBalanceFormGroup.valid ? '' : 'save-btn']" [disabled]="!OpeningBalanceFormGroup.valid">
+    SAVE & CLOSE
+  </button>
+ 
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+

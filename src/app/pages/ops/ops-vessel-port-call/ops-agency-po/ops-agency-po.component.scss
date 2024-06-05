@@ -1,0 +1,113 @@
+.logo{
+   width:20px;
+   height:20px;
+}
+
+
+.mat-tab-header {
+  font-family: Tahoma!important;
+  background: linear-gradient(#d3d3d3,#bfbfbf);
+  color: #7b7b7b;
+  font-family: Tahoma !important;
+  opacity: 1;
+}
+
+.mat-tab-label {
+  // min-width: 25px !important;
+  // padding: 5px;
+  // background-color: #7e8f99;
+
+  color: #fff;
+  font-family: Tahoma !important;
+  // font-weight: 700;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #d3d3d3 !important;
+}
+
+.mat-tab-label.mat-tab-label-active {
+  color: #fff!important;
+  text-align: center!important;
+  background: linear-gradient(#575757,#838383);
+  border-radius: 4px;
+  font-family: Tahoma !important;
+  opacity: 1;
+}
+.mat-tab-label.mat-tab-label {
+  opacity: 1;
+}
+.mat-tab-label.mat-tab-label:hover {
+  background: linear-gradient(#d3d3d3,#bfbfbf) !important;
+}
+
+.remove-border-bottom .mat-tab-header {
+  border-bottom: none;
+}
+
+
+
+table.mat-table {
+  width: 100%;
+}
+
+p.tbl-row-item {
+  font-size: 12px;
+  margin-top: 10px;
+  // margin-bottom: 10px;
+  padding: 0px 5px;
+}
+
+tr.mat-header-row {
+  height: 56px;
+  background-color: #1976d2;
+}
+
+th.mat-header-cell {
+  text-align: left;
+  color: white;
+
+}
+
+.content-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+th.mat-header-cell:last-of-type,
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type {
+  padding-right: 10px;
+  // min-width: 100px;  commented this on 18-08-23
+}
+
+th.mat-header-cell:first-of-type,
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type {
+  padding-left: 10px;
+}
+
+.continue-btn-angency{
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+
+.continue-btn-angency:hover{
+  color: #fff;
+    background-color: #ec971f;
+    border-color: #d58512;
+}
+.send-btn-agency{
+color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.send-btn-agency:hover{
+  color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+  }

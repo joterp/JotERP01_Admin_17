@@ -1,0 +1,1971 @@
+<fury-page-layout mode="card" class="nad-add-departure-report-view">
+
+    <fury-page-layout-content [@fadeInUp]>
+
+        <div style="    border: 3px solid;
+        ">
+            <form [formGroup]="DepartureReportFormGroup">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width:30%"></td>
+                        <td>
+                            <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 35px;margin-bottom: 5px;">
+                                <button mat-raised-button color="primary" class="save-btn save-btn1"
+                                    style="margin-bottom: 10px;">Save</button>
+                                <button mat-raised-button color="primary" class="save-btn save-btn1"
+                                    style="margin-bottom: 10px;">Save & Close</button>
+                                <button mat-raised-button color="warn" class="save-btn1" style="margin-bottom: 10px;"
+                                    (click)="CancelForm()">Cancel</button>
+
+                            </div>
+                        </td>
+                        <td style="width:24%"></td>
+                    </tr>
+                </table>
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="report-title">Departure Report</td>
+                    </tr>
+
+
+                    <tr>
+                        <table style="width: 100%;margin-top: 10px;" class="main-table-1">
+
+                            <tr>
+
+                                <td style="width: 20%;    vertical-align: top;">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td>
+
+                                                <div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Vessel</mat-label>
+
+                                                            <mat-select formControlName="drpVessel">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                            *ngFor="let b of filtered_port | async"
+                                            [value]="b.PORT_GUID"
+                                          >
+                                            {{ b.Port_Name }}
+                                          </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DepartureReportFormGroup.get('drpVessel').hasError('required')">
+                                                                Required</mat-error>
+
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Date</mat-label>
+                                                            <input matInput formControlName="Departure_Report_Date"
+                                                                [matDatepicker]="pickerdeparturereportdate" />
+                                                            <mat-datepicker-toggle matSuffix
+                                                                [for]="pickerdeparturereportdate"></mat-datepicker-toggle>
+                                                            <mat-datepicker #pickerdeparturereportdate></mat-datepicker>
+
+                                                            <mat-error
+                                                                *ngIf="DepartureReportFormGroup.get('Departure_Report_Date').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Type</mat-label>
+                                                            <input formControlName="txtType" matInput type="text"
+                                                                readonly />
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Voyage Number</mat-label>
+
+                                                            <mat-select formControlName="drpVoyage_Number">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                        *ngFor="let b of filtered_port | async"
+                                        [value]="b.PORT_GUID"
+                                      >
+                                        {{ b.Port_Name }}
+                                      </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DepartureReportFormGroup.get('drpVoyage_Number').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Vessel Cargo Status</mat-label>
+
+                                                            <mat-select formControlName="drpVessel_Cargo_Status">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                    *ngFor="let b of filtered_port | async"
+                                    [value]="b.PORT_GUID"
+                                  >
+                                    {{ b.Port_Name }}
+                                  </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DepartureReportFormGroup.get('drpVessel_Cargo_Status').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>Departure Port</mat-label>
+
+                                                            <mat-select formControlName="drpDeparture_Port">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                                *ngFor="let b of filtered_port | async"
+                                [value]="b.PORT_GUID"
+                              >
+                                {{ b.Port_Name }}
+                              </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DepartureReportFormGroup.get('drpDeparture_Port').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+
+                                                            <mat-label>UTC</mat-label>
+
+                                                            <mat-select formControlName="drpUTC">
+                                                                <mat-option>
+
+                                                                </mat-option>
+
+                                                                <!-- <mat-option
+                            *ngFor="let b of filtered_port | async"
+                            [value]="b.PORT_GUID"
+                          >
+                            {{ b.Port_Name }}
+                          </mat-option> -->
+                                                            </mat-select>
+                                                            <mat-error
+                                                                *ngIf="DepartureReportFormGroup.get('drpUTC').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Next Port</mat-label>
+                                                            <input formControlName="drpNext_Port" matInput type="text"
+                                                                readonly />
+                                                            <mat-error
+                                                                *ngIf="DepartureReportFormGroup.get('drpNext_Port').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>ETA Next Port</mat-label>
+                                                            <input matInput formControlName="date_ETA_Next_Port"
+                                                                [matDatepicker]="pickeretanextport" />
+                                                            <mat-datepicker-toggle matSuffix
+                                                                [for]="pickeretanextport"></mat-datepicker-toggle>
+                                                            <mat-datepicker #pickeretanextport></mat-datepicker>
+
+                                                            <mat-error
+                                                                *ngIf="DepartureReportFormGroup.get('date_ETA_Next_Port').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Distance to go</mat-label>
+                                                            <input formControlName="txtDistance_to_go" matInput
+                                                                type="text" readonly />
+                                                            <mat-error
+                                                                *ngIf="DepartureReportFormGroup.get('txtDistance_to_go').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div fxLayout="column" fxLayout.gt-sm="row"
+                                                        fxLayoutGap.gt-sm="24px">
+
+
+                                                        <mat-form-field fxFlex appearance="fill">
+                                                            <mat-label>Instructed Speed</mat-label>
+                                                            <input formControlName="txtInstructed_Speed" matInput
+                                                                type="text" readonly />
+                                                            <mat-error
+                                                                *ngIf="DepartureReportFormGroup.get('txtInstructed_Speed').hasError('required')">
+                                                                Required</mat-error>
+                                                        </mat-form-field>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="arrival-report-td">Port Activities - Details
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <mat-form-field fxFlex style="margin-top: 10px;">
+                                                    <mat-label></mat-label>
+                                                    <textarea matInput rows="7" cols="40"></textarea>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+
+
+
+                                    </table>
+                                </td>
+
+                               
+
+                                <td style=" vertical-align: top;">
+
+                                    <div mode="card" class="agency-po">
+
+
+                                        <mat-tab-group (animationDone)="check()" animationDuration="0ms"
+                                            class="remove-border-bottom" style="margin-top: 10px;">
+
+                                            <form>
+
+                                                <mat-tab label="Departure Details"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                                                    <div>
+
+                                                        <table
+                                                            style="width: 100%;border:1px solid;border-collapse: collapse;">
+
+                                                            <tr>
+                                                                <td>
+
+                                                                    <table style="width: 100%;border-collapse: collapse;">
+                                                                        <tr>
+                                                                            <td
+                                                                                style="vertical-align: top;width:48%;padding: 9px;border: 1px solid #B1B8B3">
+
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <div>
+
+                                                                                                <table
+                                                                                                    style="width: 100%;">
+                                                                                                    <tr>
+
+
+                                                                                                    </tr>
+
+
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">Heavy Oil</td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td>MT
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">Diesel Oil</td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td>MT
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">MGO</td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td>MT
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">Others / Thermal Oil
+                                                                                                                </td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input" />
+                                                                                                                </td>
+                                                                                                                <td>ltrs
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">LPG</td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input-LPG" />
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">LNG</td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input-LPG" />
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">Methanol</td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input-LPG" />
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">Ethanol</td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input-LPG" />
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">HVO</td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input-LPG" />
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">Other Fuel Type </td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input-LPG" />
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">MECC</td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input-4" />
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>ltrs
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">MECYL</td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input-4" />
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>ltrs
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">AECC</td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input-4" />
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>ltrs
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                style="width: 100%;">
+                                                                                                                <td style="width: 25%;    text-align: end;
+                                                                                                ">Fresh Water </td>
+                                                                                                                <td
+                                                                                                                    style="width: 1%;">
+                                                                                                                </td>
+                                                                                                                <td><input
+                                                                                                                        type="text"
+                                                                                                                        class="rob-input-4" />
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                </td>
+                                                                                                                <td>MT
+                                                                                                                </td>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                </table>
+
+
+                                                                                            </div>
+                                                                                        </td>
+
+                                                                                    </tr>
+
+
+
+
+
+
+
+                                                                                </table>
+
+
+                                                                            </td>
+
+                                                                            <td
+                                                                                style="vertical-align: top;width:48%;padding: 15px;border: 1px solid #B1B8B3">
+                                                                                <div>
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>SBE</mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="date_SBE"
+                                                                                            [matDatepicker]="pickerSBE" />
+                                                                                        <mat-datepicker-toggle matSuffix
+                                                                                            [for]="pickerSBE"></mat-datepicker-toggle>
+                                                                                        <mat-datepicker
+                                                                                            #pickerSBE></mat-datepicker>
+
+                                                                                        <mat-error
+                                                                                            *ngIf="DepartureReportFormGroup.get('date_SBE').hasError('required')">
+                                                                                            Required</mat-error>
+                                                                                    </mat-form-field>
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Pilot On
+                                                                                            Board</mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="date_Pilot_On_Board"
+                                                                                            [matDatepicker]="pickerPilotOnBoard" />
+                                                                                        <mat-datepicker-toggle matSuffix
+                                                                                            [for]="pickerPilotOnBoard"></mat-datepicker-toggle>
+                                                                                        <mat-datepicker
+                                                                                            #pickerPilotOnBoard></mat-datepicker>
+
+                                                                                        <mat-error
+                                                                                            *ngIf="DepartureReportFormGroup.get('date_Pilot_On_Board').hasError('required')">
+                                                                                            Required</mat-error>
+                                                                                    </mat-form-field>
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>All cast
+                                                                                            off</mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="date_All_cast_off"
+                                                                                            [matDatepicker]="pickerallcastoff" />
+                                                                                        <mat-datepicker-toggle matSuffix
+                                                                                            [for]="pickerallcastoff"></mat-datepicker-toggle>
+                                                                                        <mat-datepicker
+                                                                                            #pickerallcastoff></mat-datepicker>
+
+                                                                                        <mat-error
+                                                                                            *ngIf="DepartureReportFormGroup.get('date_All_cast_off').hasError('required')">
+                                                                                            Required</mat-error>
+                                                                                    </mat-form-field>
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>DOP</mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="date_DOP"
+                                                                                            [matDatepicker]="pickerdop" />
+                                                                                        <mat-datepicker-toggle matSuffix
+                                                                                            [for]="pickerdop"></mat-datepicker-toggle>
+                                                                                        <mat-datepicker
+                                                                                            #pickerdop></mat-datepicker>
+
+                                                                                        <mat-error
+                                                                                            *ngIf="DepartureReportFormGroup.get('date_DOP').hasError('required')">
+                                                                                            Required</mat-error>
+                                                                                    </mat-form-field>
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>COP</mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="date_COP"
+                                                                                            [matDatepicker]="pickercop" />
+                                                                                        <mat-datepicker-toggle matSuffix
+                                                                                            [for]="pickercop"></mat-datepicker-toggle>
+                                                                                        <mat-datepicker
+                                                                                            #pickercop></mat-datepicker>
+
+                                                                                        <mat-error
+                                                                                            *ngIf="DepartureReportFormGroup.get('date_COP').hasError('required')">
+                                                                                            Required</mat-error>
+                                                                                    </mat-form-field>
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Cargo Loaded Ships
+                                                                                            figs </mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="txtCargo_Loaded_Ships_figs"
+                                                                                            type="text" />
+
+                                                                                    </mat-form-field>
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Cargo Loaded Shore
+                                                                                            figs </mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="txtCargo_Loaded_Shore_figs"
+                                                                                            type="text" />
+
+                                                                                    </mat-form-field>
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Diff betw Ship-Shore
+                                                                                            figs</mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="txtDiff_betw_ShipShore_figs"
+                                                                                            type="text" />
+
+                                                                                    </mat-form-field>
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Cargo Discharged
+                                                                                            Ships figs </mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="txtCargo_Discharged_Ships_figs"
+                                                                                            type="text" />
+
+                                                                                    </mat-form-field>
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Cargo Discharged
+                                                                                            Shore figs</mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="txtCargo_Discharged_Shore_figs"
+                                                                                            type="text" />
+
+                                                                                    </mat-form-field>
+                                                                                    <!-- <mat-form-field appearance="fill">
+                                                                        <mat-label>Diff betw Ship-Shore figs </mat-label>
+                                                                        <input matInput formControlName="txtDiff_betw_ShipShore_figs"
+                                                                            type="text" />
+                                                                       
+                                                                    </mat-form-field> -->
+
+
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Total Cargo Onboard
+                                                                                        </mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="txtTotal_Cargo_Onboard	"
+                                                                                            type="text" />
+                                                                                        <mat-error
+                                                                                            *ngIf="DepartureReportFormGroup.get('txtTotal_Cargo_Onboard').hasError('required')">
+                                                                                            Required</mat-error>
+                                                                                    </mat-form-field>
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Cargo Reefers
+                                                                                            Onboard(if any) </mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="txtCargo_Reefers_Onboard"
+                                                                                            type="text" />
+
+                                                                                    </mat-form-field>
+
+
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>if Cargo
+                                                                                            damaged/contaminated during
+                                                                                            port-stay </mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="txtCargo_Damaged"
+                                                                                            type="text" />
+                                                                                    </mat-form-field>
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Diff betw Ship-Shore
+                                                                                            figs</mat-label>
+                                                                                        <input matInput
+                                                                                            formControlName="txtDiff_betw_ShipShore_figs"
+                                                                                            type="text" />
+                                                                                    </mat-form-field>
+
+                                                                                    <mat-form-field appearance="fill">
+                                                                                        <mat-label>Reason for Cargo
+                                                                                            damage/contamination
+                                                                                        </mat-label>
+                                                                                        <textarea matInput
+                                                                                            formControlName="txtReasons_for_Cargo_damage"></textarea>
+                                                                                    </mat-form-field>
+
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+
+                                                            </tr>
+                                                        </table>
+
+                                                    </div>
+
+                                                </mat-tab>
+
+                                                <mat-tab label="Fuel Consumptions"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                                                    <div>
+
+                                                        <table
+                                                        style="width: 100%;border:1px solid;border-collapse: collapse;">
+                                                        <tr>
+                                                            <td
+                                                                style="vertical-align: top;width:25%;padding: 9px;">
+
+                                                                <table style="width: 100%;">
+                                                                
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width:100%">
+                                                                            <tr>
+
+                                                                                <td style="width: 25%;"></td>
+                                                                                <td style="width: 1%;"></td>
+                                                                                <td class="rob-departure">
+                                                                                ROB
+                                                                                </td>
+                                                                               <td></td>
+
+                                                                            </tr>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                        <table style="width:100%">
+                                                                            <tr>
+
+                                                                                <td style="width: 25%;"></td>
+                                                                                <td style="width: 1%;"></td>
+                                                                                <td  class="rob-departure-1">
+                                                                                    Normal
+                                                                                    (≤3.5% Sulphur)
+                                                                                </td>
+                                                                                <td class="rob-departure-1">
+                                                                                    L.S.
+                                                                                    (≤0.5% Sulphur)
+                                                                                </td>
+                                                                                <td  class="rob-departure-1">
+                                                                                    V.L.S.
+                                                                                   (≤0.1% Sulphur) 
+                                                                                </td>
+                                                                                <td></td>
+
+                                                                            </tr>
+                                                                         
+                                                                        </table>
+                                                                    </td>
+                                                                    </tr>
+                                                                      
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">Heavy Oil</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">Diesel Oil</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">MGO</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">Others / Thermal Oil</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">LPG</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">LNG</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">Methanol</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">Ethanol</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">HVO</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">Other Fuel Type	</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">MECC</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">MECYL</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">AECC</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                            <td style="width: 25%;    text-align: end;
+                                                                            ">Fresh Water	</td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                 
+                                                                </table>
+
+
+                                                            </td>
+                                                            
+                                                            <td
+                                                            style="vertical-align: top;width:25%;padding: 9px;">
+
+                                                            <table style="width: 100%;">
+                                                            
+                                                                <tr>
+                                                                    <td>
+                                                                    <table style="width:100%">
+                                                                        <tr>
+
+                                                                            <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td class="rob-departure">
+                                                                                Bunker Received
+                                                                            </td>
+                                                                           <td></td>
+
+                                                                        </tr>
+                                                                        
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                    <table style="width:100%">
+                                                                        <tr>
+
+                                                                            <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td  class="rob-departure-1">
+                                                                                Normal
+                                                                                (≤3.5% Sulphur)
+                                                                            </td>
+                                                                            <td class="rob-departure-1">
+                                                                                L.S.
+                                                                                (≤0.5% Sulphur)
+                                                                            </td>
+                                                                            <td  class="rob-departure-1">
+                                                                                V.L.S.
+                                                                               (≤0.1% Sulphur) 
+                                                                            </td>
+                                                                            <td></td>
+
+                                                                        </tr>
+                                                                     
+                                                                    </table>
+                                                                </td>
+                                                                </tr>
+                                                                  
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                       
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                       
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                        
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                        <td><input type="text" class="rob-input"/></td>
+                                                                       
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input-LPG"/></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input-LPG"/></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input-LPG"/></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                       
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input-LPG"/></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                       
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input-LPG"/></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                       
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input-LPG"/></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                       
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input-4"/></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input-4"/></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                       
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input-4"/></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width: 100%;">
+                                                                        <td style="width: 25%;    text-align: end;
+                                                                        "></td>
+                                                                        <td style="width: 1%;"></td>
+                                                                        <td><input type="text" class="rob-input-4"/></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                       
+                                                                    </table>
+                                                                </td>
+                                                                    </tr>
+                                                             
+                                                            </table>
+
+
+                                                        </td>
+
+                                                        <td
+                                                                style="vertical-align: top;width:25%;padding: 9px;">
+
+                                                                <table style="width: 100%;">
+                                                                
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width:100%">
+                                                                            <tr>
+
+                                                                                <td style="width: 25%;"></td>
+                                                                                <td style="width: 1%;"></td>
+                                                                                <td class="rob-departure">
+                                                                                    Consumtion In Port
+                                                                                </td>
+                                                                               <td></td>
+
+                                                                            </tr>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                        <table style="width:100%">
+                                                                            <tr>
+
+                                                                                <td style="width: 25%;"></td>
+                                                                                <td style="width: 1%;"></td>
+                                                                                <td  class="rob-departure-1">
+                                                                                    Normal
+                                                                                    (≤3.5% Sulphur)
+                                                                                </td>
+                                                                                <td class="rob-departure-1">
+                                                                                    L.S.
+                                                                                    (≤0.5% Sulphur)
+                                                                                </td>
+                                                                                <td  class="rob-departure-1">
+                                                                                    V.L.S.
+                                                                                   (≤0.1% Sulphur) 
+                                                                                </td>
+                                                                                <td></td>
+
+                                                                            </tr>
+                                                                         
+                                                                        </table>
+                                                                    </td>
+                                                                    </tr>
+                                                                      
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                          
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                          
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                           
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                          
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                 
+                                                                </table>
+
+
+                                                            </td>
+                                                            <td
+                                                                style="vertical-align: top;width:25%;padding: 9px;">
+
+                                                                <table style="width: 100%;">
+                                                                
+                                                                    <tr>
+                                                                        <td>
+                                                                        <table style="width:100%">
+                                                                            <tr>
+
+                                                                                <td style="width: 25%;"></td>
+                                                                                <td style="width: 1%;"></td>
+                                                                                <td class="rob-departure">
+                                                                                ROB Figures / COSP Figures
+                                                                                </td>
+                                                                               <td></td>
+
+                                                                            </tr>
+                                                                            
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                        <table style="width:100%">
+                                                                            <tr>
+
+                                                                                <td style="width: 25%;"></td>
+                                                                                <td style="width: 1%;"></td>
+                                                                                <td  class="rob-departure-1">
+                                                                                    Normal
+                                                                                    (≤3.5% Sulphur)
+                                                                                </td>
+                                                                                <td class="rob-departure-1">
+                                                                                    L.S.
+                                                                                    (≤0.5% Sulphur)
+                                                                                </td>
+                                                                                <td  class="rob-departure-1">
+                                                                                    V.L.S.
+                                                                                   (≤0.1% Sulphur) 
+                                                                                </td>
+                                                                                <td></td>
+
+                                                                            </tr>
+                                                                         
+                                                                        </table>
+                                                                    </td>
+                                                                    </tr>
+                                                                      
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td>MT</td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td>MT</td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td>MT</td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td><input type="text" class="rob-input"/></td>
+                                                                            <td>ltrs</td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-LPG"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>ltrs</td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>ltrs</td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>ltrs</td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                            <table style="width: 100%;">
+                                                                                <td style="width: 25%;"></td>
+                                                                            <td style="width: 1%;"></td>
+                                                                            <td><input type="text" class="rob-input-4"/></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>MT</td>
+                                                                        </table>
+                                                                    </td>
+                                                                        </tr>
+                                                                 
+                                                                </table>
+
+
+                                                            </td>
+                                                          
+                                                        </tr>
+
+                                                        <tr>
+
+                                                            <td>
+                                                                <table style="width: 100%;">
+                                                                    <tr>
+                                                                        <td style="width: 48%;">
+                                                                        
+                                                                            <div fxLayout="column"
+                                                                            fxLayout.gt-sm="row"
+                                                                            fxLayoutGap.gt-sm="24px">
+                                                                            <mat-label>Heavy Oil	
+                                                                                </mat-label>
+                                                                            <mat-radio-group fxLayout="row"
+                                                                                fxLayoutGap="24px"
+                                                                                formControlName="radioHeavy_Oil"
+                                                                                style="margin-left: 40px;
+                                                                                      ">
+                                                                                <mat-radio-button
+                                                                                    value="1">Yes</mat-radio-button>
+                                                                                <mat-radio-button
+                                                                                    value="0">No</mat-radio-button>
+                                                                            </mat-radio-group>
+                                                                        </div>
+
+                                                                        <div fxLayout="column"
+                                                                        fxLayout.gt-sm="row"
+                                                                        fxLayoutGap.gt-sm="24px">
+                                                                        <mat-label>Diesel Oil</mat-label>
+                                                                        <mat-radio-group fxLayout="row"
+                                                                            fxLayoutGap="24px"
+                                                                            formControlName="radioDiesel_Oil"
+                                                                            style="margin-left: 40px;
+                                                                                  ">
+                                                                            <mat-radio-button
+                                                                                value="1">Yes</mat-radio-button>
+                                                                            <mat-radio-button
+                                                                                value="0">No</mat-radio-button>
+                                                                        </mat-radio-group>
+                                                                    </div>
+
+                                                                    <div fxLayout="column"
+                                                                    fxLayout.gt-sm="row"
+                                                                    fxLayoutGap.gt-sm="24px">
+                                                                    <mat-label>Lube Oil</mat-label>
+                                                                    <mat-radio-group fxLayout="row"
+                                                                        fxLayoutGap="24px"
+                                                                        formControlName="radioLube_Oil"
+                                                                        style="margin-left: 40px;
+                                                                              ">
+                                                                        <mat-radio-button
+                                                                            value="1">Yes</mat-radio-button>
+                                                                        <mat-radio-button
+                                                                            value="0">No</mat-radio-button>
+                                                                    </mat-radio-group>
+                                                                </div>
+
+                                                                <div fxLayout="column"
+                                                                fxLayout.gt-sm="row"
+                                                                fxLayoutGap.gt-sm="24px">
+                                                                <mat-label>Offland Report Created ?	</mat-label>
+                                                                <mat-radio-group fxLayout="row"
+                                                                    fxLayoutGap="24px"
+                                                                    formControlName="radioOffland_Report_Create"
+                                                                    style="margin-left: 40px;
+                                                                          ">
+                                                                    <mat-radio-button
+                                                                        value="1">Yes</mat-radio-button>
+                                                                    <mat-radio-button
+                                                                        value="0">No</mat-radio-button>
+                                                                </mat-radio-group>
+                                                            </div>
+
+                                                                        </td>
+
+                                                                        <td style="width: 48%;">
+                                                                        
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+
+                                                        </tr>
+                                                    </table>
+
+                                                    </div>
+
+                                                </mat-tab>
+
+                                                <mat-tab label="Arrival Bilge / Sludge"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+
+
+                                                </mat-tab>
+                                                <mat-tab label="Custom Fields"
+                                                    style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+
+
+                                                </mat-tab>
+                                                <mat-tab label="Documents" style="margin-left: #000;margin-right: #000;"
+                                                    class="mat-tab-req">
+                                                    <div style="padding-top:25px">
+
+                                                    </div>
+
+                                                </mat-tab>
+
+                                            </form>
+
+                                        </mat-tab-group>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                        </table>
+                    </tr>
+
+
+                </table>
+
+
+            </form>
+
+        </div>
+
+    </fury-page-layout-content>
+
+</fury-page-layout>

@@ -1,0 +1,71 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/> Copy Certificates from Vessel
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+</div>
+    
+
+   
+
+
+    <mat-dialog-content>
+
+
+
+        <div fxFlex="40">
+            <div fxLayout="column" class="headerSection">
+                <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+
+                    <table style="width: -webkit-fill-available;border: 1px solid #c7c7c7; border-radius: 7px; ">
+                        <colgroup>
+                            <col>
+                        </colgroup>
+                        <thead style="    background-color: #1976d2;    
+                        color: #fff; 
+                      ">
+                            <tr>
+                                <th fxFlex="50" style="padding:4px;">Vessel Name</th>
+                                <th fxFlex="50" style="padding:4px;">Vessel Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <mat-form-field fxFlex appearance="fill">
+                                        <form [formGroup]="copyFormGroup" >
+                                            <mat-label>Select Vessel</mat-label>
+                                            <mat-select formControlName="drpFleet" aria-placeholder="Select Fleet">
+                                                <mat-option value="Kilogram">Alexa</mat-option>
+                                                <mat-option value="Liters">Alexandre</mat-option>
+                                            </mat-select>
+                                        </form>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr class="tabledata">
+                                <td fxFlex="50">Alexa</td>
+                                <td fxFlex="50">Bulk Carrier</td>
+                            </tr>
+                            <tr class="tabledata">
+                                <td fxFlex="50">Alexa</td>
+                                <td fxFlex="50">Bulk Carrier</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+        <div fxFlex="60" style="margin: 5px;">
+            <button mat-raised-button color="primary">
+                Copy To Alexa
+            </button>
+        </div>
+    </mat-dialog-content>

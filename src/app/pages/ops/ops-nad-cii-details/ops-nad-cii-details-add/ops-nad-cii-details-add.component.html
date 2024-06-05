@@ -1,0 +1,180 @@
+<div mat-dialog-title>
+  <span>
+    <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="width: 20px;
+        height:20px; margin-right: 10px;margin-bottom: -4px;" />
+  </span>
+  {{modeltitle}}
+</div>
+
+<mat-dialog-content style="height: 100% !important" class="edit-new-opening-balance">
+
+  <div>
+    <form [formGroup]="AddNewCIIDetailsFormGroup">
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label>Vessel Type</mat-label>
+          <mat-select formControlName="drpVessel_Type">
+            <!-- <mat-option
+                      *ngFor="let b of filteredBoatType | async"
+                      [value]="b.PARAMETER_GUID"
+                    >
+                      {{ b.PARAMETER_NAME }}
+                    </mat-option> -->
+          </mat-select>
+          <mat-error *ngIf="AddNewCIIDetailsFormGroup.get('drpVessel_Type').hasError('required')">
+            Required</mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label>Variable Type</mat-label>
+          <mat-select formControlName="drpVariable_Type">
+            <!-- <mat-option
+                      *ngFor="let b of filteredBoatType | async"
+                      [value]="b.PARAMETER_GUID"
+                    >
+                      {{ b.PARAMETER_NAME }}
+                    </mat-option> -->
+          </mat-select>
+          <mat-error *ngIf="AddNewCIIDetailsFormGroup.get('drpVariable_Type').hasError('required')">
+            Required</mat-error>
+        </mat-form-field>
+
+      </div>
+
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Variable Calc</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtVariable_Calc" matInput />
+          <mat-error *ngIf="AddNewCIIDetailsFormGroup.get('txtVariable_Calc').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Variable Value</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtVariable_Value" matInput />
+          <mat-error *ngIf="AddNewCIIDetailsFormGroup.get('txtVariable_Value').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Variable a</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtVariable_a" matInput />
+          <mat-error *ngIf="AddNewCIIDetailsFormGroup.get('txtVariable_a').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Variable c</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtVariable_c" matInput />
+          <mat-error *ngIf="AddNewCIIDetailsFormGroup.get('txtVariable_c').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Variable CII Ref</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtVariable_CII_Ref" matInput />
+          <mat-error *ngIf="AddNewCIIDetailsFormGroup.get('txtVariable_CII_Ref').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Variable d1</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtVariable_d1" matInput />
+          <mat-error *ngIf="AddNewCIIDetailsFormGroup.get('txtVariable_d1').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Variable d2</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtVariable_d2" matInput />
+          <mat-error *ngIf="AddNewCIIDetailsFormGroup.get('txtVariable_d2').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Variable d3</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtVariable_d3" matInput />
+          <mat-error *ngIf="AddNewCIIDetailsFormGroup.get('txtVariable_d3').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label class="left-label">Variable d4</mat-label>
+
+          <input type="text" class="right-text" formControlName="txtVariable_d4" matInput />
+          <mat-error *ngIf="AddNewCIIDetailsFormGroup.get('txtVariable_d4').hasError('required')">
+            Required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+
+
+
+    </form>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+
+  <button mat-raised-button color="primary" class="save-btn"
+    [ngClass]="[!AddNewCIIDetailsFormGroup.valid ? '' : 'save-btn']" [disabled]="!AddNewCIIDetailsFormGroup.valid">
+    SAVE
+  </button>
+
+  <button mat-raised-button color="primary" class="save-btn" [disabled]="!AddNewCIIDetailsFormGroup.valid">
+    SAVE & ADD NEW
+  </button>
+
+  <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

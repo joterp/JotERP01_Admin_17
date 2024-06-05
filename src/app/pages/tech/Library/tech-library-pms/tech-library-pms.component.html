@@ -1,0 +1,339 @@
+
+<fury-page-layout mode="card" class="pms-view">
+ 
+    <fury-page-layout-header>
+      
+      <form [formGroup]="pmsfilterFormGroup" >
+        <div fxLayout="row" fxLayoutAlign="space-between"  >
+          <h3 class="unit-packing">
+            <span class="first-letter">P</span>LANNED  
+            <span class="fifth-letter">M</span>AINTENANCE  
+            <span class="fifth-letter">L</span>IBRARY    
+          </h3>
+      
+      <div style="margin-top: 10px;">
+        <button class="create"   mat-raised-button color="primary"  style="background-color: #5cb85c; margin-right: 10px;" 
+        type="button" (click)="Information(null,false)"  >
+       Sync jobs to selected vessel
+        </button>
+        <button class="create"   mat-raised-button color="primary"  style="background-color: #5cb85c;"
+                    type="button" (click)="CopyJobs(null,false)" >
+        Copy jobs from one vessel to selected vessel
+        </button>
+      </div>
+           
+
+        </div>
+            
+        
+        <div class="filter-area">
+          <div fxLayout="row" fxLayoutAlign="start">
+  
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                  <mat-label>Fleet</mat-label>
+                  <mat-select formControlName="drpFleet" >
+                    <mat-option value="Kilogram">Admin_Fleet</mat-option>
+                    <mat-option value="Liters">Fleet-A</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Vessel</mat-label>
+                    <mat-select  #select multiple formControlName="drpVessel">
+                      <div class="select-all">
+                          <mat-checkbox [(ngModel)]="allSelected"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="toggleAllSelection()">Check All</mat-checkbox>
+                      </div>
+                      <mat-option (click)="optionClick()" *ngFor="let vsl of Vessel" [value]="vsl.value">
+                        {{vsl.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Machinery</mat-label>
+                    <mat-select  #select multiple formControlName="drpMachinery">
+                      <div class="select-all">
+                          <mat-checkbox [(ngModel)]="allSelected"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="toggleAllSelection()">Check All</mat-checkbox>
+                      </div>
+                      <mat-option (click)="optionClick()" *ngFor="let mac of Machinery" [value]="mac.value">
+                        {{mac.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Sub Component</mat-label>
+                    <mat-select formControlName="drpSub_Component" >
+                      
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+
+           
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                  <mat-label>CMS JOBS</mat-label>
+                  <mat-select formControlName="drpcms_jobs" >
+                    <mat-option value="All">All</mat-option>
+                    <mat-option value="Yes">Yes</mat-option>
+                    <mat-option value="No">No</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Critical JOBS</mat-label>
+                    <mat-select formControlName="drpcritical_jobs" >
+                        <mat-option value="All">All</mat-option>
+                        <mat-option value="Yes">Yes</mat-option>
+                        <mat-option value="No">No</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label> Critical Machinery</mat-label>
+                    <mat-select formControlName="drpcritical_Machinery">
+                        <mat-option value="All">All</mat-option>
+                        <mat-option value="Yes">Yes</mat-option>
+                        <mat-option value="No">No</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Infrequent Use Machinery</mat-label>
+                    <mat-select formControlName="drpInfrequent_use_machinery" >
+                        <mat-option value="All">All</mat-option>
+                        <mat-option value="Yes">Yes</mat-option>
+                        <mat-option value="No">No</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+            </div>
+
+            <div fxFlex>
+                
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Job Code</mat-label>
+                        <input formControlName="txtJob_Code" matInput
+                            placeholder="Search by Job Code" type="text" />
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Job Title</mat-label>
+                        <input formControlName="txtJob_Title" matInput
+                            placeholder="Search by Job Title" type="text" />
+                    </mat-form-field>
+
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Frequency Type</mat-label>
+                    <mat-select formControlName="drpFrequency_Type">
+                        <mat-option value="Hours">Hours</mat-option>
+                        <mat-option value="Days">Days</mat-option>
+                        <mat-option value="Months">Months</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Frequency Value</mat-label>
+                    <input matInput formControlName="txtFrequency_Value" />
+                  </mat-form-field>             
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                  <mat-label>Job Type</mat-label>
+                  <mat-select formControlName="drpJob_Type" >
+                    <mat-option value="Normal">Normal</mat-option>
+                    <mat-option value="OverHaul">OverHaul</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Department</mat-label>
+                    <mat-select formControlName="drpDepartment" >
+                      <mat-option value="Deck">Deck</mat-option>
+                      <mat-option value="Electrical">Electrical</mat-option>
+                      <mat-option value="Engine">Engine</mat-option>
+                      <mat-option value="Laundry">Laundry</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Rank</mat-label>
+                    <mat-select formControlName="drpRank">
+                      <mat-option value="Master">Master</mat-option>
+                      <mat-option value="Trainee Master">Trainee Master</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                 
+            </div>
+  
+
+            <div fxFlex>
+              <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="drpStatus">
+                  <mat-option value="1">Show Active</mat-option>
+                  <mat-option value="">Show Deleted</mat-option>
+                  <mat-option value="0">Show All</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+  
+            <div class="filter-btn-area" fxFlex>
+                <div>
+                  <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                    Search
+                  </button> -->
+                  <button
+                  mat-raised-button
+                  color="primary"
+                 style="background-color: #5cb85c;"
+                  class="filter-btn"
+                
+                >
+                  Search
+                </button>
+                </div>
+    
+                <div>
+                  <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                    type="button" (click)="clearFilter()">
+                    Clear
+                  </button>
+                </div>
+              </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+      <div class="actions-area" >
+     
+        <div fxLayout="row">
+          <button mat-mini-fab color="primary" [matTooltip]="'Add item'"
+              class="add-approve-btn save-btn" (click)="saveNewPmsJob(null,false)">
+              <mat-icon class="add-approve-btn-icon">add</mat-icon>
+          </button>
+          <span style="margin-top: 3px;
+          margin-left: 6px;font-size: 15px;">Add New PMS Job</span>
+      </div>
+
+        <div>
+            <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+          <span>
+            <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+            <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+            <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+          </span>
+        </div>
+             
+      </div>
+  
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="pmsdataSource"  class="example-container">
+  
+  
+  
+  
+          <ng-container matColumnDef="cadTrade.type">
+            <th mat-header-cell *matHeaderCellDef  class="borderstyle">Type</th>
+  
+          </ng-container>
+  
+          <ng-container matColumnDef="cadTrade.value">
+            <th mat-header-cell *matHeaderCellDef  class="borderstyle"> Value </th>
+  
+          </ng-container>
+  
+        
+        
+  
+  
+  
+  
+  
+  
+  
+  
+          <ng-container matColumnDef="header-row-first-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+              Vessel
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-second-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+             Machinery
+            </th>
+          </ng-container>
+  
+          <ng-container matColumnDef="header-row-third-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+             SubComponent
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-fourth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+             Job Code
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-fifth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+             Job Title
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-sixth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.colspan]="2"  class="borderstyle">
+             Frequency
+            </th>
+          </ng-container>
+  
+          <ng-container matColumnDef="header-row-seventh-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+             CMS JOBS
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-eighth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+              Critical JOBS
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-nineth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+             Job Type
+            </th>
+          </ng-container>
+          <ng-container matColumnDef="header-row-tenth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+            Department
+            </th>
+          </ng-container>
+  
+          <ng-container matColumnDef="header-row-eleventh-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+             Rank
+            </th>
+          </ng-container>
+  
+          <ng-container matColumnDef="header-row-tweleveth-group">
+            <th mat-header-cell *matHeaderCellDef [style.text-align]="center" [attr.rowspan]="2"  class="borderstyle">
+             Action
+            </th>
+          </ng-container>
+          <tr mat-header-row
+            *matHeaderRowDef="['header-row-first-group','header-row-second-group','header-row-third-group','header-row-fourth-group','header-row-fifth-group','header-row-sixth-group','header-row-seventh-group','header-row-eighth-group','header-row-nineth-group','header-row-tenth-group','header-row-eleventh-group','header-row-tweleveth-group']">
+          </tr>
+          <tr mat-header-row *matHeaderRowDef="visibleColumns;sticky:true"></tr>
+          <tr mat-row *matRowDef="let row; columns: visibleColumns;"></tr>
+        </table>
+  
+      </div>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

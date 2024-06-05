@@ -1,0 +1,143 @@
+<div mat-dialog-title>
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;" />
+    </span>
+    {{modeltitle}}
+</div>
+
+<mat-dialog-content>
+    <fury-page-layout mode="card" class="crew-captaincashdetailsadd-view">
+
+        <div>
+            <form [formGroup]="CaptainCashDetailAddFormGroup">
+
+                <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                    <div fxFlex="48">
+                    
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Paid Date</mat-label>
+                                <input matInput formControlName="paid_date"
+                                    [matDatepicker]="pickerpaid_date" />
+                                <mat-datepicker-toggle matSuffix
+                                    [for]="pickerpaid_date"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerpaid_date></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Port</mat-label>
+                                <mat-select formControlName="drpPort">
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Item</mat-label>
+                                <textarea matInput formControlName="txtItem" rows="3"
+                                    cols="50"></textarea>                            
+                            </mat-form-field>
+
+                        </div>
+
+                        <div>
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label class="left-label">Reference No</mat-label>
+                                  <input
+                                    type="text"
+                                    class="right-text"
+                                    formControlName="txtReference_No"
+                                    matInput
+                                  />
+                              </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Currency</mat-label>
+                                <mat-select formControlName="drpCurrency">
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label class="left-label">Amount Recieved</mat-label>
+                                  <input
+                                    type="text"
+                                    class="right-text"
+                                    formControlName="txtAmount_Recieved"
+                                    matInput
+                                  />
+                              </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label class="left-label">Amount Paid</mat-label>
+                                  <input
+                                    type="text"
+                                    class="right-text"
+                                    formControlName="txtAmount_Paid"
+                                    matInput
+                                  />
+                              </mat-form-field>
+                        </div>                 
+
+                    </div>
+
+                    <div fxFlex="48">
+
+                        <div>
+                            <table class="roundedTable" style="overflow: scroll;
+                            height: 400px;
+                            border: 1px solid lightgrey;">
+                                <thead>
+                                    <tr>
+                                        <th class="style-th">Files</th>
+                                        <th class="style-th">Uploaded On</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- <tr *ngFor="let d of BOW_Details">
+                                        <td>{{d.Staff_Code}}</td>
+                                        <td>{{d.Name}}</td>
+                                        <td>{{d.Rank}}</td>
+                                        <td>{{d.EOC}}</td>
+                                        <td><input class="input-style" type="number" value="{{d.Allotment}}"/></td>
+                                        <td>{{d.BOW_Amount}}</td>
+                                        <td>{{d.BOW_Due}}</td>
+                                    </tr> -->
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+
+    </fury-page-layout>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn"
+        [ngClass]="[!CaptainCashDetailAddFormGroup.valid ? '' : 'save-btn']"
+        [disabled]="!CaptainCashDetailAddFormGroup.valid">
+        SAVE & CLOSE
+    </button>
+
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!CaptainCashDetailAddFormGroup.valid" style="margin-left: 10px;"
+    >
+      SAVE & ADD NEW
+    </button>
+
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>

@@ -1,0 +1,171 @@
+.add-sp-btn{
+    height: 24px;
+    width: 24px;
+    align-items: center;
+    display: flex;
+}
+
+.add-sp-btn-icon{
+    font-size: 24px;
+    align-self: center;
+    margin-top: -1px;
+}
+
+.sp-title-text{
+    background-color: #17366E;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 3px 0px 3px 6px
+}
+
+.sp-card-view{
+    width: 20%;
+    padding: 0px;
+    margin-right: 7px;
+    box-shadow: 0px 2px 15px 2px rgb(0 0 0 / 32%), 0px 1px 1px 0px rgb(0 0 0 / 30%), 0px 1px 3px 0px rgb(0 0 0 / 4%);
+    height: fit-content;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sp-card-view-header{
+    width: 100%;
+    background-color: #d3d3d3;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: stretch space-between;
+    align-items: stretch;
+    padding: 6px 6px 6px 7px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    color: #333;
+    font-weight: 500;
+}
+
+::ng-deep .mat-card-header-text{
+    margin: 0px !important;
+}
+
+::ng-deep .mat-menu-content{
+    padding: 0px !important;
+}
+
+::ng-deep .mat-menu-item{
+    height: 32px !important;
+    line-height: 0px !important;
+}
+
+.readonly-wrapper {
+    cursor: not-allowed;
+}
+
+.readonly-wrapper .readonly-block {
+    pointer-events: none;
+}
+.mat-form-field-appearance-outline .mat-form-field-label {
+    top: 33px;
+    margin-top: -4px;
+}
+.mat-form-field-appearance-outline .mat-form-field-label {
+    top: 26px;
+    margin-top: 4px;
+}
+
+.agent-screen {
+    .left-label {
+      width: 18%;
+      margin-top: 15px;
+    }
+  
+    .mat-form-field-infix {
+      border-top: 0.84375em solid transparent;
+    }
+  
+    .mat-form-field-infix {
+      border-top: 0.84375em solid transparent !important;
+    }
+  
+    .right-text {
+      text-align: right;
+    }
+    .upload-btn{
+        width: 113px;
+        height: 29px;
+        background: #333333;
+        color: #fff;
+        border-radius: 4px;
+      }
+      .upload-btn1{
+        width: 113px;
+        height: 29px;
+        background-color: #919191;
+        color: #fff;
+        border: 1px solid #505050;
+        border-radius: 4px;
+      }
+  }
+
+  .drop-container {
+ 
+    border: 2px solid rgb(167, 165, 165);
+    position: relative;
+    /* border-radius: 10px; */
+    /* border-style: dashed; */
+    margin-top: 13px;
+    margin-bottom: 20px;
+    height: 50px;
+    background-color: beige;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+  input#uploadFile1 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  .drop-label {
+    padding: 10px;
+    background-color: #8d8888;
+    margin-left: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+  }
+.add-btn-cat{
+  margin-top: 13px;
+  margin-right: -367px !important;
+  flex: 1 1 0%;
+  box-sizing: border-box;
+  margin-left: -57px !important;
+}
+.search-hero {
+  max-width: 500px;
+  padding-bottom: 50px;
+  margin:auto;
+}
+
+.form-control {
+  box-shadow: 0 10px 40px 0 #B0C1D9;
+}
+.form-control::placeholder  {
+  font-family: FontAwesome;
+}
+.search-hero-new {
+  max-width: 500px;
+  padding-bottom: 50px;
+  margin:auto;
+}
+
+.list-group{
+  list-style: none;
+  width: 163%;
+  height: 400px;
+  overflow: scroll;
+  border: 1px solid #ccc;
+}
+  
+

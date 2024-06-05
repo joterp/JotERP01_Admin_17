@@ -1,0 +1,204 @@
+
+<fury-page-layout mode="card" class="crew-AllotmentMinValueIndex">
+ 
+    <fury-page-layout-header>
+      
+      <form [formGroup]="allotmentMinValueIndexFormGroup" >
+        
+        <h3 class="unit-packing">
+          <span class="first-letter">A</span>LLOTMENT
+          <span class="first-letter">M</span>INIMUM
+          <span class="first-letter">V</span>ALUE
+          <span class="first-letter">I</span>NDEX
+        </h3>
+      
+        
+        <div class="filter-area">
+          <div fxLayout="row" fxLayoutAlign="start">
+  
+           <div fxFlex>
+            <mat-form-field appearance="fill">
+                <mat-label>Vessel Name</mat-label>
+                <mat-select  #select multiple formControlName="drpVessel_Name">
+                  <div class="select-all">
+                      <mat-checkbox [(ngModel)]="allSelected"
+                                      [ngModelOptions]="{standalone: true}"
+                                      (change)="toggleAllSelection()">Check All</mat-checkbox>
+                  </div>
+                  <mat-option (click)="optionClick()" *ngFor="let vsl of Vessel" [value]="vsl.value">
+                    {{vsl.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+
+              <mat-form-field appearance="fill">
+                <mat-label>Nationality</mat-label>
+                <mat-select  #select2 multiple formControlName="drpNationality">
+                  <div class="select-all">
+                      <mat-checkbox [(ngModel)]="allNationalitySelected"
+                                      [ngModelOptions]="{standalone: true}"
+                                      (change)="toggleNationalitySelection()">Check All</mat-checkbox>
+                  </div>
+                  <mat-option (click)="natoptionClick()" *ngFor="let nat of Nationality" [value]="nat.value">
+                    {{nat.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+             
+				
+           </div>
+
+  
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Rank</mat-label>
+                    <mat-select  #selectRank multiple formControlName="drpRank">
+                      <div class="select-all">
+                          <mat-checkbox [(ngModel)]="allRankSelected"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="toggleRankSelection()">Check All</mat-checkbox>
+                      </div>
+                      <mat-option (click)="rankoptionClick()" *ngFor="let rank of Ranks" [value]="rank.value">
+                        {{rank.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+
+           <div style="padding: 10px;">
+            <button mat-raised-button color="primary" (click)="copySetupValue(null,false)" >
+                Copy To Modal
+            </button>
+           </div>
+  
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                <button
+                mat-raised-button
+                color="primary"
+               style="background-color: #5cb85c;"
+                class="filter-btn"
+              
+              >
+                Search
+              </button>
+              </div>
+  
+              <div>
+                <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                  type="button" (click)="clearFilter()">
+                  Clear
+                </button>
+              </div>
+            </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+        <div class="actions-area">
+
+            <div fxLayout="row">
+              <button mat-mini-fab color="primary" [matTooltip]="'Add New Set Up '" class="add-approve-btn save-btn"
+                >
+                <mat-icon class="add-approve-btn-icon" (click)="saveNewSetUp(null,false)">add</mat-icon>
+              </button>
+              <span style="margin-top: 3px;
+                margin-left: 6px;font-size: 15px;">Add New Setup</span>
+            </div>
+            <div fxLayout="row">
+             
+              
+              <span>
+                <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+              </span>
+            </div>
+      
+          </div>
+  
+      <div #TABLE>
+        <table [dataSource]="minValueIndexdataSource" mat-table matSort #table class="details-table">
+          <ng-container matColumnDef="Vessel">
+            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+              mat-sort-header>
+          Vessel
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+              mat-cell>
+              <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Nationality">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         Nationality
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="Rank">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         Rank
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="Value">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+         Value(%)
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+         
+         
+        
+          
+        
+          <ng-container matColumnDef="Action">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+              Action
+            </th>
+            <td *matCellDef="let row" class="actions-cell" mat-cell>
+              <!-- -->
+              <button mat-icon-button color="primary">
+                <mat-icon class="icon-display">edit</mat-icon>
+              </button>
+  
+              <button mat-icon-button color="warn" >
+                <mat-icon>close</mat-icon>
+              </button>
+              <button mat-icon-button  >
+                <mat-icon class="icon-display">info</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+  
+          <tr *matHeaderRowDef="minValueIndexvisibleColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: minValueIndexvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

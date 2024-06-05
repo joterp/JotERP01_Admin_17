@@ -1,0 +1,161 @@
+.mat-dialog-title {
+    background-color: black;
+
+}
+
+.logo {
+    width: 20px;
+    height: 20px;
+}
+.mat-tab-header {
+    border-left: 1px solid #918f8f;
+    border-top: 1px solid #918f8f;
+    border-right: 1px solid #918f8f;
+    color: #fff!important;
+    text-align: center!important;
+    opacity: 1;
+    background-color: #1f497d;
+    // margin: 20px;
+  }
+
+  .mat-tab-label {
+    border-left: 1px solid #8b8b8b;
+    border-bottom: 1px solid #8b8b8b;
+    background-color: #1f497d;
+    background-image: linear-gradient(#1f497d, #346390);
+    border-radius: 11px;
+    color: white;
+  }
+
+  // .mat-tab-label .mat-tab-label-content {
+  //   margin-bottom: 12px;
+
+  // }        
+
+  .mat-tab-label.mat-tab-label-active {
+    background: orange;
+    color: #000;
+    font-family: Tahoma !important;
+    // border-left: 1px solid #918f8f;
+    // border-top: 1px solid #918f8f;
+
+    opacity: 1;
+  }
+  .mat-tab-label.mat-tab-label {
+    opacity: 1;
+  }
+  
+  .remove-border-bottom .mat-tab-header {
+    border-bottom: none;
+  }
+
+  .mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label {
+    border-left: 1px solid #8b8b8b;
+    border-bottom: 1px solid #8b8b8b;
+
+
+  }
+  .mat-progress-bar-fill:after {
+    background-color: #1f497d;
+}
+.mat-progress-bar-buffer {
+    background-color: #b6cde3;
+}
+.table-rows-effect {
+  border-collapse: collapse;
+  border: 1px solid grey;
+  padding: 13px;
+}
+
+// .variables-table {
+//   border: 1px solid rgb(151, 151, 151);
+//   border-collapse: collapse;
+//   padding: 13px;
+// }
+// .example-section {
+//   margin: 12px 0;
+// }
+
+// .example-margin {
+//   margin: 0 12px;
+// }
+
+ul {
+  list-style-type: none;
+  margin-top: 4px;
+}
+.checkbox-text{              //new added 
+  font-size: 14px;
+  font-family: tahoma;
+}
+.heading-text {              //new added
+padding: 10px;
+color: black;
+font-weight: bold;
+font-family: tahoma !important;
+}
+
+.roundedTable {
+  // border-radius: 6px 6px 6px 6px;
+  // border: 1px solid #e3e3e3;
+  border-spacing: 0;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.roundedTable tr:first-child th:first-child {
+  border-top-left-radius: 5px;
+}
+
+.roundedTable tr:first-child th:last-child {
+  border-top-right-radius: 5px;
+}
+
+.roundedTable tr:last-child td:first-child {
+  border-bottom-left-radius: 5px;
+}
+
+.roundedTable tr:last-child td:last-child {
+  border-bottom-right-radius: 5px;
+}
+
+// / optional setting to set the background color and font color of the first row - behave like a header /
+// .roundedTable tr:first-child th:first-child {
+//     background-color: #1f497d;
+//     color: #FFF;
+//     padding: 6px;
+// }
+
+.roundedTable tr td {
+  border: 1px solid #e3e3e3;
+  padding: 6px;
+}
+
+.scrollable-tbody {
+  max-height: 200px; /* Set the desired height for the scrollable area */
+  overflow-y: auto;
+}
+.tableFixHead {
+  overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
+  height: 270px;
+  margin-top: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.tableFixHead thead th {
+  position: sticky; /* make the table heads sticky */
+  top: 0px; /* table head will be placed from the top of the table and sticks to it */
+}
+table {
+  border-collapse: collapse; /* make the table borders collapse to each other */
+  width: 100%;
+}
+th,
+td {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+}
+th {
+  background: #eee;
+}

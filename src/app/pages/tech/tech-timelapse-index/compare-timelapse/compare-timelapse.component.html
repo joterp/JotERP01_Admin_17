@@ -1,0 +1,254 @@
+
+<fury-page-layout mode="card" class="TL-index">
+    <h3 class="unit-packing" style="text-align: center; margin: 13px;">
+        <span class="first-letter">C</span>OMPARE
+        <span class="first-letter">T</span>IME   
+        <span class="first-letter">L</span>APSE
+    </h3>
+
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false" style="border: 1px solid #dbdbdb;border-radius: 10px;
+    ">
+            <mat-expansion-panel-header style="background-color: #f1f1f1;border: 1px solid #dbdbdb;height: 46px;    border-radius: 1px;
+            ">
+                <mat-panel-title class="panel-title">
+                    Search Criteria
+                </mat-panel-title>
+                <mat-panel-description class="panel-desc">
+
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+                <form [formGroup]="CompareListFilterFormGroup">
+                    <div class="filter-area">
+                    <div fxLayout="row" fxLayoutAlign="start">
+            
+                        <div fxFlex>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>SFI Code</mat-label>
+                                <mat-select formControlName="drpSFI_Code_1" aria-placeholder="Select SFI Code">
+                                    <!-- <mat-option value="Admin_Fleet">Admin_Fleet</mat-option>
+                                    <mat-option value="Fleet-A">Fleet-A</mat-option>
+                                    <mat-option value="India Fleet">India Fleet</mat-option> -->
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Vessel</mat-label>
+                                <mat-select  #select multiple formControlName="drpVessel_1">
+                                <div class="select-all">
+                                    <mat-checkbox [(ngModel)]="allSelected"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    (change)="toggleAllSelection()">Check All</mat-checkbox>
+                                </div>
+                                <mat-option (click)="optionClick()" *ngFor="let vsl of Vessel" [value]="vsl.value">
+                                    {{vsl.viewValue}}
+                                </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Custom Tags</mat-label>
+                                <mat-select formControlName="drpCustom_Tags_1" aria-placeholder="Select Tag Key">
+                                    <!-- <mat-option value="Admin_Fleet">Admin_Fleet</mat-option>
+                                    <mat-option value="Fleet-A">Fleet-A</mat-option>
+                                    <mat-option value="India Fleet">India Fleet</mat-option> -->
+                                </mat-select>
+                            </mat-form-field>
+                            
+                        </div>
+                        <div fxFlex>
+                            <mat-form-field appearance="fill">
+                            <mat-label>Date Form</mat-label>
+                            <input matInput formControlName="Date_Form_1" [matDatepicker]="pickerFrom" placeholder="Report Date From" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerFrom></mat-datepicker>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Date To</mat-label>
+                            <input matInput [matDatepicker]="pickerTo" formControlName="Date_To_1"  placeholder="Report Date To">
+                            <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerTo></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex>
+                            <mat-form-field appearance="fill">
+                                <mat-label>SFI Code</mat-label>
+                                <mat-select formControlName="drpSFI_Code_2" aria-placeholder="Select SFI Code">
+                                    <!-- <mat-option value="Admin_Fleet">Admin_Fleet</mat-option>
+                                    <mat-option value="Fleet-A">Fleet-A</mat-option>
+                                    <mat-option value="India Fleet">India Fleet</mat-option> -->
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Vessel</mat-label>
+                                <mat-select formControlName="drpVessel_2" aria-placeholder="Select SFI Code">
+                                    <mat-option value="Alexa">Alexa</mat-option>
+                                    <mat-option value="Alexandre">Alexandre</mat-option>
+                                    <mat-option value="Charley">Charley</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Custom Tags</mat-label>
+                                <mat-select formControlName="drpCustom_Tags_2" aria-placeholder="Select Tag Key">
+                                    <!-- <mat-option value="Admin_Fleet">Admin_Fleet</mat-option>
+                                    <mat-option value="Fleet-A">Fleet-A</mat-option>
+                                    <mat-option value="India Fleet">India Fleet</mat-option> -->
+                                </mat-select>
+                            </mat-form-field>
+                        
+                        </div>
+                        <div fxFlex>
+                            <mat-form-field appearance="fill">
+                            <mat-label>Date Form</mat-label>
+                            <input matInput formControlName="Date_Form_2" [matDatepicker]="pickerFrom" placeholder="Report Date From" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerFrom></mat-datepicker>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Date To</mat-label>
+                            <input matInput [matDatepicker]="pickerTo" formControlName="Date_To_2"  placeholder="Report Date To">
+                            <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerTo></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex>
+                            <mat-form-field appearance="fill">
+                                <mat-label>File Type</mat-label>
+                                <mat-select formControlName="drpFile_Type" aria-placeholder="Select File Type">
+                                    <mat-option value="Image">Image</mat-option>
+                                    <mat-option value="Audio">Audio</mat-option>
+                                    <mat-option value="Video">Video</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                                <div fxLayoutAlign="space-between" style="margin: 39px;">
+
+                                    <mat-checkbox
+                                    [color]="'accent'"
+                                >Show To Owner
+                                </mat-checkbox>
+
+                                    <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                                    type="button"  style="background-color: #5bc0de; border-color: #46b8da;" >
+                                    Compare
+                                    </button>
+                                </div>
+                        </div>
+
+
+                        
+                        </div>
+                    </div>
+                    
+                </form>
+        </mat-expansion-panel>
+    </mat-accordion>
+ 
+      <fury-page-layout-content [@fadeInUp] class="content-area">
+        <div fxLayout="row" fxLayoutAlign="space-between" style="margin-right: 112px;">
+            <div fxFlex="38">
+
+                <div style="background: #F0F0F0;
+                    height: 40px;
+                    margin-top: 30px;
+                    margin-left: 91px;
+                    width: 92%;">
+                </div>
+                <div style="   
+                                background: #F4EEEE;
+                    height: 40px;
+                    margin-top: 30px;
+                    width: 92%;
+                    margin-left: 91px;">
+                </div>
+                <div style="   
+                                background: #D8D9DA;
+                    height: 40px;
+                    width: 92%;
+                    margin-top: 30px;
+                    margin-left: 91px;padding: 10px;">Custom Tag :
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="space-between" style=" margin-top: 216px;width: 92%;margin-left: 94px;">
+                    <div>
+                        <img src="../../../../assets/img/TL_left.png"  alt="excel"  style="    height: 46px;
+                        ">
+                    </div>
+
+                    <div>
+                        <img src="../../../../assets/img/TL_right.png"  alt="excel" style="    height: 46px;
+                        ">
+                    </div>
+                </div>            
+               
+                <div fxLayout="row" fxLayoutAlign="space-between" style="background: lightgrey; margin-top: 250px;width: 92%; margin-left: 98px;padding-left: 21px;padding-right: 17px; ">
+                        <h4>Item 1 of 0</h4>
+                        <mat-icon  style="padding-top: 16px;">play_arrow</mat-icon>
+                </div>
+            </div> 
+            <div fxFlex="10" style="margin-top: 428px; padding-left: 60px;">
+                <button mat-stroked-button  >
+                    Actions <mat-icon>arrow_drop_down</mat-icon>
+                  </button>
+            </div>
+            <div fxFlex="38">
+
+                <div style="background: #F0F0F0;
+                    height: 40px;
+                    margin-top: 30px;
+                    margin-left: 91px;
+                    width: 92%;">
+                </div>
+                <div style="   
+                                background: #F4EEEE;
+                    height: 40px;
+                    margin-top: 30px;
+                    width: 92%;
+                    margin-left: 91px;">
+                </div>
+                <div style="   
+                                background: #D8D9DA;
+                    height: 40px;
+                    width: 92%;
+                    margin-top: 30px;
+                    margin-left: 91px;padding: 10px;">Custom Tag :
+                </div>
+               
+                    <div fxLayout="row" fxLayoutAlign="space-between" style=" margin-top: 216px;width: 92%;margin-left: 94px;">
+                        <div>
+                            <img src="../../../../assets/img/TL_left.png"  alt="excel"  style="    height: 46px;
+                            ">
+                        </div>
+
+                        <div>
+                            <img src="../../../../assets/img/TL_right.png"  alt="excel" style="    height: 46px;
+                            ">
+                        </div>
+                    </div>            
+                
+                    <div fxLayout="row" fxLayoutAlign="space-between" style="background: lightgrey; margin-top: 250px;width: 92%; margin-left: 98px;padding-left: 21px;padding-right: 17px; ">
+                            <h4>Item 1 of 0</h4>
+                            <mat-icon  style="padding-top: 16px;">play_arrow</mat-icon>
+                    </div>
+                
+            </div> 
+            <div fxFlex="10" style="margin-top: 428px; padding-left: 60px;">
+                <button mat-stroked-button  >
+                    Actions <mat-icon>arrow_drop_down</mat-icon>
+                  </button>
+            </div>
+
+        </div>
+
+  
+   
+    </fury-page-layout-content>
+</fury-page-layout>
+

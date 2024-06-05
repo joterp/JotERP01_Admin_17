@@ -1,0 +1,140 @@
+fury-crew-acc-pb-view-attachment {
+
+    .Attachment-view {
+        padding: 10px;
+
+        .add-sp-btn {
+            height: 24px;
+            width: 24px;
+            align-items: center;
+            display: flex;
+        }
+
+        .add-sp-btn-icon {
+            font-size: 24px;
+            align-self: center;
+            margin-top: -1px;
+        }
+
+        .document-type-title {
+            text-align: center;
+            font-family: tahoma;
+            font-weight: bold;
+            font-size: 20px;
+            height: 32px;
+        }
+
+        // 
+        .roundedTable {
+            border-radius: 6px 6px 6px 6px;
+            border: 1px solid #e3e3e3;
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        .roundedTable tr:first-child td:first-child {
+            border-top-left-radius: 5px;
+        }
+
+        .roundedTable tr:first-child td:last-child {
+            border-top-right-radius: 5px;
+        }
+
+        .roundedTable tr:last-child td:first-child {
+            border-bottom-left-radius: 5px;
+        }
+
+        .roundedTable tr:last-child td:last-child {
+            border-bottom-right-radius: 5px;
+        }
+
+        /* optional setting to set the background color and font color of the first row - behave like a header */
+        .roundedTable tr:first-child td:first-child {
+            background-color: #1f497d;
+            color: #FFF;
+            padding: 6px;
+        }
+
+        .roundedTable tr td {
+            border: 1px solid #e3e3e3;
+            padding: 6px;
+        }
+// 
+        table.mat-table {
+            width: 100%;
+        }
+
+        p.tbl-row-item {
+            font-size: 12px;
+            margin-top: 10px;
+            // margin-bottom: 10px;
+            padding: 0px 5px;
+        }
+
+        tr.mat-header-row {
+
+            background-color: #1F497D;
+        }
+
+        th.mat-header-cell {
+            text-align: left;
+            color: white;
+
+        }
+
+        .content-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        th.mat-header-cell:last-of-type,
+        td.mat-cell:last-of-type,
+        td.mat-footer-cell:last-of-type {
+            padding-right: 10px;
+            // min-width: 100px;  commented this on 18-08-23
+        }
+
+        th.mat-header-cell:first-of-type,
+        td.mat-cell:first-of-type,
+        td.mat-footer-cell:first-of-type {
+            padding-left: 10px;
+        }
+
+        //accordion
+
+        .filter-area {
+            margin-top: 20px;
+
+        }
+
+        .filter-btn-area {
+            padding: 8px 0px;
+            text-align: center;
+        }
+
+        .filter-btn {
+            margin-right: 5px !important;
+            width: 100px;
+            margin-bottom: 10px !important;
+        }
+
+        .add-approve-btn {
+            height: 24px;
+            width: 24px;
+            align-items: center;
+            display: flex;
+        }
+
+        .add-approve-btn-icon {
+            font-size: 24px;
+            align-self: center;
+            margin-top: -1px;
+        }
+
+
+    }
+
+
+}

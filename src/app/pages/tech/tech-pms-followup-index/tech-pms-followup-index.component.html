@@ -1,0 +1,469 @@
+
+
+            <fury-page-layout mode="card" class="pmsfollowupindex-view">
+
+                <!-- search header for PURC_Catalogue -->
+                <fury-page-layout-header>
+                    
+                  <form [formGroup]="PMSFollowupIndexFilterForm">
+                    <!-- <div>  
+                        <h2>{{routeTitle}}</h2>
+                    </div> -->
+                    <h3 >
+                     
+                      <span class="first-letter">PMS</span>
+                      <span class="first-letter">F</span>OLLOWUP
+                   
+                  </h3>
+                    <div class="filter-area">
+                       
+                      <div fxLayout="row" fxLayoutAlign="start">
+              
+                        <div fxFlex>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Vessel</mat-label>
+                                <mat-select formControlName="drpVessel">
+                                  <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                    {{ b.PARAMETER_NAME }}
+                                  </mat-option> -->
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Job Code/ Job Title</mat-label>
+                                <input type="text" formControlName="txtJob_Code" matInput />
+                  
+                              </mat-form-field>
+                            
+                        </div>
+                   
+                        <div fxFlex>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Machinery</mat-label>
+                                <mat-select formControlName="drpMachinery">
+                                  <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                    {{ b.PARAMETER_NAME }}
+                                  </mat-option> -->
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Sub Component</mat-label>
+                                <mat-select formControlName="drpSub_Component">
+                                  <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                    {{ b.PARAMETER_NAME }}
+                                  </mat-option> -->
+                                </mat-select>
+                              </mat-form-field>
+                            
+                        </div>
+            
+                        <div fxFlex>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Department</mat-label>
+                                <mat-select formControlName="drpDepartment">
+                                  <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                    {{ b.PARAMETER_NAME }}
+                                  </mat-option> -->
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Rank</mat-label>
+                                <mat-select formControlName="drpRank">
+                                  <!-- <mat-option *ngFor="let b of filtered_Template_type | async" [value]="b.ID">
+                                    {{ b.PARAMETER_NAME }}
+                                  </mat-option> -->
+                                </mat-select>
+                              </mat-form-field>
+                            
+                        </div>
+                  
+                        <div class="filter-btn-area" fxFlex>
+                          <div>
+                            <button class="create" mat-raised-button color="primary" class="filter-btn">
+                              Search
+                            </button>
+                          </div>
+              
+                          <div>
+                            <button class="create"  mat-raised-button color="warn" class="filter-btn"
+                              type="button" >
+                              Clear
+                            </button>
+                          </div>
+                          <div>
+                            <button class="create"  mat-raised-button color="warn" class="filter-btn"
+                              type="button" (click)="Followup()">
+                            followup
+                            </button>
+                          </div>
+            
+                          
+                        </div>
+              
+              
+                      </div>
+                    </div>
+                  </form>
+                </fury-page-layout-header>
+              
+                <div fxLayout="row" fxLayoutAlign="start">
+                    <div fxFlex>
+               
+                <fury-page-layout-content [@fadeInUp]>
+                    <div class="actions-area">
+                
+                      <!-- <div class="content-loader">
+                        <mat-progress-spinner
+                          mode="indeterminate"
+                          color="accent"
+                        ></mat-progress-spinner>
+                      </div> -->
+                    </div>
+                
+                    <div #TABLE>
+                        <table
+                          [dataSource]="dataSource"
+                          mat-table
+                          matSort
+                          #table
+                          class="details-table"
+                        >
+                          <ng-container matColumnDef="Vessel">
+                            <th
+                              *matHeaderCellDef
+                              class="actions-cell"
+                              [ngStyle]="{ 'white-space': 'initial' }"
+                              mat-header-cell
+                              mat-sort-header
+                            >
+                            Vessel
+                            </th>
+                            <!-- <td
+                              *matCellDef="let row; let i = index"
+                              class="actions-cell"
+                              [ngStyle]="{ 'white-space': 'initial' }"
+                              mat-cell
+                            >
+                              <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                            </td> -->
+                          </ng-container>
+                  
+                          <ng-container matColumnDef="Machinery">
+                            <th
+                              *matHeaderCellDef
+                              class="actions-cell"
+                              mat-header-cell
+                              mat-sort-header
+                            >
+                            Machinery
+                            </th>
+                            <!-- <td
+                              *matCellDef="let row; let i = index"
+                              class="actions-cell"
+                              mat-cell
+                            >
+                              <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                            </td> -->
+                          </ng-container>
+                          <ng-container matColumnDef="SubComponent">
+                              <th
+                                *matHeaderCellDef
+                                class="actions-cell"
+                                mat-header-cell
+                                mat-sort-header
+                              >
+                              SubComponent
+                              </th>
+                              <!-- <td
+                                *matCellDef="let row; let i = index"
+                                class="actions-cell"
+                                mat-cell
+                              >
+                                <p class="tbl-row-item">{{ row.REF_NUM }}</p>
+                              </td> -->
+                            </ng-container>
+                          <ng-container matColumnDef="Job_Code">
+                            <th
+                              *matHeaderCellDef
+                              class="actions-cell"
+                              mat-header-cell
+                              mat-sort-header
+                            >
+                            Job Code
+                            </th>
+                            <!-- <td
+                              *matCellDef="let row; let i = index"
+                              class="actions-cell"
+                              mat-cell
+                            >
+                              <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                            </td> -->
+                          </ng-container>
+                          <ng-container matColumnDef="Job_Title">
+                              <th
+                                *matHeaderCellDef
+                                class="actions-cell"
+                                mat-header-cell
+                                mat-sort-header
+                              >
+                              Job Title
+                              </th>
+                              <!-- <td
+                                *matCellDef="let row; let i = index"
+                                class="actions-cell"
+                                mat-cell
+                              >
+                                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                              </td> -->
+                            </ng-container>
+                            <ng-container matColumnDef="Followup_On">
+                              <th
+                                *matHeaderCellDef
+                                class="actions-cell"
+                                mat-header-cell
+                                mat-sort-header
+                              >
+                              Folloup On
+                              </th>
+                              <!-- <td
+                                *matCellDef="let row; let i = index"
+                                class="actions-cell"
+                                mat-cell
+                              >
+                                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                              </td> -->
+                            </ng-container>
+                            <ng-container matColumnDef="By">
+                              <th
+                                *matHeaderCellDef
+                                class="actions-cell"
+                                mat-header-cell
+                                mat-sort-header
+                              >
+                              By
+                              </th>
+                              <!-- <td
+                                *matCellDef="let row; let i = index"
+                                class="actions-cell"
+                                mat-cell
+                              >
+                                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                              </td> -->
+                            </ng-container>
+                            <ng-container matColumnDef="Followup_Details">
+                              <th
+                                *matHeaderCellDef
+                                class="actions-cell"
+                                mat-header-cell
+                                mat-sort-header
+                              >
+                              Followup Details
+                              </th>
+                              <!-- <td
+                                *matCellDef="let row; let i = index"
+                                class="actions-cell"
+                                mat-cell
+                              >
+                                <p class="tbl-row-item">{{ getPicName(row.AGENT_GUID) }}</p>
+                              </td> -->
+                            </ng-container>      
+                  
+                          <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                          <tr
+                            *matRowDef="let row; columns: visibleColumns"
+                            class="clickable route-animations-elements"
+                            mat-row
+                          ></tr>
+                          <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="9999">No data found</td>
+                          </tr>
+                        </table>
+                      </div>
+                  
+                       <mat-paginator
+                        class="paginator"
+                        [pageSizeOptions]="[10, 25, 50, 100]"
+                        [pageSize]="pageSize"
+                      ></mat-paginator>
+                 
+                  </fury-page-layout-content>
+            
+         </div>
+  
+
+         
+
+         <div fxFlex="30" *ngIf="showfollowupdetails" style="background-color: white;">
+
+            <div>
+                <table style="width: 70%;text-align: center;">
+                    <tr>
+                        <td style="padding: 5px;">Frequency</td>
+                        <td style="padding: 5px;">:</td>
+                        <td style="padding: 5px;">6 Monts</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;">CMS</td>
+                        <td style="padding: 5px;">:</td>
+                        <td style="padding: 5px;">Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;">Critical</td>
+                        <td style="padding: 5px;">:</td>
+                        <td style="padding: 5px;">No</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;">Department</td>
+                        <td style="padding: 5px;">:</td>
+                        <td style="padding: 5px;">Deck</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;">Rank</td>
+                        <td style="padding: 5px;">:</td>
+                        <td style="padding: 5px;">Electro Tech Officer</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;">Last Done Date</td>
+                        <td style="padding: 5px;">:</td>
+                        <td style="padding: 5px;">18/Aug/2023</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;">RHRS</td>
+                        <td style="padding: 5px;">:</td>
+                        <td style="padding: 5px;"></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 3px;">Next Due Date</td>
+                        <td style="padding: 3px;">:</td>
+                        <td style="padding: 3px;">18/Feb/2024</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 3px;">Maintenance Type</td>
+                        <td style="padding: 3px;">:</td>
+                        <td style="padding: 3px;">Normal</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 3px;">Verified Status</td>
+                        <td style="padding: 3px;">:</td>
+                        <td style="padding: 3px;">UnVerified
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 3px;">Remarkss</td>
+                        <td style="padding: 3px;">:</td>
+                        <td style="padding: 3px;">test pdf</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="actions-area" style="border: 1px solid #918f8f;background: #ededed; margin-top: 20px;">
+                
+                <div fxLayout="row">
+                    <button
+                    mat-mini-fab
+                    color="primary"
+                    [matTooltip]="'Add item'"
+                    class="add-approve-btn save-btn" 
+                    (click)="AddFollowup(null)"
+                    
+                  >
+                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                  </button>
+                    <span style="margin-top: 3px;
+                    margin-left: 6px;font-size: 15px;">Add Followup</span>
+                  </div>     
+        
+            </div>
+        
+            <div #TABLE>
+                <table
+                  [dataSource]="FollowupdataSource"
+                  mat-table
+                  matSort
+                  #table
+                  class="details-table"
+                >
+                  <ng-container matColumnDef="Followup_On">
+                    <th
+                      *matHeaderCellDef
+                      class="actions-cell"
+                      [ngStyle]="{ 'white-space': 'initial' }"
+                      mat-header-cell
+                      mat-sort-header
+                    >
+                    Followup On
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      [ngStyle]="{ 'white-space': 'initial' }"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                    </td> -->
+                  </ng-container>
+        
+                  <ng-container matColumnDef="By">
+                    <th
+                      *matHeaderCellDef
+                      class="actions-cell"
+                      [ngStyle]="{ 'white-space': 'initial' }"
+                      mat-header-cell
+                      mat-sort-header
+                    >
+                    By
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      [ngStyle]="{ 'white-space': 'initial' }"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                    </td> -->
+                  </ng-container>
+                  <ng-container matColumnDef="Follow_Up">
+                    <th
+                      *matHeaderCellDef
+                      class="actions-cell"
+                      [ngStyle]="{ 'white-space': 'initial' }"
+                      mat-header-cell
+                      mat-sort-header
+                    >
+                    Follow Up
+                    </th>
+                    <!-- <td
+                      *matCellDef="let row; let i = index"
+                      class="actions-cell"
+                      [ngStyle]="{ 'white-space': 'initial' }"
+                      mat-cell
+                    >
+                      <p class="tbl-row-item">{{ row.Vessel_Name }}</p>
+                    </td> -->
+                  </ng-container>
+                
+                  <tr *matHeaderRowDef="visibleColumnsFolloup" mat-header-row></tr>
+                  <tr
+                    *matRowDef="let row; columns: visibleColumnsFolloup"
+                    class="clickable route-animations-elements"
+                    mat-row
+                  ></tr>
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                  </tr>
+                </table>
+              </div>
+              <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="pageSize"></mat-paginator>
+
+              </div>
+              </div>
+     
+            </fury-page-layout>
+          
+
+
+
+
+  
+
+  
+

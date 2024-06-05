@@ -1,0 +1,186 @@
+<fury-page-layout mode="card" class="ops-PorctcallChecklist">
+        
+    <h3>
+        <span class="first-letter">V</span>ESSEL
+        <span class="first-letter">P</span>IORT
+        <span class="first-letter">C</span>ALL
+        <span class="first-letter">C</span>HECKLISTS
+        <span class="first-letter">L</span>IBRARY
+    </h3>
+        
+        
+    <fury-page-layout-content [@fadeInUp] style="margin: 30px;">
+        <mat-card class="sp-card-view" style="margin-top: 20px;">
+            
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="primary" [matTooltip]="'Add New CheckList'"
+                            class="add-approve-btn save-btn" (click)="saveNewCheckList(null,false)">
+                            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                        </button>
+                        <span style="margin-top: 3px;
+                        margin-left: 6px;font-size: 15px;color: #5f5f5f;"> Add New Checklist</span>
+                            
+                        </div>
+
+
+                        <div fxLayout="row">
+
+
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                            <mat-card-title style="margin-left: 5px;margin-top: 3px;margin-right: 12px;">Clear Filter</mat-card-title>
+                            <span>
+                                <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                                <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                              </span>
+
+                        </div>
+
+                    </div>
+
+                </mat-card-header>
+            
+               <mat-card-content>
+                <form [formGroup]="PortcallChecklistFilterFormGroup">
+                    <table >
+
+                
+                    <tr fxLayout fxLayoutGap="40px" style="margin: 5px;">
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Choose a Department</mat-label>
+                                <mat-select formControlName="drpDepartment" >
+                                <mat-option value="Admin">Admin</mat-option>
+                                <mat-option value="Crew">Crew</mat-option>
+                                <mat-option value="HSEQ">HSEQ</mat-option>
+                                <mat-option value="Technical">Technical</mat-option>
+                                <mat-option value="Purchase">Purchase</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Choose Checklist Name</mat-label>
+                                <mat-select formControlName="drpChecklist_Name" >
+                                <mat-option value="Operation_Checklist">Operation_Checklist</mat-option>
+                                <mat-option value="CheckTest">CheckTest</mat-option>
+                                
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td >
+                            <mat-form-field fxFlex appearance="fill">
+                                <mat-label></mat-label>
+                                <input formControlName="txtDoc_TD" matInput type="text"  placeholder="select Document Id"/>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Date Form</mat-label>
+                                <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                                <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerFrom></mat-datepicker>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Status</mat-label>
+                                <mat-select formControlName="drpStatus">
+                                  <mat-option value="">Show Active</mat-option>
+                                  <mat-option value="1">Show Deleted</mat-option>
+                                  <mat-option value="0">Show All</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                        </td>
+                        
+                           
+                        
+
+                        
+                    </tr>
+                </table>
+                    </form>
+                <div #TABLE>
+                    <table [dataSource]="ChecklistdataSource" mat-table matSort #table class="details-table">
+                      <ng-container matColumnDef="Department">
+                        <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                          mat-sort-header>
+                     Department
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                          mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                        </td>
+                      </ng-container>
+              
+                      <ng-container matColumnDef="CheckList_Name">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        CheckList Name
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Document_Id">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Document Id
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Version">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Version
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Date">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Date
+                        </th>
+                        <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                          <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Action">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                          Action
+                        </th>
+                        <td *matCellDef="let row" class="actions-cell" mat-cell>
+                          <!-- -->
+                          <button mat-icon-button color="primary">
+                            <mat-icon class="icon-display">edit</mat-icon>
+                          </button>
+              
+                          <button mat-icon-button color="warn" >
+                            <mat-icon>close</mat-icon>
+                          </button>
+                          <button mat-icon-button  >
+                            <mat-icon class="icon-display">info</mat-icon>
+                          </button>
+                        </td>
+                      </ng-container>
+                     
+                      <tr *matHeaderRowDef="ChecklistvisibleColumns" mat-header-row></tr>
+                      <tr *matRowDef="let row; columns: ChecklistvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9999">No data found</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+               </mat-card-content>
+           
+              
+        </mat-card>
+
+    </fury-page-layout-content>
+</fury-page-layout>

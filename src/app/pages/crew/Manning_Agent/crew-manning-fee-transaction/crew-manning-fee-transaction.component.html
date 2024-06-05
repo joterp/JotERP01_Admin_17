@@ -1,0 +1,391 @@
+<fury-page-layout mode="card" class="crew-manningFeeStatement">
+
+    <fury-page-layout-header>
+
+        <form [formGroup]="manningFeeStatementFormGroup">
+
+            <h3 class="unit-packing">
+
+                <span class="first-letter">M</span>ANNING
+                <span class="first-letter">F</span>EE
+                <span class="first-letter">T</span>RANSACTION
+                <span class="first-letter">S</span>TATEMENT
+
+            </h3>
+
+
+            <div class="filter-area">
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Vessel Manager</mat-label>
+                        <mat-select formControlName="drpVessel_Manager">
+                            <mat-option value="YML">YML Jot Ship Management</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div fxFlex.gt-sm="50%" style="text-align: center; margin-right: 10px;" >
+                        <button    *ngIf="showRankCategoryTable" mat-raised-button style="    background-color: #337ab7;
+                        border-color: #2e6da4;color: white;
+                    margin-top: 10px;"  (click)="saveSplitFee(null,false)">Split fee</button>
+                    </div>
+                    <div fxFlex.gt-sm="50%">
+                        <button mat-raised-button style="background-color: #CCCCCC;margin-top: 10px;">Show crew changes this month to check overlapping fee</button>
+                    </div>
+                    <div fxFlex.gt-sm="50%">
+                        <button mat-raised-button style="    background-color: AliceBlue; margin-top: 10px;">Recalc for Selected Month</button>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start">
+
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Manning Office</mat-label>
+                            <mat-select formControlName="drpManning_Office">
+                                <mat-option value="YML">YML Jot Ship Management</mat-option>
+                                <mat-option value="Test">TEST</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Crew</mat-label>
+                            <input formControlName="txtCrew" matInput placeholder="Search by Crew" type="text" />
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vessel</mat-label>
+                            <mat-select formControlName="drpVessel" (click)="showRankTable('row','CustomFields')">
+                                <mat-option value="Alexa">Alexa</mat-option>
+                                <mat-option value="Alexandre">Alexandre</mat-option>
+                                <mat-option value="Charley">Charley</mat-option>
+                                <mat-option value="Yami">Yami</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Rank</mat-label>
+                            <mat-select formControlName="drpRank">
+                                <mat-option value="Master">Master</mat-option>
+                                <mat-option value="Trainee Master">Trainee Master</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Year</mat-label>
+                            <mat-select formControlName="drpYear">
+                                <mat-option value="2023">2023</mat-option>
+                                <mat-option value="2022">2022</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Month</mat-label>
+                            <mat-select formControlName="drpMonth">
+                                <mat-option value="January">January</mat-option>
+                                <mat-option value="February">February</mat-option>
+                                <mat-option value="March">March</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fee Type</mat-label>
+                            <mat-select formControlName="drpFee_Type">
+                                <mat-option value="Agency_Fee">Agency Fee - Monthly</mat-option>
+                                <mat-option value="Flight">Flight - Monthly</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fee Status</mat-label>
+                            <mat-select formControlName="drpFee_Status">
+                                <mat-option value="All">All</mat-option>
+                                <mat-option value="Paid">Paid</mat-option>
+                                <mat-option value="UnPaid">UnPaid</mat-option>
+                                <mat-option value="Cancelled">Cancelled</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+
+
+
+                    <div class="filter-btn-area" fxFlex style="margin: 10px;">
+                        <div>
+
+                            <button mat-raised-button color="primary" style="background-color: #5cb85c;"
+                                class="filter-btn">
+                                Search
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="create" mat-raised-button color="warn" class="filter-btn" type="button"
+                                (click)="clearFilter()">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="filter-btn-area" fxFlex style="margin: 10px;">
+                        <div style="display: flex; align-items: center;">
+                            <button mat-raised-button color="primary" style="background-color: #269abc; border-color: #1b6d85; flex: 1;" class="search-btn-update">
+                                Mark Selected As Paid
+                            </button>
+                        </div>
+                    
+                        <div style="display: flex; align-items: center;">
+                            <button class="create" mat-raised-button color="warn" class="search-btn-update" type="button" style="background-color: #f0ad4e; border-color: #eea236; flex: 1;">
+                                Mark Selected As Cancelled
+                            </button>
+                        </div>
+                    </div>
+                    
+
+
+                    <div class="filter-btn-area" fxFlex style="margin: 10px;">
+                        <div style="display: flex; align-items: center;">
+                            <img src="../../../../assets/img/XLS.jpg" alt="excel" style="height: 30px;margin-right: 8px;" />
+                            <button mat-raised-button color="primary" style="background-color: #337ab7; border-color: #2e6da4; flex: 1;" class="search-btn-update">
+                                Invoice(Vessel-Wise)
+                            </button>
+                        </div>
+                    
+                        <div style="display: flex; align-items: center;">
+                            <img src="../../../../assets/img/print.png" alt="excel" style="height: 30px;margin-right: 8px;" />
+                            <button class="create" mat-raised-button color="warn" class="search-btn-update" type="button" style="background-color: #337ab7; border-color: #2e6da4; flex: 1;">
+                                Invoice(Manning Office)
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-btn-area" fxFlex style="margin: 10px;">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Invoice</mat-label>
+                            <mat-select formControlName="drpInvoice">
+                                <mat-option value="Agency_Fee">202308/BKLD-CMS</mat-option>
+                                <mat-option value="Flight">202308/BKLD-CMS</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <div style="display: flex;">
+                            <button mat-raised-button color="primary" style="background-color: #5bc0de; border-color: #46b8da; flex: 1;" class="search-btn-update">
+                                View
+                            </button>
+                            <button mat-raised-button color="primary" style="background-color: #337ab7; border-color: #2e6da4; flex: 1;" class="search-btn-update">
+                                Finalize Month
+                            </button>
+                        </div>
+                        
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </form>
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+        <div class="actions-area">
+
+            <div fxLayout="row">
+                <button mat-mini-fab color="primary" [matTooltip]="'Add HOC Sheet '" class="add-approve-btn save-btn"
+                    (click)="saveNewTransaction(null,false)">
+                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                </button>
+                <span style="margin-top: 3px;
+          margin-left: 6px;font-size: 15px;"> Add Ad-Hoc-Fees</span>
+            </div>
+            <div>
+                <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+                <span>
+                    <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+                </span>
+            </div>
+
+        </div>
+
+        <div #TABLE>
+            <table [dataSource]="manningFeeStatementdataSource" mat-table matSort #table class="details-table">
+                <ng-container matColumnDef="Manning_Office">
+                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+                        mat-sort-header>
+                        Manning Office
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Vessel">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Vessel
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Crew_Name">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Crew Name
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Nationality">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Nationality
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Month">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Month
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Year">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Year
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Split_Date">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Split Date
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Contract_Date">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Contract Date
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Sign_On_Date">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Sign On Date
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Sign_Off_Date">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Sign Off/EOC Date
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Days_On_Board">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Days On Board
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Fee_Type">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Fee Type
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Fee_Amount">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Fee Amount
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Payment_Status">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Payment Status
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="Paid_Amount">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Paid Amount
+                    </th>
+                    <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="CheckBox">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox>
+                        </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-checkbox>
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+
+
+
+                <ng-container matColumnDef="Action">
+                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                        Action
+                    </th>
+                    <td *matCellDef="let row" class="actions-cell" mat-cell>
+                        <!-- -->
+                        <button mat-icon-button color="primary">
+                            <mat-icon class="icon-display">edit</mat-icon>
+                        </button>
+
+                        <button mat-icon-button color="warn">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon-display">info</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr *matHeaderRowDef="feeStatementvisibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: feeStatementvisibleColumns"
+                    class="clickable route-animations-elements" mat-row></tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999">No data found</td>
+                </tr>
+            </table>
+        </div>
+        <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+    </fury-page-layout-content>
+
+</fury-page-layout>
