@@ -109,7 +109,7 @@ export class CREWEvaluationSheetComponent implements OnInit {
       saveAssignToVessel(data:object, IsEdit:boolean) {
         const dialogRef = this.dialog.open(CREWAssignToVesselComponent,
           {
-            width: "50%",
+            width: "70%",
             maxHeight: "90%",
             disableClose: true,
             data:data

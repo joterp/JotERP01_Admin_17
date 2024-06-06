@@ -80,7 +80,7 @@ export class CREWAdditionalChecksComponent implements OnInit {
   saveFields(data:object, IsEdit:boolean) {
     const dialogRef = this.dialog.open(CREWAdditionalChecksAddComponent,
       {
-        width: "30%",
+        width: "70%",
         maxHeight: "90%",
         disableClose: true,
         data:data
