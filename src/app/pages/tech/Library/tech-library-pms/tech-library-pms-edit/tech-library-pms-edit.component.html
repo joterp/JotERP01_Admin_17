@@ -1,5 +1,5 @@
 
-<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
     <span>
         <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
         margin-bottom: -4px;"/>Add New Job
@@ -8,7 +8,18 @@
     <span fxLayoutAlign="end"  >
         <mat-icon (click)="CloseModal()">close</mat-icon>
       </span>
-  </div>
+  </div> -->
+
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Job</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
   <fury-page-layout mode="card" class="pmsLibedit-view" >
     <fury-page-layout-content>
       <mat-dialog-content>
@@ -117,7 +128,8 @@
 
                     
 
-                          <mat-tab label="Details" style="margin-left: #000;margin-right: #000;" class="mat-tab-req">
+                      <mat-tab label="Details" class="mat-tab-req" style="margin-left: #000; margin-right: #000; background-color: #f0f0f0; border: 1px solid #ccc; color: #333;">
+
                               <div style="padding:25px 77px 25px 77px;">
 
                                   <div fxLayout="row" fxLayoutAlign="space-between">

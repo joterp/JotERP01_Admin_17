@@ -140,10 +140,11 @@
     border-top: 0.84375em solid transparent;
   }
 
-  .filter-btn-area {
-    padding: 8px 0px;
-    text-align: center;
-  }
+
+  // .filter-btn-area {
+  //   padding: 8px 0px;
+  //   text-align: center;
+  // }
 
   .filter-btn {
     margin-right: 5px !important;
@@ -174,12 +175,27 @@
     
     
   }
-
-  tr.mat-header-row {
-    height: 24px;
-    background-color: #1976d2;
-    text-align: center;
+  .mat-mdc-form-field{
+    display: inline;
   }
+
+
+  .mat-mdc-header-row {
+      background-color: #1976d2;
+      color: #fff;
+  }
+  
+   
+   .filter-btn-area {
+    padding: 21px 48px;
+    text-align: center;
+    }
+
+  // tr.mat-header-row {
+  //   height: 24px;
+  //   background-color: #1976d2;
+  //   text-align: center;
+  // }
 
   .borderstyle {
     // text-align: center;
@@ -253,6 +269,7 @@
   justify-content: center;
   display: flex;
 }
+
 .example-container{
   font-size: 20px;
 }
@@ -263,10 +280,10 @@
 .select-all{
   margin: 5px 17px;   // added new for all check box
 }
-.mat-dialog-title{
-  background-color: black;   //new added
-
-} 
+.mat-mdc-dialog-container .mdc-dialog__title{
+  color: #fff;
+  background-color: black;
+  }
 .logo {
   width: 20px;     //new added
   height: 20px;
@@ -301,6 +318,7 @@
   background: #ffffff;                             //new added
 
 }
+
 
 .mat-tab-header {
   border-left: 1px solid #918f8f;

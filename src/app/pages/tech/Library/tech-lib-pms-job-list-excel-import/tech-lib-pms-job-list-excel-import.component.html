@@ -1,7 +1,7 @@
 
 <fury-page-layout mode="card" class="spare-parts-excel-view">
 
-    <h3 class="unit-packing" style="text-align: center; margin: 30px;">
+    <h3 class="unit-packing" style="margin: 30px;">
         <span  class="fifth-letter">PMS</span>
         <span class="fifth-letter"> JOB</span>s -
         <span class="fifth-letter">E</span>XCEL
@@ -11,7 +11,7 @@
     <fury-page-layout-content [@fadeInUp] class="content-area">
 
         <mat-card>
-            <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxLayout="row"  fxLayoutGap="10px" fxLayoutAlign="space-between">
 
            
                 <div fxFlex="23">
@@ -223,7 +223,7 @@
                                     <label [class.active-label]="pmsCatalogueFilterFormGroup.get('radioNew_Job_Status').value == 1">All</label>
                                   </mat-radio-button>
                                   <mat-radio-button value="0" [checked]="pmsCatalogueFilterFormGroup.get('radioNew_Job_Status').value == 0">
-                                    <label [class.active-label]="pmsCatalogueFilterFormGroup.get('radioNew_Job_Status').value == 0">> Zero</label>
+                                    <label [class.active-label]="pmsCatalogueFilterFormGroup.get('radioNew_Job_Status').value == 0"> Zero</label>
                                   </mat-radio-button>
                                   <mat-radio-button value="2" [checked]="pmsCatalogueFilterFormGroup.get('radioNew_Job_Status').value == 2">
                                      <label [class.active-label]="pmsCatalogueFilterFormGroup.get('radioNew_Job_Status').value == 2">= Zero</label>

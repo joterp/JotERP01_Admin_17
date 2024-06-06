@@ -90,7 +90,7 @@ export class TECHLIBPMSJOBLISTEXCELIMPORTComponent implements OnInit {
   alertImportModel(data:object, IsEdit:boolean) {
     const dialogRef = this.dialog.open(TechLibPmsJobListExcelImportAlertComponent,
       {
-        width: "20%",
+        width: "30%",
         maxHeight: "90%",
         disableClose: true,
         data:data

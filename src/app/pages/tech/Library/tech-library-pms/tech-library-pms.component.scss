@@ -130,11 +130,28 @@
     .mat-form-field-infix {
       border-top: 0.64375em solid transparent;
     }
+    .mat-mdc-form-field{
+			display: inline;
+		}
+
+
+		.mat-mdc-header-row {
+			  background-color: #1976d2;
+			  color: #fff;
+        height: 30px;
+        text-align: center !important;
+		}
+		
+		 
+		 .filter-btn-area {
+			padding: 21px 48px;
+			text-align: center;
+		  }
   
-    .filter-btn-area {
-      padding: 8px 0px;
-      text-align: center;
-    }
+    // .filter-btn-area {
+    //   padding: 8px 0px;
+    //   text-align: center;
+    // }
   
     .filter-btn {
       margin-right: 5px !important;
@@ -163,11 +180,11 @@
       //   min-width: 175px !important;
     }
   
-    tr.mat-header-row {
-        height: 24px;
-        background-color: #1976d2;
-        text-align: center;
-    }
+    // tr.mat-header-row {
+    //     height: 24px;
+    //     background-color: #1976d2;
+    //     text-align: center;
+    // }
   
     th.mat-header-cell {
       text-align: left;
@@ -220,9 +237,8 @@
       // text-align: center;
      
       border-left: 1px solid #ddd;                       // new added for left border
-      border-top: 1px solid #ddd;                     // new added for bottom border
-     
-      
+      border-top: 1px solid #ddd; 
+      text-align: center !important;                    // new added for bottom border
     }
 
     .mat-form-field-appearance-fill .mat-form-field-flex {

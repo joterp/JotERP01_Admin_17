@@ -5,7 +5,7 @@
       
       <form [formGroup]="criticalAlarmfilterFormGroup" >
         
-          <h3 class="unit-packing" style="text-align: center; margin: 30px;">
+          <h3 class="unit-packing" style=" margin: 30px;">
             <span class="first-letter">C</span>RITICAL  
             <span class="fifth-letter">A</span>LARM /
             <span class="fifth-letter">T</span>RIP
@@ -120,7 +120,7 @@
       </form>
     </fury-page-layout-header>
     <fury-page-layout-content [@fadeInUp] class="content-area">
-      <div class="actions-area" >
+      <!-- <div class="actions-area" >
         <div>
             <span class="create" >
                 <button mat-mini-fab color="primary" (click)="saveNewAlarm(null,false)" > 
@@ -134,7 +134,7 @@
         
         
         <div>
-            <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+            <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span>
           <span>
             <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
             <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
@@ -142,6 +142,29 @@
           </span>
         </div>
              
+      </div> -->
+
+      <div class="actions-area">
+
+        <div fxLayout="row">
+          <button mat-mini-fab color="primary" [matTooltip]="'Add item'" class="add-approve-btn save-btn"
+            (click)="saveNewAlarm(null,false)">
+            <mat-icon class="add-approve-btn-icon">add</mat-icon>
+          </button>
+          <span style="margin-top: 3px;
+          margin-left: 6px;font-size: 15px;">Add New Alarm</span>
+        </div>
+  
+  
+        <div>
+          <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+          <span>
+            <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+            <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+            <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+          </span>
+        </div>
+  
       </div>
   
       <div #TABLE>

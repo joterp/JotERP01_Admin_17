@@ -145,12 +145,7 @@
       border-top: 0.84375em solid transparent;
     }
   
-  
-     .filter-btn-area {
-    padding: 21px 48px;
-    text-align: center;
-  }
-     
+
     
      
    
@@ -182,11 +177,28 @@
       padding-right: 10px;
     //   min-width: 175px !important;
     }
-  
-    tr.mat-header-row {
-      height: 28px;
-      background-color: #1976d2;
-    }
+
+  .mat-mdc-form-field{
+			display: inline;
+		}
+
+
+		.mat-mdc-header-row {
+			  background-color: #1976d2;
+			  color: #fff;
+        height: 30px;
+        text-align: center !important;
+		}
+		
+		 
+		 .filter-btn-area {
+			padding: 21px 48px;
+			text-align: center;
+		  }
+    // tr.mat-header-row {
+    //   height: 28px;
+    //   background-color: #1976d2;
+    // }
   
     th.mat-header-cell {
         color: white;
