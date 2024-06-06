@@ -129,8 +129,13 @@
       border-top: 0.84375em solid transparent;
     }
   
+    // .filter-btn-area {
+    //   padding: 8px 0px;
+    //   text-align: center;
+    // }
+
     .filter-btn-area {
-      padding: 8px 0px;
+      padding: 21px 48px;
       text-align: center;
     }
   
@@ -160,11 +165,21 @@
       padding-right: 10px;
       min-width: 175px !important;
     }
+
+    .mat-mdc-form-field{
+			display: inline;
+		}
+
+
+		.mat-mdc-header-row {
+			  background-color: #1976d2;
+			  color: #fff;
+		}
   
-    tr.mat-header-row {
-      height: 56px;
-      background-color: #1976d2;
-    }
+    // tr.mat-header-row {
+    //   height: 56px;
+    //   background-color: #1976d2;
+    // }
   
     th.mat-header-cell {
       text-align: left;

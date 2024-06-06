@@ -135,11 +135,10 @@ fury-crew-office-training-add {
       padding: 0px 5px;
     }
   
-    tr.mat-header-row {
-      height: 56px;
-      background-color: #1976d2;
-    }
-  
+  .mat-mdc-header-row {
+			  background-color: #1976d2;
+			  color: #fff;
+		}
     th.mat-header-cell {
       text-align: left;
       color: white;

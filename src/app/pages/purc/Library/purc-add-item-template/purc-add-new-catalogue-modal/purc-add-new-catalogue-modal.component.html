@@ -8,9 +8,20 @@
         <mat-icon (click)="CloseModal()">close</mat-icon>
       </span>
 </div> -->
-<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle >
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle >
   <span style="font-size: 20px;">Add Items From Catalogue</span>
-</div>
+</div> -->
+
+<div mat-dialog-title
+					  cdkDrag
+					  cdkDragRootElement=".cdk-overlay-pane"
+					  cdkDragHandle
+					  style="display: flex; justify-content: space-between; align-items: center;">
+					 <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add Item From Catalogue</span>
+					 <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+						 <mat-icon>close</mat-icon>
+					 </button>
+					</div>
 
 <fury-page-layout mode="card" class="purcunit-view" >
   
@@ -76,7 +87,7 @@
 
       
     
-        <div #TABLE>
+        <div #TABLE style="margin: 20px;">
           <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
             <ng-container matColumnDef="Drawing_Number">
               <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell

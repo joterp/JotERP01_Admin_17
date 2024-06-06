@@ -1,5 +1,5 @@
 
-<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
     <span>
         <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
         margin-bottom: -4px;"/>Add New Item
@@ -9,7 +9,18 @@
         <mat-icon (click)="CloseModal()">close</mat-icon>
       </span>
   </div>
- 
+  -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;">
+  <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Item</span>
+  <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+  </button>
+  </div>
+
     <div>
       <mat-dialog-content>
         <form [formGroup]="ItemFormGroup">

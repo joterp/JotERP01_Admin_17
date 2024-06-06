@@ -106,11 +106,10 @@
       padding: 0px 5px;
     }
   
-    tr.mat-header-row {
-      height: 56px;
-      background-color: #1976d2;
-    }
-  
+  .mat-mdc-header-row {
+			  background-color: #1976d2;
+			  color: #fff;
+		}
     th.mat-header-cell {
       text-align: left;
       color: white;
@@ -194,6 +193,15 @@
     background-color: #bbeaf3;
   
   }
+
+  .mat-mdc-dialog-container .mdc-dialog__title{
+    color: #fff;
+    background-color: black;
+    }
+    .logo {
+  width: 20px;
+  height: 20px;
+}
     
   
     

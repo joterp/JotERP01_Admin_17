@@ -9,11 +9,20 @@
       </span>
 </div> -->
 
-<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle >
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle >
   <span style="font-size: 20px;"> Add New Template</span>
+</div> -->
+
+<div mat-dialog-title
+cdkDrag
+cdkDragRootElement=".cdk-overlay-pane"
+cdkDragHandle
+style="display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Template</span>
+<button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+ <mat-icon>close</mat-icon>
+</button>
 </div>
-
-
 
 <mat-dialog-content style="height: 100% !important" class="new-template-modal">
         <form [formGroup]="templateFormGroup"  [ngStyle]="{ 'margin-top': '7px' }" >

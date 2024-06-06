@@ -79,7 +79,7 @@ export class PURCPOTermsComponent implements OnInit {
   savePOTerms(data:object, IsEdit:boolean) {
     const dialogRef = this.dialog.open(PURCPOTermsModalComponent,
       {
-        width: "40%",
+        width: "50%",
         maxHeight: "90%",
         disableClose: true,
         data:data

@@ -8,12 +8,12 @@
 
     <fury-page-layout-content [@fadeInUp] class="content-area">
         <mat-card>
-            <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start">
              
                 <div fxFlex="23">  
                         <form [formGroup]="aslImportFilterFormGroup">
                             <div class="filter-area">
-                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                <div fxLayout="row" fxLayoutGap="10px"  fxLayoutAlign="space-between">
                                     <button mat-button color="primary" class="filter-btn">
                                         Select Files
                                     </button>
@@ -152,7 +152,7 @@
                     <form [formGroup]="aslExcelFilterFormGroup">
 
                         <div class="filter-area" style=" border: 1px solid gray ;">
-                            <div fxLayout="row" fxLayoutAlign="start">
+                            <div fxLayout="row" fxLayoutGap="10px"  fxLayoutAlign="start">
                                 <div fxFlex>
                                     <mat-form-field appearance="fill">
                                         <mat-label>Supplier</mat-label>

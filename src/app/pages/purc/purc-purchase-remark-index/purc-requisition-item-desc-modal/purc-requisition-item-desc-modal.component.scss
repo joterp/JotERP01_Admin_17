@@ -231,10 +231,25 @@
         padding: 0px 5px;
       }
     
-      tr.mat-header-row {
-        height: 56px;
-        background-color: #1976d2;
+      .mat-mdc-form-field{
+        display: inline;
+    }
+
+
+    .mat-mdc-header-row {
+          background-color: #1976d2;
+          color: #fff;
+    }
+    
+     
+     .filter-btn-area {
+        padding: 21px 48px;
+        text-align: center;
       }
+    //   tr.mat-header-row {
+    //     height: 56px;
+    //     background-color: #1976d2;
+    //   }
     
       th.mat-header-cell {
         text-align: left;

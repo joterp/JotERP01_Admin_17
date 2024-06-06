@@ -1,9 +1,9 @@
-<div class="dialog-title" style="margin-top: -23px;
+<!-- <div class="dialog-title" style="margin-top: -23px;
 ">
     <span class="item-title">
-        <!-- <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
         margin-bottom: -4px;" />
-        Requisition -->
+        Requisition
 
         Item: Bottle
     </span>
@@ -11,7 +11,19 @@
     <button type="button" mat-icon-button (click)="CloseModal()">
         <mat-icon>close</mat-icon>
     </button>   
-</div>
+</div> -->
+<div mat-dialog-title
+					  cdkDrag
+					  cdkDragRootElement=".cdk-overlay-pane"
+					  cdkDragHandle
+					  style="display: flex; justify-content: space-between; align-items: center;">
+					 <span style="font-size: 18px; margin-right: auto;margin-top: 5px;"> Requisition</span>
+					 <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+						 <mat-icon>close</mat-icon>
+					 </button>
+					</div>
+
+
 
 <mat-card style="box-shadow: 0px 2px 15px 2px rgb(0 0 0 / 32%), 0px 1px 1px 0px rgb(0 0 0 / 30%), 0px 1px 3px 0px rgb(0 0 0 / 4%) !important;">
           

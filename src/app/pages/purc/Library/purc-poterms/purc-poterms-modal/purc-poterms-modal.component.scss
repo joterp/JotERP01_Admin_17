@@ -1,18 +1,12 @@
 
 @import url('https://cdn.quilljs.com/1.2.6/quill.snow.css');
 
-
-// .mat-dialog-title{
-//     background-color: black;
-
-// } 
-
 .logo {
     width: 20px;
     height: 20px;
 }
 
-  .po-modal{
+.RFQ-modal{
     .left-label {
         width: 18%;
         margin-top: 15px;
@@ -35,12 +29,14 @@
         
       }
 
-  }
-  .mdc-dialog__title{
-    color: #fff;
-    background-color: black;
-  }
+}
 
+
+  .mat-mdc-dialog-container .mdc-dialog__title{
+  color: #fff;
+  background-color: black !important;
+  }
   .quill-editor-width{
     width: 100%;
   }
+

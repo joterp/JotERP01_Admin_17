@@ -120,7 +120,7 @@ export class PURCSparePartsExcelImportComponent implements OnInit {
   alertModal(data:object, IsEdit:boolean) {
     const dialogRef = this.dialog.open(PurcSparePartsExcelImportAlertComponent,
       {
-        width: "20%",
+        width: "30%",
         maxHeight: "90%",
         disableClose: true,
         data:data

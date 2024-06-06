@@ -75,6 +75,9 @@ export class PURCUnitEditComponent implements OnInit {
 
 
   }
+  CloseModal() {
+    this.dialogRef.close(true);
+  }
 
   SaveUnitsForm(addNew = false) {
     this.ErrorMessage = "";

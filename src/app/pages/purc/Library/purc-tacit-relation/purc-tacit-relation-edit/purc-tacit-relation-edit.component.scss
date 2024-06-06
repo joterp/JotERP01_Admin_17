@@ -2,12 +2,18 @@
 //     background-color: black;
 
 // } 
-
-.logo {
+.mat-mdc-dialog-container .mdc-dialog__title{
+  color: #fff;
+  background-color: black;
+  }
+  .logo {
     width: 20px;
     height: 20px;
 }
+
 .tacit-relation-modalt{
+  
+
     .left-label {
       width: 18%;
       margin-top: 15px;
@@ -32,7 +38,4 @@
     
   }
 
-  .mat-mdc-dialog-container .mdc-dialog__title{
-    color: #fff;
-    background-color: black;
-  }
+  
