@@ -1,10 +1,21 @@
-<div mat-dialog-title>
+<!-- <div mat-dialog-title>
     <span>
         <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;width: 20px;
         height: 20px;
         margin-bottom: -4px;" />
     </span>
     {{modeltitle}}
+</div> -->
+
+<div mat-dialog-title
+cdkDrag
+cdkDragRootElement=".cdk-overlay-pane"
+cdkDragHandle
+style="display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 18px; margin-right: auto;margin-top: 5px;">{{modeltitle}}</span>
+<button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+ <mat-icon>close</mat-icon>
+</button>
 </div>
 
 <mat-dialog-content>

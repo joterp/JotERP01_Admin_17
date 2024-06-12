@@ -26,8 +26,8 @@
                 <td style="    padding-left: 44px;
                 padding-bottom: 21px;">
                   <span >
-                    <img src="../../../../assets/img/Expand-Folder.png" class="logo" alt="excel" />
-                    <img src="../../../../assets/img/Collapse-Folder.png" class="logo" alt="excel" />
+                    <img src="../../../../assets/img/folder.png" class="logo" alt="excel" style="margin-right: 4px;"/>
+                    <img src="../../../../assets/img/Collapse-Folder.png" class="logo" alt="excel" style="margin-right: 4px;" />
                     <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" /> <br>
                     <a (click)="toggleTable()">
                       {{ showGrid ? 'Hide Grid' : 'Show Grid' }}
@@ -96,9 +96,9 @@
              
       </div>
       <table [dataSource]="locationdataSource" mat-table matSort #table class="tableDetails">
-        <ng-container matColumnDef="Description">
+        <ng-container matColumnDef="Description" >
           <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
-            mat-sort-header>
+            mat-sort-header style="background-color: #1976d2;color: white;">
         Description
           </th>
           <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
@@ -114,7 +114,7 @@
 
       
         <ng-container matColumnDef="QR_Code">
-          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header style="background-color: #1976d2;color: white;">
           QR Code
           </th>
           <td *matCellDef="let row" class="actions-cell" mat-cell>

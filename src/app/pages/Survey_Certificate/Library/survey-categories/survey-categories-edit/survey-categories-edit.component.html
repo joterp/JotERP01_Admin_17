@@ -10,10 +10,20 @@
       <mat-icon (click)="CloseModal()">close</mat-icon>
     </span>
 </div> -->
-<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="display: flex;  align-items: center;">
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="display: flex;  align-items: center;">
   <span style="font-size: 18px;margin-top: 7px;">Add New Category</span>
-  <!-- <mat-icon (click)="CloseModal()">close</mat-icon> -->
-</div>
+  <mat-icon (click)="CloseModal()">close</mat-icon>
+</div> -->
+<div mat-dialog-title
+					  cdkDrag
+					  cdkDragRootElement=".cdk-overlay-pane"
+					  cdkDragHandle
+					  style="display: flex; justify-content: space-between; align-items: center;">
+					 <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Category</span>
+					 <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+						 <mat-icon>close</mat-icon>
+					 </button>
+					</div>
 
 
 <div>

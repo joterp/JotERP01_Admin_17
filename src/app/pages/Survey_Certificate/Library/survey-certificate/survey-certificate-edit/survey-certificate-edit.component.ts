@@ -31,9 +31,7 @@ export class SURVEYCertificateEditComponent implements OnInit {
         drpTenure_Duration: ["", Validators.required],
         txtTenure_Window_Less: ["", Validators.required],
         txtTenure_Window_More: ["", Validators.required],
-        
-        
-         
+                 
       });
     }
 

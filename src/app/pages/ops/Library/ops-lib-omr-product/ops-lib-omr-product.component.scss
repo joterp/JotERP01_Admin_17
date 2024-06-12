@@ -135,11 +135,25 @@
     .mat-form-field-infix {
       border-top: 0.84375em solid transparent;
     }
+    .mat-mdc-form-field{
+			display: inline;
+		}
+
+
+		.mat-mdc-header-row {
+			  background-color: #1976d2;
+			  color: #fff;
+		}
   
+    // .filter-btn-area {
+    //   padding: 8px 0px;
+    //   text-align: center;
+    // }
     .filter-btn-area {
-      padding: 8px 0px;
-      text-align: center;
-    }
+			padding: 21px 48px;
+			text-align: center;
+		  }
+			
   
     .filter-btn {
       margin-right: 5px !important;
@@ -168,10 +182,10 @@
       min-width: 175px !important;
     }
   
-  .mat-mdc-header-row {
-			  background-color: #1976d2;
-			  color: #fff;
-		}
+    // .mat-mdc-header-row {
+		// 	  background-color: #1976d2;
+		// 	  color: #fff;
+		// }
     th.mat-header-cell {
       text-align: left;
       color: white;

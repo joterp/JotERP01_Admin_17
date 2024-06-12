@@ -223,11 +223,7 @@
         margin-top: 5px;
       }
   
-      td.mat-cell.cdk-cell.actions-cell.cdk-column-Remarks.mat-column-Remarks.ng-star-inserted {
-        max-width: 100px;
-        word-break: break-word;
-      }
-  
+    
       .copy-store-po-btn {
         color: Black;
         background-color: #CCFFFF;
@@ -467,6 +463,15 @@
           padding: 21px 48px;
           text-align: center;
           }
+          .mat-mdc-form-field{
+            display: inline;
+          }
+      
+      
+          .mat-mdc-header-row {
+              background-color: #1976d2;
+              color: #fff;
+          }
       
         .filter-btn {
           margin-right: 5px !important;
@@ -495,10 +500,10 @@
           min-width: 175px !important;
         }
       
-        tr.mat-header-row {
-          height: 56px;
-          background-color: #1976d2;
-        }
+        // tr.mat-header-row {
+        //   height: 56px;
+        //   background-color: #1976d2;
+        // }
       
         th.mat-header-cell {
           text-align: left;
