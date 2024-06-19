@@ -13,6 +13,7 @@ import { ConfigPanelModule } from './config-panel/config-panel.module';
 import { FurySharedModule } from '../../@fury/fury-shared.module';
 import { NavigationModule } from './navigation/navigation.module';
 
+
 @NgModule({
   imports: [
     CommonModule,

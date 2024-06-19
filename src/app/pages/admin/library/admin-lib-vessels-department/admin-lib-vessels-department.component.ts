@@ -12,19 +12,18 @@ import { RankCategory } from 'src/app/pages/crew/Libraries/crew-rank-category/cr
 import { AuthGuard } from 'src/app/providers/auth/AuthGuard';
 import { ApiService } from 'src/app/providers/services/ApiService';
 import { CommonService } from 'src/app/providers/services/CommonService';
-import { AccountsLibManageCurrenciesAddComponent } from './accounts-lib-manage-currencies-add/accounts-lib-manage-currencies-add.component';
+import { AdminLibVesselsDepartmentAddComponent } from './admin-lib-vessels-department-add/admin-lib-vessels-department-add.component';
 
 
 
 @Component({
-  selector: 'fury-accounts-lib-manage-currencies',
-  templateUrl: './accounts-lib-manage-currencies.component.html',
-  styleUrls: ['./accounts-lib-manage-currencies.component.scss']
+  selector: 'fury-admin-lib-vessels-department',
+  templateUrl: './admin-lib-vessels-department.component.html',
+  styleUrls: ['./admin-lib-vessels-department.component.scss']
 })
-export class AccountsLibManageCurrenciesComponent {
+export class AdminLibVesselsDepartmentComponent {
   pageSize = 10;
-  private apiUrl = 'http://localhost:5062/api/v1/RankCategory';
-  private authToken = 'your-auth-token-here';
+
   dataSource: MatTableDataSource<any>;
 
   @ViewChild('TABLE') table: ElementRef;
@@ -32,7 +31,7 @@ export class AccountsLibManageCurrenciesComponent {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   loading: boolean;
-  currencyFormGroup: UntypedFormGroup;
+  vesselsFormGroup: UntypedFormGroup;
 
   constructor(
     private titleService: Title,
@@ -44,15 +43,14 @@ export class AccountsLibManageCurrenciesComponent {
     private fb: UntypedFormBuilder,
     private http: HttpClient
   ) {
-    this.titleService.setTitle('Rank Category');
+    this.titleService.setTitle('Countries');
     this.dataSource = new MatTableDataSource();
   }
 
   @Input()
   columns: ListColumn[] = [
-    { property: 'Short_Code', visible: true, name: 'Short_Code' },
-    { property: 'Country', visible: true, name: 'Country' },
-    { property: 'Description', visible: true, name: 'Description' },
+    { property: 'Department', visible: true, name: 'Department' },
+    { property: 'Vessel_Manager', visible: true, name: 'Vessel_Manager' },
     { property: 'action', visible: true, name: 'action' },
   ] as ListColumn[];
 
@@ -63,13 +61,11 @@ export class AccountsLibManageCurrenciesComponent {
   ngOnInit(): void {
     // this.fetchrankCategory();
     this.sidenavService.setCollapsed(true);
-    this.currencyFormGroup = this.fb.group({
-      Airport_name: [""],
-      Muncipality: [""],
-      GPS_Code: [""],
-      IAIA_Code: [""],
-      drpCountry: [""],
-      drpStatus: ['1']
+    this.vesselsFormGroup = this.fb.group({
+      Department: [""],
+      vessel_manager: [""],
+      drpStatus: ["1"],
+   
     });
   }
 
@@ -86,8 +82,8 @@ export class AccountsLibManageCurrenciesComponent {
  
   clearFilter() {
     this.loading = true;
-    this.currencyFormGroup.reset();
-    this.currencyFormGroup.get('drpStatus').patchValue('1');
+    this.vesselsFormGroup.reset();
+    this.vesselsFormGroup.get('drpStatus').patchValue('1');
     // this.fetchrankCategory();
   }
 
@@ -98,8 +94,8 @@ export class AccountsLibManageCurrenciesComponent {
   //   });
   // }
 
-  saveCurrency(data: object, IsEdit: boolean) {
-    const dialogRef = this.dialog.open(AccountsLibManageCurrenciesAddComponent, {
+  saveVessel(data: object, IsEdit: boolean) {
+    const dialogRef = this.dialog.open(AdminLibVesselsDepartmentAddComponent, {
       width: '35%',
       maxHeight: '90%',
       disableClose: true,
@@ -113,7 +109,7 @@ export class AccountsLibManageCurrenciesComponent {
     });
   }
 
- 
+
   // changeStatus(data: any): void {
   //   if (!data || !data.id) {
   //     console.error('Invalid data or missing ID for deletion');

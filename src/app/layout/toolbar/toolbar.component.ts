@@ -566,8 +566,13 @@ else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
    } 
    else if(buttonName === 'Admin_Lib_Ports'){
     this.router.navigate(['ADMIN/library/Admin_Lib_Ports'])
-   }
-   
+   } 
+   else if(buttonName === 'Admin_Lib_Vessel_Department'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_Vessel_Department'])
+   } 
+   else if(buttonName === 'Admin_Lib_Vessel'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_Vessel'])
+   } 
 
    else if(buttonName === 'Accounts_Lib_Currency'){
     this.router.navigate(['ACCOUNTS/libraries/Accounts_Lib_Currency'])

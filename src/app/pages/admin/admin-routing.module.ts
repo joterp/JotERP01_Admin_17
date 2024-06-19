@@ -4,6 +4,8 @@ import { AdminCountriesComponent } from './library/admin-countries/admin-countri
 import { AdminAirportsComponent } from './library/admin-airports/admin-airports.component';
 import { AdminPortsComponent } from './library/admin-ports/admin-ports.component';
 import { AdminCitiesComponent } from './library/admin-cities/admin-cities.component';
+import { AdminLibVesselsDepartmentComponent } from './library/admin-lib-vessels-department/admin-lib-vessels-department.component';
+import { AdminLibVesselsComponent } from './library/admin-lib-vessels/admin-lib-vessels.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,12 @@ const routes: Routes = [
   },
   {
     path: "library/Admin_Lib_Ports", component: AdminPortsComponent
+  }, 
+  {
+    path: "library/Admin_Lib_Vessel_Department", component: AdminLibVesselsDepartmentComponent
+  },
+  {
+    path: "library/Admin_Lib_Vessel", component: AdminLibVesselsComponent
   },
 ];
 

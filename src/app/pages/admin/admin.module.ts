@@ -19,6 +19,10 @@ import { AdminCountriesAddComponent } from './library/admin-countries/admin-coun
 import { AdminCitiesAddComponent } from './library/admin-cities/admin-cities-add/admin-cities-add.component';
 import { AdminAirportsAddComponent } from './library/admin-airports/admin-airports-add/admin-airports-add.component';
 import { AdminPortsAddComponent } from './library/admin-ports/admin-ports-add/admin-ports-add.component';
+import { AdminLibVesselsDepartmentComponent } from './library/admin-lib-vessels-department/admin-lib-vessels-department.component';
+import { AdminLibVesselsDepartmentAddComponent } from './library/admin-lib-vessels-department/admin-lib-vessels-department-add/admin-lib-vessels-department-add.component';
+import { AdminLibVesselsComponent } from './library/admin-lib-vessels/admin-lib-vessels.component';
+import { AdminLibVesselsAddComponent } from './library/admin-lib-vessels/admin-lib-vessels-add/admin-lib-vessels-add.component';
 
 
 
@@ -31,7 +35,11 @@ import { AdminPortsAddComponent } from './library/admin-ports/admin-ports-add/ad
     AdminAirportsComponent,
     AdminAirportsAddComponent,
     AdminPortsComponent,
-    AdminPortsAddComponent
+    AdminPortsAddComponent,
+    AdminLibVesselsDepartmentComponent,
+    AdminLibVesselsDepartmentAddComponent,
+    AdminLibVesselsComponent,
+    AdminLibVesselsAddComponent
 
   ],
   imports: [

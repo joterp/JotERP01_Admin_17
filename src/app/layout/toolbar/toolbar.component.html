@@ -100,10 +100,10 @@
         <button mat-menu-item class="menuItemSpace">Fleets</button>
         <button mat-menu-item class="menuItemSpace">Vessel Flags</button>
         <button mat-menu-item class="menuItemSpace">VesselFlag-Vessel Manager Relation</button>
-        <button mat-menu-item class="menuItemSpace">Vessels</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Vessel')">Vessels</button> 
         <button mat-menu-item class="menuItemSpace">Office Departments</button>
         <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
-        <button mat-menu-item class="menuItemSpace">Vessel Departments</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Vessel_Department')">Vessel Departments</button>
         <button mat-menu-item class="menuItemSpace">Countries</button>
         <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
         <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Countries')">Countries</button>
