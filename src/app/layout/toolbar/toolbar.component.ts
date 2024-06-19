@@ -84,15 +84,26 @@ export class ToolbarComponent implements OnInit {
   //     },
   //   );
   // }
+  goto2(route: string, title: string) {
+    console.log('Navigating to:', route, 'with title:', title);
+    this.router.navigate(['PURC_ApproveSupplier'], { queryParams: { title: title } });
+  }
+  
+  
   
   goto(buttonName: string) {
     if (buttonName === 'PURC_UnitPacking') {
       this.router.navigate(['PURC/Library/PURC_UnitPacking']);
     } else if (buttonName === 'Catalogues') {
       this.router.navigate(['PURC/Catalogues']);
-    } else if(buttonName === 'ApprovedSupplierList') {
-      this.router.navigate(['PURC/PURC_ApproveSupplier'])
-    } else if(buttonName === 'DirectPurchaseOrder') {
+    // } else if (buttonName === 'PURC_ApproveSupplier') {
+    //   this.router.navigate(['PURC/PURC_ApproveSupplier', { title: 'Approved Supplier List' }]);
+    // }
+    // else if (buttonName === 'ManningAgentsList') {
+    //   this.router.navigate(['PURC/PURC_ApproveSupplier', { title: 'Manning Agents\' List' }]);
+    // 
+    }
+     else if(buttonName === 'DirectPurchaseOrder') {
       this.router.navigate(['PURC/PURC_DirectPurchaseOrder'])
     } else if(buttonName === 'ApprovalPortal'){
       this.router.navigate(['PURC/PURC_Approval_Portal'])  
@@ -225,6 +236,7 @@ export class ToolbarComponent implements OnInit {
        else if(buttonName === 'MatrixExceptionLog'){
         this.router.navigate(['CREW/MatrixExceptionLog'])  
        } 
+       
         else if(buttonName === 'ManningFeeTransaction'){
           this.router.navigate(['CREW/Manning_Agent/ManningFeeTransaction'])
          }
@@ -405,6 +417,9 @@ export class ToolbarComponent implements OnInit {
    else if(buttonName === 'RankAssignment'){
     this.router.navigate(['CREW/Libraries/RankAssignment'])
    }
+   else if(buttonName === 'GreetingCards'){
+    this.router.navigate(['CREW/Libraries/GreetingCards'])
+   }
 
    else if(buttonName === 'CostRegistration'){
     this.router.navigate(['CREW/CostRegistration'])
@@ -540,6 +555,23 @@ else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
     this.router.navigate(['HSEQ/Library/VesselInspectionLibrary'])
    } 
 
+   else if(buttonName === 'Admin_Lib_Countries'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_Countries'])
+   } 
+   else if(buttonName === 'Admin_Lib_Cities'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_Cities'])
+   }
+   else if(buttonName === 'Admin_Lib_Airports'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_Airports'])
+   } 
+   else if(buttonName === 'Admin_Lib_Ports'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_Ports'])
+   }
+   
+
+   else if(buttonName === 'Accounts_Lib_Currency'){
+    this.router.navigate(['ACCOUNTS/libraries/Accounts_Lib_Currency'])
+   }
   }
   
 }

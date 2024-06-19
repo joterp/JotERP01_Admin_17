@@ -1,0 +1,206 @@
+
+<fury-page-layout mode="card" class="crew-rankCategory">
+ 
+    <fury-page-layout-header>
+      
+      <form [formGroup]="airportsFormGroup" >
+        
+        <h3 class="unit-packing">
+          <span class="first-letter">A</span>IRPORTS
+         
+        </h3>
+      
+        
+        <div class="filter-area">
+          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start">
+  
+            <div fxFlex>
+              <mat-form-field appearance="fill">
+                <mat-label>Airport Name</mat-label>
+                <input formControlName="Airport_name" matInput placeholder="Search by Airport Name" type="text" />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Muncipality</mat-label>
+                <input formControlName="Muncipality" matInput placeholder="Search by Muncipality" type="text" />
+              </mat-form-field>
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                  <mat-label>GPS Code</mat-label>
+                  <input formControlName="GPS_Code" matInput placeholder="Search by GPS Code" type="text" />
+                </mat-form-field>
+  
+                <mat-form-field appearance="fill">
+                  <mat-label>IAISA Code</mat-label>
+                  <input formControlName="IAIA_Code" matInput placeholder="Search by IAIA Code_Three_Char" type="text" />
+                </mat-form-field>
+              </div>
+  
+
+
+
+  
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <mat-select formControlName="drpCountry" >
+                      <mat-option value="select_Typw">India</mat-option>
+                      <mat-option value="Objective">Belize</mat-option>
+                      <mat-option value="Subjective">Brazil</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="drpStatus">
+                  <mat-option value="">Show Active</mat-option>
+                  <mat-option value="1">Show Deleted</mat-option>
+                  <mat-option value="0">Show All</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+  
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                <button
+                mat-raised-button
+                color="primary"
+               style="background-color: #5cb85c;"
+                class="filter-btn"
+              
+              >
+                Search
+              </button>
+              </div>
+  
+              <div>
+                <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                  type="button" (click)="clearFilter()">
+                  Clear
+                </button>
+              </div>
+            </div>
+  
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+      <div class="actions-area" >
+      
+        <div fxLayout="row">
+          <button mat-mini-fab color="primary" [matTooltip]="'Add Airport '"
+              class="add-approve-btn save-btn"  (click)="saveAirports(null,false)">
+              <mat-icon class="add-approve-btn-icon">add</mat-icon>
+          </button>
+          <span style="margin-top: 3px;
+          margin-left: 6px;font-size: 15px;"> Add New Airport</span>
+      </div>
+        <div>
+            <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+          <span>
+            <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+            <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+            <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+          </span>
+        </div>
+             
+      </div>
+  
+      <div #TABLE>
+        <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+          <ng-container matColumnDef="Airport_Name">
+            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
+              mat-sort-header="ID">
+         Airport Name
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+              mat-cell>
+             <!-- <p class="tbl-row-item">{{row.id}}</p>  -->
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Muncipality">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
+          Muncipality
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+             <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Country">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
+          Country
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+             <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="GPS_Code">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
+          GPS Code
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+             <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="IAIA_Code">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
+          IAIA Code
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+             <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
+            </td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID</th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+          <ng-container matColumnDef="rankCategory">
+            <th mat-header-cell *matHeaderCellDef> Category </th>
+            <td mat-cell *matCellDef="let element"> {{element.rankCategory}} </td>
+          </ng-container> -->
+    
+        
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action</th>
+            <td mat-cell *matCellDef="let row" class="actions-cell">  
+              <span mat-icon-button  [matTooltip]="'Edit Rank'" class="action-img" (click)="saveAirports(row, true)">
+            <img src="../../../../assets/img/pen.png" class="action-img" alt="excel" />
+            </span>
+  
+            <span mat-icon-button [matTooltip]="'Order Details'" class="action-img">
+              <img src="../../../../assets/img/detailimage.jpg"  class="action-img"   alt="excel" />
+            </span>
+  
+  
+            <!-- row.id -->
+            <span mat-icon-button class="action-img-alignment action-img" >
+              <img src="../../../../assets/img/delete.png" class="action-img" alt="delete" />
+            </span>
+            
+            </td>
+            </ng-container>
+          <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+          <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

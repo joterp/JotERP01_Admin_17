@@ -1,0 +1,86 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Country</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <form [formGroup]="newCountryFormGroup">
+      <div mat-dialog-container style="padding: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Country Name</mat-label>
+              <input formControlName="Country_Name" matInput placeholder="Country Name" type="text" />
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>ISO Code(2CHAR)</mat-label>
+              <input formControlName="ISO_Code_2" matInput placeholder="ISO Code 2CHAR" type="text" />
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>ISO Code(3CHAR)</mat-label>
+              <input formControlName="ISO_Code_3" matInput placeholder="ISO Code 3CHAR" type="text" />
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Capital</mat-label>
+              <input formControlName="Capital" matInput placeholder="Capital" type="text" />
+            </mat-form-field>
+          </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Continent</mat-label>
+              <mat-select  formControlName="Continent" >
+                  <mat-option value="0">India</mat-option>
+                  <mat-option value="1">Brazil</mat-option>
+                  <mat-option value="2">China</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>IDD Code</mat-label>
+              <input formControlName="IDD_Code" matInput placeholder="Capital" type="text" />
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Timezone</mat-label>
+              <mat-select  formControlName="TimeZone" >
+                  <mat-option value="0">India</mat-option>
+                
+              </mat-select>
+            </mat-form-field>
+          </div>
+      
+        
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="SaveCategory(true)" class="save-btn" [disabled]="!newCountryFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary" (click)="SaveCategory(false)" class="save-btn" [disabled]="!newCountryFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+  </div>

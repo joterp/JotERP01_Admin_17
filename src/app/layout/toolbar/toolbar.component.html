@@ -106,10 +106,10 @@
         <button mat-menu-item class="menuItemSpace">Vessel Departments</button>
         <button mat-menu-item class="menuItemSpace">Countries</button>
         <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
-        <button mat-menu-item class="menuItemSpace">Countries</button>
-        <button mat-menu-item class="menuItemSpace">Cities</button>
-        <button mat-menu-item class="menuItemSpace">Airports</button>
-        <button mat-menu-item class="menuItemSpace">Ports</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Countries')">Countries</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Cities')">Cities</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Airports')">Airports</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Ports')">Ports</button>
         <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
         <button mat-menu-item class="menuItemSpace">System Parameters</button>
         <button mat-menu-item class="menuItemSpace">Dashboard Notification Buttons</button>
@@ -153,7 +153,7 @@
       </mat-menu>
 
       <mat-menu #accountsLibraries="matMenu">
-        <button mat-menu-item class="menuItemSpace">Manage Currencies</button>
+        <button mat-menu-item class="menuItemSpace"   (click)="goto('Accounts_Lib_Currency')" >Manage Currencies</button>
         <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
         <button mat-menu-item class="menuItemSpace">DRC Account Codes</button>
         <button mat-menu-item class="menuItemSpace">DRC Account Categories</button>
@@ -242,7 +242,7 @@
    </mat-menu>
    <!--  crewManningAgents-->
    <mat-menu #crewManningAgents="matMenu">
-     <button mat-menu-item class="menuItemSpace" >Manning Agents' List</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto2('PURC_ApproveSupplier', 'Manning Agents\' List')">Manning Agents' List</button>
      <button mat-menu-item class="menuItemSpace" (click)="goto('ManningFeeTransaction')">Manning Agent Fee Statements </button>
      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
      <button mat-menu-item class="menuItemSpace" (click)="goto('ManningAnnualReport')">Manning Fee Annual Report</button>
@@ -316,6 +316,8 @@
     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
     <button mat-menu-item class="menuItemSpace" (click)="goto('Tainings')">Crew Trainings</button>
     <button mat-menu-item class="menuItemSpace" (click)="goto('RankAssignment')">Crew Training Rank-Assignment</button>
+    <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+    <button mat-menu-item class="menuItemSpace" (click)="goto('GreetingCards')">Greeting</button>
   </mat-menu>
 
 
@@ -435,7 +437,7 @@
     <mat-menu #procurement="matMenu">
       <button mat-menu-item class="menuItemSpace" (click)="goto('PURCNewIndex')">Procurement Process</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('DirectPurchaseOrder')">Direct Purchase</button>
-      <button mat-menu-item class="menuItemSpace" (click)="goto('ApprovedSupplierList')">Approved Supplier List</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto2('PURC_ApproveSupplier', 'Approved Supplier List')">Approved Supplier List</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('ApprovalPortal')">Approval Portal</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('PURCAccountPayable')">Account - Payable Portal</button>
 

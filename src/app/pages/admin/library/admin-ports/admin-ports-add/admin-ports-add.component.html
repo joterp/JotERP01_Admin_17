@@ -1,0 +1,940 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+    style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+    <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Port</span>
+    <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<div>
+    <mat-dialog-content>
+
+   
+    <form [formGroup]="newPortFormGroup">
+        <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white;margin: 10px;">Port
+            Index</h3>
+        <div mat-dialog-container style="padding: 20px;">
+            <div>
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Index No</mat-label>
+                    <input formControlName="Index_No" matInput placeholder="Search by Category Name" type="text" />
+                </mat-form-field>
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Port  Name</mat-label>
+                    <input formControlName="port_name" matInput placeholder="Search by Category Name" type="text" />
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <mat-select  formControlName="Country" >
+                        <mat-option value="0">India</mat-option>
+                        <mat-option value="1">Brazil</mat-option>
+                        <mat-option value="2">China</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+               
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Port Code</mat-label>
+                    <input formControlName="port_code" matInput placeholder="Search by Category Name" type="text" />
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Chart</mat-label>
+                    <input formControlName="chart" matInput placeholder="Search by Category Name" type="text" />
+                </mat-form-field>
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Channel</mat-label>
+                    <mat-select  formControlName="Channel" >
+                        <mat-option value="0">0.5m-1.5m</mat-option>
+                        
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+
+            <div class="upload-area" style="margin: 10px;text-align: right;">
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                 
+                    <!-- <label style="margin-right: 10px;">Choose card</label> -->
+                    <div >
+                     
+                      <label style="padding-left: 3px;margin-right: 4px;">Arrangement List
+                        <button type="button" mat-raised-button>
+                          <label class="drop-label" for="uploadFile1" style="margin-left: 10px;">
+                            Select
+                          </label>
+                        </button>
+                        <input type="file" id="uploadFile1" style="opacity: 0;text-align: center;" name="uploadFile" accept=".png, .jpg, .jpeg, .gif" multiple />
+                      </label>
+                    </div>
+                 
+                </div>
+            </div>
+
+            </div>
+
+
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div fxFlex="60">
+                    <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white">Position
+                        </h3>
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label></mat-label>
+                            <input formControlName="Latitude_one" matInput placeholder="Latitude"
+                                type="text" />
+                        </mat-form-field>
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label></mat-label>
+                            <input formControlName="Latitude_Two" matInput placeholder="Latitude"
+                                type="text" />
+                        </mat-form-field>
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Choose Latitude</mat-label>
+                            <mat-select  formControlName="Choose_Latitude" >
+                                <mat-option value="N">N</mat-option>
+                                <mat-option value="S">S</mat-option>
+                                <!-- <mat-option value="2">China</mat-option> -->
+                            </mat-select>
+                          </mat-form-field>
+
+                          <mat-form-field fxFlex appearance="fill">
+                            <mat-label></mat-label>
+                            <input formControlName="Longitude_one" matInput placeholder="Longitude"
+                                type="text" />
+                        </mat-form-field>
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label></mat-label>
+                            <input formControlName="Longitude_Two" matInput placeholder="Longitude"
+                                type="text" />
+                        </mat-form-field>
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Choose Longitude</mat-label>
+                            <mat-select  formControlName="Choose_Longitude" >
+                                <mat-option value="N">N</mat-option>
+                                <mat-option value="S">S</mat-option>
+                                <!-- <mat-option value="2">China</mat-option> -->
+                            </mat-select>
+                          </mat-form-field>
+
+                    </div>
+
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Harbor Size</mat-label>
+                            <mat-select  formControlName="Harbor_Size" >
+                                <mat-option value="large">Large</mat-option>
+                                <mat-option value="Medium">Medium</mat-option>
+                                <mat-option value="small">Small</mat-option>
+                                <mat-option value="extra_small">Extra Small</mat-option>
+                                <!-- <mat-option value="2">China</mat-option> -->
+                            </mat-select>
+                          </mat-form-field>
+                          <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Harbor Type</mat-label>
+                            <mat-select  formControlName="Harbor_Type" >
+                                <mat-option value="Coastal_Breakwater">Coastal Breakwater</mat-option>
+                                <mat-option value="Open_Roadstead">Open Roadstead</mat-option>
+                                <!-- <mat-option value="2">China</mat-option> -->
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Publication</mat-label>
+                            <input formControlName="Publication" matInput placeholder="Search by Publication"
+                                type="text" />
+                        </mat-form-field>
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Shelter</mat-label>
+                            <mat-select  formControlName="Shelter" >
+                                <mat-option value="Fair">Fair</mat-option>
+                                <mat-option value="Good">Good</mat-option>
+                                <!-- <mat-option value="2">China</mat-option> -->
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+
+
+
+                </div>
+                <div fxFlex="40">
+                    <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white">Communications
+                        </h3>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Telephone</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="telephone">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('telephone').value == 'yes'">
+                                <label
+                                    [class.active-label]="newPortFormGroup.get('telephone').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('telephone').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('telephone').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Radio</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radio">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('radio').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('radio').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('radio').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('radio').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Air</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="air">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('air').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('air').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('air').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('air').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Telegraph</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="telegraph">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('telegraph').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('telegraph').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('telegraph').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('telegraph').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Radio Telephone</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radio_telephone">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('radio_telephone').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('radio_telephone').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('radio_telephone').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('radio_telephone').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div fxFlex="60">
+                    <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white">Entrance Restrictions
+                        Index</h3>
+                        <div fxLayout="row" fxLayoutGap="5px">
+                            <div fxFlex="50">
+                                <div fxLayout="row" fxLayoutGap="16px">
+                                    <mat-label style="width: 150px;text-align: center;padding:10px">Tide</mat-label>
+                                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="tide">
+                                        <mat-radio-button value="yes" [checked]="newPortFormGroup.get('tide').value == 'yes'">
+                                            <label [class.active-label]="newPortFormGroup.get('tide').value == 'yes'">Yes</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="no" [checked]="newPortFormGroup.get('tide').value == 'no'">
+                                            <label [class.active-label]="newPortFormGroup.get('tide').value == 'no'">No</label>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div fxLayout="row" fxLayoutGap="16px">
+                                    <mat-label style="width: 150px;text-align: center;padding:10px">Swell</mat-label>
+                                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="swell">
+                                        <mat-radio-button value="yes" [checked]="newPortFormGroup.get('swell').value == 'yes'">
+                                            <label [class.active-label]="newPortFormGroup.get('swell').value == 'yes'">Yes</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="no" [checked]="newPortFormGroup.get('swell').value == 'no'">
+                                            <label [class.active-label]="newPortFormGroup.get('swell').value == 'no'">No</label>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div fxLayout="row" fxLayoutGap="16px">
+                                    <mat-label style="width: 150px;text-align: center;padding:10px">Ice</mat-label>
+                                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="ice">
+                                        <mat-radio-button value="yes" [checked]="newPortFormGroup.get('ice').value == 'yes'">
+                                            <label [class.active-label]="newPortFormGroup.get('ice').value == 'yes'">Yes</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="no" [checked]="newPortFormGroup.get('ice').value == 'no'">
+                                            <label [class.active-label]="newPortFormGroup.get('ice').value == 'no'">No</label>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div fxLayout="row" fxLayoutGap="16px">
+                                    <mat-label style="width: 150px;text-align: center;padding:10px">Other</mat-label>
+                                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="Other">
+                                        <mat-radio-button value="yes" [checked]="newPortFormGroup.get('Other').value == 'yes'">
+                                            <label [class.active-label]="newPortFormGroup.get('Other').value == 'yes'">Yes</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="no" [checked]="newPortFormGroup.get('Other').value == 'no'">
+                                            <label [class.active-label]="newPortFormGroup.get('Other').value == 'no'">No</label>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div fxLayout="row" fxLayoutGap="16px">
+                                    <mat-label style="width: 150px;text-align: center;padding:10px">ETA Message</mat-label>
+                                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="eta_message">
+                                        <mat-radio-button value="yes" [checked]="newPortFormGroup.get('eta_message').value == 'yes'">
+                                            <label [class.active-label]="newPortFormGroup.get('eta_message').value == 'yes'">Yes</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="no" [checked]="newPortFormGroup.get('eta_message').value == 'no'">
+                                            <label [class.active-label]="newPortFormGroup.get('eta_message').value == 'no'">No</label>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            <div fxFlex="50">
+                                <div fxLayout="row" fxLayoutGap="16px">
+                                    <mat-label style="width: 150px;text-align: center;padding:10px">Overhead Limits</mat-label>
+                                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="overhead_limits">
+                                        <mat-radio-button value="yes" [checked]="newPortFormGroup.get('overhead_limits').value == 'yes'">
+                                            <label [class.active-label]="newPortFormGroup.get('overhead_limits').value == 'yes'">Yes</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="no" [checked]="newPortFormGroup.get('overhead_limits').value == 'no'">
+                                            <label [class.active-label]="newPortFormGroup.get('overhead_limits').value == 'no'">No</label>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div fxLayout="row" fxLayoutGap="16px">
+                                    <mat-label style="width: 150px;text-align: center;padding:10px">Good Holding Ground</mat-label>
+                                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="good_holding_grounds">
+                                        <mat-radio-button value="yes" [checked]="newPortFormGroup.get('good_holding_grounds').value == 'yes'">
+                                            <label [class.active-label]="newPortFormGroup.get('good_holding_grounds').value == 'yes'">Yes</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="no" [checked]="newPortFormGroup.get('good_holding_grounds').value == 'no'">
+                                            <label [class.active-label]="newPortFormGroup.get('good_holding_grounds').value == 'no'">No</label>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div fxLayout="row" fxLayoutGap="16px">
+                                    <mat-label style="width: 150px;text-align: center;padding:10px">Turning Area</mat-label>
+                                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="turning_area">
+                                        <mat-radio-button value="yes" [checked]="newPortFormGroup.get('turning_area').value == 'yes'">
+                                            <label [class.active-label]="newPortFormGroup.get('turning_area').value == 'yes'">Yes</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="no" [checked]="newPortFormGroup.get('turning_area').value == 'no'">
+                                            <label [class.active-label]="newPortFormGroup.get('turning_area').value == 'no'">No</label>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div fxLayout="row" fxLayoutGap="16px">
+                                    <mat-label style="width: 150px;text-align: center;padding:10px">1st port of Entry</mat-label>
+                                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="port_of_entry">
+                                        <mat-radio-button value="yes" [checked]="newPortFormGroup.get('port_of_entry').value == 'yes'">
+                                            <label [class.active-label]="newPortFormGroup.get('port_of_entry').value == 'yes'">Yes</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="no" [checked]="newPortFormGroup.get('port_of_entry').value == 'no'">
+                                            <label [class.active-label]="newPortFormGroup.get('port_of_entry').value == 'no'">No</label>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div fxLayout="row" fxLayoutGap="16px">
+                                    <mat-label style="width: 150px;text-align: center;padding:10px">U.S Representative</mat-label>
+                                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="Representative">
+                                        <mat-radio-button value="yes" [checked]="newPortFormGroup.get('Representative').value == 'yes'">
+                                            <label [class.active-label]="newPortFormGroup.get('Representative').value == 'yes'">Yes</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="no" [checked]="newPortFormGroup.get('Representative').value == 'no'">
+                                            <label [class.active-label]="newPortFormGroup.get('Representative').value == 'no'">No</label>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                
+                            </div>
+                            </div>
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>Maximum Size Vessel</mat-label>
+                                    <mat-select  formControlName="Maximum_size_level" >
+                                        <mat-option value="1">Over 500 feet in Length</mat-option>
+                                        <mat-option value="2">Up to %00 feet in length</mat-option>
+                                       
+                                        <!-- <mat-option value="2">China</mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>Channel</mat-label>
+                                    <mat-select  formControlName="Channel_two" >
+                                        <mat-option value="1">0m-1.5m</mat-option>
+                                        <!-- <mat-option value="2">Up to %00 feet in length</mat-option> -->
+                                       
+                                        <!-- <mat-option value="2">China</mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>Anchorage</mat-label>
+                                    <mat-select  formControlName="Anchorage" >
+                                        <mat-option value="1">0m-1.5m</mat-option>
+                                        <!-- <mat-option value="2">Up to %00 feet in length</mat-option> -->
+                                       
+                                        <!-- <mat-option value="2">China</mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>Cargo Pier</mat-label>
+                                    <mat-select  formControlName="Cargo_pier" >
+                                        <mat-option value="1">0m-1.5m</mat-option>
+                                        <!-- <mat-option value="2">Up to %00 feet in length</mat-option> -->
+                                       
+                                        <!-- <mat-option value="2">China</mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>Oil Terminal</mat-label>
+                                    <mat-select  formControlName="oil_terminal" >
+                                        <mat-option value="1">0m-1.5m</mat-option>
+                                        <!-- <mat-option value="2">Up to %00 feet in length</mat-option> -->
+                                       
+                                        <!-- <mat-option value="2">China</mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                                <mat-form-field fxFlex appearance="fill">
+                                    <mat-label>Tide</mat-label>
+                                    <input formControlName="tide_two" matInput placeholder="Search by Tide"
+                                        type="text" />
+                                </mat-form-field>
+                            </div>
+
+
+
+
+                </div>
+                <div fxFlex="40">
+                    <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white">
+                        Load/Off Load</h3>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Wharves</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="wharves">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('wharves').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('wharves').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('wharves').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('wharves').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Med Moor</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="med_moor">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('med_moor').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('med_moor').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('med_moor').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('med_moor').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Beach Moor</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="beach_moor">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('beach_moor').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('beach_moor').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('beach_moor').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('beach_moor').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Anchor</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="anchor">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('anchor').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('anchor').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('anchor').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('anchor').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Ice Moor</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="ice_moor">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('ice_moor').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('ice_moor').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('ice_moor').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('ice_moor').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Medical facilities</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="medical_facilities">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('medical_facilities').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('medical_facilities').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('medical_facilities').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('medical_facilities').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Degauss</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="degauss">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('degauss').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('degauss').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('degauss').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('degauss').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Garbage Disposal</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="garbage_disposal">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('garbage_disposal').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('garbage_disposal').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('garbage_disposal').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('garbage_disposal').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Dirty Ballast</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="dirty_ballast">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('dirty_ballast').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('dirty_ballast').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('dirty_ballast').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('dirty_ballast').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                </div>
+
+            </div>
+
+            <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white">Supplies</h3>
+
+               
+                   
+                        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                            <div fxLayout="row" fxLayoutGap="16px">
+                                <mat-label style="width: 150px;text-align: center;padding:10px">Provisions</mat-label>
+                                <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="provisions">
+                                    <mat-radio-button value="yes" [checked]="newPortFormGroup.get('provisions').value == 'yes'">
+                                        <label [class.active-label]="newPortFormGroup.get('provisions').value == 'yes'">Yes</label>
+                                    </mat-radio-button>
+                                    <mat-radio-button value="no" [checked]="newPortFormGroup.get('provisions').value == 'no'">
+                                        <label [class.active-label]="newPortFormGroup.get('provisions').value == 'no'">No</label>
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                    
+                  
+                        <div fxLayout="row" fxLayoutGap="16px" style="margin-right:30px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Fuel Oil</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="fuel_oil">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('fuel_oil').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('fuel_oil').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('fuel_oil').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('fuel_oil').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                   
+                        <div fxLayout="row" fxLayoutGap="16px" style="margin-left:30px;text-align: center;">
+                            <mat-form-field fxFlex appearance="fill" fxLayoutGap="16px">
+                                <mat-label>Drydock</mat-label>
+                                <mat-select  formControlName="drydock" >
+                                    <mat-option value="0">Large</mat-option>
+                                    <mat-option value="1">Medium</mat-option>
+                                    <mat-option value="2">Small</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                        </div>
+                   
+                    </div>
+                
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Water</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="water">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('water').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('water').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('water').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('water').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                
+              
+                    <div fxLayout="row" fxLayoutGap="16px" style="margin-right:30px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Disel Oil</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="disel_oil">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('disel_oil').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('disel_oil').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('disel_oil').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('disel_oil').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+               
+                    <div fxLayout="row" fxLayoutGap="16px" style="margin-left:30px;text-align: center;">
+                        <mat-form-field fxFlex appearance="fill" fxLayoutGap="16px">
+                            <mat-label>Repair</mat-label>
+                            <mat-select  formControlName="repair" >
+                                <mat-option value="0">Limited</mat-option>
+                                <mat-option value="1">Major</mat-option>
+                                <mat-option value="2">Emergency Only</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+               
+                </div>
+            
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Deck</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="deck">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('deck').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('deck').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('deck').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('deck').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+            
+          
+                <div fxLayout="row" fxLayoutGap="16px" style="margin-right:30px">
+                    <mat-label style="width: 150px;text-align: center;padding:10px">Engine</mat-label>
+                    <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="engine">
+                        <mat-radio-button value="yes" [checked]="newPortFormGroup.get('engine').value == 'yes'">
+                            <label [class.active-label]="newPortFormGroup.get('engine').value == 'yes'">Yes</label>
+                        </mat-radio-button>
+                        <mat-radio-button value="no" [checked]="newPortFormGroup.get('engine').value == 'no'">
+                            <label [class.active-label]="newPortFormGroup.get('engine').value == 'no'">No</label>
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+           
+                <div fxLayout="row" fxLayoutGap="16px" style="margin-left:30px;text-align: center;">
+                    <mat-form-field fxFlex appearance="fill" fxLayoutGap="16px">
+                        <mat-label>Raliway</mat-label>
+                        <mat-select  formControlName="railway" >
+                            <mat-option value="0">Large</mat-option>
+                            <mat-option value="1">Medium</mat-option>
+                            <mat-option value="2">Small</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+           
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div fxFlex="50">
+                    <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white">Pilotage</h3>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Compulsory</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="compulsory">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('compulsory').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('compulsory').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('compulsory').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('compulsory').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Local Assitance</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="local_assitance">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('local_assitance').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('local_assitance').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('local_assitance').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('local_assitance').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Available</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="available">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('available').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('available').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('available').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('available').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Advisable</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="advisable">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('advisable').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('advisable').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('advisable').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('advisable').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                </div>
+                <div fxFlex="50">
+                    <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white">Carnes</h3>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Fixed</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="fixed">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('fixed').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('fixed').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('fixed').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('fixed').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Mobile</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="mobile">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('mobile').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('mobile').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('mobile').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('mobile').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <mat-label style="width: 150px;text-align: center;padding:10px">Floating</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="floating">
+                            <mat-radio-button value="yes" [checked]="newPortFormGroup.get('floating').value == 'yes'">
+                                <label [class.active-label]="newPortFormGroup.get('floating').value == 'yes'">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="no" [checked]="newPortFormGroup.get('floating').value == 'no'">
+                                <label [class.active-label]="newPortFormGroup.get('floating').value == 'no'">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    
+                </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutGap="5px">
+                    <div fxFlex="50">
+                        <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white">Tugs</h3>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Tug Salvage</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="tug_salvage">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('tug_salvage').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('tug_salvage').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('tug_salvage').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('tug_salvage').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Tug Assistance</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="tug_assistance">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('tug_assistance').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('tug_assistance').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('tug_assistance').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('tug_assistance').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                    <div fxFlex="50">
+                        <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white">Lifts</h3>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">100 Tons plus</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="tons_plus">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('tons_plus').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('tons_plus').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('tons_plus').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('tons_plus').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">25-49 Tons</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="Tons_two">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('Tons_two').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('Tons_two').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('Tons_two').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('Tons_two').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">50-100 Tons</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="tons_three">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('tons_three').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('tons_three').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('tons_three').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('tons_three').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">0-24</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="tons_four">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('tons_four').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('tons_four').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('tons_four').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('tons_four').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div fxLayout="row" fxLayoutGap="5px">
+                    <div fxFlex="50">
+                        <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white">Quarantine</h3>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Pratique</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="pratique">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('pratique').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('pratique').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('pratique').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('pratique').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Derat Certificate</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="derat_certificate">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('derat_certificate').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('derat_certificate').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('derat_certificate').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('derat_certificate').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Other</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="other">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('other').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('other').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('other').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('other').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                    <div fxFlex="50">
+                        <h3 style="text-align: center;background-color: rgb(21, 86, 184);padding: 5px;color: white">Services</h3>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Longshore</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="longshore">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('longshore').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('longshore').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('longshore').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('longshore').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Steam</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="steam">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('steam').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('steam').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('steam').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('steam').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Nav Equipment</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="new_equipment">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('new_equipment').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('new_equipment').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('new_equipment').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('new_equipment').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Electrical</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="electrical">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('electrical').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('electrical').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('electrical').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('electrical').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-label style="width: 150px;text-align: center;padding:10px">Electric Repair</mat-label>
+                            <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="electric_repair">
+                                <mat-radio-button value="yes" [checked]="newPortFormGroup.get('electric_repair').value == 'yes'">
+                                    <label [class.active-label]="newPortFormGroup.get('electric_repair').value == 'yes'">Yes</label>
+                                </mat-radio-button>
+                                <mat-radio-button value="no" [checked]="newPortFormGroup.get('electric_repair').value == 'no'">
+                                    <label [class.active-label]="newPortFormGroup.get('electric_repair').value == 'no'">No</label>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                </div>
+        
+        
+               
+                   
+
+                    
+
+                 
+
+
+
+            
+
+
+        </div>
+    </form>
+</mat-dialog-content>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary" (click)="SaveCategory(true)" class="save-btn"
+            [disabled]="!newPortFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+        <button mat-raised-button color="primary" (click)="SaveCategory(false)" class="save-btn"
+            [disabled]="!newPortFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+        <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+    </mat-dialog-actions>
+</div>

@@ -107,24 +107,24 @@
         </div>
 
         <div #TABLE>
-            <table [dataSource]="crewTraitsdataSource" mat-table matSort #table class="details-table">
-                <ng-container matColumnDef="Detail_To_Check">
+            <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+                <!-- <ng-container matColumnDef="Detail_To_Check">
                     <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
                         mat-sort-header>
                         Detail To Check
                     </th>
                     <td *matCellDef="let row; let i = index" class="actions-cell"
                         [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
-                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                        <p class="tbl-row-item">{{row.txtUnit_Name}}</p>
                     </td>
-                </ng-container>
+                </ng-container> -->
 
                 <ng-container matColumnDef="Type">
                     <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
                         Type
                     </th>
                     <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        <p class="tbl-row-item">{{row.traiT_TYPE}}</p>
                     </td>
                 </ng-container>
 
@@ -133,7 +133,7 @@
                         Unit
                     </th>
                     <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        <p class="tbl-row-item">{{row.traiT_UNIT}}</p>
                     </td>
                 </ng-container>
 
@@ -142,7 +142,7 @@
                         Show In Profile
                     </th>
                     <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        <p class="tbl-row-item">{{row.show_IN_PROFILE}}</p>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="Remarks">
@@ -150,29 +150,25 @@
                         Remarks
                     </th>
                     <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-                        <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                        <p class="tbl-row-item">{{row.remark}}</p>
                     </td>
                 </ng-container>
 
 
-                <ng-container matColumnDef="Action">
-                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
-                        Action
-                    </th>
-                    <td *matCellDef="let row" class="actions-cell" mat-cell>
-                        <!-- -->
-                        <button mat-icon-button color="primary">
-                            <mat-icon class="icon-display">edit</mat-icon>
-                        </button>
-
-                        <button mat-icon-button color="warn">
-                            <mat-icon>close</mat-icon>
-                        </button>
-                        <button mat-icon-button>
-                            <mat-icon class="icon-display">info</mat-icon>
-                        </button>
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let row" class="actions-cell">
+                      <span mat-icon-button [matTooltip]="'Edit Rank'" class="action-img" (click)="saveFields(row, true)">
+                        <img src="../../../../assets/img/pen.png" class="action-img" alt="Edit" />
+                      </span>
+                      <span mat-icon-button [matTooltip]="'Order Details'" class="action-img">
+                        <img src="../../../../assets/img/detailimage.jpg" class="action-img" alt="Details" />
+                      </span>
+                      <button mat-icon-button (click)="changeStatus(row)" style="margin-right: 8px;">
+                        <img src="../../../../assets/img/delete.png" class="action-img spaced-img" alt="Delete" />
+                      </button>
                     </td>
-                </ng-container>
+                  </ng-container>
 
                 <tr *matHeaderRowDef="crewTraitsvisibleColumns" mat-header-row></tr>
                 <tr *matRowDef="let row; columns: crewTraitsvisibleColumns" class="clickable route-animations-elements"

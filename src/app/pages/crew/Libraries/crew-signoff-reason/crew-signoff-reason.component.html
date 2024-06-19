@@ -73,7 +73,7 @@
       
         <div fxLayout="row">
           <button mat-mini-fab color="primary" [matTooltip]="'Add Signoff Reason '"
-              class="add-approve-btn save-btn" (click)="saveSignoffReason(null,false)" >
+              class="add-approve-btn save-btn" (click)="saveSignoffReason(null, false)" >
               <mat-icon class="add-approve-btn-icon">add</mat-icon>
           </button>
           <span style="margin-top: 3px;
@@ -91,46 +91,43 @@
       </div>
   
       <div #TABLE>
-        <table [dataSource]="signoffReasondataSource" mat-table matSort #table class="details-table">
-          <ng-container matColumnDef="Signoff_Reason">
-            <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
-              mat-sort-header>
-           Signoff Reason
+        <table [dataSource]="dataSource" mat-table matSort class="details-table">
+      
+          <!-- Signoff Reason Column -->
+          <ng-container matColumnDef="sign_Off_Reason">
+            <th mat-header-cell *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-sort-header>
+              Signoff Reason
             </th>
-            <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
-              mat-cell>
-              <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+            <td mat-cell *matCellDef="let row" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }">
+              <p class="tbl-row-item">{{ row.sign_Off_Reason }}</p>
             </td>
           </ng-container>
-  
-        
-        
-          <ng-container matColumnDef="Action">
-            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
-              Action
-            </th>
-            <td *matCellDef="let row" class="actions-cell" mat-cell>
-              <!-- -->
-              <button mat-icon-button color="primary">
-                <mat-icon class="icon-display">edit</mat-icon>
-              </button>
-  
-              <button mat-icon-button color="warn" >
-                <mat-icon>close</mat-icon>
-              </button>
-              <button mat-icon-button  >
-                <mat-icon class="icon-display">info</mat-icon>
+      
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let row" class="actions-cell">
+              <span mat-icon-button [matTooltip]="'Edit Rank'" class="action-img" (click)="saveSignoffReason(row, true)">
+                <img src="../../../../assets/img/pen.png" class="action-img" alt="Edit" />
+              </span>
+              <span mat-icon-button [matTooltip]="'Order Details'" class="action-img">
+                <img src="../../../../assets/img/detailimage.jpg" class="action-img" alt="Details" />
+              </span>
+              <button mat-icon-button (click)="changeStatus(row)" style="margin-right: 8px;">
+                <img src="../../../../assets/img/delete.png" class="action-img spaced-img" alt="Delete" />
               </button>
             </td>
           </ng-container>
-  
-          <tr *matHeaderRowDef="signoffReasonvisibleColumns" mat-header-row></tr>
-          <tr *matRowDef="let row; columns: signoffReasonvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+      
+          <!-- Table Header and Row Definitions -->
+          <tr mat-header-row *matHeaderRowDef="signoffReasonVisibleColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: signoffReasonVisibleColumns" class="clickable route-animations-elements"></tr>
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="9999">No data found</td>
           </tr>
         </table>
       </div>
+      
       <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
   
     </fury-page-layout-content>

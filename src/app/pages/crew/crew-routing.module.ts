@@ -66,6 +66,7 @@ import { CREWMedicalIndexComponent } from './crew-medical-index/crew-medical-ind
 import { CREWEvaluationIndexComponent } from './crew-evaluation-index/crew-evaluation-index.component';
 import { CREWEvaluationCalenderComponent } from './crew-evaluation-calender/crew-evaluation-calender.component';
 import { CREWAllotmentIndexViewAndVerifyComponent } from './PortageBill/crew-acc-pb-allotment-index/crew-allotment-index-view-and-verify/crew-allotment-index-view-and-verify.component';
+import { CrewGreetingCardsComponent } from './Libraries/crew-greeting-cards/crew-greeting-cards.component';
 
 
 
@@ -128,6 +129,9 @@ const routes: Routes = [
   },
   {
     path: "Libraries/RankAssignment", component: CREWLIBTrainingRankAssignmentComponent
+  },
+  {
+    path: "Libraries/GreetingCards", component: CrewGreetingCardsComponent
   },
   {
     path: "Libraries/CREW_RANK_WISE_TRAINING_ASSIGNMENT", component: CREWRANKWISETRAININGASSIGNMENTComponent

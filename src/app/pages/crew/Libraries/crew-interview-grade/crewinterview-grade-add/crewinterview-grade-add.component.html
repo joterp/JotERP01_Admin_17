@@ -22,7 +22,7 @@
     <mat-dialog-content>
 
     
-    <form [formGroup]="newRankFormGroup">
+    <form [formGroup]="newIntGradeFormGroup">
       <div mat-dialog-container style="padding: 20px;">
         <div fxLayout="column" fxLayout.gt-sm="row">
           <mat-form-field fxFlex appearance="fill">
@@ -43,7 +43,7 @@
         </div>
         <div fxLayout="column" fxLayout.gt-sm="row">
           <mat-form-field fxFlex appearance="fill">
-            <mat-label>Min Type</mat-label>
+            <mat-label>Min Point</mat-label>
             <mat-select formControlName="drpMin_Type">
               <mat-option value="Select_Min">Select Min Point</mat-option>
               <mat-option value="0">0</mat-option>
@@ -56,9 +56,9 @@
           </mat-form-field>
         </div>
 
-        <!-- <div fxLayout="column" fxLayout.gt-sm="row">
+        <div fxLayout="column" fxLayout.gt-sm="row">
             <mat-form-field fxFlex appearance="fill">
-              <mat-label>Max Type</mat-label>
+              <mat-label>Max Point</mat-label>
               <mat-select formControlName="drpMax_Type">
                 <mat-option value="Select_Min">Select Max Point</mat-option>
                 <mat-option value="0">0</mat-option>
@@ -69,7 +69,7 @@
                 <mat-option value="5">5</mat-option>
               </mat-select>
             </mat-form-field>
-        </div> -->
+        </div>
 
         <div fxLayout="column" fxLayout.gt-sm="row">
             <mat-form-field fxFlex appearance="fill">
@@ -117,14 +117,10 @@
       </div>
     </form>
 </mat-dialog-content>
-    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
-  
-      <button mat-raised-button color="primary" class="save-btn">
-        Save 
-        </button>
-      
-  
-      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
-    </mat-dialog-actions>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+  <button mat-raised-button color="primary" (click)="SaveInterviewGarde(true)" class="save-btn" [disabled]="!newIntGradeFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+<button mat-raised-button color="primary" (click)="SaveInterviewGarde(false)" class="save-btn" [disabled]="!newIntGradeFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+<button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>
 
   </div>

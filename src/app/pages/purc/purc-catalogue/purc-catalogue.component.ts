@@ -347,50 +347,50 @@ FetchAllCatalogue(url = 'catalogue'){
     })
   }
 
-  deleteCatalogue(id:number){
-    this.api.DeleteDataService1('catalogue',id).subscribe((res)=> {
-      this.common.ShowMessage(
-        "Catalogue deleted successfully",
-        "notify-success",
-        3000
-      );
-      this.FetchAllCatalogue();
-    },
-    (error) => {
-      console.error('Error during delete:', error);
-    })
-  }
+  // deleteCatalogue(id:number){
+  //   this.api.DeleteDataService1('catalogue',id).subscribe((res)=> {
+  //     this.common.ShowMessage(
+  //       "Catalogue deleted successfully",
+  //       "notify-success",
+  //       3000
+  //     );
+  //     this.FetchAllCatalogue();
+  //   },
+  //   (error) => {
+  //     console.error('Error during delete:', error);
+  //   })
+  // }
 
-  deleteSubCatalogue(id:number) {
-    this.api.DeleteDataService1('subcatalogue',id).subscribe(
-      (response) => {
-        this.common.ShowMessage(
-          "SubCatalogue deleted successfully",
-          "notify-success",
-          3000
-        );
-        this.FetchAllSubCatalogue();
-      },
-      (error) => {
-        console.error('Error during delete:', error);
-      }
-    );
-  }
-  deleteAddItem(id:number) {
-    this.api.DeleteDataService1('addnewitem',id).subscribe(
-      (response) => { 
-        this.common.ShowMessage(
-          "SubCatalogue deleted successfully",
-          "notify-success",
-          3000
-        );
-        this.FetchAllItem();
-      },
-      (error) => {
-        console.error('Error during delete:', error);
-      }
-    );
-  }
+  // deleteSubCatalogue(id:number) {
+  //   this.api.DeleteDataService1('subcatalogue',id).subscribe(
+  //     (response) => {
+  //       this.common.ShowMessage(
+  //         "SubCatalogue deleted successfully",
+  //         "notify-success",
+  //         3000
+  //       );
+  //       this.FetchAllSubCatalogue();
+  //     },
+  //     (error) => {
+  //       console.error('Error during delete:', error);
+  //     }
+  //   );
+  // }
+  // deleteAddItem(id:number) {
+  //   this.api.DeleteDataService1('addnewitem',id).subscribe(
+  //     (response) => { 
+  //       this.common.ShowMessage(
+  //         "SubCatalogue deleted successfully",
+  //         "notify-success",
+  //         3000
+  //       );
+  //       this.FetchAllItem();
+  //     },
+  //     (error) => {
+  //       console.error('Error during delete:', error);
+  //     }
+  //   );
+  // }
 
 
   // ngOnDestroy() {

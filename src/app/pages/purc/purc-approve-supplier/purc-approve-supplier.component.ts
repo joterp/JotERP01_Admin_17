@@ -12,6 +12,7 @@ import { SidenavService } from 'src/app/layout/sidenav/sidenav.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'fury-purc-approve-supplier',
@@ -20,6 +21,7 @@ import { MatDialog } from '@angular/material/dialog';
   encapsulation: ViewEncapsulation.None,
 })
 export class PURCApproveSupplierComponent implements OnInit {
+  title: string;
 
   routeTitle:string="";
   ApproveSupplierFilterForm:UntypedFormGroup;
@@ -46,9 +48,10 @@ export class PURCApproveSupplierComponent implements OnInit {
   ] as ListColumn[];
   pageSize = 10;
   dataSource: MatTableDataSource<any> | null;
+ 
 
 
-  constructor(private titleService:Title, private router:Router, private dialog: MatDialog, private sidenavService: SidenavService,private fb:UntypedFormBuilder) {
+  constructor(private titleService:Title, private dialog: MatDialog, private sidenavService: SidenavService,private fb:UntypedFormBuilder,private router: Router, private route: ActivatedRoute) {
     this.titleService.setTitle(`Approved Supplier List`);
    }
 
@@ -58,8 +61,10 @@ export class PURCApproveSupplierComponent implements OnInit {
       .map((column) => column.property);
   }
   ngOnInit(): void {
-    
-
+    this.route.queryParams.subscribe(params => {
+      console.log('Received title:', params['title']);
+      // Use the title parameter as needed
+    });
     this.dataSource = new MatTableDataSource();
     this.routeTitle = this.titleService.getTitle();
 

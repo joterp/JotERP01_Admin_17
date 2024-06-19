@@ -1,7 +1,7 @@
 <!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
     <span>
         <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
-        margin-bottom: -4px;"/>Add New Signoff Reason
+        margin-bottom: -4px;"/>Add New Category
     </span>
    
     <span fxLayoutAlign="end"  >
@@ -21,28 +21,21 @@
   <div>
     <form [formGroup]="newsignoffReasonFormGroup">
       <div mat-dialog-container style="padding: 20px;">
-        <div fxLayout="column" fxLayout.gt-sm="row" >
-            <mat-form-field fxFlex appearance="fill">
-                <mat-label>Signoff Reason</mat-label>
-                <textarea
-                matInput
-                formControlName="txtSignoff_Reason"
-                placeholder="Signoff Reason"
-                ></textarea>
-            </mat-form-field>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+          <mat-form-field fxFlex appearance="fill">
+              <mat-label>SignOff</mat-label>
+              <textarea matInput formControlName="sign_Off_Reason" placeholder="SignOff Reason"></textarea>
+
+          </mat-form-field>
         </div>
       
         
       </div>
     </form>
   
-    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
-  
-      <button mat-raised-button color="primary" class="save-btn">
-        Save 
-      </button>
-     
-  
-      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
-    </mat-dialog-actions>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="SaveCountry(true)" class="save-btn" [disabled]="!newsignoffReasonFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary" (click)="SaveCountry(false)" class="save-btn" [disabled]="!newsignoffReasonFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
   </div>

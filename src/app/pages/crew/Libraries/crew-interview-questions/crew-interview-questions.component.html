@@ -98,7 +98,7 @@
       </div>
   
       <div #TABLE>
-        <table [dataSource]="interviewQuesdataSource" mat-table matSort #table class="details-table">
+        <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
           <ng-container matColumnDef="Interview_Question">
             <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
               mat-sort-header>
@@ -106,7 +106,7 @@
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
               mat-cell>
-              <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+              <p class="tbl-row-item">{{row.interview_QUESTION}}</p>
             </td>
           </ng-container>
   
@@ -115,45 +115,41 @@
           Category
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+              <p class="tbl-row-item">{{row.category_ID}}</p>
             </td>
           </ng-container>
          
-          <ng-container matColumnDef="Question_option">
+          <!-- <ng-container matColumnDef="Question_option">
             <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
           Question Options
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+              <p class="tbl-row-item">{{row.drpParent_Type}}</p>
             </td>
-          </ng-container>
+          </ng-container> -->
 
           <ng-container matColumnDef="Answer_Reference">
             <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
          Answer_Reference
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+              <p class="tbl-row-item">{{row.answer}}</p>
             </td>
           </ng-container>
          
   
         
-          <ng-container matColumnDef="Action">
-            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
-              Action
-            </th>
-            <td *matCellDef="let row" class="actions-cell" mat-cell>
-              <!-- -->
-              <button mat-icon-button color="primary">
-                <mat-icon class="icon-display">edit</mat-icon>
-              </button>
-  
-              <button mat-icon-button color="warn" >
-                <mat-icon>close</mat-icon>
-              </button>
-              <button mat-icon-button  >
-                <mat-icon class="icon-display">info</mat-icon>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let row" class="actions-cell">
+              <span mat-icon-button [matTooltip]="'Edit Rank'" class="action-img" (click)="saveNewInterviewQues(null,false,'Add New Interview Question')">
+                <img src="../../../../assets/img/pen.png" class="action-img" alt="Edit" />
+              </span>
+              <span mat-icon-button [matTooltip]="'Order Details'" class="action-img">
+                <img src="../../../../assets/img/detailimage.jpg" class="action-img" alt="Details" />
+              </span>
+              <button mat-icon-button (click)="changeStatus(row)" style="margin-right: 8px;">
+                <img src="../../../../assets/img/delete.png" class="action-img spaced-img" alt="Delete" />
               </button>
             </td>
           </ng-container>

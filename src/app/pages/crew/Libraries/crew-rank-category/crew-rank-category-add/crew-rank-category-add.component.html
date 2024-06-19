@@ -24,7 +24,7 @@
         <div fxLayout="column" fxLayout.gt-sm="row">
           <mat-form-field fxFlex appearance="fill">
             <mat-label>Category Name</mat-label>
-            <input formControlName="textCategory_Name" matInput placeholder="Search by Category Name" type="text" />
+            <input formControlName="rankCategory" matInput placeholder="Search by Category Name" type="text" />
           </mat-form-field>
         </div>
       
@@ -32,13 +32,9 @@
       </div>
     </form>
   
-    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
-  
-      <button mat-raised-button color="primary" class="save-btn">
-        Save 
-      </button>
-     
-  
-      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
-    </mat-dialog-actions>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="SaveCategory(true)" class="save-btn" [disabled]="!newCategoryFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary" (click)="SaveCategory(false)" class="save-btn" [disabled]="!newCategoryFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
   </div>

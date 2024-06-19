@@ -31,21 +31,21 @@
                 <mat-form-field appearance="fill">
                   <mat-label>Category</mat-label>
                   <mat-select formControlName="drpCategory" >
-                    <mat-option value="VMT">VMT</mat-option>
-                    <mat-option value="JuniorOfficer">Junior Officer</mat-option>
-                    <mat-option value="Rating">Rating</mat-option>
-                    <mat-option value="Supernumerary">Supernumerary</mat-option>
-                    <mat-option value="Security">Security</mat-option>
-                    <mat-option value="RidingGang">Riding Gang</mat-option>
+                    <mat-option value="0">VMT</mat-option>
+                    <mat-option value="1">Junior Officer</mat-option>
+                    <mat-option value="2">Rating</mat-option>
+                    <mat-option value="3">Supernumerary</mat-option>
+                    <mat-option value="4">Security</mat-option>
+                    <mat-option value="5">Riding Gang</mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Department</mat-label>
                         <mat-select formControlName="drpDepartment" >
-                        <mat-option value="Deck">Deck</mat-option>
-                        <mat-option value="Electrical">Electrical</mat-option>
-                        <mat-option value="Engine">Engine</mat-option>
-                        <mat-option value="Laundry">Laundry</mat-option>
+                        <mat-option value="0">Deck</mat-option>
+                        <mat-option value="1">Electrical</mat-option>
+                        <mat-option value="2">Engine</mat-option>
+                        <mat-option value="3">Laundry</mat-option>
                         </mat-select>
                   </mat-form-field>
             </div>
@@ -99,7 +99,7 @@
       
         <div fxLayout="row">
           <button mat-mini-fab color="primary" [matTooltip]="'Add Rank'"
-              class="add-approve-btn save-btn" (click)="saveNewRank(null,false)">
+              class="add-approve-btn save-btn" (click)="saveNewRank(null, false)">
               <mat-icon class="add-approve-btn-icon">add</mat-icon>
           </button>
           <span style="margin-top: 3px;
@@ -115,9 +115,78 @@
         </div>
              
       </div>
+
+      <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        
+       
+      
+       
+        <ng-container matColumnDef="vesselDepartmentID">
+          <th mat-header-cell *matHeaderCellDef> Vessel Department ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.vesselDepartmentID}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rankCategory">
+          <th mat-header-cell *matHeaderCellDef> Rank Category </th>
+          <td mat-cell *matCellDef="let element"> {{element.rankCategory}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rankName">
+          <th mat-header-cell *matHeaderCellDef> Rank Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.rankName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rankShortCode">
+          <th mat-header-cell *matHeaderCellDef> Rank Short Code </th>
+          <td mat-cell *matCellDef="let element"> {{element.rankShortCode}} </td>
+        </ng-container>
+        
+
+        
+        <ng-container matColumnDef="contractDuration">
+          <th mat-header-cell *matHeaderCellDef> Contract Duration </th>
+          <td mat-cell *matCellDef="let element"> {{element.contractDuration}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sortSequence">
+          <th mat-header-cell *matHeaderCellDef> Sort Sequence </th>
+          <td mat-cell *matCellDef="let element"> {{element.sortSequence}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Action</th>
+          <td mat-cell *matCellDef="let element" class="actions-cell">  
+            <span mat-icon-button  [matTooltip]="'Edit Rank'" class="action-img" (click)="saveNewRank(row,true)" >
+          <img src="../../../../assets/img/pen.png" class="action-img" alt="excel" />
+          </span>
+
+          <span mat-icon-button [matTooltip]="'Order Details'" class="action-img">
+            <img src="../../../../assets/img/detailimage.jpg"  class="action-img"   alt="excel" />
+          </span>
+
+
+        
+          <span mat-icon-button class="action-img-alignment action-img" (click)="deleteRow(14)">
+            <img src="../../../../assets/img/delete.png" class="action-img" alt="delete" />
+          </span>
+          
+          </td>
+        </ng-container>
+
+       
+
+       
+      
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table> -->
+      
   
-      <div #TABLE>
-        <table [dataSource]="crewRankdataSource" mat-table matSort #table class="details-table">
+       <div #TABLE>
+        <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
           <ng-container matColumnDef="Department">
             <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
               mat-sort-header>
@@ -125,7 +194,7 @@
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
               mat-cell>
-              <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+              <p class="tbl-row-item">{{ row.vesselDepartmentID }}</p>
             </td>
           </ng-container>
   
@@ -134,7 +203,7 @@
           Category
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+              <p class="tbl-row-item" >{{ row.rankCategory }} </p>
             </td>
           </ng-container>
          
@@ -143,7 +212,7 @@
           Rank
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+              <p class="tbl-row-item" >{{ row.rankName }}</p>
             </td>
           </ng-container>
 
@@ -152,7 +221,7 @@
           Rank Short Name
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+              <p class="tbl-row-item" >{{ row.rankShortCode }}</p>
             </td>
           </ng-container>
           <ng-container matColumnDef="Contract_Duration">
@@ -160,50 +229,59 @@
           Contract Duration (In Months)
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+              <p class="tbl-row-item" >{{ row.contractDuration }} </p>
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="Adjust_Sort_Order">
-            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
-          Adjust Sort Order
-            </th>
-            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
-            </td>
-          </ng-container>
+       
 
          
   
   
   
         
-          <ng-container matColumnDef="Action">
-            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
-              Action
-            </th>
-            <td *matCellDef="let row" class="actions-cell" mat-cell>
-              <!-- -->
-              <button mat-icon-button color="primary">
-                <mat-icon class="icon-display">edit</mat-icon>
-              </button>
+          <!-- <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action</th>
+            <td mat-cell *matCellDef="let element" class="actions-cell">  
+              <span mat-icon-button  [matTooltip]="'Edit Rank'" class="action-img" (click)="saveNewRank(row,true)" >
+            <img src="../../../../assets/img/pen.png" class="action-img" alt="excel" />
+            </span>
   
-              <button mat-icon-button color="warn" >
-                <mat-icon>close</mat-icon>
-              </button>
-              <button mat-icon-button  >
-                <mat-icon class="icon-display">info</mat-icon>
+            <span mat-icon-button [matTooltip]="'Order Details'" class="action-img">
+              <img src="../../../../assets/img/detailimage.jpg"  class="action-img"   alt="excel" />
+            </span>
+  
+  
+          
+            <span mat-icon-button class="action-img-alignment action-img" (click)="changeStatus(row)">
+              <img src="../../../../assets/img/delete.png" class="action-img" alt="delete" />
+            </span>
+            
+            </td>
+          </ng-container> -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let row" class="actions-cell">
+              <span mat-icon-button [matTooltip]="'Edit Rank'" class="action-img" (click)="saveNewRank(row, true)">
+                <img src="../../../../assets/img/pen.png" class="action-img" alt="Edit" />
+              </span>
+              <span mat-icon-button [matTooltip]="'Order Details'" class="action-img">
+                <img src="../../../../assets/img/detailimage.jpg" class="action-img" alt="Details" />
+              </span>
+              <button mat-icon-button (click)="changeStatus(row)" style="margin-right: 8px;">
+                <img src="../../../../assets/img/delete.png" class="action-img spaced-img" alt="Delete" />
               </button>
             </td>
           </ng-container>
   
           <tr *matHeaderRowDef="crewRankvisibleColumns" mat-header-row></tr>
-          <tr *matRowDef="let row; columns: crewRankvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr *matRowDef="let row; columns: crewRankvisibleColumns" class="clickable route-animations-rows" mat-row></tr>
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="9999">No data found</td>
           </tr>
         </table>
-      </div>
+     
+      </div> 
       <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
   
     </fury-page-layout-content>

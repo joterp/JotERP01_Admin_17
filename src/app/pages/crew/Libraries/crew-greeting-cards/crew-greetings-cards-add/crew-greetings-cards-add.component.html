@@ -1,0 +1,160 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>{{ modeltitle }}
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div>
+  -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Greeting Card</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+
+    <div>
+        <mat-dialog-content>
+            <form [formGroup]="newInterviewQuesFormGroup">
+                <div mat-dialog-container >
+                    
+                
+                    <!-- <div fxLayout="column" fxLayout.gt-sm="row" >
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Interview Question</mat-label>
+                            <textarea
+                            matInput
+                            formControlName="txtInterview_Ques"
+                            placeholder="Interview Questions"
+                            ></textarea>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div fxLayout="column" fxLayout.gt-sm="row" >
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Answer Reference</mat-label>
+                            <textarea
+                            matInput
+                            formControlName="txtAnswer_Reference"
+                            placeholder="Answer Reference"
+                            ></textarea>
+                        </mat-form-field>
+                    </div> -->
+        
+                    
+
+                    <div fxLayout="column" fxLayout.gt-sm="row" style="margin-top: 5px;">
+                        <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Card Type</mat-label>
+                        <mat-select formControlName="drpCard_Type">
+                            <mat-option value="0">Birthday</mat-option>
+                            <!-- <mat-option value="Electrical_Knowledge">01. General Electrical Knowledge</mat-option>
+                            <mat-option value="operation_Safety">01. Shipboard Operations and Safety</mat-option>
+                            <mat-option value="Shipboard_Operations">02. Shipboard Operations</mat-option>
+                            <mat-option value="Brief_debrief ">Brief debrief </mat-option> -->
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="upload-area" style="margin: 10px;">
+                      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                       
+                          <!-- <label style="margin-right: 10px;">Choose card</label> -->
+                          <div >
+                           
+                            <label style="padding-left: 3px;margin-right: 4px;">Chosse card
+                              <button type="button" mat-raised-button>
+                                <label class="drop-label" for="uploadFile1" style="margin-left: 10px;">
+                                  Select
+                                </label>
+                              </button>
+                              <input type="file" id="uploadFile1" style="opacity: 0;text-align: center;" name="uploadFile" accept=".png, .jpg, .jpeg, .gif" multiple />
+                            </label>
+                          </div>
+                       
+                      </div>
+                    </div>
+                    
+                      
+
+                      <div fxLayout="column" fxLayout.gt-sm="row"  style="margin-top:10px">
+                        <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Greeting Text</mat-label>
+                          <textarea
+                            matInput
+                            formControlName="txtGreeting_text"
+                            placeholder="Greeting"
+                          ></textarea>
+                        </mat-form-field>
+                    </div>
+                      
+                  
+                        <!-- <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                          <div *ngIf="attachment.length > 0" class="attach-file">
+                  
+                            <mat-list>
+                              <ul style="list-style-type: none; padding: 0;">
+                                <li *ngFor="let fileUrl of attachment" class="file-item">
+                                  <a [href]="getFileURL(fileUrl)" target="_blank" class="file-link">
+                                    {{fileUrl}}
+                                  </a>
+                                  <a (click)="DeleteFile(fileUrl)" class="delete-icon"><mat-icon>delete</mat-icon></a>
+                                </li>
+                              </ul>
+                            </mat-list>
+                          </div>
+                        </div> -->
+
+
+                    <!-- <div fxLayout="column" fxLayout.gt-sm="row" *ngIf="showUnitField" style="margin-top: 5px;">
+                        <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Grading</mat-label>
+                        <mat-select [(ngModel)]="selectedGradingOption" name="drpGrading">
+                            <mat-option value="Grade">Grade- 0 to 5</mat-option>
+                            <mat-option value="Satisfied_notsatisfied">Grade- Satisfied/Not Satisfied</mat-option>
+                            <mat-option value="Grade_Good">Grade - V.Good/Good/Average/B.Avg</mat-option>
+                            <mat-option value="Grade_Yes_No">Grade - Yes = 5, No = 0</mat-option>
+                            <mat-option value="Cabin_crew_grade">Cabin Crew Grade</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </div> -->
+
+                    
+                      
+                    
+
+                  
+
+                    
+                  
+                    
+        
+                    
+                    
+                    
+                </div>
+            </form>
+        </mat-dialog-content>
+    
+   
+       
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

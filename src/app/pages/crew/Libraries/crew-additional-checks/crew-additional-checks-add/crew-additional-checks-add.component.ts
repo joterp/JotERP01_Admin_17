@@ -11,12 +11,13 @@ import { CommonService } from 'src/app/providers/services/CommonService';
   encapsulation: ViewEncapsulation.None,
 })
 export class CREWAdditionalChecksAddComponent implements OnInit {
-  IsEdit: boolean;
+  [x: string]: any;
+  IsEdit: boolean = false;
+  EditData:any;
+  // IsEdit: boolean;
   newTraitDetailFormGroup: UntypedFormGroup;
   ErrorMessage: string = "";
   submit: boolean = false;
-  showUnitField = true;
-
 
   constructor(private dialogRef: MatDialogRef<CREWAdditionalChecksAddComponent>,
     private _fb: UntypedFormBuilder,
@@ -24,18 +25,24 @@ export class CREWAdditionalChecksAddComponent implements OnInit {
     private common: CommonService,
 
     @Inject(MAT_DIALOG_DATA) public data: any) {
-      this.newTraitDetailFormGroup = this._fb.group({
-        txtTraits_Check: ["", Validators.required],
-        radioNew_type_Trait: ["0", Validators.required],
-        drpUnit: [""],
-        radioNew_Crew_Ind: ["1", Validators.required],
-        txtRemarks: [""],
-      
-      
-      });
+     
      }
+     
 
   ngOnInit(): void {
+    this.newTraitDetailFormGroup = this._fb.group({
+      fields: ["", Validators.required],
+      trait_TYPE :[1, Validators.required],
+      trait_UNIT: [0, Validators.required],
+      show_IN_PROFILE: [0],
+      remark: [""],
+    
+    
+    });
+    
+    if (this.IsEdit) {
+      this.InsertFormValues();
+    }
    
     
   }
@@ -48,8 +55,93 @@ export class CREWAdditionalChecksAddComponent implements OnInit {
     const selectedValue = this.newTraitDetailFormGroup.get('radioNew_type_Trait').value;
     this.showUnitField = selectedValue === '0'; // Show when "Number" (value '0') is selected, hide for other values
   }
- 
   
+  SaveMannigFields(addMore: boolean = false) {
+    
+    this.ErrorMessage = "";
+    if (this.submit) {
+      return;
+    }
+    this.submit = true;
+    var data: object = {};
+
+    for (const elem in this.newTraitDetailFormGroup.value) {
+      data[elem] = this.newTraitDetailFormGroup.value[elem];
+    }
+
+    this.submit = false;
+    if (this.IsEdit) {
+      //     // Assuming you have a staticId variable for the static ID
+          this.SaveUpdate(data, "v1/ManningFields", this.EditData.id, addMore);
+        } else {
+          this.SaveInsert(data, "v1/ManningFields");
+        }
+  }
+  SaveInsert(data: object, path: string) {
+    this.api.PostDataService(path, data)
+      .subscribe(
+        (res: object) => {
+          this.submit = false;
+          console.log('SignnnnnnnnnnnnnnnnnResponse-----------------:', res);
+          if (Number.isInteger(res)) {
+            this.common.ShowMessage(
+              "Manning Fields Added Successfully ",
+              "notify-success",
+              3000
+            );
+          } else {
+            this.common.ShowMessage(res["Message"], "notify-error", 6000);
+          }
+        },
+        (error) => {
+          this.submit = false;
+          console.error('Error:', error);
+          this.common.ShowMessage(error["Message"], "notify-error", 6000);
+        }
+      );
+  }
+  
+  SaveUpdate(data: object, path: string, id: number, addMore: boolean = false) {
+    // Assuming you have a key for the static ID, like 'id'
+    data['id'] = id; // Use the 'id' parameter instead of 'number'
+    this.api.PutDataService(path, data).subscribe(
+      (res: any) => {
+        this.submit = false;
+        if (Number.isInteger(res)) {
+          if (addMore) {
+            this.newTraitDetailFormGroup.reset();
+            this.IsEdit = false;
+            this.common.callComponentMethod();
+          } else {
+            this.dialogRef.close(true);
+          }
+        } else {
+          this.common.ShowMessage(res.body['error'], "notify-error", 6000);
+        }
+      },
+      (error) => {
+        console.log(error['error']['error'], "errorrrrrrrrrrrrrrrr")
+        this.submit = false;
+        this.common.ShowMessage(error['error']['error']?'Mandatory fields cannot be empty':'Mandatory fields cannot be empty', "notify-error", 6000);
+      }
+    );
+}
+
+InsertFormValues() {
+  var fc: object = this.newTraitDetailFormGroup.controls;
+  var data = this.EditData;
+
+  fc["fields"].patchValue(data["fields"]);
+  fc["trait_TYPE"].patchValue(data["trait_TYPE"]);
+  fc["trait_UNIT"].patchValue(data["trait_UNIT"]);
+
+  
+  // fc["trait_TYPE"].patchValue(data["trait_TYPE"]);
+  fc["show_IN_PROFILE"].patchValue(data["show_IN_PROFILE"]);
+  fc["remark"].patchValue(data["remark"]);
+ 
+}
+
 
 
 }

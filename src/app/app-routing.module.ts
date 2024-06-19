@@ -60,7 +60,32 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
 
-
+  {
+    path: "ADMIN",
+    // data: { title: "Planner" },
+    component: LayoutComponent,
+    // canActivate: [AuthGuard],
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import("./pages/admin/admin.module").then((m) => m.AdminModule),
+      },
+    ],
+  },
+  {
+    path: "ACCOUNTS",
+    // data: { title: "Planner" },
+    component: LayoutComponent,
+    // canActivate: [AuthGuard],
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import("./pages/accounts/accounts.module").then((m) => m.AccountsModule),
+      },
+    ],
+  },
 
   {
     path: "PURC",
@@ -130,6 +155,8 @@ children: [
   },
 ]
 },
+  { path: 'admin', loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule) },
+  
 
 
 

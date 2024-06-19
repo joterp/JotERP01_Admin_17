@@ -37,7 +37,7 @@ const routes: Routes = [
   path:'Index', component:PURCNewIndexComponent
 },
 {  
-  path: 'PURC_ApproveSupplier', component: PURCApproveSupplierComponent 
+   path: 'PURC_ApproveSupplier', component: PURCApproveSupplierComponent ,
 },
 {  
   path: 'PURC_ApproveSupplierView', component: PURCApproveSupplierEditComponent 

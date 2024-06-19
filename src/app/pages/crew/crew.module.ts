@@ -139,6 +139,11 @@ import { CREWACCPBAllotmentsComponent } from './PortageBill/crew-acc-pb-allotmen
 import { CREWAllotmentIndexViewAndVerifyComponent } from './PortageBill/crew-acc-pb-allotment-index/crew-allotment-index-view-and-verify/crew-allotment-index-view-and-verify.component';
 import { CREWACCPBEarnDeductionIndexComponent } from './PortageBill/crew-acc-pb-earn-deduction-index/crew-acc-pb-earn-deduction-index.component';
 
+import { CrewGreetingCardsComponent } from './Libraries/crew-greeting-cards/crew-greeting-cards.component';
+import { CrewGreetingsCardsAddComponent } from './Libraries/crew-greeting-cards/crew-greetings-cards-add/crew-greetings-cards-add.component';
+import { CrewQuestionCategoryAddComponent } from './Libraries/crew-question-category/crew-question-category-add/crew-question-category-add.component';
+
+
 @NgModule({
   declarations: [
     CREWRankComponent,
@@ -272,6 +277,9 @@ import { CREWACCPBEarnDeductionIndexComponent } from './PortageBill/crew-acc-pb-
     CREWACCPBAllotmentsComponent,
     CREWAllotmentIndexViewAndVerifyComponent,
     CREWACCPBEarnDeductionIndexComponent,
+    CrewGreetingCardsComponent,
+    CrewGreetingsCardsAddComponent,
+    CrewQuestionCategoryAddComponent,
      
   ],
 

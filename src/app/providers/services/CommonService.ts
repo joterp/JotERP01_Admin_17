@@ -1,12 +1,19 @@
 import { ElementRef, Injectable, ViewChild } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import * as moment from "moment";
+import { Subject } from "rxjs";
 import * as XLSX from "xlsx";
 
 @Injectable({
   providedIn: "root",
 })
 export class CommonService {
+  private componentMethodCallSource = new Subject<any>();
+  componentMethodCalled$ = this.componentMethodCallSource.asObservable();
+  
+  callComponentMethod() {
+    this.componentMethodCallSource.next();
+  }
   @ViewChild("TABLE") table: ElementRef;
   constructor(private snackbar: MatSnackBar) {}
 
