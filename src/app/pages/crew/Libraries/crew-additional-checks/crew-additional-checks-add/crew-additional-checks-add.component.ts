@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from 'src/app/providers/services/ApiService';
 import { CommonService } from 'src/app/providers/services/CommonService';
@@ -18,11 +18,13 @@ export class CREWAdditionalChecksAddComponent implements OnInit {
   newTraitDetailFormGroup: UntypedFormGroup;
   ErrorMessage: string = "";
   submit: boolean = false;
+  
 
   constructor(private dialogRef: MatDialogRef<CREWAdditionalChecksAddComponent>,
     private _fb: UntypedFormBuilder,
     private api: ApiService,
     private common: CommonService,
+    private fb: FormBuilder,
 
     @Inject(MAT_DIALOG_DATA) public data: any) {
      
@@ -32,8 +34,8 @@ export class CREWAdditionalChecksAddComponent implements OnInit {
   ngOnInit(): void {
     this.newTraitDetailFormGroup = this._fb.group({
       fields: ["", Validators.required],
-      trait_TYPE :[1, Validators.required],
-      trait_UNIT: [0, Validators.required],
+      trait_TYPE :[1],
+      trait_UNIT: [0],
       show_IN_PROFILE: [0],
       remark: [""],
     
@@ -68,6 +70,9 @@ export class CREWAdditionalChecksAddComponent implements OnInit {
     for (const elem in this.newTraitDetailFormGroup.value) {
       data[elem] = this.newTraitDetailFormGroup.value[elem];
     }
+
+        // // Convert trait_TYPE to integer
+        // data.trait_TYPE = parseInt(data.trait_TYPE, 10);
 
     this.submit = false;
     if (this.IsEdit) {

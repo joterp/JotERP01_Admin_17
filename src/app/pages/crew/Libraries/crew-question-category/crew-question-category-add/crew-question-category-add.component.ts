@@ -107,6 +107,7 @@ export class CrewQuestionCategoryAddComponent {
           } else {
             this.dialogRef.close(true);
           }
+          this.common.ShowMessage('Category updated successfully', "notify-success", 6000);
         } else {
           this.common.ShowMessage(res.body['error'], "notify-error", 6000);
         }

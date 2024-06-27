@@ -4,16 +4,44 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from 'src/app/providers/services/ApiService';
 import { CommonService } from 'src/app/providers/services/CommonService';
+import { NGX_MAT_DATE_FORMATS, NgxMatDateAdapter, NgxMatDateFormats } from '@angular-material-components/datetime-picker';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { CustomNgxDatetimeAdapter } from 'src/app/pages/Survey_Certificate/CustomNgxDatetimeAdapter';
+import { NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular-material-components/moment-adapter';
+
+const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
+  parse: {
+    dateInput: "DD MMM YYYY HH:mm",
+  },
+  display: {
+    dateInput: "DD MMM YYYY HH:mm",
+    monthYearLabel: "MMM YYYY HH:mm",
+    dateA11yLabel: "DD MMM YYYY HH:mm",
+    monthYearA11yLabel: "MMMM YYYY HH:mm",
+  },
+
+}
 
 @Component({
   selector: 'fury-admin-lib-vessels-add',
   templateUrl: './admin-lib-vessels-add.component.html',
-  styleUrl: './admin-lib-vessels-add.component.scss'
+  styleUrl: './admin-lib-vessels-add.component.scss',
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NgxMatDateAdapter,
+      useClass: CustomNgxDatetimeAdapter,
+      deps: [MAT_DATE_LOCALE, NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+
+    { provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS },
+  ],
 })
 export class AdminLibVesselsAddComponent {
   [x: string]: any;
   IsEdit: boolean = false;
   EditData:any;
+  selectedFileName: string = '';
   // IsEdit: boolean;
   newvesselFormGroup: UntypedFormGroup;
   ErrorMessage: string = "";
@@ -31,8 +59,39 @@ export class AdminLibVesselsAddComponent {
     console.log("Editdataaaaaaaaaaaaaaa-------------------------------------------",this.IsEdit)
     console.log(this.EditData,"this.data---------------->>>>>>>>>>>>>>>>>>")
     this.newvesselFormGroup = this._fb.group({
+      // Vessel_Manager: ["0", Validators.required],
+      // Department: ["", Validators.required],
+      vessel_Name:["", Validators.required],
+      Vessel_Owner: ["0", Validators.required],
       Vessel_Manager: ["0", Validators.required],
-      Department: ["", Validators.required],
+      Vessel_Group_Manager: ["0", Validators.required],
+      Vessel_Flag: ["0", Validators.required],
+      Port_of_Registry: ["0", Validators.required],
+      Vessel_Type: ["0", Validators.required],
+      Fleet_Name: ["0", Validators.required],
+      short_Name:["", Validators.required],
+      call_sign:[""],
+      IMO_Number:["", Validators.required],
+      MMSI_Number:["", Validators.required],
+      takeover_date:["", Validators.required],
+      handover_date:[""],
+      Email_1:["", Validators.required],
+      Email_2:[""],
+	  Onboard_email:[""],
+	  phone_1:[""],
+	  phone_2:[""],
+      min_CTM:[""],
+      Vessel_Currency:[""],
+	  sister_vessel_of:["0"], 
+      is_vessel: ['yes'],
+      email_enabled: ['yes'],
+      suspend_sync_flag: ['yes'],
+      imp_exp_onbd: ['yes'],
+      manage_PB: ['yes'],
+      fax:[""],
+      telex:[""]
+
+
      
 
     });
@@ -43,6 +102,19 @@ export class AdminLibVesselsAddComponent {
 
   
   }
+    
+	onFileSelected(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files && inputElement.files.length > 0) {
+      this.selectedFileName = inputElement.files[0].name;
+    } else {
+      this.selectedFileName = '';
+    }
+  }
+  removeUploadedFileadditem(): void {
+    this.selectedFileName = null; // Reset the selectedFileNameCatalogue
+  }
+    
   CloseModal() {
     this.dialogRef.close(true);
   }

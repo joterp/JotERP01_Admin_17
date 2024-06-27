@@ -27,6 +27,7 @@ import { PURCTacitRelationComponent } from './Library/purc-tacit-relation/purc-t
 import { PURCLocationComponent } from './Library/purc-location/purc-location.component';
 import { PURCUnitComponent } from './Library/purc-unit/purc-unit.component';
 import { PURCAddITEMTEMPLATEComponent } from './Library/purc-add-item-template/purc-add-item-template.component';
+import { PURCDepartmentComponent } from './Library/purc-department/purc-department.component';
 // import { PURCUnitEditComponent } from './purc-unit/purc-unit-edit/purc-unit-edit.component';
 
 const routes: Routes = [
@@ -77,6 +78,10 @@ const routes: Routes = [
 {  
   path: 'Library/PURC_UnitPacking', component:PURCUnitComponent
 },
+{  
+  path: 'Library/PURC_Department', component:PURCDepartmentComponent
+},
+
 
 
 

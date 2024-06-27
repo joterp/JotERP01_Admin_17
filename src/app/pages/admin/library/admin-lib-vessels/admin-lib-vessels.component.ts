@@ -109,7 +109,7 @@ export class AdminLibVesselsComponent {
 
   saveVessel(data: object, IsEdit: boolean) {
     const dialogRef = this.dialog.open(AdminLibVesselsAddComponent, {
-      width: '75%',
+      width: '65%',
       maxHeight: '90%',
       disableClose: true,
     });

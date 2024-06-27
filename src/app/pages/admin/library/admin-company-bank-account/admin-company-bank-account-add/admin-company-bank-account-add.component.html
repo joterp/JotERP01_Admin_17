@@ -1,0 +1,138 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add new Bank Details</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <mat-dialog-content>
+        <form [formGroup]="newbankDetailsFormGroup">
+            <div mat-dialog-container style="padding: 10px;">
+              
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Company Name</mat-label>
+                    <mat-select  formControlName="Company_Name">
+                        <mat-option value="0">Azure Wave Shipping</mat-option>
+                        <!-- <mat-option value="1">Brazil</mat-option>
+                        <mat-option value="2">China</mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Bank Name</mat-label>
+                    <input formControlName="Bank_Name" matInput placeholder="Bank Name" type="text" />
+                  </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Bank Short Name</mat-label>
+                      <input formControlName="Bank_Short_Name" matInput placeholder="Bank Short Name" type="text" />
+                    </mat-form-field>
+                  </div>
+
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Account Number</mat-label>
+                      <input formControlName="Account_Number" matInput placeholder="Account Number" type="text" />
+                    </mat-form-field>
+                  </div>
+
+                  
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Currency</mat-label>
+                      <mat-select  formControlName="Currency">
+                          <mat-option value="0">AED</mat-option>
+                          <!-- <mat-option value="1">Brazil</mat-option>
+                          <mat-option value="2">China</mat-option> -->
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Country</mat-label>
+                      <mat-select  formControlName="Country">
+                          <mat-option value="0">India</mat-option>
+                          <!-- <mat-option value="1">Brazil</mat-option>
+                          <mat-option value="2">China</mat-option> -->
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>City</mat-label>
+                      <mat-select  formControlName="City">
+                          <mat-option value="0">Mumbai</mat-option>
+                          <!-- <mat-option value="1">Brazil</mat-option>
+                          <mat-option value="2">China</mat-option> -->
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Bank Address</mat-label>
+                        <textarea matInput formControlName="Bank_Address" placeholder="Bank Address"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Swift Code</mat-label>
+                      <input formControlName="Swift_Code" matInput placeholder="Swift Code" type="text" />
+                    </mat-form-field>
+                  </div>
+
+
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Remarks</mat-label>
+                        <textarea matInput formControlName="Remarks" placeholder="Remarks"></textarea>
+                    </mat-form-field>
+                </div>
+                  
+               
+               
+              
+            </div>
+          </form>
+    </mat-dialog-content>
+    
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newbankDetailsFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newbankDetailsFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+  </div><!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+ 

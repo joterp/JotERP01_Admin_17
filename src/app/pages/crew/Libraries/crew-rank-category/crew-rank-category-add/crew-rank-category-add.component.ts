@@ -111,6 +111,7 @@ export class CREWRankCategoryAddComponent implements OnInit {
           } else {
             this.dialogRef.close(true);
           }
+          this.common.ShowMessage('Rank Category updated successfully', "notify-success", 6000);
         } else {
           this.common.ShowMessage(res.body['error'], "notify-error", 6000);
         }

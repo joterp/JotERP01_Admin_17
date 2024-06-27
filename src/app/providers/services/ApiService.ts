@@ -13,19 +13,19 @@ export class ApiService {
   }
 
  private url = 'http://localhost:5062/graphql/';
-  private token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE4NzY4OTUyLCJleHAiOjE3MTg3OTg5NTIsImlhdCI6MTcxODc2ODk1MiwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.tE-PlW5N3NN-kUwsJcrYewI0afy2kHtx1L2YCRgQi_M';
-  prod_url = "https://magentis2.joterp.online/";
+  private token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE5NDY2OTc0LCJleHAiOjE3MTk0OTY5NzMsImlhdCI6MTcxOTQ2Njk3NCwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.4Bf0O2PLNZQtdOEIQTWapKa59HfLWM2cP_F3JPpkjg8';
+  // prod_url = "https://magentis2.joterp.online/";
   // API_URL: string = 'https://magentis2.joterp.online/api/';
   production = false;
   host = window.location.protocol + "//" + window.location.host;
   API_HOST: string = window.location.host.includes("localhost")
     ? "http://localhost:3003/upload/ctm/"
-    : `${this.prod_url}upload/ctm/`;
+    : `${this.host}upload/ctm/`;
 
   API_URL: string =
     !this.production && window.location.host.includes("localhost")
       ? "http://localhost:5062/api/"
-      : `${this.prod_url}api/`;
+      : `${this.host}api/`;
   USER = localStorage.getItem("AdminData");
 
   // for json server NEW ADDED
@@ -146,7 +146,7 @@ export class ApiService {
     
     // Creating headers
     const headers = new HttpHeaders({
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE4NzY4OTUyLCJleHAiOjE3MTg3OTg5NTIsImlhdCI6MTcxODc2ODk1MiwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.tE-PlW5N3NN-kUwsJcrYewI0afy2kHtx1L2YCRgQi_M"
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE5NDY2OTc0LCJleHAiOjE3MTk0OTY5NzMsImlhdCI6MTcxOTQ2Njk3NCwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.4Bf0O2PLNZQtdOEIQTWapKa59HfLWM2cP_F3JPpkjg8"
     });
   
     // Setting up request options
@@ -163,7 +163,7 @@ export class ApiService {
     const url = this.API_URL + path;
       // Creating headers
       const headers = new HttpHeaders({
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE4NzY4OTUyLCJleHAiOjE3MTg3OTg5NTIsImlhdCI6MTcxODc2ODk1MiwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.tE-PlW5N3NN-kUwsJcrYewI0afy2kHtx1L2YCRgQi_M"
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE5NDY2OTc0LCJleHAiOjE3MTk0OTY5NzMsImlhdCI6MTcxOTQ2Njk3NCwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.4Bf0O2PLNZQtdOEIQTWapKa59HfLWM2cP_F3JPpkjg8"
       });
     
       // Setting up request options
@@ -180,7 +180,7 @@ export class ApiService {
     }
     // Creating headers
     const headers = new HttpHeaders({
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE4NzY4OTUyLCJleHAiOjE3MTg3OTg5NTIsImlhdCI6MTcxODc2ODk1MiwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.tE-PlW5N3NN-kUwsJcrYewI0afy2kHtx1L2YCRgQi_M"
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE5NDY2OTc0LCJleHAiOjE3MTk0OTY5NzMsImlhdCI6MTcxOTQ2Njk3NCwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.4Bf0O2PLNZQtdOEIQTWapKa59HfLWM2cP_F3JPpkjg8"
     });
   
     // Setting up request options
@@ -230,7 +230,7 @@ export class ApiService {
     
     // Creating headers
     const headers = new HttpHeaders({
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE4NzY4OTUyLCJleHAiOjE3MTg3OTg5NTIsImlhdCI6MTcxODc2ODk1MiwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.tE-PlW5N3NN-kUwsJcrYewI0afy2kHtx1L2YCRgQi_M"
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE5NDY2OTc0LCJleHAiOjE3MTk0OTY5NzMsImlhdCI6MTcxOTQ2Njk3NCwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.4Bf0O2PLNZQtdOEIQTWapKa59HfLWM2cP_F3JPpkjg8"
     });
   
     // Setting up request options
@@ -260,7 +260,7 @@ export class ApiService {
 
     // Creating headers
     const headers = new HttpHeaders({
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE4NzY4OTUyLCJleHAiOjE3MTg3OTg5NTIsImlhdCI6MTcxODc2ODk1MiwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.tE-PlW5N3NN-kUwsJcrYewI0afy2kHtx1L2YCRgQi_M"
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE5NDY2OTc0LCJleHAiOjE3MTk0OTY5NzMsImlhdCI6MTcxOTQ2Njk3NCwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.4Bf0O2PLNZQtdOEIQTWapKa59HfLWM2cP_F3JPpkjg8"
     });
 
     // Setting up request options

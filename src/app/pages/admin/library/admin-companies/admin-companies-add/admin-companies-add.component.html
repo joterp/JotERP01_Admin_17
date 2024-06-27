@@ -1,0 +1,273 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Company</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <mat-dialog-content>
+      <form [formGroup]="newCountryFormGroup">
+        <div mat-dialog-container style="padding: 10px;">
+          <div fxLayout="row" fxLayoutGap="5px">
+              <div fxFlex="50">
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Company Name</mat-label>
+                        <input formControlName="Company_Name" matInput placeholder="Company Name" type="text" />
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Country Short Name</mat-label>
+                        <input formControlName="Country_Short_Name" matInput placeholder="Country Short Name" type="text" />
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Company Type</mat-label>
+                        <mat-select  formControlName="Company_Type" >
+                            <mat-option value="0">Select Company Type</mat-option>
+                            <mat-option value="1">Parent</mat-option>
+                            <!-- <mat-option value="2">China</mat-option> -->
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+  
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Country Reg No.</mat-label>
+                        <input formControlName="Company_Reg_No" matInput placeholder="Company Reg No" type="text" />
+                      </mat-form-field>
+                    </div>
+  
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" [ngStyle]="{ 'margin-bottom': '8px' }">
+                      <mat-form-field fxFlex>
+                        <mat-label>Date of Incorporation</mat-label>
+                        <input matInput [ngxMatDatetimePicker]="date_Incorporation" placeholder="DD MMM YYYY HH:mm"
+                          formControlName="date_Incorporation">
+        
+                        <mat-datepicker-toggle matSuffix [for]="date_Incorporation"></mat-datepicker-toggle>
+                     
+                        <ngx-mat-datetime-picker #date_Incorporation></ngx-mat-datetime-picker>
+        
+                      </mat-form-field>
+                    </div>
+        
+                   
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Address</mat-label>
+                          <textarea matInput formControlName="Address" placeholder="Address"></textarea>
+                      </mat-form-field>
+                  </div>
+  
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Country</mat-label>
+                        <mat-select  formControlName="Country" >
+                            <mat-option value="0">India</mat-option>
+                            <mat-option value="1">Brazil</mat-option>
+                            <mat-option value="2">China</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>City</mat-label>
+                        <mat-select  formControlName="City" >
+                            <mat-option value="0">Mumbai</mat-option>
+                            <!-- <mat-option value="1">Brazil</mat-option>
+                            <mat-option value="2">China</mat-option> -->
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Currency</mat-label>
+                        <mat-select  formControlName="Currency" >
+                            <mat-option value="0">AED</mat-option>
+                            <mat-option value="1">AOA</mat-option>
+                            <mat-option value="2">INR</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+              </div>
+              <div fxFlex="50">
+  
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Parent Company</mat-label>
+                        <mat-select  formControlName="Parent_Company" >
+                            <mat-option value="0">Aqua Link Marine Pte Ltd</mat-option>
+                            <!-- <mat-option value="1">Brazil</mat-option>
+                            <mat-option value="2">China</mat-option> -->
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Relation with Parent</mat-label>
+                        <mat-select  formControlName="Relation_with_Parent" >
+                            <mat-option value="0">Vessel Manager</mat-option>
+                            <!-- <mat-option value="1">Brazil</mat-option>
+                            <mat-option value="2">China</mat-option> -->
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                   
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Company Timezone</mat-label>
+                        <input formControlName="Company_Time_Zone" matInput placeholder="Company Timezone" type="text" />
+                        <mat-hint style="cursor: pointer;color: blue;" (click)="saveTimezone(null,false)">Select Timezone</mat-hint>
+                      </mat-form-field>
+                     
+                     
+                      
+                    </div>
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Working Hours From</mat-label>
+                          <input formControlName="Working_hours_from" matInput placeholder="Working Hours From" type="text" />
+                      </mat-form-field>
+                  </div>
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                          <mat-label>Working Hours To</mat-label>
+                          <input formControlName="Working_hours_to" matInput placeholder="Working Hours To" type="text" />
+                      </mat-form-field>
+                  </div>
+  
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                      <mat-form-field fxFlex appearance="fill">
+                          <mat-label>PIN Code</mat-label>
+                         
+                          <input formControlName="PIN_Code" matInput placeholder="PIN Code" type="text" />
+                      </mat-form-field>
+                  </div>
+  
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <p>
+                      Company Logo 
+                    </p>
+                    </div>
+  
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin: 40px 80px;">
+  
+  
+                      <!-- <mat-button>Upload</mat-button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+        
+                      <div>
+                        <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+                          accept=".pdf,.doc,.docx,.jpg,.png" />
+        
+                        <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName"
+                          mat-stroked-button>
+                          <label for="imageupload">
+                            Upload Picture</label>
+                        </button>
+                      </div>
+        
+                      <div *ngIf="selectedFileName" fxFlex>
+                        <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                        <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+                      </div>
+        
+                    </div>
+                  
+                   
+              </div>
+          </div>
+  
+          <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Email 1</mat-label>
+                <input formControlName="Email_1" matInput placeholder="Email 1" type="text" />
+            </mat-form-field>
+  
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Email 2</mat-label>
+              <input formControlName="Email_2" matInput placeholder="Email 2" type="text" />
+          </mat-form-field>
+        </div>
+  
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+          <mat-form-field fxFlex appearance="fill">
+              <mat-label>Phone Number 1</mat-label>
+              <input formControlName="Phone_Number_1" matInput placeholder="Phone Number 1" type="text" />
+          </mat-form-field>
+  
+          <mat-form-field fxFlex appearance="fill" fxLayoutGap="5px">
+            <mat-label>Phone Number 2</mat-label>
+            <input formControlName="Phone_Number_2" matInput placeholder="Phone Number 2" type="text" />
+        </mat-form-field>
+  
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Phone Number 3</mat-label>
+            <input formControlName="Phone_Number_3" matInput placeholder="Phone Number 3" type="text" />
+        </mat-form-field>
+      </div>
+  
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+        <mat-form-field fxFlex appearance="fill">
+            <mat-label>Fax No.1 </mat-label>
+            <input formControlName="Fax_No_1" matInput placeholder="Fax No 1" type="text" />
+        </mat-form-field>
+  
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Fax No. 2</mat-label>
+          <input formControlName="Fax_No_2" matInput placeholder="Fax No 2" type="text" />
+      </mat-form-field>
+    </div>
+  
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <mat-form-field fxFlex appearance="fill">
+        <mat-label>Show In HRM</mat-label>
+        <mat-select  formControlName="Show_In_HRM" >
+            <mat-option value="0">Yes</mat-option>
+            <mat-option value="1">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div fxFlex>
+
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+         
+  
+        
+        
+          
+        </div>
+      </form>
+    </mat-dialog-content>
+  
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="SaveCategory(true)" class="save-btn" [disabled]="!newCountryFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary" (click)="SaveCategory(false)" class="save-btn" [disabled]="!newCountryFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+  </div>

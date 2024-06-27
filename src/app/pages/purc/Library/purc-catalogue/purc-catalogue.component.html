@@ -35,9 +35,7 @@
             <mat-form-field appearance="fill">
               <mat-label>Template Type</mat-label>
               <mat-select formControlName="drpTemplate_Type" >
-                <mat-option *ngFor="let template of TemplateType" [value]="template.value">
-                  {{ template.viewValue }}
-                </mat-option>
+                
               </mat-select>
             </mat-form-field>
 
@@ -97,7 +95,7 @@
     <mat-card>
       <mat-card-content fxLayout="row">
         
-        <mat-card class="sp-card-view" *ngIf="CatalogueTable">
+        <mat-card class="sp-card-view" >
           <mat-card-header fxLayout="column">
             <div
               fxLayout="row"
@@ -215,7 +213,7 @@
                   Critical
                 </th>
                 <td *matCellDef="let row" [ngStyle]="{ 'white-space': 'initial' }" class="actions-cell" mat-cell>
-                  <p class="tbl-row-item" *ngIf="row.chkCritical_Machinery" style="color: red;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y</p>
+                  <p class="tbl-row-item" style="color: red;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y</p>
 
                 </td>
               </ng-container>
@@ -274,7 +272,7 @@
               ></tr>
             </table>
             </div>
-            <div *ngIf="dataSourcecatalogue.data.length == 0">
+            <div >
               <p style="text-align: center">records not found</p>
             </div>
             <mat-paginator
@@ -287,7 +285,7 @@
         </mat-card>
     
     
-         <mat-card class="sp-card-view1" *ngIf="SubCatalogueTable">
+         <mat-card class="sp-card-view1" >
           <mat-card-header fxLayout="column">
             <div
               fxLayout="row"
@@ -445,7 +443,7 @@
               </table>
             </div>
 
-            <div *ngIf="dataSourcesubcatalogue.data.length == 0">
+            <div >
               <p style="text-align: center">records not found</p>
             </div>
             <mat-paginator
@@ -458,7 +456,7 @@
         </mat-card>
     
      
-        <mat-card class="sp-card-view2" *ngIf="AddNewTemTable">
+        <mat-card class="sp-card-view2" >
           <mat-card-header fxLayout="column">
             <div
             fxLayout="row"
@@ -563,7 +561,7 @@
                   Critical
                 </th>
                 <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
-                  <p class="tbl-row-item" *ngIf="row.chkcritical" style="color: red;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y</p>
+                  <p class="tbl-row-item" style="color: red;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y</p>
                 </td>
               </ng-container>
             
@@ -636,7 +634,7 @@
             </table>
 
           </div>
-            <div *ngIf="dataSourcenewitem.data.length == 0">
+            <div >
               <p style="text-align: center">records not found</p>
             </div>
             <mat-paginator

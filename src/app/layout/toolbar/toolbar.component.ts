@@ -555,6 +555,24 @@ else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
     this.router.navigate(['HSEQ/Library/VesselInspectionLibrary'])
    } 
 
+
+   else if(buttonName === 'Admin_Lib_Companies'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_Companies'])
+   } 
+   else if(buttonName === 'Admin_Lib_Companyoffice'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_Companyoffice'])
+   }
+
+   else if(buttonName === 'Admin_Lib_CompanyBankAccounts'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_CompanyBankAccounts'])
+   }
+   else if(buttonName === 'Admin_Lib_Fleets'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_Fleets'])
+   }
+   else if(buttonName === 'Admin_Lib_VesselFlag'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_VesselFlag'])
+   }
+
    else if(buttonName === 'Admin_Lib_Countries'){
     this.router.navigate(['ADMIN/library/Admin_Lib_Countries'])
    } 
@@ -564,6 +582,10 @@ else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
    else if(buttonName === 'Admin_Lib_Airports'){
     this.router.navigate(['ADMIN/library/Admin_Lib_Airports'])
    } 
+   else if(buttonName === 'Admin_Lib_Office_Departments'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_Office_Departments'])
+   }
+
    else if(buttonName === 'Admin_Lib_Ports'){
     this.router.navigate(['ADMIN/library/Admin_Lib_Ports'])
    } 
@@ -572,11 +594,14 @@ else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
    } 
    else if(buttonName === 'Admin_Lib_Vessel'){
     this.router.navigate(['ADMIN/library/Admin_Lib_Vessel'])
-   } 
+   }  
+   else if(buttonName === 'Admin_Lib_System_Parameters'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_System_Parameters'])
+   }
 
    else if(buttonName === 'Accounts_Lib_Currency'){
     this.router.navigate(['ACCOUNTS/libraries/Accounts_Lib_Currency'])
-   }
+   } 
   }
   
 }

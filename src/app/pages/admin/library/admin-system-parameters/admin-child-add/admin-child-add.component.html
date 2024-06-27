@@ -1,0 +1,85 @@
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+    style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+    <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add Child</span>
+    <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<div>
+    <mat-dialog-content>
+        <form [formGroup]="newAlarmFormGroup">
+            <div mat-dialog-container style="padding: 10px;">
+              
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Module Name</mat-label>
+                      <input formControlName="Module_Name" matInput placeholder="Module Name" type="text" />
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Parent Name</mat-label>
+                    <input formControlName="Parent_Name" matInput placeholder="Parent Name" type="text" />
+                  </mat-form-field>
+                </div>
+              
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Table Name</mat-label>
+                      <mat-select formControlName="drpTable_Name">
+                        <mat-option value="kgCmS">kgCmS</mat-option>
+                        <mat-option value="degC">degC</mat-option>
+                        <mat-option value="Units">Units</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Parameter Name</mat-label>
+                    <input formControlName="parameter_name" matInput placeholder="Parameter Name" type="text" />
+                  </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Parameter Short Name</mat-label>
+                    <input formControlName="parameter_short_name" matInput placeholder="Parameter Short Name" type="text" />
+                  </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Remarks</mat-label>
+                  <textarea
+                    matInput
+                    formControlName="remarks"
+                    placeholder=""
+                  ></textarea>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-checkbox color="accent">
+                  Is Client Specific
+                </mat-checkbox>
+              </div>
+              
+              
+             
+            </div>
+       
+          </form>
+    </mat-dialog-content>
+   
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

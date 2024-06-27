@@ -110,13 +110,7 @@ export class PURCCatalogueComponent implements OnInit {
   selectednewitemModuleData = null;
   checkedmarked: string;
 
-  TemplateType = [
-    {value:'temp-0', viewValue:'Management'},
-    {value:'temp-1', viewValue:'Repairs'},
-    {value:'temp-2', viewValue:'Services Rendered'},
-    {value:'temp-3', viewValue:'Spare Parts'},
-    {value:'temp-4', viewValue:'Stores'}
-  ]
+ 
   CatalogueTable:boolean=true;
   SubCatalogueTable:boolean=false;
   AddNewTemTable:boolean=false;
@@ -159,9 +153,9 @@ export class PURCCatalogueComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.FetchAllCatalogue();
-    this.FetchAllSubCatalogue();
-    this.FetchAllItem();
+    // this.FetchAllCatalogue();
+    // this.FetchAllSubCatalogue();
+    // this.FetchAllItem();
 
     this.routeTitle = this.titleService.getTitle();
     this.dataSourcecatalogue = new MatTableDataSource();
@@ -186,190 +180,181 @@ export class PURCCatalogueComponent implements OnInit {
     this.dataSourcesubcatalogue.paginator = this.paginator2;
     this.dataSourcenewitem.paginator = this.paginator3;
   }
-FetchAllCatalogue(url = 'catalogue'){
-  this.api.GetDataService1(url).subscribe((res:any)=>{
-   this.AllCatalogue = res;
-   this.dataSourcecatalogue.data = this.AllCatalogue;
-  })
-}
-  FetchAllSubCatalogue(url = 'subcatalogue'){
-    this.api.GetDataService1(url).subscribe((res:any)=>{
-      
-      this.AllSubCatalogueData = res;
-      
-      this.dataSourcesubcatalogue.data = this.AllSubCatalogueData;
-      
-    })
-  }
+// FetchAllCatalogue(url = 'catalogue'){
+//   this.api.GetDataService1(url).subscribe((res:any)=>{
+//    this.AllCatalogue = res;
+//    this.dataSourcecatalogue.data = this.AllCatalogue;
+//   })
+// }
 
-  FetchAllItem(url = 'addnewitem'){
-    this.api.GetDataService1(url).subscribe((res:any)=>{
+
+  // FetchAllItem(url = 'addnewitem'){
+  //   this.api.GetDataService1(url).subscribe((res:any)=>{
       
-      this.AllItemData = res;
+  //     this.AllItemData = res;
 
-      this.dataSourcenewitem.data = this.AllItemData;
-      console.log(this.dataSourcenewitem.data,"this.dataSourcenewitem.data")
-    })
-  }
+  //     this.dataSourcenewitem.data = this.AllItemData;
+  //     console.log(this.dataSourcenewitem.data,"this.dataSourcenewitem.data")
+  //   })
+  // }
 
-  deleteCatalogue(id:number){
-    this.api.DeleteDataService1('catalogue',id).subscribe((res)=> {
-      this.common.ShowMessage(
-        "Catalogue deleted successfully",
-        "notify-success",
-        3000
-      );
-      this.FetchAllCatalogue();
-    },
-    (error) => {
-      console.error('Error during delete:', error);
-    })
-  }
+  // deleteCatalogue(id:number){
+  //   this.api.DeleteDataService1('catalogue',id).subscribe((res)=> {
+  //     this.common.ShowMessage(
+  //       "Catalogue deleted successfully",
+  //       "notify-success",
+  //       3000
+  //     );
+  //     this.FetchAllCatalogue();
+  //   },
+  //   (error) => {
+  //     console.error('Error during delete:', error);
+  //   })
+  // }
 
-  deleteSubCatalogue(id:number) {
-    this.api.DeleteDataService1('subcatalogue',id).subscribe(
-      (response) => {
-        this.common.ShowMessage(
-          "SubCatalogue deleted successfully",
-          "notify-success",
-          3000
-        );
-        this.FetchAllSubCatalogue();
-      },
-      (error) => {
-        console.error('Error during delete:', error);
-      }
-    );
-  }
-  deleteAddItem(id:number) {
-    this.api.DeleteDataService1('addnewitem',id).subscribe(
-      (response) => { 
-        this.common.ShowMessage(
-          "SubCatalogue deleted successfully",
-          "notify-success",
-          3000
-        );
-        this.FetchAllItem();
-      },
-      (error) => {
-        console.error('Error during delete:', error);
-      }
-    );
-  }
+  // deleteSubCatalogue(id:number) {
+  //   this.api.DeleteDataService1('subcatalogue',id).subscribe(
+  //     (response) => {
+  //       this.common.ShowMessage(
+  //         "SubCatalogue deleted successfully",
+  //         "notify-success",
+  //         3000
+  //       );
+  //       this.FetchAllSubCatalogue();
+  //     },
+  //     (error) => {
+  //       console.error('Error during delete:', error);
+  //     }
+  //   );
+  // }
+  // deleteAddItem(id:number) {
+  //   this.api.DeleteDataService1('addnewitem',id).subscribe(
+  //     (response) => { 
+  //       this.common.ShowMessage(
+  //         "SubCatalogue deleted successfully",
+  //         "notify-success",
+  //         3000
+  //       );
+  //       this.FetchAllItem();
+  //     },
+  //     (error) => {
+  //       console.error('Error during delete:', error);
+  //     }
+  //   );
+  // }
 
 
   // ngOnDestroy() {
   //   this.sidenavService.setCollapsed(false);
   // }
 
-  selectSP(data: any, type: string) {
-    console.log(data, "data");
-    sessionStorage.setItem("section", type);
+  // selectSP(data: any, type: string) {
+  //   console.log(data, "data");
+  //   sessionStorage.setItem("section", type);
   
-    if (type === "catalogue") {
-      this.CatalogueTable = true;
-      this.SubCatalogueTable = true;
+  //   if (type === "catalogue") {
+  //     this.CatalogueTable = true;
+  //     this.SubCatalogueTable = true;
   
-      if (this.AddNewTemTable) {
-        // If AddNewTemTable was previously true, keep it true
-        this.AddNewTemTable = true;
-      } else {
-        // If AddNewTemTable was not previously true, set it to false
-        this.AddNewTemTable = false;
-      }
-    } else if (type === "subcatalogue") {
-      this.CatalogueTable = true;
-      this.SubCatalogueTable = true;
-      this.AddNewTemTable = true;
-    } else if (type === "additem") {
-      this.CatalogueTable = true;
-      this.SubCatalogueTable = true;
-      this.AddNewTemTable = true;
-    }
-  }
+  //     if (this.AddNewTemTable) {
+  //       // If AddNewTemTable was previously true, keep it true
+  //       this.AddNewTemTable = true;
+  //     } else {
+  //       // If AddNewTemTable was not previously true, set it to false
+  //       this.AddNewTemTable = false;
+  //     }
+  //   } else if (type === "subcatalogue") {
+  //     this.CatalogueTable = true;
+  //     this.SubCatalogueTable = true;
+  //     this.AddNewTemTable = true;
+  //   } else if (type === "additem") {
+  //     this.CatalogueTable = true;
+  //     this.SubCatalogueTable = true;
+  //     this.AddNewTemTable = true;
+  //   }
+  // }
   
   SaveData(data: object, IsEdit: boolean = false, title: string, type: string) {
-    let section = sessionStorage.getItem("section");
+    // let section = sessionStorage.getItem("section");
   
-    if (
-      this.selectedCatalogueModuleData &&
-      Object.keys(this.selectedCatalogueModuleData).length == 0
-    )
-      this.selectedCatalogueModuleData = null;
-    if (
-      this.selectedSubCatalogueModuleData &&
-      Object.keys(this.selectedSubCatalogueModuleData).length == 0
-    )
-      this.selectedSubCatalogueModuleData = null;
-    if (
-      this.selectednewitemModuleData &&
-      Object.keys(this.selectednewitemModuleData).length == 0
-    )
-      this.selectednewitemModuleData = null;
+    // if (
+    //   this.selectedCatalogueModuleData &&
+    //   Object.keys(this.selectedCatalogueModuleData).length == 0
+    // )
+    //   this.selectedCatalogueModuleData = null;
+    // if (
+    //   this.selectedSubCatalogueModuleData &&
+    //   Object.keys(this.selectedSubCatalogueModuleData).length == 0
+    // )
+    //   this.selectedSubCatalogueModuleData = null;
+    // if (
+    //   this.selectednewitemModuleData &&
+    //   Object.keys(this.selectednewitemModuleData).length == 0
+    // )
+    //   this.selectednewitemModuleData = null;
  
-    if (
-      (section == "module" && ["child", "grand", "great"].includes(type)) ||
-      (type == "parent" && !this.selectedCatalogueModuleData)
-    ) {
-      this.common.ShowMessage(
-        "Invalid Section selection",
-        "notify-error",
-        6000
-      );
-    } else if (
-      (section == "parent" && ["grand", "great"].includes(type)) ||
-      (type == "parent" && !this.selectedSubCatalogueModuleData && !this.selectedCatalogueModuleData)
-    ) {
-      this.common.ShowMessage(
-        "Invalid Section selection",
-        "notify-error",
-        6000
-      );
-    } else if (
-      (section == "child" && ["great"].includes(type)) ||
-      (type == "child" &&
-        (!this.selectedSubCatalogueModuleData || !this.selectedCatalogueModuleData))
-    ) {
-      this.common.ShowMessage(
-        "Invalid Section selection",
-        "notify-error",
-        6000
-      );
-    } else if (
-      section == "grand" &&
-      type == "grand" &&
+    // if (
+    //   (section == "module" && ["child", "grand", "great"].includes(type)) ||
+    //   (type == "parent" && !this.selectedCatalogueModuleData)
+    // ) {
+    //   this.common.ShowMessage(
+    //     "Invalid Section selection",
+    //     "notify-error",
+    //     6000
+    //   );
+    // } else if (
+    //   (section == "parent" && ["grand", "great"].includes(type)) ||
+    //   (type == "parent" && !this.selectedSubCatalogueModuleData && !this.selectedCatalogueModuleData)
+    // ) {
+    //   this.common.ShowMessage(
+    //     "Invalid Section selection",
+    //     "notify-error",
+    //     6000
+    //   );
+    // } else if (
+    //   (section == "child" && ["great"].includes(type)) ||
+    //   (type == "child" &&
+    //     (!this.selectedSubCatalogueModuleData || !this.selectedCatalogueModuleData))
+    // ) {
+    //   this.common.ShowMessage(
+    //     "Invalid Section selection",
+    //     "notify-error",
+    //     6000
+    //   );
+    // } else if (
+    //   section == "grand" &&
+    //   type == "grand" &&
     
-      this.selectednewitemModuleData &&
-      this.selectedSubCatalogueModuleData &&
-      this.selectedCatalogueModuleData
-    ) {
-      this.common.ShowMessage(
-        "Invalid Section selection",
-        "notify-error",
-        6000
-      );
-    } else {
-      console.log("Update modul data", data);
-      if (type == "catalogue") {
-        this.selectedCatalogueModuleData = data;
-        this.selectedSubCatalogueModuleData = null;
-        this.selectednewitemModuleData = null;
+    //   this.selectednewitemModuleData &&
+    //   this.selectedSubCatalogueModuleData &&
+    //   this.selectedCatalogueModuleData
+    // ) {
+    //   this.common.ShowMessage(
+    //     "Invalid Section selection",
+    //     "notify-error",
+    //     6000
+    //   );
+    // } else {
+    //   console.log("Update modul data", data);
+    //   if (type == "catalogue") {
+    //     this.selectedCatalogueModuleData = data;
+    //     this.selectedSubCatalogueModuleData = null;
+    //     this.selectednewitemModuleData = null;
       
-      } else if (type == "subcatalogue") {
-        this.selectedSubCatalogueModuleData = data;
-        this.selectedCatalogueModuleData = null;
-        this.selectednewitemModuleData = null;
-      
-      } else if (type == "additem") {
-        this.selectednewitemModuleData = data;
-        this.selectedCatalogueModuleData = null;
-        this.selectednewitemModuleData = null;
-      } 
-      if (!this.CatalogueFilterForm.get('drpTemplate_Type').value && !IsEdit) {
-        alert("Please select Template type to add catalogue")
+    //   } else if (type == "subcatalogue") {
+    //     this.selectedSubCatalogueModuleData = data;
+    //     this.selectedCatalogueModuleData = null;
+    //     this.selectednewitemModuleData = null;
+    //   } else if (type == "additem") {
+    //     this.selectednewitemModuleData = data;
+    //     this.selectedCatalogueModuleData = null;
+    //     this.selectednewitemModuleData = null;
+    //   } 
+      // if (!this.CatalogueFilterForm.get('drpTemplate_Type').value && !IsEdit) {
+      //   alert("Please select Template type to add catalogue")
         
-        return; // Exit the function if Template Type is not selected
-      }
+      //   return; // Exit the function if Template Type is not selected
+      // }
 
       const dialogRef = this.dialog.open(PURCCatalogueEditComponent, {
         width: "50%",
@@ -388,96 +373,96 @@ FetchAllCatalogue(url = 'catalogue'){
 
 
       dialogRef.afterClosed().subscribe((res: any) => {
-        if (res) {
-          this.FetchAllCatalogue();
-          this.FetchAllSubCatalogue();
-          this.FetchAllItem();
-          console.log("afterClosed", res);
-          if (IsEdit) {
-            res.selected = data["selected"];
-            this.AllData = this.AllData.map((a: any, index: number) => {
-              if (a["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
-                a = res;
-              }
-              return a;
-            });
-            if (type == "module") {
-              var dt = JSON.parse(JSON.stringify(this.moduleDataSource.data));
-              dt.forEach((d: any, index: number) => {
-                if (d["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
-                  dt[index] = res;
-                }
-              });
-              this.moduleDataSource.data = dt;
-            }
-            if (type == "parent") {
-              var dt = JSON.parse(JSON.stringify(this.parentDataSource.data));
-              dt.forEach((d: any, index: number) => {
-                if (d["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
-                  dt[index] = res;
-                }
-              });
-              this.parentDataSource.data = dt;
-            }
-            if (type == "child") {
-              var dt = JSON.parse(JSON.stringify(this.childDataSource.data));
-              dt.forEach((d: any, index: number) => {
-                if (d["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
-                  dt[index] = res;
-                }
-              });
-              this.childDataSource.data = dt;
-            }
-            if (type == "grand") {
-              var dt = JSON.parse(JSON.stringify(this.grandDataSource.data));
-              dt.forEach((d: any, index: number) => {
-                if (d["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
-                  dt[index] = res;
-                }
-              });
-              this.grandDataSource.data = dt;
-            }
-            if (type == "great") {
-              var dt = JSON.parse(JSON.stringify(this.greatDataSource.data));
-              dt.forEach((d: any, index: number) => {
-                if (d["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
-                  dt[index] = res;
-                }
-              });
-              this.greatDataSource.data = dt;
-            }
-          } else {
-            this.AllData.push(res);
-            if (type == "module") {
-              var dt = JSON.parse(JSON.stringify(this.moduleDataSource.data));
-              dt.push(res);
-              this.moduleDataSource.data = dt;
-            }
-            if (type == "parent") {
-              var dt = JSON.parse(JSON.stringify(this.parentDataSource.data));
-              dt.push(res);
-              this.parentDataSource.data = dt;
-            }
-            if (type == "child") {
-              var dt = JSON.parse(JSON.stringify(this.childDataSource.data));
-              dt.push(res);
-              this.childDataSource.data = dt;
-            }
-            if (type == "grand") {
-              var dt = JSON.parse(JSON.stringify(this.grandDataSource.data));
-              dt.push(res);
-              this.grandDataSource.data = dt;
-            }
-            if (type == "great") {
-              var dt = JSON.parse(JSON.stringify(this.greatDataSource.data));
-              dt.push(res);
-              this.greatDataSource.data = dt;
-            }
-          }
-        }
+      //   if (res) {
+      //     this.FetchAllCatalogue();
+      //     this.FetchAllSubCatalogue();
+      //     this.FetchAllItem();
+      //     console.log("afterClosed", res);
+      //     if (IsEdit) {
+      //       res.selected = data["selected"];
+      //       this.AllData = this.AllData.map((a: any, index: number) => {
+      //         if (a["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
+      //           a = res;
+      //         }
+      //         return a;
+      //       });
+      //       if (type == "module") {
+      //         var dt = JSON.parse(JSON.stringify(this.moduleDataSource.data));
+      //         dt.forEach((d: any, index: number) => {
+      //           if (d["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
+      //             dt[index] = res;
+      //           }
+      //         });
+      //         this.moduleDataSource.data = dt;
+      //       }
+      //       if (type == "parent") {
+      //         var dt = JSON.parse(JSON.stringify(this.parentDataSource.data));
+      //         dt.forEach((d: any, index: number) => {
+      //           if (d["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
+      //             dt[index] = res;
+      //           }
+      //         });
+      //         this.parentDataSource.data = dt;
+      //       }
+      //       if (type == "child") {
+      //         var dt = JSON.parse(JSON.stringify(this.childDataSource.data));
+      //         dt.forEach((d: any, index: number) => {
+      //           if (d["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
+      //             dt[index] = res;
+      //           }
+      //         });
+      //         this.childDataSource.data = dt;
+      //       }
+      //       if (type == "grand") {
+      //         var dt = JSON.parse(JSON.stringify(this.grandDataSource.data));
+      //         dt.forEach((d: any, index: number) => {
+      //           if (d["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
+      //             dt[index] = res;
+      //           }
+      //         });
+      //         this.grandDataSource.data = dt;
+      //       }
+      //       if (type == "great") {
+      //         var dt = JSON.parse(JSON.stringify(this.greatDataSource.data));
+      //         dt.forEach((d: any, index: number) => {
+      //           if (d["PARAMETER_GUID"] == res["PARAMETER_GUID"]) {
+      //             dt[index] = res;
+      //           }
+      //         });
+      //         this.greatDataSource.data = dt;
+      //       }
+      //     } else {
+      //       this.AllData.push(res);
+      //       if (type == "module") {
+      //         var dt = JSON.parse(JSON.stringify(this.moduleDataSource.data));
+      //         dt.push(res);
+      //         this.moduleDataSource.data = dt;
+      //       }
+      //       if (type == "parent") {
+      //         var dt = JSON.parse(JSON.stringify(this.parentDataSource.data));
+      //         dt.push(res);
+      //         this.parentDataSource.data = dt;
+      //       }
+      //       if (type == "child") {
+      //         var dt = JSON.parse(JSON.stringify(this.childDataSource.data));
+      //         dt.push(res);
+      //         this.childDataSource.data = dt;
+      //       }
+      //       if (type == "grand") {
+      //         var dt = JSON.parse(JSON.stringify(this.grandDataSource.data));
+      //         dt.push(res);
+      //         this.grandDataSource.data = dt;
+      //       }
+      //       if (type == "great") {
+      //         var dt = JSON.parse(JSON.stringify(this.greatDataSource.data));
+      //         dt.push(res);
+      //         this.greatDataSource.data = dt;
+      //       }
+      //     }
+      //   }
       });
     }
-  }
+  
   clearFilter() {
     this.CatalogueFilterForm.reset();
 

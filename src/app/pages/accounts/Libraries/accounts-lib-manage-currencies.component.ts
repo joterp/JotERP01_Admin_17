@@ -44,17 +44,16 @@ export class AccountsLibManageCurrenciesComponent {
     private fb: UntypedFormBuilder,
     private http: HttpClient
   ) {
-    this.titleService.setTitle('Rank Category');
+    this.titleService.setTitle('Manage Currency');
     this.dataSource = new MatTableDataSource();
   }
 
   @Input()
   columns: ListColumn[] = [
-    { property: 'Airport_Name', visible: true, name: 'Airport_Name' },
-    { property: 'Muncipality', visible: true, name: 'Muncipality' },
+    { property: 'Short_Code', visible: true, name: 'Short_Code' },
     { property: 'Country', visible: true, name: 'Country' },
-    { property: 'GPS_Code', visible: true, name: 'GPS_Code' },
-    { property: 'IAIA_Code', visible: true, name: 'IAIA_Code' },
+    { property: 'Country', visible: true, name: 'Country' },
+    { property: 'Description', visible: true, name: 'Description' },
     { property: 'action', visible: true, name: 'action' },
   ] as ListColumn[];
 
@@ -66,10 +65,8 @@ export class AccountsLibManageCurrenciesComponent {
     // this.fetchrankCategory();
     this.sidenavService.setCollapsed(true);
     this.currencyFormGroup = this.fb.group({
-      Airport_name: [""],
-      Muncipality: [""],
-      GPS_Code: [""],
-      IAIA_Code: [""],
+      Short_Code: [""],
+      Description: [""],
       drpCountry: [""],
       drpStatus: ['1']
     });

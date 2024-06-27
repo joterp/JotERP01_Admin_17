@@ -8,143 +8,349 @@
         <mat-icon (click)="CloseModal()">close</mat-icon>
       </span>
   </div> -->
-  <div mat-dialog-title
-  cdkDrag
-  cdkDragRootElement=".cdk-overlay-pane"
-  cdkDragHandle
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
   style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
- <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add Vessel </span>
- <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
-   <mat-icon>close</mat-icon>
- </button>
+  <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add Vessel</span>
+  <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>
-  <div>
-    <mat-dialog-content>
-        <form [formGroup]="newvesselFormGroup">
-            <div mat-dialog-container style="padding: 10px;">
-                <div fxLayout="row" fxLayoutGap="5px">
-                    <div fxFlex="50">
-                        <div fxLayout="column" fxLayout.gt-sm="row">
-                            <mat-form-field fxFlex appearance="fill">
-                              <mat-label>Vessel Manager</mat-label>
-                              <mat-select  formControlName="Vessel_Manager" >
-                                  <mat-option value="0">Ltd</mat-option>
-                                  <!-- <mat-option value="1">Brazil</mat-option>
+<div>
+  <mat-dialog-content>
+    <form [formGroup]="newvesselFormGroup">
+      <div mat-dialog-container style="padding: 10px;">
+        <div fxLayout="row" fxLayoutGap="5px">
+          <div fxFlex="50">
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel Name</mat-label>
+                <input formControlName="vessel_Name" matInput placeholder="Vessel Name" type="text" />
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel Owner</mat-label>
+                <mat-select formControlName="Vessel_Owner">
+                  <mat-option value="0">Pte Ltd</mat-option>
+                  <!-- <mat-option value="1">Brazil</mat-option>
                                   <mat-option value="2">China</mat-option> -->
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-                          <div fxLayout="column" fxLayout.gt-sm="row">
-                            <mat-form-field fxFlex appearance="fill">
-                              <mat-label>Vessel Manager</mat-label>
-                              <mat-select  formControlName="Vessel_Manager" >
-                                  <mat-option value="0">Ltd</mat-option>
-                                  <!-- <mat-option value="1">Brazil</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel Manager</mat-label>
+                <mat-select formControlName="Vessel_Manager">
+                  <mat-option value="0">Ltd</mat-option>
+                  <!-- <mat-option value="1">Brazil</mat-option>
                                   <mat-option value="2">China</mat-option> -->
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-                          <div fxLayout="column" fxLayout.gt-sm="row">
-                            <mat-form-field fxFlex appearance="fill">
-                              <mat-label>Vessel Manager</mat-label>
-                              <mat-select  formControlName="Vessel_Manager" >
-                                  <mat-option value="0">Ltd</mat-option>
-                                  <!-- <mat-option value="1">Brazil</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel Group Manager</mat-label>
+                <mat-select formControlName="Vessel_Group_Manager">
+                  <mat-option value="0">Ltd</mat-option>
+                  <!-- <mat-option value="1">Brazil</mat-option>
                                   <mat-option value="2">China</mat-option> -->
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-                          <div fxLayout="column" fxLayout.gt-sm="row">
-                            <mat-form-field fxFlex appearance="fill">
-                              <mat-label>Vessel Manager</mat-label>
-                              <mat-select  formControlName="Vessel_Manager" >
-                                  <mat-option value="0">Ltd</mat-option>
-                                  <!-- <mat-option value="1">Brazil</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel Flag</mat-label>
+                <mat-select formControlName="Vessel_Flag">
+                  <mat-option value="0">Ltd</mat-option>
+                  <!-- <mat-option value="1">Brazil</mat-option>
                                   <mat-option value="2">China</mat-option> -->
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-                          <div fxLayout="column" fxLayout.gt-sm="row">
-                            <mat-form-field fxFlex appearance="fill">
-                              <mat-label>Vessel Manager</mat-label>
-                              <mat-select  formControlName="Vessel_Manager" >
-                                  <mat-option value="0">Ltd</mat-option>
-                                  <!-- <mat-option value="1">Brazil</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Port of Registry</mat-label>
+                <mat-select formControlName="Port_of_Registry">
+                  <mat-option value="0">Ltd</mat-option>
+                  <!-- <mat-option value="1">Brazil</mat-option>
                                   <mat-option value="2">China</mat-option> -->
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-                          <div fxLayout="column" fxLayout.gt-sm="row">
-                            <mat-form-field fxFlex appearance="fill">
-                              <mat-label>Vessel Manager</mat-label>
-                              <mat-select  formControlName="Vessel_Manager" >
-                                  <mat-option value="0">Ltd</mat-option>
-                                  <!-- <mat-option value="1">Brazil</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel Type</mat-label>
+                <mat-select formControlName="Vessel_Type">
+                  <mat-option value="0">Ltd</mat-option>
+                  <!-- <mat-option value="1">Brazil</mat-option>
                                   <mat-option value="2">China</mat-option> -->
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-                          <div fxLayout="column" fxLayout.gt-sm="row">
-                            <mat-form-field fxFlex appearance="fill">
-                              <mat-label>Vessel Manager</mat-label>
-                              <mat-select  formControlName="Vessel_Manager" >
-                                  <mat-option value="0">Ltd</mat-option>
-                                  <!-- <mat-option value="1">Brazil</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Fleet Name</mat-label>
+                <mat-select formControlName="Fleet_Name">
+                  <mat-option value="0">Ltd</mat-option>
+                  <!-- <mat-option value="1">Brazil</mat-option>
                                   <mat-option value="2">China</mat-option> -->
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-                          <div fxLayout="column" fxLayout.gt-sm="row">
-                            <mat-form-field fxFlex appearance="fill">
-                              <mat-label>Vessel Manager</mat-label>
-                              <mat-select  formControlName="Vessel_Manager" >
-                                  <mat-option value="0">Ltd</mat-option>
-                                  <!-- <mat-option value="1">Brazil</mat-option>
-                                  <mat-option value="2">China</mat-option> -->
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-                          <div fxLayout="column" fxLayout.gt-sm="row">
-                            <mat-form-field fxFlex appearance="fill">
-                              <mat-label>Vessel Manager</mat-label>
-                              <mat-select  formControlName="Vessel_Manager" >
-                                  <mat-option value="0">Ltd</mat-option>
-                                  <!-- <mat-option value="1">Brazil</mat-option>
-                                  <mat-option value="2">China</mat-option> -->
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-                    </div>
-                    <div fxFlex="50">
-                      <span>
-                        <img src="../../../../assets/img/vessel.jpeg" class="vessel-img" alt="excel" style="margin-right: 10px;
-                        margin-bottom: -4px;"/>
-                      </span>
-                        
-                    </div>
-                </div>
-              
-      
-             
-      
-      
-      
-              <!-- <div fxLayout="column" fxLayout.gt-sm="row">
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Short Name</mat-label>
+                <input formControlName="short_Name" matInput placeholder="Short Name" type="text" />
+                <mat-hint style="color: red;">Vessel Short Name should be four characters</mat-hint>
+              </mat-form-field>
+            </div>
+
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Call Sign</mat-label>
+                <input formControlName="call_sign" matInput placeholder="Call Sign" type="text" />
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>IMO Number</mat-label>
+                <input formControlName="IMO_Number" matInput placeholder="IMO Number" type="text" />
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>MMSI Number</mat-label>
+                <input formControlName="MMSI_Number" matInput placeholder="MMSI Number" type="text" />
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" [ngStyle]="{ 'margin-bottom': '8px' }">
+              <mat-form-field fxFlex>
+                <mat-label>TakeOver Date</mat-label>
+                <input matInput [ngxMatDatetimePicker]="takeover_date" placeholder="DD MMM YYYY HH:mm"
+                  formControlName="takeover_date">
+
+                <mat-datepicker-toggle matSuffix [for]="takeover_date"></mat-datepicker-toggle>
+                <mat-hint>DD MMM YYYY HH:mm</mat-hint>
+                <ngx-mat-datetime-picker #takeover_date></ngx-mat-datetime-picker>
+                <!-- <mat-error *ngIf="newvesselFormGroup.get('takeover_date').hasError('required')">Date is required</mat-error> -->
+
+              </mat-form-field>
+            </div>
+
+
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" [ngStyle]="{ 'margin-bottom': '8px' }">
+              <mat-form-field fxFlex>
+                <mat-label>HandOver Date</mat-label>
+                <input matInput [ngxMatDatetimePicker]="handover_date" placeholder="DD MMM YYYY HH:mm"
+                  formControlName="handover_date">
+
+                <mat-datepicker-toggle matSuffix [for]="handover_date"></mat-datepicker-toggle>
+                <mat-hint>DD MMM YYYY HH:mm</mat-hint>
+                <ngx-mat-datetime-picker #handover_date></ngx-mat-datetime-picker>
+
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Email 1</mat-label>
+                <input formControlName="Email_1" matInput placeholder="Email 1" type="email" />
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Email 2</mat-label>
+                <input formControlName="Email_2" matInput placeholder="Email 2" type="email" />
+              </mat-form-field>
+            </div>
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Onboard Email Outlook Profile</mat-label>
+                <input formControlName="Onboard_email" matInput placeholder="Onboard Email Outlook Profile"
+                  type="email" />
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Phone 1</mat-label>
+                <input formControlName="phone_1" matInput placeholder="Phone 1" type="email" />
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Phone 2</mat-label>
+                <input formControlName="phone_2" matInput placeholder="Phone 2" type="email" />
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div fxFlex="50">
+            <span>
+              <img src="../../../../assets/img/vessel2.jpg" class="vessel-img" alt="excel" style="margin-right: 10px;
+                        margin-bottom: -4px;" />
+            </span>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin: 156px 80px;">
+
+
+              <!-- <mat-button>Upload</mat-button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+
+              <div>
+                <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+                  accept=".pdf,.doc,.docx,.jpg,.png" />
+
+                <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName"
+                  mat-stroked-button>
+                  <label for="imageupload">
+                    Upload Picture</label>
+                </button>
+              </div>
+
+              <div *ngIf="selectedFileName" fxFlex>
+                <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+              </div>
+
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Min CTM</mat-label>
+                <input formControlName="min_CTM" matInput placeholder="Short Name" type="text" />
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Vessel Currency</mat-label>
+                <mat-select formControlName="Vessel_Currency">
+                  <mat-option value="0">Ltd</mat-option>
+                  <mat-option value="1">Brazil</mat-option>
+                  <mat-option value="2">China</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Sister Vessel Of</mat-label>
+                <mat-select formControlName="sister_vessel_of">
+                  <mat-option value="0">Ltd</mat-option>
+                  <mat-option value="1">Brazil</mat-option>
+                  <mat-option value="2">China</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="16px" style="margin-top:84px">
+              <mat-label style="width: 150px;text-align: center;padding:10px">Is Vessel ?</mat-label>
+              <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="is_vessel">
+                <mat-radio-button value="yes" [checked]="newvesselFormGroup.get('is_vessel').value == 'yes'">
+                  <label [class.active-label]="newvesselFormGroup.get('is_vessel').value == 'yes'">Yes</label>
+                </mat-radio-button>
+                <mat-radio-button value="no" [checked]="newvesselFormGroup.get('is_vessel').value == 'no'">
+                  <label [class.active-label]="newvesselFormGroup.get('is_vessel').value == 'no'">No</label>
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div fxLayout="row" fxLayoutGap="16px">
+              <mat-label style="width: 150px;text-align: center;padding:10px">Email Enabled ?</mat-label>
+              <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="email_enabled">
+                <mat-radio-button value="yes" [checked]="newvesselFormGroup.get('email_enabled').value == 'yes'">
+                  <label [class.active-label]="newvesselFormGroup.get('email_enabled').value == 'yes'">Yes</label>
+                </mat-radio-button>
+                <mat-radio-button value="no" [checked]="newvesselFormGroup.get('email_enabled').value == 'no'">
+                  <label [class.active-label]="newvesselFormGroup.get('email_enabled').value == 'no'">No</label>
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div fxLayout="row" fxLayoutGap="16px">
+              <mat-label style="width: 150px;text-align: center;padding:10px">Suspend Sync Flag ?</mat-label>
+              <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="suspend_sync_flag">
+                <mat-radio-button value="yes" [checked]="newvesselFormGroup.get('suspend_sync_flag').value == 'yes'">
+                  <label [class.active-label]="newvesselFormGroup.get('suspend_sync_flag').value == 'yes'">Yes</label>
+                </mat-radio-button>
+                <mat-radio-button value="no" [checked]="newvesselFormGroup.get('suspend_sync_flag').value == 'no'">
+                  <label [class.active-label]="newvesselFormGroup.get('suspend_sync_flag').value == 'no'">No</label>
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div fxLayout="row" fxLayoutGap="16px">
+              <mat-label style="width: 150px;text-align: center;padding:10px">Is Manual Imp/Exp Onbd</mat-label>
+              <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="imp_exp_onbd">
+                <mat-radio-button value="yes" [checked]="newvesselFormGroup.get('imp_exp_onbd').value == 'yes'">
+                  <label [class.active-label]="newvesselFormGroup.get('imp_exp_onbd').value == 'yes'">Yes</label>
+                </mat-radio-button>
+                <mat-radio-button value="no" [checked]="newvesselFormGroup.get('imp_exp_onbd').value == 'no'">
+                  <label [class.active-label]="newvesselFormGroup.get('imp_exp_onbd').value == 'no'">No</label>
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div fxLayout="row" fxLayoutGap="16px">
+              <mat-label style="width: 150px;text-align: center;padding:10px">Ship to manage portage bill</mat-label>
+              <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="manage_PB">
+                <mat-radio-button value="yes" [checked]="newvesselFormGroup.get('manage_PB').value == 'yes'">
+                  <label [class.active-label]="newvesselFormGroup.get('manage_PB').value == 'yes'">Yes</label>
+                </mat-radio-button>
+                <mat-radio-button value="no" [checked]="newvesselFormGroup.get('manage_PB').value == 'no'">
+                  <label [class.active-label]="newvesselFormGroup.get('manage_PB').value == 'no'">No</label>
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Fax</mat-label>
+                <input formControlName="fax" matInput placeholder="Fax" type="text" />
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <mat-form-field fxFlex appearance="fill">
+                <mat-label>Telex</mat-label>
+                <input formControlName="telex" matInput placeholder="Telex" type="text" />
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+
+
+        <!-- <div fxLayout="column" fxLayout.gt-sm="row">
                   <mat-form-field fxFlex appearance="fill">
                     <mat-label>Department</mat-label>
                     <input formControlName="Department" matInput placeholder="Department" type="text" />
                   </mat-form-field>
                 </div> -->
-               
-              
-            </div>
-          </form>
-    </mat-dialog-content>
-    
-  
-    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
-      <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newvesselFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
-    <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newvesselFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+
+
+      </div>
+    </form>
+  </mat-dialog-content>
+
+
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!newvesselFormGroup.valid && !IsEdit">SAVE &
+      ADD NEW</button>
+    <button mat-raised-button color="primary" class="save-btn" [disabled]="!newvesselFormGroup.valid && !IsEdit">SAVE &
+      CLOSE</button>
     <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
   </mat-dialog-actions>
-  </div>
+</div>

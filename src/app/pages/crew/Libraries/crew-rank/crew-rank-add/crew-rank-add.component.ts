@@ -119,6 +119,7 @@ SaveUpdate(data: object, path: string, id: number, addMore: boolean = false) {
         } else {
           this.dialogRef.close(true);
         }
+        this.common.ShowMessage('Rank updated successfully', "notify-success", 6000);
       } else {
         this.common.ShowMessage(res.body['error'], "notify-error", 6000);
       }

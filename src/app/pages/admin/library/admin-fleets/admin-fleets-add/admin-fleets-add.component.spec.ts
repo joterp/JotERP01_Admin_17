@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CountriesComponent } from './countries.component';
+import { AdminFleetsAddComponent } from './admin-fleets-add.component';
 
-describe('CountriesComponent', () => {
-  let component: CountriesComponent;
-  let fixture: ComponentFixture<CountriesComponent>;
+describe('AdminFleetsAddComponent', () => {
+  let component: AdminFleetsAddComponent;
+  let fixture: ComponentFixture<AdminFleetsAddComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CountriesComponent]
+      declarations: [AdminFleetsAddComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CountriesComponent);
+    fixture = TestBed.createComponent(AdminFleetsAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

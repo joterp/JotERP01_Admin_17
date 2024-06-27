@@ -31,6 +31,7 @@ import { DragDirective } from "./dragDrop.directive";
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from "@angular/material/form-field";
 import { CommonComponentModule } from "./common-component/common-component";
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig, MatSnackBarModule} from '@angular/material/snack-bar';
+import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig, MatSnackBarModule} fro
   exports: [DragDirective],
   bootstrap: [AppComponent],
   providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     AuthGuard,
     LoginAuthGuard,
     {
