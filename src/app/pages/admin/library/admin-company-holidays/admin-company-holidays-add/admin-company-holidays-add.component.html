@@ -1,0 +1,92 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Office Holiday</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <mat-dialog-content>
+        <form [formGroup]="newCompanyFormGroup">
+            <div mat-dialog-container style="padding: 20px;">
+            
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Holiday Description</mat-label>
+                      <input formControlName="Holiday_Description" matInput placeholder="Holiday Description" type="text" />
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" [ngStyle]="{ 'margin-bottom': '8px' }">
+                  <mat-form-field fxFlex>
+                    <mat-label>Date of Incorporation</mat-label>
+                    <input matInput [ngxMatDatetimePicker]="date_Incorporation" placeholder="DD MMM YYYY HH:mm"
+                      formControlName="date_Incorporation">
+    
+                    <mat-datepicker-toggle matSuffix [for]="date_Incorporation"></mat-datepicker-toggle>
+                 
+                    <ngx-mat-datetime-picker #date_Incorporation></ngx-mat-datetime-picker>
+    
+                  </mat-form-field>
+                </div>
+
+
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Year</mat-label>
+                    <mat-select  formControlName="Year">
+                        <mat-option value="0">2024</mat-option>
+                        <mat-option value="1">Brazil</mat-option>
+                        <mat-option value="2">China</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                
+                
+        <!-- dialog-content.component.html -->
+<div fxLayout="column" fxLayout.gt-sm="row">
+    <mat-form-field  fxFlex appearance="fill">
+        <mat-label>Company Office</mat-label>
+        <mat-select #select multiple formControlName="Company_Office">
+            <div class="select-all">
+                <mat-checkbox [(ngModel)]="allSelected" [ngModelOptions]="{standalone: true}"
+                    (change)="toggleAllSelection()">Select Company Office</mat-checkbox>
+            </div>
+            <mat-option (click)="optionClick()" *ngFor="let vsl of Vessel" [value]="vsl.value">
+                {{vsl.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+  </div>
+  
+               
+            
+      
+      
+     
+            
+              
+            </div>
+          </form>
+    </mat-dialog-content>
+   
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="SaveCategory(true)" class="save-btn" [disabled]="!newCompanyFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary" (click)="SaveCategory(false)" class="save-btn" [disabled]="!newCompanyFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+  </div>

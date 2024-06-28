@@ -1,0 +1,53 @@
+.mat-mdc-dialog-container .mdc-dialog__title{
+    color: #fff;
+    background-color: black;
+  }
+
+.logo {
+width: 20px;
+height: 20px;
+}
+.table-td {
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+
+.table-td-vessel {
+    color: White;
+    background-color: #1F497D;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+.logo-filter {
+    width: 23px;
+    height: 23px;
+  }
+  .vessel-input{
+    width: 230px !important;
+
+  }
+  .btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.table-td-holidays{
+    width: 30%;
+
+}
+.logoimg{
+    width: 50px;
+    height: 50px;
+}
+.arrow-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 100%; /* Ensure the container takes the full height of its parent */
+    margin-top: 285px;
+  }

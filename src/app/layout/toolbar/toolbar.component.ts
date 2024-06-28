@@ -561,6 +561,9 @@ else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
    } 
    else if(buttonName === 'Admin_Lib_Companyoffice'){
     this.router.navigate(['ADMIN/library/Admin_Lib_Companyoffice'])
+   } 
+   else if(buttonName === 'Admin_Lib_CompanyOfficeHolidays'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_CompanyOfficeHolidays'])
    }
 
    else if(buttonName === 'Admin_Lib_CompanyBankAccounts'){
@@ -571,7 +574,10 @@ else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
    }
    else if(buttonName === 'Admin_Lib_VesselFlag'){
     this.router.navigate(['ADMIN/library/Admin_Lib_VesselFlag'])
-   }
+   }   
+   else if(buttonName === 'Admin_Lib_VesselFlag_Assignmnet'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_VesselFlag_Assignmnet'])
+   } 
 
    else if(buttonName === 'Admin_Lib_Countries'){
     this.router.navigate(['ADMIN/library/Admin_Lib_Countries'])
@@ -597,11 +603,24 @@ else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
    }  
    else if(buttonName === 'Admin_Lib_System_Parameters'){
     this.router.navigate(['ADMIN/library/Admin_Lib_System_Parameters'])
-   }
+   }  
+   else if(buttonName === 'Admin_Lib_Dashboard_Button'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_Dashboard_Button'])
+   }  
+   else if(buttonName === 'Admin_Lib_KPI_Report_Index'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_KPI_Report_Index'])
+   }   
+
+   else if(buttonName === 'Admin_Lib_INF_Alert'){
+    this.router.navigate(['ADMIN/library/Admin_Lib_INF_Alert'])
+   } 
 
    else if(buttonName === 'Accounts_Lib_Currency'){
     this.router.navigate(['ACCOUNTS/libraries/Accounts_Lib_Currency'])
    } 
+   
   }
+
+  
   
 }

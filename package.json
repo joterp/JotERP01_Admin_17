@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-     "build": "ng build --configuration production",
+    "build": "ng build --configuration production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -36,6 +36,7 @@
     "chart.js": "^3.9.1",
     "chart.piecelabel.js": "~0.15.0",
     "core-js": "^2.5.4",
+    "css-loader": "^7.1.2",
     "file-saver": "^2.0.5",
     "highlight.js": "~10.3.2",
     "html-to-pdfmake": "^2.3.11",

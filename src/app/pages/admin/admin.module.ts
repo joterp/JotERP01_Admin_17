@@ -44,6 +44,18 @@ import { AdminVesselFlagsAddComponent } from './library/admin-vessel-flags/admin
 import { AdminCompanyBankAccountAddComponent } from './library/admin-company-bank-account/admin-company-bank-account-add/admin-company-bank-account-add.component';
 import { AdminOfficeDepartmentsComponent } from './library/admin-office-departments/admin-office-departments.component';
 import { AdminOfficeDepartmentsAddComponent } from './library/admin-office-departments/admin-office-departments-add/admin-office-departments-add.component';
+import { AdminCompanyHolidaysComponent } from './library/admin-company-holidays/admin-company-holidays.component';
+import { AdminCompanyHolidaysAddComponent } from './library/admin-company-holidays/admin-company-holidays-add/admin-company-holidays-add.component';
+import { AdminCompanyCopyHolidaysAddComponent } from './library/admin-company-holidays/admin-company-copy-holidays-add/admin-company-copy-holidays-add.component';
+
+import { AdminVesselFlagAssignmentComponent } from './library/admin-vessel-flag-assignment/admin-vessel-flag-assignment.component';
+import { AdminVesselFlagAssignmentAddComponent } from './library/admin-vessel-flag-assignment/admin-vessel-flag-assignment-add/admin-vessel-flag-assignment-add.component';
+import { AdminDashboardNotificationButtonComponent } from './library/admin-dashboard-notification-button/admin-dashboard-notification-button.component';
+import { AdminDashboardNotificationButtonAddComponent } from './library/admin-dashboard-notification-button/admin-dashboard-notification-button-add/admin-dashboard-notification-button-add.component';
+import { AdminKPIReportIndexComponent } from './library/admin-kpi-report-index/admin-kpi-report-index.component';
+import { AdminKPIReportIndexAddComponent } from './library/admin-kpi-report-index/admin-kpi-report-index-add/admin-kpi-report-index-add.component';
+import { AdminManageAlertComponent } from './library/admin-manage-alert/admin-manage-alert.component';
+import { AdminManageAlertAddComponent } from './library/admin-manage-alert/admin-manage-alert-add/admin-manage-alert-add.component';
 
 
 
@@ -79,7 +91,18 @@ import { AdminOfficeDepartmentsAddComponent } from './library/admin-office-depar
     AdminVesselFlagsComponent,
     AdminVesselFlagsAddComponent,
     AdminOfficeDepartmentsComponent,
-    AdminOfficeDepartmentsAddComponent
+    AdminOfficeDepartmentsAddComponent,
+    AdminCompanyHolidaysComponent,
+    AdminCompanyHolidaysAddComponent,
+    AdminCompanyCopyHolidaysAddComponent,
+    AdminVesselFlagAssignmentComponent,
+    AdminVesselFlagAssignmentAddComponent,
+    AdminDashboardNotificationButtonComponent,
+    AdminDashboardNotificationButtonAddComponent,
+    AdminKPIReportIndexComponent,
+    AdminKPIReportIndexAddComponent,
+    AdminManageAlertComponent,
+    AdminManageAlertAddComponent
 
   ],
   imports: [

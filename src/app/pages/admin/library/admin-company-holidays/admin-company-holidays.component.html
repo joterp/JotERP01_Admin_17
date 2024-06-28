@@ -1,0 +1,175 @@
+
+<fury-page-layout mode="card" class="catalogue-view" >
+    <h3 class="unit-packing" style="text-align: center;">
+        <span class="first-letter" >H</span>OLIDAYS 
+    </h3>
+    <div style="text-align: center;" fxLayoutGap="5px">
+        <button mat-raised-button class="btn-success" (click)="saveNewHoliday(null,false)">Add New Holidays</button>
+        <button mat-raised-button  class="btn-success" (click)="saveCopyHolidays(null,false)">Copy Holidays</button>
+    </div>
+    
+</fury-page-layout>
+<fury-page-layout-content [@fadeInUp]>
+   
+        <div fxLayout="row" fxLayoutGap="5px">
+        <div fxFlex="10">
+            <div style="margin-top: 20px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="table-td-vessel table-td"  style="padding: 68px;padding-bottom: 53px;">
+                       Year
+                        </td>
+                    </tr>
+                    <tr style="    background: #e9e9e9;
+                    ">
+                        <td class="table-td" style="width: 90%;">
+                            <table style="width: 100%;">
+                                <tr>
+                                  
+                                  <!-- <td><input type="text" id="from" name="from" class="vessel-input"></td>
+                                  <td>   <span>
+                                    <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                    border: 1px solid grey;
+                                    background: linear-gradient(#ffffff, #dfdfdf);
+                                    border-radius: 3px;margin-top: 5px;
+                              
+                                   "/>
+                                </span></td> -->
+                            
+                                </tr>
+                              </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;color: DimGray;
+                        ">
+                       2016
+                        </td>
+                    </tr>
+                </table>
+              </div>
+              
+
+        </div>
+
+        <div fxFlex="45">
+            <div style="margin-top: 20px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="table-td-vessel table-td">
+                            <table>
+                                <tr>
+                                <td class="table-td-holidays"><mat-checkbox color="accent">
+                                  
+                                  </mat-checkbox></td>
+                                <td class="table-td-holidays">Office Name</td>
+                                <td class="table-td-holidays">Country</td>
+                                <td class="table-td-holidays">Colour Code</td>
+                            </tr>
+                            </table>
+                        
+                        </td>
+                 
+                    </tr>
+                    
+                    <tr style="background: #e9e9e9;
+                    ">
+                        <td class="table-td" style="width: 90%;">
+                            <table style="width: 100%;">
+                                <tr>
+                                  
+                                  <td><input type="text" id="from" name="from" class="vessel-input"></td>
+                                  <td>   <span>
+                                    <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                    border: 1px solid grey;
+                                    background: linear-gradient(#ffffff, #dfdfdf);
+                                    border-radius: 3px;margin-top: 5px;
+                              
+                                   "/>
+                                </span></td>
+
+                                <td>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Country</mat-label>
+                                    <mat-select formControlName="Country" >
+                                    <mat-option value="0">India</mat-option>
+                                    <mat-option value="1">Belize</mat-option>
+                                    <mat-option value="2">Brazil</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                </td>
+                            
+                                </tr>
+                              </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;color: DimGray;
+                        ">
+                        Alexa
+                        </td>
+                    </tr>
+                </table>
+              </div>
+              
+
+        </div>
+        <div fxFlex="45">
+            <div style="margin-top: 20px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="table-td-vessel table-td">
+                        <table style="padding: 11px;">
+                            <tr>
+                            <td class="table-td-holidays">Holiday Date</td>
+                             <td class="table-td-holidays">Holiday</td>
+                        </tr>
+                        </table>
+                        </td>
+                    </tr>
+                    <tr style="    background: #e9e9e9;
+                    ">
+                        <td class="table-td" style="width: 90%;">
+                            <table style="width: 100%;">
+                                <tr>
+                                  
+                                  <!-- <td><input type="text" id="from" name="from" class="vessel-input"></td>
+                                  <td>   <span>
+                                    <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                    border: 1px solid grey;
+                                    background: linear-gradient(#ffffff, #dfdfdf);
+                                    border-radius: 3px;margin-top: 5px;
+                              
+                                   "/>
+                                </span></td> -->
+
+                                <td style="text-align: end;">
+                                    <mat-form-field appearance="fill" style="padding: 3px;">
+                                        <mat-label>Status</mat-label>
+                                        <mat-select formControlName="drpStatus">
+                                          <mat-option value="0">Show Active</mat-option>
+                                          <mat-option value="1">Show Deleted</mat-option>
+                                          <mat-option value="2">Show All</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                </td>
+                            
+                                </tr>
+                              </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;color: DimGray;
+                        ">
+                        Alexa
+                        </td>
+                    </tr>
+                </table>
+              </div>
+              
+
+        </div>
+        </div>
+
+        
+        </fury-page-layout-content>

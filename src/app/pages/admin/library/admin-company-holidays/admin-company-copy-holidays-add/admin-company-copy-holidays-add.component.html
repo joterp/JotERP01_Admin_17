@@ -1,0 +1,173 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Copy Office Holidays</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <mat-dialog-content>
+        <form [formGroup]="newCompanyCopyHolidayFormGroup">
+            <div mat-dialog-container style="padding: 20px;">
+                
+				    <div fxLayout="row" fxLayoutGap="5px">
+                        <div fxFlex="45">
+                            <p style="padding: 5px;">Copy From</p>
+                            <div fxLayout="column" fxLayout.gt-sm="row">
+                                <mat-form-field fxFlex appearance="fill">
+                                  <mat-label>Office</mat-label>
+                                  <mat-select  formControlName="Office">
+                                      <mat-option value="0">Asian-Alliance Ship Management Pte Ltd.</mat-option>
+                                      <mat-option value="1">ASM Alliance Management Service (India) Pvt ltd.-ANDHERI</mat-option>
+                                      <mat-option value="2">ASM Alliance Management Services (India) Pvt Ltd</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                              </div>
+                            <div fxLayout="column" fxLayout.gt-sm="row">
+                              <mat-form-field fxFlex appearance="fill">
+                                <mat-label>Year</mat-label>
+                                <mat-select  formControlName="Year">
+                                    <mat-option value="0">2024</mat-option>
+                                    <mat-option value="1">Brazil</mat-option>
+                                    <mat-option value="2">China</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td class="table-td-vessel table-td">
+                                        <table>
+                                            <tr>
+                                            <td class="table-td-holidays">Holiday</td>
+                                            <td class="table-td-holidays">Holiday Date</td>
+                                        </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                              
+                                <tr>
+                                    <td style="padding: 5px;color: DimGray;
+                                    ">
+                                    Alexa
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div fxFlex="10" class="arrow-container">
+                            <span>
+                                <img src="../../../../assets/img/CopyArrow.png" class="logoimg" alt="excel" />
+                            </span>
+
+                            </div>
+                        <div fxFlex="45">
+                            <p style="padding: 5px;">Copy To</p>
+                            <div fxLayout="column" fxLayout.gt-sm="row">
+                                <mat-form-field fxFlex appearance="fill">
+                                  <mat-label>Office</mat-label>
+                                  <mat-select  formControlName="Office">
+                                      <mat-option value="0">Asian-Alliance Ship Management Pte Ltd.</mat-option>
+                                      <mat-option value="1">ASM Alliance Management Service (India) Pvt ltd.-ANDHERI</mat-option>
+                                      <mat-option value="2">ASM Alliance Management Services (India) Pvt Ltd</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                              </div>
+                            <div fxLayout="column" fxLayout.gt-sm="row">
+                              <mat-form-field fxFlex appearance="fill">
+                                <mat-label>Year</mat-label>
+                                <mat-select  formControlName="Year">
+                                    <mat-option value="0">2024</mat-option>
+                                    <mat-option value="1">Brazil</mat-option>
+                                    <mat-option value="2">China</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td class="table-td-vessel table-td">
+                                        <table>
+                                            <tr>
+                                                <td class="table-td-holidays">Holiday</td>
+                                                <td class="table-td-holidays">Holiday Date</td>
+                                        </tr>
+                                        </table>
+                                    
+                                    </td>
+                             
+                                </tr>
+                                
+                               
+                                <tr>
+                                    <td style="padding: 5px;color: DimGray;
+                                    ">
+                                    Alexa
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+<!--       
+     
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Company</mat-label>
+                    <mat-select  formControlName="Company">
+                        <mat-option value="0">India</mat-option>
+                        <mat-option value="1">Brazil</mat-option>
+                        <mat-option value="2">China</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Office Name</mat-label>
+                    <input formControlName="OfficeName" matInput placeholder="Office Name" type="text" />
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <mat-select  formControlName="Country">
+                        <mat-option value="0">India</mat-option>
+                        <mat-option value="1">Brazil</mat-option>
+                        <mat-option value="2">China</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+                <mat-checkbox [(ngModel)]="showColorPicker">Color Code</mat-checkbox>
+      
+      
+      <div *ngIf="showColorPicker">
+          <mat-form-field appearance="fill">
+            <mat-label>Pick a color</mat-label>
+            <input matInput type="color" [(ngModel)]="colorCode">
+          </mat-form-field>
+        </div> -->
+            
+              
+                    </div>
+            </div>
+          </form>
+    </mat-dialog-content>
+   
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <!-- <button mat-raised-button color="primary" (click)="SaveCategory(true)" class="save-btn" [disabled]="!newCompanyFormGroup.valid && !IsEdit">SAVE & ADD NEW</button> -->
+    <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newCompanyCopyHolidayFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+  </div>
