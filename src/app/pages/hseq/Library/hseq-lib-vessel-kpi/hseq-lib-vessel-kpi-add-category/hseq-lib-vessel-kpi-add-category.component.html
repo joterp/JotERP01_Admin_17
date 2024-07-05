@@ -1,0 +1,56 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Degree Of Impact
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon >close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Category</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+
+
+  <div>
+    <form [formGroup]="newCategoryFormGroup">
+      <div mat-dialog-container style="padding: 20px;">
+       
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Category Name</mat-label>
+              <input formControlName="Category_Name" matInput type="text" />
+            </mat-form-field>
+          </div>
+
+          <!-- <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Drill Name</mat-label>
+              <input formControlName="Drill_Name" matInput placeholder="Search by Value" type="text" />
+            </mat-form-field>
+          </div> -->
+       
+        
+       
+        
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Add new
+      </button>
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

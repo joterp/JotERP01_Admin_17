@@ -235,12 +235,25 @@
         //   display: flex;
         //   justify-content: space-between;
         // }
-    
-        .logo {
-          height: 50px;
-          width: 50px;
-          margin-top: -3px;
+        .add-approve-btn {
+          height: 24px;
+          width: 24px;
+          align-items: center;
+          display: flex;
         }
+        
+        .add-approve-btn-icon {
+          font-size: 24px;
+          align-self: center;
+          margin-top: -1px;
+          cursor: pointer;
+        }
+    
+         
+  .logo {
+    width: 20px;
+    height: 20px;
+    }
     
         .img-icon {
           border-radius: 50px;
@@ -285,12 +298,27 @@
           padding: 8px 0px;
           text-align: center;
         }
-    
-        .filter-btn {
-          margin-right: 5px !important;
-          width: 100px;
-          margin-bottom: 10px !important;
+        .mat-mdc-form-field{
+          display: inline;
         }
+    
+    
+        .mat-mdc-header-row {
+            background-color: #1976d2;
+            color: #fff;
+        }
+        
+         
+         .filter-btn-area {
+          padding: 21px 48px;
+          text-align: center;
+          }
+    
+        // .filter-btn {
+        //   margin-right: 5px !important;
+        //   width: 100px;
+        //   margin-bottom: 10px !important;
+        // }
     
         h1.filter-title {
           color: #000;
@@ -313,10 +341,10 @@
           min-width: 175px !important;
         }
     
-        tr.mat-header-row {
-          height: 56px;
-          background-color: #1976d2;
-        }
+        // tr.mat-header-row {
+        //   height: 56px;
+        //   background-color: #1976d2;
+        // }
     
         th.mat-header-cell {
           text-align: left;

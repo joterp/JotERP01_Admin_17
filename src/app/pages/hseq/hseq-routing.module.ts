@@ -11,6 +11,7 @@ import { HSEQISPSSecurityDrillComponent } from './Library/hseq-isps-security-dri
 import { HSEQAlertManageCategoryFormsComponent } from './Library/hseq-alert-manage-category-forms/hseq-alert-manage-category-forms.component';
 import { HSEQLIBVESSELKPIComponent } from './Library/hseq-lib-vessel-kpi/hseq-lib-vessel-kpi.component';
 import { HSEQVESSELINSPECTIONSLIBComponent } from './Library/hseq-vessel-inspections-lib/hseq-vessel-inspections-lib.component';
+import { HseqInspectionQRCodeListComponent } from './Library/hseq-inspection-qr-code-list/hseq-inspection-qr-code-list.component';
 
 
 const routes: Routes = [
@@ -46,7 +47,10 @@ const routes: Routes = [
   },
   {
     path:"Library/VesselInspectionLibrary", component:HSEQVESSELINSPECTIONSLIBComponent
-  },
+  },  
+  {
+    path:"Library/VesselInspectionQRCodes", component:HseqInspectionQRCodeListComponent
+  }, 
 ];
 
 @NgModule({

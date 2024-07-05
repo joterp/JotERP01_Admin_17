@@ -1,0 +1,135 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>{{ modeltitle }}
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">{{ modeltitle }}</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <mat-dialog-content>
+
+    
+    <form [formGroup]="newIntGradeFormGroup">
+      <div mat-dialog-container style="padding: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Company</mat-label>
+              <mat-select  formControlName="Company" >
+                  <mat-option value="1">Atlantis Ship Management Pvt. Ltd.</mat-option>
+                  
+              </mat-select>
+            </mat-form-field>
+          </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Grade</mat-label>
+            <input formControlName="txtGrade" matInput placeholder="Search by Grade" type="text" />
+          </mat-form-field>
+        </div>
+       
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Grade Type</mat-label>
+            <mat-select  formControlName="drpGrade_Type" >
+                <mat-option value="select_Typw">Select Grade Type</mat-option>
+                <mat-option value="Objective">Objective</mat-option>
+                <mat-option value="Subjective">Subjective</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Min Point</mat-label>
+            <mat-select formControlName="drpMin_Type">
+              <mat-option value="Select_Min">Select Min Point</mat-option>
+              <mat-option value="0">0</mat-option>
+              <mat-option value="1">1</mat-option>
+              <mat-option value="2">2</mat-option>
+              <mat-option value="3">3</mat-option>
+              <mat-option value="4">4</mat-option>
+              <mat-option value="5">5</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Max Point</mat-label>
+              <mat-select formControlName="drpMax_Type">
+                <mat-option value="Select_Min">Select Max Point</mat-option>
+                <mat-option value="0">0</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>No of Options</mat-label>
+              <mat-select [(ngModel)]="selectedOption" name="drpOptions"  formControlName="drpMax_Type">
+                <mat-option *ngFor="let option of options" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+              
+            </mat-form-field>
+          </div>
+
+          <table style="width: 100%; border: 1px solid gray; text-align: center;" *ngIf="selectedOption">
+            <tr style="   color: White;
+              background-color: #1F497D;" >
+                <td>Value</td>
+                <td>Text</td>
+              </tr>
+            <ng-container *ngFor="let row of [].constructor(selectedOption); let i = index">
+             
+              <tr>
+                <td>
+                  <input
+                  type="ETA"
+                
+                  required
+                  class="inputfield"
+                 >
+                </td>
+                <td>
+                  <input
+                  type="ETA"
+                
+                  required
+                  class="inputfield"
+                 >
+                </td>
+                
+                
+              </tr>
+            </ng-container>
+          </table>
+        
+       
+        
+      </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+  <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newIntGradeFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+<button mat-raised-button color="primary"  class="save-btn" [disabled]="!newIntGradeFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+<button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+</mat-dialog-actions>
+
+  </div>

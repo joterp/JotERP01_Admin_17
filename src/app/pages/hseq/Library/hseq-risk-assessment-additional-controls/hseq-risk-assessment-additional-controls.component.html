@@ -16,9 +16,16 @@
         <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start">
 
           <div fxFlex>
+           
             <mat-form-field appearance="fill">
-              <mat-label>Activity</mat-label>
-              <input formControlName="txtActivity" matInput placeholder="Search by Activity" type="text" />
+              <mat-label>Activity/Operation Controls</mat-label>
+              <mat-select formControlName="txtActivity">
+                <mat-option value="select">SELECT</mat-option>
+                <mat-option value="Activity_For_Garbage_Disposal">X</mat-option>
+                <mat-option value="Bunkering">Activity 1 For Bunkering</mat-option>
+                <mat-option value="Main_Engine_Unit_Decarb">Cargo Tank Inspections</mat-option>
+                <mat-option value="Mooring_Operations">Mooring Operations</mat-option>
+              </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>Activity/Operation Controls</mat-label>
@@ -71,12 +78,13 @@
     <div class="actions-area">
 
       <div fxLayout="row">
-        <button mat-mini-fab color="primary" [matTooltip]="'Add Controls'" class="add-approve-btn save-btn">
-          <mat-icon class="add-approve-btn-icon" (click)="saveNewAdditionalControl(null,false)">add</mat-icon>
+        <button mat-mini-fab color="primary" [matTooltip]="'Add Activity '"
+            class="add-approve-btn save-btn" (click)="saveNewAdditionalControl(null,false)">
+            <mat-icon class="add-approve-btn-icon">add</mat-icon>
         </button>
         <span style="margin-top: 3px;
-          margin-left: 6px;font-size: 15px;" > Add New Controls</span>
-      </div>
+  margin-left: 6px;font-size: 15px;"> Add New Controls</span>
+    </div>
       <div>
         <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
         <span>

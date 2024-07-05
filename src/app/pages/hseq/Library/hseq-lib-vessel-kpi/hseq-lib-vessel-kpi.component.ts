@@ -10,6 +10,8 @@ import { Title } from '@angular/platform-browser';
 import { SidenavService } from 'src/app/layout/sidenav/sidenav.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { HseqLibVesselKpiAddCategoryComponent } from './hseq-lib-vessel-kpi-add-category/hseq-lib-vessel-kpi-add-category.component';
+import { HseqLibVesselKpiAddObjectivesComponent } from './hseq-lib-vessel-kpi-add-objectives/hseq-lib-vessel-kpi-add-objectives.component';
 
 @Component({
   selector: 'fury-hseq-lib-vessel-kpi',
@@ -102,5 +104,34 @@ export class HSEQLIBVESSELKPIComponent implements OnInit {
       this.showAssignVesselTable = true;
     }
   }
+
+  saveNewCategory(data:object, IsEdit:boolean) {
+    const dialogRef = this.dialog.open(HseqLibVesselKpiAddCategoryComponent,
+      {
+        width: "35%",
+        maxHeight: "90%",
+        disableClose: true,
+        data:data
+      });
+
+      dialogRef.componentInstance.IsEdit= IsEdit;
+    dialogRef.afterClosed().subscribe((data:any)=>{
+     
+    });
+    } 
+    saveNewObjectives(data:object, IsEdit:boolean) {
+      const dialogRef = this.dialog.open(HseqLibVesselKpiAddObjectivesComponent,
+        {
+          width: "35%",
+          maxHeight: "90%",
+          disableClose: true,
+          data:data
+        });
+  
+        dialogRef.componentInstance.IsEdit= IsEdit;
+      dialogRef.afterClosed().subscribe((data:any)=>{
+       
+      });
+      } 
 
 }

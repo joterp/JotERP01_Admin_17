@@ -12,6 +12,7 @@ import { RankCategory } from 'src/app/pages/crew/Libraries/crew-rank-category/cr
 import { AuthGuard } from 'src/app/providers/auth/AuthGuard';
 import { ApiService } from 'src/app/providers/services/ApiService';
 import { CommonService } from 'src/app/providers/services/CommonService';
+import { AdminManageAlertAddComponent } from './admin-manage-alert-add/admin-manage-alert-add.component';
 
 @Component({
   selector: 'fury-admin-manage-alert',
@@ -28,7 +29,7 @@ export class AdminManageAlertComponent {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   loading: boolean;
-  vesselsFormGroup: UntypedFormGroup;
+  manageAlertFormGroup: UntypedFormGroup;
 
   constructor(
     private titleService: Title,
@@ -40,14 +41,14 @@ export class AdminManageAlertComponent {
     private fb: UntypedFormBuilder,
     private http: HttpClient
   ) {
-    this.titleService.setTitle('Countries');
+    this.titleService.setTitle('Alert');
     this.dataSource = new MatTableDataSource();
   }
 
   @Input()
   columns: ListColumn[] = [
-    { property: 'Department', visible: true, name: 'Department' },
-    { property: 'Vessel_Manager', visible: true, name: 'Vessel_Manager' },
+    { property: 'Alert', visible: true, name: 'Alert' },
+    { property: 'Module', visible: true, name: 'Module' },
     { property: 'action', visible: true, name: 'action' },
   ] as ListColumn[];
 
@@ -58,9 +59,9 @@ export class AdminManageAlertComponent {
   ngOnInit(): void {
     // this.fetchrankCategory();
     this.sidenavService.setCollapsed(true);
-    this.vesselsFormGroup = this.fb.group({
-      Department: [""],
-      vessel_manager: [""],
+    this.manageAlertFormGroup = this.fb.group({
+      Alert: [""],
+      module: [""],
       drpStatus: ["1"],
    
     });
@@ -79,8 +80,8 @@ export class AdminManageAlertComponent {
  
   clearFilter() {
     this.loading = true;
-    this.vesselsFormGroup.reset();
-    this.vesselsFormGroup.get('drpStatus').patchValue('1');
+    this.manageAlertFormGroup.reset();
+    this.manageAlertFormGroup.get('drpStatus').patchValue('1');
     // this.fetchrankCategory();
   }
 
@@ -91,20 +92,20 @@ export class AdminManageAlertComponent {
   //   });
   // }
 
-  // saveVessel(data: object, IsEdit: boolean) {
-  //   const dialogRef = this.dialog.open(AdminLibVesselsDepartmentAddComponent, {
-  //     width: '35%',
-  //     maxHeight: '90%',
-  //     disableClose: true,
-  //   });
-  //   dialogRef.componentInstance.EditData = data;
-  //   dialogRef.componentInstance.IsEdit = IsEdit;
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (result) {
-  //       this.clearFilter();
-  //     }
-  //   });
-  // }
+  saveAlert(data: object, IsEdit: boolean) {
+    const dialogRef = this.dialog.open(AdminManageAlertAddComponent, {
+      width: '35%',
+      maxHeight: '90%',
+      disableClose: true,
+    });
+    dialogRef.componentInstance.EditData = data;
+    dialogRef.componentInstance.IsEdit = IsEdit;
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.clearFilter();
+      }
+    });
+  }
 
 
   // changeStatus(data: any): void {

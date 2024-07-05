@@ -16,7 +16,7 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class DashboardService {
 
-  url = environment.backend;
+  // url = environment.backend;
 
   constructor(private http: HttpClient) {
   }

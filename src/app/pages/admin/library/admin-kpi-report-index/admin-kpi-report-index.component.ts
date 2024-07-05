@@ -12,6 +12,7 @@ import { RankCategory } from 'src/app/pages/crew/Libraries/crew-rank-category/cr
 import { AuthGuard } from 'src/app/providers/auth/AuthGuard';
 import { ApiService } from 'src/app/providers/services/ApiService';
 import { CommonService } from 'src/app/providers/services/CommonService';
+import { AdminKPIReportIndexAddComponent } from './admin-kpi-report-index-add/admin-kpi-report-index-add.component';
 
 @Component({
   selector: 'fury-admin-kpi-report-index',
@@ -40,7 +41,7 @@ export class AdminKPIReportIndexComponent {
     private fb: UntypedFormBuilder,
     private http: HttpClient
   ) {
-    this.titleService.setTitle('Countries');
+    this.titleService.setTitle('KPIs & Reports');
     this.dataSource = new MatTableDataSource();
   }
 
@@ -94,20 +95,20 @@ export class AdminKPIReportIndexComponent {
   //   });
   // }
 
-  // saveVessel(data: object, IsEdit: boolean) {
-  //   const dialogRef = this.dialog.open(AdminLibVesselsDepartmentAddComponent, {
-  //     width: '35%',
-  //     maxHeight: '90%',
-  //     disableClose: true,
-  //   });
-  //   dialogRef.componentInstance.EditData = data;
-  //   dialogRef.componentInstance.IsEdit = IsEdit;
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (result) {
-  //       this.clearFilter();
-  //     }
-  //   });
-  // }
+  saveKPIReport(data: object, IsEdit: boolean) {
+    const dialogRef = this.dialog.open(AdminKPIReportIndexAddComponent, {
+      width: '35%',
+      maxHeight: '90%',
+      disableClose: true,
+    });
+    dialogRef.componentInstance.EditData = data;
+    dialogRef.componentInstance.IsEdit = IsEdit;
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.clearFilter();
+      }
+    });
+  }
 
 
   // changeStatus(data: any): void {

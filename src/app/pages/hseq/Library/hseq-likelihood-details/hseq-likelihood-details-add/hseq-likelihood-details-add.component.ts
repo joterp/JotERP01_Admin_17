@@ -13,7 +13,7 @@ import { CommonService } from 'src/app/providers/services/CommonService';
 export class HSEQLIKELIHOODDETAILSAddComponent implements OnInit {
   IsEdit: boolean;
   
-  newInspectionReferenceFormGroup: UntypedFormGroup;
+  newLikelihoodFormGroup: UntypedFormGroup;
   submit: boolean = false;
   selectedOption: number = 0;
   options: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -24,12 +24,11 @@ export class HSEQLIKELIHOODDETAILSAddComponent implements OnInit {
     private common: CommonService,
 
     @Inject(MAT_DIALOG_DATA) public data: any) { 
-      this.newInspectionReferenceFormGroup = this._fb.group({
-        drpManual: ["", Validators.required],
-        txtChapter_Name: ["", Validators.required],
-        drpRisk_Category:[""],
-        txtTitle:[""],
-        txtBest_Practice:[""],
+      this.newLikelihoodFormGroup = this._fb.group({
+        name: ["", Validators.required],
+        details: ["", Validators.required],
+        value:["", Validators.required],
+        
        
       });
     }

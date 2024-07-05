@@ -76,18 +76,32 @@ export class HSEQRiskAssessmentAdditionalControlsComponent implements OnInit {
   FetchAllData() {
     throw new Error('Method not implemented.');
   }   
-  saveNewAdditionalControl(data:object, IsEdit:boolean) {
-    const dialogRef = this.dialog.open(HSEQRiskAssessmentAdditionalControlsAddComponent,
-      {
-        width: "35%",
-        maxHeight: "90%",
-        disableClose: true,
-        data:data
-      });
+  // saveNewAdditionalControl(data:object, IsEdit:boolean) {
+  //   const dialogRef = this.dialog.open(HSEQRiskAssessmentAdditionalControlsAddComponent,
+  //     {
+  //       width: "35%",
+  //       maxHeight: "90%",
+  //       disableClose: true,
+  //       data:data
+  //     });
 
-      dialogRef.componentInstance.IsEdit= IsEdit;
-    dialogRef.afterClosed().subscribe((data:any)=>{
+  //     dialogRef.componentInstance.IsEdit= IsEdit;
+  //   dialogRef.afterClosed().subscribe((data:any)=>{
      
-    });
-    } 
+  //   });
+  //   } 
+    saveNewAdditionalControl(data:object, IsEdit:boolean) {
+      const dialogRef = this.dialog.open(HSEQRiskAssessmentAdditionalControlsAddComponent,
+        {
+          width: "50%",
+          maxHeight: "90%",
+          disableClose: true,
+          data:data
+        });
+  
+        dialogRef.componentInstance.IsEdit= IsEdit;
+      dialogRef.afterClosed().subscribe((data:any)=>{
+       
+      });
+      } 
 }

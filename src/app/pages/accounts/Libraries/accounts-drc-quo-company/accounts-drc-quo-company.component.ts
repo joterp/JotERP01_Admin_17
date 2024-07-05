@@ -1,30 +1,29 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+
 import { Title } from '@angular/platform-browser';
 import { ListColumn } from 'src/@fury/shared/list/list-column.model';
 import { SidenavService } from 'src/app/layout/sidenav/sidenav.service';
-import { RankCategory } from 'src/app/pages/crew/Libraries/crew-rank-category/crew-rank-category.component';
 import { AuthGuard } from 'src/app/providers/auth/AuthGuard';
 import { ApiService } from 'src/app/providers/services/ApiService';
 import { CommonService } from 'src/app/providers/services/CommonService';
-import { AccountsLibManageCurrenciesAddComponent } from './accounts-lib-manage-currencies-add/accounts-lib-manage-currencies-add.component';
 
-
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
+import { HttpClient } from '@angular/common/http';
+import { AccountsDRCQUOCompanyAddComponent } from './accounts-drc-quo-company-add/accounts-drc-quo-company-add.component';
 
 @Component({
-  selector: 'fury-accounts-lib-manage-currencies',
-  templateUrl: './accounts-lib-manage-currencies.component.html',
-  styleUrls: ['./accounts-lib-manage-currencies.component.scss']
+  selector: 'fury-accounts-drc-quo-company',
+  templateUrl: './accounts-drc-quo-company.component.html',
+  styleUrl: './accounts-drc-quo-company.component.scss'
 })
-export class AccountsLibManageCurrenciesComponent {
+export class AccountsDRCQUOCompanyComponent {
   pageSize = 10;
-  private apiUrl = 'http://localhost:5062/api/v1/RankCategory';
-  private authToken = 'your-auth-token-here';
+
   dataSource: MatTableDataSource<any>;
 
   @ViewChild('TABLE') table: ElementRef;
@@ -32,7 +31,7 @@ export class AccountsLibManageCurrenciesComponent {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   loading: boolean;
-  currencyFormGroup: UntypedFormGroup;
+  serviceprovidersFormGroup: UntypedFormGroup;
 
   constructor(
     private titleService: Title,
@@ -44,16 +43,19 @@ export class AccountsLibManageCurrenciesComponent {
     private fb: UntypedFormBuilder,
     private http: HttpClient
   ) {
-    this.titleService.setTitle('Manage Currency');
+    this.titleService.setTitle('Service Provider');
     this.dataSource = new MatTableDataSource();
   }
 
   @Input()
   columns: ListColumn[] = [
-    { property: 'Short_Code', visible: true, name: 'Short_Code' },
+    { property: 'Service_Provider_Name', visible: true, name: 'Service_Provider_Name' },
+    { property: 'Currency', visible: true, name: 'Currency' },
     { property: 'Country', visible: true, name: 'Country' },
-    { property: 'Country', visible: true, name: 'Country' },
-    { property: 'Description', visible: true, name: 'Description' },
+    { property: 'Sales_Email', visible: true, name: 'Sales_Email' },
+    { property: 'Phone', visible: true, name: 'Phone' }, 
+    { property: 'Logo', visible: true, name: 'Logo' },
+    { property: 'Chop_Image', visible: true, name: 'Chop_Image' },
     { property: 'action', visible: true, name: 'action' },
   ] as ListColumn[];
 
@@ -64,11 +66,11 @@ export class AccountsLibManageCurrenciesComponent {
   ngOnInit(): void {
     // this.fetchrankCategory();
     this.sidenavService.setCollapsed(true);
-    this.currencyFormGroup = this.fb.group({
-      Short_Code: [""],
-      Description: [""],
-      drpCountry: [""],
-      drpStatus: ['1']
+    this.serviceprovidersFormGroup = this.fb.group({
+      Service_Name: [""],
+      Currency: [""],
+      Country: [""],
+      drpStatus: ['1'],
     });
   }
 
@@ -85,8 +87,8 @@ export class AccountsLibManageCurrenciesComponent {
  
   clearFilter() {
     this.loading = true;
-    this.currencyFormGroup.reset();
-    this.currencyFormGroup.get('drpStatus').patchValue('1');
+    this.serviceprovidersFormGroup.reset();
+    this.serviceprovidersFormGroup.get('drpStatus').patchValue('1');
     // this.fetchrankCategory();
   }
 
@@ -97,8 +99,8 @@ export class AccountsLibManageCurrenciesComponent {
   //   });
   // }
 
-  saveCurrency(data: object, IsEdit: boolean) {
-    const dialogRef = this.dialog.open(AccountsLibManageCurrenciesAddComponent, {
+  saveCode(data: object, IsEdit: boolean) {
+    const dialogRef = this.dialog.open(AccountsDRCQUOCompanyAddComponent, {
       width: '35%',
       maxHeight: '90%',
       disableClose: true,
@@ -111,6 +113,7 @@ export class AccountsLibManageCurrenciesComponent {
       }
     });
   }
+
 
  
   // changeStatus(data: any): void {

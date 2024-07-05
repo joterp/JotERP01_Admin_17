@@ -58,6 +58,9 @@ import { OPSNADVoyageLogAbstractComponent } from './NAD/ops-nad-voyage-log-abstr
 import { OPSNADAddVoyageLogComponent } from './NAD/ops-nad-voyage-log-abstract/ops-nad-add-voyage-log/ops-nad-add-voyage-log.component';
 import { OPSRPTReportIndexComponent } from './VesselReport_Chng/ops-rpt-report-index/ops-rpt-report-index.component';
 import { OPSRPTFOLLOWUPINDEXComponent } from './VesselReport_Chng/ops-rpt-followup-index/ops-rpt-followup-index.component';
+import { OpsLibCustFeedbackCategoryComponent } from './Library/ops-lib-cust-feedback-category/ops-lib-cust-feedback-category.component';
+import { OpsLibCustFeedbackGradeComponent } from './Library/ops-lib-cust-feedback-grade/ops-lib-cust-feedback-grade.component';
+import { OpsLibCustFeedbackQuestionComponent } from './Library/ops-lib-cust-feedback-question/ops-lib-cust-feedback-question.component';
 
 const routes: Routes = [
   {
@@ -186,6 +189,18 @@ const routes: Routes = [
   {
     path:"Library/OPS_LIB_LUBE_SAMPLE_NAME", component:OPSLIBLUBESAMPLENAMEComponent
   },
+
+  {
+    path:"Library/OPS_LIB_PORTCALL_FEEDBACK_CATEGORY", component:OpsLibCustFeedbackCategoryComponent
+  },
+  {
+    path:"Library/OPS_LIB_PORTCALL_FEEDBACK_GRADE", component:OpsLibCustFeedbackGradeComponent
+  },
+  {
+    path:"Library/OPS_LIB_PORTCALL_FEEDBACK_QUESTION", component:OpsLibCustFeedbackQuestionComponent
+  },
+
+
   {
     path:"FireArmsMovement/OPS_FAM_AmmunitionKit", component:OPSFAMAmmunitionKitComponent
   },

@@ -41,7 +41,7 @@ export class AdminOfficeDepartmentsComponent {
     private fb: UntypedFormBuilder,
     private http: HttpClient
   ) {
-    this.titleService.setTitle('Vessel Flag');
+    this.titleService.setTitle('Office Departments');
     this.dataSource = new MatTableDataSource();
   }
 

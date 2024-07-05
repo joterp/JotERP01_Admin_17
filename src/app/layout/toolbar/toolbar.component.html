@@ -155,15 +155,15 @@
       <mat-menu #accountsLibraries="matMenu">
         <button mat-menu-item class="menuItemSpace" (click)="goto('Accounts_Lib_Currency')">Manage Currencies</button>
         <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
-        <button mat-menu-item class="menuItemSpace">DRC Account Codes</button>
-        <button mat-menu-item class="menuItemSpace">DRC Account Categories</button>
-        <button mat-menu-item class="menuItemSpace">DRC Report ACC Categorization</button>
+        <button mat-menu-item class="menuItemSpace"  (click)="goto('Accounts_Lib_Codes')">DRC Account Codes</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Accounts_Lib_Categories')">DRC Account Categories</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Accounts_Lib_Report_ACC_Categorization')">DRC Report ACC Categorization</button>
         <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
-        <button mat-menu-item class="menuItemSpace">Debit/Credit Card List</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Accounts_Lib_Debit_Credit_Card')">Debit/Credit Card List</button>
         <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
-        <button mat-menu-item class="menuItemSpace">Q&I Service Providers</button>
-        <button mat-menu-item class="menuItemSpace">Q&I Items</button>
-        <button mat-menu-item class="menuItemSpace">Q&I Foot notes</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Accounts_Lib_DRC_QUO_Company')">Q&I Service Providers</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Accounts_Lib_QUO_Items')">Q&I Items</button>
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Accounts_Lib_DRC_QUO_FootNotes')">Q&I Foot notes</button>
 
       </mat-menu>
 
@@ -217,8 +217,9 @@
      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
      <button mat-menu-item class="menuItemSpace" (click)="goto('Salary_Structure')">Crew Salary Structure</button>
      <button mat-menu-item class="menuItemSpace" (click)="goto('Salary_Names')">Salary Names</button>
-     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
      <button mat-menu-item class="menuItemSpace" (click)="goto('RankSalaryAssignment')">Rank - Salary Assignment</button>
+     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+     
      <button mat-menu-item class="menuItemSpace" (click)="goto('SeniorityManagement')">Seniority Management</button>
      <button mat-menu-item class="menuItemSpace" (click)="goto('AllotmentsMinimumValueIndex')">Allotment Minimum Value Setup</button>
    </mat-menu>
@@ -426,6 +427,10 @@
       <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_VesselPortcall_Checklist')">Port-Call Checklist</button>
       <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_PORTCALL_FEEDBACK_CATEGORY')">Port-Call Category</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_PORTCALL_FEEDBACK_GRADE')">Port-Call Feedback Grade</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_PORTCALL_FEEDBACK_QUESTION')">Port-Call Feedback Question</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_Add_Report')">Report/Forms List Mgmt</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_VESSEL_Assignement')">Report/Form Vessel Assign</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_VSL_PARTICULARS_LABELS')">Vessel Particulars Labels</button>
@@ -493,7 +498,7 @@
     </mat-menu>
     <mat-menu #hseqlibraries="matMenu">
       <button mat-menu-item class="menuItemSpace" (click)="goto('VesselInspectionLibrary')">Vessel Inspection Lib New</button>
-      <button mat-menu-item class="menuItemSpace">Vessel Inspection QR Codes</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('VesselInspectionQRCodes')">Vessel Inspection QR Codes</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('InspectionReference')">Vsl Insp Best Practices/Risk Reference</button>
       <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('RiskAssessment')">Risk Assessment - Work Activity</button>

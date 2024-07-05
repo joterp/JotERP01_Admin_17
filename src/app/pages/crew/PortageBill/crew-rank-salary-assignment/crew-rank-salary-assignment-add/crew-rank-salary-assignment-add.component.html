@@ -1,4 +1,4 @@
-<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row"
     fxLayoutAlign="space-between">
     <span>
         <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
@@ -8,345 +8,360 @@
     <span fxLayoutAlign="end">
         <mat-icon (click)="CloseModal()">close</mat-icon>
     </span>
-</div>
-<div>
-    <form [formGroup]="newSeniorityFormGroup">
-        <div mat-dialog-container style="padding-top: 20px;">
-            <div fxLayout="column" fxLayout.gt-sm="row">
-                <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Salary Name</mat-label>
-                    <mat-select formControlName="drpSalary_Name">
-                        <mat-option value="Select">- Select -</mat-option>
-                        <mat-option value="Bangladesh_salary">Bangladesh - salary</mat-option>
-                        <mat-option value="Indian_Salary">Indian - Salary</mat-option>
-                        <mat-option value="Other_Crew_salary">Other Crew- salary</mat-option>
-                        <mat-option value="Salary_Taiwan">Salary_Taiwan</mat-option>
-                        <mat-option value="Standard_Salary">Standard Salary</mat-option>
-                        <mat-option value="USD_UnitedStatesDollar">USD - United States Dollar</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
-                <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Rank</mat-label>
-                    <mat-select formControlName="drpRank">
-                        <mat-option value="MST-Master">MST- Master</mat-option>
-                        <mat-option value="Officer">3/OFF - 3rd Officer</mat-option>
-                        <mat-option value="Junior_Officer">J/OFF - Junior Officer</mat-option>
-                        <mat-option value="Deck_Cadet">DCT - Deck Cadet</mat-option>
-                        <mat-option value="Chief_Engineer">C/E - Chief Engineer</mat-option>
-                        <mat-option value="Trainee_Chief_Engineer">C/E-T - Trainee Chief Engineer</mat-option>
-                        <mat-option value="Trainee_Engineer">2/E-T - Trainee 2nd Engineer</mat-option>
-                        <mat-option value="Engineer">3/E - 3rd Engineer</mat-option>
-                    </mat-select>
-                </mat-form-field>
+</div> -->
+        <div mat-dialog-title
+			 cdkDrag
+					  cdkDragRootElement=".cdk-overlay-pane"
+					  cdkDragHandle
+					  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+					 <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Salary Assignment</span>
+					 <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+						 <mat-icon>close</mat-icon>
+					 </button>
+					</div>
 
-                <div fxFlex>
-                    <h5 style="background-color: #e7e7e7;
+
+<div>
+    <mat-dialog-content>
+        <form [formGroup]="newSeniorityFormGroup">
+            <div mat-dialog-container style="padding: 20px;">
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Salary Name</mat-label>
+                        <mat-select formControlName="drpSalary_Name">
+                            <mat-option value="Select">- Select -</mat-option>
+                            <mat-option value="Bangladesh_salary">Bangladesh - salary</mat-option>
+                            <mat-option value="Indian_Salary">Indian - Salary</mat-option>
+                            <mat-option value="Other_Crew_salary">Other Crew- salary</mat-option>
+                            <mat-option value="Salary_Taiwan">Salary_Taiwan</mat-option>
+                            <mat-option value="Standard_Salary">Standard Salary</mat-option>
+                            <mat-option value="USD_UnitedStatesDollar">USD - United States Dollar</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Rank</mat-label>
+                        <mat-select formControlName="drpRank">
+                            <mat-option value="MST-Master">MST- Master</mat-option>
+                            <mat-option value="Officer">3/OFF - 3rd Officer</mat-option>
+                            <mat-option value="Junior_Officer">J/OFF - Junior Officer</mat-option>
+                            <mat-option value="Deck_Cadet">DCT - Deck Cadet</mat-option>
+                            <mat-option value="Chief_Engineer">C/E - Chief Engineer</mat-option>
+                            <mat-option value="Trainee_Chief_Engineer">C/E-T - Trainee Chief Engineer</mat-option>
+                            <mat-option value="Trainee_Engineer">2/E-T - Trainee 2nd Engineer</mat-option>
+                            <mat-option value="Engineer">3/E - 3rd Engineer</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+    
+                    <div fxFlex>
+                        <h5 style="background-color: #e7e7e7;
+                        padding: 13px;
+                        margin: 0;
+                        color: black;
+                        text-align: center;
+                        border: 1px solid #e2dbdb;">Contract Date To Sign On Date</h5>
+                    </div>
+    
+                </div>
+    
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Vessel Type</mat-label>
+                        <mat-select formControlName="drpVessel_Type">
+                            <mat-option value="Aframax_Tanker ">Aframax Tanker </mat-option>
+                            <mat-option value="Anchor_Handling_Vessel">Anchor Handling Vessel</mat-option>
+                            <mat-option value="Asphalt_Tanker">Asphalt Tanker</mat-option>
+                            <mat-option value="OSV">OSV</mat-option>
+                            <mat-option value="Towing_Tug">Towing Tug</mat-option>
+                            <mat-option value="RidingGang">Tug Boat</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Types of Calculation</mat-label>
+                        <mat-select formControlName="drpTypes_Of_Calculation">
+                            <mat-option value="FullSalary">Percentage(%) of Full Salary</mat-option>
+                            <mat-option value="Basic">Percentage(%) of Basic</mat-option>
+                            <mat-option value="FixedAmount">Fixed Amount(Lump Sum)</mat-option>
+                            <mat-option value="FixedAmountDay">Fixed Amount/Day</mat-option>
+    
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Vessel Flag</mat-label>
+                        <mat-select formControlName="drpVessel_Flag">
+                            <mat-option value="Tri_Colour ">Tri Colour</mat-option>
+                            <mat-option value="Liberia">Liberia</mat-option>
+                            <mat-option value="Taiwan">Taiwan</mat-option>
+                            <mat-option value="OSV">OSV</mat-option>
+                            <mat-option value="TowHong_Kong_(PIL)ing_Tug">Hong Kong (PIL)</mat-option>
+                            <mat-option value="USA_[US]">USA [US]</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Amount To Calculate</mat-label>
+                        <input formControlName="txtAmount_To_Calculate" matInput placeholder="Amount to calculate"
+                            type="text" />
+                    </mat-form-field>
+    
+                </div>
+    
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Nationality</mat-label>
+                        <mat-select formControlName="drpNationality">
+                            <mat-option value="Afghanistan">Afghanistan</mat-option>
+                            <mat-option value="Albania">Albania</mat-option>
+                            <mat-option value="Brazil">Brazil</mat-option>
+                            <mat-option value="France">France</mat-option>
+                            <mat-option value="Japan">Japan</mat-option>
+                            <mat-option value="Nepal">Nepal</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div fxFlex>
+                        <h5 style="background-color: #e7e7e7;
                     padding: 13px;
                     margin: 0;
                     color: black;
                     text-align: center;
-                    border: 1px solid #e2dbdb;">Contract Date To Sign On Date</h5>
+                    border: 1px solid #e2dbdb;
+                ">SignOff Date To DOAH Date</h5>
+                    </div>
                 </div>
-
-            </div>
-
-            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
-                <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Vessel Type</mat-label>
-                    <mat-select formControlName="drpVessel_Type">
-                        <mat-option value="Aframax_Tanker ">Aframax Tanker </mat-option>
-                        <mat-option value="Anchor_Handling_Vessel">Anchor Handling Vessel</mat-option>
-                        <mat-option value="Asphalt_Tanker">Asphalt Tanker</mat-option>
-                        <mat-option value="OSV">OSV</mat-option>
-                        <mat-option value="Towing_Tug">Towing Tug</mat-option>
-                        <mat-option value="RidingGang">Tug Boat</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Types of Calculation</mat-label>
-                    <mat-select formControlName="drpTypes_Of_Calculation">
-                        <mat-option value="FullSalary">Percentage(%) of Full Salary</mat-option>
-                        <mat-option value="Basic">Percentage(%) of Basic</mat-option>
-                        <mat-option value="FixedAmount">Fixed Amount(Lump Sum)</mat-option>
-                        <mat-option value="FixedAmountDay">Fixed Amount/Day</mat-option>
-
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
-                <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Vessel Flag</mat-label>
-                    <mat-select formControlName="drpVessel_Flag">
-                        <mat-option value="Tri_Colour ">Tri Colour</mat-option>
-                        <mat-option value="Liberia">Liberia</mat-option>
-                        <mat-option value="Taiwan">Taiwan</mat-option>
-                        <mat-option value="OSV">OSV</mat-option>
-                        <mat-option value="TowHong_Kong_(PIL)ing_Tug">Hong Kong (PIL)</mat-option>
-                        <mat-option value="USA_[US]">USA [US]</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Amount To Calculate</mat-label>
-                    <input formControlName="txtAmount_To_Calculate" matInput placeholder="Amount to calculate"
-                        type="text" />
-                </mat-form-field>
-
-            </div>
-
-            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
-                <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Nationality</mat-label>
-                    <mat-select formControlName="drpNationality">
-                        <mat-option value="Afghanistan">Afghanistan</mat-option>
-                        <mat-option value="Albania">Albania</mat-option>
-                        <mat-option value="Brazil">Brazil</mat-option>
-                        <mat-option value="France">France</mat-option>
-                        <mat-option value="Japan">Japan</mat-option>
-                        <mat-option value="Nepal">Nepal</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <div fxFlex>
-                    <h5 style="background-color: #e7e7e7;
-                padding: 13px;
-                margin: 0;
-                color: black;
-                text-align: center;
-                border: 1px solid #e2dbdb;
-            ">SignOff Date To DOAH Date</h5>
+    
+    
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Effective Date Form</mat-label>
+                        <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
+                        <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerFrom></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Types of Calculation</mat-label>
+                        <mat-select formControlName="drpTypes_Of_Calculation_2">
+                            <mat-option value="FullSalary">Percentage(%) of Full Salary</mat-option>
+                            <mat-option value="Basic">Percentage(%) of Basic</mat-option>
+                            <mat-option value="FixedAmount">Fixed Amount(Lump Sum)</mat-option>
+                            <mat-option value="FixedAmountDay">Fixed Amount/Day</mat-option>
+    
+                        </mat-select>
+                    </mat-form-field>
                 </div>
-            </div>
-
-
-            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
-                <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Effective Date Form</mat-label>
-                    <input matInput formControlName="Date_Form" [matDatepicker]="pickerFrom" />
-                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerFrom></mat-datepicker>
-                </mat-form-field>
-                <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Types of Calculation</mat-label>
-                    <mat-select formControlName="drpTypes_Of_Calculation_2">
-                        <mat-option value="FullSalary">Percentage(%) of Full Salary</mat-option>
-                        <mat-option value="Basic">Percentage(%) of Basic</mat-option>
-                        <mat-option value="FixedAmount">Fixed Amount(Lump Sum)</mat-option>
-                        <mat-option value="FixedAmountDay">Fixed Amount/Day</mat-option>
-
-                    </mat-select>
-                </mat-form-field>
-            </div>
-
-            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
-                <mat-form-field fxFlex appearance="fill"> 
-                    <mat-label>Effective Date To</mat-label>
-                    <input matInput formControlName="Date_To" [matDatepicker]="pickerTo" />
-                    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerTo></mat-datepicker>
-                </mat-form-field>
-                <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Amount To Calculate</mat-label>
-                    <input formControlName="txtAmount_To_Calculate_2" matInput placeholder="Amount to calculate"
-                        type="text" />
-                </mat-form-field>
-
-            </div>
-
-
-            <div fxLayout="row" fxLayoutGap="5px">
-
-
-                <div fxFlex>
-                    <h5 style="color: blue;margin: 5px;">Earnings</h5>
-                    <!-- <table class="roundedTable">
-                        <thead>
-                            <tr>
-                                <th style=" background-color: #1F497D;
-                                   color: #FFF;
-                                   padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Salary Component
-                                </th>
-                                <th style=" background-color: #1F497D;
-                                    color: #FFF;
-                                    padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Hide From Master
-                                </th>
-                                <th style=" background-color: #1F497D;
-                                     color: #FFF;
-                                     padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Amount(USD)</th>
-
-                            </tr>
-
-                        </thead>
-
-                        <tbody class="scrollable-tbody">
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-
-
-                        </tbody>
-
-
-
-
-                       
-                    </table> -->
-
-                    <div class="tableFixHead">
-                        <table>
-                          <thead>
-                            <tr>
-                                <th style=" background-color: #1F497D;
-                                   color: #FFF;
-                                   padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Salary Component
-                                </th>
-                                <th style=" background-color: #1F497D;
-                                    color: #FFF;
-                                    padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Hide From Master
-                                </th>
-                                <th style=" background-color: #1F497D;
-                                     color: #FFF;
-                                     padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Amount(USD)</th>
-
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Basic wages</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
+    
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+                    <mat-form-field fxFlex appearance="fill"> 
+                        <mat-label>Effective Date To</mat-label>
+                        <input matInput formControlName="Date_To" [matDatepicker]="pickerTo" />
+                        <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerTo></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Amount To Calculate</mat-label>
+                        <input formControlName="txtAmount_To_Calculate_2" matInput placeholder="Amount to calculate"
+                            type="text" />
+                    </mat-form-field>
+    
+                </div>
+    
+    
+                <div fxLayout="row" fxLayoutGap="5px">
+    
+    
+                    <div fxFlex>
+                        <h5 style="color: blue;margin: 5px;">Earnings</h5>
+                        <!-- <table class="roundedTable">
+                            <thead>
+                                <tr>
+                                    <th style=" background-color: #1F497D;
+                                       color: #FFF;
+                                       padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Salary Component
+                                    </th>
+                                    <th style=" background-color: #1F497D;
+                                        color: #FFF;
+                                        padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Hide From Master
+                                    </th>
+                                    <th style=" background-color: #1F497D;
+                                         color: #FFF;
+                                         padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Amount(USD)</th>
+    
+                                </tr>
+    
+                            </thead>
+    
+                            <tbody class="scrollable-tbody">
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+    
+    
+                            </tbody>
+    
+    
+    
+    
                            
-                          </tbody>
-                          <tfoot>
-                            <tr>
-                                <td>Total</td>
-
-                                <td colspan="2" style="text-align: end;">
-                                    <input type="text" />
-
-                                </td>
-                            </tr>
-                        </tfoot>
+                        </table> -->
+    
+                        <div class="tableFixHead">
+                            <table>
+                              <thead>
+                                <tr>
+                                    <th style=" background-color: #1F497D;
+                                       color: #FFF;
+                                       padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Salary Component
+                                    </th>
+                                    <th style=" background-color: #1F497D;
+                                        color: #FFF;
+                                        padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Hide From Master
+                                    </th>
+                                    <th style=" background-color: #1F497D;
+                                         color: #FFF;
+                                         padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Amount(USD)</th>
+    
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Basic wages</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                               
+                              </tbody>
+                              <tfoot>
+                                <tr>
+                                    <td>Total</td>
+    
+                                    <td colspan="2" style="text-align: end;">
+                                        <input type="text" />
+    
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            </table>
+                          </div>
+                    </div>
+                    <div fxFlex>
+                        <h5 style="color: red;margin: 5px;">Deductions</h5>
+                        <table class="roundedTable">
+                            <thead>
+                                <tr>
+                                    <th style=" background-color: #1F497D;
+                                       color: #FFF;
+                                       padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Salary Component
+                                    </th>
+                                    <th style=" background-color: #1F497D;
+                                        color: #FFF;
+                                        padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Hide From Master
+                                    </th>
+                                    <th style=" background-color: #1F497D;
+                                         color: #FFF;
+                                         padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Amount(USD)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="scrollable-tbody">
+                                <tr>
+                                    <td>P.F.</td>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" style="border-radius: 5px;" />
+                                    </td>
+                                </tr>
+                            </tbody>
+    
+    
+    
+    
+    
+    
                         </table>
-                      </div>
+                    </div>
+    
                 </div>
-                <div fxFlex>
-                    <h5 style="color: red;margin: 5px;">Deductions</h5>
-                    <table class="roundedTable">
-                        <thead>
-                            <tr>
-                                <th style=" background-color: #1F497D;
-                                   color: #FFF;
-                                   padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Salary Component
-                                </th>
-                                <th style=" background-color: #1F497D;
-                                    color: #FFF;
-                                    padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Hide From Master
-                                </th>
-                                <th style=" background-color: #1F497D;
-                                     color: #FFF;
-                                     padding: 6px;font-family: tahoma;border-bottom: 1px solid #fff;">Amount(USD)</th>
-                            </tr>
-                        </thead>
-                        <tbody class="scrollable-tbody">
-                            <tr>
-                                <td>P.F.</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" style="border-radius: 5px;" />
-                                </td>
-                            </tr>
-                        </tbody>
-
-
-
-
-
-
-                    </table>
-                </div>
-
+    
             </div>
-
-        </div>
-    </form>
+        </form>
+    </mat-dialog-content>
+    
 
     <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
 

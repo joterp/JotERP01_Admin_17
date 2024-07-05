@@ -1,0 +1,150 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Inspection Reference
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Inspection Item</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+
+  <div>
+    <form [formGroup]="newInspectionItemFormGroup">
+        <mat-dialog-content>
+            <div mat-dialog-container style="padding: 20px;">
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Category</mat-label>
+                        <mat-select formControlName="Category">
+                            <mat-option value="select">SELECT</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+        
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Grade</mat-label>
+                        <mat-select formControlName="Grade">
+                            <mat-option value="select">SELECT</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button mat-mini-fab color="primary" [matTooltip]="'Add Type'"
+                    class="add-approve-btn save-btn" (click)="saveNewGrade(null,false,'Add Grade')" style="margin: 10px 12px;">
+                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                </button>
+                </div>
+
+        
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>QuestionNo.</mat-label>
+                      <input formControlName="Question_No" matInput type="text" />
+                    </mat-form-field>
+                  </div>
+        
+        
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Question Name</mat-label>
+                        <textarea
+                        matInput
+                        formControlName="Question_Name"
+                        placeholder="Question Name"
+                        ></textarea>
+                    </mat-form-field>
+                </div>
+        
+                <h5>Question Detail</h5>
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-bottom: 10px;">
+                    
+                    <quill-editor [styles]="{ height: '200px' }" id="textEditor" (onEditorCreated)="created($event)"
+                        (onContentChanged)="contentChanged($event)">
+                    </quill-editor>
+                </div>
+               
+              
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>QMS Elements Ref</mat-label>
+                    <mat-select formControlName="QMS_Elements_Ref" >
+                      <mat-option value="select">SELECT</mat-option>
+                      <mat-option value="5">401a - Application Form (Deck Dept)</mat-option>
+                      <mat-option value="4">401b - Application Form (Engine Dept)</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  </div>
+        
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Assigned Rank</mat-label>
+                    <mat-select formControlName="Assigned_Rank">
+                      <mat-option value="select">SELECT</mat-option>
+                      <mat-option value="5">MST - Master</mat-option>
+                      <mat-option value="4">MST-AD - Additional Master</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  </div>
+
+                  
+                  <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row">
+                    <!-- Use a button to create a custom file upload button -->
+
+                    <mat-label style="margin: 8px;">Upload File :</mat-label> &nbsp;
+
+                    <input style="display: none;" type="file" id="imageupload" #fileInput
+                        (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+
+                    <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName">
+                        <label for="imageupload">
+                            Select</label>
+                    </button>
+                    <div *ngIf="selectedFileName" fxFlex>
+                        <span aria-placeholder="Select files"> {{ selectedFileName
+                            }}</span>
+                        <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+                    </div>
+
+                    <!-- File input element, hidden from view -->
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <div style="border: 8px solid lightgray;
+                                height: 60px;
+                                width: 100%;
+                                padding: 9px;
+                                text-align: center;
+                                box-shadow: 0 0 2px #cccccc; 
+                                margin: 10px;">
+                        Drop Files here for Attachment
+                    </div>
+                </div>
+                
+                
+              </div>
+        </mat-dialog-content>
+     
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save 
+      </button>
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Add new
+      </button>
+     
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

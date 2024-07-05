@@ -82,7 +82,7 @@
 
             <div fxLayout="row">
                 <button mat-mini-fab color="primary" [matTooltip]="'Add KPIs '" class="add-approve-btn save-btn"
-                    >
+                (click)="saveKPIReport(null,false)">
                     <mat-icon class="add-approve-btn-icon">add</mat-icon>
                 </button>
                 <span style="margin-top: 3px;
@@ -161,7 +161,7 @@
                     </td>
                 </ng-container>
                 <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
                 <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
                 <tr *matRowDef="let row; columns:visibleColumns" class="clickable route-animations-elements" mat-row>
                 </tr>

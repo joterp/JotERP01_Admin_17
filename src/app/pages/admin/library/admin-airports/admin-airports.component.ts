@@ -21,8 +21,7 @@ import { AdminAirportsAddComponent } from './admin-airports-add/admin-airports-a
 })
 export class AdminAirportsComponent {
   pageSize = 10;
-  private apiUrl = 'http://localhost:5062/api/v1/RankCategory';
-  private authToken = 'your-auth-token-here';
+
   dataSource: MatTableDataSource<any>;
 
   @ViewChild('TABLE') table: ElementRef;
@@ -42,7 +41,7 @@ export class AdminAirportsComponent {
     private fb: UntypedFormBuilder,
     private http: HttpClient
   ) {
-    this.titleService.setTitle('Rank Category');
+    this.titleService.setTitle('Airports');
     this.dataSource = new MatTableDataSource();
   }
 

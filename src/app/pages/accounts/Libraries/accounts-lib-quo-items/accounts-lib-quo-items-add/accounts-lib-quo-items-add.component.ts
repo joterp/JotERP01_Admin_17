@@ -5,27 +5,20 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from 'src/app/providers/services/ApiService';
 import { CommonService } from 'src/app/providers/services/CommonService';
 
-
 @Component({
-  selector: 'fury-accounts-lib-manage-currencies-add',
-  templateUrl: './accounts-lib-manage-currencies-add.component.html',
-  styleUrl: './accounts-lib-manage-currencies-add.component.scss'
+  selector: 'fury-accounts-lib-quo-items-add',
+  templateUrl: './accounts-lib-quo-items-add.component.html',
+  styleUrl: './accounts-lib-quo-items-add.component.scss'
 })
-export class AccountsLibManageCurrenciesAddComponent {
-  // IsEdit: boolean;
-  // [x: string]: any;
-  // newcurrencyFormGroup: UntypedFormGroup;
-  // ErrorMessage: string = "";
-  // IsEdit: boolean = false;
-  // submit: boolean = false;
+export class AccountsLibQUOItemsAddComponent {
   [x: string]: any;
   IsEdit: boolean = false;
   EditData:any;
   // IsEdit: boolean;
-  newcurrencyFormGroup: UntypedFormGroup;
+  newItemsFormGroup: UntypedFormGroup;
   ErrorMessage: string = "";
   submit: boolean = false;
-  constructor(private dialogRef: MatDialogRef<AccountsLibManageCurrenciesAddComponent>,
+  constructor(private dialogRef: MatDialogRef<AccountsLibQUOItemsAddComponent>,
     private _fb: UntypedFormBuilder,
     private api: ApiService,
     private common: CommonService,
@@ -37,18 +30,21 @@ export class AccountsLibManageCurrenciesAddComponent {
 
     console.log("Editdataaaaaaaaaaaaaaa-------------------------------------------",this.IsEdit)
     console.log(this.EditData,"this.data---------------->>>>>>>>>>>>>>>>>>")
-    this.newcurrencyFormGroup = this._fb.group({
-      Short_Code: ["", Validators.required],
-      Country: ["", Validators.required],
-      currency_description:[""],
-     
+    this.newItemsFormGroup = this._fb.group({
+      Category: ["", Validators.required],
+      Parent_Item:[""],
+      Item_Details: ["", Validators.required],
+      Currency:[""],
+      Quantity:[""],
+      Unit_Price:[""],
+      Amount:[""],
+      Additional_remarks:[""],
 
     });
 
     if (this.IsEdit) {
       // this.InsertFormValues();
     }
-
   
   }
   CloseModal() {
@@ -61,8 +57,8 @@ export class AccountsLibManageCurrenciesAddComponent {
 //     }
 //     this.submit = true;
 //     var data: object = {};
-//     for (const elem in this.newcurrencyFormGroup.value) {
-//       data[elem] = this.newcurrencyFormGroup.value[elem];
+//     for (const elem in this.newItemsFormGroup.value) {
+//       data[elem] = this.newItemsFormGroup.value[elem];
 //     }
   
 //     this.submit = false;

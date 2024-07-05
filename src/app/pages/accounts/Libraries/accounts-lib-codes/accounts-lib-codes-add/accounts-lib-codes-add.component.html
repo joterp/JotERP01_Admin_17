@@ -1,0 +1,108 @@
+
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Account Code</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <mat-dialog-content>
+        <form [formGroup]="newAccountCodeFormGroup">
+            <div mat-dialog-container style="padding: 10px;">
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Company Name</mat-label>
+                    <mat-select  formControlName="Company_Name" >
+                        <mat-option value="0">Aqua Link Marine Pte Ltd</mat-option>
+                        <mat-option value="1">Atlantis Ship Management Pvt. Ltd.</mat-option>
+                        <mat-option value="2">Azure Wave Shipping</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Category</mat-label>
+                    <mat-select  formControlName="Category" >
+                        <mat-option value="0">Owners</mat-option>
+                        <mat-option value="1">Administration Expenses (Corp.)</mat-option>
+                        <mat-option value="2">Dry Docking</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+      
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Account Code</mat-label>
+                    <input formControlName="Account_Code" matInput placeholder="Account Code" type="text" />
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Code Name</mat-label>
+                    <input formControlName="Code_Name" matInput placeholder="Code Name" type="text" />
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Payables or Receivables</mat-label>
+                    <mat-select  formControlName="Payable">
+                        <mat-option value="0">Receivables</mat-option>
+                        <mat-option value="1">Payables</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label> CAPEX or OPEX</mat-label>
+                    <mat-select  formControlName="CPEX_OPEX">
+                        <mat-option value="0">CAPEX</mat-option>
+                        <mat-option value="1">OPEX</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="row" fxLayoutGap="16px">
+                  <mat-label style="width: 150px;text-align: center;padding:10px">Show to vessel</mat-label>
+                  <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="Show_vessel">
+                      <mat-radio-button value="yes" [checked]="newAccountCodeFormGroup.get('Show_vessel').value == 'yes'">
+                          <label
+                              [class.active-label]="newAccountCodeFormGroup.get('Show_vessel').value == 'yes'">Yes</label>
+                      </mat-radio-button>
+                      <mat-radio-button value="no" [checked]="newAccountCodeFormGroup.get('Show_vessel').value == 'no'">
+                          <label [class.active-label]="newAccountCodeFormGroup.get('Show_vessel').value == 'no'">No</label>
+                      </mat-radio-button>
+                  </mat-radio-group>
+              </div>
+      
+            </div>
+          </form>
+    </mat-dialog-content>
+    
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newAccountCodeFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newAccountCodeFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+  </div>
+  
+  

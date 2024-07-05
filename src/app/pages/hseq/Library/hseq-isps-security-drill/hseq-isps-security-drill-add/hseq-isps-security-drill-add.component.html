@@ -1,4 +1,4 @@
-<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
     <span>
         <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
         margin-bottom: -4px;"/>Add New Degree Of Impact
@@ -7,22 +7,34 @@
     <span fxLayoutAlign="end"  >
         <mat-icon >close</mat-icon>
       </span>
-  </div>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Degree Of Impact</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+
+
   <div>
     <form [formGroup]="newInspectionReferenceFormGroup">
-      <div mat-dialog-container style="padding-top: 20px;">
+      <div mat-dialog-container style="padding: 20px;">
        
         <div fxLayout="column" fxLayout.gt-sm="row">
             <mat-form-field fxFlex appearance="fill">
-              <mat-label>Name</mat-label>
-              <input formControlName="txtName" matInput placeholder="Search by Name" type="text" />
+              <mat-label>Drill Type</mat-label>
+              <input formControlName="Drill_Type" matInput type="text" />
             </mat-form-field>
           </div>
 
           <div fxLayout="column" fxLayout.gt-sm="row">
             <mat-form-field fxFlex appearance="fill">
-              <mat-label>Value</mat-label>
-              <input formControlName="txtValue" matInput placeholder="Search by Value" type="text" />
+              <mat-label>Drill Name</mat-label>
+              <input formControlName="Drill_Name" matInput placeholder="Search by Value" type="text" />
             </mat-form-field>
           </div>
        
@@ -39,6 +51,6 @@
       <button mat-raised-button color="primary" class="save-btn">
         Save & Add new
       </button>
-      <button mat-raised-button color="warn" >Cancel</button>
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
     </mat-dialog-actions>
   </div>

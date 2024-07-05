@@ -1,13 +1,14 @@
-
-<fury-page-layout mode="card" class="crew-rankCategory">
+<fury-page-layout mode="card" class="account-items">
  
     <fury-page-layout-header>
       
-      <form [formGroup]="currencyFormGroup" >
+      <form [formGroup]="QuotationFormGroup" >
         
         <h3 class="unit-packing">
-          <span class="first-letter">C</span>URRENCIES
-         
+          <span class="first-letter">Q</span>UOTATION
+          <span class="first-letter">A</span>ND
+          <span class="first-letter">I</span>NVOICING
+          <span class="first-letter">I</span>TEMS
         </h3>
       
         
@@ -15,27 +16,36 @@
           <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start">
   
             <div fxFlex>
-              <mat-form-field appearance="fill">
-                <mat-label>Short Code</mat-label>
-                <input formControlName="Short_Code" matInput placeholder="Search by Short Code" type="text" />
-              </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="Category" >
+                      <mat-option value="0">Diving Quotation</mat-option>
+                      <mat-option value="1">Lightrage Jetty Charges</mat-option>
+                      <mat-option value="2">Proposed Rate OPL Quotation</mat-option>
+                    </mat-select>
+                  </mat-form-field>
 
               <mat-form-field appearance="fill">
-                <mat-label>Description</mat-label>
-                <input formControlName="Description" matInput placeholder="Search by Description" type="text" />
+                <mat-label>Parent Item</mat-label>
+                <input formControlName="Parent_Item" matInput placeholder="Search by Parent Item" type="text" />
+              </mat-form-field>
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Item</mat-label>
+                    <input formControlName="Item" matInput placeholder="Search by  Item" type="text" />
+                  </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Remark</mat-label>
+                <input formControlName="Remark" matInput placeholder="Search by Remark" type="text" />
               </mat-form-field>
             </div>
 
 
             <div fxFlex>
-                <mat-form-field appearance="fill">
-                    <mat-label>Country</mat-label>
-                    <mat-select formControlName="drpCountry" >
-                      <mat-option value="select_Typw">India</mat-option>
-                      <mat-option value="Objective">Belize</mat-option>
-                      <mat-option value="Subjective">Brazil</mat-option>
-                    </mat-select>
-                  </mat-form-field>
+                
               <mat-form-field appearance="fill">
                 <mat-label>Status</mat-label>
                 <mat-select formControlName="drpStatus">
@@ -79,12 +89,12 @@
       <div class="actions-area" >
       
         <div fxLayout="row">
-          <button mat-mini-fab color="primary" [matTooltip]="'Add Currency '"
-              class="add-approve-btn save-btn"  (click)="saveCurrency(null,false)">
+          <button mat-mini-fab color="primary" [matTooltip]="'Add Item '"
+              class="add-approve-btn save-btn"  (click)="saveItem(null,false)">
               <mat-icon class="add-approve-btn-icon">add</mat-icon>
           </button>
           <span style="margin-top: 3px;
-          margin-left: 6px;font-size: 15px;"> Add New Currency</span>
+          margin-left: 6px;font-size: 15px;"> Add New Item</span>
       </div>
         <div>
             <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
@@ -99,10 +109,10 @@
   
       <div #TABLE>
         <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
-          <ng-container matColumnDef="Short_Code">
+          <ng-container matColumnDef="Category">
             <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
-              mat-sort-header="ID">
-        Short Code
+              mat-sort-heade>
+        Category
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
               mat-cell>
@@ -110,17 +120,70 @@
             </td>
           </ng-container>
   
-          <ng-container matColumnDef="Country">
+          <ng-container matColumnDef="Parent_Item">
             <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
-          Country
+                Parent Item
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
              <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
             </td>
           </ng-container>
-          <ng-container matColumnDef="Description">
+          <ng-container matColumnDef="Item">
             <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
-          Description
+          Item
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+             <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Unit">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
+          Unit
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+             <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Quantity">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
+          Quantity
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+             <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Unit_Rate">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
+          Unit Rate
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+             <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Amount">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
+          Amount
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+             <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Currency">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
+          Currency
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+             <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Remarks">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
+          Remarks
             </th>
             <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
              <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->
@@ -132,7 +195,7 @@
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Action</th>
             <td mat-cell *matCellDef="let row" class="actions-cell">  
-              <span mat-icon-button  [matTooltip]="'Edit Rank'" class="action-img" (click)="saveAirports(row, true)">
+              <span mat-icon-button  [matTooltip]="'Edit Rank'" class="action-img" >
             <img src="../../../../assets/img/pen.png" class="action-img" alt="excel" />
             </span>
   
@@ -162,4 +225,3 @@
     </fury-page-layout-content>
   
   </fury-page-layout>
-

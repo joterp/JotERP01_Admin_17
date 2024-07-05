@@ -1,0 +1,119 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Inspection Reference
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+    style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+    <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Inspection Type</span>
+    <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<div>
+    <form [formGroup]="newInspectionTypeFormGroup">
+        <div mat-dialog-container style="padding: 20px;">
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Company</mat-label>
+                    <mat-select formControlName="Company">
+                        <mat-option value="select">SELECT</mat-option>
+                        <mat-option value="AquaLinkMarinePteLtd">Aqua Link Marine Pte Ltd</mat-option>
+                        <mat-option value="Atlantis_Ship_Management_Pvt_Ltd">Atlantis Ship Management Pvt.
+                            Ltd.</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Department</mat-label>
+                    <mat-select formControlName="Department">
+                        <mat-option value="select">SELECT</mat-option>
+                        <mat-option value="Crew">Crew</mat-option>
+                        <mat-option value="Admin">Admin</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Inspection Name</mat-label>
+                    <textarea matInput formControlName="Inspection_name" placeholder="Inspection Name"></textarea>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Defectlist Assigned By</mat-label>
+                    <mat-select formControlName="Defectlist_Assigned_By">
+                        <mat-option value="select">SELECT</mat-option>
+                        <mat-option value="Flag_State_Control">Flag State Control</mat-option>
+                        <mat-option value="Classification_Society">Classification Society</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="16px">
+                <mat-label style="width: 150px;text-align: center;padding:10px">Type of Report</mat-label>
+                <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="report">
+                    <mat-radio-button value="DetailBased" [checked]="newInspectionTypeFormGroup.get('report').value == 'DetailBased'">
+                        <label
+                            [class.active-label]="newInspectionTypeFormGroup.get('report').value == 'DetailBased'">Detail Based</label>
+                    </mat-radio-button>
+                    <mat-radio-button value="AttachmentBased" [checked]="newInspectionTypeFormGroup.get('report').value == 'AttachmentBased'">
+                        <label [class.active-label]="newInspectionTypeFormGroup.get('report').value == 'AttachmentBased'">Attachment Based</label>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="16px">
+                <mat-label style="width: 150px;text-align: center;padding:10px">Sync to office or Vessel</mat-label>
+                <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="sync_to_office">
+                    <mat-radio-button value="yes" [checked]="newInspectionTypeFormGroup.get('sync_to_office').value == 'yes'">
+                        <label [class.active-label]="newInspectionTypeFormGroup.get('sync_to_office').value == 'yes'">Yes</label>
+                    </mat-radio-button>
+                    <mat-radio-button value="no" [checked]="newInspectionTypeFormGroup.get('sync_to_office').value == 'no'">
+                        <label [class.active-label]="newInspectionTypeFormGroup.get('sync_to_office').value == 'no'">No</label>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="16px">
+                <mat-label style="width: 150px;text-align: center;padding:10px">Auto-Verifiable?</mat-label>
+                <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="auto_verifiable">
+                    <mat-radio-button value="yes" [checked]="newInspectionTypeFormGroup.get('auto_verifiable').value == 'yes'">
+                        <label [class.active-label]="newInspectionTypeFormGroup.get('auto_verifiable').value == 'yes'">Yes</label>
+                    </mat-radio-button>
+                    <mat-radio-button value="no" [checked]="newInspectionTypeFormGroup.get('auto_verifiable').value == 'no'">
+                        <label [class.active-label]="newInspectionTypeFormGroup.get('auto_verifiable').value == 'no'">No</label>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            
+           
+
+
+        </div>
+    </form>
+
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+
+        <button mat-raised-button color="primary" class="save-btn">
+            Save & Add
+        </button>
+        <button mat-raised-button color="primary" class="save-btn">
+            Save & Close
+        </button>
+
+
+        <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+</div>

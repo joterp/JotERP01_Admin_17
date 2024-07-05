@@ -1,0 +1,320 @@
+<fury-page-layout mode="card" class="ops-CustomFieldAssignment">
+    <h3>
+        <span class="first-letter">DRC</span>
+        <span class="first-letter"> R</span>EPORT
+        <span class="first-letter">A</span>CCOUNT
+        <span class="first-letter">A</span>SSIGNMENT
+    </h3>
+
+    <fury-page-layout-content [@fadeInUp] style="margin: 30px;">
+
+
+       
+        <mat-card-content fxLayout="row">
+
+            <mat-card fxFlex="40" class="sp-card-view">
+
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+    
+
+                                <div fxLayout="row">
+                            
+                                <button mat-mini-fab color="primary" [matTooltip]="'Add Group'"
+                                    class="add-approve-btn save-btn"  (click)="saveNewGroup(null,false)">
+                                    <mat-icon class="add-approve-btn-icon">add</mat-icon>
+                                </button>
+                                <span style="margin-top: 3px;
+                                margin-left: 6px;font-size: 15px;"> Add New Group</span>
+                                </div>
+                          
+                                <div>
+                                
+                                <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                    <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                                </button>
+                            </div>
+                        
+                    </div>
+
+                </mat-card-header>
+
+                <mat-card-content>
+                    <div>
+                        <form [formGroup]="groupFilterFormGroup">
+                       
+                            <div class="search" fxLayout="row" fxLayoutAlign="space-between">
+
+                                    <mat-form-field fxFlex appearance="fill" style="margin: 5px;">
+                                        <mat-label></mat-label>
+                                        <input type="text" matInput />
+                                    </mat-form-field>
+                                         <span>
+                                          <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                          border: 1px solid grey;
+                                          background: linear-gradient(#ffffff, #dfdfdf);
+                                          border-radius: 3px;margin-top: 16px;
+                                    
+                                         "/>
+                                      </span>
+                                      <mat-form-field fxFlex appearance="fill" style="margin: 5px;">
+                                        <mat-label></mat-label>
+                                        <input type="text" matInput />
+                                    </mat-form-field>
+                                         <span>
+                                          <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                          border: 1px solid grey;
+                                          background: linear-gradient(#ffffff, #dfdfdf);
+                                          border-radius: 3px;margin-top: 16px;
+                                    
+                                         "/>
+                                      </span>
+
+                                      <mat-form-field appearance="fill" style="margin: 5px;">
+                                        <mat-label>Status</mat-label>
+                                        <mat-select formControlName="drpStatus">
+                                          <mat-option value="">Show Active</mat-option>
+                                          <mat-option value="1">Show Deleted</mat-option>
+                                          <mat-option value="0">Show All</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+
+                                      
+                              </div>
+                    
+                      
+                                    
+                 
+                        </form>
+                        <div #TABLE1>
+                            <table [dataSource]="groupFieldsdataSource" mat-table matSort #table
+                                class="details-table">
+                                <ng-container matColumnDef="Parent">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                      Parent
+                                    </th>
+                                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Group_Name">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                       Group Name
+                                    </th>
+                                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Adjust_Sort_Order">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                       Adjust Sort Order
+                                    </th>
+                                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                    </td>
+                                </ng-container>
+
+                               
+
+
+
+
+                                <tr *matHeaderRowDef="GroupvisibleColumns" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: GroupvisibleColumns" (click)="showTableVesselAssign('row','CustomFields')"
+                                    class="clickable route-animations-elements" mat-row></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <mat-paginator class="firstpaginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+
+
+            <mat-card fxFlex="30" class="sp-card-view1">
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                        <div fxLayout="row">
+
+                            <mat-card-title style="margin-top: 3px;
+                    margin-left: 6px; color: red;margin-left: 200px;
+                ">Assigned Categories</mat-card-title>
+                        </div>
+
+                        <div fxLayout="row">
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                            <mat-card-title style="margin-left: 5px;margin-top: 3px;">Clear Filter</mat-card-title>
+                        </div>
+                    </div>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <div >
+                        <form [formGroup]="NotAssignFilterFormGroup">
+                            <div class="search" fxLayout="row" fxLayoutAlign="space-between">
+                                <mat-form-field fxFlex appearance="fill" style="margin: 5px;">
+                                    <mat-label></mat-label>
+                                    <input type="text" matInput />
+                                </mat-form-field>
+                                     <span>
+                                      <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                      border: 1px solid grey;
+                                      background: linear-gradient(#ffffff, #dfdfdf);
+                                      border-radius: 3px;margin-top: 16px;
+                                
+                                     "/>
+                                  </span>
+
+                                
+                            </div>
+                        </form>
+                        <div #TABLE2>
+                            <table [dataSource]="NotAssignedsdataSource" mat-table matSort #table class="details-table">
+                                <ng-container matColumnDef="Group_Name">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                        Group name
+                                    </th>
+                                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Assign_Button">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                        <button mat-raised-button color="primary"
+                                            style="background-color: #5cb85c; margin: 6px;">
+                                            Assign All
+                                        </button>
+
+                                    </th>
+                                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                    </td>
+                                </ng-container>
+
+
+
+
+                                <tr *matHeaderRowDef="NotAssignedvisibleColumns" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: NotAssignedvisibleColumns"
+                                    class="clickable route-animations-elements" mat-row></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <mat-paginator class="secondpaginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+                    </div>
+
+
+                </mat-card-content>
+            </mat-card>
+
+
+            <mat-card fxFlex="30" class="sp-card-view2" >
+                <mat-card-header fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
+                        <div fxLayout="row">
+
+                            <mat-card-title style="margin-top: 3px;
+                    margin-left: 6px; color:#5cb85c; margin-left: 200px;
+                ">Assigned Vessel</mat-card-title>
+                        </div>
+
+
+                        <div fxLayout="row">
+
+
+                            <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
+                                <mat-icon class="add-sp-btn-icon">remove</mat-icon>
+                            </button>
+                            <mat-card-title style="margin-left: 5px;margin-top: 3px;">Clear Filter</mat-card-title>
+                        </div>
+                    </div>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <div>
+                        <form [formGroup]="AssignFilterFormGroup">
+                            <div class="search" fxLayout="row" fxLayoutAlign="space-between">
+                                <mat-form-field fxFlex appearance="fill" style="margin: 5px;">
+                                    <mat-label></mat-label>
+                                    <input type="text" matInput />
+                                </mat-form-field>
+                                     <span>
+                                      <img src="../../../../assets/img/filter-icon.png" class="logo-filter" alt="filter icon" style="margin-right: 10px;
+                                      border: 1px solid grey;
+                                      background: linear-gradient(#ffffff, #dfdfdf);
+                                      border-radius: 3px;margin-top: 16px;
+                                
+                                     "/>
+                                  </span>
+                            </div>
+                        </form>
+                        <div #TABLE3 >
+                            <table [dataSource]="AssignedsdataSource" mat-table matSort #table class="details-table">
+                                <ng-container matColumnDef="Button_NotAssign">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                        <button mat-raised-button color="primary"
+                                            style="background-color: #5cb85c; margin: 6px;">
+                                            Unassign All
+                                        </button>
+                                    </th>
+                                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Group_Name">
+                                    <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }"
+                                        mat-header-cell mat-sort-header>
+                                        Group Name
+                                    </th>
+                                    <td *matCellDef="let row; let i = index" class="actions-cell"
+                                        [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
+                                        <!-- <p class="tbl-row-item">{{row.txtUnit_Name}}</p> -->
+                                    </td>
+                                </ng-container>
+
+
+
+
+
+                                <tr *matHeaderRowDef="AssignedvisibleColumns" mat-header-row></tr>
+                                <tr *matRowDef="let row; columns: AssignedvisibleColumns"
+                                    class="clickable route-animations-elements" mat-row></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="9999">No data found</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <mat-paginator class="thirdpaginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+                    </div>
+
+
+
+
+
+                </mat-card-content>
+            </mat-card>
+        </mat-card-content>
+
+    </fury-page-layout-content>
+</fury-page-layout>

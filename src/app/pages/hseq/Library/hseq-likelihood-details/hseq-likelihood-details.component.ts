@@ -44,7 +44,7 @@ export class HSEQLIKELIHOODDETAILSComponent implements OnInit {
        { property: "Action", visible: true, name: "Action" }
      ] as ListColumn[];
  
-     get likelihoodvisibleColumns() {
+     get visibleColumns() {
        return this.columns
          .filter((column) => column.visible)
          .map((column) => column.property);

@@ -2,11 +2,11 @@
 
     <fury-page-layout-header>
 
-        <form [formGroup]="vesselsFormGroup">
+        <form [formGroup]="manageAlertFormGroup">
 
             <h3 class="unit-packing">
-                <span class="first-letter">V</span>ESSEL
-                <span class="first-letter">D</span>EPARTMENTS
+                <span class="first-letter">M</span>ANAGE
+                <span class="first-letter">A</span>LERT
             </h3>
 
 
@@ -15,22 +15,25 @@
 
                     <div fxFlex>
                         <mat-form-field appearance="fill">
-                            <mat-label>Department</mat-label>
-                            <input formControlName="Department" matInput placeholder="Search by Department"
+                            <mat-label>Alert</mat-label>
+                            <input formControlName="Alert" matInput placeholder="Search by Alert"
                                 type="text" />
                         </mat-form-field>
-                    </div>
 
-                    <div fxFlex>
                         <mat-form-field appearance="fill">
-                            <mat-label>Vessel Manager</mat-label>
-                            <mat-select formControlName="vessel_manager">
-                                <mat-option value="0">ltd</mat-option>
+                            <mat-label>Module</mat-label>
+                            <mat-select formControlName="module">
+                                <mat-option value="0">Accounts</mat-option>
+                                <mat-option value="1">Crew</mat-option>
                                 <!-- <mat-option value="1">Belize</mat-option>
                       <mat-option value="2">Brazil</mat-option> -->
                             </mat-select>
                         </mat-form-field>
                     </div>
+
+                    
+                       
+                 
                     <div fxFlex>
                         <mat-form-field appearance="fill">
                             <mat-label>Status</mat-label>
@@ -70,12 +73,12 @@
         <div class="actions-area">
 
             <div fxLayout="row">
-                <button mat-mini-fab color="primary" [matTooltip]="'Add Vessel '" class="add-approve-btn save-btn"
-                    >
+                <button mat-mini-fab color="primary" [matTooltip]="'Add Alert '" class="add-approve-btn save-btn"
+                (click)="saveAlert(null,false)">
                     <mat-icon class="add-approve-btn-icon">add</mat-icon>
                 </button>
                 <span style="margin-top: 3px;
-          margin-left: 6px;font-size: 15px;"> Add New Ship Department</span>
+          margin-left: 6px;font-size: 15px;"> Add New Alert</span>
             </div>
             <div>
                 <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
@@ -90,10 +93,10 @@
 
         <div #TABLE>
             <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
-                <ng-container matColumnDef="Department">
+                <ng-container matColumnDef="Alert">
                     <th *matHeaderCellDef class="actions-cell" [ngStyle]="{ 'white-space': 'initial' }" mat-header-cell
                         mat-sort-header="ID">
-                        Department
+                        Alert
                     </th>
                     <td *matCellDef="let row; let i = index" class="actions-cell"
                         [ngStyle]="{ 'white-space': 'initial' }" mat-cell>
@@ -101,9 +104,9 @@
                     </td>
                 </ng-container>
 
-                <ng-container matColumnDef="Vessel_Manager">
+                <ng-container matColumnDef="Module">
                     <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header="Category">
-                        Vessel Manager
+                       Module
                     </th>
                     <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
                         <!-- <p class="tbl-row-item">{{row.rankCategory}}</p>  -->

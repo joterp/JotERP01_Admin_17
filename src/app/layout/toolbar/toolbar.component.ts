@@ -480,7 +480,7 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['OPS/OPS_Offshore_Mid_Night_Report_Index'])
    }
 
-else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
+    else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
     this.router.navigate(['OPS/Library/OPS_LIB_LUBE_SAMPLE_NAME'])
    }
    else if(buttonName === 'OPS_VID_NEW_LIBRARY'){
@@ -519,6 +519,15 @@ else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
    else if(buttonName === 'OPS_LIB_VSL_PARTICULARS_LABELS'){
     this.router.navigate(['OPS/Library/OPS_LIB_VSL_PARTICULARS_LABELS'])
    }
+   else if(buttonName === 'OPS_LIB_PORTCALL_FEEDBACK_CATEGORY'){
+    this.router.navigate(['OPS/Library/OPS_LIB_PORTCALL_FEEDBACK_CATEGORY'])
+   }
+   else if(buttonName === 'OPS_LIB_PORTCALL_FEEDBACK_GRADE'){
+    this.router.navigate(['OPS/Library/OPS_LIB_PORTCALL_FEEDBACK_GRADE'])
+   }
+   else if(buttonName === 'OPS_LIB_PORTCALL_FEEDBACK_QUESTION'){
+    this.router.navigate(['OPS/Library/OPS_LIB_PORTCALL_FEEDBACK_QUESTION'])
+   }
    //hseq Lib
    //hseq
    else if(buttonName === 'InspectionReference'){
@@ -555,7 +564,9 @@ else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
     this.router.navigate(['HSEQ/Library/VesselInspectionLibrary'])
    } 
 
-
+   else if(buttonName === 'VesselInspectionQRCodes'){
+    this.router.navigate(['HSEQ/Library/VesselInspectionQRCodes'])
+   }
    else if(buttonName === 'Admin_Lib_Companies'){
     this.router.navigate(['ADMIN/library/Admin_Lib_Companies'])
    } 
@@ -616,9 +627,29 @@ else if(buttonName === 'OPS_LIB_LUBE_SAMPLE_NAME'){
    } 
 
    else if(buttonName === 'Accounts_Lib_Currency'){
-    this.router.navigate(['ACCOUNTS/libraries/Accounts_Lib_Currency'])
-   } 
-   
+    this.router. navigate(['ACCOUNTS/libraries/Accounts_Lib_Currency'])
+   }
+    else if(buttonName === 'Accounts_Lib_Codes'){
+      this.router. navigate(['ACCOUNTS/libraries/Accounts_Lib_Codes'])
+  }  
+  else if(buttonName === 'Accounts_Lib_Categories'){
+    this.router. navigate(['ACCOUNTS/libraries/Accounts_Lib_Categories'])
+  }  
+  else if(buttonName === 'Accounts_Lib_Report_ACC_Categorization'){
+    this.router. navigate(['ACCOUNTS/libraries/Accounts_Lib_Report_ACC_Categorization'])
+  }  
+  else if(buttonName === 'Accounts_Lib_Debit_Credit_Card'){
+    this.router. navigate(['ACCOUNTS/libraries/Accounts_Lib_Debit_Credit_Card'])
+  }  
+  else if(buttonName === 'Accounts_Lib_QUO_Items'){
+    this.router. navigate(['ACCOUNTS/libraries/Accounts_Lib_QUO_Items'])
+  } 
+  else if(buttonName === 'Accounts_Lib_DRC_QUO_Company'){
+    this.router. navigate(['ACCOUNTS/libraries/Accounts_Lib_DRC_QUO_Company'])
+  }  
+  else if(buttonName === 'Accounts_Lib_DRC_QUO_FootNotes'){
+    this.router. navigate(['ACCOUNTS/libraries/Accounts_Lib_DRC_QUO_FootNotes'])
+  }
   }
 
   

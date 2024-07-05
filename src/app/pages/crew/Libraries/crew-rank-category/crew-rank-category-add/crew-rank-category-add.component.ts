@@ -71,7 +71,7 @@ export class CREWRankCategoryAddComponent implements OnInit {
   }
   
   SaveInsert(data: object, path: string, addMore: boolean = false) {
-    this.api.PostDataService(path, data)
+    this.api.PostDataService(path, data,)
       .subscribe(
         (res: object) => {
           this.submit = false;
@@ -87,10 +87,11 @@ export class CREWRankCategoryAddComponent implements OnInit {
           }
         },
         (error) => {
-          this.submit = false;
-          console.error('Error:', error);
-          let errorMessage = error["Message"] || "Category Name is already exist" || "Unknown error";
-          this.common.ShowMessage(errorMessage, "notify-error", 6000);
+          if (error["Message"]) {
+            this.common.ShowMessage(error["Message"], "notify-error", 6000);
+          } else {
+            this.common.ShowMessage("Rank Name is already exist", "notify-error", 6000);
+          }
         }
       );
 }

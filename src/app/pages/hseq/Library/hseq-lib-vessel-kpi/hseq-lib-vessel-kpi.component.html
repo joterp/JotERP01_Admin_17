@@ -20,20 +20,19 @@
                     <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
                         <div fxLayout="row">
                             <button mat-mini-fab color="primary" [matTooltip]="'Add Category '"
-                                class="add-approve-btn save-btn"   >
+                                class="add-approve-btn save-btn"   (click)="saveNewCategory(null,false)">
                                 <mat-icon class="add-approve-btn-icon">add</mat-icon>
                             </button>
                             <span style="margin-top: 3px;
-                            margin-left: 6px;font-size: 15px;"> Add New Category</span>
+                            margin-left: 6px;font-size: 15px;" > Add New Category</span>
                         </div>
 
                         <div fxLayout="row">
 
-
                             <button mat-mini-fab color="warn" class="add-sp-btn" [matTooltip]="'Remove Filter'">
                                 <mat-icon class="add-sp-btn-icon">remove</mat-icon>
                             </button>
-                            <mat-card-title style="margin-left: 5px;margin-top: 3px;">Clear Filter</mat-card-title>
+                            <mat-card-title style="margin-left: 5px;margin-top: 3px;margin-right: 5px;">Clear Filter</mat-card-title>
                             <span>
                                 <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
                                 <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
@@ -134,11 +133,11 @@
                     <div fxLayout="row" fxLayoutAlign="space-between" class="sp-card-view-header">
                         <div fxLayout="row">
                             <button mat-mini-fab color="primary" [matTooltip]="'Add Objectives '"
-                                class="add-approve-btn save-btn"   >
+                                class="add-approve-btn save-btn"  (click)="saveNewObjectives(null,false)" >
                                 <mat-icon class="add-approve-btn-icon">add</mat-icon>
                             </button>
                             <span style="margin-top: 3px;
-                            margin-left: 6px;font-size: 15px;"> Add New Objectives</span>
+                            margin-left: 6px;font-size: 15px;" > Add New Objectives</span>
                         </div>
 
                         <div fxLayout="row">

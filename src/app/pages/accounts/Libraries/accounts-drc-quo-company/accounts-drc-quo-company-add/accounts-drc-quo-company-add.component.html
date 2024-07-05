@@ -1,0 +1,188 @@
+
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add Service Provider</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <mat-dialog-content>
+        <form [formGroup]="newAccountCodeFormGroup">
+            <div mat-dialog-container style="padding: 10px;">
+
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Service Provider Name</mat-label>
+                      <input formControlName="Service_Provider_Name" matInput placeholder="Service Provider Name" type="text" />
+                    </mat-form-field>
+                  </div>
+
+                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Address</mat-label>
+                        <textarea matInput formControlName="Address" placeholder="Address"></textarea>
+                    </mat-form-field>
+                </div>
+        
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <mat-select  formControlName="Country" >
+                        <mat-option value="0">Anguilla</mat-option>
+                        <mat-option value="1">Italy</mat-option>
+                        <mat-option value="2">India</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>PIN/ZIP Code</mat-label>
+                      <input formControlName="PIN_ZIP_Code" matInput placeholder="PIN ZIP Code" type="text" />
+                    </mat-form-field>
+                  </div>
+
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Currency</mat-label>
+                    <mat-select  formControlName="Currency" >
+                        <mat-option value="0">AED - United Arab Emirates Dirham</mat-option>
+                        <mat-option value="1">AFN - Afghanistan Afghani</mat-option>
+                        <mat-option value="2">INR - India Rupee</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+      
+              <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Sales Emails</mat-label>
+                    <input formControlName="Sales_Emails_1" matInput placeholder="Sales Email" type="text" />
+                  </mat-form-field>
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label></mat-label>
+                    <input formControlName="Sales_Emails_2" matInput placeholder="Account Code" type="text" />
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label></mat-label>
+                    <input formControlName="Code" matInput placeholder="code" type="text" />
+                  </mat-form-field>
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Phone Number</mat-label>
+                    <input formControlName="Phone_Number_1" matInput placeholder="Phone Number" type="text" />
+                  </mat-form-field>
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Phone Number</mat-label>
+                    <input formControlName="Phone_Number_2" matInput placeholder="Phone Number" type="text" />
+                  </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Fax No</mat-label>
+                      <input formControlName="Fax_1" matInput placeholder="Fax" type="text" />
+                    </mat-form-field>
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label></mat-label>
+                      <input formControlName="Fax_2" matInput placeholder="Fax" type="text" />
+                    </mat-form-field>
+                  </div>
+
+                  <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Web URL</mat-label>
+                      <input formControlName="Web_URL_1" matInput placeholder="Fax" type="text" />
+                    </mat-form-field>
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label></mat-label>
+                      <input formControlName="Web_URL_2" matInput placeholder="Fax" type="text" />
+                    </mat-form-field>
+                  </div>
+                  <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row">
+                    <!-- Use a button to create a custom file upload button -->
+                    <mat-label style="margin: 8px;">Logo:</mat-label> &nbsp;
+                
+                    <input style="display: none;" type="file" id="logoUpload" #fileInputLogo
+                        (change)="onFileSelectedLogo($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+                
+                    <button mat-raised-button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileNameLogo">
+                        <label for="logoUpload">
+                            Select</label>
+                    </button>
+                    <div *ngIf="selectedFileNameLogo" fxFlex>
+                        <span aria-placeholder="Select files"> {{ selectedFileNameLogo }}</span>
+                        <button (click)="removeUploadedFileLogo()" mat-button style="color: #5BB318;">Remove</button>
+                    </div>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <div style="border: 8px solid lightgray;
+                                height: 60px;
+                                width: 100%;
+                                padding: 9px;
+                                text-align: center;
+                                box-shadow: 0 0 2px #cccccc; 
+                                margin: 10px;">
+                        Drop Files here for Attachment
+                    </div>
+                </div>
+                
+                <div class="Attachment" fxLayout="column" fxLayout.gt-sm="row">
+                    <!-- Use a button to create a custom file upload button -->
+                
+                    <mat-label style="margin: 8px;">Chop Image:</mat-label> &nbsp;
+                
+                    <input style="display: none;" type="file" id="chopImageUpload" #fileInputImg
+                        (change)="onFileSelectedImg($event)" accept=".pdf,.doc,.docx,.jpg,.png" />
+                
+                    <button mat-raised-button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileNameImg">
+                        <label for="chopImageUpload">
+                            Select</label>
+                    </button>
+                    <div *ngIf="selectedFileNameImg" fxFlex>
+                        <span aria-placeholder="Select files"> {{ selectedFileNameImg }}</span>
+                        <button (click)="removeUploadedFileImg()" mat-button style="color: #5BB318;">Remove</button>
+                    </div>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <div style="border: 8px solid lightgray;
+                                height: 60px;
+                                width: 100%;
+                                padding: 9px;
+                                text-align: center;
+                                box-shadow: 0 0 2px #cccccc; 
+                                margin: 10px;">
+                        Drop Files here for Attachment
+                    </div>
+                </div>
+      
+            </div>
+          </form>
+    </mat-dialog-content>
+    
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newAccountCodeFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newAccountCodeFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+  </div>
+  
+  

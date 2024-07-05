@@ -1,0 +1,112 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Items</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <mat-dialog-content>
+        <form [formGroup]="newItemsFormGroup">
+            <div mat-dialog-container style="padding: 15px;">
+             
+      
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Category</mat-label>
+                    <mat-select  formControlName="Category">
+                        <mat-option value="0">Diving Quotation</mat-option>
+                        <mat-option value="1">Driving Jot (Terms & Conditions)</mat-option>
+                        <mat-option value="2">Lightrage Jetty Charges</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Parent Item</mat-label>
+                    <mat-select  formControlName="Parent_Item">
+                        <mat-option value="0">Select Parent Item</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Item Details</mat-label>
+                      <textarea matInput formControlName="Item_Details" placeholder="Item Details"></textarea>
+                  </mat-form-field>
+              </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Item Unit</mat-label>
+                    <input formControlName="Item_Unit" matInput placeholder="Item Unit" type="text" />
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Currency</mat-label>
+                    <mat-select  formControlName="Currency">
+                        <mat-option value="0">AED - United Arab Emirates Dirham</mat-option>
+                        <mat-option value="1">AFN - Afghanistan Afghani</mat-option>
+                        <mat-option value="2">INR - India Rupee</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Quantity</mat-label>
+                    <input formControlName="Quantity" matInput placeholder="Quantity" type="text" />
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Unit Price</mat-label>
+                    <input formControlName="Unit_Price" matInput placeholder="Unit Price" type="text" />
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Amount</mat-label>
+                    <input formControlName="Amount" matInput placeholder="Amount" type="text" />
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Additonal Remarks</mat-label>
+                      <textarea matInput formControlName="Additional_remarks" placeholder="Aditional Remarks"></textarea>
+                  </mat-form-field>
+              </div>
+      
+            </div>
+          </form>
+    </mat-dialog-content>
+    
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newItemsFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newItemsFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+  </div>
+  
+  

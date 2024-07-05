@@ -1,6 +1,6 @@
 
 
-<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
     <span>
         <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
         margin-bottom: -4px;"/>1. Pre- Joining Document Checklist
@@ -8,7 +8,17 @@
     <span fxLayoutAlign="end"  >
         <mat-icon (click)="CloseModal()">close</mat-icon>
       </span>
-  </div>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">1. Pre- Joining Document Checklist</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+     <mat-icon>close</mat-icon>
+ </button>
+</div>
 
 
 <fury-page-layout mode="card" class="crew-templateVariable" style="margin-top: 20px;">

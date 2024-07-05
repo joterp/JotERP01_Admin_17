@@ -96,13 +96,19 @@ SaveInsert(data: object, path: string) {
         }
       },
       (error) => {
+        // this.submit = false;
+        // this.common.ShowMessage(error, "notify-error", 6000);
         this.submit = false;
         console.error('Error:', error);
-        let errorMessage = error["Message"] || "Rank Name is already exist" || "Unknown error";
-        this.common.ShowMessage(errorMessage, "notify-error", 6000);
+        if (error["Message"]) {
+          this.common.ShowMessage(error["Message"], "notify-error", 6000);
+        } else {
+          this.common.ShowMessage("Rank Name is already exist", "notify-error", 6000);
+        }
       }
     );
 }
+
 
 
 SaveUpdate(data: object, path: string, id: number, addMore: boolean = false) {

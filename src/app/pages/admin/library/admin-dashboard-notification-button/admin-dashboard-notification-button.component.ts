@@ -41,7 +41,7 @@ export class AdminDashboardNotificationButtonComponent {
     private fb: UntypedFormBuilder,
     private http: HttpClient
   ) {
-    this.titleService.setTitle('Countries');
+    this.titleService.setTitle('Dashboard My approval Notifications');
     this.dataSource = new MatTableDataSource();
   }
 

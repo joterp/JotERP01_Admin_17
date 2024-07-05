@@ -123,6 +123,12 @@ import { OpsFollowupDetailsComponent } from './VesselReport_Chng/ops-rpt-report-
 import { OPSFollowupDetailsModelComponent } from './VesselReport_Chng/ops-rpt-report-index/ops-followup-details/ops-followup-details-model/ops-followup-details-model.component';
 import { OPSSelectSFIsComponent } from './VesselReport_Chng/ops-rpt-report-index/ops-add-reports-model/ops-select-sfis/ops-select-sfis.component';
 import { OPSAddReportsModelComponent } from './VesselReport_Chng/ops-rpt-report-index/ops-add-reports-model/ops-add-reports-model.component';
+import { OpsLibCustFeedbackCategoryComponent } from './Library/ops-lib-cust-feedback-category/ops-lib-cust-feedback-category.component';
+import { OpsLibCustFeedbackGradeComponent } from './Library/ops-lib-cust-feedback-grade/ops-lib-cust-feedback-grade.component';
+import { OpsLibCustFeedbackQuestionComponent } from './Library/ops-lib-cust-feedback-question/ops-lib-cust-feedback-question.component';
+import { OpsLibCustFeedbackQuestionAddComponent } from './Library/ops-lib-cust-feedback-question/ops-lib-cust-feedback-question-add/ops-lib-cust-feedback-question-add.component';
+import { OpsLibCustFeedbackGradeAddComponent } from './Library/ops-lib-cust-feedback-grade/ops-lib-cust-feedback-grade-add/ops-lib-cust-feedback-grade-add.component';
+import { OpsLibCustFeedbackCategoryAddComponent } from './Library/ops-lib-cust-feedback-category/ops-lib-cust-feedback-category-add/ops-lib-cust-feedback-category-add.component';
 
 
 @NgModule({
@@ -244,7 +250,13 @@ import { OPSAddReportsModelComponent } from './VesselReport_Chng/ops-rpt-report-
       OpsFollowupDetailsComponent,
       OPSFollowupDetailsModelComponent,
       OPSSelectSFIsComponent,
-      OPSAddReportsModelComponent
+      OPSAddReportsModelComponent,
+      OpsLibCustFeedbackCategoryComponent,
+      OpsLibCustFeedbackGradeComponent,
+      OpsLibCustFeedbackQuestionComponent,
+      OpsLibCustFeedbackQuestionAddComponent,
+      OpsLibCustFeedbackGradeAddComponent,
+      OpsLibCustFeedbackCategoryAddComponent
       
   ],
 

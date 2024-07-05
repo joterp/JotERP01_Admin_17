@@ -1,1 +1,91 @@
-<p>admin-manage-alert-add works!</p>
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add Vessel Department</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <mat-dialog-content>
+        <form [formGroup]="newvesselFormGroup">
+            <div mat-dialog-container style="padding: 10px;">
+              
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Module Name</mat-label>
+                    <mat-select  formControlName="Module_Name" >
+                        <mat-option value="0">Accounts</mat-option>
+                        <!-- <mat-option value="1">Brazil</mat-option>
+                        <mat-option value="2">China</mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Alert Name</mat-label>
+                    <input formControlName="Alert_Name" matInput placeholder="Alert Name" type="text" />
+                  </mat-form-field>
+                </div>
+
+                <div class="" style="padding: 5px;">Email Text</div><br>
+                <div *ngIf="!isAngularEditor">
+                  <quill-editor [styles]="{ height: '150px' }" id="textEditor" (onEditorCreated)="created($event)"
+                                (onContentChanged)="contentChanged($event)">
+                  </quill-editor>
+                </div>
+            
+                <div *ngIf="isAngularEditor">
+                  <angular-editor formControlName="Email_Text" [config]="editorConfig"></angular-editor>
+                </div>
+
+                <div class="" style="padding: 5px;">SMS Text</div><br>
+                <div *ngIf="!isAngularEditor">
+                  <quill-editor [styles]="{ height: '150px' }" id="textEditor" (onEditorCreated)="created($event)"
+                                (onContentChanged)="contentChanged($event)">
+                  </quill-editor>
+                </div>
+            
+                <div *ngIf="isAngularEditor">
+                  <angular-editor formControlName="SMS_Text" [config]="editorConfig"></angular-editor>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row" style="margin-top:10px">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Desktop Notifications</mat-label>
+                        <textarea matInput formControlName="Desktop_Notifications" placeholder="Desktop Notication"></textarea>
+                    </mat-form-field>
+                </div>
+               
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Dashboard Query</mat-label>
+                        <textarea matInput formControlName="Dashboard_Query" placeholder="Dashboard Query"></textarea>
+                    </mat-form-field>
+                </div>
+              
+            </div>
+          </form>
+    </mat-dialog-content>
+    
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newvesselFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newvesselFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+  </div>

@@ -23,16 +23,18 @@ export class HSEQISPSSecurityDrillAddComponent implements OnInit {
 
     @Inject(MAT_DIALOG_DATA) public data: any) { 
       this.newInspectionReferenceFormGroup = this._fb.group({
-        drpManual: ["", Validators.required],
-        txtChapter_Name: ["", Validators.required],
-        drpRisk_Category:[""],
-        txtTitle:[""],
-        txtBest_Practice:[""],
+        Drill_Type: ["", Validators.required],
+        Drill_Name: ["", Validators.required],
+        // drpRisk_Category:[""],
+        // txtTitle:[""],
+        // txtBest_Practice:[""],
        
       });
     }
 
   ngOnInit(): void {
   }
-
+  CloseModal() {
+    this.dialogRef.close(true);
+  }
 }

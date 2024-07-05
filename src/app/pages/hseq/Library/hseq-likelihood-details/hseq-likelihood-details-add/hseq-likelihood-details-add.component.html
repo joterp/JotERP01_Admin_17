@@ -1,4 +1,4 @@
-<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
     <span>
         <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
         margin-bottom: -4px;"/>Add New Inspection Reference
@@ -8,67 +8,41 @@
         <mat-icon (click)="CloseModal()">close</mat-icon>
       </span>
   </div>
+   -->
+   <div mat-dialog-title
+					  cdkDrag
+					  cdkDragRootElement=".cdk-overlay-pane"
+					  cdkDragHandle
+					  style="display: flex; justify-content: space-between; align-items: center;">
+					 <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New Likelihood</span>
+					 <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+						 <mat-icon>close</mat-icon>
+					 </button>
+					</div>
   <div>
-    <form [formGroup]="newInspectionReferenceFormGroup">
-      <div mat-dialog-container style="padding-top: 20px;">
+    <form [formGroup]="newLikelihoodFormGroup">
+      <div mat-dialog-container style="padding: 20px;">
+       
         <div fxLayout="column" fxLayout.gt-sm="row">
-            <mat-form-field fxFlex appearance="fill">
-                <mat-label>Manual</mat-label>
-                <mat-select formControlName="drpManual" >
-                  <mat-option value="select">SELECT</mat-option>
-                  <mat-option value="Company_Policies">Company Policies</mat-option>
-                  <mat-option value="CDI">CDI</mat-option>
-                  <mat-option value="TMSA">TMSA</mat-option>
-                  <mat-option value="SIRE">SIRE</mat-option>
-                </mat-select>
-              </mat-form-field>
-        </div>
-
-        <div fxLayout="column" fxLayout.gt-sm="row">
-            <mat-form-field fxFlex appearance="fill">
-                <mat-label>Chapter Name</mat-label>
-                <textarea
-                matInput
-                formControlName="txtChapter_Name"
-                placeholder="Chapter Name"
-                ></textarea>
-            </mat-form-field>
-        </div>
-      
-        <div fxLayout="column" fxLayout.gt-sm="row">
-        <mat-form-field fxFlex appearance="fill">
-            <mat-label>Risk Categorization</mat-label>
-            <mat-select formControlName="drpRisk_Category" >
-              <mat-option value="select">SELECT</mat-option>
-              <mat-option value="5">5</mat-option>
-              <mat-option value="4">4</mat-option>
-              <mat-option value="3">3</mat-option>
-              <mat-option value="2">2</mat-option>
-              <mat-option value="1">1</mat-option>
-            </mat-select>
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Name</mat-label>
+            <input formControlName="name" matInput  type="text" />
           </mat-form-field>
-          </div>
-
-          <div fxLayout="column" fxLayout.gt-sm="row">
-            <mat-form-field fxFlex appearance="fill">
-                <mat-label>Title</mat-label>
-                <textarea
-                matInput
-                formControlName="txtTitle"
-                placeholder="Title"
-                ></textarea>
-            </mat-form-field>
         </div>
         <div fxLayout="column" fxLayout.gt-sm="row">
-            <mat-form-field fxFlex appearance="fill">
-                <mat-label>Best Practice</mat-label>
-                <textarea
-                matInput
-                formControlName="txtBest_Practice"
-                placeholder="Best Practice"
-                ></textarea>
-            </mat-form-field>
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Details</mat-label>
+            <input formControlName="details" matInput  type="text" />
+          </mat-form-field>
         </div>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Value</mat-label>
+            <input formControlName="value" matInput  type="text" />
+          </mat-form-field>
+        </div>
+       
+
         
       </div>
     </form>

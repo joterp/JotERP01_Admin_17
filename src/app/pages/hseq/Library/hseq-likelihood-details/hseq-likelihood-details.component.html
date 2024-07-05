@@ -133,12 +133,6 @@
               <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
             </td>
           </ng-container>
-         
-    
-    
-    
-    
-    
         
           <ng-container matColumnDef="Action">
             <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
@@ -159,8 +153,8 @@
             </td>
           </ng-container>
   
-          <tr *matHeaderRowDef="likelihoodvisibleColumns" mat-header-row></tr>
-          <tr *matRowDef="let row; columns: likelihoodvisibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="9999">No data found</td>
           </tr>

@@ -35,39 +35,39 @@ export class HSEQAlertManageCategoryFormsAddComponent implements OnInit {
   CloseModal() {
     this.dialogRef.close(true);
   }
-  filesDropped(event) {
-    const file: File = event.target.files[0];
-    if (file) {
-      const formData = new FormData();
-      for (let i = 0; i < event.target.files.length; i++) {
-        formData.append("sampleFile", event.target.files[i]);
-      }
+  // filesDropped(event) {
+  //   const file: File = event.target.files[0];
+  //   if (file) {
+  //     const formData = new FormData();
+  //     for (let i = 0; i < event.target.files.length; i++) {
+  //       formData.append("sampleFile", event.target.files[i]);
+  //     }
 
-      const upload$ = this.api.FormPostApi("/upload", formData);
-      upload$
-        .then((response) => response.json())
-        .then((res) => {
-          if (res["Status"] == 200) {
+  //     const upload$ = this.api.FormPostApi("/upload", formData);
+  //     upload$
+  //       .then((response) => response.json())
+  //       .then((res) => {
+  //         if (res["Status"] == 200) {
            
-            if (Array.isArray(res["data"])) {
-              this.attachment = [...this.attachment, ...res["data"]];
-            } else {
-              this.attachment = [...this.attachment, res["data"]];
-            }
-            console.log("------------------->",this.attachment)
+  //           if (Array.isArray(res["data"])) {
+  //             this.attachment = [...this.attachment, ...res["data"]];
+  //           } else {
+  //             this.attachment = [...this.attachment, res["data"]];
+  //           }
+  //           console.log("------------------->",this.attachment)
 
-            //  console.log(this.attachment, "this.attachment")
-            // this.onFileUpload(res["data"]);
-          } else {
-            this.common.ShowMessage(
-              "Error while uploading attachment",
-              "notify-error",
-              6000
-            );
-          }
-        });
-    }
-  }
+  //           //  console.log(this.attachment, "this.attachment")
+  //           // this.onFileUpload(res["data"]);
+  //         } else {
+  //           this.common.ShowMessage(
+  //             "Error while uploading attachment",
+  //             "notify-error",
+  //             6000
+  //           );
+  //         }
+  //       });
+  //   }
+  // }
  
 
 

@@ -1,1 +1,121 @@
-<p>admin-kpi-report-index-add works!</p>
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add KPIs & Reports</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <mat-dialog-content>
+        <form [formGroup]="newKPIsReportFormGroup">
+            <div mat-dialog-container style="padding: 10px;">
+
+                <div fxLayout="row" fxLayoutGap="16px" style="margin-bottom: 10px;">
+                    <mat-label style="width: 150px;text-align: center;padding:10px"></mat-label>
+                    <mat-radio-group fxLayout="column" fxLayoutGap="16px" formControlName="menu">
+                      <mat-radio-button value="yes" [checked]="newKPIsReportFormGroup.get('menu').value == 'yes'">
+                        <label [class.active-label]="newKPIsReportFormGroup.get('menu').value == 'yes'">Show In Menu</label>
+                      </mat-radio-button>
+                      <mat-radio-button value="no" [checked]="newKPIsReportFormGroup.get('menu').value == 'no'">
+                        <label [class.active-label]="newKPIsReportFormGroup.get('menu').value == 'no'">Show In Dashboard</label>
+                      </mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+              
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Tab Name</mat-label>
+                    <mat-select  formControlName="Tab_Name" >
+                        <mat-option value="0">Admin</mat-option>
+                        <mat-option value="1">Account</mat-option>
+                        <mat-option value="2">Crew</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+      
+      
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Report Name</mat-label>
+                    <input formControlName="Report_Name" matInput placeholder="Report Name" type="text" />
+                  </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Category Name</mat-label>
+                      <mat-select  formControlName="Category_Name" >
+                          <mat-option value="0">Admin</mat-option>
+                          <mat-option value="1">Account</mat-option>
+                          <mat-option value="2">Crew</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Menu ID</mat-label>
+                        <textarea matInput formControlName="Menu_ID" placeholder="Menu ID"></textarea>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                    <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Procedure</mat-label>
+                      <mat-select  formControlName="Procedure" >
+                          <mat-option value="0">proc_generate_excel_with_columns</mat-option>
+                          <mat-option value="1">PROC_JOT_ACC_DRC_Delete_Received_From_Owner</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                
+                  <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="padding: 12px 55px;border: 1px solid grey;">
+  
+  
+                    <!-- <mat-button>Upload</mat-button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+      
+                    <div>
+                      <input style="display: none;" type="file" id="imageupload" #fileInput (change)="onFileSelected($event)"
+                        accept=".pdf,.doc,.docx,.jpg,.png" />
+      
+                      <button type="button" class="upload-btn" style="margin-top: 6px;" *ngIf="!selectedFileName"
+                        mat-stroked-button>
+                        <label for="imageupload">
+                          File Name</label>
+                      </button>
+                    </div>
+                    
+      
+                    <div *ngIf="selectedFileName" fxFlex>
+                      <span style="margin-top: 2px !important;"> {{ selectedFileName }}</span>
+                      <button (click)="removeUploadedFileadditem()" mat-button style="color: #5BB318;">Remove</button>
+
+                      
+                    </div>
+      
+                  </div>
+                  <mat-hint style="margin-top: 10px;">Upload only following files	:- 	   .png, .pdf, .jpg, .xlsx, .doc</mat-hint>
+               
+            </div>
+          </form>
+    </mat-dialog-content>
+    
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newKPIsReportFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary"  class="save-btn" [disabled]="!newKPIsReportFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+  </div>

@@ -27,8 +27,7 @@ export interface RankCategory {
 })
 export class CREWRankCategoryComponent implements OnInit {
   pageSize = 10;
-  private apiUrl = 'http://localhost:5062/api/v1/RankCategory';
-  private authToken = 'your-auth-token-here';
+ 
   dataSource: MatTableDataSource<RankCategory>;
 
   @ViewChild('TABLE') table: ElementRef;

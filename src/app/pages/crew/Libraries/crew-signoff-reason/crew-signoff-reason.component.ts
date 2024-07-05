@@ -36,8 +36,7 @@ export interface SignOffReason {
 })
 export class CREWSignoffReasonComponent implements OnInit {
   pageSize = 10;
-  private apiUrl = 'http://localhost:5062/api/v1/SignoffReason';
-  private authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiVGVuYW50SWQiOiIxIiwiVXNlck5hbWUiOiJBZG1pbiIsIlJlYWRBY2Nlc3MiOiJUcnVlIiwiVXBkYXRlQWNjZXNzIjoiVHJ1ZSIsIkRlbGV0ZUFjY2VzcyI6IlRydWUiLCJBcHByb3ZlQWNjZXNzIjoiRmFsc2UiLCJDcmVhdGVBY2Nlc3MiOiJUcnVlIiwibmJmIjoxNzE4NjgxNDA4LCJleHAiOjE3MTg3MTE0MDcsImlhdCI6MTcxODY4MTQwOCwiaXNzIjoiZU5peC5Kb3RFUlAuY29tLklzc3VlciIsImF1ZCI6ImVOaXguSm90RVJQLmNvbS5BdWRpZW5jZSJ9.KoYEyDXqCwchcbXtiJMAW56Wy8DBSCa8EEz0RUx27UM  ';
+  
   dataSource: MatTableDataSource<SignOffReason>;
 
   @ViewChild('TABLE') table: ElementRef;

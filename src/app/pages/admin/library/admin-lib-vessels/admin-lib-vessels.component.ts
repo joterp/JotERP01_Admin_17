@@ -41,7 +41,7 @@ export class AdminLibVesselsComponent {
     private fb: UntypedFormBuilder,
     private http: HttpClient
   ) {
-    this.titleService.setTitle('Countries');
+    this.titleService.setTitle('Vessels');
     this.dataSource = new MatTableDataSource();
   }
 

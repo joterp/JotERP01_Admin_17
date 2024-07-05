@@ -29,6 +29,14 @@ import { HSEQAlertManageCategoryFormsComponent } from './Library/hseq-alert-mana
 import { HSEQAlertManageCategoryFormsAddComponent } from './Library/hseq-alert-manage-category-forms/hseq-alert-manage-category-forms-add/hseq-alert-manage-category-forms-add.component';
 import { HSEQLIBVESSELKPIComponent } from './Library/hseq-lib-vessel-kpi/hseq-lib-vessel-kpi.component';
 import { HSEQVESSELINSPECTIONSLIBComponent } from './Library/hseq-vessel-inspections-lib/hseq-vessel-inspections-lib.component';
+import { HseqLibVesselKpiAddCategoryComponent } from './Library/hseq-lib-vessel-kpi/hseq-lib-vessel-kpi-add-category/hseq-lib-vessel-kpi-add-category.component';
+import { HseqLibVesselKpiAddObjectivesComponent } from './Library/hseq-lib-vessel-kpi/hseq-lib-vessel-kpi-add-objectives/hseq-lib-vessel-kpi-add-objectives.component';
+import { HseqVesselInspectionsLibTypeAddComponent } from './Library/hseq-vessel-inspections-lib/hseq-vessel-inspections-lib-type-add/hseq-vessel-inspections-lib-type-add.component';
+import { HseqVesselInspectionsLibChapterAddComponent } from './Library/hseq-vessel-inspections-lib/hseq-vessel-inspections-lib-chapter-add/hseq-vessel-inspections-lib-chapter-add.component';
+import { HseqVesselInspectionsLibCategoryAddComponent } from './Library/hseq-vessel-inspections-lib/hseq-vessel-inspections-lib-category-add/hseq-vessel-inspections-lib-category-add.component';
+import { HseqVesselInspectionsLibItemAddComponent } from './Library/hseq-vessel-inspections-lib/hseq-vessel-inspections-lib-item-add/hseq-vessel-inspections-lib-item-add.component';
+import { HseqVesselInspectionsLibItemAddGradeComponent } from './Library/hseq-vessel-inspections-lib/hseq-vessel-inspections-lib-item-add/hseq-vessel-inspections-lib-item-add-grade/hseq-vessel-inspections-lib-item-add-grade.component';
+import { HseqInspectionQRCodeListComponent } from './Library/hseq-inspection-qr-code-list/hseq-inspection-qr-code-list.component';
 
 
 @NgModule({
@@ -53,6 +61,14 @@ import { HSEQVESSELINSPECTIONSLIBComponent } from './Library/hseq-vessel-inspect
     HSEQAlertManageCategoryFormsAddComponent,
     HSEQLIBVESSELKPIComponent,
     HSEQVESSELINSPECTIONSLIBComponent,
+    HseqLibVesselKpiAddCategoryComponent,
+    HseqLibVesselKpiAddObjectivesComponent,
+    HseqVesselInspectionsLibTypeAddComponent,
+    HseqVesselInspectionsLibChapterAddComponent,
+    HseqVesselInspectionsLibCategoryAddComponent,
+    HseqVesselInspectionsLibItemAddComponent,
+    HseqVesselInspectionsLibItemAddGradeComponent,
+    HseqInspectionQRCodeListComponent,
    
   ],
   imports: [
