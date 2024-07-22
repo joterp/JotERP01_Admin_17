@@ -61,6 +61,9 @@ import { OPSRPTFOLLOWUPINDEXComponent } from './VesselReport_Chng/ops-rpt-follow
 import { OpsLibCustFeedbackCategoryComponent } from './Library/ops-lib-cust-feedback-category/ops-lib-cust-feedback-category.component';
 import { OpsLibCustFeedbackGradeComponent } from './Library/ops-lib-cust-feedback-grade/ops-lib-cust-feedback-grade.component';
 import { OpsLibCustFeedbackQuestionComponent } from './Library/ops-lib-cust-feedback-question/ops-lib-cust-feedback-question.component';
+import { OpsLibPortcallFeedbackCategoryComponent } from './Library/ops-lib-portcall-feedback-category/ops-lib-portcall-feedback-category.component';
+import { OpsLibPortcallFeedbackGradeComponent } from './Library/ops-lib-portcall-feedback-grade/ops-lib-portcall-feedback-grade.component';
+import { OpsLibPortcallFeedbackQuestionComponent } from './Library/ops-lib-portcall-feedback-question/ops-lib-portcall-feedback-question.component';
 
 const routes: Routes = [
   {
@@ -191,15 +194,24 @@ const routes: Routes = [
   },
 
   {
-    path:"Library/OPS_LIB_PORTCALL_FEEDBACK_CATEGORY", component:OpsLibCustFeedbackCategoryComponent
+    path:"Library/OPS_LIB_PORTCALL_FEEDBACK_CATEGORY", component:OpsLibPortcallFeedbackCategoryComponent
   },
   {
-    path:"Library/OPS_LIB_PORTCALL_FEEDBACK_GRADE", component:OpsLibCustFeedbackGradeComponent
+    path:"Library/OPS_LIB_PORTCALL_FEEDBACK_GRADE", component:OpsLibPortcallFeedbackGradeComponent
   },
   {
-    path:"Library/OPS_LIB_PORTCALL_FEEDBACK_QUESTION", component:OpsLibCustFeedbackQuestionComponent
+    path:"Library/OPS_LIB_PORTCALL_FEEDBACK_QUESTION", component:OpsLibPortcallFeedbackQuestionComponent
   },
 
+  {
+    path:"Library/OPS_LIB_CUST_FEEDBACK_CATEGORY", component:OpsLibCustFeedbackCategoryComponent
+  },
+  {
+    path:"Library/OPS_LIB_CUST_FEEDBACK_GRADE", component:OpsLibCustFeedbackGradeComponent
+  },
+  {
+    path:"Library/OPS_LIB_CUST_FEEDBACK_QUESTION", component:OpsLibCustFeedbackQuestionComponent
+  },
 
   {
     path:"FireArmsMovement/OPS_FAM_AmmunitionKit", component:OPSFAMAmmunitionKitComponent

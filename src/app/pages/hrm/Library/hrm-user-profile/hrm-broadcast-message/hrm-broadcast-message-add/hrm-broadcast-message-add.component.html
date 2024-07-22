@@ -1,0 +1,136 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+  <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New BM</span>
+  <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content>
+  <div fxLayout="row" fxLayoutGap="5px">
+    <div fxFlex="40">
+      <table style="width: 100%;text-align: center;padding: 23px 0px;background-color: #d2e1f4">
+        <tr>
+          <td> <span>
+              <img src="../../../../assets/img/mshApp.png" alt="excel" />
+  
+            </span></td>
+  
+  
+          <td> <span>
+              <img src="../../../../assets/img/Save1.png" alt="excel" />
+            </span></td>
+  
+  
+          <td> <span>
+              <img src="../../../../assets/img/urgency.png" alt="excel" />
+            </span></td>
+  
+          <td> <span>
+  
+            </span></td>
+        </tr>
+  
+        <tr>
+          <td>Send For Approval</td>
+          <td>Save As Draft</td>
+          <td>Urgent</td>
+          <td></td>
+        </tr>
+      </table>
+      <form [formGroup]="leavesStdFormGroup">
+        <div mat-dialog-container style="padding: 20px;">
+  
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>User</mat-label>
+              <mat-select #select multiple formControlName="user">
+                  <div class="select-all">
+                      <mat-checkbox [(ngModel)]="allSelected" [ngModelOptions]="{standalone: true}"
+                          (change)="toggleAllSelection()">Select All</mat-checkbox>
+                  </div>
+                  <mat-option (click)="optionClick()" *ngFor="let user of UserName" [value]="user.value">
+                      {{user.viewValue}}
+                  </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+  
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Approver</mat-label>
+              <mat-select formControlName="Approver">
+                <mat-option value="Jot_Support6">Jot Support6</mat-option>
+                <mat-option value="Nayna">Nayna</mat-option>
+                <mat-option value="Pooja_Joshi">Pooja Joshi</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Primary Category</mat-label>
+              <mat-select formControlName="Primary_Category">
+                <mat-option value="Maintenance">Maintenance</mat-option>
+                <mat-option value="MARPOL">MARPOL</mat-option>
+                <mat-option value="Navigational_Campaign">Navigational Campaign</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Second Category</mat-label>
+              <mat-select formControlName="Second_Category">
+                <mat-option value="Maintenance">Maintenance</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>From Department</mat-label>
+              <mat-select formControlName="From_Department">
+                <mat-option value="HSEQ">HSEQ</mat-option>
+                <mat-option value="Marine">Marine</mat-option>
+                <mat-option value="Operations">Operations</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+
+
+        </div>
+      </form>
+    </div>
+  
+    <div fxFlex="60">
+      <div fxLayout="column" fxLayout.gt-sm="row" style="padding: 20px;">
+        <mat-form-field fxFlex appearance="fill">
+          <mat-label>Subject</mat-label>
+          <input formControlName="Subject" matInput placeholder="Subject" type="text" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" >
+        <quill-editor
+          [styles]="{ height: '300px' }"
+          id="textEditor"
+          (onEditorCreated)="created($event)"
+          (onContentChanged)="contentChanged($event)" style="background-color: #f6f6f6;
+          border: 1px solid #e9e9e9;"
+        >
+        </quill-editor>
+      </div>
+  
+    </div>
+  </div>
+</mat-dialog-content>

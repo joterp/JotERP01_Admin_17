@@ -32,7 +32,7 @@ export class OpsLibCustFeedbackQuestionComponent {
   feedbackquestionFilterFormGroup: UntypedFormGroup;
   constructor(private titleService: Title, private api: ApiService, private auth: AuthGuard,private sidenavService: SidenavService,
     private common: CommonService, private dialog:MatDialog, private fb: UntypedFormBuilder) { 
-      this.titleService.setTitle(`Port-Call Feedback Question`);
+      this.titleService.setTitle(`Customer Feedback Question`);
     }
     @Input()
     columns: ListColumn[] = [

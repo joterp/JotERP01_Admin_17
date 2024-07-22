@@ -129,6 +129,12 @@ import { OpsLibCustFeedbackQuestionComponent } from './Library/ops-lib-cust-feed
 import { OpsLibCustFeedbackQuestionAddComponent } from './Library/ops-lib-cust-feedback-question/ops-lib-cust-feedback-question-add/ops-lib-cust-feedback-question-add.component';
 import { OpsLibCustFeedbackGradeAddComponent } from './Library/ops-lib-cust-feedback-grade/ops-lib-cust-feedback-grade-add/ops-lib-cust-feedback-grade-add.component';
 import { OpsLibCustFeedbackCategoryAddComponent } from './Library/ops-lib-cust-feedback-category/ops-lib-cust-feedback-category-add/ops-lib-cust-feedback-category-add.component';
+import { OpsLibPortcallFeedbackCategoryComponent } from './Library/ops-lib-portcall-feedback-category/ops-lib-portcall-feedback-category.component';
+import { OpsLibPortcallFeedbackGradeComponent } from './Library/ops-lib-portcall-feedback-grade/ops-lib-portcall-feedback-grade.component';
+import { OpsLibPortcallFeedbackQuestionComponent } from './Library/ops-lib-portcall-feedback-question/ops-lib-portcall-feedback-question.component';
+import { OpsLibPortcallFeedbackCategoryAddComponent } from './Library/ops-lib-portcall-feedback-category/ops-lib-portcall-feedback-category-add/ops-lib-portcall-feedback-category-add.component';
+import { OpsLibPortcallFeedbackGradeAddComponent } from './Library/ops-lib-portcall-feedback-grade/ops-lib-portcall-feedback-grade-add/ops-lib-portcall-feedback-grade-add.component';
+import { OpsLibPortcallFeedbackQuestionAddComponent } from './Library/ops-lib-portcall-feedback-question/ops-lib-portcall-feedback-question-add/ops-lib-portcall-feedback-question-add.component';
 
 
 @NgModule({
@@ -256,7 +262,13 @@ import { OpsLibCustFeedbackCategoryAddComponent } from './Library/ops-lib-cust-f
       OpsLibCustFeedbackQuestionComponent,
       OpsLibCustFeedbackQuestionAddComponent,
       OpsLibCustFeedbackGradeAddComponent,
-      OpsLibCustFeedbackCategoryAddComponent
+      OpsLibCustFeedbackCategoryAddComponent,
+      OpsLibPortcallFeedbackCategoryComponent,
+      OpsLibPortcallFeedbackGradeComponent,
+      OpsLibPortcallFeedbackQuestionComponent,
+      OpsLibPortcallFeedbackCategoryAddComponent,
+      OpsLibPortcallFeedbackGradeAddComponent,
+      OpsLibPortcallFeedbackQuestionAddComponent
       
   ],
 

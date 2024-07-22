@@ -73,6 +73,7 @@ const routes: Routes = [
       },
     ],
   },
+
   {
     path: "ACCOUNTS",
     // data: { title: "Planner" },
@@ -86,6 +87,7 @@ const routes: Routes = [
       },
     ],
   },
+ 
 
   {
     path: "PURC",
@@ -133,6 +135,16 @@ children: [
   },  
 ]
 },
+
+{ path: 'HRM', 
+  component: LayoutComponent,
+  children: [
+    {
+      path:"",
+      loadChildren: () => import('./pages/hrm/hrm-routing.module').then(m => m.HrmRoutingModule) 
+    },  
+  ]
+  },
 {
   path: "Survey_Certificate",
   // data: { title: "Planner" },
@@ -156,6 +168,7 @@ children: [
 ]
 },
   { path: 'admin', loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule) },
+  { path: 'hrm', loadChildren: () => import('./pages/hrm/hrm.module').then(m => m.HrmModule) },
   
 
 

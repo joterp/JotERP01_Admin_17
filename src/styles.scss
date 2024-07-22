@@ -1,6 +1,8 @@
 // / You can add global styles to this file, and also import other style files /
 @import "./@fury/styles/core";
 @import "./app/app.theme";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'; // Adjust theme as per your project
+
 
 // .mat-raised-button.mat-primary
 // {
@@ -256,6 +258,9 @@
   position: relative;
   height: 1px;
 }
+.mat-button {
+  font-family: sans-serif;
+}
 
 .mat-calendar-table-header-divider::after {
   content: '';
@@ -324,7 +329,7 @@
   background: none;
   text-align: center;
   outline: none;
-  font-family: inherit;
+  font-family: system-ui;
   margin: 0;
 }
 

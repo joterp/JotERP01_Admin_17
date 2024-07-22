@@ -1,0 +1,61 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Category
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add Leaves Standards</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <form [formGroup]="leavesStdFormGroup">
+      <div mat-dialog-container style="padding: 20px;">
+
+        <div fxLayout="column" fxLayout.gt-sm="row" >
+            <mat-form-field fxFlex appearance="fill">
+            <mat-label>Company</mat-label>
+            <mat-select formControlName="Company">
+                <mat-option value="0">Aqua Link Marine Pte Ltd</mat-option>
+                <mat-option value="1">Atlantis Ship Management Pvt. Ltd.</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+        
+
+        <div fxLayout="column" fxLayout.gt-sm="row" >
+            <mat-form-field fxFlex appearance="fill">
+            <mat-label>Leaves Type</mat-label>
+            <mat-select formControlName="Leaves_Type">
+                <mat-option value="Annual">Annual</mat-option>
+                <mat-option value="Medical">Medical</mat-option>
+                <mat-option value="Unpaid">Unpaid</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Standards No Of Days</mat-label>
+              <input formControlName="Standards_No_of_days" matInput placeholder="Standards No Of Days" type="text" />
+            </mat-form-field>
+        </div>
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary"  class="save-btn" [disabled]="!leavesStdFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+    <button mat-raised-button color="primary"  class="save-btn" [disabled]="!leavesStdFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+    <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+  </mat-dialog-actions>
+  </div>

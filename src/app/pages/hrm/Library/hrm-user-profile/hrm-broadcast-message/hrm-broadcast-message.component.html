@@ -1,0 +1,272 @@
+
+<fury-page-layout mode="card" class="hrm-broadcastMessage">
+ 
+    <fury-page-layout-header>
+      
+      <form [formGroup]="broadcastMsgFormGroup" >
+        
+          <h3 class="unit-packing">
+              
+            <span class="first-letter">B</span>ROADCAST
+            <span class="first-letter">M</span>ESSAGE
+           
+          </h3>
+      
+        
+        <div class="filter-area">
+          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start">  
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Department</mat-label>
+                    <mat-select formControlName="Department">
+                      <mat-option value="Accounts">Accounts</mat-option>
+                      <mat-option value="Crew">Crew</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field >
+                    <mat-label>Date Sent</mat-label>
+                    <input matInput [ngxMatDatetimePicker]="Date_Sent" placeholder="DD MMM YYYY HH:mm"
+                      formControlName="Date_Sent">
+                    <mat-datepicker-toggle matSuffix [for]="Date_Sent"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #Date_Sent></ngx-mat-datetime-picker>
+                  </mat-form-field>
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                  <mat-label>BM Code</mat-label>
+                  <input formControlName="BM_Code" matInput placeholder="Search by BM Code" type="text" />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Subject</mat-label>
+                    <input formControlName="Subject" matInput placeholder="Search by Subject" type="text" />
+                </mat-form-field>
+    
+              </div>
+
+            <div fxFlex>
+                <mat-form-field appearance="fill">
+                    <mat-label>Primary Category</mat-label>
+                    <mat-select formControlName="Primary_Category">
+                      <mat-option value="Crew_Training">Crew Training</mat-option>
+                      <mat-option value="MARPOL">MARPOL</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Secondary Category</mat-label>
+                <mat-select formControlName="Secondary_Category">
+                  <mat-option value="Annual">Boilers</mat-option>
+                  <mat-option value="Medical">Bunkers</mat-option>
+                  <mat-option value="Engine_Room_Machinery">Engine Room Machinery</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex>
+              <mat-form-field appearance="fill">
+                <mat-label>Active</mat-label>
+                <mat-select formControlName="drpStatus">
+                  <mat-option value="">Show Active</mat-option>
+                  <mat-option value="1">Show Deleted</mat-option>
+                  <mat-option value="0">Show All</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="Status">
+                  <mat-option value="Accounts">Accounts</mat-option>
+                  <mat-option value="Crew">Crew</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            </div>
+
+
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                <button
+                mat-raised-button
+                color="primary"
+               style="background-color: #5cb85c;"
+                class="filter-btn"
+              >
+                Assign BM
+              </button>
+              </div>
+            </div>
+  
+           
+  
+            <div class="filter-btn-area" fxFlex>
+              <div>
+                <!-- <button style="background-color: #5cb85c;" mat-raised-button color="primary" class="filter-btn">
+                  Search
+                </button> -->
+                <button
+                mat-raised-button
+                color="primary"
+               style="background-color: #5cb85c;"
+                class="filter-btn"
+              >
+                Search
+              </button>
+              </div>
+  
+              <div>
+                <button class="create"   mat-raised-button color="warn" class="filter-btn"
+                  type="button" (click)="clearFilter()">
+                  Clear
+                </button>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </form>
+    </fury-page-layout-header>
+    <fury-page-layout-content [@fadeInUp] class="content-area">
+      <div class="actions-area">
+      
+        <div fxLayout="row">
+          <button mat-mini-fab color="primary" [matTooltip]="'Add New BM '"
+              class="add-approve-btn save-btn" (click)="saveBroadcastMessage(null,false)">
+              <mat-icon class="add-approve-btn-icon">add</mat-icon>
+          </button>
+          <span style="margin-top: 3px;
+          margin-left: 6px;font-size: 15px;"> Add New BM</span>
+      </div>
+        <div>
+            <!-- <span style="margin: 5px;" (click)="SortCertificates(null, false)">Sort Certificates</span> -->
+          <span>
+            <img src="../../../../assets/img/XLSX.jpg" class="logo" alt="excel" />
+            <img src="../../../../assets/img/pdf.png" class="logo" alt="excel" />
+            <img src="../../../../assets/img/XML1.png" class="logo" alt="excel" />
+          </span>
+        </div>
+             
+      </div>
+  
+      <div #TABLE>
+        <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+          
+  
+          <ng-container matColumnDef="Department">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Department
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="BM_Code">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          BM Code
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Date_Sent">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Date Sent
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Subject">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Suject
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Status">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Status
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Sent_to_user">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Sent To User
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Read_By_User">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Read By User
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container> 
+          
+          <ng-container matColumnDef="Actioned_By_User">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Actioned By User
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Active">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+          Active ?
+            </th>
+            <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+              <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+            </td>
+          </ng-container>
+    
+    
+        
+          <ng-container matColumnDef="Action">
+            <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+              Action
+            </th>
+            <td *matCellDef="let row" class="actions-cell" mat-cell>
+              <!-- -->
+              <button mat-icon-button color="primary">
+                <mat-icon class="icon-display">edit</mat-icon>
+              </button>
+  
+              <button mat-icon-button color="warn" >
+                <mat-icon>close</mat-icon>
+              </button>
+              <button mat-icon-button  >
+                <mat-icon class="icon-display">info</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+  
+          <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9999">No data found</td>
+          </tr>
+        </table>
+      </div>
+      <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+
+     
+  
+    </fury-page-layout-content>
+  
+  </fury-page-layout>
+

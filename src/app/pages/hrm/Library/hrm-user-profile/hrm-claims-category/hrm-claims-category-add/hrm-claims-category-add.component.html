@@ -1,0 +1,29 @@
+
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add New ClCategory</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+  <div>
+    <form [formGroup]="newClaimsCategoryFormGroup">
+      <div mat-dialog-container style="padding: 20px;">
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Category Name</mat-label>
+            <input formControlName="category_NAME" matInput placeholder="Search by Category Name" type="text" />
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="SaveQueCategory(true)" class="save-btn" [disabled]="!newClaimsCategoryFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
+      <button mat-raised-button color="primary" (click)="SaveQueCategory(false)" class="save-btn" [disabled]="!newClaimsCategoryFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
+      <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
+    </mat-dialog-actions>
+  </div>

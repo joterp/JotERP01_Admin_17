@@ -1,0 +1,80 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Degree Of Impact
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+
+  <div mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+ <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">Add Template</span>
+ <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+   <mat-icon>close</mat-icon>
+ </button>
+</div>
+
+
+  <div>
+<mat-dialog-content>
+    <form [formGroup]="newDesignationFormGroup">
+      <div mat-dialog-container style="padding: 20px;">
+       
+        <div fxLayout="column" fxLayout.gt-sm="row"  fxLayoutGap="5px">
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Template Name</mat-label>
+                <input formControlName="Template_Name" matInput placeholder="Template Name" type="text" />
+              </mat-form-field>
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Template Type</mat-label>
+                <mat-select formControlName="Template_Type">
+                  <mat-option value="0">Contract</mat-option>
+                  <mat-option value="1">Offer Letter</mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row"  fxLayoutGap="5px">
+            <mat-form-field fxFlex appearance="fill">
+              <mat-label>Company</mat-label>
+              <mat-select formControlName="Company">
+                <mat-option value="0">Atlantis Ship Management Pvt. Ltd.</mat-option>
+                <mat-option value="1">Ethereal Haven Ship Management Pte Ltd</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex appearance="fill">
+                <mat-label>Nationality</mat-label>
+                <mat-select formControlName="Nationality">
+                  <mat-option value="0">Afghanistan</mat-option>
+                  <mat-option value="1">Colombia</mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
+
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" style="margin-bottom: 10px;">
+                <quill-editor [styles]="{ height: '600px' }" id="textEditor" (onEditorCreated)="created($event)"
+                    (onContentChanged)="contentChanged($event)">
+                </quill-editor>
+            </div>
+			
+        
+       
+        
+      </div>
+    </form>
+    </mat-dialog-content>
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+     
+      <button mat-raised-button color="primary" class="save-btn">
+        Save
+      </button>
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

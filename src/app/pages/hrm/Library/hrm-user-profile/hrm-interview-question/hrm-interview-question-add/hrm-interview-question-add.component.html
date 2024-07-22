@@ -1,0 +1,198 @@
+<div mat-dialog-title
+cdkDrag
+cdkDragRootElement=".cdk-overlay-pane"
+cdkDragHandle
+style="display: flex; justify-content: space-between; align-items: center;background-color: black;color: white;">
+<span style="font-size: 18px; margin-right: auto;margin-top: 5px;">{{ modeltitle }}</span>
+<button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
+ <mat-icon>close</mat-icon>
+</button>
+</div>
+ 
+
+    <div>
+        <mat-dialog-content>
+            <form [formGroup]="newInterviewQuesFormGroup">
+                <div mat-dialog-container style="padding-top: 20px;">
+                    
+                
+                    <div fxLayout="column" fxLayout.gt-sm="row" >
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Interview Question</mat-label>
+                            <textarea
+                            matInput
+                            formControlName="txtInterview_Ques"
+                            placeholder="Interview Questions"
+                            ></textarea>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div fxLayout="column" fxLayout.gt-sm="row" >
+                        <mat-form-field fxFlex appearance="fill">
+                            <mat-label>Answer Reference</mat-label>
+                            <textarea
+                            matInput
+                            formControlName="txtAnswer_Reference"
+                            placeholder="Answer Reference"
+                            ></textarea>
+                        </mat-form-field>
+                    </div>
+        
+                    
+
+                    <div fxLayout="column" fxLayout.gt-sm="row" *ngIf="showUnitField" style="margin-top: 5px;">
+                        <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Category</mat-label>
+                        <mat-select formControlName="drpCategory">
+                            <mat-option value="01_Ability">01. Ability</mat-option>
+                            <mat-option value="Electrical_Knowledge">01. General Electrical Knowledge</mat-option>
+                            <mat-option value="operation_Safety">01. Shipboard Operations and Safety</mat-option>
+                            <mat-option value="Shipboard_Operations">02. Shipboard Operations</mat-option>
+                            <mat-option value="Brief_debrief ">Brief debrief </mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxLayout.gt-sm="row" *ngIf="showUnitField" style="margin-top: 5px;">
+                        <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Grading</mat-label>
+                        <mat-select [(ngModel)]="selectedGradingOption" name="drpGrading">
+                            <mat-option value="Grade">Grade- 0 to 5</mat-option>
+                            <mat-option value="Satisfied_notsatisfied">Grade- Satisfied/Not Satisfied</mat-option>
+                            <mat-option value="Grade_Good">Grade - V.Good/Good/Average/B.Avg</mat-option>
+                            <mat-option value="Grade_Yes_No">Grade - Yes = 5, No = 0</mat-option>
+                            <mat-option value="Cabin_crew_grade">Cabin Crew Grade</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    
+                      
+                    
+
+                    <table>
+                        <tr>
+                            <td style="padding: 10px;">Question Type</td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;">Question Options</td>
+                            <td>
+                                <div *ngIf="selectedGradingOption === 'Grade'">
+                                    <mat-radio-group fxLayoutGap="10px" formControlName="radioNew_Grade">
+                                        
+                                        <mat-radio-button value="0" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 0">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 0">Poor</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="1" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 1">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 1">Below Ave</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="2" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 2">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 2">Could be improved</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="3" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 3">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 3">Average</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="4" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 4">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 4">Above Average</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="5" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 5">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade').value == 5">Good</label>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                  </div> 
+                                  <div *ngIf="selectedGradingOption === 'Satisfied_notsatisfied'">
+                                    <mat-radio-group fxLayoutGap="10px" formControlName="radioNew_Satisfied_notsatisfied">
+                                        <mat-radio-button value="0" [checked]="newInterviewQuesFormGroup.get('radioNew_Satisfied_notsatisfied').value == 0">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Satisfied_notsatisfied').value == 0">Not Satisfied</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="1" [checked]="newInterviewQuesFormGroup.get('radioNew_Satisfied_notsatisfied').value == 1">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Satisfied_notsatisfied').value == 1">Satisfied</label>
+                                        </mat-radio-button>
+                                        
+                                      </mat-radio-group>
+                                  </div>
+
+                                  <div *ngIf="selectedGradingOption === 'Grade_Good'">
+                                    <mat-radio-group fxLayoutGap="10px" formControlName="radioNew_Grade_Good">
+                                        <mat-radio-button value="0" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade_Good').value == 0">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade_Good').value == 0">Below Avg (0)</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="1" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade_Good').value == 1">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade_Good').value == 1">Average (2)</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="2" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade_Good').value == 2">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade_Good').value == 2">Good (3)</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="3" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade_Good').value == 3">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade_Good').value == 3">V.Good (5)</label>
+                                        </mat-radio-button>
+                                      </mat-radio-group>
+                                  </div>
+
+                                  <div *ngIf="selectedGradingOption === 'Grade_Yes_No'">
+                                    <mat-radio-group fxLayoutGap="10px" formControlName="radioNew_Grade_Yes_No">
+                                        <mat-radio-button value="0" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade_Yes_No').value == 0">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade_Yes_No').value == 0">No (0)</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="1" [checked]="newInterviewQuesFormGroup.get('radioNew_Grade_Yes_No').value == 1">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Grade_Yes_No').value == 1">Yes (5)</label>
+                                        </mat-radio-button>
+                                        
+                                      </mat-radio-group>
+                                  </div>
+                                  
+                                  <div *ngIf="selectedGradingOption === 'Cabin_crew_grade'">
+                                    <mat-radio-group fxLayoutGap="10px" formControlName="radioNew_Cabin_crew_grade">
+                                        <mat-radio-button value="0" [checked]="newInterviewQuesFormGroup.get('radioNew_Cabin_crew_grade').value == 0">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Cabin_crew_grade').value == 0">Harsh</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="1" [checked]="newInterviewQuesFormGroup.get('radioNew_Cabin_crew_grade').value == 1">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Cabin_crew_grade').value == 1">Smooth</label>
+                                        </mat-radio-button>
+                                        <mat-radio-button value="2" [checked]="newInterviewQuesFormGroup.get('radioNew_Cabin_crew_grade').value == 2">
+                                            <label [class.active-label]="newInterviewQuesFormGroup.get('radioNew_Cabin_crew_grade').value == 2">Perfect</label>
+                                        </mat-radio-button>
+                                        
+                                      </mat-radio-group>
+                                  </div>
+                        </tr>
+                    </table>
+
+                    
+<!--                     
+                    <div fxLayout="row" fxLayoutGap="16px" style="padding: 10px;">
+                        <mat-label style="width: 150px;">Show in Crew Individual</mat-label>
+                        <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_Crew_Ind">
+                            <mat-radio-button value="1" [checked]="newTraitDetailFormGroup.get('radioNew_Crew_Ind').value == 1">
+                                <label [class.active-label]="newTraitDetailFormGroup.get('radioNew_Crew_Ind').value == 1">Yes</label>
+                            </mat-radio-button>
+                            <mat-radio-button value="0" [checked]="newTraitDetailFormGroup.get('radioNew_Crew_Ind').value == 0">
+                                <label [class.active-label]="newTraitDetailFormGroup.get('radioNew_Crew_Ind').value == 0">No</label>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div> -->
+        
+                    
+                    
+                    
+                </div>
+            </form>
+        </mat-dialog-content>
+    
+   
+       
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

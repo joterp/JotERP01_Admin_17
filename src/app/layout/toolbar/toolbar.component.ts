@@ -527,6 +527,16 @@ export class ToolbarComponent implements OnInit {
    }
    else if(buttonName === 'OPS_LIB_PORTCALL_FEEDBACK_QUESTION'){
     this.router.navigate(['OPS/Library/OPS_LIB_PORTCALL_FEEDBACK_QUESTION'])
+   }  
+
+   else if(buttonName === 'OPS_LIB_CUST_FEEDBACK_CATEGORY'){
+    this.router.navigate(['OPS/Library/OPS_LIB_CUST_FEEDBACK_CATEGORY'])
+   } 
+   else if(buttonName === 'OPS_LIB_CUST_FEEDBACK_GRADE'){
+    this.router.navigate(['OPS/Library/OPS_LIB_CUST_FEEDBACK_GRADE'])
+   }
+   else if(buttonName === 'OPS_LIB_CUST_FEEDBACK_QUESTION'){
+    this.router.navigate(['OPS/Library/OPS_LIB_CUST_FEEDBACK_QUESTION'])
    }
    //hseq Lib
    //hseq
@@ -650,6 +660,16 @@ export class ToolbarComponent implements OnInit {
   else if(buttonName === 'Accounts_Lib_DRC_QUO_FootNotes'){
     this.router. navigate(['ACCOUNTS/libraries/Accounts_Lib_DRC_QUO_FootNotes'])
   }
+//hrm lib
+
+
+
+else if(buttonName === 'HRM_UserProfile'){
+  this.router. navigate(['HRM/Library/HRM_UserProfile'])
+}
+
+
+
   }
 
   

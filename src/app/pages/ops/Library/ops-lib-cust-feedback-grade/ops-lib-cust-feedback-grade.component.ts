@@ -33,7 +33,7 @@ export class OpsLibCustFeedbackGradeComponent {
   feedbackGradeFilterFormGroup: UntypedFormGroup;
   constructor(private titleService: Title, private api: ApiService, private auth: AuthGuard,private sidenavService: SidenavService,
     private common: CommonService, private dialog:MatDialog, private fb: UntypedFormBuilder) { 
-      this.titleService.setTitle(`Port-call Feedback Grade`);
+      this.titleService.setTitle(`Customer Feedback Grade`);
     }
     @Input()
     columns: ListColumn[] = [

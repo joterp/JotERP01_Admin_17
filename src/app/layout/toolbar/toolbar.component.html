@@ -94,15 +94,17 @@
       <mat-menu #adminLibraries="matMenu">
         <button mat-menu-item class="menuItemSpace"(click)="goto('Admin_Lib_Companies')">Companies</button>
         <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Companyoffice')">Company Offices</button>
-        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
         <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_CompanyBankAccounts')"> Company Bank Accounts</button>
         <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_CompanyOfficeHolidays')">Company Office Holidays</button>
+        <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+       
         <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Fleets')">Fleets</button>
         <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_VesselFlag')">Vessel Flags</button>
         <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_VesselFlag_Assignmnet')">VesselFlag-Vessel Manager Relation</button>
         <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Vessel')">Vessels</button> 
-        <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Office_Departments')">Office Departments</button>
         <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+
+        <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Office_Departments')">Office Departments</button>
         <button mat-menu-item class="menuItemSpace" (click)="goto('Admin_Lib_Vessel_Department')">Vessel Departments</button>
         <!-- <button mat-menu-item class="menuItemSpace" >Countries</button> -->
         <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
@@ -298,7 +300,6 @@
     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
     <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_Signoff_Reason')">Sign-Off Reasons</button>
     <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_Additional_Checks')">Crew Registration Additional Fields</button>
-   
     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
     <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_QuestionCategory')">Crew Interview Question Categories</button>
     <button mat-menu-item class="menuItemSpace" (click)="goto('CREW_InterviewGrade')">Crew Interviews Grade</button>
@@ -317,20 +318,16 @@
     <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
     <button mat-menu-item class="menuItemSpace" (click)="goto('Tainings')">Crew Trainings</button>
     <button mat-menu-item class="menuItemSpace" (click)="goto('RankAssignment')">Crew Training Rank-Assignment</button>
-    <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
     <button mat-menu-item class="menuItemSpace" (click)="goto('GreetingCards')">Greeting</button>
   </mat-menu>
-
-
-
  </li>
 
     <li class="nav-item" routerLinkActive="active" (mouseover)="createHRMmenuTrigger.openMenu()" (mouseout)="$event.stopPropagation();createHRMmenuTrigger.openMenu()">
       <button mat-button  class="nav-link"  #createHRMmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="hrm">HRM</button>
       <mat-menu #hrm="matMenu">
+       
+        <button mat-menu-item class="menuItemSpace" (click)="goto('HRM_UserProfile')">HRM</button>
         <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="hrmreports">Reports</button>
-        <button mat-menu-item class="menuItemSpace">HRM</button>
-        
       </mat-menu>
       <mat-menu #hrmreports="matMenu">
         <button mat-menu-item class="menuItemSpace" >Employee Leave Status</button>
@@ -351,19 +348,19 @@
 
       <button mat-menu-item class="menuItemSpace"  [matMenuTriggerFor]="operationsnoonreports">Noon Reports</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_Offshore_Mid_Night_Report_Index')">Offshore Midnight Report</button>
-          <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_FleetLocationMap')">Fleet Location - Map</button>
-          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
-          <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_DeckLogBook_Index')">Deck Log Book</button>
-          <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_CARGO_LOG_MAIN')">Voyage Cargo Log</button>
-          <button mat-menu-item class="menuItemSpace"  (click)="goto('OPS_NAD_Voyage_Log_Abstract')">Barge Voyage Log</button>
-          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
-          <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_Report_Index')">Report/Form Index</button>
-          <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_FOLLOWUP_INDEX')">Report/Form Followup Index</button>
-          <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="OPSDefectList">Defect List</button>
-          <button mat-menu-item class="menuItemSpace" >Port Agents' List</button>
-          <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
-          <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="OPSSecurityAlerts">Security Alerts</button>
-          <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="operationsFireArmslog">FireArms Log</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_FleetLocationMap')">Fleet Location - Map</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_DeckLogBook_Index')">Deck Log Book</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_CARGO_LOG_MAIN')">Voyage Cargo Log</button>
+      <button mat-menu-item class="menuItemSpace"  (click)="goto('OPS_NAD_Voyage_Log_Abstract')">Barge Voyage Log</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_Report_Index')">Report/Form Index</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_FOLLOWUP_INDEX')">Report/Form Followup Index</button>
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="OPSDefectList">Defect List</button>
+      <button mat-menu-item class="menuItemSpace" >Port Agents' List</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="OPSSecurityAlerts">Security Alerts</button>
+      <button mat-menu-item class="menuItemSpace" [matMenuTriggerFor]="operationsFireArmslog">FireArms Log</button>
       <button mat-menu-item class="menuItemSpace" >Reports</button>
       <button mat-menu-item class="menuItemSpace"  [matMenuTriggerFor]="operationslibraries">Libraries</button>
     </mat-menu>
@@ -430,6 +427,10 @@
       <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_PORTCALL_FEEDBACK_CATEGORY')">Port-Call Category</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_PORTCALL_FEEDBACK_GRADE')">Port-Call Feedback Grade</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_PORTCALL_FEEDBACK_QUESTION')">Port-Call Feedback Question</button>
+      <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_CUST_FEEDBACK_CATEGORY')">Customer Feedback Category</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_CUST_FEEDBACK_GRADE')">Customer Feedback Grade</button>
+      <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_LIB_CUST_FEEDBACK_QUESTION')">Customer Feedback Question</button>
       <button mat-menu-item class="menuItemSpace">---------------------------------------</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_Add_Report')">Report/Forms List Mgmt</button>
       <button mat-menu-item class="menuItemSpace" (click)="goto('OPS_RPT_VESSEL_Assignement')">Report/Form Vessel Assign</button>

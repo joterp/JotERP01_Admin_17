@@ -1,0 +1,90 @@
+<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+    <span>
+        <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
+        margin-bottom: -4px;"/>Add New Product
+    </span>
+   
+    <span fxLayoutAlign="end"  >
+        <mat-icon (click)="CloseModal()">close</mat-icon>
+      </span>
+  </div> -->
+
+  <div mat-dialog-title
+    cdkDrag
+    cdkDragRootElement=".cdk-overlay-pane"
+    cdkDragHandle
+    style="display: flex; justify-content: space-between; align-items: center;background-color: black !important;color: white;">
+    <span style="font-size: 18px; margin-right: auto;margin-top: 5px;background-color: black!important;color: white;">Add New Port-Call Feedback Question</span>
+    <button mat-icon-button (click)="CloseModal()" style="margin-left: auto; ">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+  
+  <div>
+    <mat-dialog-content>
+        <form [formGroup]="feedbackquestionsFormGroup">
+            <div mat-dialog-container style="padding: 10px;">
+      
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                      <mat-label>Question</mat-label>
+                      <textarea matInput formControlName="Question" placeholder="Question"></textarea>
+                  </mat-form-field>
+              </div>
+      
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Question No.</mat-label>
+                  <input formControlName="Question_No" matInput placeholder="Search by Question No"
+                    type="text" />
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="Category">
+                      <mat-option value="Select_Min">Feedback on Marine Services</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Grading</mat-label>
+                    <mat-select formControlName="Grading">
+                      <mat-option value="Select_Min">Test</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+      
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Question Type</mat-label>
+                    <input formControlName="Question_Type" matInput placeholder=" Question Type"
+                      type="text" />
+                  </mat-form-field>
+                </div>
+                
+                <div fxLayout="column" fxLayout.gt-sm="row">
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Question Options</mat-label>
+                    <input formControlName="Question_Options" matInput placeholder="Question OPtions"
+                      type="text" />
+                  </mat-form-field>
+                </div>
+            </div>
+          </form>
+    </mat-dialog-content>
+    
+  
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
+  </div>

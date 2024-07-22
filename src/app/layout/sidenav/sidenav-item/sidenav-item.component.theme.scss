@@ -7,7 +7,7 @@
   }
 
   .sidenav-item-link {
-    color: inherit;
+    color: system-ui;
     font-family: $sidenav-item-typography-font-family;
     font-size: $sidenav-item-typography-font-size;
     font-weight: $sidenav-item-typography-font-weight;
@@ -17,7 +17,7 @@
       color: $sidenav-item-color-hover;
 
       .text-icon {
-        color: inherit;
+        color: system-ui;
       }
     }
 
@@ -26,7 +26,7 @@
       color: $sidenav-item-color-active;
 
       .text-icon {
-        color: inherit;
+        color: system-ui;
       }
     }
 

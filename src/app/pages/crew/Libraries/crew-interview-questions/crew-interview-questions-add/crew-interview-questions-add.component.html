@@ -1,4 +1,4 @@
-<!-- <div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
+<div mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle fxLayout="row" fxLayoutAlign="space-between" >
     <span>
         <img src="../../../../assets/img/Jot_Logo.png" class="logo" alt="excel" style="margin-right: 10px;
         margin-bottom: -4px;"/>{{ modeltitle }}
@@ -8,22 +8,12 @@
         <mat-icon (click)="CloseModal()">close</mat-icon>
       </span>
   </div>
-  -->
-  <div mat-dialog-title
-  cdkDrag
-  cdkDragRootElement=".cdk-overlay-pane"
-  cdkDragHandle
-  style="display: flex; justify-content: space-between; align-items: center;">
- <span style="font-size: 18px; margin-right: auto;margin-top: 5px;">{{ modeltitle }}</span>
- <button mat-icon-button (click)="CloseModal()" style="margin-left: auto;">
-     <mat-icon>close</mat-icon>
- </button>
-</div>
+ 
 
     <div>
         <mat-dialog-content>
             <form [formGroup]="newInterviewQuesFormGroup">
-                <div mat-dialog-container >
+                <div mat-dialog-container style="padding-top: 20px;">
                     
                 
                     <div fxLayout="column" fxLayout.gt-sm="row" >
@@ -31,7 +21,7 @@
                             <mat-label>Interview Question</mat-label>
                             <textarea
                             matInput
-                            formControlName="interview_QUESTION"
+                            formControlName="txtInterview_Ques"
                             placeholder="Interview Questions"
                             ></textarea>
                         </mat-form-field>
@@ -42,7 +32,7 @@
                             <mat-label>Answer Reference</mat-label>
                             <textarea
                             matInput
-                            formControlName="answer"
+                            formControlName="txtAnswer_Reference"
                             placeholder="Answer Reference"
                             ></textarea>
                         </mat-form-field>
@@ -50,7 +40,7 @@
         
                     
 
-                    <div fxLayout="column" fxLayout.gt-sm="row"  style="margin-top: 5px;">
+                    <div fxLayout="column" fxLayout.gt-sm="row" *ngIf="showUnitField" style="margin-top: 5px;">
                         <mat-form-field fxFlex appearance="fill">
                         <mat-label>Category</mat-label>
                         <mat-select formControlName="drpCategory">
@@ -62,7 +52,7 @@
                         </mat-select>
                         </mat-form-field>
                     </div>
-                    <div fxLayout="column" fxLayout.gt-sm="row"  style="margin-top: 5px;">
+                    <div fxLayout="column" fxLayout.gt-sm="row" *ngIf="showUnitField" style="margin-top: 5px;">
                         <mat-form-field fxFlex appearance="fill">
                         <mat-label>Grading</mat-label>
                         <mat-select [(ngModel)]="selectedGradingOption" name="drpGrading">
@@ -168,8 +158,10 @@
                                       </mat-radio-group>
                                   </div>
                         </tr>
-                    </table> 
+                    </table>
 
+                    
+<!--                     
                     <div fxLayout="row" fxLayoutGap="16px" style="padding: 10px;">
                         <mat-label style="width: 150px;">Show in Crew Individual</mat-label>
                         <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="radioNew_Crew_Ind">
@@ -180,7 +172,7 @@
                                 <label [class.active-label]="newTraitDetailFormGroup.get('radioNew_Crew_Ind').value == 0">No</label>
                             </mat-radio-button>
                         </mat-radio-group>
-                    </div>
+                    </div> -->
         
                     
                     
@@ -192,9 +184,15 @@
    
        
   
-        <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
-            <button mat-raised-button color="primary" (click)="SaveInterviewQuestion(true)" class="save-btn" [disabled]="!newsignoffReasonFormGroup.valid && !IsEdit">SAVE & ADD NEW</button>
-          <button mat-raised-button color="primary" (click)="SaveInterviewQuestion(false)" class="save-btn" [disabled]="!newsignoffReasonFormGroup.valid && !IsEdit">SAVE & CLOSE</button>
-          <button mat-raised-button color="warn" (click)="CloseModal()">CLOSE</button>
-        </mat-dialog-actions>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" style="margin-bottom: 5px;">
+  
+      <button mat-raised-button color="primary" class="save-btn">
+        Save & Close
+      </button>
+      <button mat-raised-button class="save-btn" color="primary">
+        Save & Add New
+      </button>
+  
+      <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
+    </mat-dialog-actions>
   </div>

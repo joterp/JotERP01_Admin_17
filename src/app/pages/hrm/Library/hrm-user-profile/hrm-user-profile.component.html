@@ -1,0 +1,420 @@
+<!-- <mat-tab-group>
+ 
+  <mat-tab label="HRM" >
+    <ng-template mat-tab-label style="background: #1F497D !important;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: white !important;">
+      <span >HRM</span>
+      <button mat-icon-button (click)="closeTab(0)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <p>This is <strong>tab 1</strong> content.</p>
+     
+    </div>
+  </mat-tab>
+
+
+  <mat-tab label="Tab 2">
+    <ng-template mat-tab-label>
+      <span>Administration</span>
+      <button mat-icon-button >
+        <mat-icon>close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+    
+    </div>
+  </mat-tab>
+
+
+  <mat-tab label="Tab 3"  >
+    <ng-template mat-tab-label>
+      <span (click)="goto('Hrm_Designation')">Designation</span>
+      <button mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Tab 3">
+    <ng-template mat-tab-label>
+      <span>Documnets</span>
+      <button mat-icon-button >
+        <mat-icon>close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <img src="https://example.com/image.jpg" alt="Image">
+
+    </div>
+  </mat-tab>
+</mat-tab-group> -->
+<mat-tab-group style="margin: 7px;" >
+  <!-- HRM Tab -->
+ 
+  <mat-tab *ngIf="isTabOpen('HRM')" label="HRM" >
+    <ng-template mat-tab-label>
+      <span (click)="goto('HRM')" >HRM</span>
+      <button mat-icon-button (click)="closeTab('HRM')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <!-- <ng-container *ngComponentOutlet="designationComponent"></ng-container> -->
+    </div>
+  </mat-tab>
+
+  <!-- Administration Tab -->
+  <mat-tab label="Administration">
+    <ng-template mat-tab-label>
+      <span (click)="goto('Administration')">Administration</span>
+      <button mat-icon-button (click)="closeTab('Administration')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+
+      <h2 style="text-align: center;padding: 10px;color: black;font-weight: 600;">Administration - Atlantis Ship Management Pvt. Ltd.</h2>
+      <hr>
+
+      <table style="width:100%;vertical-align: start !important;">
+        <tr>
+       
+          <td class="header-tbl"> 
+            <p class="header-tbl">Designation</p>
+
+            <p class="sub-header-td" (click)="goto('Hrm_Designation')">Designation</p>
+          </td>
+
+          <td class="header-tbl"></td>
+       
+          <td class="header-tbl"> 
+            <p class="header-tbl" >Documents</p>
+
+            <p class="sub-header-td" (click)="goto('HRM_Documents')">Documnets</p>
+            <p class="sub-header-td" (click)="goto('HRM_AgreementTemplate')">Agreement Template</p>
+          </td>
+          <td class="header-tbl"></td>
+          
+          <td class="header-tbl">
+            <p class="header-tbl">Transactions</p>
+
+            <p class="sub-header-td">Attendance Index</p>
+            <p class="sub-header-td">Leave Index</p>
+            <p class="sub-header-td">Claim Index</p>
+            <p class="sub-header-td">Leave Index</p>
+            <p class="sub-header-td">WFH & Travel Index</p>
+            <p class="sub-header-td">Salary Roster</p>
+            <p class="sub-header-td" (click)="goto('HRM_HRPolicies')">HR Policies</p>
+            <p class="sub-header-td">HR Policies Read Report</p>
+            <p class="sub-header-td">Employee Work Hour Report</p>
+            <p class="sub-header-td" (click)="goto('HRM_BroadcatMessage')">Broadcat Message</p>
+          </td>
+        </tr>
+
+        <tr>
+       
+          <td class="header-tbl"> 
+            <p class="header-tbl">Interview</p>
+            <p class="sub-header-td"  (click)="goto('HRM_InterviewCategory')">Interview Category</p>
+            <p class="sub-header-td" (click)="goto('HRM_InterviewGrade')">Interview Grade</p>
+            <p class="sub-header-td" (click)="goto('HRM_InterviewQuestion')">Interview Question</p>
+            <p class="sub-header-td" (click)="goto('HRM_InterviewQuestionSheet')">Interview Question Sheet</p>
+          </td>
+
+          <td class="header-tbl"></td>
+       
+          <td class="header-tbl"> 
+            <p class="header-tbl">Evaluation</p>
+            <p class="sub-header-td" (click)="goto('HRM_EvaluationCategory')">Evaluation Category</p>
+            <p class="sub-header-td" (click)="goto('HRM_EvaluationGrade')">Evaluation Grade</p>
+            <p class="sub-header-td" (click)="goto('HRM_EvaluationPeriod')">Evaluation Period</p>
+            <p class="sub-header-td" (click)="goto('HRM_EvaluationQuestion')">Evaluation Question</p>
+            <p class="sub-header-td" (click)="goto('HRM_EvaluationQuestionSheet')">Evaluation Question Sheet</p>
+          </td>
+          <td class="header-tbl"></td>
+          
+          <td class="header-tbl">
+            <p class="header-tbl">Leaves</p>
+            <p class="sub-header-td" (click)="goto('HRM_LeavesStandards')">Leaves Standards</p>
+            <p class="sub-header-td" (click)="goto('HRM_ClaimsApprovers')">Leaves Approvers</p>
+            <p class="sub-header-td" (click)="goto('HRM_LeavesAssignment')">Leaves Assignment</p>
+            <p style="color: red;margin: 0;">To assign Leave ensure all <br>Employees
+              have a Project assigned</p>
+          </td>
+        </tr>
+
+        <tr>
+       
+          <td class="header-tbl"> 
+            <p class="header-tbl">Claims</p>
+
+            <p class="sub-header-td" (click)="goto('HRM_ClaimsCategory')">Claims Category</p>
+            <p class="sub-header-td" (click)="goto('HRM_ClaimsApprovers')">Claims Approvers</p>
+          
+          </td>
+
+          <td class="header-tbl"></td>
+       
+          <td class="header-tbl"> 
+            <p class="header-tbl" >Salary</p> 
+            <p class="sub-header-td" (click)="goto('HRM_EmployeeSalaryStructure')">Salary Structure</p>
+            <p class="sub-header-td" (click)="goto('HRM_Financial_Year')">Financial Year</p>
+          </td>
+
+          <td class="header-tbl"></td>
+          
+          <td class="header-tbl">
+            <!-- <p class="header-tbl">Leaves</p>
+
+            <p class="sub-header-td">Leaves Standards</p>
+            <p class="sub-header-td">Leaves Approvers</p>
+            <p class="sub-header-td">Leaves Assignment</p> -->
+          </td>
+        </tr>
+      </table>
+
+     
+      <!-- <ng-container *ngComponentOutlet="administrationComponent"></ng-container> -->
+    </div>
+  </mat-tab>
+
+  <!-- Designation Tab -->
+  <mat-tab *ngIf="isTabOpen('Designation')" label="Designation" >
+    <ng-template mat-tab-label>
+      <span (click)="goto('Hrm_Designation')" >Designation</span>
+      <button mat-icon-button (click)="closeTab('Designation')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </ng-template>
+    <div>+
+      <ng-container *ngComponentOutlet="designationComponent"></ng-container>
+    </div>
+  </mat-tab>
+
+  <!-- Documents Tab -->
+  <mat-tab *ngIf="isTabOpen('Documents')" label="Documents" >
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_Documents')">Documents</span>
+      <button mat-icon-button (click)="closeTab('Documents')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="documentComponent"></ng-container>
+    </div>
+  </mat-tab>
+
+  <mat-tab *ngIf="isTabOpen('Agreement Template')" label="Agreement Template">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_Agreement_Template')">Agreement Template</span>
+      <button mat-icon-button (click)="closeTab('Agreement Template')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="agreementTemplateComponent"></ng-container>
+    </div>
+  </mat-tab>
+
+  <mat-tab *ngIf="isTabOpen('Interview Category')" label="Interview Category">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_InterviewCategory')">Interview Category</span>
+      <button mat-icon-button (click)="closeTab('Interview Category')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="interviewQuestioneComponent"></ng-container>
+    </div>
+  </mat-tab>
+
+  <mat-tab *ngIf="isTabOpen('Interview Grade')" label="Interview Grade">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_InterviewGrade')">Interview Grade</span>
+      <button mat-icon-button (click)="closeTab('Interview Grade')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="interviewQuestioneComponent"></ng-container>
+    </div>
+  </mat-tab>
+
+  <mat-tab *ngIf="isTabOpen('Interview Question')" label="Interview Question">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_InterviewQuestion')">Interview Question</span>
+      <button mat-icon-button (click)="closeTab('Interview Question')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="interviewQuestioneComponent"></ng-container>
+    </div>
+  </mat-tab>
+
+  <mat-tab *ngIf="isTabOpen('Interview Question Sheet')" label="Interview Question Sheet">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_InterviewQuestionSheet')">Interview Question Sheet</span>
+      <button mat-icon-button (click)="closeTab('Interview Question Sheet')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="interviewQuestionSheetComponent"></ng-container>
+    </div>
+  </mat-tab>
+  <mat-tab *ngIf="isTabOpen('Evaluation Category')" label="Evaluation Category">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_EvaluationCategory')">Evaluation Category</span>
+      <button mat-icon-button (click)="closeTab('Evaluation Category')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="evaluationCategoryComponent"></ng-container>
+    </div>
+  </mat-tab>
+
+
+
+  <mat-tab *ngIf="isTabOpen('Evaluation Grade')" label="Evaluation Grade">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_EvaluationGrade')">Evaluation Grade</span>
+      <button mat-icon-button (click)="closeTab('Evaluation Grade')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="evaluationGradeComponent"></ng-container>
+    </div>
+  </mat-tab>
+  <mat-tab *ngIf="isTabOpen('Evaluation Period')" label="Evaluation Period">
+    <ng-template mat-tab-label>
+      <span   (click)="goto('HRM_EvaluationPeriod')">Evaluation Period</span>
+      <button mat-icon-button (click)="closeTab('Evaluation Period')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="evaluationPeriodComponent"></ng-container>
+    </div>
+  </mat-tab>
+   <mat-tab *ngIf="isTabOpen('Evaluation Question')" label="Evaluation Question">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_EvaluationQuestion')">Evaluation Question</span>
+      <button mat-icon-button (click)="closeTab('Evaluation Question')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="evaluationQuestionComponent"></ng-container>
+    </div>
+  </mat-tab>
+  <mat-tab *ngIf="isTabOpen('Claims Category')" label="Claims Category">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_ClaimsCategory')">Claims Category</span>
+      <button mat-icon-button (click)="closeTab('Claims Category')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="claimsCategoryComponent"></ng-container>
+    </div>
+  </mat-tab> 
+  <mat-tab *ngIf="isTabOpen('Claims Approvers')" label="Claims Approvers">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_ClaimsApprovers')">Claims Approvers</span>
+      <button mat-icon-button (click)="closeTab('Claims Approvers')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="claimsApproversComponent"></ng-container>
+    </div>
+  </mat-tab>  
+  <mat-tab *ngIf="isTabOpen('Salary Structure')" label="Salary Structure">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_EmployeeSalaryStructure')">Salary Structure</span>
+      <button mat-icon-button (click)="closeTab('Salary Structure')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="salaryStructureComponent"></ng-container>
+    </div>
+  </mat-tab>
+
+  <mat-tab *ngIf="isTabOpen('Financial year')" label="Financial year">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_Financial_Year')">Financial Year</span>
+      <button mat-icon-button (click)="closeTab('Financial year')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="financialYearComponent"></ng-container>
+    </div>
+  </mat-tab>  
+
+  <mat-tab *ngIf="isTabOpen('Leaves Standards')" label="Leaves Standards">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_Financial_Year')">Leaves Standards</span>
+      <button mat-icon-button (click)="closeTab('Leaves Standards')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="leavesStandardComponent"></ng-container>
+    </div>
+  </mat-tab>  
+ 
+
+  <mat-tab *ngIf="isTabOpen('Leaves Assignment')" label="Leaves Assignment">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_LeavesAssignment')">Leaves Assignment</span>
+      <button mat-icon-button (click)="closeTab('Leaves Assignment')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="leavesAssigmentComponent"></ng-container>
+    </div>
+  </mat-tab>  
+  <mat-tab *ngIf="isTabOpen('Broadcast Message')" label="Broadcast Message">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_BroadcatMessage')">Broadcast Message</span>
+      <button mat-icon-button (click)="closeTab('Broadcast Message')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="broadcastMessageComponent"></ng-container>
+    </div>
+  </mat-tab>  
+
+  <mat-tab *ngIf="isTabOpen('HR Policies')" label="HR Policies">
+    <ng-template mat-tab-label>
+      <span  (click)="goto('HRM_HRPolicies')">HR Policies</span>
+      <button mat-icon-button (click)="closeTab('HR Policies')">
+        <mat-icon >close</mat-icon>
+      </button>
+    </ng-template>
+    <div>
+      <ng-container *ngComponentOutlet="hrPoliciesComponent"></ng-container>
+    </div>
+  </mat-tab> 
+
+</mat-tab-group>
+

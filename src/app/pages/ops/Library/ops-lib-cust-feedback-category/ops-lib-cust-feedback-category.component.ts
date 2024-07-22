@@ -33,7 +33,7 @@ export class OpsLibCustFeedbackCategoryComponent {
   feedbackCategoryFilterFormGroup: UntypedFormGroup;
   constructor(private titleService: Title, private api: ApiService, private auth: AuthGuard,private sidenavService: SidenavService,
     private common: CommonService, private dialog:MatDialog, private fb: UntypedFormBuilder) { 
-      this.titleService.setTitle(`Port-Call Feedback Category`);
+      this.titleService.setTitle(`Customer Feedback Category`);
     }
     @Input()
     columns: ListColumn[] = [
@@ -84,6 +84,4 @@ export class OpsLibCustFeedbackCategoryComponent {
      
     });
     } 
-
-
 }

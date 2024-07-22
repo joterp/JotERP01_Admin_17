@@ -1,0 +1,162 @@
+<fury-page-layout mode="card" class="crew-IntQue-category">
+    <h3 class="unit-packing" style="text-align: center;margin: 40PX;">
+        <span class="first-letter">L</span>EAVES
+        <span class="first-letter">A</span>SSIGNMENT
+
+    </h3>
+    <div fxLayout="row" fxLayoutGap="5px">
+        <div fxFlex="30">
+            <form [formGroup]="leavesStdFormGroup">
+                <div fxLayout="column" fxLayout.gt-sm="row" style="margin: 20px;">
+                    <mat-form-field fxFlex appearance="fill">
+                        <mat-label>Company</mat-label>
+                        <mat-select formControlName="Company">
+                            <mat-option value="0">Aqua Link Marine Pte Ltd</mat-option>
+                            <mat-option value="1">Atlantis Ship Management Pvt. Ltd.</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <table style="padding: 20px; border-collapse: collapse; width: 300px;">
+                    <tr>
+                        <td style="padding: 20px;align-items: flex-start;">Leaves Type</td>
+                        <td>
+                            <table style="border-collapse: collapse; width: 100%;border: 1px solid grey;">
+                                <tr style="border-color: #25a0da; color: #fff; background-color: #25a0da;">
+                                    <td style="width: 158px; border: 1px solid grey;
+                            padding: 5px;">Annual</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 158px;
+                            padding: 5px;border-bottom: 1px solid grey;">Medical</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 158px;
+                            padding: 5px;border-bottom: 1px solid grey;">Unpaid</td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </form>
+        </div>
+
+
+        <div fxFlex="70">
+            <div fxLayout="row" fxLayoutAlign="end center" style="margin: 20px;">
+                <div fxLayout="column" fxLayout.gt-sm="row" >
+                    <mat-form-field appearance="fill">
+                        <mat-label>Year</mat-label>
+                        <mat-select formControlName="Year">
+                            <mat-option value="2024">2024</mat-option>
+                            <mat-option value="2023">2023</mat-option>
+                            <mat-option value="2022">2022</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        
+
+        <div #TABLE>
+            <table [dataSource]="dataSource" mat-table matSort #table class="details-table">
+              
+      
+              <ng-container matColumnDef="Project">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+              Project
+                </th>
+                <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                  <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                </td>
+              </ng-container>
+    
+              <ng-container matColumnDef="Employee">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+              Employee
+                </th>
+                <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                  <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                </td>
+              </ng-container>
+    
+              <ng-container matColumnDef="Department">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+             Department
+                </th>
+                <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                  <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Stipulated_LastYear">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+             Stipulated Days Last year
+                </th>
+                <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                  <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Stipulated_ThisYear">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+             Stipulated Days This year
+                </th>
+                <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                  <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Year">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+             Year
+                </th>
+                <td *matCellDef="let row; let i = index" class="actions-cell" mat-cell>
+                  <!-- <p class="tbl-row-item">{{row.drpParent_Type}}</p> -->
+                </td>
+              </ng-container>
+        
+        
+            
+              <ng-container matColumnDef="Action">
+                <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header>
+                  Action
+                </th>
+                <td *matCellDef="let row" class="actions-cell" mat-cell>
+                  <!-- -->
+                  <button mat-icon-button color="primary">
+                    <mat-icon class="icon-display">edit</mat-icon>
+                  </button>
+      
+                  <button mat-icon-button color="warn" >
+                    <mat-icon>close</mat-icon>
+                  </button>
+                  <button mat-icon-button  >
+                    <mat-icon class="icon-display">info</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+      
+              <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+              <tr *matRowDef="let row; columns: visibleColumns" class="clickable route-animations-elements" mat-row></tr>
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="9999">No data found</td>
+              </tr>
+            </table>
+          </div>
+          <mat-paginator class="paginator" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+          <button
+          mat-raised-button
+          color="primary"
+         style="background-color: #5cb85c;"
+          class="filter-btn"
+        >
+          Save
+        </button> <mat-hint style="color: red;">You have unsaved data.
+            click on save to finilize leave assignment</mat-hint> 
+        </div>
+    </div>
+</fury-page-layout>

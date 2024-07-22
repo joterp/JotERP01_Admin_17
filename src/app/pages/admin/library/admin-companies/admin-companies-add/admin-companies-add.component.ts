@@ -28,13 +28,13 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   selector: 'fury-admin-companies-add',
   templateUrl: './admin-companies-add.component.html',
   styleUrls: ['./admin-companies-add.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [
     {
       provide: NgxMatDateAdapter,
       useClass: CustomNgxDatetimeAdapter,
       deps: [MAT_DATE_LOCALE, NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS],
     },
-
     { provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS },
   ],
 })
