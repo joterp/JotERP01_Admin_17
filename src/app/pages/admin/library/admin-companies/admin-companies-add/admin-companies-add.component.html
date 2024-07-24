@@ -55,7 +55,7 @@
                     </div>
   
                     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" [ngStyle]="{ 'margin-bottom': '8px' }">
-                      <mat-form-field fxFlex>
+                      <!-- <mat-form-field fxFlex>
                         <mat-label>Date of Incorporation</mat-label>
                         <input matInput [ngxMatDatetimePicker]="date_Incorporation" placeholder="DD MMM YYYY HH:mm"
                           formControlName="date_Incorporation">
@@ -64,6 +64,13 @@
                      
                         <ngx-mat-datetime-picker #date_Incorporation></ngx-mat-datetime-picker>
         
+                      </mat-form-field> -->
+                      <mat-form-field fxFlex>
+                        <mat-label>Date of Incorporation</mat-label>
+                        <input matInput [ngxMatDatetimePicker]="date_Incorporation" placeholder="DD MMM YYYY HH:mm"
+                          formControlName="date_Incorporation"  >
+                        <mat-datepicker-toggle matSuffix [for]="date_Incorporation"></mat-datepicker-toggle>
+                        <ngx-mat-datetime-picker  class="date-picker-effect" #date_Incorporation></ngx-mat-datetime-picker>
                       </mat-form-field>
                     </div>
         

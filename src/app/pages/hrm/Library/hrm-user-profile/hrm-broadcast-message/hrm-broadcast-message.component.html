@@ -24,12 +24,12 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field >
+                <mat-form-field>
                     <mat-label>Date Sent</mat-label>
                     <input matInput [ngxMatDatetimePicker]="Date_Sent" placeholder="DD MMM YYYY HH:mm"
-                      formControlName="Date_Sent">
+                      formControlName="Date_Sent"  >
                     <mat-datepicker-toggle matSuffix [for]="Date_Sent"></mat-datepicker-toggle>
-                    <ngx-mat-datetime-picker #Date_Sent></ngx-mat-datetime-picker>
+                    <ngx-mat-datetime-picker  class="date-picker-effect" #Date_Sent></ngx-mat-datetime-picker>
                   </mat-form-field>
             </div>
 
@@ -42,7 +42,6 @@
                     <mat-label>Subject</mat-label>
                     <input formControlName="Subject" matInput placeholder="Search by Subject" type="text" />
                 </mat-form-field>
-    
               </div>
 
             <div fxFlex>

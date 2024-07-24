@@ -1,9 +1,14 @@
 // / You can add global styles to this file, and also import other style files /
+// @import "./@fury/styles/core";
+// @import "./app/app.theme";
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css'; // Adjust theme as per your project
+
+@import "../node_modules/@angular/material/theming";
 @import "./@fury/styles/core";
 @import "./app/app.theme";
-@import '~@angular/material/prebuilt-themes/indigo-pink.css'; // Adjust theme as per your project
-
-
+@include mat-core();
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+// @import "~intl-tel-input/build/css/intlTelInput.css";
 // .mat-raised-button.mat-primary
 // {
 //     background-color: #0784C0;
@@ -81,9 +86,14 @@
   background-color: var(--mat-datepicker-calendar-container-background-color);
   color: var(--mat-datepicker-calendar-container-text-color);
 }
+.mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 105px;
+}
 
 .mat-datepicker-content .mat-calendar {
-  width: 296px;
+  width: 105px;
   height: 354px;
 }
 
@@ -258,9 +268,6 @@
   position: relative;
   height: 1px;
 }
-.mat-button {
-  font-family: sans-serif;
-}
 
 .mat-calendar-table-header-divider::after {
   content: '';
@@ -329,7 +336,7 @@
   background: none;
   text-align: center;
   outline: none;
-  font-family: system-ui;
+  font-family: inherit;
   margin: 0;
 }
 
