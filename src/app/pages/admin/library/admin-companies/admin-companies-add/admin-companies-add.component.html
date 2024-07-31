@@ -24,7 +24,7 @@
         <div mat-dialog-container style="padding: 10px;">
           <div fxLayout="row" fxLayoutGap="5px">
               <div fxFlex="50">
-                  <div fxLayout="column" fxLayout.gt-sm="row">
+                    <div fxLayout="column" fxLayout.gt-sm="row">
                       <mat-form-field fxFlex appearance="fill">
                         <mat-label>Company Name</mat-label>
                         <input formControlName="Company_Name" matInput placeholder="Company Name" type="text" />
@@ -73,8 +73,7 @@
                         <ngx-mat-datetime-picker  class="date-picker-effect" #date_Incorporation></ngx-mat-datetime-picker>
                       </mat-form-field>
                     </div>
-        
-                   
+                    
                     <div fxLayout="column" fxLayout.gt-sm="row">
                       <mat-form-field fxFlex appearance="fill">
                           <mat-label>Address</mat-label>
@@ -142,9 +141,6 @@
                         <input formControlName="Company_Time_Zone" matInput placeholder="Company Timezone" type="text" />
                         <mat-hint style="cursor: pointer;color: blue;" (click)="saveTimezone(null,false)">Select Timezone</mat-hint>
                       </mat-form-field>
-                     
-                     
-                      
                     </div>
                   <div fxLayout="column" fxLayout.gt-sm="row">
                       <mat-form-field fxFlex appearance="fill">
@@ -157,12 +153,11 @@
                           <mat-label>Working Hours To</mat-label>
                           <input formControlName="Working_hours_to" matInput placeholder="Working Hours To" type="text" />
                       </mat-form-field>
-                  </div>
+                  </div> 
   
                   <div fxLayout="column" fxLayout.gt-sm="row">
                       <mat-form-field fxFlex appearance="fill">
                           <mat-label>PIN Code</mat-label>
-                         
                           <input formControlName="PIN_Code" matInput placeholder="PIN Code" type="text" />
                       </mat-form-field>
                   </div>

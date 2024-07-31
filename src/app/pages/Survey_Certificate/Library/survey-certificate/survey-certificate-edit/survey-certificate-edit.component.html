@@ -21,7 +21,7 @@
 					</div>
 <div>
   <form [formGroup]="certificateFormGroup">
-    <div mat-dialog-container style="padding-top: 20px;">
+    <div mat-dialog-container style="padding: 15px;">
       <div fxLayout="column" fxLayout.gt-sm="row">
         <mat-form-field fxFlex appearance="fill">
           <mat-label>Category Name</mat-label>
@@ -64,14 +64,12 @@
   </form>
 
   <mat-dialog-actions fxLayout="row" fxLayoutAlign="end end" >
-
     <button mat-raised-button color="primary" class="save-btn">
       Copy to Clipboard
     </button>
     <button mat-raised-button class="save-btn" color="primary">
       SAVE
     </button>
-
     <button mat-raised-button color="warn" (click)="CloseModal()">Cancel</button>
   </mat-dialog-actions>
 </div>

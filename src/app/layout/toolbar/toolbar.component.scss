@@ -145,12 +145,17 @@
 
 
 }
+.mat-mdc-button .mdc-button__label, .mat-mdc-unelevated-button .mdc-button__label, .mat-mdc-raised-button .mdc-button__label, .mat-mdc-outlined-button .mdc-button__label {
+  z-index: 1;
+  font-family: sans-serif;
+}
 
-// .menuItemSpace{
-//   height: 22px;
-//   line-height: 4px; // center text 
+.menuItemSpace{
+  font-family: 'Roboto' !important;
+  // height: 22px;
+  // line-height: 4px; // center text 
   
-// } 
+} 
 .mat-mdc-button:not(:disabled) {
   color: #fff;
 }
